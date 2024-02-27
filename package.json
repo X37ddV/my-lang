@@ -1,0 +1,42 @@
+{
+  "name": "my-lang",
+  "displayName": "MyLang",
+  "description": "My language support for VS Code",
+	"license": "MIT",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.86.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+	"main": "./out/extension.js",
+  "contributes": {
+    "languages": [{
+      "id": "my-lang",
+      "aliases": ["MyLang", "my-lang"],
+      "extensions": [".my"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "my-lang",
+      "scopeName": "source.my",
+      "path": "./syntaxes/my-lang.tmLanguage.json"
+    }]
+  },
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint \"src/**/*.ts\"",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/node": "^20.11.20",
+    "@types/vscode": "^1.86.0",
+    "vscode-test": "^1.6.1",
+		"@typescript-eslint/eslint-plugin": "^7.1.0",
+		"@typescript-eslint/parser": "^7.1.0",
+		"eslint": "^8.57.0",
+		"typescript": "^5.3.3"
+	}
+}
