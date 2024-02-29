@@ -1,0 +1,109 @@
+/*
+跨周期引用
+
+#IMPORT [PERIOD,N,FORMULA] AS VAR
+
+PERIOD 参数为 N 的周期，指标 FORMULA 的数据。
+PERIOD 支持如下周期：SEC（秒周期），MIN（分钟周期），HOUR（小时周期），DAY（日周期），WEEK
+（一周），MONTH（一月），QUARTER（一季度），YEAR（一年）
+-----------------------------------------------
+MA5:MA(C,5);//定义 MA5
+MA10:MA(C,10); //定义 MA10
+保存指标，命名为 AA
+
+#IMPORT[MIN,30,AA] AS VAR
+
+MA5Y:VAR.MA5;//跨周期引用 30 分钟周期的 MA5
+MA10Y:VAR.MA10;//跨周期引用 30
+
+*/
+
+
+/*
+跨合约引用
+
+#CALL [CODE, FORMULA] AS VAR
+引用 CODE 合约的指标 FORMULA 的数据。
+例如在 IF1710 合约 1 分钟周期上引用 IF 加权合约 1 分钟的 MA5 和 MA10 指标：
+首先建立指标：
+MA5:MA(C,5);//定义 MA5
+MA10:MA(C,10); //定义 MA10
+保存指标，命名为 AA
+再建立跨合约模型：
+#CALL [8600,AA] AS VAR
+MA5Y:VAR.MA5;//跨合约引用 1 分钟周期的 MA5
+MA10Y:VAR.MA10;//跨合约引用 1 分钟周期的 MA10
+*/
+
+// 变量 MA5:MA(C,5);
+
+
+// 高开低收（HIGH、OPEN、LOW、CLOSE），成交量（VOL），持仓量（OPI）等
+
+// 函数 MA(CLOSE,5)
+
+// 运算 HIGH-LOW
+
+
+// A、命名部分：
+//     支持汉字、字母、数字、划线格式命名，长度控制在 26 个字符内；命名不能和已存在的公式名称重
+//     复。
+// B、定义变量名称
+//     变量名称不能相互重复
+//     不能与参数名重复
+//     不能与函数名重复
+// C、需在半角输入法的大写状态下进行编写
+// D、每个语句应该以分号结束
+// E、参数部分：
+// 可以设置六个参数
+// 首先是参数名称，然后是参数的最小值、最大值、最后是参数的缺省值。
+// 在定义参数时要注意的是参数名称不可以重复，要在 12 个字符内。
+// F、注释或舍去
+// 想要在编写后，加入自己的语言注释，在结尾处用“//”表示；或者想要舍去某段，在某段最前端加
+// 入“//”
+
+// 操作符
+// 数学运算:+、-、*、/
+// 逻辑运算:&&、||、>、<、<>、>=、<=、=
+// 赋值运算::、:=、^^、..
+
+// 函数
+// 线形描述符
+// 信号指令
+//     定义变量
+//     条件，指令;
+//     AUTOFILTER;
+
+#IMPORT [YEAR,N,FORMULA] AS VAR
+#CALL [CODE, FORMULA] AS VAR
+#CALL_OTHER [FORMULA] AS VAR
+#CALL_PLUS[CODE,DAY,N,FORMULA] AS VAR
+#IMPORT [WEEK,N,FORMULA] AS VAR
+VARIABLE:VK1:=1;
+REFLINE:-100,0,100;
+AA:MA(C,5),ALIGN1,CIRCLEDOT,FONTSIZE72,WORD(12),COLORRED,RGB(122,22,255);
+BB:=MA(C,5);
+CC^^MA(C,5);
+DD..MA(C,5);
+EE:=1;
+IF AA OR BB AND CC || DD && EE THEN
+    CC:=1;
+ELSE
+BEGIN
+    DD:=2;
+END
+
+VAR.XX;
+AUTOFILTER;
+AUTOFINANCING;
+DAYTRADE;
+DAYTRADE1;
+MONTHTRADE;
+MONTHTRADE1;
+QUARTERTRADE;
+QUARTERTRADE1;
+TRADE_SMOOTHING;
+WEEKTRADE;
+WEEKTRADE1;
+YEARTRADE;
+YEARTRADE1;
