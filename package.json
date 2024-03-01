@@ -22,7 +22,13 @@
       "language": "my-lang",
       "scopeName": "source.my",
       "path": "./syntaxes/my-lang.tmLanguage.json"
-    }]
+    }],
+    "commands": [
+        {
+            "command": "extension.saveString",
+            "title": "Save String to File"
+        }
+    ]
   },
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

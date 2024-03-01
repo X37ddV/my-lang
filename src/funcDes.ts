@@ -562,7 +562,7 @@ export default {
         "markettype": 1,
         "modifytime": "20231213",
         "param": "",
-        "tip": "CLOSEKLINE(TYPE,N),设置K线提前N(1-30)秒走完TYPE=0，代表每小节和收盘前最后一根K线提前N秒走完；\r\nTYPE=1，代表夜盘结束及日盘结束前最后一根K线提前N秒走完；TYPE=2，代表每一根K线提前N秒走完；N是时间（秒数）",
+        "tip": "CLOSEKLINE(TYPE,N),设置K线提前N(1-30)秒走完TYPE=0，代表每小节和收盘前最后一根K线提前N秒走完；\\r\\nTYPE=1，代表夜盘结束及日盘结束前最后一根K线提前N秒走完；TYPE=2，代表每一根K线提前N秒走完；N是时间（秒数）",
         "type": 11
     },
     "CLOSEMINUTE": {
@@ -3981,7 +3981,7 @@ export default {
         "markettype": 1,
         "modifytime": "20230216",
         "param": "",
-        "tip": "SETDEALPERCENT(fPercent,N)，每次按当前理论资金的fPercent比例下单，且最大为N手。\r",
+        "tip": "SETDEALPERCENT(fPercent,N)，每次按当前理论资金的fPercent比例下单，且最大为N手。",
         "type": 12
     },
     "SETEXPIREDATE": {
@@ -4025,7 +4025,7 @@ export default {
         "markettype": 1,
         "modifytime": "20220621",
         "param": "",
-        "tip": "SETSIGPRICE(SIG,PRICE),设置SIG指令的下单价格，PRICE为下单价格。\r\n",
+        "tip": "SETSIGPRICE(SIG,PRICE),设置SIG指令的下单价格，PRICE为下单价格。",
         "type": 11
     },
     "SETSIGPRICETYPE": {

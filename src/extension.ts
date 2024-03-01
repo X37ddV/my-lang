@@ -1,4 +1,77 @@
 import * as vscode from 'vscode';
+import * as funcDef from './funcDes';
+import * as fs from 'fs';
+import * as path from 'path';
+
+let a: string = `
+class MyFunc {
+    public body: string = ""
+    public description: string = ""
+    public explanation: string = ""
+    public markettype: number = 0
+    public tip: string = ""
+    public type: number = 0
+}
+
+`;
+let s: string = "";
+let n: string = "";
+for (const [key, value] of Object.entries(funcDef)) {
+    for (let [k, v] of Object.entries(value)) {
+        if (k[0] === "#") {
+            k = k.replace("#", "_")
+        } else if (k === "s") {
+            k = k.replace("$", "_$_")
+        } else if (k === "$ $") {
+            k = k.replace("$ $", "_$_$_")
+        }
+        if (typeof v === "string") {
+            s += `const ${k} = "${v}"\n`
+        } else if (typeof v === "number") {
+            n += `const ${k} = ${v}\n`
+        } else {
+            a += `const ${k} = new MyFunc()\n`
+            const o = v as any
+            if (o["body"]) {
+                a += `${k}.body = "${o["body"]}"\n`
+            }
+            if (o["explanation"]) {
+                let oo = o["explanation"]
+                a += `${k}.explanation = "${oo}"\n`
+            }
+            if (o["markettype"]) {
+                let oo = o["markettype"]
+                a += `${k}.markettype = ${oo}\n`
+            }
+            if (o["tip"]) {
+                let oo = o["tip"]
+                a += `${k}.tip = "${oo}"\n`
+            }
+            if (o["type"]) {
+                let oo = o["type"]
+                a += `${k}.type = ${oo}\n`
+            }
+            if (o["description"]) {
+                let oo = o["description"]
+                oo = oo.replace(/\\r\\n/g, "\n")
+                a += `${k}.description = \`\n${oo}\n\`\n`
+            }
+            a += "\n"
+        }
+    }
+}
+
+function saveStringToFile(filePath: string, content: string): void {
+    try {
+        fs.writeFileSync(filePath, content, 'utf8');
+        // 显示一个信息性消息以确认文件已保存
+        vscode.window.showInformationMessage(`File saved: ${filePath}`);
+    } catch (err: any) {
+        // 错误处理：如果文件无法保存，显示一个错误消息
+        vscode.window.showErrorMessage(`Failed to save the file: ${err.message}`);
+    }
+}
+
 
 // 创建装饰器类型的映射，以便复用
 const decorationTypes: { [key: string]: vscode.TextEditorDecorationType } = {};
@@ -34,27 +107,17 @@ function ensureDecorationType(colorKey: string) {
         });
     }
     return decorationTypes[colorKey];
-}
+};
+
 function rgbToHex(r: string, g: string, b: string) {
-    // 将单个数值转换为十六进制字符串的函数
     const toHex = (n: string) => {
-        // 将数值转换为十六进制，结果为字符串
         let hex = parseInt(n, 10).toString(16);
-        // 单个字符的结果前添加0，确保输出总是两个字符
         return hex.length === 1 ? '0' + hex : hex;
     };
-
-    // 转换每个颜色分量，并拼接成完整的十六进制颜色代码
     return '#' + toHex(r) + toHex(g) + toHex(b);
-}
+};
 
 function updateDecorations(activeEditor: vscode.TextEditor) {
-
-    // 先清除旧的装饰器
-    // Object.keys(decorationTypes).forEach(colorKey => {
-    //     activeEditor.setDecorations(decorationTypes[colorKey], []);
-    // });
-
     const text = activeEditor.document.getText();
     const colorDecorations: { [key: string]: vscode.DecorationOptions[] } = {};
 
@@ -73,18 +136,19 @@ function updateDecorations(activeEditor: vscode.TextEditor) {
             colorDecorations[key] = [decoration];
         }
     }
+
+    // 更新颜色装饰器
     const colorDecorationsKeys = Object.keys(colorDecorations)
     const allKeys = [...new Set([...colorDecorationsKeys, ...Object.keys(decorationTypes)])];
     allKeys.forEach(key => {
         const decorationType = ensureDecorationType(key);
-        if (key in colorDecorationsKeys) {
+        if (colorDecorationsKeys.includes(key)) {
             activeEditor.setDecorations(decorationType, colorDecorations[key]);
         } else {
             activeEditor.setDecorations(decorationType, []);
         }
     });
-}
-
+};
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -167,4 +231,22 @@ export function activate(context: vscode.ExtensionContext) {
             updateDecorations(activeEditor);
         }
     }, null, context.subscriptions);
+
+    let disposable = vscode.commands.registerCommand('extension.saveString', () => {
+        // 指定要保存的文件路径和内容
+        // 检查是否有打开的工作区文件夹
+        if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 0) {
+            // 获取第一个工作区文件夹的路径
+            const workspaceFolder = vscode.workspace.workspaceFolders[0];
+            const workspaceFolderPath = workspaceFolder.uri.fsPath;
+
+            saveStringToFile(path.join(workspaceFolderPath, 'a.ts'), a);
+            saveStringToFile(path.join(workspaceFolderPath, 's.ts'), s);
+            saveStringToFile(path.join(workspaceFolderPath, 'n.ts'), n);
+        } else {
+            vscode.window.showErrorMessage('No workspace folder is open.');
+        }
+    });
+
+    context.subscriptions.push(disposable);
 }
