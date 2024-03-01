@@ -17,10 +17,10 @@ const colorMap: { [key: string]: string } = {
     COLORBLACK: '#000000',
     COLORWHITE: '#FFFFFF',
     COLORCYAN: '#00FFFF',
-    COLORGRAY: '#808080'
+    COLORGRAY: '#808080',
 };
 
-function ensureDecorationType(colorKey: string, colorValue: string) {
+function ensureDecorationType(colorKey: string) {
     if (!decorationTypes[colorKey]) {
         decorationTypes[colorKey] = vscode.window.createTextEditorDecorationType({
             before: {
@@ -28,46 +28,66 @@ function ensureDecorationType(colorKey: string, colorValue: string) {
                 width: '0.8em', // 装饰器宽度
                 height: '0.8em', // 装饰器高度
                 border: '1px solid #fff', // 1px白色边框
-                backgroundColor: colorValue, // 指定的颜色填充
+                backgroundColor: colorKey, // 指定的颜色填充
                 margin: '0.1em 0.2em 0 0.2em', // 适当的边距以避免与文本重叠
             },
         });
     }
     return decorationTypes[colorKey];
 }
+function rgbToHex(r: string, g: string, b: string) {
+    // 将单个数值转换为十六进制字符串的函数
+    const toHex = (n: string) => {
+        // 将数值转换为十六进制，结果为字符串
+        let hex = parseInt(n, 10).toString(16);
+        // 单个字符的结果前添加0，确保输出总是两个字符
+        return hex.length === 1 ? '0' + hex : hex;
+    };
+
+    // 转换每个颜色分量，并拼接成完整的十六进制颜色代码
+    return '#' + toHex(r) + toHex(g) + toHex(b);
+}
+
 function updateDecorations(activeEditor: vscode.TextEditor) {
+
+    // 先清除旧的装饰器
+    // Object.keys(decorationTypes).forEach(colorKey => {
+    //     activeEditor.setDecorations(decorationTypes[colorKey], []);
+    // });
+
     const text = activeEditor.document.getText();
-    const colorDecorations: { range: vscode.Range; hoverMessage: string; }[] = [];
+    const colorDecorations: { [key: string]: vscode.DecorationOptions[] } = {};
 
     // 正则表达式匹配所有颜色标识符
-    const regex = /\b(COLORRED|COLORGREEN|COLORBLUE|COLORMAGENTA|COLORYELLOW|COLORLIGHTGREY|COLORLIGHTRED|COLORLIGHTGREEN|COLORLIGHTBLUE|COLORBLACK|COLORWHITE|COLORCYAN|COLORGRAY)\b/g;
+    const regex = /\b(COLORRED|COLORGREEN|COLORBLUE|COLORMAGENTA|COLORYELLOW|COLORLIGHTGREY|COLORLIGHTRED|COLORLIGHTGREEN|COLORLIGHTBLUE|COLORBLACK|COLORWHITE|COLORCYAN|COLORGRAY)\b|\bRGB\s*\(\s*(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\s*,\s*(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\s*,\s*(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\s*\)/g;
     let match;
     while ((match = regex.exec(text)) !== null) {
         const startPos = activeEditor.document.positionAt(match.index);
         const endPos = activeEditor.document.positionAt(match.index + match[0].length);
-        const decoration = { range: new vscode.Range(startPos, endPos), hoverMessage: 'Color **' + match[0] + '**' };
-        colorDecorations.push(decoration);
+        const matchString = match[0]
+        const key = matchString.startsWith("RGB") ? rgbToHex(match[2], match[3], match[4]) : colorMap[matchString]
+        const decoration: vscode.DecorationOptions = { range: new vscode.Range(startPos, endPos), hoverMessage: 'Color **' + key + '**' };
+        if (colorDecorations[key]) {
+            colorDecorations[key].push(decoration);
+        } else {
+            colorDecorations[key] = [decoration];
+        }
     }
-
-    // 先清除旧的装饰器
-    Object.keys(decorationTypes).forEach(colorKey => {
-        activeEditor.setDecorations(decorationTypes[colorKey], []);
-    });
-
-    // 为每个匹配的颜色创建并应用装饰器
-    Object.keys(colorMap).forEach((colorKey) => {
-        const decorationType = ensureDecorationType(colorKey, colorMap[colorKey]);
-
-        const matches = colorDecorations.filter(decoration => {
-            // 获取装饰器范围内的文本内容
-            const textInRange = activeEditor.document.getText(decoration.range);
-            return textInRange === colorKey;
-        });
-        activeEditor.setDecorations(decorationType, matches);
+    const colorDecorationsKeys = Object.keys(colorDecorations)
+    const allKeys = [...new Set([...colorDecorationsKeys, ...Object.keys(decorationTypes)])];
+    allKeys.forEach(key => {
+        const decorationType = ensureDecorationType(key);
+        if (key in colorDecorationsKeys) {
+            activeEditor.setDecorations(decorationType, colorDecorations[key]);
+        } else {
+            activeEditor.setDecorations(decorationType, []);
+        }
     });
 }
 
+
 export function activate(context: vscode.ExtensionContext) {
+
     const provider1 = vscode.languages.registerCompletionItemProvider('my-lang', {
 
         provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext) {
@@ -108,7 +128,7 @@ export function activate(context: vscode.ExtensionContext) {
                 commandCompletion
             ];
         }
-    }, ' ');
+    });
 
     const provider2 = vscode.languages.registerCompletionItemProvider('my-lang', {
         provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {

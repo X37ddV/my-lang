@@ -1,0 +1,1532 @@
+[KEYWORD]
+@BEGIN
+    @NAME={MIN1,MIN3,MIN5,MIN10,MIN15,MIN30,VAR,ELSE,RETURN,VOID, IF,WHILE,BREAK,CONTINUE,
+READ, WRITE,MAIN,BK,SK,BP,SP,BPK,SPK,FOR,CLOSEOUT,
+STOP,Num}
+@END
+
+[FUNCTION]
+@BEGIN
+	@NAME={ABS,ABSF,AvPrice,CurrentTime,CurrentServerTime,FLOOR,CEILING,DateToStr,Exit,
+F_BuyPosition,MAX,MIN,F_CurrentPos,F_CurrentSigPos,F_IsTimeToKlineEnd,Year,Month,
+Day,Hour,Minute,Second,T_OrderMatchAvPrice,
+F_SellPosition,F_BuyAvgPrice,F_SellAvgPrice,F_DealCode,F_Period,
+F_BuyRemainPosition,F_SellRemainPosition,GLOBAL_VAR,F_IsLastKline,High,T_IsSHCode,
+Itoa,LastOrderTime,MessageOut,Offers,F_InitBuyVol,
+F_InitSellVol,F_InitBuyPrice,F_InitSellPrice,AL_GetName,WriteToFile,ReadFromFile,
+Price,Price1,ReadGlobal,ReadGlobalF,ReadGlobalStr,SamePeriod,Time,TimeToStr,
+T_BuyPosition,F_BuyProfitLoss,F_SellProfitLoss,#Get,
+T_BuyAvgPrice,T_BuyProfitLoss,T_BuyRemainPosition,T_SellPosition,T_SellAvgPrice,
+T_SellRemainPosition,T_SellProfitLoss,T_Deal,
+T_FreeMargin,T_Equity,T_MaxOpen,T_OffsetProfitLoss,T_OrderState,T_OpenOrder,
+T_DeleteOrder,T_IsExchangeOpen,T_InitialEquity,GetDecimal,
+T_DeleteOrderByCode,WriteGlobal,WriteGlobalF,WriteGlobalStr,FloatToStr,
+T_DeleteOrderAll,T_AddBuyOpiTo,T_AddSellOpiTo,T_ReduceBuyOpiTo,T_ReduceSellOpiTo,T_AllIsNoOrder,T_CancelAllOrder,T_Deal1,SubStr,
+T_StgBuyVol,T_StgSellVol,T_OrderMatchVol,T_IsNoOrder,F_FreshSig,F_Sig,F_SigPrice,F_SigTriggerPrice,
+F_SigVol,F_SigValid,T_BatchOrder,T_DeleteOrderByPrice,
+F_SigTime,F_SigPos,MinPrice,F_Close,F_IsIdle,
+F_Open,F_High,F_Low,F_Volume,F_Opi,F_Avprice,F_Variant,T_SHBuyRemainPosition,
+T_SHSellRemainPosition,DYNINFO,Week,MIN1,
+T_SHBuyPosition,T_SHSellPosition,T_GetFallLimit,T_GetRiseLimit,F_LastOffSetProfit,
+F_OffSetProfit,Delta,TheoreticalValue,T_MarginRatio,
+IntrinsicValue,ImpliedVolatility,ExpirationDate,
+F_SigGroup,VAR_TICKDATA,Def_TickData,AL_BuyPosition,AL_SellPosition,
+AL_BuyRemainPosition,AL_SellRemainPosition,T_BuyProfitLoss1,T_SellProfitLoss1,
+AL_BuyAvgPrice,AL_SellAvgPrice,AL_BuyProfitLoss,AL_SellProfitLoss,AL_OffSetProfit,
+AL_LastOffSetProfit,State,Ask1,Ask2,Ask3,Ask4,Ask5,Bid1,Bid2,Bid3,Bid4,
+Bid5,Askvol1,Askvol2,Askvol3,Askvol4,Askvol5,Bidvol1,Bidvol2,Bidvol3,Bidvol4,
+Bidvol5,Activity,Open,Low,New,Delta1,Bid,BidVol,Ask,AskVol,DeltaVol,DeltaOpi,
+Volume,OpIorSize,Ratio,UpDown,Settle,YSettle,YClose,Capital,Direction,
+Speculation,PremiumRate,ActualLeverage,Leverage,StrikePrice,CallPut,
+HistoricalVolatility,Stdderiation,InternalValue,TimeValue,
+TheoryPrice,Rho,Theta,Vega,Gamma,Name,NumOfUnit,LastDate,MEName,Code,F_InitCode,
+Unit,T_CloseAllOpi,OpenSecs,POW,Timer,Counter,F_GetCallCode,
+NEW_ORDER,PASSIVE_ORDER,ACTIVE_ORDER,CMPETITV_ORDER,LIMIT_ORDER,MAX1,F_SigCode,CheckPosition,GetPrivateProfileString,GetSectionEndTime,
+T_TodayBuyPosition,T_TodaySellPosition,T_TodayBuyRemainPosition,T_TodaySellRemainPosition,WritePrivateProfileString,TickVolum,
+,GetMainCodeName,StrToFloat,T_Fee,T_BuyOpiAvgPrice,T_SellOpiAvgPrice,T_ProfitLoss,QuotState,T_GetContractLimitVol,TickOpi,TickPrice,}
+@END
+
+[ABS]
+@BEGIN
+	@FUNCDESC={ABS(Value)返回Value的绝对值，Value是整型值}
+	@PARAMDESC={}
+@END
+
+[ABSF]
+@BEGIN
+	@FUNCDESC={ABSF(ValueF)返回ValueF的绝对值，ValueF是浮点值}
+	@PARAMDESC={}
+@END
+
+[AvPrice]
+@BEGIN
+	@FUNCDESC={返回合约的当前均价}
+	@PARAMDESC={}
+@END
+
+[TickOpi]
+@BEGIN
+	@FUNCDESC={TickOpi 持仓量}
+	@PARAMDESC={}
+@END
+
+[TickPrice]
+@BEGIN
+	@FUNCDESC={TickPrice 当笔tick数据的价格}
+	@PARAMDESC={}
+@END
+
+[TickVolum]
+@BEGIN
+	@FUNCDESC={TickVolum 从开盘到当笔tick数据的成交量累计值}
+	@PARAMDESC={}
+@END
+
+[CurrentTime]
+@BEGIN
+	@FUNCDESC={CurrentTime()返回当前时间}
+	@PARAMDESC={}
+@END
+
+[CurrentServerTime]
+@BEGIN
+	@FUNCDESC={CurrentServerTime("CODE")返回最后一笔行情上的服务器时间}
+	@PARAMDESC={}
+@END
+
+[FLOOR]
+@BEGIN
+    @FUNCDESC={FLOOR(A),取沿A数值减小方向最接近的整数}
+    @PARAMDESC= {}
+
+[CEILING]
+@BEGIN
+    @FUNCDESC={CEILING(A) ,取沿数值A增大方向最接近的整数}
+    @PARAMDESC= {}
+
+[DateToStr]
+@BEGIN
+	@FUNCDESC={DateToStr(nSec)把整型数值表示的时间nSec转换为字符串，nSec为时间的总秒数}
+	@PARAMDESC={}
+@END
+
+[DYNINFO]
+@BEGIN
+	@FUNCDESC={DYNINFO(Code, Type)返回合约的60秒速涨、现增仓、现涨。Code:合约代码 Type:1,60秒速涨 2,现增仓 3,现涨}
+	@PARAMDESC={}
+@END
+
+[Exit]
+@BEGIN
+	@FUNCDESC={Exit()退出程序}
+	@PARAMDESC={}
+@END
+
+[F_BuyPosition]
+@BEGIN
+	@FUNCDESC={F_BuyPosition()返回模型的多头持仓}
+	@PARAMDESC={}
+@END
+
+[F_SellPosition]
+@BEGIN
+	@FUNCDESC={F_SellPosition()返回模型的空头持仓}
+	@PARAMDESC={}
+@END
+
+[F_BuyRemainPosition]
+@BEGIN
+	@FUNCDESC={F_BuyRemainPosition()返回模组多头可用持仓}
+	@PARAMDESC={}
+@END
+
+[F_SellRemainPosition]
+@BEGIN
+	@FUNCDESC={F_SellRemainPosition()返回模组空头可用持仓}
+	@PARAMDESC={}
+@END
+
+[F_BuyProfitLoss]
+@BEGIN
+	@FUNCDESC={F_BuyProfitLoss()返回模组的多头盈亏}
+	@PARAMDESC={}
+@END
+
+[F_SellProfitLoss]
+@BEGIN
+	@FUNCDESC={F_SellProfitLoss()返回模组的空头盈亏}
+	@PARAMDESC={}
+@END
+
+[F_BuyAvgPrice]
+@BEGIN
+	@FUNCDESC={F_BuyAvgPrice()返回模型多头持仓成本价}
+	@PARAMDESC={}
+@END
+
+[F_SellAvgPrice]
+@BEGIN
+	@FUNCDESC={F_SellAvgPrice()返回模型空头持仓成本价}
+	@PARAMDESC={}
+@END
+
+[F_DealCode]
+@BEGIN
+	@FUNCDESC={F_DealCode()返回模型所交易合约的合约编码(字符串)}
+	@PARAMDESC={}
+@END
+
+[F_InitBuyVol]
+@BEGIN
+	@FUNCDESC={F_InitBuyVol()返回模型初始化的多头持仓(整数)}
+	@PARAMDESC={}
+@END
+
+[F_InitSellVol]
+@BEGIN
+	@FUNCDESC={F_InitSellVol()返回模型初始化的空头持仓(整数)}
+	@PARAMDESC={}
+@END
+
+[F_InitBuyPrice]
+@BEGIN
+	@FUNCDESC={F_InitBuyPrice()返回模型初始化的多头持仓价格}
+	@PARAMDESC={}
+@END
+
+[F_InitSellPrice]
+@BEGIN
+	@FUNCDESC={F_InitSellPrice()返回模型初始化的空头持仓价格}
+	@PARAMDESC={}
+@END
+
+[F_Period]
+@BEGIN
+	@FUNCDESC={F_Period() 返回当前模型的周期(字符串)}
+	@PARAMDESC={}
+@END
+
+[High]
+@BEGIN
+	@FUNCDESC={返回合约的当前最高价}
+	@PARAMDESC={}
+@END
+
+[Itoa]
+@BEGIN
+	@FUNCDESC={Itoa(Value)将Value转换成字符串，Value的为整型数值}
+	@PARAMDESC={}
+@END
+
+[T_IsSHCode]
+@BEGIN
+	@FUNCDESC={T_IsSHCode(Code)判断合约是否是上海市场合约。Code为某合约的合约代码}
+	@PARAMDESC={}
+@END
+
+[LastOrderTime]
+@BEGIN
+	@FUNCDESC={LastOrderTime()返回最后一次下单的时间，以总秒数表示}
+	@PARAMDESC={}
+@END
+
+[Low]
+@BEGIN
+	@FUNCDESC={返回合约的当前最低价}
+	@PARAMDESC={}
+@END
+
+[MessageOut]
+@BEGIN
+	@FUNCDESC={MessageOut(Content),输出Content的内容。Content可以是字符串也可以是数字}
+	@PARAMDESC={}
+@END
+
+[Offers]
+@BEGIN
+	@FUNCDESC={Offers(Code,strContent) 某合约的买卖盘报价或买卖量。Code为某合约的合约代码(字符串), strContent为所要取得内容}
+	@PARAMDESC={}
+@END
+
+[ReadGlobal]
+@BEGIN
+	@FUNCDESC={ReadGlobal(strName);返回注册的strName的值，如果strName未被注册过，返回0。strName为已注册的整型变量的注册名称(字符串)}
+	@PARAMDESC={}
+@END
+
+[ReadGlobalF]
+@BEGIN
+	@FUNCDESC={ReadGlobalF(strNameF);返回注册的strNameF的值,，如果strNameF未被注册过，返回0.0f。strNameF为已注册的浮点型变量的注册名称(字符串)}
+	@PARAMDESC={}
+@END
+
+[ReadGlobalStr]
+@BEGIN
+	@FUNCDESC={ReadGlobalStr(NameStr);返回注册的NameStr的值，如果NameStr未被注册过，返回(空字符串)。NameStr为已注册的字符串变量的注册名称}
+	@PARAMDESC={}
+@END
+
+[SamePeriod]
+@BEGIN
+	@FUNCDESC={SamePeriod(Code,PeriodStr,T1,T2)如果T1,T2是同一个周期返回1，否则返回0。Code:合约的合约代码，PeriodStr可以取以下值的其中之一："min1","min3",
+"min5","min10","min15","min30","1hour","3hour","8hour","1day","week","month"，
+T1和T2是以总秒数表示的时间}
+	@PARAMDESC={}
+@END
+
+[Time]
+@BEGIN
+	@FUNCDESC={Time(strTime) 转换字符串strTime为时间(以总秒数表示)，
+strTime的格式应为HH:MM:SS，其中0<=HH<24,0<=MM<60,0<=SS<60,如果不满足此条件，返回0}
+	@PARAMDESC={}
+@END
+
+[TimeToStr]
+@BEGIN
+	@FUNCDESC={TimeToStr(nSec) 把整型数值表示的时间nSec转换为字符串。nSec为时间的总秒数，返回的字符串格式为：HH:MM:SS}
+	@PARAMDESC={}
+@END
+
+[T_BuyPosition]
+@BEGIN
+	@FUNCDESC={T_BuyPosition(Code)返回交易系统中合约Code的多头持仓。Code为某合约的合约代码}
+	@PARAMDESC={}
+
+[T_BuyRemainPosition]
+@BEGIN
+	@FUNCDESC={T_BuyRemainPosition(Code)返回交易系统中合约Code的多头可用持仓持仓。Code为某合约的合约代码}
+	@PARAMDESC={}
+@END
+
+[T_BuyAvgPrice]
+@BEGIN
+	@FUNCDESC={T_BuyAvgPrice(Code)返回交易系统合约Code的多头开仓均价。Code为某合约合约代码}
+	@PARAMDESC={}
+@END
+
+[T_IsExchangeOpen]
+@BEGIN
+	@FUNCDESC={T_IsExchangeOpen(Code)返回交易系统合约code所属的交易所的开闭
+盘状态。Code为某合约合约代码}
+	@PARAMDESC={}
+@END
+
+[T_BuyProfitLoss]
+@BEGIN
+	@FUNCDESC={T_BuyProfitLoss(Code)返回交易系统合约code的多头盈亏。Code为某合约合约代码}
+	@PARAMDESC={}
+@END
+
+[T_SellPosition]
+@BEGIN
+	@FUNCDESC={T_SellPosition(Code)返回交易系统中合约Code的空头持仓。Code为某合约合约代码}
+	@PARAMDESC={}
+@END
+
+[T_SellRemainPosition]
+@BEGIN
+	@FUNCDESC={T_SellRemainPosition(Code)返回交易系统中合约Code的空头可用持仓持仓。Code为某合约的合约代码}
+	@PARAMDESC={}
+@END
+
+[T_SellAvgPrice]
+@BEGIN
+	@FUNCDESC={T_SellAvgPrice(Code)返回交易系统合约code的空头开仓均价。Code为某合约合约代码}
+	@PARAMDESC={}
+@END
+
+[T_SellProfitLoss]
+@BEGIN
+	@FUNCDESC={T_SellProfitLoss(Code)返回交易系统合约code的空头盈亏。Code为某合约合约代码}
+	@PARAMDESC={}
+@END
+
+[T_Deal]
+@BEGIN
+	@FUNCDESC={T_Deal(Code,bs,kp,vol,price),发出委托,返回唯一委托标识OrderID(字符串)。Code(字符串):合约编码，bs(整数0，1):0 买 1 卖 ，
+kp(整数0，1，2):0 开 1平 2平今 Vol(整数)：下单手数，Price(整数或小数):下单价格，
+0为对价}
+	@PARAMDESC={}
+@END
+
+[T_FreeMargin]
+@BEGIN
+	@FUNCDESC={T_FreeMargin(Type), 返回可用资金。Type(整数 0, 1) 0期货 1股票}
+	@PARAMDESC={}
+@END
+
+[T_Equity]
+@BEGIN
+	@FUNCDESC={T_Equity(Type), 返回权益。Type(整数 0, 1) 0期货 1股票}
+	@PARAMDESC={}
+@END
+
+[T_MaxOpen]
+@BEGIN
+	@FUNCDESC={T_MaxOpen(Code, margin, bs),某品种最大可开仓手数。Code(字符串):合约编码，margin(小数)：国内期货合约为保证金比例，外盘期货合约为每手保证金　bs(整数0,1):0 买 1 卖}
+	@PARAMDESC={}
+@END
+
+[T_OrderState]
+@BEGIN
+	@FUNCDESC={T_OrderState(OrderID)根据委托唯一标识OrderID(字符串)查委托状态,
+返回值含义：-1查询失败 0挂单 1成交 2被撤单 3部份成交 4其它}
+	@PARAMDESC={}
+@END
+
+[T_OpenOrder]
+@BEGIN
+	@FUNCDESC={T_OpenOrder(Code,Type)返回未成交委托数量。Code:交易编码,Type:0所有方向;1买开;2卖平;3卖开;4买平}
+	@PARAMDESC={}
+@END
+
+[T_OffsetProfitLoss]
+@BEGIN
+	@FUNCDESC={T_OffsetProfitLoss(Type)返回平仓盈亏。Code:交易编码,Type:0期货;1股票;2外盘}
+	@PARAMDESC={}
+@END
+
+[T_DeleteOrder]
+@BEGIN
+	@FUNCDESC={T_DeleteOrder(OrderID)根据委托唯一标识orderID(字符串)撤单，
+返回0撤单发出成功，返回其它失败}
+	@PARAMDESC={}
+@END
+
+[T_DeleteOrderBy]
+@BEGIN
+	@FUNCDESC={T_DeleteOrderByCode(Code,Type)委托撤单,返回0撤单发出成功，
+返回其它失败。Code:合约代码(字符串)Type:0所有方向;1买开;2卖平;3卖开;4买平}
+	@PARAMDESC={}
+@END
+
+[Volume]
+@BEGIN
+	@FUNCDESC={返回合约的当前成交量}
+	@PARAMDESC={}
+@END
+
+[WriteGlobal]
+@BEGIN
+	@FUNCDESC={WriteGlobal(Name,Value)注册一个整型变量。Name为整型变量的注册名称(字符串)，Value为整型变量的值}
+	@PARAMDESC={}
+@END
+
+[WriteGlobalF]
+@BEGIN
+	@FUNCDESC={WriteGlobalF(NameF,ValueF)注册一个浮点形变量。NameF为浮点形变量的注册名称(字符串)，ValueF为浮点形变量的值}
+	@PARAMDESC={}
+@END
+
+[WriteGlobalStr]
+@BEGIN
+	@FUNCDESC={WriteGlobalStr(NameStr,ValueStr)注册一个字符串变量。NameStr为字符串变量的注册名称(字符串)，ValueStr为字符串变量的值}
+	@PARAMDESC={}
+@END
+
+[T_DeleteOrderAll]
+@BEGIN
+	@FUNCDESC={T_DeleteOrderAll()撤掉所有该模型相关的未成缴委托单，
+返回0撤单发出成功，返回其它失败}
+	@PARAMDESC={}
+@END
+
+[T_AddBuyOpiTo]
+@BEGIN
+	@FUNCDESC={T_AddBuyOpiTo(Code, Price, Vol)把多头仓位增加到某一数值,
+对合约代码为Code的字符串以Price价格下单达到多头vol手持仓。Code(字符串):合约代码,Price(小数):价格,Vol(整数):成交量}
+	@PARAMDESC={}
+@END
+
+[T_AddSellOpiTo]
+@BEGIN
+	@FUNCDESC={T_AddSellOpiTo(Code, Price, Vol)把空头仓位增加到某一数值, 
+对合约代码为Code的字符串以Price价格下单达到多头vol手持仓。Code(字符串):合约代码,Price(小数):价格,Vol(整数):成交量}
+	@PARAMDESC={}
+@END
+
+[T_ReduceBuyOpiTo]
+@BEGIN
+	@FUNCDESC={T_ReduceBuyOpiTo(Code, Price, Vol)把多头仓位减少到某一数值,
+对合约代码为Code的字符串以Price价格下单达到多头vol手持仓。Code(字符串):合约代码,Price(小数):价格,Vol(整数):成交量}
+	@PARAMDESC={}
+@END
+
+[T_ReduceSellOpiTo]
+@BEGIN
+	@FUNCDESC={T_ReduceSellOpiTo(Code, Price, Vol)把空头仓位减少到某一数值,
+对合约代码为Code的字符串以Price价格下单达到空头vol手持仓。Code(字符串):合约代码,Price(小数):价格,Vol(整数):成交量}
+	@PARAMDESC={}
+@END
+
+[T_StgBuyVol]
+@BEGIN
+	@FUNCDESC={T_StgBuyVol(Code)返回当前算法交易模型产生的合约代码为Code的合约的多头持仓数。Code为某合约合约代码}
+	@PARAMDESC={}
+@END
+
+[T_StgSellVol]
+@BEGIN
+	@FUNCDESC={T_StgSellVol(Code)返回当前算法交易模型产生的合约代码为Code的合约的空头持仓数。Code为某合约合约代码}
+	@PARAMDESC={}
+@END
+
+[T_OrderMatchVol]
+@BEGIN
+	@FUNCDESC={T_OrderMatchVol(OrderID)根据委托唯一标识OrderID查询委托成交手数,返回成交手数。OrderID为字符串}
+	@PARAMDESC={}
+@END
+
+[T_IsNoOrder]
+@BEGIN
+	@FUNCDESC={T_IsNoOrder()如果没有挂单返回1，否则返回0}
+	@PARAMDESC={}
+@END
+
+[F_FreshSig]
+@BEGIN
+	@FUNCDESC={F_FreshSig()刷新当前信号}
+	@PARAMDESC={}
+@END
+
+[F_OffSetProfit]
+@BEGIN
+	@FUNCDESC={F_OffSetProfit()取模组加载开始到现在的累计平仓盈亏}
+	@PARAMDESC={}
+@END
+
+[F_Sig]
+@BEGIN
+	@FUNCDESC={取当前信号类型,返回值是BK|SK|BP|SP|BPK|SPK|CLOSEOUT|STOP}
+	@PARAMDESC={}
+@END
+
+[F_SigPrice]
+@BEGIN
+	@FUNCDESC={取当前信号出现时盘口对应的最新价格}
+	@PARAMDESC={}
+@END
+
+[F_SigTriggerPrice]
+@BEGIN
+	@FUNCDESC={取当前信号发出时盘口对应的最新价格}
+	@PARAMDESC={}
+@END
+
+[F_SigVol]
+@BEGIN
+	@FUNCDESC={取当前信号对应的手数}
+	@PARAMDESC={}
+@END
+
+[F_SigValid]
+@BEGIN
+	@FUNCDESC={当前信号类型(发出或消失)}
+	@PARAMDESC={}
+@END
+
+[F_SigTime]
+@BEGIN
+	@FUNCDESC={当前信号的发出时间}
+	@PARAMDESC={}
+@END
+
+[F_SigPos]
+@BEGIN
+	@FUNCDESC={当前信号在模型中是第几个有指令的语句}
+	@PARAMDESC={}
+@END
+
+[MinPrice]
+@BEGIN
+	@FUNCDESC={取合约最小变动价位。MinPrice(Code),Code为某合约的合约代码}
+	@PARAMDESC={}
+@END
+
+[F_Close]
+@BEGIN
+	@FUNCDESC={F_Close(N)返回当前模型倒数第N+1根K线的收盘价。N为到当前K线的周期数}
+	@PARAMDESC={}
+@END
+
+[F_Open]
+@BEGIN
+	@FUNCDESC={F_Open(N)返回当前模型倒数第N+1根K线的开盘价。N为到当前K线的周期数}
+	@PARAMDESC={}
+@END
+
+[F_High]
+@BEGIN
+	@FUNCDESC={F_High(N)返回当前模型倒数第N+1根K线的最高价。N为到当前K线的周期数}
+	@PARAMDESC={}
+@END
+
+[F_Low]
+@BEGIN
+	@FUNCDESC={F_Low(N)返回当前模型倒数第N+1根K线的最低价。N为到当前K线的周期数}
+	@PARAMDESC={}
+@END
+
+[F_LastOffSetProfit]
+@BEGIN
+	@FUNCDESC={F_LastOffSetProfit()返回模组最近一次的平仓盈亏}
+	@PARAMDESC={}
+@END
+
+[F_Volume]
+@BEGIN
+	@FUNCDESC={F_Volume(N)返回当前模型倒数第N+1根K线的成交量。N为到当前K线的周期数}
+	@PARAMDESC={}
+@END
+
+[F_Opi]
+@BEGIN
+	@FUNCDESC={F_Opi(N)返回当前模型倒数第N+1根K线的持仓量。N为到当前K线的周期数}
+	@PARAMDESC={}
+@END
+
+[F_Avprice]
+@BEGIN
+	@FUNCDESC={F_Avprice(N)返回倒数第N+1根K线的均价。N为到当前K线的周期数}
+	@PARAMDESC={}
+@END
+
+
+[F_Variant]
+@BEGIN
+	@FUNCDESC={F_Variant(VARNAME,N)返回模型变量VARNAME在倒数第N+1根K线的值。N为到当前K线的周期数}
+	@PARAMDESC={}
+@END
+
+[T_SHBuyRemainPosition]
+@BEGIN
+	@FUNCDESC={T_SHBuyRemainPosition(Code,Type)返回交易系统中上海某合约Code的多头可用持仓。Code为某合约的合约代码,Type:0为今仓,1为老仓}
+	@PARAMDESC={}
+@END
+
+[T_SHSellRemainPosition]
+@BEGIN
+	@FUNCDESC={T_SHSellRemainPosition(Code,Type)返回交易系统中上海某合约Code的空头可用持仓。Code为某合约的合约代码,Type:0为今仓,1为老仓}
+	@PARAMDESC={}
+@END
+
+[T_SHBuyPosition]
+@BEGIN
+	@FUNCDESC={T_SHBuyPosition(Code,Type)返回交易系统中上海某合约Code的多头持仓。Code为某合约的合约代码,Type:0为今仓,1为老仓}
+	@PARAMDESC={}
+@END
+
+[T_SHSellPosition]
+@BEGIN
+	@FUNCDESC={T_SHSellPosition(Code,Type)返回交易系统中上海某合约Code的空头持仓。Code为某合约的合约代码,Type:0为今仓,1为老仓}
+	@PARAMDESC={}
+@END
+
+[T_GetFallLimit]
+@BEGIN
+	@FUNCDESC={T_GetFallLimit(Code)返回合约Code的跌停价。Code为某合约的合约代码}
+	@PARAMDESC={}
+@END
+
+[T_GetRiseLimit]
+@BEGIN
+	@FUNCDESC={T_GetRiseLimit(Code)返回合约Code的涨停价。Code为某合约的合约代码}
+	@PARAMDESC={}
+@END
+
+[MAX]
+@BEGIN
+	@FUNCDESC={MAX(A,B)取A，B中较大值 }
+	@PARAMDESC={}
+@END
+
+[MIN]
+@BEGIN
+	@FUNCDESC={MIN(A,B)取A，B中较小值 }
+	@PARAMDESC={}
+@END
+
+[F_CurrentPos]
+@BEGIN
+	@FUNCDESC={F_CurrentPos()取当前K线位置 }
+	@PARAMDESC={}
+@END
+
+[F_CurrentSigPos]
+@BEGIN
+	@FUNCDESC={F_CurrentSigPos()取当前信号所在K线位置 }
+	@PARAMDESC={}
+@END
+
+[F_IsTimeToKlineEnd]
+@BEGIN
+	@FUNCDESC={F_IsTimeToKlineEnd(N)判断当前时间是否距离K线走完小于等于N秒。N为秒数 }
+	@PARAMDESC={}
+@END
+
+[GLOBAL_VAR]
+@BEGIN
+	@FUNCDESC={GLOBAL_VAR 定义全局变量 }
+	@PARAMDESC={}
+@END
+
+[T_InitialEquity]
+@BEGIN
+	@FUNCDESC={T_InitialEquity(type) 取期初权益。type 0 内盘 1股票 2外盘}
+	@PARAMDESC={}
+@END
+
+[Year]
+@BEGIN
+	@FUNCDESC={Year(time) 年份 }
+	@PARAMDESC={}
+@END
+
+[Month]
+@BEGIN
+	@FUNCDESC={Month(time)  月份 }
+	@PARAMDESC={}
+@END
+
+[Day]
+@BEGIN
+	@FUNCDESC={Day(time)  日期 }
+	@PARAMDESC={}
+@END
+
+[Hour]
+@BEGIN
+	@FUNCDESC={Hour(time)  小时 }
+	@PARAMDESC={}
+@END
+
+[Minute]
+@BEGIN
+	@FUNCDESC={Minute(time)  分钟数 }
+	@PARAMDESC={}
+@END
+
+[Second]
+@BEGIN
+	@FUNCDESC={Second(time)  秒数 }
+	@PARAMDESC={}
+@END
+
+[T_OrderMatchAvPrice]
+@BEGIN
+	@FUNCDESC={T_OrderMatchAvPrice(OrderID) 成交均价 }
+	@PARAMDESC={}
+@END
+
+
+[F_IsLastKline]
+@BEGIN
+	@FUNCDESC={F_IsLastKline（type） 当前K线是否为闭式前最后一根K线 }
+	@PARAMDESC={}
+@END
+
+[Open]
+@BEGIN
+	@FUNCDESC={返回某合约当天开盘价}
+	@PARAMDESC={}
+@END
+
+[Week]
+@BEGIN
+	@FUNCDESC={Week() 星期数}
+	@PARAMDESC={}
+@END
+
+[#Get]
+@BEGIN
+	@FUNCDESC={#Get("module name","variable name",n), 指定模组名称的模型中指定变量在某根K线上的值}
+	@PARAMDESC={}
+@END
+
+[Delta]
+@BEGIN
+	@FUNCDESC={Delta(Code)返回期权Delta值。Code为某期权合约的合约号}
+	@PARAMDESC={}
+@END
+
+[Gamma]
+@BEGIN
+	@FUNCDESC={Gamma(Code)返回期权的Gamma值。Code为某期权合约的合约号}
+	@PARAMDESC={}
+@END
+
+[Vega]
+@BEGIN
+	@FUNCDESC={Vega(Code)返回期权的Vega值。Code为某期权合约的合约号}
+	@PARAMDESC={}
+@END
+
+[Theta]
+@BEGIN
+	@FUNCDESC={Theta(Code)返回期权的Theta值。Code为某期权合约的合约号}
+	@PARAMDESC={}
+@END
+
+[Rho]
+@BEGIN
+	@FUNCDESC={Rho(Code)返回期权的Rho值。Code为某期权合约的合约号}
+	@PARAMDESC={}
+@END
+
+[TheoreticalValue]
+@BEGIN
+	@FUNCDESC={TheoreticalValue(Code)返回期权的理论价格。Code为某期权合约的合约号}
+	@PARAMDESC={}
+@END
+
+[TimeValue]
+@BEGIN
+	@FUNCDESC={TimeValue(Code)返回期权的时间价值。Code为某期权合约的合约号}
+	@PARAMDESC={}
+@END
+
+[IntrinsicValue]
+@BEGIN
+	@FUNCDESC={IntrinsicValue(Code)返回期权的内在价值。Code为某期权合约的合约号}
+	@PARAMDESC={}
+@END
+
+[ImpliedVolatility]
+@BEGIN
+	@FUNCDESC={ImpliedVolatility(Code)返回期权的隐含波动率。Code为某期权合约的合约号}
+	@PARAMDESC={}
+@END
+
+[ExpirationDate]
+@BEGIN
+	@FUNCDESC={ExpirationDate(Code)返回期权的行权日。Code为某期权合约的合约号}
+	@PARAMDESC={}
+@END
+
+[CallPut]
+@BEGIN
+	@FUNCDESC={CallPut(Code)返回期权的涨/跌。Code为某期权合约的合约号}
+	@PARAMDESC={}
+@END
+
+[StrikePrice]
+@BEGIN
+	@FUNCDESC={StrikePricet(Code)返回期权的行权价。Code为某期权合约的合约号}
+	@PARAMDESC={}
+@END
+
+[Leverage]
+@BEGIN
+	@FUNCDESC={Leverage(Code)返回期权的杠杆比率。Code为某期权合约的合约号}
+	@PARAMDESC={}
+@END
+
+[ActualLeverage]
+@BEGIN
+	@FUNCDESC={ActualLeverage(Code)返回期权的真实杠杆率。Code为某期权合约的合约号}
+	@PARAMDESC={}
+@END
+
+[PremiumRate]
+@BEGIN
+	@FUNCDESC={PremiumRate(Code)返回期权的溢价率。Code为某期权合约的合约号}
+	@PARAMDESC={}
+@END
+
+[F_SigGroup]
+@BEGIN
+	@FUNCDESC={F_SigGroup()读取当前信号对应的组}
+	@PARAMDESC={}
+@END
+
+[Price]
+@BEGIN
+	@FUNCDESC={Price("CODE","DATA")取得CODE合约的DATA数据}
+	@PARAMDESC={}
+@END
+
+[Price1]
+@BEGIN
+	@FUNCDESC={Price1("CODE","DATA")取得CODE合约的DATA数据}
+	@PARAMDESC={}
+@END
+
+[Def_TickData]
+@BEGIN
+	@FUNCDESC={Def_TickData(Code,Type,Num);Code合约名，Type为0时，Num表示多少秒（最大60秒）。Type为1时，Num表示多少笔（最大200笔）}
+	@PARAMDESC={}
+@END
+
+[VAR_TICKDATA]
+@BEGIN
+	@FUNCDESC={VAR_TICKDATA 定义数据区变量}
+	@PARAMDESC={}
+@END
+
+[AL_BuyPosition]
+@BEGIN
+	@FUNCDESC={AL_BuyPosition("CODE")返回算法交易组件某合约多头持仓}
+	@PARAMDESC={}
+@END
+
+[AL_SellPosition]
+@BEGIN
+	@FUNCDESC={AL_SellPosition("CODE")返回算法交易组件某合约空头持仓}
+	@PARAMDESC={}
+@END
+
+[AL_BuyRemainPosition]
+@BEGIN
+	@FUNCDESC={AL_BuyRemainPosition("CODE")返回算法交易组件某合约多头可用持仓}
+	@PARAMDESC={}
+@END
+
+[AL_SellRemainPosition]
+@BEGIN
+	@FUNCDESC={AL_SellRemainPosition("CODE")返回算法交易组件某合约空头可用持仓}
+	@PARAMDESC={}
+@END
+
+[AL_BuyAvgPrice]
+@BEGIN
+	@FUNCDESC={AL_BuyAvgPrice("CODE")返回算法交易组件某合约多头持仓成本价}
+	@PARAMDESC={}
+@END
+
+[AL_SellAvgPrice]
+@BEGIN
+	@FUNCDESC={AL_SellAvgPrice("CODE")返回算法交易组件某合约空头持仓成本价}
+	@PARAMDESC={}
+@END
+
+[AL_BuyProfitLoss]
+@BEGIN
+	@FUNCDESC={AL_BuyProfitLoss("CODE")返回算法交易组件某合约多头盈亏}
+	@PARAMDESC={}
+@END
+
+[AL_SellProfitLoss]
+@BEGIN
+	@FUNCDESC={AL_SellProfitLoss("CODE")返回算法交易组件某合约空头盈亏}
+	@PARAMDESC={}
+@END
+
+[AL_OffSetProfit]
+@BEGIN
+	@FUNCDESC={AL_OffSetProfit( )返回算法交易组件的平仓盈亏}
+	@PARAMDESC={}
+@END
+
+[AL_LastOffSetProfit]
+@BEGIN
+	@FUNCDESC={AL_LastOffSetProfit()返回算法交易组件最近一次平仓盈亏}
+	@PARAMDESC={}
+@END
+
+[State]
+@BEGIN
+	@FUNCDESC={data.State为1时，当前的TICK数据区有效}
+	@PARAMDESC={}
+@END
+
+[New]
+@BEGIN
+	@FUNCDESC={返回某合约最新价}
+	@PARAMDESC={}
+@END
+
+[Ask1]
+@BEGIN
+	@FUNCDESC={当前的卖1价}
+	@PARAMDESC={}
+@END
+
+[Ask2]
+@BEGIN
+	@FUNCDESC={当前的卖2价}
+	@PARAMDESC={}
+@END
+
+[Ask3]
+@BEGIN
+	@FUNCDESC={当前的卖3价}
+	@PARAMDESC={}
+@END
+
+[Ask4]
+@BEGIN
+	@FUNCDESC={当前的卖4价}
+	@PARAMDESC={}
+@END
+
+[Ask5]
+@BEGIN
+	@FUNCDESC={当前的卖5价}
+	@PARAMDESC={}
+@END
+
+[Bid1]
+@BEGIN
+	@FUNCDESC={当前的买1价}
+	@PARAMDESC={}
+@END
+
+[Bid2]
+@BEGIN
+	@FUNCDESC={当前的买2价}
+	@PARAMDESC={}
+@END
+
+[Bid3]
+@BEGIN
+	@FUNCDESC={当前的买3价}
+	@PARAMDESC={}
+@END
+
+[Bid4]
+@BEGIN
+	@FUNCDESC={当前的买4价}
+	@PARAMDESC={}
+@END
+
+[Bid5]
+@BEGIN
+	@FUNCDESC={当前的买5价}
+	@PARAMDESC={}
+@END
+
+[Askvol1]
+@BEGIN
+	@FUNCDESC={当前的卖1量}
+	@PARAMDESC={}
+@END
+
+[Askvol2]
+@BEGIN
+	@FUNCDESC={当前的卖2量}
+	@PARAMDESC={}
+@END
+
+[Askvol3]
+@BEGIN
+	@FUNCDESC={当前的卖3量}
+	@PARAMDESC={}
+@END
+
+[Askvol4]
+@BEGIN
+	@FUNCDESC={当前的卖4量}
+	@PARAMDESC={}
+@END
+
+[Askvol5]
+@BEGIN
+	@FUNCDESC={当前的卖5量}
+	@PARAMDESC={}
+@END
+
+[Bidvol1]
+@BEGIN
+	@FUNCDESC={当前的买1量}
+	@PARAMDESC={}
+@END
+
+[Bidvol2]
+@BEGIN
+	@FUNCDESC={当前的买2量}
+	@PARAMDESC={}
+@END
+
+[Bidvol3]
+@BEGIN
+	@FUNCDESC={当前的买3量}
+	@PARAMDESC={}
+@END
+
+[Bidvol4]
+@BEGIN
+	@FUNCDESC={当前的买4量}
+	@PARAMDESC={}
+@END
+
+[Bidvol5]
+@BEGIN
+	@FUNCDESC={当前的买5量}
+	@PARAMDESC={}
+@END
+
+[Activity]
+@BEGIN
+	@FUNCDESC={当笔TICK是否是主动买}
+	@PARAMDESC={}
+@END
+
+[Code]
+@BEGIN
+	@FUNCDESC={文华码}
+	@PARAMDESC={}
+@END
+
+[Delta1]
+@BEGIN
+	@FUNCDESC={涨跌}
+	@PARAMDESC={}
+@END
+
+[Bid]
+@BEGIN
+	@FUNCDESC={买价}
+	@PARAMDESC={}
+@END
+
+[BidVol]
+@BEGIN
+	@FUNCDESC={买量}
+	@PARAMDESC={}
+@END
+
+[Ask]
+@BEGIN
+	@FUNCDESC={卖价}
+	@PARAMDESC={}
+@END
+
+[AskVol]
+@BEGIN
+	@FUNCDESC={卖量}
+	@PARAMDESC={}
+@END
+
+[DeltaVol]
+@BEGIN
+	@FUNCDESC={现手}
+	@PARAMDESC={}
+@END
+
+[DeltaOpi]
+@BEGIN
+	@FUNCDESC={增仓}
+	@PARAMDESC={}
+@END
+
+[OpIorSize]
+@BEGIN
+	@FUNCDESC={持仓量}
+	@PARAMDESC={}
+@END
+
+[Ratio]
+@BEGIN
+	@FUNCDESC={日增仓}
+	@PARAMDESC={}
+@END
+
+[UpDown]
+@BEGIN
+	@FUNCDESC={涨幅}
+	@PARAMDESC={}
+@END
+
+[Settle]
+@BEGIN
+	@FUNCDESC={结算价}
+	@PARAMDESC={}
+@END
+
+[YSettle]
+@BEGIN
+	@FUNCDESC={昨结算}
+	@PARAMDESC={}
+@END
+
+[YClose]
+@BEGIN
+	@FUNCDESC={昨收}
+	@PARAMDESC={}
+@END
+
+
+[Capital]
+@BEGIN
+	@FUNCDESC={沉淀资金}
+	@PARAMDESC={}
+@END
+
+[Direction]
+@BEGIN
+	@FUNCDESC={资金流向}
+	@PARAMDESC={}
+@END
+
+[Speculation]
+@BEGIN
+	@FUNCDESC={投机度}
+	@PARAMDESC={}
+@END
+
+[HistoricalVolatility]
+@BEGIN
+	@FUNCDESC={期权历史波动率}
+	@PARAMDESC={}
+@END
+
+[Stdderiation]
+@BEGIN
+	@FUNCDESC={期权隐含波动率}
+	@PARAMDESC={}
+@END
+
+[InternalValue]
+@BEGIN
+	@FUNCDESC={期权内在价值}
+	@PARAMDESC={}
+@END
+
+[TheoryPrice]
+@BEGIN
+	@FUNCDESC={期权理论价格}
+	@PARAMDESC={}
+@END
+
+[Name]
+@BEGIN
+	@FUNCDESC={合约名}
+	@PARAMDESC={}
+@END
+
+[NumOfUnit]
+@BEGIN
+	@FUNCDESC={合约交易单位}
+	@PARAMDESC={}
+@END
+
+[LastDate]
+@BEGIN
+	@FUNCDESC={合约摘牌日}
+	@PARAMDESC={}
+@END
+
+[MEName]
+@BEGIN
+	@FUNCDESC={合约交易所}
+	@PARAMDESC={}
+@END
+
+[F_InitCode]
+@BEGIN
+	@FUNCDESC={F_InitCode()返回模组初始化时交易合约的合约编码}
+	@PARAMDESC={}
+@END
+
+[Unit]
+@BEGIN
+	@FUNCDESC={取合约的交易单位。Unit(Code),Code为某合约的合约代码}
+	@PARAMDESC={}
+@END
+
+[T_CloseAllOpi]
+@BEGIN
+	@FUNCDESC={T_CloseAllOpi(m,n),发出清仓委托。m:市场类型 0期货 1股票 2外盘
+n:委托价格方式 0排队价 1对价 2自动连续追价 3超价 4市价 5最新价}
+	@PARAMDESC={}
+@END
+
+[OpenSecs]
+@BEGIN
+	@FUNCDESC={OpenSecs("CODE"),取合约CODE开盘后经过的秒数}
+	@PARAMDESC={}
+@END
+
+[POW]
+@BEGIN
+	@FUNCDESC={POW(X,Y),求X的Y次幂}
+	@PARAMDESC={}
+@END
+
+[Timer]
+@BEGIN
+	@FUNCDESC={Timer(OrderID),返回委托发出到全成或撤单成功的时间}
+	@PARAMDESC={}
+@END
+
+[Counter]
+@BEGIN
+	@FUNCDESC={Counter("FuncName"),返回目标函数已经执行的次数}
+	@PARAMDESC={}
+@END
+
+[T_Deal1]
+@BEGIN
+	@FUNCDESC={T_Deal1(Code,bs,kp,vol,price),以指定价格类型发出委托
+Code(字符串):合约编码
+bs(整数0，1):0 买 1 卖 
+kp(整数0，1，2):0 开 1平 2平今 
+Vol(整数)：下单手数
+Price(必须为指定的价格类型):
+NEW_ORDER：最新价；PASSIVE_ORDER：排队价；ACTIVE_ORDER：对价；CMPETITV_ORDER：超价；LIMIT_ORDER市价,部分合约不支持市价指令,会提示该合约不支持市价指令}
+	@PARAMDESC={}
+@END
+
+[T_CancelAllOrder]
+@BEGIN
+	@FUNCDESC={T_CancelAllOrder(),撤当前交易账号的所有挂单}
+	@PARAMDESC={}
+@END
+
+[T_AllIsNoOrder]
+@BEGIN
+	@FUNCDESC={T_AllIsNoOrder(),判断当前账户是否为无挂单状态}
+	@PARAMDESC={}
+@END
+
+[NEW_ORDER]
+@BEGIN
+	@FUNCDESC={NEW_ORDER,最新价}
+	@PARAMDESC={}
+@END
+
+[PASSIVE_ORDER]
+@BEGIN
+	@FUNCDESC={PASSIVE_ORDER,排队价}
+	@PARAMDESC={}
+@END
+
+[ACTIVE_ORDER]
+@BEGIN
+	@FUNCDESC={ACTIVE_ORDER,对价}
+	@PARAMDESC={}
+@END
+
+[CMPETITV_ORDER]
+@BEGIN
+	@FUNCDESC={CMPETITV_ORDER,超价}
+	@PARAMDESC={}
+@END
+
+[LIMIT_ORDER]
+@BEGIN
+	@FUNCDESC={LIMIT_ORDER,市价
+	部分合约不支持市价指令，会提示该合约不支持市价指令}
+	@PARAMDESC={}
+@END
+
+[F_GetCallCode]
+@BEGIN
+	@FUNCDESC={Mod.F_GetCallCode("变量名"),获取模组模型中跨合约变量对应的合约名}
+	@PARAMDESC={}
+@END
+
+[MAX1]
+@BEGIN
+	@FUNCDESC={MAX1(A1,...,A30) 在A1到A30中取最大值}
+	@PARAMDESC={}
+@END
+
+[F_SigCode]
+@BEGIN
+	@FUNCDESC={F_SigCode()信号对应合约的交易编码（字符串）}
+	@PARAMDESC={}
+@END
+
+[T_BatchOrder]
+@BEGIN
+	@FUNCDESC={T_BatchOrder(Code,bs,kp,vol,price,offsetprice,num）发出多笔委托，返回值为一个OrderID的数组   Code(字符串):合约编码，bs(整数0，1):0 买 1 卖 ，
+kp(整数0，1，2):0 开 1平 2平今 Vol(整数)：下单手数，Price(整数或小数):下单价格，
+0为对价 offsetPrice为多少个最小变动单位，num是委托的次数 }
+	@PARAMDESC={}
+@END
+
+
+[T_DeleteOrderByPrice]
+@BEGIN
+	@FUNCDESC={T_DeleteOrderByPrice（code,price）撤掉指定价位的委托 }
+	@PARAMDESC={}
+@END
+
+
+
+[T_BuyProfitLoss1]
+@BEGIN
+	@FUNCDESC={T_BuyProfitLoss1(code)  返回交易系统合约code的多头盯市浮盈 }
+	@PARAMDESC={}
+@END
+
+
+[T_SellProfitLoss1]
+@BEGIN
+	@FUNCDESC={T_SellProfitLoss1(code) 返回交易系统合约code的空头盯市浮盈 }
+	@PARAMDESC={}
+@END
+
+
+[T_MarginRatio]
+@BEGIN
+	@FUNCDESC={T_MarginRatio(code,n) 返回交易系统合约code的保证金率或者保证金，国内期货合约取保证金比例，外盘期货合约取每手保证金}
+	@PARAMDESC={}
+@END
+
+
+[SubStr]
+@BEGIN
+	@FUNCDESC={SubStr(string,start,length); 截取字符 }
+	@PARAMDESC={}
+@END
+
+[MIN1]
+@BEGIN
+	@FUNCDESC={MIN1(A1,...,A30) 在A1到A30中取最小值}
+	@PARAMDESC={}
+@END
+
+[FloatToStr]
+@BEGIN
+	@FUNCDESC={FloatToStr() 保留小数位数}
+	@PARAMDESC={}
+@END
+
+[GetDecimal]
+@BEGIN
+	@FUNCDESC={GetDecimal 取合约的小数位数}
+	@PARAMDESC={}
+@END
+
+[F_IsIdle]
+@BEGIN
+	@FUNCDESC={F_IsIdle 判断信号发出时是否满足IDLE条件}
+	@PARAMDESC={}
+@END
+
+[AL_GetName]
+@BEGIN
+	@FUNCDESC={AL_GetName(); 获得当前算法交易名称 }
+	@PARAMDESC={}
+@END
+
+[WriteToFile]
+@BEGIN
+	@FUNCDESC={WriteToFile（文件名，Cod，"合约字段名"，N）；取当前算法交易文件中合约名Cod的合约字段值，取N位小数写入文件。Code(字符串):合约编码
+N为小数位数 }
+	@PARAMDESC={}
+@END
+
+[ReadFromFile]
+@BEGIN
+	@FUNCDESC={ReadFromFile（文件名，Cod，"合约字段名"）；读取算法交易文件中合约名Cod的合约字段值。Code(字符串):合约编码 }
+	@PARAMDESC={}
+@END
+
+[CheckPosition]
+@BEGIN
+	@FUNCDESC={CheckPosition,判断是否正在查询持仓，
+返回值含义：正在查询持仓返回1，非正在查询返回0，其他异常情况返回-1。}
+	@PARAMDESC={}
+@END
+
+
+[T_TodayBuyPosition]
+@BEGIN
+	@FUNCDESC={T_TodayBuyPosition(Code); 返回交易系统中合约Code的多头今仓,Code为某合约的合约代码。}
+	@PARAMDESC={}
+@END
+
+
+[T_TodaySellPosition]
+@BEGIN
+	@FUNCDESC={T_TodaySellPosition(Code); 返回交易系统中合约Code的空头今仓,Code为某合约的合约代码。}
+	@PARAMDESC={}
+@END
+
+
+[T_TodayBuyRemainPosition]
+@BEGIN
+	@FUNCDESC={T_TodayBuyRemainPosition(Code); 返回交易系统中合约Code的多头可用今仓,Code为某合约的合约代码。}
+	@PARAMDESC={}
+@END
+
+
+[T_TodaySellRemainPosition]
+@BEGIN
+	@FUNCDESC={T_TodaySellRemainPosition(Code); 返回交易系统中合约Code的多头可用空仓,Code为某合约的合约代码。}
+	@PARAMDESC={}
+@END
+
+
+[GetMainCodeName]
+@BEGIN
+	@FUNCDESC={GetMainCodeName('Code') 用于获取合约的主力合约(以字符串类型返回)}
+	@PARAMDESC={}
+@END
+
+
+[StrToFloat]
+@BEGIN
+	@FUNCDESC={StrToFloat(Str) 把字符串Str转换为数值。}
+	@PARAMDESC={}
+@END
+
+[T_Fee]
+@BEGIN
+	@FUNCDESC={T_Fee(Type) 返回交易里的手续费。
+Type(整数 0、1、2) 0期货 1股票 2外盘，返回手续费(小数)}
+	@PARAMDESC={}
+@END
+
+
+[T_BuyOpiAvgPrice]
+@BEGIN
+	@FUNCDESC={T_BuyOpiAvgPrice(Code)返回交易系统合约Code的多头持仓均价,Code为某合约合约代码。}
+	@PARAMDESC= {}
+@END
+
+[T_GetContractLimitVol]
+@BEGIN
+	@FUNCDESC={T_GetContractLimitVol(Code)返回交易系统合约Code的大单手数,Code为某合约合约代码。}
+	@PARAMDESC= {}
+@END
+
+
+[T_SellOpiAvgPrice]
+@BEGIN
+	@FUNCDESC={T_SellOpiAvgPrice(Code)返回交易系统合约Code的空头持仓均价,Code为某合约合约代码。}
+	@PARAMDESC= {}
+@END
+
+
+[T_ProfitLoss]
+@BEGIN
+	@FUNCDESC={T_ProfitLoss(Type) 返回交易系统中的盯市浮盈。
+参数Type可写入指定类型，0为期货，1为股票，2为外盘。
+}
+	@PARAMDESC= {}
+@END
+
+
+[QuotState]
+@BEGIN
+	@FUNCDESC={QuotState("Code") 判断Code合约是否收到动态行情。
+当收到动态行情时返回1；其他情况返回0。}
+	@PARAMDESC= {}
+@END
+
+[GetPrivateProfileString]
+@BEGIN
+	@FUNCDESC={GetPrivateProfileString(KeyWord,Item,DefaultValue,Address)
+读取数据从指定的.ini文件
+KeyWord 文件读取位置的关键字;Item 读取的项目名称;DefaultValue 默认值;Address 读取数据的文件名称}
+	@PARAMDESC= {}
+@END
+
+
+[WritePrivateProfileString]
+@BEGIN
+	@FUNCDESC={WritePrivateProfileString(KeyWord,Item,Value,Address)
+写入数据到指定的.ini文件
+KeyWord 文件写入位置的关键字；Item 储存值的项目名称；Value 写入的数据；Address 储存数据的文件名}
+	@PARAMDESC= {}
+@END
+
+[GetSectionEndTime]
+@BEGIN
+	@FUNCDESC={GetSectionEndTime("Code",N)取得某合约第几个小节的结束时间。}
+	@PARAMDESC= {}
+@END

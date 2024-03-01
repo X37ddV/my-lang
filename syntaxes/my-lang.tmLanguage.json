@@ -76,7 +76,7 @@
 			"patterns": [
 				{
 					"name": "keyword.control.my-lang",
-					"match": "\\b(IF|THEN|BEGIN|END|ELSE|AS|VARIABLE|REFLINE|REFLINE1)\\b|#IMPORT\\b|#CALL\\b|#CALL_OTHER\\b|#CALL_PLUS\\b"
+					"match": "\\b(IF|THEN|BEGIN|END|ELSE|AS|STOP|VARIABLE|REFLINE|REFLINE1)\\b|#IMPORT\\b|#CALL\\b|#CALL_OTHER\\b|#CALL_PLUS\\b"
 				},
 				{
 					"name": "keyword.operator.wordlike.my-lang",
