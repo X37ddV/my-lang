@@ -1,16 +1,16 @@
-# my-lang README
+# My language support for Visual Studio Code
 
-This is the README for your extension "my-lang". After writing up a brief description, we recommend including the following sections.
+Welcome to the `my-lang` VS Code extension! This extension provides rich language support for the My-Lang programming language, making it easier to write, debug, and understand My-Lang code directly within VS Code.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+`my-lang` extension comes with a plethora of features designed to enhance your programming experience:
 
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- **Syntax Highlighting**: Colorize your My-Lang code to improve readability and reduce eye strain.
+- **Code Snippets**: Speed up your coding with snippets for common patterns and constructs.
+- **Linting**: Catch errors early with real-time linting that highlights potential issues as you type.
+- **IntelliSense**: Get smart completions based on variable types, function definitions, and imported modules.
+- **Debugging Support**: Integrated debugging tools to help you set breakpoints, inspect variables, and step through your My-Lang code.
 
 ## Requirements
 
