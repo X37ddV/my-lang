@@ -1,20 +1,24 @@
 
 class MyFunc {
-    public body: string = ""
-    public description: string = ""
-    public explanation: string = ""
-    public markettype: number = 0
-    public tip: string = ""
-    public type: number = 0
+    public label: string = "";
+    public insertText: string = "";
+    public detail: string = "";
+    public tip: string = "";
+    public documentation: string = "";
+    public body: string = "";
+    public markettype: number = 0;
+    public type: number = 0;
 }
 
 const _CALL = new MyFunc()
-_CALL.body = "#CALL [ , ] AS"
-_CALL.explanation = "跨合约引用指标"
-_CALL.markettype = 1
+_CALL.label = "CALL"
+_CALL.insertText = ""
+_CALL.detail = "跨合约引用指标"
 _CALL.tip = "#CALL[CODE,FORMULA]ASVAR引用CODE合约的指标FORMULA的数据"
+_CALL.body = "#CALL [ , ] AS"
+_CALL.markettype = 1
 _CALL.type = 1
-_CALL.description = `
+_CALL.documentation = `
 #CALL [CODE, FORMULA] AS VAR 引用CODE合约的指标FORMULA的数据。
 
 注：
@@ -45,12 +49,14 @@ CC:VAR.CC;//跨合约引用当前合约对应品种VIX指数一个周期前的�
 `
 
 const _CALL_OTHER = new MyFunc()
-_CALL_OTHER.body = "#CALL_OTHER [ ] AS"
-_CALL_OTHER.explanation = "跨指标引用"
-_CALL_OTHER.markettype = 1
+_CALL_OTHER.label = "CALL_OTHER"
+_CALL_OTHER.insertText = ""
+_CALL_OTHER.detail = "跨指标引用"
 _CALL_OTHER.tip = "#CALL_OTHER[FORMULA]ASVAR跨指标引用"
+_CALL_OTHER.body = "#CALL_OTHER [ ] AS"
+_CALL_OTHER.markettype = 1
 _CALL_OTHER.type = 1
-_CALL_OTHER.description = `
+_CALL_OTHER.documentation = `
 #CALL_OTHER [FORMULA] AS VAR 引用当前合约，当前周期的，指标FORMULA的数据
 
 注：
@@ -71,12 +77,14 @@ CC:VAR.CC;//跨指标引用当前合约的一个周期前的收盘价
 `
 
 const _CALL_PLUS = new MyFunc()
-_CALL_PLUS.body = "#CALL_PLUS [ , , , ] AS"
-_CALL_PLUS.explanation = "跨合约跨周期引用指标"
-_CALL_PLUS.markettype = 1
+_CALL_PLUS.label = "CALL_PLUS"
+_CALL_PLUS.insertText = ""
+_CALL_PLUS.detail = "跨合约跨周期引用指标"
 _CALL_PLUS.tip = "#CALL_PLUS[CODE,PERIOD,N,FORMULA]ASVAR引用CODE合约PERIOD参数为N的周期下的指标FORMULA的数据"
+_CALL_PLUS.body = "#CALL_PLUS [ , , , ] AS"
+_CALL_PLUS.markettype = 1
 _CALL_PLUS.type = 1
-_CALL_PLUS.description = `
+_CALL_PLUS.documentation = `
 #CALL_PLUS[CODE,PERIOD,N,FORMULA] AS VAR 引用CODE合约，PERIOD参数为N的周期，指标FORMULA的数据。
 
 注：
@@ -113,12 +121,14 @@ CC:VAR.CC;//跨周期引用当前合约对应品种VIX指数昨天的收盘价
 `
 
 const _IMPORT = new MyFunc()
-_IMPORT.body = "#IMPORT [ , , ] AS"
-_IMPORT.explanation = "跨周期引用指标"
-_IMPORT.markettype = 1
+_IMPORT.label = "IMPORT"
+_IMPORT.insertText = ""
+_IMPORT.detail = "跨周期引用指标"
 _IMPORT.tip = "#IMPORT[PERIOD,N,FORMULA]ASVAR引用PERIOD参数为N的周期下的指标FORMULA的数据"
+_IMPORT.body = "#IMPORT [ , , ] AS"
+_IMPORT.markettype = 1
 _IMPORT.type = 1
-_IMPORT.description = `
+_IMPORT.documentation = `
 #IMPORT [PERIOD,N,FORMULA] AS VAR 引用当前合约，PERIOD参数为N的周期，指标FORMULA的数据。
 
 注：
@@ -162,12 +172,14 @@ CC1:=S.CC;//跨周期引用自定义6小时周期的一个周期前的收盘价
 CC2:=R.CC;//跨周期引用自定义1分钟周期的一个周期前的收盘价
 `
 
-const $ = new MyFunc()
-$.body = " $ "
-$.explanation = "引用其他合约的K线数据"
-$.markettype = 1
-$.type = 1
-$.description = `
+const _$_ = new MyFunc()
+_$_.label = "$"
+_$_.insertText = ""
+_$_.detail = "引用其他合约的K线数据"
+_$_.body = " $ "
+_$_.markettype = 1
+_$_.type = 1
+_$_.documentation = `
 " $ " 简化的跨合约函数，调用其他合约的K线数据。
 
 用法："CODE$PRICE"引用CODE合约的PRICE数据，CODE为文华码。
@@ -186,11 +198,13 @@ A:"8606$OPI";//返回文华码为8606合约的持仓量。
 `
 
 const _$_$_ = new MyFunc()
+_$_$_.label = "$ $"
+_$_$_.insertText = ""
+_$_$_.detail = "引用其他周期的K线数据"
 _$_$_.body = " $ $ "
-_$_$_.explanation = "引用其他周期的K线数据"
 _$_$_.markettype = 1
 _$_$_.type = 1
-_$_$_.description = `
+_$_$_.documentation = `
 " $ $ " 简化的跨周期函数，调用另外一个周期上一根k线的数据。
 
 用法："MIN$15$PRICE"引用15分钟K线的PRICE数据，PERIOD为周期类型。PRICE为引用的数据。
@@ -211,11 +225,13 @@ A:"HOUR$4$OPI";//返回上一根4小时周期K线的持仓量。
 `
 
 const ABS = new MyFunc()
-ABS.body = "ABS( )"
-ABS.explanation = "绝对值"
+ABS.label = "ABS"
+ABS.insertText = ""
+ABS.detail = "绝对值"
 ABS.tip = "ABS(X),求X的绝对值"
+ABS.body = "ABS( )"
 ABS.type = 4
-ABS.description = `
+ABS.documentation = `
 ABS(X)：取的X的绝对值。
 
 注：
@@ -232,11 +248,13 @@ ABS(C-O);//当前K线实体长度
 `
 
 const ACOS = new MyFunc()
-ACOS.body = "ACOS( )"
-ACOS.explanation = "反余弦值"
+ACOS.label = "ACOS"
+ACOS.insertText = ""
+ACOS.detail = "反余弦值"
 ACOS.tip = "ACOS(X),求X的反余弦值"
+ACOS.body = "ACOS( )"
 ACOS.type = 4
-ACOS.description = `
+ACOS.documentation = `
 ACOS(X)：返回X的反余弦值。
 
 注：
@@ -250,11 +268,13 @@ ACOS(1);//求1的反余弦值；
 `
 
 const ADMA = new MyFunc()
-ADMA.body = "ADMA(,,,)"
-ADMA.explanation = "考夫曼均值"
+ADMA.label = "ADMA"
+ADMA.insertText = ""
+ADMA.detail = "考夫曼均值"
 ADMA.tip = "AMA(X,N,P,Q),考夫曼均值X为调用的k线数据（例如高、开、低，收），N为调用的间隔时间P为快线频率参数，Q为慢线频率参数"
+ADMA.body = "ADMA(,,,)"
 ADMA.type = 3
-ADMA.description = `
+ADMA.documentation = `
 ADMA(X,N,P,Q) 考夫曼均值
 
 用法：ADMA(X,N,P,Q);求X在N个周期中的，快线频率参数为P，慢线频率参数为Q的考夫曼自适应均值。
@@ -286,11 +306,13 @@ AMACLOSE:REF(EMA(C,9),1)+CONSTANT*(C-REF(EMA(C,9),1));
 `
 
 const ALIGN = new MyFunc()
-ALIGN.body = "ALIGN"
-ALIGN.explanation = "设置文字对齐方式（左中右）"
+ALIGN.label = "ALIGN"
+ALIGN.insertText = ""
+ALIGN.detail = "设置文字对齐方式（左中右）"
 ALIGN.tip = "ALIGN0,ALIGN1,ALIGN2,分别表示文字左对齐，居中对齐，右对齐"
+ALIGN.body = "ALIGN"
 ALIGN.type = 8
-ALIGN.description = `
+ALIGN.documentation = `
 设置文字对齐方式（左中右）。
 
 用法：DRAWTEXT(COND,PRICE,TEXT),ALIGNX;
@@ -302,11 +324,13 @@ DRAWTEXT(C>O,H,'涨'),ALIGN1,VALIGN1,FONTSIZE20,COLORGREEN;//在阳线的最高�
 `
 
 const ASIN = new MyFunc()
-ASIN.body = "ASIN( )"
-ASIN.explanation = "反正弦值"
+ASIN.label = "ASIN"
+ASIN.insertText = ""
+ASIN.detail = "反正弦值"
 ASIN.tip = "ASIN(X),求X的反正弦值"
+ASIN.body = "ASIN( )"
 ASIN.type = 4
-ASIN.description = `
+ASIN.documentation = `
 ASIN(X)：返回X的反正弦值。
 
 注：
@@ -320,11 +344,13 @@ ASIN(1);//求1的反正弦值；
 `
 
 const ATAN = new MyFunc()
-ATAN.body = "ATAN( )"
-ATAN.explanation = "反正切值"
+ATAN.label = "ATAN"
+ATAN.insertText = ""
+ATAN.detail = "反正切值"
 ATAN.tip = "ATAN(X),求X的反正切值"
+ATAN.body = "ATAN( )"
 ATAN.type = 4
-ATAN.description = `
+ATAN.documentation = `
 ATAN(X)：返回X的反正切值。
 
 注：X的取值为R（实数集）
@@ -336,11 +362,13 @@ ATAN(1.75);//求1.75的反正切值；
 `
 
 const AUTOFILTER = new MyFunc()
-AUTOFILTER.body = "AUTOFILTER"
-AUTOFILTER.explanation = "启用一开一平信号过滤机制"
+AUTOFILTER.label = "AUTOFILTER"
+AUTOFILTER.insertText = ""
+AUTOFILTER.detail = "启用一开一平信号过滤机制"
 AUTOFILTER.tip = "AUTOFILTER,启用一开一平信号过滤机制。"
+AUTOFILTER.body = "AUTOFILTER"
 AUTOFILTER.type = 9
-AUTOFILTER.description = `
+AUTOFILTER.documentation = `
 AUTOFILTER 启用一开一平信号过滤机制。
 
 用法：
@@ -362,12 +390,14 @@ AUTOFILTER; //启用一开一平信号过滤机制
 `
 
 const AUTOFINANCING = new MyFunc()
-AUTOFINANCING.body = "AUTOFINANCING"
-AUTOFINANCING.explanation = "启用按需自动入金方式"
-AUTOFINANCING.markettype = 1
+AUTOFINANCING.label = "AUTOFINANCING"
+AUTOFINANCING.insertText = ""
+AUTOFINANCING.detail = "启用按需自动入金方式"
 AUTOFINANCING.tip = "AUTOFINANCING，启用按需自动入金方式"
+AUTOFINANCING.body = "AUTOFINANCING"
+AUTOFINANCING.markettype = 1
 AUTOFINANCING.type = 9
-AUTOFINANCING.description = `
+AUTOFINANCING.documentation = `
 AUTOFINANCING 启用按需自动入金方式 
 
 用法：模型中含有AUTOFINANCING函数，则启用按需自动入金方式。
@@ -392,12 +422,14 @@ AUTOFINANCING;//启用自动入金方式
 `
 
 const AVAILABLE_OPI = new MyFunc()
-AVAILABLE_OPI.body = "AVAILABLE_OPI"
-AVAILABLE_OPI.explanation = "可用股数"
-AVAILABLE_OPI.markettype = 1
+AVAILABLE_OPI.label = "AVAILABLE_OPI"
+AVAILABLE_OPI.insertText = ""
+AVAILABLE_OPI.detail = "可用股数"
 AVAILABLE_OPI.tip = "AVAILABLE_OPI可用股数"
+AVAILABLE_OPI.body = "AVAILABLE_OPI"
+AVAILABLE_OPI.markettype = 1
 AVAILABLE_OPI.type = 12
-AVAILABLE_OPI.description = `
+AVAILABLE_OPI.documentation = `
 AVAILABLE_OPI 可用股数
 
 用法：
@@ -415,11 +447,13 @@ AVAILABLE_OPI>0&&CROSSDOWN(MA5,MA10),SP(AVAILABLE_OPI);//当前可用股数大�
 `
 
 const AVEDEV = new MyFunc()
-AVEDEV.body = "AVEDEV( , )"
-AVEDEV.explanation = "平均绝对偏差"
+AVEDEV.label = "AVEDEV"
+AVEDEV.insertText = ""
+AVEDEV.detail = "平均绝对偏差"
 AVEDEV.tip = "AVEDEV(X,N),求X在N周期内的平均绝对偏差"
+AVEDEV.body = "AVEDEV( , )"
 AVEDEV.type = 3
-AVEDEV.description = `
+AVEDEV.documentation = `
 AVEDEV(X,N)：返回X在N周期内的平均绝对偏差。
 
 注：
@@ -440,11 +474,13 @@ AVEDEV(C,5);//返回收盘价在5周期内的平均绝对偏差。
 `
 
 const AVPRICE = new MyFunc()
-AVPRICE.body = "AVPRICE"
-AVPRICE.explanation = "取得K线图的均价"
+AVPRICE.label = "AVPRICE"
+AVPRICE.insertText = ""
+AVPRICE.detail = "取得K线图的均价"
 AVPRICE.tip = "AVPRICE,取均价"
+AVPRICE.body = "AVPRICE"
 AVPRICE.type = 1
-AVPRICE.description = `
+AVPRICE.documentation = `
 AVPRICE 取得K线图的均价。
 
 注：
@@ -462,11 +498,13 @@ C>MA(AVPRICE,5);//价格大于五个周期均价的平均值则返回1，否则�
 `
 
 const BACKGROUNDSTYLE = new MyFunc()
-BACKGROUNDSTYLE.body = "BACKGROUNDSTYLE( )"
-BACKGROUNDSTYLE.explanation = "背景的样式"
+BACKGROUNDSTYLE.label = "BACKGROUNDSTYLE"
+BACKGROUNDSTYLE.insertText = ""
+BACKGROUNDSTYLE.detail = "背景的样式"
 BACKGROUNDSTYLE.tip = "BACKGROUNDSTYLE(i)设置背景的样式,i=0、1、2"
+BACKGROUNDSTYLE.body = "BACKGROUNDSTYLE( )"
 BACKGROUNDSTYLE.type = 8
-BACKGROUNDSTYLE.description = `
+BACKGROUNDSTYLE.documentation = `
 BACKGROUNDSTYLE函数    设置背景的样式。
 
 用法：
@@ -493,11 +531,13 @@ BACKGROUNDSTYLE(2);
 `
 
 const BARINTERVAL = new MyFunc()
-BARINTERVAL.body = "BARINTERVAL"
-BARINTERVAL.explanation = "返回数据合约的K线周期数值"
+BARINTERVAL.label = "BARINTERVAL"
+BARINTERVAL.insertText = ""
+BARINTERVAL.detail = "返回数据合约的K线周期数值"
 BARINTERVAL.tip = "BARINTERVAL数据合约的K线周期数值。"
+BARINTERVAL.body = "BARINTERVAL"
 BARINTERVAL.type = 1
-BARINTERVAL.description = `
+BARINTERVAL.documentation = `
 BARINTERVAL 返回数据合约的K线周期数值
 
 用法：
@@ -512,11 +552,13 @@ BARINTERVAL;
 `
 
 const BARPOS = new MyFunc()
-BARPOS.body = "BARPOS"
-BARPOS.explanation = "取K线的位置"
+BARPOS.label = "BARPOS"
+BARPOS.insertText = ""
+BARPOS.detail = "取K线的位置"
 BARPOS.tip = "BARPOS,取某K线的位置"
+BARPOS.body = "BARPOS"
 BARPOS.type = 7
-BARPOS.description = `
+BARPOS.documentation = `
 BARPOS，返回从第一根K线开始到当前的周期数。
 
 注：
@@ -529,12 +571,14 @@ BARPOS，返回从第一根K线开始到当前的周期数。
 `
 
 const BARSBK = new MyFunc()
-BARSBK.body = "BARSBK"
-BARSBK.explanation = "上一次买开信号位置"
-BARSBK.markettype = 1
+BARSBK.label = "BARSBK"
+BARSBK.insertText = ""
+BARSBK.detail = "上一次买开信号位置"
 BARSBK.tip = "BARSBK，取上一次买开信号位置"
+BARSBK.body = "BARSBK"
+BARSBK.markettype = 1
 BARSBK.type = 10
-BARSBK.description = `
+BARSBK.documentation = `
 BARSBK 上一次买开信号位置
 
 用法：
@@ -567,12 +611,14 @@ AA:IFELSE(BARSBK>=1,HHV(H,BARSBK+1),H);
 `
 
 const BARSBP = new MyFunc()
-BARSBP.body = "BARSBP"
-BARSBP.explanation = "上一次买平信号位置"
-BARSBP.markettype = 1
+BARSBP.label = "BARSBP"
+BARSBP.insertText = ""
+BARSBP.detail = "上一次买平信号位置"
 BARSBP.tip = "BARSBP，取上一次买平信号位置"
+BARSBP.body = "BARSBP"
+BARSBP.markettype = 1
 BARSBP.type = 10
-BARSBP.description = `
+BARSBP.documentation = `
 BARSBP 上一次买平信号位置
 
 用法：
@@ -604,12 +650,14 @@ AA:IFELSE(BARSBP>=1,HHV(H,BARSBP+1),H);
 `
 
 const BARSBUY = new MyFunc()
-BARSBUY.body = "BARSBUY"
-BARSBUY.explanation = "上一次买入信号位置"
-BARSBUY.markettype = 2
+BARSBUY.label = "BARSBUY"
+BARSBUY.insertText = ""
+BARSBUY.detail = "上一次买入信号位置"
 BARSBUY.tip = "BARSBUY 上一次买入信号位置"
+BARSBUY.body = "BARSBUY"
+BARSBUY.markettype = 2
 BARSBUY.type = 10
-BARSBUY.description = `
+BARSBUY.documentation = `
 BARSBUY 上一次买入信号位置
 
 用法：
@@ -630,11 +678,13 @@ BARSBUY 上一次买入信号位置
 `
 
 const BARSCOUNT = new MyFunc()
-BARSCOUNT.body = "BARSCOUNT()"
-BARSCOUNT.explanation = "第一个有效周期到当前的周期数"
+BARSCOUNT.label = "BARSCOUNT"
+BARSCOUNT.insertText = ""
+BARSCOUNT.detail = "第一个有效周期到当前的周期数"
 BARSCOUNT.tip = "BARSCOUNT(COND)返回COND第一个有效值的位置到当前的周期数"
+BARSCOUNT.body = "BARSCOUNT()"
 BARSCOUNT.type = 2
-BARSCOUNT.description = `
+BARSCOUNT.documentation = `
 BARSCOUNT(COND) 第一个有效周期到当前的周期数。
 
 注：
@@ -646,11 +696,13 @@ BARSCOUNT(MA(C,4));//计算MA(C,4)第一次有返回值到当前的周期数。
 `
 
 const BARSLAST = new MyFunc()
-BARSLAST.body = "BARSLAST( )"
-BARSLAST.explanation = "上一次条件成立位置"
+BARSLAST.label = "BARSLAST"
+BARSLAST.insertText = ""
+BARSLAST.detail = "上一次条件成立位置"
 BARSLAST.tip = "BARSLAST(X),求上一次条件X满足到现在的周期数"
+BARSLAST.body = "BARSLAST( )"
 BARSLAST.type = 2
-BARSLAST.description = `
+BARSLAST.documentation = `
 BARSLAST(COND)：上一次条件COND成立到当前的周期数
 
 注：
@@ -664,11 +716,13 @@ N:=BARSLAST(DATE<>REF(DATE,1))+1;//分钟周期，当日k线数。
 `
 
 const BARSLASTCOUNT = new MyFunc()
-BARSLASTCOUNT.body = "BARSLASTCOUNT()"
-BARSLASTCOUNT.explanation = "从当前周期向前计算，统计连续满足条件的周期数"
+BARSLASTCOUNT.label = "BARSLASTCOUNT"
+BARSLASTCOUNT.insertText = ""
+BARSLASTCOUNT.detail = "从当前周期向前计算，统计连续满足条件的周期数"
 BARSLASTCOUNT.tip = "BARSLASTCOUNT,从当前周期向前计算，统计连续满足条件的周期数"
+BARSLASTCOUNT.body = "BARSLASTCOUNT()"
 BARSLASTCOUNT.type = 2
-BARSLASTCOUNT.description = `
+BARSLASTCOUNT.documentation = `
 BARSLASTCOUNT(COND) 从当前周期向前计算，统计连续满足条件的周期数。
 
 注：
@@ -681,12 +735,14 @@ BARSLASTCOUNT(CLOSE>OPEN);
 `
 
 const BARSSELL = new MyFunc()
-BARSSELL.body = "BARSSELL"
-BARSSELL.explanation = "上一次卖出信号位置"
-BARSSELL.markettype = 2
+BARSSELL.label = "BARSSELL"
+BARSSELL.insertText = ""
+BARSSELL.detail = "上一次卖出信号位置"
 BARSSELL.tip = "BARSSELL 上一次卖出信号位置"
+BARSSELL.body = "BARSSELL"
+BARSSELL.markettype = 2
 BARSSELL.type = 10
-BARSSELL.description = `
+BARSSELL.documentation = `
 BARSSELL 上一次卖出信号位置
 
 用法：
@@ -707,11 +763,13 @@ BARSSELL 上一次卖出信号位置
 `
 
 const BARSSINCE = new MyFunc()
-BARSSINCE.body = "BARSSINCE()"
-BARSSINCE.explanation = "第一个条件成立到当前的周期数"
+BARSSINCE.label = "BARSSINCE"
+BARSSINCE.insertText = ""
+BARSSINCE.detail = "第一个条件成立到当前的周期数"
 BARSSINCE.tip = "BARSSINCE,第一个条件成立到当前的周期数"
+BARSSINCE.body = "BARSSINCE()"
 BARSSINCE.type = 2
-BARSSINCE.description = `
+BARSSINCE.documentation = `
 BARSSINCE(COND) 第一个条件成立到当前的周期数。
 
 注：
@@ -724,11 +782,13 @@ BARSSINCE(CLOSE>OPEN);
 `
 
 const BARSSINCEN = new MyFunc()
-BARSSINCEN.body = "BARSSINCEN"
-BARSSINCEN.explanation = "统计N周期内第一次条件成立到当前的周期数"
+BARSSINCEN.label = "BARSSINCEN"
+BARSSINCEN.insertText = ""
+BARSSINCEN.detail = "统计N周期内第一次条件成立到当前的周期数"
 BARSSINCEN.tip = "BARSSINCEN统计N周期内第一次条件成立到当前的周期数"
+BARSSINCEN.body = "BARSSINCEN"
 BARSSINCEN.type = 2
-BARSSINCEN.description = `
+BARSSINCEN.documentation = `
 BARSSINCEN(COND,N) 统计N周期内第一次条件成立到当前的周期数
 
 注：
@@ -743,12 +803,14 @@ BARSSINCEN(ISUP,N);//统计N周期内第一次满足阳线到当前的周期数
 `
 
 const BARSSK = new MyFunc()
-BARSSK.body = "BARSSK"
-BARSSK.explanation = "上一次卖开信号位置"
-BARSSK.markettype = 1
+BARSSK.label = "BARSSK"
+BARSSK.insertText = ""
+BARSSK.detail = "上一次卖开信号位置"
 BARSSK.tip = "BARSSK，取上一次卖开信号位置"
+BARSSK.body = "BARSSK"
+BARSSK.markettype = 1
 BARSSK.type = 10
-BARSSK.description = `
+BARSSK.documentation = `
 BARSSK 上一次卖开信号位置
 
 用法：
@@ -781,12 +843,14 @@ AA:IFELSE(BARSSK>=1,LLV(L,BARSSK+1),L);
 `
 
 const BARSSP = new MyFunc()
-BARSSP.body = "BARSSP"
-BARSSP.explanation = "上一次卖平信号位置"
-BARSSP.markettype = 1
+BARSSP.label = "BARSSP"
+BARSSP.insertText = ""
+BARSSP.detail = "上一次卖平信号位置"
 BARSSP.tip = "BARSSP，取上一次卖平信号位置"
+BARSSP.body = "BARSSP"
+BARSSP.markettype = 1
 BARSSP.type = 10
-BARSSP.description = `
+BARSSP.documentation = `
 BARSSP 上一次卖平信号位置
 
 用法：
@@ -818,11 +882,13 @@ AA:IFELSE(BARSSP>=1,HHV(H,BARSSP+1),H);
 `
 
 const BARSTATUS = new MyFunc()
-BARSTATUS.body = "BARSTATUS"
-BARSTATUS.explanation = "返回当前周期的位置状态"
+BARSTATUS.label = "BARSTATUS"
+BARSTATUS.insertText = ""
+BARSTATUS.detail = "返回当前周期的位置状态"
 BARSTATUS.tip = "BARSTATUS返回当前周期的位置状态。1表示当前周期是第一个周期，2表示是最后一个周期，0表示当前周期处于中间位置。"
+BARSTATUS.body = "BARSTATUS"
 BARSTATUS.type = 8
-BARSTATUS.description = `
+BARSTATUS.documentation = `
 BARSTATUS 返回当前周期的位置状态。
 
 注：
@@ -834,11 +900,13 @@ DRAWNUMBER(BARSTATUS=1,HIGH,OPEN,0,COLORRED);//如果当前K线是第一个周�
 `
 
 const BARTYPE = new MyFunc()
-BARTYPE.body = "BARTYPE"
-BARTYPE.explanation = "数据合约的K线周期类型值"
+BARTYPE.label = "BARTYPE"
+BARTYPE.insertText = ""
+BARTYPE.detail = "数据合约的K线周期类型值"
 BARTYPE.tip = "BARTYPE数据合约的K线周期类型值。"
+BARTYPE.body = "BARTYPE"
 BARTYPE.type = 1
-BARTYPE.description = `
+BARTYPE.documentation = `
 BARTYPE 数据合约的K线周期类型值
 
 用法：
@@ -859,11 +927,13 @@ BARINTERVAL;
 `
 
 const BETWEEN = new MyFunc()
-BETWEEN.body = "BETWEEN( , , )"
-BETWEEN.explanation = "介于"
+BETWEEN.label = "BETWEEN"
+BETWEEN.insertText = ""
+BETWEEN.detail = "介于"
 BETWEEN.tip = "BETWEEN(A,B,C),A处于B和C之间时取1(Yes)，否则取0(No)"
+BETWEEN.body = "BETWEEN( , , )"
 BETWEEN.type = 5
-BETWEEN.description = `
+BETWEEN.documentation = `
 BETWEEN(X,Y,Z) 表示X是否处于Y和Z之间，成立返回1(Yes)，否则返回0(No)。
 
 注：
@@ -874,12 +944,14 @@ BETWEEN(CLOSE,MA5,MA10); //表示收盘价介于5日均线与10日均线之间�
 `
 
 const BKHIGH = new MyFunc()
-BKHIGH.body = "BKHIGH"
-BKHIGH.explanation = "返回数据合约买开仓以来的最高价"
-BKHIGH.markettype = 1
+BKHIGH.label = "BKHIGH"
+BKHIGH.insertText = ""
+BKHIGH.detail = "返回数据合约买开仓以来的最高价"
 BKHIGH.tip = "BKHIGH,返回数据合约买开仓以来的最高价"
+BKHIGH.body = "BKHIGH"
+BKHIGH.markettype = 1
 BKHIGH.type = 10
-BKHIGH.description = `
+BKHIGH.documentation = `
 返回数据合约买开仓以来的最高价
 用法：
 BKHIGH返回数据合约最近一次模型买开位置到当前的最高价。
@@ -902,12 +974,14 @@ AUTOFILTER;//最新价低于买开仓以来的数据合约最高价5个点，止
 `
 
 const BKLOW = new MyFunc()
-BKLOW.body = "BKLOW"
-BKLOW.explanation = "返回数据合约买开仓以来的最低价"
-BKLOW.markettype = 1
+BKLOW.label = "BKLOW"
+BKLOW.insertText = ""
+BKLOW.detail = "返回数据合约买开仓以来的最低价"
 BKLOW.tip = "BKLOW,返回数据合约买开仓以来的最低价"
+BKLOW.body = "BKLOW"
+BKLOW.markettype = 1
 BKLOW.type = 10
-BKLOW.description = `
+BKLOW.documentation = `
 返回数据合约买开仓以来的最低价
 用法：
 BKLOW返回数据合约最近一次模型买开位置到当前的最低价。
@@ -930,12 +1004,14 @@ AUTOFILTER;//最新价高于买开仓以来数据合约的最低价5个点，平
 `
 
 const BKPRICE = new MyFunc()
-BKPRICE.body = "BKPRICE"
-BKPRICE.explanation = "返回数据合约最近一次买开信号价位"
-BKPRICE.markettype = 1
+BKPRICE.label = "BKPRICE"
+BKPRICE.insertText = ""
+BKPRICE.detail = "返回数据合约最近一次买开信号价位"
 BKPRICE.tip = "BKPRICE，返回数据合约最近一次买开信号价位"
+BKPRICE.body = "BKPRICE"
+BKPRICE.markettype = 1
 BKPRICE.type = 10
-BKPRICE.description = `
+BKPRICE.documentation = `
 BKPRICE 返回数据合约最近一次买开信号价位。
 
 用法：
@@ -963,12 +1039,14 @@ BKPRICE-CLOSE>60 && BKPRICE>0 && BKVOL>0, SP;//如果买开价位比当前价位
 `
 
 const BKPRICE1 = new MyFunc()
-BKPRICE1.body = "BKPRICE1"
-BKPRICE1.explanation = "返回交易合约最近一次买开信号价位"
-BKPRICE1.markettype = 1
+BKPRICE1.label = "BKPRICE1"
+BKPRICE1.insertText = ""
+BKPRICE1.detail = "返回交易合约最近一次买开信号价位"
 BKPRICE1.tip = "BKPRICE1，返回交易合约最近一次买开信号价位"
+BKPRICE1.body = "BKPRICE1"
+BKPRICE1.markettype = 1
 BKPRICE1.type = 10
-BKPRICE1.description = `
+BKPRICE1.documentation = `
 BKPRICE1 返回交易合约最近一次买开信号价位。
 
 用法：
@@ -991,12 +1069,14 @@ b.模组运行：复核前，返回上一次BK信号当根K线交易合约的行
 `
 
 const BKPRICEAV = new MyFunc()
-BKPRICEAV.body = "BKPRICEAV"
-BKPRICEAV.explanation = "返回数据合约多头开仓均价"
-BKPRICEAV.markettype = 1
+BKPRICEAV.label = "BKPRICEAV"
+BKPRICEAV.insertText = ""
+BKPRICEAV.detail = "返回数据合约多头开仓均价"
 BKPRICEAV.tip = "BKPRICEAV返回数据合约多头开仓均价"
+BKPRICEAV.body = "BKPRICEAV"
+BKPRICEAV.markettype = 1
 BKPRICEAV.type = 12
-BKPRICEAV.description = `
+BKPRICEAV.documentation = `
 BKPRICEAV 返回数据合约多头开仓均价。
 
 用法：
@@ -1020,12 +1100,14 @@ CLOSE-BKPRICEAV>60,SP(BKVOL);//当前价位比多头开仓均价高出60,平掉�
 `
 
 const BKPRICEAV1 = new MyFunc()
-BKPRICEAV1.body = "BKPRICEAV1"
-BKPRICEAV1.explanation = "返回交易合约多头开仓均价"
-BKPRICEAV1.markettype = 1
+BKPRICEAV1.label = "BKPRICEAV1"
+BKPRICEAV1.insertText = ""
+BKPRICEAV1.detail = "返回交易合约多头开仓均价"
 BKPRICEAV1.tip = "BKPRICEAV1交易合约多头开仓均价"
+BKPRICEAV1.body = "BKPRICEAV1"
+BKPRICEAV1.markettype = 1
 BKPRICEAV1.type = 12
-BKPRICEAV1.description = `
+BKPRICEAV1.documentation = `
 BKPRICEAV1 返回交易合约多头开仓均价
 
 用法：
@@ -1049,12 +1131,14 @@ CLOSE-BKPRICEAV1>60,SP(BKVOL);//当前价位比交易合约多头开仓均价高
 `
 
 const BKVOL = new MyFunc()
-BKVOL.body = "BKVOL"
-BKVOL.explanation = "买开信号手数"
-BKVOL.markettype = 1
+BKVOL.label = "BKVOL"
+BKVOL.insertText = ""
+BKVOL.detail = "买开信号手数"
 BKVOL.tip = "BKVOL返回模型当前的多头理论持仓"
+BKVOL.body = "BKVOL"
+BKVOL.markettype = 1
 BKVOL.type = 12
-BKVOL.description = `
+BKVOL.documentation = `
 买开信号手数
 用法：
 BKVOL返回模型当前的多头理论持仓。
@@ -1073,12 +1157,14 @@ BKVOL>0&&L<REF(L,5),SP(BKVOL); //多头持仓大于0，并且当根K线的最低
 `
 
 const BKVOL2 = new MyFunc()
-BKVOL2.body = "BKVOL2"
-BKVOL2.explanation = "买开信号手数"
-BKVOL2.markettype = 1
+BKVOL2.label = "BKVOL2"
+BKVOL2.insertText = ""
+BKVOL2.detail = "买开信号手数"
 BKVOL2.tip = "BKVOL2模组多头持仓"
+BKVOL2.body = "BKVOL2"
+BKVOL2.markettype = 1
 BKVOL2.type = 12
-BKVOL2.description = `
+BKVOL2.documentation = `
 买开信号手数
 用法：
 BKVOL2返回模型当前的多头持仓。
@@ -1097,12 +1183,14 @@ BKVOL2>0&&L<REF(L,5),SP(BKVOL2); //多头持仓大于0，并且当根K线的最�
 `
 
 const BUYPRICE = new MyFunc()
-BUYPRICE.body = "BUYPRICE"
-BUYPRICE.explanation = "返回最近一次买入信号所在K线的收盘价。"
-BUYPRICE.markettype = 2
+BUYPRICE.label = "BUYPRICE"
+BUYPRICE.insertText = ""
+BUYPRICE.detail = "返回最近一次买入信号所在K线的收盘价。"
 BUYPRICE.tip = "BUYPRICE  返回最近一次买入信号所在K线的收盘价。"
+BUYPRICE.body = "BUYPRICE"
+BUYPRICE.markettype = 2
 BUYPRICE.type = 10
-BUYPRICE.description = `
+BUYPRICE.documentation = `
 BUYPRICE 返回最近一次买入信号所在K线的收盘价。
 
 用法：
@@ -1116,11 +1204,13 @@ BUYPRICE-CLOSE>60 && BUYPRICE>0 && BUYVOL>0, SELL;//如果买入价位比当前�
 `
 
 const CEILING = new MyFunc()
-CEILING.body = "CEILING( , )"
-CEILING.explanation = "向上舍入"
+CEILING.label = "CEILING"
+CEILING.insertText = ""
+CEILING.detail = "向上舍入"
 CEILING.tip = "CEILING(X,Y)返回指定实数(X)在沿绝对值增大的方向上第一个能整除基数(Y)的值。"
+CEILING.body = "CEILING( , )"
 CEILING.type = 4
-CEILING.description = `
+CEILING.documentation = `
 CEILING(X,Y) 返回指定实数(X)在沿绝对值增大的方向上第一个能整除基数(Y)的值。
 
 注：
@@ -1144,12 +1234,14 @@ CEILING(8,-2);//返回无效值。
 `
 
 const CHECKSIG = new MyFunc()
-CHECKSIG.body = "CHECKSIG( , , , , ,)"
-CHECKSIG.explanation = "设置信号确认与复核的指令价方式（TICK逐笔回测，可设置回测精度）"
-CHECKSIG.markettype = 1
+CHECKSIG.label = "CHECKSIG"
+CHECKSIG.insertText = ""
+CHECKSIG.detail = "设置信号确认与复核的指令价方式（TICK逐笔回测，可设置回测精度）"
 CHECKSIG.tip = "CHECKSIG(SIG,MODE1,TIME1,MODE2,TIME2,INTERVAL);设置信号确认与复核的指令价方式（TICK逐笔回测，可设置回测精度）SIG为信号,MODE1为下单方式,TIME1下单确认时间,MODE2复核方式,TIME2复核确认时间,INTERVAL代表数据时间间隔"
+CHECKSIG.body = "CHECKSIG( , , , , ,)"
+CHECKSIG.markettype = 1
 CHECKSIG.type = 13
-CHECKSIG.description = `
+CHECKSIG.documentation = `
 CHECKSIG 设置信号确认与复核的指令价方式（TICK逐笔回测，可设置回测精度）
 
 用法：
@@ -1214,12 +1306,14 @@ AUTOFILTER;
 `
 
 const CHECKSIG_MIN = new MyFunc()
-CHECKSIG_MIN.body = "CHECKSIG_MIN( , , , ,)"
-CHECKSIG_MIN.explanation = "设置信号确认与复核的指令价方式（逐分钟回测）"
-CHECKSIG_MIN.markettype = 1
+CHECKSIG_MIN.label = "CHECKSIG_MIN"
+CHECKSIG_MIN.insertText = ""
+CHECKSIG_MIN.detail = "设置信号确认与复核的指令价方式（逐分钟回测）"
 CHECKSIG_MIN.tip = "CHECKSIG_MIN(SIG,MODE1,TIME1,MODE2,TIME2);设置信号确认与复核的指令价方式（逐分钟回测）SIG为信号,MODE1为下单方式,TIME1下单确认时间,MODE2复核方式,TIME2复核确认时间"
+CHECKSIG_MIN.body = "CHECKSIG_MIN( , , , ,)"
+CHECKSIG_MIN.markettype = 1
 CHECKSIG_MIN.type = 13
-CHECKSIG_MIN.description = `
+CHECKSIG_MIN.documentation = `
 CHECKSIG_MIN 设置信号确认与复核的指令价方式（逐分钟回测）
 
 用法：
@@ -1269,10 +1363,12 @@ AUTOFILTER;
 `
 
 const CIRCLEDOT = new MyFunc()
+CIRCLEDOT.label = "CIRCLEDOT"
+CIRCLEDOT.insertText = ""
+CIRCLEDOT.detail = "小圆点线"
 CIRCLEDOT.body = "CIRCLEDOT"
-CIRCLEDOT.explanation = "小圆点线"
 CIRCLEDOT.type = 8
-CIRCLEDOT.description = `
+CIRCLEDOT.documentation = `
 画小圆点线。
 用法：
 CIRCLEDOT 画小圆点线。
@@ -1285,11 +1381,13 @@ CIRCLEDOT 画小圆点线。
 `
 
 const CJLVOL = new MyFunc()
-CJLVOL.body = "CJLVOL( )"
-CJLVOL.explanation = "绘制CJL成交量柱线"
+CJLVOL.label = "CJLVOL"
+CJLVOL.insertText = ""
+CJLVOL.detail = "绘制CJL成交量柱线"
 CJLVOL.tip = "CJLVOL(N)，绘制CJL成交量柱线"
+CJLVOL.body = "CJLVOL( )"
 CJLVOL.type = 8
-CJLVOL.description = `
+CJLVOL.documentation = `
 CJLVOL(N) 绘制CJL成交量柱线
 
 用法：当参数N为零时，则相当于VOL,VOLUMESTICK;当参数N不为零时，成交量柱线的宽度和颜色和竹线保持一致。
@@ -1302,11 +1400,13 @@ CJLVOL(0);//绘制CJL成交量红绿柱线
 `
 
 const CLOSE = new MyFunc()
-CLOSE.body = "CLOSE"
-CLOSE.explanation = "取得K线图的收盘价"
+CLOSE.label = "CLOSE"
+CLOSE.insertText = ""
+CLOSE.detail = "取得K线图的收盘价"
 CLOSE.tip = "CLOSE,取收盘(最新)价"
+CLOSE.body = "CLOSE"
 CLOSE.type = 1
-CLOSE.description = `
+CLOSE.documentation = `
 CLOSE 取得K线图的收盘价。
 
 注：
@@ -1322,12 +1422,14 @@ A:=REF(C,1);//取得前一根k线的收盘价。
 `
 
 const CLOSEKLINE = new MyFunc()
-CLOSEKLINE.body = "CLOSEKLINE( , )"
-CLOSEKLINE.explanation = "设置K线提前N(1-30)秒走完"
-CLOSEKLINE.markettype = 1
+CLOSEKLINE.label = "CLOSEKLINE"
+CLOSEKLINE.insertText = ""
+CLOSEKLINE.detail = "设置K线提前N(1-30)秒走完"
 CLOSEKLINE.tip = "CLOSEKLINE(TYPE,N),设置K线提前N(1-30)秒走完TYPE=0，代表每小节和收盘前最后一根K线提前N秒走完；\r\nTYPE=1，代表夜盘结束及日盘结束前最后一根K线提前N秒走完；TYPE=2，代表每一根K线提前N秒走完；N是时间（秒数）"
+CLOSEKLINE.body = "CLOSEKLINE( , )"
+CLOSEKLINE.markettype = 1
 CLOSEKLINE.type = 11
-CLOSEKLINE.description = `
+CLOSEKLINE.documentation = `
 CLOSEKLINE(TYPE,N) 设置K线走完前N秒，确认信号下单，K线走完进行复核，N的取值范围为1-30
 
 用法：
@@ -1357,11 +1459,13 @@ AUTOFILTER;
 `
 
 const CLOSEMINUTE = new MyFunc()
-CLOSEMINUTE.body = "CLOSEMINUTE"
-CLOSEMINUTE.explanation = "距收盘前时间"
+CLOSEMINUTE.label = "CLOSEMINUTE"
+CLOSEMINUTE.insertText = ""
+CLOSEMINUTE.detail = "距收盘前时间"
 CLOSEMINUTE.tip = "CLOSEMINUTE,返回K线距离闭市前的时间（单位：分钟），方便闭市前及时平仓"
+CLOSEMINUTE.body = "CLOSEMINUTE"
 CLOSEMINUTE.type = 7
-CLOSEMINUTE.description = `
+CLOSEMINUTE.documentation = `
 CLOSEMINUTE，返回K线距离收盘前的分钟数。
 
 注：
@@ -1383,12 +1487,14 @@ AUTOFILTER;
 `
 
 const CLOSEMINUTE1 = new MyFunc()
-CLOSEMINUTE1.body = "CLOSEMINUTE1"
-CLOSEMINUTE1.explanation = "距收盘前时间"
-CLOSEMINUTE1.markettype = 1
+CLOSEMINUTE1.label = "CLOSEMINUTE1"
+CLOSEMINUTE1.insertText = ""
+CLOSEMINUTE1.detail = "距收盘前时间"
 CLOSEMINUTE1.tip = "CLOSEMINUTE1,返回当前时间距离闭市前的时间（单位：分钟），方便闭市前及时平仓"
+CLOSEMINUTE1.body = "CLOSEMINUTE1"
+CLOSEMINUTE1.markettype = 1
 CLOSEMINUTE1.type = 7
-CLOSEMINUTE1.description = `
+CLOSEMINUTE1.documentation = `
 CLOSEMINUTE1，返回距离收盘前的分钟数。
 
 注：
@@ -1413,12 +1519,14 @@ AUTOFILTER;
 `
 
 const CLOSEMINUTEEVERY = new MyFunc()
-CLOSEMINUTEEVERY.body = "CLOSEMINUTEEVERY()"
-CLOSEMINUTEEVERY.explanation = "距小节结束时间"
-CLOSEMINUTEEVERY.markettype = 1
+CLOSEMINUTEEVERY.label = "CLOSEMINUTEEVERY"
+CLOSEMINUTEEVERY.insertText = ""
+CLOSEMINUTEEVERY.detail = "距小节结束时间"
 CLOSEMINUTEEVERY.tip = "CLOSEMINUTEEVERY(N),返回K线距离每个小节结束的时间（单位：分钟），N为第几个小节，方便小节前及时平仓"
+CLOSEMINUTEEVERY.body = "CLOSEMINUTEEVERY()"
+CLOSEMINUTEEVERY.markettype = 1
 CLOSEMINUTEEVERY.type = 7
-CLOSEMINUTEEVERY.description = `
+CLOSEMINUTEEVERY.documentation = `
 CLOSEMINUTEEVERY(N)，返回K线距离小节结束的分钟数。
 
 用法：
@@ -1444,12 +1552,14 @@ AUTOFILTER;
 `
 
 const CLOSEMINUTEEVERY1 = new MyFunc()
-CLOSEMINUTEEVERY1.body = "CLOSEMINUTEEVERY1()"
-CLOSEMINUTEEVERY1.explanation = "距小节结束时间"
-CLOSEMINUTEEVERY1.markettype = 1
+CLOSEMINUTEEVERY1.label = "CLOSEMINUTEEVERY1"
+CLOSEMINUTEEVERY1.insertText = ""
+CLOSEMINUTEEVERY1.detail = "距小节结束时间"
 CLOSEMINUTEEVERY1.tip = "CLOSEMINUTEEVERY1(N),返回当前时间距离每个小节结束的时间（单位：分钟），N为第几个小节，方便小节前及时平仓"
+CLOSEMINUTEEVERY1.body = "CLOSEMINUTEEVERY1()"
+CLOSEMINUTEEVERY1.markettype = 1
 CLOSEMINUTEEVERY1.type = 7
-CLOSEMINUTEEVERY1.description = `
+CLOSEMINUTEEVERY1.documentation = `
 CLOSEMINUTEEVERY1(N),返回距离小节结束的分钟数
 
 用法：
@@ -1475,12 +1585,14 @@ AUTOFILTER;
 `
 
 const CLOSESEC = new MyFunc()
-CLOSESEC.body = "CLOSESEC"
-CLOSESEC.explanation = "距收盘前时间（秒数）"
-CLOSESEC.markettype = 1
+CLOSESEC.label = "CLOSESEC"
+CLOSESEC.insertText = ""
+CLOSESEC.detail = "距收盘前时间（秒数）"
 CLOSESEC.tip = "CLOSESEC,返回K线开始时间距离闭市前的时间（单位：秒），方便闭市前及时平仓"
+CLOSESEC.body = "CLOSESEC"
+CLOSESEC.markettype = 1
 CLOSESEC.type = 7
-CLOSESEC.description = `
+CLOSESEC.documentation = `
 CLOSESEC，返回K线开始时间距离收盘前的秒数。
 
 注：
@@ -1502,12 +1614,14 @@ AUTOFILTER;
 `
 
 const CLOSESEC1 = new MyFunc()
-CLOSESEC1.body = "CLOSESEC1"
-CLOSESEC1.explanation = "距收盘前时间（秒数）"
-CLOSESEC1.markettype = 1
+CLOSESEC1.label = "CLOSESEC1"
+CLOSESEC1.insertText = ""
+CLOSESEC1.detail = "距收盘前时间（秒数）"
 CLOSESEC1.tip = "CLOSESEC1,返回当前时间距离闭市前的时间（单位：秒），方便闭市前及时平仓"
+CLOSESEC1.body = "CLOSESEC1"
+CLOSESEC1.markettype = 1
 CLOSESEC1.type = 7
-CLOSESEC1.description = `
+CLOSESEC1.documentation = `
 CLOSESEC1，返回距离收盘前的秒数。
 
 注：
@@ -1531,12 +1645,14 @@ AUTOFILTER;
 `
 
 const CLOSESECEVERY = new MyFunc()
-CLOSESECEVERY.body = "CLOSESECEVERY()"
-CLOSESECEVERY.explanation = "距小节结束时间（秒）"
-CLOSESECEVERY.markettype = 1
+CLOSESECEVERY.label = "CLOSESECEVERY"
+CLOSESECEVERY.insertText = ""
+CLOSESECEVERY.detail = "距小节结束时间（秒）"
 CLOSESECEVERY.tip = "CLOSESECEVERY(N),返回K线开始时间距离每个小节结束的时间（单位：秒），N为第几个小节，方便小节前及时平仓"
+CLOSESECEVERY.body = "CLOSESECEVERY()"
+CLOSESECEVERY.markettype = 1
 CLOSESECEVERY.type = 7
-CLOSESECEVERY.description = `
+CLOSESECEVERY.documentation = `
 CLOSESECEVERY(N) 返回K线开始时间距离小节结束的秒数
 
 用法：
@@ -1559,12 +1675,14 @@ AUTOFILTER;
 `
 
 const CLOSESECEVERY1 = new MyFunc()
-CLOSESECEVERY1.body = "CLOSESECEVERY1()"
-CLOSESECEVERY1.explanation = "距小节结束时间（秒）"
-CLOSESECEVERY1.markettype = 1
+CLOSESECEVERY1.label = "CLOSESECEVERY1"
+CLOSESECEVERY1.insertText = ""
+CLOSESECEVERY1.detail = "距小节结束时间（秒）"
 CLOSESECEVERY1.tip = "CLOSESECEVERY1(N),返回当前时间距离每个小节结束的时间（单位：秒），N为第几个小节，方便小节前及时平仓"
+CLOSESECEVERY1.body = "CLOSESECEVERY1()"
+CLOSESECEVERY1.markettype = 1
 CLOSESECEVERY1.type = 7
-CLOSESECEVERY1.description = `
+CLOSESECEVERY1.documentation = `
 CLOSESECEVERY1(N) 返回距离小节结束前的秒数
 
 用法：
@@ -1589,11 +1707,13 @@ AUTOFILTER;
 `
 
 const CODELIKE = new MyFunc()
-CODELIKE.body = "CODELIKE('')"
-CODELIKE.explanation = "模糊股票代码函数"
+CODELIKE.label = "CODELIKE"
+CODELIKE.insertText = ""
+CODELIKE.detail = "模糊股票代码函数"
 CODELIKE.tip = "CODELIKE('')模糊股票代码函数。CODELIKE('600')判断股票代码是否以600开头。是返回1（YES）,不是返回0（NO）。"
+CODELIKE.body = "CODELIKE('')"
 CODELIKE.type = 5
-CODELIKE.description = `
+CODELIKE.documentation = `
 CODELIKE('') 模糊股票代码函数。
 
 用法：
@@ -1608,11 +1728,13 @@ C>O&&CODELIKE('300')=1;//最后一根K线为阳线并且代码以300开头（创
 `
 
 const COEFFICIENTR = new MyFunc()
-COEFFICIENTR.body = "COEFFICIENTR( , , )"
-COEFFICIENTR.explanation = "皮尔森相关系数"
+COEFFICIENTR.label = "COEFFICIENTR"
+COEFFICIENTR.insertText = ""
+COEFFICIENTR.detail = "皮尔森相关系数"
 COEFFICIENTR.tip = "COEFFICIENTR(X,Y,N)求X、Y在N个周期内的皮尔森相关系数"
+COEFFICIENTR.body = "COEFFICIENTR( , , )"
 COEFFICIENTR.type = 3
-COEFFICIENTR.description = `
+COEFFICIENTR.documentation = `
 COEFFICIENTR(X,Y,N) 求X、Y在N个周期内的皮尔森相关系数。
 
 注：
@@ -1637,11 +1759,13 @@ COEFFICIENTR(C1,C,10);//求文华商品和豆粕在10个周期内的皮尔森相
 `
 
 const COLORSTICK = new MyFunc()
-COLORSTICK.body = "COLORSTICK"
-COLORSTICK.explanation = "画柱线"
+COLORSTICK.label = "COLORSTICK"
+COLORSTICK.insertText = ""
+COLORSTICK.detail = "画柱线"
 COLORSTICK.tip = "COLORSTICK画柱线，大于0为红色，小于0为青色"
+COLORSTICK.body = "COLORSTICK"
 COLORSTICK.type = 8
-COLORSTICK.description = `
+COLORSTICK.documentation = `
 COLORSTICK 画柱线。
 
 用法：X,COLORSTICK;画柱线，柱高为X的值，X大于0为红色柱线，X小于0为青色柱线。
@@ -1653,11 +1777,13 @@ C-O,COLORSTICK;//画柱线，阳线时画红色向上柱线，阴线时画青色
 `
 
 const CONDBARS = new MyFunc()
-CONDBARS.body = "CONDBARS(,)"
-CONDBARS.explanation = "取得最近满足A,B条件的K线间周期数"
+CONDBARS.label = "CONDBARS"
+CONDBARS.insertText = ""
+CONDBARS.detail = "取得最近满足A,B条件的K线间周期数"
 CONDBARS.tip = "CONDBARS(A,B),取得最近满足A、B条件的k线间周期数"
+CONDBARS.body = "CONDBARS(,)"
 CONDBARS.type = 2
-CONDBARS.description = `
+CONDBARS.documentation = `
 CONDBARS(A,B);取得最近的满足A、B条件的k线间周期数
 注意：
 1、该函数返回周期数不包含最后满足条件的K线
@@ -1671,11 +1797,13 @@ CONDBARS(CROSSUP(MA5,MA10),CROSSDOWN(MA5,MA10));//最近一次满足5周期均�
 `
 
 const COS = new MyFunc()
-COS.body = "COS( )"
-COS.explanation = "余弦"
+COS.label = "COS"
+COS.insertText = ""
+COS.detail = "余弦"
 COS.tip = "COS(X),求X的余弦值"
+COS.body = "COS( )"
 COS.type = 4
-COS.description = `
+COS.documentation = `
 COS(X)：返回X的余弦值。
 
 注：
@@ -1689,11 +1817,13 @@ COS(1.57);//返回1.57的余弦值
 `
 
 const COST = new MyFunc()
-COST.body = "COST( )"
-COST.explanation = "成本分布情况"
+COST.label = "COST"
+COST.insertText = ""
+COST.detail = "成本分布情况"
 COST.tip = "COST(X)成本分布情况。"
+COST.body = "COST( )"
 COST.type = 2
-COST.description = `
+COST.documentation = `
 COST(X) 成本分布情况。
 用法:
  COST(X) 表示X%获利盘的价格,即有X%的持仓成本在该价格下，其余(100-X)%的持仓成本在该价格以上，是套牢盘。 
@@ -1708,11 +1838,13 @@ COST(X) 成本分布情况。
 `
 
 const COUNT = new MyFunc()
-COUNT.body = "COUNT( , )"
-COUNT.explanation = "统计总数"
+COUNT.label = "COUNT"
+COUNT.insertText = ""
+COUNT.detail = "统计总数"
 COUNT.tip = "COUNT(X,N),统计N周期中满足X条件的周期数。若N为0则从第一个周期开始"
+COUNT.body = "COUNT( , )"
 COUNT.type = 2
-COUNT.description = `
+COUNT.documentation = `
 COUNT(COND,N)：统计N周期中满足COND条件的周期数。
 
 注：
@@ -1732,12 +1864,14 @@ M:COUNT(CROSSUP(MA5,MA10),0);//统计从申请到的行情数据以来到当前�
 `
 
 const COUNTGROUPSIG = new MyFunc()
-COUNTGROUPSIG.body = "COUNTGROUPSIG( , , )"
-COUNTGROUPSIG.explanation = "统计N周期内，分组为group的X信号的数量"
-COUNTGROUPSIG.markettype = 1
+COUNTGROUPSIG.label = "COUNTGROUPSIG"
+COUNTGROUPSIG.insertText = ""
+COUNTGROUPSIG.detail = "统计N周期内，分组为group的X信号的数量"
 COUNTGROUPSIG.tip = "COUNTGROUPSIG(X,N,'group');统计N周期内,分组为group的X信号的数量X可以为BK、SK、SP、BP、SPK、BPK、CLOSEOUT、STOP"
+COUNTGROUPSIG.body = "COUNTGROUPSIG( , , )"
+COUNTGROUPSIG.markettype = 1
 COUNTGROUPSIG.type = 10
-COUNTGROUPSIG.description = `
+COUNTGROUPSIG.documentation = `
 COUNTGROUPSIG(X,N,'group'); 统计N周期内，分组为group的X信号的数量
 
 用法：
@@ -1763,12 +1897,14 @@ BKN=0&&C>MA5,BK('A',1);//当日内日未出现过BK信号并且最新价大于5�
 `
 
 const COUNTSIG = new MyFunc()
-COUNTSIG.body = "COUNTSIG(,)"
-COUNTSIG.explanation = "统计N周期内，X信号的数量"
-COUNTSIG.markettype = 1
+COUNTSIG.label = "COUNTSIG"
+COUNTSIG.insertText = ""
+COUNTSIG.detail = "统计N周期内，X信号的数量"
 COUNTSIG.tip = "COUNTSIG(X,N);统计N周期内,X信号的数量X可以为BK、SK、SP、BP、SPK、BPK、CLOSEOUT、STOP"
+COUNTSIG.body = "COUNTSIG(,)"
+COUNTSIG.markettype = 1
 COUNTSIG.type = 10
-COUNTSIG.description = `
+COUNTSIG.documentation = `
 COUNTSIG(X,N); 统计N周期内，X信号的数量
 
 用法：
@@ -1794,11 +1930,13 @@ BKN=0&&C>MA5,BK;//当日内日未出现过BK信号并且最新价大于5周期�
 `
 
 const COVAR = new MyFunc()
-COVAR.body = "COVAR( , , )"
-COVAR.explanation = "协方差"
+COVAR.label = "COVAR"
+COVAR.insertText = ""
+COVAR.detail = "协方差"
 COVAR.tip = "COVAR(X,Y,N)求X、Y在N个周期内的协方差"
+COVAR.body = "COVAR( , , )"
 COVAR.type = 3
-COVAR.description = `
+COVAR.documentation = `
 COVAR(X,Y,N) 求X、Y在N个周期内的协方差。
 
 注：
@@ -1823,11 +1961,13 @@ COVAR(C1,C,10);//求文华商品和豆粕在10个周期内的协方差。
 `
 
 const CROSS = new MyFunc()
-CROSS.body = "CROSS( , )"
-CROSS.explanation = "交叉函数"
+CROSS.label = "CROSS"
+CROSS.insertText = ""
+CROSS.detail = "交叉函数"
 CROSS.tip = "CROSS(A,B),A从下方向上穿过B时取1(Yes)，否则取0(No)"
+CROSS.body = "CROSS( , )"
 CROSS.type = 5
-CROSS.description = `
+CROSS.documentation = `
 CROSS(A,B) 表示A从下方向上穿过B，成立返回1(Yes)，否则返回0(No)
 
 注：
@@ -1838,11 +1978,13 @@ CROSS(CLOSE,MA(CLOSE,5));//表示收盘线从下方向上穿过5周期均线
 `
 
 const CROSS2 = new MyFunc()
-CROSS2.body = "CROSS2( , , )"
-CROSS2.explanation = "二次交叉函数"
+CROSS2.label = "CROSS2"
+CROSS2.insertText = ""
+CROSS2.detail = "二次交叉函数"
 CROSS2.tip = "CROSS2(A,B,N),表示N个周期内当A从下方向上穿过B的次数为偶数次偶数次时返回1(Yes)，否则返回0(No)"
+CROSS2.body = "CROSS2( , , )"
 CROSS2.type = 5
-CROSS2.description = `
+CROSS2.documentation = `
 CROSS2(A,B,N) 表示N个周期内当A从下方向上穿B偶数次。
 
 注：
@@ -1856,10 +1998,12 @@ CROSS2(C,MA5,10) 返回值为1(Yes)，表示当前周期是10个周期内(包含
 `
 
 const CROSSDOT = new MyFunc()
+CROSSDOT.label = "CROSSDOT"
+CROSSDOT.insertText = ""
+CROSSDOT.detail = "小圆圈线"
 CROSSDOT.body = "CROSSDOT"
-CROSSDOT.explanation = "小圆圈线"
 CROSSDOT.type = 8
-CROSSDOT.description = `
+CROSSDOT.documentation = `
 小圆圈线。
 用法：
 CROSSDOT 画小圆圈线。
@@ -1872,11 +2016,13 @@ CROSSDOT 画小圆圈线。
 `
 
 const CROSSDOWN = new MyFunc()
-CROSSDOWN.body = "CROSSDOWN( , )"
-CROSSDOWN.explanation = "向下穿越"
+CROSSDOWN.label = "CROSSDOWN"
+CROSSDOWN.insertText = ""
+CROSSDOWN.detail = "向下穿越"
 CROSSDOWN.tip = "CROSSDOWN(A,B),表示当A从上方向下穿过B时返回1(Yes)，否则返回0(No)"
+CROSSDOWN.body = "CROSSDOWN( , )"
 CROSSDOWN.type = 5
-CROSSDOWN.description = `
+CROSSDOWN.documentation = `
 CROSSDOWN(A,B)：表示当A从上方向下穿B，成立返回1(Yes)，否则返回0(No)
 
 注：
@@ -1890,11 +2036,13 @@ CROSSDOWN(MA5,MA10),SK;//MA5下穿MA10卖开仓
 `
 
 const CROSSUP = new MyFunc()
-CROSSUP.body = "CROSSUP( , )"
-CROSSUP.explanation = "向上穿越"
+CROSSUP.label = "CROSSUP"
+CROSSUP.insertText = ""
+CROSSUP.detail = "向上穿越"
 CROSSUP.tip = "CROSSUP(A,B),表示当A从下方向上穿过B时返回1(Yes)，否则返回0(No)"
+CROSSUP.body = "CROSSUP( , )"
 CROSSUP.type = 5
-CROSSUP.description = `
+CROSSUP.documentation = `
 CROSSUP(A,B) 表当A从下方向上穿过B，成立返回1(Yes)，否则返回0(No)
 
 注：
@@ -1908,11 +2056,13 @@ CROSSUP(MA5,MA10),BK;//MA5上穿MA10，买开仓。
 `
 
 const CUBE = new MyFunc()
-CUBE.body = "CUBE( )"
-CUBE.explanation = "立方函数"
+CUBE.label = "CUBE"
+CUBE.insertText = ""
+CUBE.detail = "立方函数"
 CUBE.tip = "CUBE(X),求X的三次方"
+CUBE.body = "CUBE( )"
 CUBE.type = 4
-CUBE.description = `
+CUBE.documentation = `
 CUBE(X)：返回X的三次方。
 
 例1：
@@ -1920,11 +2070,13 @@ CUBE(4);//求4的立方。
 `
 
 const CURRENTDATE = new MyFunc()
-CURRENTDATE.body = "CURRENTDATE"
-CURRENTDATE.explanation = "返回当前的年月日"
+CURRENTDATE.label = "CURRENTDATE"
+CURRENTDATE.insertText = ""
+CURRENTDATE.detail = "返回当前的年月日"
 CURRENTDATE.tip = "CURRENTDATE返回当前的年月日"
+CURRENTDATE.body = "CURRENTDATE"
 CURRENTDATE.type = 7
-CURRENTDATE.description = `
+CURRENTDATE.documentation = `
 CURRENTDATE 返回当前的年月日。
 
 注：
@@ -1937,11 +2089,13 @@ A:CURRENTDATE;//返回的是现在的本机时间。
 `
 
 const CURRENTTIME = new MyFunc()
-CURRENTTIME.body = "CURRENTTIME"
-CURRENTTIME.explanation = "返回当前的时分秒"
+CURRENTTIME.label = "CURRENTTIME"
+CURRENTTIME.insertText = ""
+CURRENTTIME.detail = "返回当前的时分秒"
 CURRENTTIME.tip = "CURRENTTIME返回当前的时分秒"
+CURRENTTIME.body = "CURRENTTIME"
 CURRENTTIME.type = 7
-CURRENTTIME.description = `
+CURRENTTIME.documentation = `
 CURRENTTIME 返回当前的时分秒。
 
 注：
@@ -1954,11 +2108,13 @@ A:CURRENTTIME;//返回的是现在的本机时间。
 `
 
 const DASH = new MyFunc()
-DASH.body = "DASH"
-DASH.explanation = "画虚线"
+DASH.label = "DASH"
+DASH.insertText = ""
+DASH.detail = "画虚线"
 DASH.tip = "DASH,画虚线"
+DASH.body = "DASH"
 DASH.type = 8
-DASH.description = `
+DASH.documentation = `
 画虚线。
 用法：
 DASH 画虚线。
@@ -1971,11 +2127,13 @@ DASH 画虚线。
 `
 
 const DASHDOT = new MyFunc()
-DASHDOT.body = "DASHDOT"
-DASHDOT.explanation = "画点虚线"
+DASHDOT.label = "DASHDOT"
+DASHDOT.insertText = ""
+DASHDOT.detail = "画点虚线"
 DASHDOT.tip = "DASHDOT,画点虚线"
+DASHDOT.body = "DASHDOT"
 DASHDOT.type = 8
-DASHDOT.description = `
+DASHDOT.documentation = `
 画点虚线。
 用法：
 DASHDOT 画点虚线。
@@ -1988,11 +2146,13 @@ DASHDOT 画点虚线。
 `
 
 const DASHDOTDOT = new MyFunc()
-DASHDOTDOT.body = "DASHDOTDOT"
-DASHDOTDOT.explanation = "画双点虚线"
+DASHDOTDOT.label = "DASHDOTDOT"
+DASHDOTDOT.insertText = ""
+DASHDOTDOT.detail = "画双点虚线"
 DASHDOTDOT.tip = "DASHDOTDOT,画双点虚线"
+DASHDOTDOT.body = "DASHDOTDOT"
 DASHDOTDOT.type = 8
-DASHDOTDOT.description = `
+DASHDOTDOT.documentation = `
 画双点虚线。
 用法：
 DASHDOTDOT 画双点虚线。
@@ -2005,11 +2165,13 @@ DASHDOTDOT 画双点虚线。
 `
 
 const DATE = new MyFunc()
-DATE.body = "DATE"
-DATE.explanation = "取得某周期的日期数"
+DATE.label = "DATE"
+DATE.insertText = ""
+DATE.detail = "取得某周期的日期数"
 DATE.tip = "DATE,取某周期的日期数（700101-331231）"
+DATE.body = "DATE"
 DATE.type = 7
-DATE.description = `
+DATE.documentation = `
 DATE,返回某周期的日期数。
  
 注：
@@ -2025,11 +2187,13 @@ HH:VALUEWHEN(AA=1,H);// 取201305071037分钟位置，同时取201305071037分�
 `
 
 const DATE1 = new MyFunc()
-DATE1.body = "DATE1"
-DATE1.explanation = "返回某周期的日期数"
+DATE1.label = "DATE1"
+DATE1.insertText = ""
+DATE1.detail = "返回某周期的日期数"
 DATE1.tip = "DATE1返回某周期的日期数"
+DATE1.body = "DATE1"
 DATE1.type = 7
-DATE1.description = `
+DATE1.documentation = `
 DATE1：返回某周期的日期数。
 
 注：
@@ -2046,11 +2210,13 @@ HH:VALUEWHEN(AA=1，H);// 取201305071037分钟位置，同时取201305071037分
 `
 
 const DAY = new MyFunc()
-DAY.body = "DAY"
-DAY.explanation = "取得某周期的日数"
+DAY.label = "DAY"
+DAY.insertText = ""
+DAY.detail = "取得某周期的日数"
 DAY.tip = "DAY,取某周期的日数（1-31）"
+DAY.body = "DAY"
 DAY.type = 7
-DAY.description = `
+DAY.documentation = `
 DAY,返回某一周期的日数。
 
 注：
@@ -2064,11 +2230,13 @@ CC:IFELSE(DAY=1,VALUEWHEN(N=1,O),0);//当日期为1时，取开盘价，否则�
 `
 
 const DAYBARPOS = new MyFunc()
-DAYBARPOS.body = "DAYBARPOS"
-DAYBARPOS.explanation = "当根k线为当天第几根k线"
+DAYBARPOS.label = "DAYBARPOS"
+DAYBARPOS.insertText = ""
+DAYBARPOS.detail = "当根k线为当天第几根k线"
 DAYBARPOS.tip = "DAYBARPOS当根k线为当天第几根k线"
+DAYBARPOS.body = "DAYBARPOS"
 DAYBARPOS.type = 2
-DAYBARPOS.description = `
+DAYBARPOS.documentation = `
 DAYBARPOS：返回当根k线是当天的第几根k线
 
 注：
@@ -2079,11 +2247,13 @@ VALUEWHEN(DAYBARPOS=1,C);//取当天第一根K线的收盘价
 `
 
 const DAYSTOEXPIRED = new MyFunc()
-DAYSTOEXPIRED.body = "DAYSTOEXPIRED()"
-DAYSTOEXPIRED.explanation = "期货合约距最后交易日的天数"
+DAYSTOEXPIRED.label = "DAYSTOEXPIRED"
+DAYSTOEXPIRED.insertText = ""
+DAYSTOEXPIRED.detail = "期货合约距最后交易日的天数"
 DAYSTOEXPIRED.tip = "DAYSTOEXPIRED(CODE)期货合约距最后交易日的天数,CODE为文华码"
+DAYSTOEXPIRED.body = "DAYSTOEXPIRED()"
 DAYSTOEXPIRED.type = 7
-DAYSTOEXPIRED.description = `
+DAYSTOEXPIRED.documentation = `
 DAYSTOEXPIRED(CODE) 期货合约距最后交易日的天数。
 
 用法：DAYSTOEXPIRED(CODE);取得合约的到期剩余天数。CODE为文华码。
@@ -2106,12 +2276,14 @@ A:=DAYSTOEXPIRED('')=1&&CLOSEMINUTE=5;//定义变量A为最后交易日收盘前
 `
 
 const DAYTRADE = new MyFunc()
-DAYTRADE.body = "DAYTRADE"
-DAYTRADE.explanation = "日内交易函数"
-DAYTRADE.markettype = 1
+DAYTRADE.label = "DAYTRADE"
+DAYTRADE.insertText = ""
+DAYTRADE.detail = "日内交易函数"
 DAYTRADE.tip = "DAYTRADE,日内交易函数"
+DAYTRADE.body = "DAYTRADE"
+DAYTRADE.markettype = 1
 DAYTRADE.type = 9
-DAYTRADE.description = `
+DAYTRADE.documentation = `
 DAYTRADE 日内交易函数。
 
 用法：
@@ -2137,12 +2309,14 @@ DAYTRADE;//只用日内数据进行计算
 `
 
 const DAYTRADE1 = new MyFunc()
-DAYTRADE1.body = "DAYTRADE1"
-DAYTRADE1.explanation = "日内交易函数"
-DAYTRADE1.markettype = 1
+DAYTRADE1.label = "DAYTRADE1"
+DAYTRADE1.insertText = ""
+DAYTRADE1.detail = "日内交易函数"
 DAYTRADE1.tip = "DAYTRADE1,日内交易函数"
+DAYTRADE1.body = "DAYTRADE1"
+DAYTRADE1.markettype = 1
 DAYTRADE1.type = 9
-DAYTRADE1.description = `
+DAYTRADE1.documentation = `
 DAYTRADE1 日内交易函数。
 
 用法：
@@ -2171,11 +2345,13 @@ DAYTRADE1;//只用日内数据进行计算
 `
 
 const DEVSQ = new MyFunc()
-DEVSQ.body = "DEVSQ( , )"
-DEVSQ.explanation = "取得数据偏差平方和"
+DEVSQ.label = "DEVSQ"
+DEVSQ.insertText = ""
+DEVSQ.detail = "取得数据偏差平方和"
 DEVSQ.tip = "DEVSQ(X,N),求X的N个周期的数据偏差平方和"
+DEVSQ.body = "DEVSQ( , )"
 DEVSQ.type = 3
-DEVSQ.description = `
+DEVSQ.documentation = `
 DEVSQ(X,N)： 计算数据X的N个周期的数据偏差平方和。
 
 注：
@@ -2196,11 +2372,13 @@ DEVSQ(C,5);计算数据收盘价5个周期的数据偏差平方和。
 `
 
 const DIVERGENCE = new MyFunc()
-DIVERGENCE.body = "DIVERGENCE(,,,,)"
-DIVERGENCE.explanation = "变量X1与X2在指定周期内是否发生背离"
+DIVERGENCE.label = "DIVERGENCE"
+DIVERGENCE.insertText = ""
+DIVERGENCE.detail = "变量X1与X2在指定周期内是否发生背离"
 DIVERGENCE.tip = "DIVERGENCE(X1,X2,S,L,HL);变量X1与X2在指定周期内是否发生背离S:设置转折点两边需要的周期数；L:计算的总的范围的周期数HL为1，表示顶背离，HL为-1，表示底背离"
+DIVERGENCE.body = "DIVERGENCE(,,,,)"
 DIVERGENCE.type = 5
-DIVERGENCE.description = `
+DIVERGENCE.documentation = `
 DIVERGENCE(X1,X2,S,L,HL);变量X1与X2在指定周期内是否发生背离
 用法：
 S: 设置转折点两边需要的周期数，取值应小于L的四分之一;S不可以为变量； 
@@ -2219,11 +2397,13 @@ DIVERGENCE(C,MA10,2,20,1);//在20个周期内，收盘价与10周期均线存在
 `
 
 const DIVIDEND = new MyFunc()
-DIVIDEND.body = "DIVIDEND()"
-DIVIDEND.explanation = "返回之前第N次派息的每股派息数量"
+DIVIDEND.label = "DIVIDEND"
+DIVIDEND.insertText = ""
+DIVIDEND.detail = "返回之前第N次派息的每股派息数量"
 DIVIDEND.tip = "DIVIDEND(N)返回之前第N次派息的每股派息数量"
+DIVIDEND.body = "DIVIDEND()"
 DIVIDEND.type = 15
-DIVIDEND.description = `
+DIVIDEND.documentation = `
 DIVIDEND(N) 返回之前第N次派息的每股派息数量。
 
 用法：
@@ -2240,11 +2420,13 @@ DIVIDEND(N) 返回之前第N次派息的每股派息数量。
 `
 
 const DIVIDENDBARS = new MyFunc()
-DIVIDENDBARS.body = "DIVIDENDBARS()"
-DIVIDENDBARS.explanation = "返回从之前第N个派息日到当前的周期数"
+DIVIDENDBARS.label = "DIVIDENDBARS"
+DIVIDENDBARS.insertText = ""
+DIVIDENDBARS.detail = "返回从之前第N个派息日到当前的周期数"
 DIVIDENDBARS.tip = "DIVIDENDBARS(N)返回从之前第N次派息到当前的周期数"
+DIVIDENDBARS.body = "DIVIDENDBARS()"
 DIVIDENDBARS.type = 15
-DIVIDENDBARS.description = `
+DIVIDENDBARS.documentation = `
 DIVIDENDBARS(N) 返回从之前第N个派息日到当前的周期数。
 
 用法：
@@ -2259,11 +2441,13 @@ DIVIDENDBARS(N) 返回从之前第N个派息日到当前的周期数。
 `
 
 const DMA = new MyFunc()
-DMA.body = "DMA( , )"
-DMA.explanation = "动态移动平均"
+DMA.label = "DMA"
+DMA.insertText = ""
+DMA.detail = "动态移动平均"
 DMA.tip = "DMA(X,A),求X的动态移动平均。A必须小于1大于0"
+DMA.body = "DMA( , )"
 DMA.type = 2
-DMA.description = `
+DMA.documentation = `
 DMA(X,A)：求X的动态移动平均，其中A必须小于1大于0。
 注：
 1、A可以为变量
@@ -2276,11 +2460,13 @@ DMA3:=DMA(C,0.3);//计算结果为REF(DMA3,1)*(1-0.3)+C*0.3
 `
 
 const DOT = new MyFunc()
-DOT.body = "DOT"
-DOT.explanation = "画点线"
+DOT.label = "DOT"
+DOT.insertText = ""
+DOT.detail = "画点线"
 DOT.tip = "DOT,画点线"
+DOT.body = "DOT"
 DOT.type = 8
-DOT.description = `
+DOT.documentation = `
 画点线。
 用法：
 DOT 画点线。
@@ -2290,11 +2476,13 @@ DOT 画点线。
 `
 
 const DRAWBARLINE = new MyFunc()
-DRAWBARLINE.body = "DRAWBARLINE(,,,)"
-DRAWBARLINE.explanation = "绘制BAR线（美国线）"
+DRAWBARLINE.label = "DRAWBARLINE"
+DRAWBARLINE.insertText = ""
+DRAWBARLINE.detail = "绘制BAR线（美国线）"
 DRAWBARLINE.tip = "DRAWBARLINE(H1,O1,L1,C1);在L1到H1之间绘制柱线，在O1位置绘制左侧横线，在C1位置绘制右侧横线"
+DRAWBARLINE.body = "DRAWBARLINE(,,,)"
 DRAWBARLINE.type = 8
-DRAWBARLINE.description = `
+DRAWBARLINE.documentation = `
 DRAWBARLINE(H1,O1,L1,C1);绘制BAR线（美国线）
 用法：
 在L1到H1之间绘制柱线，在O1位置绘制左侧横线，在C1位置绘制右侧横线。
@@ -2307,11 +2495,13 @@ DRAWBARLINE(H,O,L,C); //在最高价和最低价之间绘制BAR线，在开盘�
 `
 
 const DRAWBKBMP = new MyFunc()
-DRAWBKBMP.body = "DRAWBKBMP( , )"
-DRAWBKBMP.explanation = "设置背景图片"
+DRAWBKBMP.label = "DRAWBKBMP"
+DRAWBKBMP.insertText = ""
+DRAWBKBMP.detail = "设置背景图片"
 DRAWBKBMP.tip = "DRAWBKBMP(COND,IMAGE);设置背景图片"
+DRAWBKBMP.body = "DRAWBKBMP( , )"
 DRAWBKBMP.type = 8
-DRAWBKBMP.description = `
+DRAWBKBMP.documentation = `
 DRAWBKBMP(COND,IMAGE) 设置背景图片。
 
 用法：
@@ -2329,11 +2519,13 @@ DRAWBKBMP(CLOSE>OPEN,'壁纸20140410112435');//当最后一根K线为阳线时�
 `
 
 const DRAWBMP = new MyFunc()
-DRAWBMP.body = "DRAWBMP( , )"
-DRAWBMP.explanation = "输出图片"
+DRAWBMP.label = "DRAWBMP"
+DRAWBMP.insertText = ""
+DRAWBMP.detail = "输出图片"
 DRAWBMP.tip = "DRAWBMP(COND,DATA,IMAGE);满足条件COND时，输出图片IMAGE"
+DRAWBMP.body = "DRAWBMP( , )"
 DRAWBMP.type = 8
-DRAWBMP.description = `
+DRAWBMP.documentation = `
 输出图片。
 
 用法：
@@ -2353,11 +2545,13 @@ DRAWBMP(CLOSE>OPEN,H,'壁纸20140410112435.BMP');//当K线为阳线时，在K线
 `
 
 const DRAWCOLORKLINE = new MyFunc()
-DRAWCOLORKLINE.body = "DRAWCOLORKLINE"
-DRAWCOLORKLINE.explanation = "绘制K线"
+DRAWCOLORKLINE.label = "DRAWCOLORKLINE"
+DRAWCOLORKLINE.insertText = ""
+DRAWCOLORKLINE.detail = "绘制K线"
 DRAWCOLORKLINE.tip = "DRAWCOLORKLINE(Cond,Color,Empty);绘制K线"
+DRAWCOLORKLINE.body = "DRAWCOLORKLINE"
 DRAWCOLORKLINE.type = 8
-DRAWCOLORKLINE.description = `
+DRAWCOLORKLINE.documentation = `
 DRAWCOLORKLINE 满足Cond条件绘制K线。
 
 用法：
@@ -2373,11 +2567,13 @@ DRAWCOLORKLINE(C>O,COLORBLUE,0);//收盘价大于开盘价，用蓝色绘制实�
 `
 
 const DRAWCOLORLINE = new MyFunc()
-DRAWCOLORLINE.body = "DRAWCOLORLINE(,,,)"
-DRAWCOLORLINE.explanation = "根据条件画相应颜色的线"
+DRAWCOLORLINE.label = "DRAWCOLORLINE"
+DRAWCOLORLINE.insertText = ""
+DRAWCOLORLINE.detail = "根据条件画相应颜色的线"
 DRAWCOLORLINE.tip = "DRAWCOLORLINE（COND,DATA,COLOR1,COLOR2）;根据条件画相应颜色的线当满足COND时，DATA为COLOR1颜色的线，不满足COND时，DATA为COLOR2颜色的线"
+DRAWCOLORLINE.body = "DRAWCOLORLINE(,,,)"
 DRAWCOLORLINE.type = 8
-DRAWCOLORLINE.description = `
+DRAWCOLORLINE.documentation = `
 DRAWCOLORLINE(COND,DATA,COLOR1,COLOR2);根据条件画相应颜色的线
 
 用法：当满足COND时，DATA为COLOR1颜色的线，不满足COND时，DATA为COLOR2颜色的线
@@ -2394,11 +2590,13 @@ DRAWCOLORLINE(MA1>REF(MA1,1),MA1,COLORRED,COLORGREEN); //如果当根5日均线�
 `
 
 const DRAWCOLUMNCHART = new MyFunc()
-DRAWCOLUMNCHART.body = "DRAWCOLUMNCHART( , , )"
-DRAWCOLUMNCHART.explanation = "画双向柱形图"
+DRAWCOLUMNCHART.label = "DRAWCOLUMNCHART"
+DRAWCOLUMNCHART.insertText = ""
+DRAWCOLUMNCHART.detail = "画双向柱形图"
 DRAWCOLUMNCHART.tip = "DRAWCOLUMNCHART(X,C1,C2)，X表示柱高,C1判断柱的方向,C2判断柱的颜色C1条件满足时从0轴向上画柱，不满足时从0轴向下画柱，C2条件满足时柱为红色，不满足时柱为青色"
+DRAWCOLUMNCHART.body = "DRAWCOLUMNCHART( , , )"
 DRAWCOLUMNCHART.type = 8
-DRAWCOLUMNCHART.description = `
+DRAWCOLUMNCHART.documentation = `
 DRAWCOLUMNCHART 画柱形图。
 
 用法：
@@ -2415,11 +2613,13 @@ DRAWCOLUMNCHART(10,C>O,C>O);//满足收阳条件从0轴向上10个高度画红�
 `
 
 const DRAWGBK = new MyFunc()
-DRAWGBK.body = "DRAWGBK(,,,)"
-DRAWGBK.explanation = "设置渐变背景色"
+DRAWGBK.label = "DRAWGBK"
+DRAWGBK.insertText = ""
+DRAWGBK.detail = "设置渐变背景色"
 DRAWGBK.tip = "DRAWGBK(COND,C1,C2,D);以C1至C2的渐变色填充背景,D指定渐变方向，0表示从左到右，1表示从上到下"
+DRAWGBK.body = "DRAWGBK(,,,)"
 DRAWGBK.type = 8
-DRAWGBK.description = `
+DRAWGBK.documentation = `
 DRAWGBK(COND,C1,C2,D) 设置渐变背景色。
 
 用法：
@@ -2440,11 +2640,13 @@ DRAWGBK(CLOSE>OPEN,COLORRED,COLORGREEN,1);//当最后一根K线为阳线时，�
 `
 
 const DRAWGBK1 = new MyFunc()
-DRAWGBK1.body = "DRAWGBK1(,)"
-DRAWGBK1.explanation = "设置满足条件K线的背景颜色"
+DRAWGBK1.label = "DRAWGBK1"
+DRAWGBK1.insertText = ""
+DRAWGBK1.detail = "设置满足条件K线的背景颜色"
 DRAWGBK1.tip = "DRAWGBK1(COND,COLOR)当条件COND成立时，以K线宽度、COLOR颜色填充背景区域，高度为整个显示区域的最高到最低"
+DRAWGBK1.body = "DRAWGBK1(,)"
 DRAWGBK1.type = 8
-DRAWGBK1.description = `
+DRAWGBK1.documentation = `
 DRAWGBK1(COND,COLOR) 设置满足条件K线的背景颜色。
 
 用法：
@@ -2463,11 +2665,13 @@ DRAWGBK1(C>MA5,COLORRED);//表示在收盘价大于5周期均线的k线对应背
 `
 
 const DRAWICON = new MyFunc()
-DRAWICON.body = "DRAWICON( , , )"
-DRAWICON.explanation = "画图标"
+DRAWICON.label = "DRAWICON"
+DRAWICON.insertText = ""
+DRAWICON.detail = "画图标"
 DRAWICON.tip = "DRAWICON(COND,PRICE,ICON),当条件COND满足时,在PRICE位置画图标ICONICON图标用'ICO1'~'ICO105'表示"
+DRAWICON.body = "DRAWICON( , , )"
 DRAWICON.type = 8
-DRAWICON.description = `
+DRAWICON.documentation = `
 DRAWICON：绘制小图标。
 
 用法：
@@ -2492,11 +2696,13 @@ DRAWICON(C>MA5,MA5,2),ALIGN0,VALIGN0;//表示在收盘价大于5周期均线的k
 `
 
 const DRAWKLINE = new MyFunc()
-DRAWKLINE.body = "DRAWKLINE( , , , , )"
-DRAWKLINE.explanation = "绘制K线"
+DRAWKLINE.label = "DRAWKLINE"
+DRAWKLINE.insertText = ""
+DRAWKLINE.detail = "绘制K线"
 DRAWKLINE.tip = "DRAWKLINE(WidthRatio,COLOR1,EMPTY1,COLOR2,EMPTY2)按照宽度比例WidthRatio画线（WidthRadio从0到1），阳线以COLOR1和EMPTY1判断阴线以COLOR2和EMPTY2判断。（COLOR1、COLOR2代表颜色，Empty非0为空心）"
+DRAWKLINE.body = "DRAWKLINE( , , , , )"
 DRAWKLINE.type = 8
-DRAWKLINE.description = `
+DRAWKLINE.documentation = `
 DRAWKLINE 自定义K线颜色、实空心及宽度绘制K线。
 
 用法：
@@ -2514,11 +2720,13 @@ DRAWKLINE(0.5,COLORYELLOW,0,COLORBLUE,1);//绘制K线宽度比例为0.5,阳线�
 `
 
 const DRAWKLINE1 = new MyFunc()
-DRAWKLINE1.body = "DRAWKLINE1( , , , )"
-DRAWKLINE1.explanation = "绘制K线"
+DRAWKLINE1.label = "DRAWKLINE1"
+DRAWKLINE1.insertText = ""
+DRAWKLINE1.detail = "绘制K线"
 DRAWKLINE1.tip = "DRAWKLINE1(H1,O1,L1,C1)以H1为最高价，L1为最低价，O1为开盘价，C1为收盘价绘制K线"
+DRAWKLINE1.body = "DRAWKLINE1( , , , )"
 DRAWKLINE1.type = 8
-DRAWKLINE1.description = `
+DRAWKLINE1.documentation = `
 DRAWKLINE1 自定义价格绘制K线。
 
 用法：
@@ -2539,11 +2747,13 @@ DRAWKLINE1(H1,O1,L1,C);//以昨日收盘价作为开盘价绘制K线
 `
 
 const DRAWKLINE2 = new MyFunc()
-DRAWKLINE2.body = "DRAWKLINE2( , , , , )"
-DRAWKLINE2.explanation = "绘制K线"
+DRAWKLINE2.label = "DRAWKLINE2"
+DRAWKLINE2.insertText = ""
+DRAWKLINE2.detail = "绘制K线"
 DRAWKLINE2.tip = "DRAWKLINE2(SET,COLOR1,EMPTY1,COLOR2,EMPTY2)绘制K线，黑色背景下，盘整时K线显示为黄色；白色背景下，盘整时K线显示为蓝色"
+DRAWKLINE2.body = "DRAWKLINE2( , , , , )"
 DRAWKLINE2.type = 8
-DRAWKLINE2.description = `
+DRAWKLINE2.documentation = `
 DRAWKLINE2 绘制盘整区间K线，盘整区间以外k线自定义。
 
 用法：
@@ -2563,11 +2773,13 @@ DRAWKLINE2(1,COLORRED,1,COLORCYAN,0);//处于盘整状态下的K线显示为黄�
 `
 
 const DRAWLASTBARICON = new MyFunc()
-DRAWLASTBARICON.body = "DRAWLASTBARICON( , )"
-DRAWLASTBARICON.explanation = "在最后一根k线绘制图标"
+DRAWLASTBARICON.label = "DRAWLASTBARICON"
+DRAWLASTBARICON.insertText = ""
+DRAWLASTBARICON.detail = "在最后一根k线绘制图标"
 DRAWLASTBARICON.tip = "DRAWLASTBARICON(PRICE,ICON)最后一根k线,在PRICE位置画图标ICON"
+DRAWLASTBARICON.body = "DRAWLASTBARICON( , )"
 DRAWLASTBARICON.type = 8
-DRAWLASTBARICON.description = `
+DRAWLASTBARICON.documentation = `
 DRAWLASTBARICON ：在最后一根k线绘制图标。
 
 用法：
@@ -2592,11 +2804,13 @@ DRAWLASTBARICON(MA5,2);//表示在最后一根k线对应的MA5数值位置上画
 `
 
 const DRAWLASTBARLINE = new MyFunc()
-DRAWLASTBARLINE.body = "DRAWLASTBARLINE(,,,,,,)"
-DRAWLASTBARLINE.explanation = "最后一根k线满足条件偏移周期画线"
+DRAWLASTBARLINE.label = "DRAWLASTBARLINE"
+DRAWLASTBARLINE.insertText = ""
+DRAWLASTBARLINE.detail = "最后一根k线满足条件偏移周期画线"
 DRAWLASTBARLINE.tip = "DRAWLASTBARLINE(C1,P1,X1,C2,P2,X2,EXP);最后一根k线满足条件C1时向左偏移X1个周期及最后一根k线满足条件C2时向左偏移X2个周期从P1向P2画线。EXP为0表示画线不延伸，EXP不为0表示画线延伸"
+DRAWLASTBARLINE.body = "DRAWLASTBARLINE(,,,,,,)"
 DRAWLASTBARLINE.type = 8
-DRAWLASTBARLINE.description = `
+DRAWLASTBARLINE.documentation = `
 DRAWLASTBARLINE 最后一根k线满足条件偏移周期绘制直线段
 
 用法：
@@ -2620,11 +2834,13 @@ DRAWLASTBARLINE(COD2,REF(L,2),2,COD1,REF(H,1),1,0),COLORRED;//最后一根k线�
 `
 
 const DRAWLASTBARNUMBER = new MyFunc()
-DRAWLASTBARNUMBER.body = "DRAWLASTBARNUMBER( , , ,)"
-DRAWLASTBARNUMBER.explanation = "在最后一根k线输出数值"
+DRAWLASTBARNUMBER.label = "DRAWLASTBARNUMBER"
+DRAWLASTBARNUMBER.insertText = ""
+DRAWLASTBARNUMBER.detail = "在最后一根k线输出数值"
 DRAWLASTBARNUMBER.tip = "DRAWLASTBARNUMBER(DATA,NUMBER,PRECISION,COLOR);最后一根k线,在DATA位置写数字NUMBER"
+DRAWLASTBARNUMBER.body = "DRAWLASTBARNUMBER( , , ,)"
 DRAWLASTBARNUMBER.type = 8
-DRAWLASTBARNUMBER.description = `
+DRAWLASTBARNUMBER.documentation = `
 DRAWLASTBARNUMBER：在最后一根k线输出数值。
 
 用法：
@@ -2642,11 +2858,13 @@ DRAWLASTBARNUMBER(L,REF(C,1),2,COLORRED),ALIGN0,VALIGN0;//表示最后一根k线
 `
 
 const DRAWLASTBARTEXT = new MyFunc()
-DRAWLASTBARTEXT.body = "DRAWLASTBARTEXT( , )"
-DRAWLASTBARTEXT.explanation = "在最后一根k线显示文字"
+DRAWLASTBARTEXT.label = "DRAWLASTBARTEXT"
+DRAWLASTBARTEXT.insertText = ""
+DRAWLASTBARTEXT.detail = "在最后一根k线显示文字"
 DRAWLASTBARTEXT.tip = "DRAWLASTBARTEXT(PRICE,TEXT)最后一根k线,在PRICE位置书写文字TEXT"
+DRAWLASTBARTEXT.body = "DRAWLASTBARTEXT( , )"
 DRAWLASTBARTEXT.type = 8
-DRAWLASTBARTEXT.description = `
+DRAWLASTBARTEXT.documentation = `
 DRAWLASTBARTEXT：在最后一根k线显示文字。
 
 用法：
@@ -2665,11 +2883,13 @@ DRAWLASTBARTEXT(LOW,'低'),ALIGN0,FONTSIZE16,COLORRED;//在最后一根k线，�
 `
 
 const DRAWLINE = new MyFunc()
-DRAWLINE.body = "DRAWLINE( , , , , )"
-DRAWLINE.explanation = "画线"
+DRAWLINE.label = "DRAWLINE"
+DRAWLINE.insertText = ""
+DRAWLINE.detail = "画线"
 DRAWLINE.tip = "DRAWLINE(C1,P1,C2,P2,COLOR)满足条件C1时及C2时从P1向P2画线"
+DRAWLINE.body = "DRAWLINE( , , , , )"
 DRAWLINE.type = 8
-DRAWLINE.description = `
+DRAWLINE.documentation = `
 DRAWLINE 绘制直线段。
 
 用法：
@@ -2693,11 +2913,13 @@ DRAWLINE(ISUP,C,ISUP,H,COLORRED),LINETHICK7;//表示当前k线收阳时，从收
 `
 
 const DRAWLINE1 = new MyFunc()
-DRAWLINE1.body = "DRAWLINE1( , , , , )"
-DRAWLINE1.explanation = "画线"
+DRAWLINE1.label = "DRAWLINE1"
+DRAWLINE1.insertText = ""
+DRAWLINE1.detail = "画线"
 DRAWLINE1.tip = "DRAWLINE1(C1,P1,C2,P2,EXP)满足条件C1时及该K线后最近一个满足C2时从P1向P2画线。EXP为画线0不延伸，EXP不为0画线延伸"
+DRAWLINE1.body = "DRAWLINE1( , , , , )"
 DRAWLINE1.type = 8
-DRAWLINE1.description = `
+DRAWLINE1.documentation = `
 DRAWLINE1 绘制直线段。
 
 用法：
@@ -2718,11 +2940,13 @@ DRAWLINE1(ISUP,H,ISDOWN,L,0),COLORBLUE,LINETHICK7;//表示在阳线的最高价�
 `
 
 const DRAWLINE2 = new MyFunc()
-DRAWLINE2.body = "DRAWLINE2( , , , , )"
-DRAWLINE2.explanation = "画线"
+DRAWLINE2.label = "DRAWLINE2"
+DRAWLINE2.insertText = ""
+DRAWLINE2.detail = "画线"
 DRAWLINE2.tip = "DRAWLINE2(C1,P1,C2,P2,EXP)满足条件C1时及之后最后一次满足C2时从P1向P2画线。EXP为画线0不延伸，EXP不为0画线延伸"
+DRAWLINE2.body = "DRAWLINE2( , , , , )"
 DRAWLINE2.type = 8
-DRAWLINE2.description = `
+DRAWLINE2.documentation = `
 DRAWLINE2 绘制直线段。
 
 用法：
@@ -2743,11 +2967,13 @@ DRAWLINE2(ISUP,H,ISDOWN,L,0),COLORBLUE,LINETHICK7;//表示在阳线的最高价�
 `
 
 const DRAWLINE3 = new MyFunc()
-DRAWLINE3.body = "DRAWLINE3(,,,,,,)"
-DRAWLINE3.explanation = "偏移周期画线"
+DRAWLINE3.label = "DRAWLINE3"
+DRAWLINE3.insertText = ""
+DRAWLINE3.detail = "偏移周期画线"
 DRAWLINE3.tip = "DRAWLINE3(C1,P1,X1,C2,P2,X2,EXP);满足条件C1时向左偏移X1个周期及满足条件C2时向左偏移X2个周期从P1向P2画线。EXP为0表示画线不延伸，EXP不为0表示画线延伸"
+DRAWLINE3.body = "DRAWLINE3(,,,,,,)"
 DRAWLINE3.type = 8
-DRAWLINE3.description = `
+DRAWLINE3.documentation = `
 DRAWLINE3 偏移周期绘制直线段
 
 用法：
@@ -2775,11 +3001,13 @@ DRAWLINE3(COD2,REF(L,2),2,COD1,REF(H,2),2,0),COLORRED;//满足COD2时向左偏�
 `
 
 const DRAWNUMBER = new MyFunc()
-DRAWNUMBER.body = "DRAWNUMBER( , , , , )"
-DRAWNUMBER.explanation = "写数字"
+DRAWNUMBER.label = "DRAWNUMBER"
+DRAWNUMBER.insertText = ""
+DRAWNUMBER.detail = "写数字"
 DRAWNUMBER.tip = "DRAWNUMBER(COND,DATA,NUMBER,PRECISION,COLOR)当条件COND满足时在DATA位置写数字NUMBERPRECISION为精度（小数点后有几位数字）。COLOR为颜色"
+DRAWNUMBER.body = "DRAWNUMBER( , , , , )"
 DRAWNUMBER.type = 8
-DRAWNUMBER.description = `
+DRAWNUMBER.documentation = `
 DRAWNUMBER：输出数值。
 
 用法：
@@ -2797,11 +3025,13 @@ DRAWNUMBER(DATE<>REF(DATE,1),L,REF(C,1),2,COLORRED),ALIGN0,VALIGN0;//表示在�
 `
 
 const DRAWNUMBER1 = new MyFunc()
-DRAWNUMBER1.body = "DRAWNUMBER1( , , , )"
-DRAWNUMBER1.explanation = "写数字"
+DRAWNUMBER1.label = "DRAWNUMBER1"
+DRAWNUMBER1.insertText = ""
+DRAWNUMBER1.detail = "写数字"
 DRAWNUMBER1.tip = "DRAWNUMBER1(COND,DATA,NUMBER,PRECISION)当条件满足时在DATA位置写数字NUMBER"
+DRAWNUMBER1.body = "DRAWNUMBER1( , , , )"
 DRAWNUMBER1.type = 8
-DRAWNUMBER1.description = `
+DRAWNUMBER1.documentation = `
 DRAWNUMBER1：输出数值。
 
 用法：
@@ -2820,11 +3050,13 @@ DRAWNUMBER1(DATE<>REF(DATE,1),L,REF(C,1),2),COLORRED,ALIGN0,VALIGN0;//表示在�
 `
 
 const DRAWSHIFTNUMBER = new MyFunc()
-DRAWSHIFTNUMBER.body = "DRAWSHIFTNUMBER( , , , , , , )"
-DRAWSHIFTNUMBER.explanation = "输出数值"
+DRAWSHIFTNUMBER.label = "DRAWSHIFTNUMBER"
+DRAWSHIFTNUMBER.insertText = ""
+DRAWSHIFTNUMBER.detail = "输出数值"
 DRAWSHIFTNUMBER.tip = "DRAWSHIFTNUMBER(COND,DATA,NUMBER,,PRECISION,COLOR,DIRECTION,X);当条件满足时在DATA位置写数字NUMBER。PRECISION为精度（小数点后有几位数字）。COLOR为颜色。DIRECTION为偏移的方向：0左1右,X为偏移的K线根数。"
+DRAWSHIFTNUMBER.body = "DRAWSHIFTNUMBER( , , , , , , )"
 DRAWSHIFTNUMBER.type = 8
-DRAWSHIFTNUMBER.description = `
+DRAWSHIFTNUMBER.documentation = `
 DRAWSHIFTNUMBER 输出数值
 
 用法：DRAWSHIFTNUMBER(COND,DATA,NUMBER,PRECISION,COLOR,DIRECTION,X);当条件满足时在DATA位置写数字NUMBER。PRECISION为精度（小数点后有几位数字）。COLOR为颜色。DIRECTION 为偏移的方向： 0 左 1右 , X 为偏移的K线根数。
@@ -2841,11 +3073,13 @@ DRAWSHIFTNUMBER(DATE<>REF(DATE,1),L,REF(C,1),2,COLORRED,1,1),ALIGN0,VALIGN0;//�
 `
 
 const DRAWSL = new MyFunc()
-DRAWSL.body = "DRAWSL( , , , , , )"
-DRAWSL.explanation = "画线（段）"
+DRAWSL.label = "DRAWSL"
+DRAWSL.insertText = ""
+DRAWSL.detail = "画线（段）"
 DRAWSL.tip = "DRAWSL(COND,DATA,SLOPE,LEN,EXPAND,COLOR),当条件满足时，在DATA数据处以每个周期相差SLOPE个价位作为斜率画LEN个周期长的线段"
+DRAWSL.body = "DRAWSL( , , , , , )"
 DRAWSL.type = 8
-DRAWSL.description = `
+DRAWSL.documentation = `
 DRAWSL 绘制直线（段）。
 
 用法：
@@ -2869,11 +3103,13 @@ DRAWSL(LOW=LLV(LOW,50),LOW,5,3,2,COLORRED),LINETHICK5;//表示当前最低价等
 `
 
 const DRAWSL1 = new MyFunc()
-DRAWSL1.body = "DRAWSL1( , , , , )"
-DRAWSL1.explanation = "画线（段）"
+DRAWSL1.label = "DRAWSL1"
+DRAWSL1.insertText = ""
+DRAWSL1.detail = "画线（段）"
 DRAWSL1.tip = "DRAWSL1(COND,DATA,SLOPE,LEN,EXPAND),当条件满足时，在DATA数据处以每个周期相差SLOPE个价位作为斜率画LEN个周期长的线段"
+DRAWSL1.body = "DRAWSL1( , , , , )"
 DRAWSL1.type = 8
-DRAWSL1.description = `
+DRAWSL1.documentation = `
 DRAWSL1 绘制直线（段）。
 
 用法：
@@ -2898,11 +3134,13 @@ DRAWSL1(LOW=LLV(LOW,50),LOW,5,3,1),COLORRED,LINETHICK5;//表示当前最低价�
 `
 
 const DRAWTEXT = new MyFunc()
-DRAWTEXT.body = "DRAWTEXT( , , )"
-DRAWTEXT.explanation = "显示文字"
+DRAWTEXT.label = "DRAWTEXT"
+DRAWTEXT.insertText = ""
+DRAWTEXT.detail = "显示文字"
 DRAWTEXT.tip = "DRAWTEXT(COND,PRICE,TEXT),当COND条件满足时,在PRICE位置书写文字TEXT"
+DRAWTEXT.body = "DRAWTEXT( , , )"
 DRAWTEXT.type = 8
-DRAWTEXT.description = `
+DRAWTEXT.documentation = `
 DRAWTEXT：显示文字。
 
 用法：
@@ -2925,12 +3163,14 @@ DRAWTEXT(L<=LLV(L,10),LOW,'新低'),ALIGN0,FONTSIZE16,COLORRED;//表示当根k�
 `
 
 const DRAWVALID = new MyFunc()
-DRAWVALID.body = "DRAWVALID()"
-DRAWVALID.explanation = "连接数据的有效值画折线"
-DRAWVALID.markettype = 1
+DRAWVALID.label = "DRAWVALID"
+DRAWVALID.insertText = ""
+DRAWVALID.detail = "连接数据的有效值画折线"
 DRAWVALID.tip = "DRAWVALID(DATA);连接DATA中的有效值画折线"
+DRAWVALID.body = "DRAWVALID()"
+DRAWVALID.markettype = 1
 DRAWVALID.type = 8
-DRAWVALID.description = `
+DRAWVALID.documentation = `
 DRAWVALID 连接数据的有效值画折线
 
 用法：
@@ -2941,11 +3181,13 @@ DRAWVALID(DATA);连接DATA中的有效值画折线
 `
 
 const DUALVOLUME = new MyFunc()
-DUALVOLUME.body = "DUALVOLUME( )"
-DUALVOLUME.explanation = "多空量函数"
+DUALVOLUME.label = "DUALVOLUME"
+DUALVOLUME.insertText = ""
+DUALVOLUME.detail = "多空量函数"
 DUALVOLUME.tip = "DUALVOLUME('M'),返回值代表一段时间内的（主动买-主动卖）的平均数值DUALVOLUME('N'),返回值代表主动买-主动卖的量差"
+DUALVOLUME.body = "DUALVOLUME( )"
 DUALVOLUME.type = 1
-DUALVOLUME.description = `
+DUALVOLUME.documentation = `
 DUALVOLUME 多空量函数
 
 该函数有两种用法：
@@ -2974,11 +3216,13 @@ DRAWCOLUMNCHART(N,SCALE>=0.5,M>=0);
 `
 
 const EMA = new MyFunc()
-EMA.body = "EMA( , )"
-EMA.explanation = "指数加权移动平均"
+EMA.label = "EMA"
+EMA.insertText = ""
+EMA.detail = "指数加权移动平均"
 EMA.tip = "EMA(X,N),求X的N日指数加权移动平均值"
+EMA.body = "EMA( , )"
 EMA.type = 2
-EMA.description = `
+EMA.documentation = `
 EMA(X,N)：求N周期X值的指数加权移动平均（平滑移动平均）。
 
 注：
@@ -2995,11 +3239,13 @@ EMA10:=EMA(C,10);//求收盘价10周期指数加权移动平均值
 `
 
 const EMA2 = new MyFunc()
-EMA2.body = "EMA2( , )"
-EMA2.explanation = "线性加权移动平均"
+EMA2.label = "EMA2"
+EMA2.insertText = ""
+EMA2.detail = "线性加权移动平均"
 EMA2.tip = "EMA2(X,N),求X的N个周期的线性加权平均值"
+EMA2.body = "EMA2( , )"
 EMA2.type = 2
-EMA2.description = `
+EMA2.documentation = `
 EMA2(X,N);//求N周期X值的线性加权移动平均(也称WMA)
 
 EMA2(X,N)=[N*X0+(N-1)*X1+(N-2)*X2+...+1*X(N-1)]/[N+(N-1)+(N-2)+...+1],X0表示本周期值，X1表示上一周期值 
@@ -3015,11 +3261,13 @@ EMA2(H,5);//求最高价在5个周期的线性加权移动平均值。
 `
 
 const EMAWH = new MyFunc()
-EMAWH.body = "EMAWH( , )"
-EMAWH.explanation = "指数加权移动平均"
+EMAWH.label = "EMAWH"
+EMAWH.insertText = ""
+EMAWH.detail = "指数加权移动平均"
 EMAWH.tip = "EMAWH（X,N),求X的N日指数加权移动平均值"
+EMAWH.body = "EMAWH( , )"
 EMAWH.type = 2
-EMAWH.description = `
+EMAWH.documentation = `
 EMAWH(C,N)，指数加权移动平均，也叫平滑移动平均，采用指数加权方法，对距离当前较近的K线赋予了较大的权重。
 注：
 1、当N为有效值，当前的k线数不足N根时，或者前面周期的取值仍作用于当前周期时，EMAWH返回值为空值
@@ -3034,12 +3282,14 @@ EMAWH用法同EMA(C,N)
 `
 
 const ENTRYSIG_PLACE = new MyFunc()
-ENTRYSIG_PLACE.body = "ENTRYSIG_PLACE()"
-ENTRYSIG_PLACE.explanation = "取指定开仓信号的K线位置"
-ENTRYSIG_PLACE.markettype = 1
+ENTRYSIG_PLACE.label = "ENTRYSIG_PLACE"
+ENTRYSIG_PLACE.insertText = ""
+ENTRYSIG_PLACE.detail = "取指定开仓信号的K线位置"
 ENTRYSIG_PLACE.tip = "ENTRYSIG_PLACE(N)取一次完整交易第N个开仓信号距离当前K线的位置。"
+ENTRYSIG_PLACE.body = "ENTRYSIG_PLACE()"
+ENTRYSIG_PLACE.markettype = 1
 ENTRYSIG_PLACE.type = 10
-ENTRYSIG_PLACE.description = `
+ENTRYSIG_PLACE.documentation = `
 ENTRYSIG_PLACE(N) 取一次完整交易中第N个开仓信号所在K线的位置。
 
 用法：ENTRYSIG_PLACE(N) 取一次完整交易中第N个开仓信号所在K线的位置。如果没有开仓信号，则该函数返回空值。
@@ -3057,12 +3307,14 @@ ENTRYSIG_PLACE(3)=5&&BKVOL>0,SP(BKVOL);//如果第3个开仓信号所在K线距�
 `
 
 const ENTRYSIG_PRICE = new MyFunc()
-ENTRYSIG_PRICE.body = "ENTRYSIG_PRICE()"
-ENTRYSIG_PRICE.explanation = "取指定开仓信号的价格"
-ENTRYSIG_PRICE.markettype = 1
+ENTRYSIG_PRICE.label = "ENTRYSIG_PRICE"
+ENTRYSIG_PRICE.insertText = ""
+ENTRYSIG_PRICE.detail = "取指定开仓信号的价格"
 ENTRYSIG_PRICE.tip = "ENTRYSIG_PRICE(N)取一次完整交易第N个开仓信号的价格。"
+ENTRYSIG_PRICE.body = "ENTRYSIG_PRICE()"
+ENTRYSIG_PRICE.markettype = 1
 ENTRYSIG_PRICE.type = 10
-ENTRYSIG_PRICE.description = `
+ENTRYSIG_PRICE.documentation = `
 ENTRYSIG_PRICE(N) 取一次完整交易中第N个开仓信号的价格。
 
 用法：ENTRYSIG_PRICE(N) 取一次完整交易中第N个开仓信号的价格。如果没有开仓信号，则该函数返回空值。
@@ -3082,12 +3334,14 @@ ENTRYSIG_PRICE(3)=3000&&BKVOL>0,SP(BKVOL);//如果第3个固定的开仓信号�
 `
 
 const ENTRYSIG_VOL = new MyFunc()
-ENTRYSIG_VOL.body = "ENTRYSIG_VOL()"
-ENTRYSIG_VOL.explanation = "取指定开仓信号的信号手数"
-ENTRYSIG_VOL.markettype = 1
+ENTRYSIG_VOL.label = "ENTRYSIG_VOL"
+ENTRYSIG_VOL.insertText = ""
+ENTRYSIG_VOL.detail = "取指定开仓信号的信号手数"
 ENTRYSIG_VOL.tip = "ENTRYSIG_VOL(N)取一次完整交易第N个开仓信号的信号手数。"
+ENTRYSIG_VOL.body = "ENTRYSIG_VOL()"
+ENTRYSIG_VOL.markettype = 1
 ENTRYSIG_VOL.type = 10
-ENTRYSIG_VOL.description = `
+ENTRYSIG_VOL.documentation = `
 ENTRYSIG_VOL(N) 取一次完整交易中第N个开仓信号的信号手数。
 
 用法：ENTRYSIG_VOL(N) 取一次完整交易中第N个开仓信号的信号手数。如果没有开仓信号，则该函数返回空值。
@@ -3106,11 +3360,13 @@ ENTRYSIG_PRICE(3)=3000&&ENTRYSIG_VOL(3)>2,SP(BKVOL);//如果第3个固定的开�
 `
 
 const EVERY = new MyFunc()
-EVERY.body = "EVERY( , )"
-EVERY.explanation = "判断是否持续满足"
+EVERY.label = "EVERY"
+EVERY.insertText = ""
+EVERY.detail = "判断是否持续满足"
 EVERY.tip = "EVERY(X,N),判断过去一定周期N内，是否一直满足条件X如果一直满足返回1，否则返回0"
+EVERY.body = "EVERY( , )"
 EVERY.type = 5
-EVERY.description = `
+EVERY.documentation = `
 EVERY(COND,N)，判断N周期内，是否一直满足COND条件。若满足函数返回值为1，不满足函数返回值为0；
 
 注：
@@ -3128,11 +3384,13 @@ EVERY(MA5>MA10,4),BK;//4个周期内MA5都大于MA10，则买开仓。
 `
 
 const EXIST = new MyFunc()
-EXIST.body = "EXIST( , )"
-EXIST.explanation = "判断是否存在满足"
+EXIST.label = "EXIST"
+EXIST.insertText = ""
+EXIST.detail = "判断是否存在满足"
 EXIST.tip = "EXIST(X,N),判断过去周期N内，是否有满足条件X如果有满足X条件的K线，返回1；如果没有满足X条件的K线，则返回0"
+EXIST.body = "EXIST( , )"
 EXIST.type = 5
-EXIST.description = `
+EXIST.documentation = `
 EXIST(COND,N) 判断N个周期内是否有满足COND的条件
 
 注:
@@ -3148,12 +3406,14 @@ EXIST(C>MA(C,5),N);// 表示当天是否有满足收盘价大于5周期均线的
 `
 
 const EXITSIG_PLACE = new MyFunc()
-EXITSIG_PLACE.body = "EXITSIG_PLACE()"
-EXITSIG_PLACE.explanation = "取指定平仓信号的K线位置"
-EXITSIG_PLACE.markettype = 1
+EXITSIG_PLACE.label = "EXITSIG_PLACE"
+EXITSIG_PLACE.insertText = ""
+EXITSIG_PLACE.detail = "取指定平仓信号的K线位置"
 EXITSIG_PLACE.tip = "EXITSIG_PLACE(N)取一次完整交易第N个平仓信号距离当前K线的位置。"
+EXITSIG_PLACE.body = "EXITSIG_PLACE()"
+EXITSIG_PLACE.markettype = 1
 EXITSIG_PLACE.type = 10
-EXITSIG_PLACE.description = `
+EXITSIG_PLACE.documentation = `
 EXITSIG_PLACE(N) 取一次完整交易中第N个平仓信号所在K线的位置。
 
 用法：EXITSIG_PLACE(N) 取一次完整交易中第N个平仓信号所在K线的位置。如果没有平仓信号，则该函数返回空值。
@@ -3171,12 +3431,14 @@ EXITSIG_PLACE(3)=5&&BKVOL<=0,BK(2);//如果第3个平仓信号所在K线距离�
 `
 
 const EXITSIG_PRICE = new MyFunc()
-EXITSIG_PRICE.body = "EXITSIG_PRICE()"
-EXITSIG_PRICE.explanation = "取指定平仓信号的价格"
-EXITSIG_PRICE.markettype = 1
+EXITSIG_PRICE.label = "EXITSIG_PRICE"
+EXITSIG_PRICE.insertText = ""
+EXITSIG_PRICE.detail = "取指定平仓信号的价格"
 EXITSIG_PRICE.tip = "EXITSIG_PRICE(N)取一次完整交易第N个平仓信号的价格。"
+EXITSIG_PRICE.body = "EXITSIG_PRICE()"
+EXITSIG_PRICE.markettype = 1
 EXITSIG_PRICE.type = 10
-EXITSIG_PRICE.description = `
+EXITSIG_PRICE.documentation = `
 EXITSIG_PRICE(N) 取一次完整交易中第N个平仓信号的价格。
 
 用法：EXITSIG_PRICE(N) 取一次完整交易中第N个平仓信号的价格。如果没有平仓信号，则该函数返回空值。
@@ -3196,12 +3458,14 @@ EXITSIG_PRICE(3)=3000&&BKVOL>0,SP(BKVOL);//如果第3个固定的平仓信号的
 `
 
 const EXITSIG_VOL = new MyFunc()
-EXITSIG_VOL.body = "EXITSIG_VOL()"
-EXITSIG_VOL.explanation = "取指定平仓信号的信号手数"
-EXITSIG_VOL.markettype = 1
+EXITSIG_VOL.label = "EXITSIG_VOL"
+EXITSIG_VOL.insertText = ""
+EXITSIG_VOL.detail = "取指定平仓信号的信号手数"
 EXITSIG_VOL.tip = "EXITSIG_VOL(N)取一次完整交易第N个平仓信号的信号手数。"
+EXITSIG_VOL.body = "EXITSIG_VOL()"
+EXITSIG_VOL.markettype = 1
 EXITSIG_VOL.type = 10
-EXITSIG_VOL.description = `
+EXITSIG_VOL.documentation = `
 EXITSIG_VOL(N) 取一次完整交易中第N个平仓信号的信号手数。
 
 用法：EXITSIG_VOL(N) 取一次完整交易中第N个平仓信号的信号手数。如果没有平仓信号，则该函数返回空值。
@@ -3220,11 +3484,13 @@ EXITSIG_PRICE(3)=3000&&EXITSIG_VOL(3)>2,BK(2);//如果第3个固定的平仓信�
 `
 
 const EXP = new MyFunc()
-EXP.body = "EXP( )"
-EXP.explanation = "指数"
+EXP.label = "EXP"
+EXP.insertText = ""
+EXP.detail = "指数"
 EXP.tip = "EXP(X),求e的X次幂"
+EXP.body = "EXP( )"
 EXP.type = 4
-EXP.description = `
+EXP.documentation = `
 EXP(X)：求e的X次幂。
 
 例1：
@@ -3232,11 +3498,13 @@ C*EXP(0.01);//求收盘价乘以e的0.01次幂
 `
 
 const EXPIREDATE = new MyFunc()
-EXPIREDATE.body = "EXPIREDATE()"
-EXPIREDATE.explanation = "返回期货合约的最后交易日"
+EXPIREDATE.label = "EXPIREDATE"
+EXPIREDATE.insertText = ""
+EXPIREDATE.detail = "返回期货合约的最后交易日"
 EXPIREDATE.tip = "TIME0求当前周期自该日0点以来的秒数EXPIREDATE(CODE)返回期货合约的最后交易日,CODE为文华码"
+EXPIREDATE.body = "EXPIREDATE()"
 EXPIREDATE.type = 7
-EXPIREDATE.description = `
+EXPIREDATE.documentation = `
 EXPIREDATE(CODE) 返回期货合约的最后交易日。
 
 用法：EXPIREDATE(CODE);取得合约的最后交易日。CODE为文华码。
@@ -3256,12 +3524,14 @@ EXPIREDATE('');//加载到IF1406上返回值为140620。
 `
 
 const FEE = new MyFunc()
-FEE.body = "FEE"
-FEE.explanation = "手续费"
-FEE.markettype = 1
+FEE.label = "FEE"
+FEE.insertText = ""
+FEE.detail = "手续费"
 FEE.tip = "FEE返回当前合约的手续费"
+FEE.body = "FEE"
+FEE.markettype = 1
 FEE.type = 12
-FEE.description = `
+FEE.documentation = `
 FEE手续费
 
 用法：FEE返回当前合约的手续费，用于模型中资金、手数相关计算。
@@ -3277,11 +3547,13 @@ K:=MONEYTOT*0.2/(C*MARGIN*UNIT+FEE); //理论权益的20%可以开仓的手数�
 `
 
 const FILLRGN = new MyFunc()
-FILLRGN.body = "FILLRGN( , , , )"
-FILLRGN.explanation = "填充函数"
+FILLRGN.label = "FILLRGN"
+FILLRGN.insertText = ""
+FILLRGN.detail = "填充函数"
 FILLRGN.tip = "FILLRGN(COND,DATA1,DATA2,COLOR),当条件满足时，以颜色COLOR填充DATA1及DATA2之间形成的区域"
+FILLRGN.body = "FILLRGN( , , , )"
 FILLRGN.type = 8
-FILLRGN.description = `
+FILLRGN.documentation = `
 FILLRGN 条件满足时，填充某一区域。
 
 用法：
@@ -3301,11 +3573,13 @@ FILLRGN(MA5>MA10,MA5,MA10,COLORRED);//表示MA5>MA10时以红色填充MA5和MA10
 `
 
 const FILLRGN1 = new MyFunc()
-FILLRGN1.body = "FILLRGN1( , , )"
-FILLRGN1.explanation = "填充函数"
+FILLRGN1.label = "FILLRGN1"
+FILLRGN1.insertText = ""
+FILLRGN1.detail = "填充函数"
 FILLRGN1.tip = "FILLRGN1(COND,DATA1,DATA2),当条件满足时，填充DATA1及DATA2之间的区域"
+FILLRGN1.body = "FILLRGN1( , , )"
 FILLRGN1.type = 8
-FILLRGN1.description = `
+FILLRGN1.documentation = `
 FILLRGN1 条件满足时，填充某一区域。
 
 用法：
@@ -3328,11 +3602,13 @@ FILLRGN1(MA5>MA10,MA5,MA10),COLORRED;//表示MA5>MA10时以红色填充MA5和MA1
 `
 
 const FILTER = new MyFunc()
-FILTER.body = "FILTER( , )"
-FILTER.explanation = "过滤"
+FILTER.label = "FILTER"
+FILTER.insertText = ""
+FILTER.detail = "过滤"
 FILTER.tip = "FILTER(COND,N)当COND条件成立时，将其后N周期内的数据设置为0."
+FILTER.body = "FILTER( , )"
 FILTER.type = 5
-FILTER.description = `
+FILTER.documentation = `
 FILTER(COND,N) 当COND条件成立，将其后N周期内的数据设置为0.
 
 注：
@@ -3344,11 +3620,13 @@ FILTER(CLOSE>OPEN,3);// 查找阳线，3天内再次出现的阳线不被记录�
 `
 
 const FINANCE_DATA = new MyFunc()
-FINANCE_DATA.body = "FINANCE_DATA('')"
-FINANCE_DATA.explanation = "取某一股票合约的财务数据"
+FINANCE_DATA.label = "FINANCE_DATA"
+FINANCE_DATA.insertText = ""
+FINANCE_DATA.detail = "取某一股票合约的财务数据"
 FINANCE_DATA.tip = "FINANCE_DATA('')取某一股票合约的财务数据。"
+FINANCE_DATA.body = "FINANCE_DATA('')"
 FINANCE_DATA.type = 15
-FINANCE_DATA.description = `
+FINANCE_DATA.documentation = `
 FINANCE_DATA('') 取某一股票合约的财务数据。
 
 用法：
@@ -3417,11 +3695,13 @@ FINANCE_DATA('每股收益');//返回当前股票合约财务数据中每股收�
 `
 
 const FLOOR = new MyFunc()
-FLOOR.body = "FLOOR( )"
-FLOOR.explanation = "向下舍入"
+FLOOR.label = "FLOOR"
+FLOOR.insertText = ""
+FLOOR.detail = "向下舍入"
 FLOOR.tip = "FLOOR(A),取沿A数值减小方向最接近的整数"
+FLOOR.body = "FLOOR( )"
 FLOOR.type = 4
-FLOOR.description = `
+FLOOR.documentation = `
 FLOOR(A)：向数值减小方向舍入。
 
 注：
@@ -3438,10 +3718,12 @@ IFELSE(C-INTPART(C)>=0.5,CEILING(C,1),FLOOR(C));//对收盘价四舍五入后取
 `
 
 const FONTSIZE = new MyFunc()
+FONTSIZE.label = "FONTSIZE"
+FONTSIZE.insertText = ""
+FONTSIZE.detail = "设置字体大小"
 FONTSIZE.body = "FONTSIZE"
-FONTSIZE.explanation = "设置字体大小"
 FONTSIZE.type = 8
-FONTSIZE.description = `
+FONTSIZE.documentation = `
 设置字体大小。
 用法：
 FONTSIZEX，X为8至72，表示字体由小到大。
@@ -3455,11 +3737,13 @@ DRAWTEXT(C<O,L,'阴线'),ALIGN0,VALIGN2,FONTSIZE30;//收盘价小于开盘价，
 `
 
 const FORCAST = new MyFunc()
-FORCAST.body = "FORCAST( , )"
-FORCAST.explanation = "线性回归值"
+FORCAST.label = "FORCAST"
+FORCAST.insertText = ""
+FORCAST.detail = "线性回归值"
 FORCAST.tip = "FORCAST(X,N),求X的N周期线性回归预测值"
+FORCAST.body = "FORCAST( , )"
 FORCAST.type = 3
-FORCAST.description = `
+FORCAST.documentation = `
 FORCAST(X,N)：为X的N周期线性回归预测值。
 
 注：
@@ -3493,16 +3777,22 @@ FORCAST(CLOSE,5);//表示求5周期线性回归预测值
 `
 
 const FUNCTION_ORDER = new MyFunc()
+FUNCTION_ORDER.label = "FUNCTION_ORDER"
+FUNCTION_ORDER.insertText = ""
 
 const FUNCTION_TYPE = new MyFunc()
+FUNCTION_TYPE.label = "FUNCTION_TYPE"
+FUNCTION_TYPE.insertText = ""
 
 const GROUP = new MyFunc()
-GROUP.body = "GROUP()"
-GROUP.explanation = "判断分组的组别"
-GROUP.markettype = 1
+GROUP.label = "GROUP"
+GROUP.insertText = ""
+GROUP.detail = "判断分组的组别"
 GROUP.tip = "GROUP判断分组的组别"
+GROUP.body = "GROUP()"
+GROUP.markettype = 1
 GROUP.type = 10
-GROUP.description = `
+GROUP.documentation = `
 GROUP('group') 判断分组的组别。
 
 注：
@@ -3517,12 +3807,14 @@ LASTSIG=200&&LASTSIGGROUP=GROUP('B'),SP('B',BKVOL);//上一个信号是B组的BK
 `
 
 const GROUPBKPRICE = new MyFunc()
-GROUPBKPRICE.body = "GROUPBKPRICE"
-GROUPBKPRICE.explanation = "指令分组模型相应组别的最近一次买开信号价位"
-GROUPBKPRICE.markettype = 1
+GROUPBKPRICE.label = "GROUPBKPRICE"
+GROUPBKPRICE.insertText = ""
+GROUPBKPRICE.detail = "指令分组模型相应组别的最近一次买开信号价位"
 GROUPBKPRICE.tip = "GROUPBKPRICE('X'),X为指令分组组别，A-I返回分组指令X组最近一次模型买开位置的买开信号价位"
+GROUPBKPRICE.body = "GROUPBKPRICE"
+GROUPBKPRICE.markettype = 1
 GROUPBKPRICE.type = 10
-GROUPBKPRICE.description = `
+GROUPBKPRICE.documentation = `
 GROUPBKPRICE('letter') 指令分组模型letter组最近一次买开信号价位。
 
 用法：
@@ -3534,12 +3826,14 @@ BB:GROUPBKPRICE('A');//给BB赋值为A组指令中最近一次买开信号价位
 `
 
 const GROUPBKVOL = new MyFunc()
-GROUPBKVOL.body = "BKVOL"
-GROUPBKVOL.explanation = "指令分组模型买开信号手数"
-GROUPBKVOL.markettype = 1
+GROUPBKVOL.label = "GROUPBKVOL"
+GROUPBKVOL.insertText = ""
+GROUPBKVOL.detail = "指令分组模型买开信号手数"
 GROUPBKVOL.tip = "GROUPBKVOL('X'),X为指令分组组别，A-I取指令分组模型X组的模组多头持仓."
+GROUPBKVOL.body = "BKVOL"
+GROUPBKVOL.markettype = 1
 GROUPBKVOL.type = 10
-GROUPBKVOL.description = `
+GROUPBKVOL.documentation = `
 GROUPBKVOL('letter') 取指令分组模型letter组的买开信号手数。
 
 用法：
@@ -3561,12 +3855,14 @@ C<O,SP('B',GROUPBKVOL('B'));//K线收阴线，卖平所有的B组多头持仓
 `
 
 const GROUPSKPRICE = new MyFunc()
-GROUPSKPRICE.body = "GROUPSKPRICE"
-GROUPSKPRICE.explanation = "指令分组模型相应组别的最近一次卖开信号价位"
-GROUPSKPRICE.markettype = 1
+GROUPSKPRICE.label = "GROUPSKPRICE"
+GROUPSKPRICE.insertText = ""
+GROUPSKPRICE.detail = "指令分组模型相应组别的最近一次卖开信号价位"
 GROUPSKPRICE.tip = "GROUPSKPRICE('X'),X为指令分组组别，A-I,返回分组指令X组最近一次模型卖开位置的卖开信号价位"
+GROUPSKPRICE.body = "GROUPSKPRICE"
+GROUPSKPRICE.markettype = 1
 GROUPSKPRICE.type = 10
-GROUPSKPRICE.description = `
+GROUPSKPRICE.documentation = `
 GROUPSKPRICE('letter')  指令分组模型letter组最近一次卖开信号价位。
 
 用法：
@@ -3578,12 +3874,14 @@ SS:GROUPSKPRICE('B');//给SS赋值为B组指令中最近一次卖开信号价位
 `
 
 const GROUPSKVOL = new MyFunc()
-GROUPSKVOL.body = "GROUPSKVOL"
-GROUPSKVOL.explanation = "指令分组模型卖开信号手数"
-GROUPSKVOL.markettype = 1
+GROUPSKVOL.label = "GROUPSKVOL"
+GROUPSKVOL.insertText = ""
+GROUPSKVOL.detail = "指令分组模型卖开信号手数"
 GROUPSKVOL.tip = "GROUPSKVOL('X'),X为指令分组组别，A-I取指令分组模型X组的模组空头持仓."
+GROUPSKVOL.body = "GROUPSKVOL"
+GROUPSKVOL.markettype = 1
 GROUPSKVOL.type = 10
-GROUPSKVOL.description = `
+GROUPSKVOL.documentation = `
 GROUPSKVOL('letter') 取指令分组模型letter组的卖开信号手数。
 
 用法：
@@ -3605,11 +3903,13 @@ C>O,BP('B',GROUPSKVOL('B')); //K线收阳线，买平所有的B组空头持仓
 `
 
 const HARMEAN = new MyFunc()
-HARMEAN.body = "HARMEAN( , )"
-HARMEAN.explanation = "调和平均值"
+HARMEAN.label = "HARMEAN"
+HARMEAN.insertText = ""
+HARMEAN.detail = "调和平均值"
 HARMEAN.tip = "HARMEAN(X,N)求X在N个周期内的调和平均值"
+HARMEAN.body = "HARMEAN( , )"
 HARMEAN.type = 2
-HARMEAN.description = `
+HARMEAN.documentation = `
 HARMEAN(X,N) 求X在N个周期内的调和平均值。
 
 算法举例：HARMEAN(X,5)=1/[(1/X1+1/X2+1/X3+1/X4+1/X5)/5]
@@ -3627,12 +3927,14 @@ HM5:=HARMEAN(C,5);//求5周期收盘价的调和平均值。
 `
 
 const HASTRADEDATA = new MyFunc()
-HASTRADEDATA.body = "HASTRADEDATA"
-HASTRADEDATA.explanation = "判断数据合约当根K线交易合约是否有数据"
-HASTRADEDATA.markettype = 1
+HASTRADEDATA.label = "HASTRADEDATA"
+HASTRADEDATA.insertText = ""
+HASTRADEDATA.detail = "判断数据合约当根K线交易合约是否有数据"
 HASTRADEDATA.tip = "HASTRADEDATA判断数据合约当根K线交易合约是否有数据"
+HASTRADEDATA.body = "HASTRADEDATA"
+HASTRADEDATA.markettype = 1
 HASTRADEDATA.type = 5
-HASTRADEDATA.description = `
+HASTRADEDATA.documentation = `
 HASTRADEDATA  判断数据合约当根K线交易合约是否有数据
 
 用法：
@@ -3642,11 +3944,13 @@ HASTRADEDATA;
 `
 
 const HHV = new MyFunc()
-HHV.body = "HHV( , )"
-HHV.explanation = "最高值"
+HHV.label = "HHV"
+HHV.insertText = ""
+HHV.detail = "最高值"
 HHV.tip = "HHV(X,N),求X在N个周期内的最高值"
+HHV.body = "HHV( , )"
 HHV.type = 2
-HHV.description = `
+HHV.documentation = `
 HHV(X,N)：求X在N个周期内的最高值。
 
 注：
@@ -3664,11 +3968,13 @@ HH1:=HHV(H,N);//在分钟周期上，日内高点
 `
 
 const HHVBARS = new MyFunc()
-HHVBARS.body = "HHVBARS( , )"
-HHVBARS.explanation = "前一最高点位置"
+HHVBARS.label = "HHVBARS"
+HHVBARS.insertText = ""
+HHVBARS.detail = "前一最高点位置"
 HHVBARS.tip = "HHVBARS(X,N),求N周期内X最高值到当前周期数"
+HHVBARS.body = "HHVBARS( , )"
 HHVBARS.type = 2
-HHVBARS.description = `
+HHVBARS.documentation = `
 HHVBARS(X,N)： 求N周期内X最高值到当前周期数
 
 注：
@@ -3685,11 +3991,13 @@ ZHBARS:REF(HHVBARS(H,N),N)+N;//在分钟周期上，求昨天最高价所在的k
 `
 
 const HIGH = new MyFunc()
-HIGH.body = "HIGH"
-HIGH.explanation = "取得K线图的最高价"
+HIGH.label = "HIGH"
+HIGH.insertText = ""
+HIGH.detail = "取得K线图的最高价"
 HIGH.tip = "HIGH,取最高价"
+HIGH.body = "HIGH"
 HIGH.type = 1
-HIGH.description = `
+HIGH.documentation = `
 HIGH 取得K线图的最高价。
 
 注：
@@ -3704,11 +4012,13 @@ REF(H,1);//取的前一根K线的最高价
 `
 
 const HISEXPDATE = new MyFunc()
-HISEXPDATE.body = "HISEXPDATE"
-HISEXPDATE.explanation = "返回当前周期期货合约的最后交易日"
+HISEXPDATE.label = "HISEXPDATE"
+HISEXPDATE.insertText = ""
+HISEXPDATE.detail = "返回当前周期期货合约的最后交易日"
 HISEXPDATE.tip = "HISEXPDATE返回当前周期期货合约的最后交易日"
+HISEXPDATE.body = "HISEXPDATE"
 HISEXPDATE.type = 7
-HISEXPDATE.description = `
+HISEXPDATE.documentation = `
 HISEXPDATE 返回当前周期期货合约的最后交易日。
 
 用法：HISEXPDATE;取得当前周期期货合约的最后交易日。
@@ -3727,11 +4037,13 @@ B:EXPIREDATE('');//A和B的返回值一样。加载到IF1406上返回值为14062
 `
 
 const HISEXPDAYS = new MyFunc()
-HISEXPDAYS.body = "HISEXPDAYS"
-HISEXPDAYS.explanation = "返回当前周期期货合约距离最后交易日的天数"
+HISEXPDAYS.label = "HISEXPDAYS"
+HISEXPDAYS.insertText = ""
+HISEXPDAYS.detail = "返回当前周期期货合约距离最后交易日的天数"
 HISEXPDAYS.tip = "HISEXPDAYS返回当前周期期货合约距离最后交易日的天数"
+HISEXPDAYS.body = "HISEXPDAYS"
 HISEXPDAYS.type = 7
-HISEXPDAYS.description = `
+HISEXPDAYS.documentation = `
 HISEXPDAYS 返回当前周期期货合约距离最后交易日的天数。
 
 用法：HISEXPDAYS;取得当前周期期货合约距离最后交易日的天数。
@@ -3748,11 +4060,13 @@ A:=HISEXPDAYS=1&&CLOSEMINUTE=5;//定义变量A为最后交易日收盘前五分�
 `
 
 const HOLLOW = new MyFunc()
-HOLLOW.body = "HOLLOW"
-HOLLOW.explanation = "空心显示"
+HOLLOW.label = "HOLLOW"
+HOLLOW.insertText = ""
+HOLLOW.detail = "空心显示"
 HOLLOW.tip = "HOLLOW,画空心柱线"
+HOLLOW.body = "HOLLOW"
 HOLLOW.type = 8
-HOLLOW.description = `
+HOLLOW.documentation = `
 HOLLOW 空心显示。
 
 用法：
@@ -3766,11 +4080,13 @@ VOL,VOLUMESTICK,HOLLOW;//画成交量柱状线，柱线空心显示。
 `
 
 const HOUR = new MyFunc()
-HOUR.body = "HOUR"
-HOUR.explanation = "小时"
+HOUR.label = "HOUR"
+HOUR.insertText = ""
+HOUR.detail = "小时"
 HOUR.tip = "HOUR取某周期的小时（0-23）"
+HOUR.body = "HOUR"
 HOUR.type = 7
-HOUR.description = `
+HOUR.documentation = `
 HOUR，返回某周期的小时数。
 
 注：
@@ -3785,11 +4101,13 @@ HOUR=10;//在10:00的K线上返回值为1，其余K线上返回值为0。
 `
 
 const HV = new MyFunc()
-HV.body = "HV( , )"
-HV.explanation = "除当前K线外最高值"
+HV.label = "HV"
+HV.insertText = ""
+HV.detail = "除当前K线外最高值"
 HV.tip = "HV(X,N)求X在N个周期内的最高值(不包含当前K线)"
+HV.body = "HV( , )"
 HV.type = 2
-HV.description = `
+HV.documentation = `
 HV(X,N)： 求X在N个周期内（不包含当前k线）的最高值。
 
 注：
@@ -3809,11 +4127,13 @@ HV(H,5) 和 REF(HHV(H,5),1) 的结果是一样的，用HV编写更加方便。
 `
 
 const ICON = new MyFunc()
-ICON.body = "ICON( , )"
-ICON.explanation = "显示图标"
+ICON.label = "ICON"
+ICON.insertText = ""
+ICON.detail = "显示图标"
 ICON.tip = "ICON(TYPE,ICON),在k线图上，显示小图标当TYPE为1，则在K线最高价位置显示图标ICON当TYPE为0，则在K线最低价位置显示图标ICON"
+ICON.body = "ICON( , )"
 ICON.type = 8
-ICON.description = `
+ICON.documentation = `
 ICON函数 在k线图上，显示小图标。
 
 用法：ICON(TYPE,ICON);
@@ -3832,12 +4152,14 @@ CLOSE>OPEN,ICON(1,'ICO1');//表示K线收盘大于开盘时，在最高价上显
 `
 
 const IDLE = new MyFunc()
-IDLE.body = "IDLE()"
-IDLE.explanation = "限制开仓信号发出委托"
-IDLE.markettype = 1
+IDLE.label = "IDLE"
+IDLE.insertText = ""
+IDLE.detail = "限制开仓信号发出委托"
 IDLE.tip = "IDLE(CONE),限制开仓信号发出委托"
+IDLE.body = "IDLE()"
+IDLE.markettype = 1
 IDLE.type = 11
-IDLE.description = `
+IDLE.documentation = `
 IDLE(COND) 限制开仓信号发出委托
 
 用法：IDLE(COND)，当开仓信号发出时，如果COND条件成立，该信号不委托。IDLE函数对平仓信号不起作用，有持仓时即使满足COND也可以平仓。
@@ -3870,11 +4192,13 @@ AUTOFILTER;
 `
 
 const IF = new MyFunc()
-IF.body = "IF( , , )"
-IF.explanation = "条件函数"
+IF.label = "IF"
+IF.insertText = ""
+IF.detail = "条件函数"
 IF.tip = "IF(X,A,B),若满足条件X则取A，否则取B"
+IF.body = "IF( , , )"
 IF.type = 5
-IF.description = `
+IF.documentation = `
 IF(COND,A,B) 若COND条件成立，则返回A，否则返回B
 
 注：
@@ -3889,11 +4213,13 @@ A=2,SPK;//当MA5不大于MA10，以K、D死叉作为开空仓条件
 `
 
 const IFELSE = new MyFunc()
-IFELSE.body = "IFELSE( , , )"
-IFELSE.explanation = "条件函数"
+IFELSE.label = "IFELSE"
+IFELSE.insertText = ""
+IFELSE.detail = "条件函数"
 IFELSE.tip = "IFELSE(X,A,B),若满足条件X则取A，否则取B"
+IFELSE.body = "IFELSE( , , )"
 IFELSE.type = 5
-IFELSE.description = `
+IFELSE.documentation = `
 IFELSE(COND,A,B) 若COND条件成立，则返回A，否则返回B
 
 注：
@@ -3908,11 +4234,13 @@ A=2,SPK;//当MA5不大于MA10，以K、D死叉作为开空仓条件
 `
 
 const IMPLIEDVOLATILITY = new MyFunc()
-IMPLIEDVOLATILITY.body = "IMPLIEDVOLATILITY"
-IMPLIEDVOLATILITY.explanation = "取期权隐含波动率"
+IMPLIEDVOLATILITY.label = "IMPLIEDVOLATILITY"
+IMPLIEDVOLATILITY.insertText = ""
+IMPLIEDVOLATILITY.detail = "取期权隐含波动率"
 IMPLIEDVOLATILITY.tip = "IMPLIEDVOLATILITY，取期权隐含波动率"
+IMPLIEDVOLATILITY.body = "IMPLIEDVOLATILITY"
 IMPLIEDVOLATILITY.type = 1
-IMPLIEDVOLATILITY.description = `
+IMPLIEDVOLATILITY.documentation = `
 IMPLIEDVOLATILITY  取期权隐含波动率
 
 原理：
@@ -3930,12 +4258,14 @@ AA:IMPLIEDVOLATILITY;//AA返回期权的隐含波动率。
 `
 
 const INITMONEY = new MyFunc()
-INITMONEY.body = "INITMONEY"
-INITMONEY.explanation = "初次加载时的起始资金"
-INITMONEY.markettype = 1
+INITMONEY.label = "INITMONEY"
+INITMONEY.insertText = ""
+INITMONEY.detail = "初次加载时的起始资金"
 INITMONEY.tip = "INITMONEY,返回初次加载时的起始资金"
+INITMONEY.body = "INITMONEY"
+INITMONEY.markettype = 1
 INITMONEY.type = 12
-INITMONEY.description = `
+INITMONEY.documentation = `
 INITMONEY 初次加载时的起始资金
 
 用法：INITMONEY 返回初次加载时的起始资金。
@@ -3952,11 +4282,13 @@ K:=INITMONEY*0.2/(C*MARGIN*UNIT+FEE); //初始资金的20%可以开仓的手数�
 `
 
 const INTPART = new MyFunc()
-INTPART.body = "INTPART( )"
-INTPART.explanation = "取整"
+INTPART.label = "INTPART"
+INTPART.insertText = ""
+INTPART.detail = "取整"
 INTPART.tip = "INTPART(X),取X的整数部分"
+INTPART.body = "INTPART( )"
 INTPART.type = 4
-INTPART.description = `
+INTPART.documentation = `
 INTPART(X)：取X的整数部分。
 
 例1：
@@ -3970,11 +4302,13 @@ INTPART(C);//求收盘价的整数部分。
 `
 
 const ISCONTRACT = new MyFunc()
-ISCONTRACT.body = "ISCONTRACT()"
-ISCONTRACT.explanation = "当前是否为指定的合约"
+ISCONTRACT.label = "ISCONTRACT"
+ISCONTRACT.insertText = ""
+ISCONTRACT.detail = "当前是否为指定的合约"
 ISCONTRACT.tip = "ISCONTRACT('CODE')当前是否为指定的合约"
+ISCONTRACT.body = "ISCONTRACT()"
 ISCONTRACT.type = 5
-ISCONTRACT.description = `
+ISCONTRACT.documentation = `
 ISCONTRACT() 当前是否为指定的合约。
 
 用法：ISCONTRACT('CODE');是当前合约返回1，不是当前合约返回0。
@@ -3991,12 +4325,14 @@ ISCONTRACT('沪铜');//加载到沪铜合约上返回值为1，加载到非沪�
 `
 
 const ISDELIVERYDAY = new MyFunc()
-ISDELIVERYDAY.body = "ISDELIVERYDAY"
-ISDELIVERYDAY.explanation = "判断该周期是不是最后交易日"
-ISDELIVERYDAY.markettype = 1
+ISDELIVERYDAY.label = "ISDELIVERYDAY"
+ISDELIVERYDAY.insertText = ""
+ISDELIVERYDAY.detail = "判断该周期是不是最后交易日"
 ISDELIVERYDAY.tip = "ISDELIVERYDAY,判断当根k线是否是最后交易日"
+ISDELIVERYDAY.body = "ISDELIVERYDAY"
+ISDELIVERYDAY.markettype = 1
 ISDELIVERYDAY.type = 5
-ISDELIVERYDAY.description = `
+ISDELIVERYDAY.documentation = `
 ISDELIVERYDAY 判断该周期是否是最后交易日。当前k线是最后交易日则返回1(Yes)，否则返回0(No)
 
 注：
@@ -4009,11 +4345,13 @@ ISDELIVERYDAY=1&&TIME>=1000,CLOSEOUT;//当根k线是最后交易日并且时间�
 `
 
 const ISDOWN = new MyFunc()
-ISDOWN.body = "ISDOWN"
-ISDOWN.explanation = "阴线"
+ISDOWN.label = "ISDOWN"
+ISDOWN.insertText = ""
+ISDOWN.detail = "阴线"
 ISDOWN.tip = "ISDOWN,判断该周期是否收阴。如果为阴线返回1，否则返回0"
+ISDOWN.body = "ISDOWN"
 ISDOWN.type = 5
-ISDOWN.description = `
+ISDOWN.documentation = `
 ISDOWN 判断该周期是否收阴
 
 注：
@@ -4025,11 +4363,13 @@ ISDOWN=1&&C<REF(C,1),SK;//当根k线收阴并且收盘价小于前一周期收�
 `
 
 const ISEQUAL = new MyFunc()
-ISEQUAL.body = "ISEQUAL"
-ISEQUAL.explanation = "平盘"
+ISEQUAL.label = "ISEQUAL"
+ISEQUAL.insertText = ""
+ISEQUAL.detail = "平盘"
 ISEQUAL.tip = "ISEQUAL,判断该周期是否平盘，如果K线为平盘返回1，否则返回0"
+ISEQUAL.body = "ISEQUAL"
 ISEQUAL.type = 5
-ISEQUAL.description = `
+ISEQUAL.documentation = `
 ISEQUAL 判断该周期是否平盘
 
 注：
@@ -4040,11 +4380,13 @@ EVERY(ISEQUAL=1,2),CLOSEOUT;//持续2根k线都是平盘，则全平。
 `
 
 const ISLASTBAR = new MyFunc()
-ISLASTBAR.body = "ISLASTBAR"
-ISLASTBAR.explanation = "判断该周期是否为最后一根K线"
+ISLASTBAR.label = "ISLASTBAR"
+ISLASTBAR.insertText = ""
+ISLASTBAR.detail = "判断该周期是否为最后一根K线"
 ISLASTBAR.tip = "ISLASTBAR,判断是否是最后一个K线，如果为最后一根K线返回1，否则返回0"
+ISLASTBAR.body = "ISLASTBAR"
 ISLASTBAR.type = 8
-ISLASTBAR.description = `
+ISLASTBAR.documentation = `
 ISLASTBAR 判断该周期是否为最后一根k线。
 
 注：
@@ -4055,12 +4397,14 @@ DRAWNUMBER(ISLASTBAR=1,HIGH,CLOSE,0,COLORRED);//当前k线是最后一根k线，
 `
 
 const ISLASTBK = new MyFunc()
-ISLASTBK.body = "ISLASTBK"
-ISLASTBK.explanation = "判断上一个信号是否是BK"
-ISLASTBK.markettype = 1
+ISLASTBK.label = "ISLASTBK"
+ISLASTBK.insertText = ""
+ISLASTBK.detail = "判断上一个信号是否是BK"
 ISLASTBK.tip = "ISLASTBK，判断上一个指令是否是买开"
+ISLASTBK.body = "ISLASTBK"
+ISLASTBK.markettype = 1
 ISLASTBK.type = 10
-ISLASTBK.description = `
+ISLASTBK.documentation = `
 ISLASTBK 判断上一个交易信号是否是BK。
 
 用法：
@@ -4079,12 +4423,14 @@ AUTOFILTER;//上一个信号是BK信号，且最新价大于开仓价格，卖�
 `
 
 const ISLASTBP = new MyFunc()
-ISLASTBP.body = "ISLASTBP"
-ISLASTBP.explanation = "判断上一个信号是否是BP"
-ISLASTBP.markettype = 1
+ISLASTBP.label = "ISLASTBP"
+ISLASTBP.insertText = ""
+ISLASTBP.detail = "判断上一个信号是否是BP"
 ISLASTBP.tip = "ISLASTBP，判断上一个指令是否是买平"
+ISLASTBP.body = "ISLASTBP"
+ISLASTBP.markettype = 1
 ISLASTBP.type = 10
-ISLASTBP.description = `
+ISLASTBP.documentation = `
 ISLASTBP 判断上一个交易信号是否是BP。
 
 用法：
@@ -4101,12 +4447,14 @@ ISLASTBP,BP(1);//上一个信号是买平仓信号，则减仓一手
 `
 
 const ISLASTBPK = new MyFunc()
-ISLASTBPK.body = "ISLASTBPK"
-ISLASTBPK.explanation = "判断上一个信号是否是BPK"
-ISLASTBPK.markettype = 1
+ISLASTBPK.label = "ISLASTBPK"
+ISLASTBPK.insertText = ""
+ISLASTBPK.detail = "判断上一个信号是否是BPK"
 ISLASTBPK.tip = "ISLASTBPK，判断上一个指令是否是买平开"
+ISLASTBPK.body = "ISLASTBPK"
+ISLASTBPK.markettype = 1
 ISLASTBPK.type = 10
-ISLASTBPK.description = `
+ISLASTBPK.documentation = `
 ISLASTBPK判断上一个交易信号是否是BPK。
 
 用法：
@@ -4125,12 +4473,14 @@ AUTOFILTER;//上一个信号是BPK信号，则反手SPK
 `
 
 const ISLASTBUY = new MyFunc()
-ISLASTBUY.body = "ISLASTBUY"
-ISLASTBUY.explanation = "判断上一个交易信号是否是BUY"
-ISLASTBUY.markettype = 2
+ISLASTBUY.label = "ISLASTBUY"
+ISLASTBUY.insertText = ""
+ISLASTBUY.detail = "判断上一个交易信号是否是BUY"
 ISLASTBUY.tip = "ISLASTBUY 判断上一个交易信号是否是BUY。"
+ISLASTBUY.body = "ISLASTBUY"
+ISLASTBUY.markettype = 2
 ISLASTBUY.type = 10
-ISLASTBUY.description = `
+ISLASTBUY.documentation = `
 ISLASTBUY 判断上一个交易信号是否是BUY。
 
 用法：
@@ -4146,12 +4496,14 @@ AUTOFILTER;//上一个信号是BUY信号，且最新价大于买入价格，卖�
 `
 
 const ISLASTCLOSEOUT = new MyFunc()
-ISLASTCLOSEOUT.body = "ISLASTCLOSEOUT"
-ISLASTCLOSEOUT.explanation = "判断上一个信号是否是CLOSEOUT"
-ISLASTCLOSEOUT.markettype = 1
+ISLASTCLOSEOUT.label = "ISLASTCLOSEOUT"
+ISLASTCLOSEOUT.insertText = ""
+ISLASTCLOSEOUT.detail = "判断上一个信号是否是CLOSEOUT"
 ISLASTCLOSEOUT.tip = "ISLASTCLOSEOUT，判断上一个指令是否是全平"
+ISLASTCLOSEOUT.body = "ISLASTCLOSEOUT"
+ISLASTCLOSEOUT.markettype = 1
 ISLASTCLOSEOUT.type = 10
-ISLASTCLOSEOUT.description = `
+ISLASTCLOSEOUT.documentation = `
 ISLASTCLOSEOUT判断上一个信号是否CLOSEOUT 。
 
 用法：
@@ -4165,12 +4517,14 @@ ISLASTCLOSEOUT&&C>O,BK(1);//上一个信号是清仓信号，并且当根K线是
 `
 
 const ISLASTKLINE = new MyFunc()
-ISLASTKLINE.body = "ISLASTKLINE"
-ISLASTKLINE.explanation = "判断该周期是否收盘前最后一根K线"
-ISLASTKLINE.markettype = 1
+ISLASTKLINE.label = "ISLASTKLINE"
+ISLASTKLINE.insertText = ""
+ISLASTKLINE.detail = "判断该周期是否收盘前最后一根K线"
 ISLASTKLINE.tip = "ISLASTKLINE,判断该周期是否是当日收盘前最后一个K线，如果是返回1，否则返回0"
+ISLASTKLINE.body = "ISLASTKLINE"
+ISLASTKLINE.markettype = 1
 ISLASTKLINE.type = 5
-ISLASTKLINE.description = `
+ISLASTKLINE.documentation = `
 ISLASTKLINE 判断该周期是否为每日收盘前最后一根k线，返回是1（Yes），否则返回0（No）。
 
 注：
@@ -4182,12 +4536,14 @@ ISLASTKLINE=1,CLOSEOUT;//若该周期是当日收盘前最后一根k线，则全
 `
 
 const ISLASTSELL = new MyFunc()
-ISLASTSELL.body = "ISLASTSELL"
-ISLASTSELL.explanation = "判断上一个交易信号是否是SELL"
-ISLASTSELL.markettype = 2
+ISLASTSELL.label = "ISLASTSELL"
+ISLASTSELL.insertText = ""
+ISLASTSELL.detail = "判断上一个交易信号是否是SELL"
 ISLASTSELL.tip = "ISLASTSELL判断上一个交易信号是否是SELL。"
+ISLASTSELL.body = "ISLASTSELL"
+ISLASTSELL.markettype = 2
 ISLASTSELL.type = 10
-ISLASTSELL.description = `
+ISLASTSELL.documentation = `
 ISLASTSELL判断上一个交易信号是否是SELL。
 
 用法：
@@ -4200,12 +4556,14 @@ ISLASTSELL 上一个交易信号是SELL则返回1（Yes），否则返回0（No�
 `
 
 const ISLASTSK = new MyFunc()
-ISLASTSK.body = "ISLASTSK"
-ISLASTSK.explanation = "判断上一个信号是否是SK"
-ISLASTSK.markettype = 1
+ISLASTSK.label = "ISLASTSK"
+ISLASTSK.insertText = ""
+ISLASTSK.detail = "判断上一个信号是否是SK"
 ISLASTSK.tip = "ISLASTSK，判断上一个指令是否是卖开"
+ISLASTSK.body = "ISLASTSK"
+ISLASTSK.markettype = 1
 ISLASTSK.type = 10
-ISLASTSK.description = `
+ISLASTSK.documentation = `
 ISLASTSK 判断上一个交易信号是否是SK。
 
 用法：
@@ -4224,12 +4582,14 @@ AUTOFILTER;//上一个信号是SK信号，且最新价小于开仓价格，买�
 `
 
 const ISLASTSP = new MyFunc()
-ISLASTSP.body = "ISLASTSP"
-ISLASTSP.explanation = "判断上一个信号是否是SP"
-ISLASTSP.markettype = 1
+ISLASTSP.label = "ISLASTSP"
+ISLASTSP.insertText = ""
+ISLASTSP.detail = "判断上一个信号是否是SP"
 ISLASTSP.tip = "ISLASTSP，判断上一个指令是否是卖平"
+ISLASTSP.body = "ISLASTSP"
+ISLASTSP.markettype = 1
 ISLASTSP.type = 10
-ISLASTSP.description = `
+ISLASTSP.documentation = `
 ISLASTSP判断上一个交易信号是否是SP。
 
 用法：
@@ -4246,12 +4606,14 @@ ISLASTSP,SP(1);//上一个信号是卖平仓信号，则减仓一手
 `
 
 const ISLASTSPK = new MyFunc()
-ISLASTSPK.body = "ISLASTSPK"
-ISLASTSPK.explanation = "判断上一个信号是否是SPK"
-ISLASTSPK.markettype = 1
+ISLASTSPK.label = "ISLASTSPK"
+ISLASTSPK.insertText = ""
+ISLASTSPK.detail = "判断上一个信号是否是SPK"
 ISLASTSPK.tip = "ISLASTSPK，判断上一个指令是否是卖平开"
+ISLASTSPK.body = "ISLASTSPK"
+ISLASTSPK.markettype = 1
 ISLASTSPK.type = 10
-ISLASTSPK.description = `
+ISLASTSPK.documentation = `
 ISLASTSPK判断上一个交易信号是否是SPK。
 
 用法：
@@ -4270,12 +4632,14 @@ AUTOFILTER;//上一个信号是SPK信号，则反手BPK
 `
 
 const ISLASTSTOP = new MyFunc()
-ISLASTSTOP.body = "ISLASTSTOP"
-ISLASTSTOP.explanation = "判断上一个信号是否是STOP"
-ISLASTSTOP.markettype = 1
+ISLASTSTOP.label = "ISLASTSTOP"
+ISLASTSTOP.insertText = ""
+ISLASTSTOP.detail = "判断上一个信号是否是STOP"
 ISLASTSTOP.tip = "ISLASTSTOP，判断上一个指令是否是STOP指令"
+ISLASTSTOP.body = "ISLASTSTOP"
+ISLASTSTOP.markettype = 1
 ISLASTSTOP.type = 10
-ISLASTSTOP.description = `
+ISLASTSTOP.documentation = `
 ISLASTSTOP 判断上一个交易信号是否是STOP。
 
 用法：
@@ -4290,12 +4654,14 @@ ISLASTSTOP&&CROSS(C,MA(C,10)),BK(1);//上一个信号是STOP信号，且价格�
 `
 
 const ISMAINCONTRACT = new MyFunc()
-ISMAINCONTRACT.body = "ISMAINCONTRACT"
-ISMAINCONTRACT.explanation = "当前是否为主力合约"
-ISMAINCONTRACT.markettype = 1
+ISMAINCONTRACT.label = "ISMAINCONTRACT"
+ISMAINCONTRACT.insertText = ""
+ISMAINCONTRACT.detail = "当前是否为主力合约"
 ISMAINCONTRACT.tip = "ISMAINCONTRACT当前是否为主力合约"
+ISMAINCONTRACT.body = "ISMAINCONTRACT"
+ISMAINCONTRACT.markettype = 1
 ISMAINCONTRACT.type = 5
-ISMAINCONTRACT.description = `
+ISMAINCONTRACT.documentation = `
 ISMAINCONTRACT 当前是否为主力合约。
 
 用法：
@@ -4310,12 +4676,14 @@ ISMAINCONTRACT;//当前的交易合约为主力合约，返回1，否则返回0
 `
 
 const ISMONTHEND = new MyFunc()
-ISMONTHEND.body = "ISMONTHEND"
-ISMONTHEND.explanation = "是否为本月最后一个交易日"
-ISMONTHEND.markettype = 1
+ISMONTHEND.label = "ISMONTHEND"
+ISMONTHEND.insertText = ""
+ISMONTHEND.detail = "是否为本月最后一个交易日"
 ISMONTHEND.tip = "ISMONTHEND是否为本月最后一个交易日"
+ISMONTHEND.body = "ISMONTHEND"
+ISMONTHEND.markettype = 1
 ISMONTHEND.type = 5
-ISMONTHEND.description = `
+ISMONTHEND.documentation = `
 ISMONTHEND 是否为本月最后一个交易日
 此函数为系统封装函数。
 
@@ -4327,11 +4695,13 @@ CLOSE<MA(CLOSE,5) || ISMONTHEND,SP;//如果满足平仓条件或者当前为本�
 `
 
 const ISNEARHOLIDAY = new MyFunc()
-ISNEARHOLIDAY.body = "ISNEARHOLIDAY"
-ISNEARHOLIDAY.explanation = "判断下一交易日是否是交易合约的节假日"
+ISNEARHOLIDAY.label = "ISNEARHOLIDAY"
+ISNEARHOLIDAY.insertText = ""
+ISNEARHOLIDAY.detail = "判断下一交易日是否是交易合约的节假日"
 ISNEARHOLIDAY.tip = "ISNEARHOLIDAY，判断下一交易日是否是交易合约的节假日。"
+ISNEARHOLIDAY.body = "ISNEARHOLIDAY"
 ISNEARHOLIDAY.type = 5
-ISNEARHOLIDAY.description = `
+ISNEARHOLIDAY.documentation = `
 ISNEARHOLIDAY 判断下一交易日是否是交易合约的节假日。交易合约下一交易日是节假日，当前k线返回1（Yes）,否则返回0（N0）
 
 注：
@@ -4343,11 +4713,13 @@ ISNEARHOLIDAY=1&&TIME>=1000,CLOSEOUT;//下一个交易日是节假日并且时�
 `
 
 const ISNULL = new MyFunc()
-ISNULL.body = "ISNULL"
-ISNULL.explanation = "判断空值"
+ISNULL.label = "ISNULL"
+ISNULL.insertText = ""
+ISNULL.detail = "判断空值"
 ISNULL.tip = "ISNULL(N)判断空值，如果N为空值返回1，否则返回0"
+ISNULL.body = "ISNULL"
 ISNULL.type = 5
-ISNULL.description = `
+ISNULL.documentation = `
 ISNULL 判断空值
 
 用法：ISNULL(N);如果N为空值，函数返回1；如果N为非空值，函数返回0。
@@ -4356,11 +4728,13 @@ ISNULL 判断空值
 `
 
 const ISRECORDDAY = new MyFunc()
-ISRECORDDAY.body = "ISRECORDDAY"
-ISRECORDDAY.explanation = "判断当根K线是否为股权登记日"
+ISRECORDDAY.label = "ISRECORDDAY"
+ISRECORDDAY.insertText = ""
+ISRECORDDAY.detail = "判断当根K线是否为股权登记日"
 ISRECORDDAY.tip = "ISRECORDDAY判断当根K线是否为股权登记日"
+ISRECORDDAY.body = "ISRECORDDAY"
 ISRECORDDAY.type = 15
-ISRECORDDAY.description = `
+ISRECORDDAY.documentation = `
 ISRECORDDAY  判断当根K线是否为股权登记日
 
 用法：ISRECORDDAY  判断当根K线是否为股权登记日，当根K线是股权登记日返回是1（Yes），否则返回0（No）。
@@ -4371,12 +4745,14 @@ ISRECORDDAY  判断当根K线是否为股权登记日
 `
 
 const ISTIMETOKLINEEND = new MyFunc()
-ISTIMETOKLINEEND.body = "ISTIMETOKLINEEND"
-ISTIMETOKLINEEND.explanation = "判断当前K线时间是否满足K线走完前N秒"
-ISTIMETOKLINEEND.markettype = 1
+ISTIMETOKLINEEND.label = "ISTIMETOKLINEEND"
+ISTIMETOKLINEEND.insertText = ""
+ISTIMETOKLINEEND.detail = "判断当前K线时间是否满足K线走完前N秒"
 ISTIMETOKLINEEND.tip = "ISTIMETOKLINEEND(N)判断当前K线时间是否满足K线走完前N秒满足返回1，不满足返回0。参数N为秒数。"
+ISTIMETOKLINEEND.body = "ISTIMETOKLINEEND"
+ISTIMETOKLINEEND.markettype = 1
 ISTIMETOKLINEEND.type = 5
-ISTIMETOKLINEEND.description = `
+ISTIMETOKLINEEND.documentation = `
 ISTIMETOKLINEEND(N) 判断当前K线时间是否满足K线走完前N秒。
 
 用法：
@@ -4395,11 +4771,13 @@ MULTSIG(0,0,3,0);
 `
 
 const ISUP = new MyFunc()
-ISUP.body = "ISUP"
-ISUP.explanation = "阳线"
+ISUP.label = "ISUP"
+ISUP.insertText = ""
+ISUP.detail = "阳线"
 ISUP.tip = "ISUP,判断该周期是否收阳，如果K线为阳线返回1，否则返回0"
+ISUP.body = "ISUP"
 ISUP.type = 5
-ISUP.description = `
+ISUP.documentation = `
 ISUP 判断该周期是否收阳
 
 注：
@@ -4411,12 +4789,14 @@ ISUP=1&&C>REF(C,1),BK;//若当根k线收阳并且收盘价大于前一周期收�
 `
 
 const ISWEEKEND = new MyFunc()
-ISWEEKEND.body = "ISWEEKEND"
-ISWEEKEND.explanation = "是否为本周最后一个交易日"
-ISWEEKEND.markettype = 1
+ISWEEKEND.label = "ISWEEKEND"
+ISWEEKEND.insertText = ""
+ISWEEKEND.detail = "是否为本周最后一个交易日"
 ISWEEKEND.tip = "ISWEEKEND判断是否为本周最后一个交易日"
+ISWEEKEND.body = "ISWEEKEND"
+ISWEEKEND.markettype = 1
 ISWEEKEND.type = 5
-ISWEEKEND.description = `
+ISWEEKEND.documentation = `
 ISWEEKEND 判断是否为本周最后一个交易日
 此函数为系统封装函数。
 
@@ -4428,14 +4808,18 @@ C<MA(C,5) || ISWEEKEND,SP;//如果满足平仓条件或者当前为本周最后�
 `
 
 const KEYWORD = new MyFunc()
+KEYWORD.label = "KEYWORD"
+KEYWORD.insertText = ""
 
 const KLINESIG = new MyFunc()
-KLINESIG.body = "KLINESIG"
-KLINESIG.explanation = "判断当根K线上最后一个固定的信号"
-KLINESIG.markettype = 1
+KLINESIG.label = "KLINESIG"
+KLINESIG.insertText = ""
+KLINESIG.detail = "判断当根K线上最后一个固定的信号"
 KLINESIG.tip = "KLINESIG判断当根K线上最后一个固定的信号"
+KLINESIG.body = "KLINESIG"
+KLINESIG.markettype = 1
 KLINESIG.type = 10
-KLINESIG.description = `
+KLINESIG.documentation = `
 KLINESIG 判断当根K线上最后一个固定的信号。
 
 用法：KLINESIG 判断当根K线上最后一个固定的信号。如果最后一根K线上没有信号，或者没有固定的信号，则该函数返回0。
@@ -4458,12 +4842,14 @@ KLINESIG=200&&BKVOL>0,SP;//如果最后一个固定的信号是BK信号，并且
 `
 
 const KLINESTART = new MyFunc()
-KLINESTART.body = "KLINESTART"
-KLINESTART.explanation = "判断K线当前状态是否是K线开始"
-KLINESTART.markettype = 1
+KLINESTART.label = "KLINESTART"
+KLINESTART.insertText = ""
+KLINESTART.detail = "判断K线当前状态是否是K线开始"
 KLINESTART.tip = "KLINESTART,判断K线当前状态是否是K线开始"
+KLINESTART.body = "KLINESTART"
+KLINESTART.markettype = 1
 KLINESTART.type = 5
-KLINESTART.description = `
+KLINESTART.documentation = `
 KLINESTART 判断K线当前状态是否是K线开始。
 
 用法：
@@ -4478,11 +4864,13 @@ AUTOFILTER;
 `
 
 const KTEXT = new MyFunc()
-KTEXT.body = "KTEXT( , , , , ,)"
-KTEXT.explanation = "在K线附近标注文字"
+KTEXT.label = "KTEXT"
+KTEXT.insertText = ""
+KTEXT.detail = "在K线附近标注文字"
 KTEXT.tip = "KTEXT(COND,POSITION,PRICE,LCR,COLOR,TEXT)在k线上标注文字当COND条件满足时,移动POSITION根K线,在PRICE位置书写COLOR色文字TEXTLCR是文字占K线左(0)中(1)右(2)位置"
+KTEXT.body = "KTEXT( , , , , ,)"
 KTEXT.type = 8
-KTEXT.description = `
+KTEXT.documentation = `
 KTEXT函数 在k线上标注文字。
 
 用法：
@@ -4503,11 +4891,13 @@ KTEXT(CROSS(C,MA5),-3,MA5,2,COLORRED,'买入');//在收盘价金叉5周期均线
 `
 
 const KURTOSIS = new MyFunc()
-KURTOSIS.body = "KURTOSIS( , )"
-KURTOSIS.explanation = "峰度系数"
+KURTOSIS.label = "KURTOSIS"
+KURTOSIS.insertText = ""
+KURTOSIS.detail = "峰度系数"
 KURTOSIS.tip = "KURTOSIS(X,N)求X在N个周期内的峰度系数"
+KURTOSIS.body = "KURTOSIS( , )"
 KURTOSIS.type = 3
-KURTOSIS.description = `
+KURTOSIS.documentation = `
 KURTOSIS(X,N) 求X在N个周期内的峰度系数。
 
 注：
@@ -4528,11 +4918,13 @@ KURTOSIS(C,10);
 `
 
 const K_STATE = new MyFunc()
-K_STATE.body = "K_STATE()"
-K_STATE.explanation = "判断k线形态"
+K_STATE.label = "K_STATE"
+K_STATE.insertText = ""
+K_STATE.detail = "判断k线形态"
 K_STATE.tip = "K_STATE()判断K线形态"
+K_STATE.body = "K_STATE()"
 K_STATE.type = 5
-K_STATE.description = `
+K_STATE.documentation = `
 K_STATE 判断k线形态
 
 用法：
@@ -4575,11 +4967,13 @@ K_STATE('红三兵');//判断当前k线形态是否为红三兵
 `
 
 const K_STATE1 = new MyFunc()
-K_STATE1.body = "K_STATE1()"
-K_STATE1.explanation = "判断k线形态"
+K_STATE1.label = "K_STATE1"
+K_STATE1.insertText = ""
+K_STATE1.detail = "判断k线形态"
 K_STATE1.tip = "K_STATE1()判断K线形态"
+K_STATE1.body = "K_STATE1()"
 K_STATE1.type = 5
-K_STATE1.description = `
+K_STATE1.documentation = `
 K_STATE1 判断k线形态
 
 用法：
@@ -4608,11 +5002,13 @@ K_STATE1(3,'上升三法');//上升三法为股价持续上涨中，某日出现
 `
 
 const K_STATE2 = new MyFunc()
-K_STATE2.body = "K_STATE2()"
-K_STATE2.explanation = "判断k线形态"
+K_STATE2.label = "K_STATE2"
+K_STATE2.insertText = ""
+K_STATE2.detail = "判断k线形态"
 K_STATE2.tip = "K_STATE2()判断K线形态"
+K_STATE2.body = "K_STATE2()"
 K_STATE2.type = 5
-K_STATE2.description = `
+K_STATE2.documentation = `
 K_STATE2 判断k线形态
 
 用法：
@@ -4630,11 +5026,13 @@ K_STATE2(3,5,'早晨之星');//早晨之星为启示后市见底回升的阴阳�
 `
 
 const K_STATE3 = new MyFunc()
-K_STATE3.body = "K_STATE3()"
-K_STATE3.explanation = "判断k线形态"
+K_STATE3.label = "K_STATE3"
+K_STATE3.insertText = ""
+K_STATE3.detail = "判断k线形态"
 K_STATE3.tip = "K_STATE3()判断K线形态"
+K_STATE3.body = "K_STATE3()"
 K_STATE3.type = 5
-K_STATE3.description = `
+K_STATE3.documentation = `
 K_STATE3 判断k线形态
 
 用法：
@@ -4653,11 +5051,13 @@ K_STATE3(5,10,20,'出水芙蓉');//一根大阳线上穿三条均线，均线为
 `
 
 const K_STATE4 = new MyFunc()
-K_STATE4.body = "K_STATE4()"
-K_STATE4.explanation = "判断k线形态"
+K_STATE4.label = "K_STATE4"
+K_STATE4.insertText = ""
+K_STATE4.detail = "判断k线形态"
 K_STATE4.tip = "K_STATE4()判断K线形态"
+K_STATE4.body = "K_STATE4()"
 K_STATE4.type = 5
-K_STATE4.description = `
+K_STATE4.documentation = `
 K_STATE4 判断k线形态
 
 用法：
@@ -4668,11 +5068,13 @@ K_STATE4(5,5,10,20,'九阴白骨爪')：参数N1为连续N根K线满足阴线，
 `
 
 const LAST = new MyFunc()
-LAST.body = "LAST( , , )"
-LAST.explanation = "判断函数"
+LAST.label = "LAST"
+LAST.insertText = ""
+LAST.detail = "判断函数"
 LAST.tip = "LAST(X,N1,N2),判断过去N1到N2周期内，是否一直满足条件X一直满足返回1，否则返回0"
+LAST.body = "LAST( , , )"
 LAST.type = 5
-LAST.description = `
+LAST.documentation = `
 LAST(COND,N1,N2) 判断过去N1到N2周期内，是否一直满足COND条件。
 
 注：
@@ -4688,12 +5090,14 @@ LAST(C>MA5,4,3);//判断距离当前k线3个周期的那根k线上是否满足C�
 `
 
 const LASTOFFSETPROFIT = new MyFunc()
-LASTOFFSETPROFIT.body = "LASTOFFSETPROFIT"
-LASTOFFSETPROFIT.explanation = "最近一次交易的平仓盈亏"
-LASTOFFSETPROFIT.markettype = 1
+LASTOFFSETPROFIT.label = "LASTOFFSETPROFIT"
+LASTOFFSETPROFIT.insertText = ""
+LASTOFFSETPROFIT.detail = "最近一次交易的平仓盈亏"
 LASTOFFSETPROFIT.tip = "LASTOFFSETPROFIT最近一次交易的平仓盈亏"
+LASTOFFSETPROFIT.body = "LASTOFFSETPROFIT"
+LASTOFFSETPROFIT.markettype = 1
 LASTOFFSETPROFIT.type = 12
-LASTOFFSETPROFIT.description = `
+LASTOFFSETPROFIT.documentation = `
 LASTOFFSETPROFIT 最近一次交易的平仓盈亏
 
 用法：LASTOFFSETPROFIT返回当前距当前K线最近一次交易的平仓盈亏，用于风险控制。
@@ -4713,12 +5117,14 @@ LASTOFFSETPROFIT<=-40 && C<BKPRICE-60,CLOSEOUT;//最近一次交易的亏损额�
 `
 
 const LASTSIG = new MyFunc()
-LASTSIG.body = "LASTSIG"
-LASTSIG.explanation = "判断最近一个信号"
-LASTSIG.markettype = 1
+LASTSIG.label = "LASTSIG"
+LASTSIG.insertText = ""
+LASTSIG.detail = "判断最近一个信号"
 LASTSIG.tip = "LASTSIG，取上一次交易指令方向"
+LASTSIG.body = "LASTSIG"
+LASTSIG.markettype = 1
 LASTSIG.type = 10
-LASTSIG.description = `
+LASTSIG.documentation = `
 LASTSIG判断最近一个信号
 
 注：由BPK指令产生的BK信号按BPK信号处理，SPK指令产生的SK信号同理。
@@ -4736,12 +5142,14 @@ STOP:207;
 `
 
 const LASTSIGGROUP = new MyFunc()
-LASTSIGGROUP.body = "LASTSIGGROUP"
-LASTSIGGROUP.explanation = "判断最近一个信号所在的分组"
-LASTSIGGROUP.markettype = 1
+LASTSIGGROUP.label = "LASTSIGGROUP"
+LASTSIGGROUP.insertText = ""
+LASTSIGGROUP.detail = "判断最近一个信号所在的分组"
 LASTSIGGROUP.tip = "LASTSIGGROUP判断最近一个信号所在的分组"
+LASTSIGGROUP.body = "LASTSIGGROUP"
+LASTSIGGROUP.markettype = 1
 LASTSIGGROUP.type = 10
-LASTSIGGROUP.description = `
+LASTSIGGROUP.documentation = `
 LASTSIGGROUP 判断最近一个信号所在的分组。
 
 注：
@@ -4757,10 +5165,12 @@ LASTSIG=200&&LASTSIGGROUP=2,SP('B',BKVOL);//上一个信号是B组的BK信号，
 `
 
 const LINETHICK = new MyFunc()
+LINETHICK.label = "LINETHICK"
+LINETHICK.insertText = ""
+LINETHICK.detail = "线型粗细控制"
 LINETHICK.body = "LINETHICK"
-LINETHICK.explanation = "线型粗细控制"
 LINETHICK.type = 8
-LINETHICK.description = `
+LINETHICK.documentation = `
 添加线型粗细控制。
 用法：
 LINETHICK1  LINETHICK2————LINETHICK7 线型由细至粗。
@@ -4771,11 +5181,13 @@ LINETHICK1  LINETHICK2————LINETHICK7 线型由细至粗。
 `
 
 const LLV = new MyFunc()
-LLV.body = "LLV( , )"
-LLV.explanation = "最低值"
+LLV.label = "LLV"
+LLV.insertText = ""
+LLV.detail = "最低值"
 LLV.tip = "LLV(X,N),求X在N个周期内的最小值"
+LLV.body = "LLV( , )"
 LLV.type = 2
-LLV.description = `
+LLV.documentation = `
 LLV(X,N)： 求X在N个周期内的最小值。
 
 注：
@@ -4793,11 +5205,13 @@ LL1:=LLV(L,N);//在分钟周期上，求当天第一根k线到当前周期内所
 `
 
 const LLVBARS = new MyFunc()
-LLVBARS.body = "LLVBARS( , )"
-LLVBARS.explanation = "前一个最低点位置"
+LLVBARS.label = "LLVBARS"
+LLVBARS.insertText = ""
+LLVBARS.detail = "前一个最低点位置"
 LLVBARS.tip = "LLVBARS(X,N),求N周期内X最低值到当前周期数"
+LLVBARS.body = "LLVBARS( , )"
 LLVBARS.type = 2
-LLVBARS.description = `
+LLVBARS.documentation = `
 LLVBARS(X,N)： 求N周期内X最低值到当前周期数
 
 注：
@@ -4814,11 +5228,13 @@ ZLBARS:REF(LLVBARS(L,N),N)+N;//在分钟周期上，求昨天最低价所在的k
 `
 
 const LN = new MyFunc()
-LN.body = "LN( )"
-LN.explanation = "自然对数"
+LN.label = "LN"
+LN.insertText = ""
+LN.detail = "自然对数"
 LN.tip = "LN(X),求X的自然对数"
+LN.body = "LN( )"
 LN.type = 4
-LN.description = `
+LN.documentation = `
 LN(X)：求X的自然对数。
 注：
 1、X取值范围为非0自然数，即1、2、3、4、5……
@@ -4829,11 +5245,13 @@ LN(OPEN);//求开盘价的对数。
 `
 
 const LOG = new MyFunc()
-LOG.body = "LOG( )"
-LOG.explanation = "求以Y为底X的对数值"
+LOG.label = "LOG"
+LOG.insertText = ""
+LOG.detail = "求以Y为底X的对数值"
 LOG.tip = "LOG(X,Y)求以Y为底X的对数值。"
+LOG.body = "LOG( )"
 LOG.type = 4
-LOG.description = `
+LOG.documentation = `
 LOG(X,Y) 求以Y为底X的对数值。
 
 注：
@@ -4849,11 +5267,13 @@ LOG(0,7);//返回空值。
 `
 
 const LOG10 = new MyFunc()
-LOG10.body = "LOG10( )"
-LOG10.explanation = "常用对数"
+LOG10.label = "LOG10"
+LOG10.insertText = ""
+LOG10.detail = "常用对数"
 LOG10.tip = "LOG10(X)求X的常用对数。"
+LOG10.body = "LOG10( )"
 LOG10.type = 4
-LOG10.description = `
+LOG10.documentation = `
 LOG10(X) 求X的常用对数值。
 
 注：
@@ -4867,11 +5287,13 @@ LOG10(0);//返回空值。
 `
 
 const LONGCROSS = new MyFunc()
-LONGCROSS.body = "LONGCROSS( , , )"
-LONGCROSS.explanation = "维持交叉函数"
+LONGCROSS.label = "LONGCROSS"
+LONGCROSS.insertText = ""
+LONGCROSS.detail = "维持交叉函数"
 LONGCROSS.tip = "LONGCROSS(A,B,N),判断A在是否在N个周期内都小于B如果是则返回1，否则返回0"
+LONGCROSS.body = "LONGCROSS( , , )"
 LONGCROSS.type = 5
-LONGCROSS.description = `
+LONGCROSS.documentation = `
 LONGCROSS(A,B,N) 表示A在N个周期内都小于B，本周期A从下向上穿越B
 
 注：
@@ -4883,12 +5305,14 @@ LONGCROSS(CLOSE,MA(CLOSE,10),20);//表示收盘线在10日均线之下持续20�
 `
 
 const LOOP1 = new MyFunc()
-LOOP1.body = "LOOP1( , , )"
-LOOP1.explanation = "循环统计函数"
-LOOP1.markettype = 1
+LOOP1.label = "LOOP1"
+LOOP1.insertText = ""
+LOOP1.detail = "循环统计函数"
 LOOP1.tip = "LOOP1(X,N,TYPE)循环统计函数；对变量X在N个周期进行TYPE相应的操作"
+LOOP1.body = "LOOP1( , , )"
+LOOP1.markettype = 1
 LOOP1.type = 6
-LOOP1.description = `
+LOOP1.documentation = `
 LOOP1(X,N,TYPE);循环统计函数 对X在N个周期进行TYPE相应的操作
 
 注：
@@ -4947,12 +5371,14 @@ LOOP1(X,N, AVERAGE)=MA(X,N)
 `
 
 const LOOP2 = new MyFunc()
-LOOP2.body = "LOOP2( , , )"
-LOOP2.explanation = "循环条件函数"
-LOOP2.markettype = 1
+LOOP2.label = "LOOP2"
+LOOP2.insertText = ""
+LOOP2.detail = "循环条件函数"
 LOOP2.tip = "LOOP2(COND,A,B);循环条件函数；若COND条件成立，则返回A，否则返回B"
+LOOP2.body = "LOOP2( , , )"
+LOOP2.markettype = 1
 LOOP2.type = 6
-LOOP2.description = `
+LOOP2.documentation = `
 LOOP2(COND,A,B);循环条件函数 若COND条件成立，则返回A，否则返回B
 
 注：
@@ -4973,11 +5399,13 @@ AUTOFILTER;
 `
 
 const LOW = new MyFunc()
-LOW.body = "LOW"
-LOW.explanation = "取得K线图的最低价"
+LOW.label = "LOW"
+LOW.insertText = ""
+LOW.detail = "取得K线图的最低价"
 LOW.tip = "LOW取得当根K线的最低价"
+LOW.body = "LOW"
 LOW.type = 1
-LOW.description = `
+LOW.documentation = `
 LOW 取得K线图的最低价。
 
 注：
@@ -4992,11 +5420,13 @@ REF(L,1);//取得前一根K线的最低价
 `
 
 const LV = new MyFunc()
-LV.body = "LV( , )"
-LV.explanation = "除当前K线外最低值"
+LV.label = "LV"
+LV.insertText = ""
+LV.detail = "除当前K线外最低值"
 LV.tip = "LV(X,N)求X在N个周期内的最小值(不包含当前K线)"
+LV.body = "LV( , )"
 LV.type = 2
-LV.description = `
+LV.documentation = `
 LV(X,N) 求X在N个周期内的最小值（不包含当前k线）
 
 注：
@@ -5016,11 +5446,13 @@ LV(L,5) 和 REF(LLV(L,5),1) 的结果是一样的，用LV编写更加方便。
 `
 
 const MA = new MyFunc()
-MA.body = "MA( , )"
-MA.explanation = "算数移动平均"
+MA.label = "MA"
+MA.insertText = ""
+MA.detail = "算数移动平均"
 MA.tip = "MA(X,N),求X在N个周期内的简单移动平均"
+MA.body = "MA( , )"
 MA.type = 2
-MA.description = `
+MA.documentation = `
 MA(X,N) 求X在N个周期内的简单移动平均
 
 算法：MA(X,5)=(X1+X2+X3+X4+X5)/5
@@ -5040,12 +5472,14 @@ MA10:MA(C,M);//在分钟周期上，当天k线不足10根，按照实际根数�
 `
 
 const MARGIN = new MyFunc()
-MARGIN.body = "MARGIN"
-MARGIN.explanation = "保证金"
-MARGIN.markettype = 1
+MARGIN.label = "MARGIN"
+MARGIN.insertText = ""
+MARGIN.detail = "保证金"
 MARGIN.tip = "MARGIN返回国内期货合约合约的保证金比率或者外盘期货合约的每手保证金"
+MARGIN.body = "MARGIN"
+MARGIN.markettype = 1
 MARGIN.type = 12
-MARGIN.description = `
+MARGIN.documentation = `
 MARGIN 保证金
 
 用法：MARGIN在国内期货合约上返回当前合约的保证金比率、在外盘期货合约上返回每手保证金，用于模型中资金、手数相关计算。
@@ -5062,13 +5496,17 @@ K:=MONEYTOT*0.2/(MARGIN+FEE); //外盘期货合约理论权益的20%可以开仓
 `
 
 const MARKET_TYPE = new MyFunc()
+MARKET_TYPE.label = "MARKET_TYPE"
+MARKET_TYPE.insertText = ""
 
 const MAX = new MyFunc()
-MAX.body = "MAX( , )"
-MAX.explanation = "最大值"
+MAX.label = "MAX"
+MAX.insertText = ""
+MAX.detail = "最大值"
 MAX.tip = "MAX(A,B),取A，B中较大者"
+MAX.body = "MAX( , )"
 MAX.type = 4
-MAX.description = `
+MAX.documentation = `
 MAX(A,B)：取最大值。取A，B中较大者。
 
 注：
@@ -5083,11 +5521,13 @@ MAX(A,MAX(B,MAX(C,D)));//求 A B C D四者中的最大值
 `
 
 const MAX1 = new MyFunc()
-MAX1.body = "MAX1( )"
-MAX1.explanation = "取最大值"
+MAX1.label = "MAX1"
+MAX1.insertText = ""
+MAX1.detail = "取最大值"
 MAX1.tip = "MAX1(A1,...,A30),取A1...A30中的最大值（支持2-30个参数进行比较）"
+MAX1.body = "MAX1( )"
 MAX1.type = 4
-MAX1.description = `
+MAX1.documentation = `
 MAX1(A1,...,A30) 在A1到A30中取最大值。
 
 注：
@@ -5102,12 +5542,14 @@ MAX1(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16);//表示取数字1-16中的最大�
 `
 
 const MAXBKVOL = new MyFunc()
-MAXBKVOL.body = "MAXBKVOL"
-MAXBKVOL.explanation = "多头最大持仓手数"
-MAXBKVOL.markettype = 1
+MAXBKVOL.label = "MAXBKVOL"
+MAXBKVOL.insertText = ""
+MAXBKVOL.detail = "多头最大持仓手数"
 MAXBKVOL.tip = "MAXBKVOL相邻两次多头持仓为0之间的多头最大持仓手数"
+MAXBKVOL.body = "MAXBKVOL"
+MAXBKVOL.markettype = 1
 MAXBKVOL.type = 10
-MAXBKVOL.description = `
+MAXBKVOL.documentation = `
 MAXBKVOL 多头最大持仓手数
 
 用法：
@@ -5126,12 +5568,14 @@ MAXBKVOL=3,SP(BKVOL);//多头最大持仓手数为3时，卖平多头持仓
 `
 
 const MAXSKVOL = new MyFunc()
-MAXSKVOL.body = "MAXSKVOL"
-MAXSKVOL.explanation = "空头最大持仓手数"
-MAXSKVOL.markettype = 1
+MAXSKVOL.label = "MAXSKVOL"
+MAXSKVOL.insertText = ""
+MAXSKVOL.detail = "空头最大持仓手数"
 MAXSKVOL.tip = "MAXBKVOL相邻两次空头持仓为0之间的空头最大持仓手数"
+MAXSKVOL.body = "MAXSKVOL"
+MAXSKVOL.markettype = 1
 MAXSKVOL.type = 10
-MAXSKVOL.description = `
+MAXSKVOL.documentation = `
 MAXSKVOL 空头最大持仓手数
 
 用法：
@@ -5150,11 +5594,13 @@ MAXSKVOL=3,BP(SKVOL);//空头最大持仓手数为3时，买平空头持仓
 `
 
 const MEDIAN = new MyFunc()
-MEDIAN.body = "MEDIAN( , )"
-MEDIAN.explanation = "求中位数"
+MEDIAN.label = "MEDIAN"
+MEDIAN.insertText = ""
+MEDIAN.detail = "求中位数"
 MEDIAN.tip = "MEDIAN(X,N)求X在N个周期内的中位数"
+MEDIAN.body = "MEDIAN( , )"
 MEDIAN.type = 4
-MEDIAN.description = `
+MEDIAN.documentation = `
 MEDIAN(X,N) 求X在N个周期内居于中间的数值。
 
 注：
@@ -5169,11 +5615,13 @@ MEDIAN(X,N) 求X在N个周期内居于中间的数值。
 `
 
 const MEDIAN1 = new MyFunc()
-MEDIAN1.body = "MEDIAN1()"
-MEDIAN1.explanation = "求中位数"
+MEDIAN1.label = "MEDIAN1"
+MEDIAN1.insertText = ""
+MEDIAN1.detail = "求中位数"
 MEDIAN1.tip = "MEDIAN1(A1,..,A30),求A1...A30的中位数（支持最多30个参数）"
+MEDIAN1.body = "MEDIAN1()"
 MEDIAN1.type = 4
-MEDIAN1.description = `
+MEDIAN1.documentation = `
 MEDIAN1(A1,...,A30) 求A1到A30内居于中间的数值。
 
 注：
@@ -5188,11 +5636,13 @@ BB:MEDIAN1(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16);//表示取数字1-16的中�
 `
 
 const MIN = new MyFunc()
-MIN.body = "MIN( , )"
-MIN.explanation = "最小值"
+MIN.label = "MIN"
+MIN.insertText = ""
+MIN.detail = "最小值"
 MIN.tip = "MIN(A,B),取A，B中较小者"
+MIN.body = "MIN( , )"
 MIN.type = 4
-MIN.description = `
+MIN.documentation = `
 MIN(A,B)：取最小值。取A，B中较小者
 
 注：
@@ -5205,11 +5655,13 @@ MIN(C,MIN(O,REF(C,1)));//求当前周期的开盘价，收盘价，以及上周�
 `
 
 const MIN1 = new MyFunc()
-MIN1.body = "MIN1( )"
-MIN1.explanation = "取最小值"
+MIN1.label = "MIN1"
+MIN1.insertText = ""
+MIN1.detail = "取最小值"
 MIN1.tip = "MIN1(A1,...,A30),取A1...A30中的最小值（支持2-30个参数进行比较）"
+MIN1.body = "MIN1( )"
 MIN1.type = 4
-MIN1.description = `
+MIN1.documentation = `
 MIN1(A1,...,A30) 在A1到A30中取最小值。
 
 注：
@@ -5224,35 +5676,41 @@ MIN1(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16);//表示取数字1-16中的最小�
 `
 
 const MINPRICE = new MyFunc()
-MINPRICE.body = "MINPRICE"
-MINPRICE.explanation = "数据合约的最小变动价位"
+MINPRICE.label = "MINPRICE"
+MINPRICE.insertText = ""
+MINPRICE.detail = "数据合约的最小变动价位"
 MINPRICE.tip = "MINPRICE,取数据合约的最小变动价位"
+MINPRICE.body = "MINPRICE"
 MINPRICE.type = 1
-MINPRICE.description = `
+MINPRICE.documentation = `
 取数据合约的最小变动价位。
 用法：
 MINPRICE; 取加载数据合约的最小变动价位。
 `
 
 const MINPRICE1 = new MyFunc()
-MINPRICE1.body = "MINPRICE1"
-MINPRICE1.explanation = "交易合约的最小变动价位"
-MINPRICE1.markettype = 1
+MINPRICE1.label = "MINPRICE1"
+MINPRICE1.insertText = ""
+MINPRICE1.detail = "交易合约的最小变动价位"
 MINPRICE1.tip = "MINPRICE1,取交易合约的最小变动价位"
+MINPRICE1.body = "MINPRICE1"
+MINPRICE1.markettype = 1
 MINPRICE1.type = 1
-MINPRICE1.description = `
+MINPRICE1.documentation = `
 MINPRICE1  取交易合约的最小变动价位。
 用法：
 MINPRICE1; 取交易合约的最小变动价位。
 `
 
 const MINPRICED = new MyFunc()
-MINPRICED.body = "MINPRICED"
-MINPRICED.explanation = "最小变动价位"
-MINPRICED.markettype = 1
+MINPRICED.label = "MINPRICED"
+MINPRICED.insertText = ""
+MINPRICED.detail = "最小变动价位"
 MINPRICED.tip = "MINPRICED(N),返回N所对应合约的最小变动价位N只能为文华码"
+MINPRICED.body = "MINPRICED"
+MINPRICED.markettype = 1
 MINPRICED.type = 1
-MINPRICED.description = `
+MINPRICED.documentation = `
 返回某品种的最小变动价位。
 用法：
 MINPRICED(N); 返回N所对应合约的最小变动价位。
@@ -5265,11 +5723,13 @@ MINPRICED(N);返回8603所对应IF1203合约的最小变动价位。
 `
 
 const MINUTE = new MyFunc()
-MINUTE.body = "MINUTE"
-MINUTE.explanation = "分钟"
+MINUTE.label = "MINUTE"
+MINUTE.insertText = ""
+MINUTE.detail = "分钟"
 MINUTE.tip = "MINUTE,取某个周期的分钟数（0-59）"
+MINUTE.body = "MINUTE"
 MINUTE.type = 7
-MINUTE.description = `
+MINUTE.documentation = `
 MINUTE,返回某个周期的分钟数。
  
 注：
@@ -5282,11 +5742,13 @@ TIME>1400&&MINUTE=50,SP;//在14:50的时候卖平仓。
 `
 
 const MOD = new MyFunc()
-MOD.body = "MOD( , )"
-MOD.explanation = "取模"
+MOD.label = "MOD"
+MOD.insertText = ""
+MOD.detail = "取模"
 MOD.tip = "MOD(A,B),A对B求模"
+MOD.body = "MOD( , )"
 MOD.type = 4
-MOD.description = `
+MOD.documentation = `
 MOD(A,B)：取模。返回A对B求模。
 
 注：
@@ -5302,11 +5764,13 @@ MOD(A,2)=0;//判断A为偶数。
 `
 
 const MODE = new MyFunc()
-MODE.body = "MODE( , )"
-MODE.explanation = "求众数"
+MODE.label = "MODE"
+MODE.insertText = ""
+MODE.detail = "求众数"
 MODE.tip = "MODE(X,N)求X在N个周期内最常出现的值"
+MODE.body = "MODE( , )"
 MODE.type = 4
-MODE.description = `
+MODE.documentation = `
 MODE(X,N) 求X在N个周期内最常出现的值。
 
 注：
@@ -5315,12 +5779,14 @@ MODE(X,N) 求X在N个周期内最常出现的值。
 `
 
 const MONEY = new MyFunc()
-MONEY.body = "MONEY"
-MONEY.explanation = "理论可用资金"
-MONEY.markettype = 1
+MONEY.label = "MONEY"
+MONEY.insertText = ""
+MONEY.detail = "理论可用资金"
 MONEY.tip = "MONEY，理论可用资金"
+MONEY.body = "MONEY"
+MONEY.markettype = 1
 MONEY.type = 12
-MONEY.description = `
+MONEY.documentation = `
 MONEY 理论可用资金
 
 用法：MONEY返回当前理论可用资金，用于仓位、手数等计算。
@@ -5349,12 +5815,14 @@ K:=MONEY*0.2/(C*MARGIN*UNIT+FEE); //理论可用资金的20%可以开仓的手�
 `
 
 const MONEYRATIO = new MyFunc()
-MONEYRATIO.body = "MONEYRATIO"
-MONEYRATIO.explanation = "理论资金使用率"
-MONEYRATIO.markettype = 1
+MONEYRATIO.label = "MONEYRATIO"
+MONEYRATIO.insertText = ""
+MONEYRATIO.detail = "理论资金使用率"
 MONEYRATIO.tip = "MONEYRATIO返回理论资金使用率"
+MONEYRATIO.body = "MONEYRATIO"
+MONEYRATIO.markettype = 1
 MONEYRATIO.type = 12
-MONEYRATIO.description = `
+MONEYRATIO.documentation = `
 MONEYRATIO 理论资金使用率
 
 用法：MONEYRATIO返回当前理论资金使用率，进行资金管理控制仓位时使用。
@@ -5375,12 +5843,14 @@ A&&MONEYRATIO<0.3,BK;//A条件满足并资金使用率不超过30%时，买开�
 `
 
 const MONEYTOT = new MyFunc()
-MONEYTOT.body = "MONEYTOT"
-MONEYTOT.explanation = "理论权益"
-MONEYTOT.markettype = 1
+MONEYTOT.label = "MONEYTOT"
+MONEYTOT.insertText = ""
+MONEYTOT.detail = "理论权益"
 MONEYTOT.tip = "MONEYTOT理论权益"
+MONEYTOT.body = "MONEYTOT"
+MONEYTOT.markettype = 1
 MONEYTOT.type = 12
-MONEYTOT.description = `
+MONEYTOT.documentation = `
 MONEYTOT 理论权益
 
 用法：MONEYTOT返回当前理论权益，模型进行仓位控制、下单手数等资金管理时使用
@@ -5404,11 +5874,13 @@ K:=MONEYTOT*0.2/(C*MARGIN*UNIT+FEE); //理论权益的20%可以开仓的手数�
 `
 
 const MONTH = new MyFunc()
-MONTH.body = "MONTH"
-MONTH.explanation = "取月份"
+MONTH.label = "MONTH"
+MONTH.insertText = ""
+MONTH.detail = "取月份"
 MONTH.tip = "MONTH,取得某周期的月份（1-12）"
+MONTH.body = "MONTH"
 MONTH.type = 7
-MONTH.description = `
+MONTH.documentation = `
 MONTH，返回某个周期的月份。
  
 注：
@@ -5421,12 +5893,14 @@ C>=VALUEWHEN(MONTH<REF(MONTH,1),O),SP;
 `
 
 const MONTHTRADE = new MyFunc()
-MONTHTRADE.body = "MONTHTRADE"
-MONTHTRADE.explanation = "月内交易函数"
-MONTHTRADE.markettype = 1
+MONTHTRADE.label = "MONTHTRADE"
+MONTHTRADE.insertText = ""
+MONTHTRADE.detail = "月内交易函数"
 MONTHTRADE.tip = "MONTHTRADE,月内交易函数"
+MONTHTRADE.body = "MONTHTRADE"
+MONTHTRADE.markettype = 1
 MONTHTRADE.type = 9
-MONTHTRADE.description = `
+MONTHTRADE.documentation = `
 MONTHTRADE 月内交易函数。
 
 用法：
@@ -5452,12 +5926,14 @@ MONTHTRADE;//使用每月数据计算
 `
 
 const MONTHTRADE1 = new MyFunc()
-MONTHTRADE1.body = "MONTHTRADE1"
-MONTHTRADE1.explanation = "月内交易函数"
-MONTHTRADE1.markettype = 1
+MONTHTRADE1.label = "MONTHTRADE1"
+MONTHTRADE1.insertText = ""
+MONTHTRADE1.detail = "月内交易函数"
 MONTHTRADE1.tip = "MONTHTRADE1月内交易函数，且历史数据不参与计算。"
+MONTHTRADE1.body = "MONTHTRADE1"
+MONTHTRADE1.markettype = 1
 MONTHTRADE1.type = 9
-MONTHTRADE1.description = `
+MONTHTRADE1.documentation = `
 MONTHTRADE1 月内交易函数。
 
 用法：
@@ -5483,12 +5959,14 @@ MONTHTRADE1;//使用每月数据计算
 `
 
 const MULTSIG = new MyFunc()
-MULTSIG.body = "MULTSIG( , , , )"
-MULTSIG.explanation = "设置一根k线多信号的指令价方式（TICK逐笔回测，可设置回测精度）"
-MULTSIG.markettype = 1
+MULTSIG.label = "MULTSIG"
+MULTSIG.insertText = ""
+MULTSIG.detail = "设置一根k线多信号的指令价方式（TICK逐笔回测，可设置回测精度）"
 MULTSIG.tip = "MULTSIG(Sec1,Sec2,N,INTERVAL),设置一根k线多信号的指令价方式（TICK逐笔回测，可设置回测精度），开仓信号出信号Sec1秒下单，不复核；平仓信号出信号Sec2秒下单，不复核，一根K线最大的信号个数为N,INTERVAL代表数据时间间隔"
+MULTSIG.body = "MULTSIG( , , , )"
+MULTSIG.markettype = 1
 MULTSIG.type = 13
-MULTSIG.description = `
+MULTSIG.documentation = `
 MULTSIG(Sec1,Sec2,N,INTERVAL) 设置一根k线多信号的指令价方式（TICK逐笔回测，可设置回测精度）
 
 用法：
@@ -5527,12 +6005,14 @@ AUTOFILTER;
 `
 
 const MULTSIG_MIN = new MyFunc()
-MULTSIG_MIN.body = "MULTSIG_MIN( , , )"
-MULTSIG_MIN.explanation = "设置一根k线多信号的指令价方式（逐分钟回测）"
-MULTSIG_MIN.markettype = 1
+MULTSIG_MIN.label = "MULTSIG_MIN"
+MULTSIG_MIN.insertText = ""
+MULTSIG_MIN.detail = "设置一根k线多信号的指令价方式（逐分钟回测）"
 MULTSIG_MIN.tip = "MULTSIG_MIN(min1,min2,N),设置一根k线多信号的指令价方式（逐分钟回测）开仓信号出信号min1分钟下单，不复核；平仓信号出信号min2分钟下单，不复核，一根K线最大的信号个数为N"
+MULTSIG_MIN.body = "MULTSIG_MIN( , , )"
+MULTSIG_MIN.markettype = 1
 MULTSIG_MIN.type = 13
-MULTSIG_MIN.description = `
+MULTSIG_MIN.documentation = `
 设置一根k线多信号的指令价方式（逐分钟回测）
 
 用法：
@@ -5560,11 +6040,13 @@ AUTOFILTER;
 `
 
 const MV = new MyFunc()
-MV.body = "MV(,)"
-MV.explanation = "取均值"
+MV.label = "MV"
+MV.insertText = ""
+MV.detail = "取均值"
 MV.tip = "MV(A,...P),取A到P的均值"
+MV.body = "MV(,)"
 MV.type = 2
-MV.description = `
+MV.documentation = `
 MV(A,...P) 取A到P的均值。
 
 注：
@@ -5577,12 +6059,14 @@ MV(CLOSE,OPEN);
 `
 
 const MYVOL = new MyFunc()
-MYVOL.body = "MYVOL"
-MYVOL.explanation = "取下单手数"
-MYVOL.markettype = 1
+MYVOL.label = "MYVOL"
+MYVOL.insertText = ""
+MYVOL.detail = "取下单手数"
 MYVOL.tip = "MYVOL,取下单手数"
+MYVOL.body = "MYVOL"
+MYVOL.markettype = 1
 MYVOL.type = 10
-MYVOL.description = `
+MYVOL.documentation = `
 MYVOL 取下单手数
 
 用法：取下单手数，多用于在加减仓模型加载多个合约的时候的手数计算。
@@ -5600,11 +6084,13 @@ C<O,SP(BKVOL);
 `
 
 const NAMELIKE = new MyFunc()
-NAMELIKE.body = "NAMELIKE('')"
-NAMELIKE.explanation = "模糊合约名称函数"
+NAMELIKE.label = "NAMELIKE"
+NAMELIKE.insertText = ""
+NAMELIKE.detail = "模糊合约名称函数"
 NAMELIKE.tip = "NAMELIKE('')模糊股票名称函数。NAMELIKE('ST')判断股票名称是否含有ST。是返回1（YES）,不是返回0（NO）。"
+NAMELIKE.body = "NAMELIKE('')"
 NAMELIKE.type = 5
-NAMELIKE.description = `
+NAMELIKE.documentation = `
 NAMELIKE('') 模糊合约名称函数。
 
 用法：
@@ -5622,11 +6108,13 @@ C>O&&NAMELIKE('ST')=0;//最后一根K线为阳线并且名称不含有ST。
 `
 
 const NEWHBARS = new MyFunc()
-NEWHBARS.body = "NEWHBARS( , )"
-NEWHBARS.explanation = "创新高跨度"
+NEWHBARS.label = "NEWHBARS"
+NEWHBARS.insertText = ""
+NEWHBARS.detail = "创新高跨度"
 NEWHBARS.tip = "NEWHBARS(X,N)求高于当前X的第N个X的距离"
+NEWHBARS.body = "NEWHBARS( , )"
 NEWHBARS.type = 2
-NEWHBARS.description = `
+NEWHBARS.documentation = `
 NEWHBARS(X,N) 计算高于当前X的第N个X到现在K线的距离。
 
 注：
@@ -5641,11 +6129,13 @@ AUTOFILTER;
 `
 
 const NEWHBARS1 = new MyFunc()
-NEWHBARS1.body = "NEWHBARS1( , , )"
-NEWHBARS1.explanation = "创新高跨度"
+NEWHBARS1.label = "NEWHBARS1"
+NEWHBARS1.insertText = ""
+NEWHBARS1.detail = "创新高跨度"
 NEWHBARS1.tip = "NEWHBARS1(X,Y,N)，计算高于当前X的第N个Y到现在K线的距离"
+NEWHBARS1.body = "NEWHBARS1( , , )"
 NEWHBARS1.type = 2
-NEWHBARS1.description = `
+NEWHBARS1.documentation = `
 NEWHBARS1(X,Y,N) 计算高于当前X的第N个Y到现在K线的距离。
 
 注：
@@ -5661,11 +6151,13 @@ AUTOFILTER;
 `
 
 const NEWLBARS = new MyFunc()
-NEWLBARS.body = "NEWLBARS( , )"
-NEWLBARS.explanation = "创新低跨度"
+NEWLBARS.label = "NEWLBARS"
+NEWLBARS.insertText = ""
+NEWLBARS.detail = "创新低跨度"
 NEWLBARS.tip = "NEWLBARS(X,N)求低于当前X的第N个X的距离"
+NEWLBARS.body = "NEWLBARS( , )"
 NEWLBARS.type = 2
-NEWLBARS.description = `
+NEWLBARS.documentation = `
 NEWLBARS(X,N) 计算低于当前X的第N个X到现在K线的距离。
 
 注：
@@ -5680,11 +6172,13 @@ AUTOFILTER;
 `
 
 const NEWLBARS1 = new MyFunc()
-NEWLBARS1.body = "NEWLBARS1( , , )"
-NEWLBARS1.explanation = "创新低跨度"
+NEWLBARS1.label = "NEWLBARS1"
+NEWLBARS1.insertText = ""
+NEWLBARS1.detail = "创新低跨度"
 NEWLBARS1.tip = "NEWLBARS1(X,Y,N)，计算低于当前X的第N个Y到现在K线的距离"
+NEWLBARS1.body = "NEWLBARS1( , , )"
 NEWLBARS1.type = 2
-NEWLBARS1.description = `
+NEWLBARS1.documentation = `
 NEWLBARS1(X,Y,N) 计算低于当前X的第N个Y到现在K线的距离。
 
 注：
@@ -5700,11 +6194,13 @@ AUTOFILTER;
 `
 
 const NODRAW = new MyFunc()
-NODRAW.body = "NODRAW"
-NODRAW.explanation = "不画线"
+NODRAW.label = "NODRAW"
+NODRAW.insertText = ""
+NODRAW.detail = "不画线"
 NODRAW.tip = "NODRAW,不画线"
+NODRAW.body = "NODRAW"
 NODRAW.type = 8
-NODRAW.description = `
+NODRAW.documentation = `
 NODRAW 只显示返回数值，不画线。
 注：
 不支持将该函数直接定义为变量，即不支持下面的写法：A:NODRAW;
@@ -5714,11 +6210,13 @@ NODRAW 只显示返回数值，不画线。
 `
 
 const NORMPDF = new MyFunc()
-NORMPDF.body = "NORMPDF( , , )"
-NORMPDF.explanation = "正态分布概率密度"
+NORMPDF.label = "NORMPDF"
+NORMPDF.insertText = ""
+NORMPDF.detail = "正态分布概率密度"
 NORMPDF.tip = "NORMPDF(X,MU,SIGMA),返回参数为MU和SIGMA的正态分布密度函数在X处的值"
+NORMPDF.body = "NORMPDF( , , )"
 NORMPDF.type = 3
-NORMPDF.description = `
+NORMPDF.documentation = `
 NORMPDF(X,MU,SIGMA)：返回参数为MU和SIGMA的正态分布密度函数在X处的值
 
 注：
@@ -5743,11 +6241,13 @@ ZZ..NORMPDF(ATR,MU,SIGMA);//定义变量ZZ，返回ATR服从正态分布的概�
 `
 
 const NOT = new MyFunc()
-NOT.body = "NOT( )"
-NOT.explanation = "非"
+NOT.label = "NOT"
+NOT.insertText = ""
+NOT.detail = "非"
 NOT.tip = "NOT(X),不满足条件X，不满足条件X返回1，否则返回0"
+NOT.body = "NOT( )"
 NOT.type = 5
-NOT.description = `
+NOT.documentation = `
 NOT(X)：取非。当X＝0时返回1，否则返回0。
 例1：
  NOT(ISLASTBK);如果上一个信号不是BK信号，则NOT(ISLASTBK)返回值为1；上一个信号是BK信号，则NOT(ISLASTBK)返回值为0。
@@ -5757,11 +6257,13 @@ NOT(BARSBK>=1)=1;//BK信号发出的当根K线上满足条件。
 `
 
 const NOTEXT = new MyFunc()
-NOTEXT.body = "NOTEXT"
-NOTEXT.explanation = "不显示数值"
+NOTEXT.label = "NOTEXT"
+NOTEXT.insertText = ""
+NOTEXT.detail = "不显示数值"
 NOTEXT.tip = "NOTEXT不显示数值"
+NOTEXT.body = "NOTEXT"
 NOTEXT.type = 8
-NOTEXT.description = `
+NOTEXT.documentation = `
 NOTEXT 只显示画线，不显示数值。
 
 注：
@@ -5772,11 +6274,13 @@ NOTEXT 只显示画线，不显示数值。
 `
 
 const NULL = new MyFunc()
-NULL.body = "NULL"
-NULL.explanation = "返回空值"
+NULL.label = "NULL"
+NULL.insertText = ""
+NULL.detail = "返回空值"
 NULL.tip = "NULL,返回空值"
+NULL.body = "NULL"
 NULL.type = 5
-NULL.description = `
+NULL.documentation = `
 返回空值
 用法：
 MA5:=MA(C,5);
@@ -5785,11 +6289,13 @@ A:IFELSE(MA5>MA10,MA5,NULL),COLORRED;//当MA5>MA10时，画五日均线MA5，不
 `
 
 const NUMPOW = new MyFunc()
-NUMPOW.body = "NUMPOW(,,)"
-NUMPOW.explanation = "自然数幂方和"
+NUMPOW.label = "NUMPOW"
+NUMPOW.insertText = ""
+NUMPOW.detail = "自然数幂方和"
 NUMPOW.tip = "NUMPOW(X,N,M),自然数幂方和X为基础变量，N为自然数，M为实数"
+NUMPOW.body = "NUMPOW(,,)"
 NUMPOW.type = 2
-NUMPOW.description = `
+NUMPOW.documentation = `
 NUMPOW(X,N,M);自然数幂方和
 算法：
 NUMPOW(x,n,m)=n^m*x+(n-1)^m*ref(x,1)+(n-2)^m*ref(x,2)+...+2^m*ref(x,n-2)+1^m*ref(x,n-1)
@@ -5802,12 +6308,14 @@ JZ:=NUMPOW(C,5,2);
 `
 
 const OFFSETPROFIT = new MyFunc()
-OFFSETPROFIT.body = "OFFSETPROFIT"
-OFFSETPROFIT.explanation = "理论平仓盈亏"
-OFFSETPROFIT.markettype = 1
+OFFSETPROFIT.label = "OFFSETPROFIT"
+OFFSETPROFIT.insertText = ""
+OFFSETPROFIT.detail = "理论平仓盈亏"
 OFFSETPROFIT.tip = "OFFSETPROFIT,返回理论平仓盈亏"
+OFFSETPROFIT.body = "OFFSETPROFIT"
+OFFSETPROFIT.markettype = 1
 OFFSETPROFIT.type = 12
-OFFSETPROFIT.description = `
+OFFSETPROFIT.documentation = `
 OFFSETPROFIT 理论平仓盈亏
 
 用法：OFFSETPROFIT返回当前理论平仓盈亏，用于风险控制。
@@ -5827,12 +6335,14 @@ OFFSETPROFIT<-5000&&C>O,BK;//亏损大于5000，并且当前K线为阳线时，�
 `
 
 const OFFSETPROFIT1 = new MyFunc()
-OFFSETPROFIT1.body = "OFFSETPROFIT1"
-OFFSETPROFIT1.explanation = "累计平仓盈亏"
-OFFSETPROFIT1.markettype = 1
+OFFSETPROFIT1.label = "OFFSETPROFIT1"
+OFFSETPROFIT1.insertText = ""
+OFFSETPROFIT1.detail = "累计平仓盈亏"
 OFFSETPROFIT1.tip = "OFFSETPROFIT1累计平仓盈亏"
+OFFSETPROFIT1.body = "OFFSETPROFIT1"
+OFFSETPROFIT1.markettype = 1
 OFFSETPROFIT1.type = 12
-OFFSETPROFIT1.description = `
+OFFSETPROFIT1.documentation = `
 OFFSETPROFIT1 累计平仓盈亏
 
 用法：OFFSETPROFIT1返回加载的全部K线的累计平仓盈亏。
@@ -5852,11 +6362,13 @@ OFFSETPROFIT1<=-100,CLOSEOUT;//累计亏损大于100，清仓
 `
 
 const OPEN = new MyFunc()
-OPEN.body = "OPEN"
-OPEN.explanation = "取得K线图的开盘价"
+OPEN.label = "OPEN"
+OPEN.insertText = ""
+OPEN.detail = "取得K线图的开盘价"
 OPEN.tip = "OPEN取得开盘价"
+OPEN.body = "OPEN"
 OPEN.type = 1
-OPEN.description = `
+OPEN.documentation = `
 OPEN 取得K线图的开盘价。
 
 注：
@@ -5872,12 +6384,14 @@ MA5:MA(O,5);//定义开盘价的5周期均线（O为OPEN简写）。
 `
 
 const OPENMINUTE = new MyFunc()
-OPENMINUTE.body = "OPENMINUTE"
-OPENMINUTE.explanation = "开盘后经过的分钟数"
-OPENMINUTE.markettype = 1
+OPENMINUTE.label = "OPENMINUTE"
+OPENMINUTE.insertText = ""
+OPENMINUTE.detail = "开盘后经过的分钟数"
 OPENMINUTE.tip = "OPENMINUTE,返回开盘后经过的分钟数"
+OPENMINUTE.body = "OPENMINUTE"
+OPENMINUTE.markettype = 1
 OPENMINUTE.type = 7
-OPENMINUTE.description = `
+OPENMINUTE.documentation = `
 OPENMINUTE，返回开盘后经过的分钟数。
 
 注：
@@ -5895,12 +6409,14 @@ AUTOFILTER;
 `
 
 const OPENMINUTE1 = new MyFunc()
-OPENMINUTE1.body = "OPENMINUTE1"
-OPENMINUTE1.explanation = "开盘后经过的分钟数"
-OPENMINUTE1.markettype = 1
+OPENMINUTE1.label = "OPENMINUTE1"
+OPENMINUTE1.insertText = ""
+OPENMINUTE1.detail = "开盘后经过的分钟数"
 OPENMINUTE1.tip = "OPENMINUTE1,返回开盘后经过的分钟数"
+OPENMINUTE1.body = "OPENMINUTE1"
+OPENMINUTE1.markettype = 1
 OPENMINUTE1.type = 7
-OPENMINUTE1.description = `
+OPENMINUTE1.documentation = `
 OPENMINUTE1，返回开盘后经过的分钟数。
 
 注：
@@ -5921,12 +6437,14 @@ AUTOFILTER;
 `
 
 const OPENSEC = new MyFunc()
-OPENSEC.body = "OPENSEC"
-OPENSEC.explanation = "开盘后经过的秒数"
-OPENSEC.markettype = 1
+OPENSEC.label = "OPENSEC"
+OPENSEC.insertText = ""
+OPENSEC.detail = "开盘后经过的秒数"
 OPENSEC.tip = "OPENSEC,返回开盘后经过的秒数"
+OPENSEC.body = "OPENSEC"
+OPENSEC.markettype = 1
 OPENSEC.type = 7
-OPENSEC.description = `
+OPENSEC.documentation = `
 OPENSEC，返回开盘后经过的秒数。
 
 注：
@@ -5944,12 +6462,14 @@ AUTOFILTER;
 `
 
 const OPENSEC1 = new MyFunc()
-OPENSEC1.body = "OPENSEC1"
-OPENSEC1.explanation = "开盘后经过的秒数"
-OPENSEC1.markettype = 1
+OPENSEC1.label = "OPENSEC1"
+OPENSEC1.insertText = ""
+OPENSEC1.detail = "开盘后经过的秒数"
 OPENSEC1.tip = "OPENSEC1,返回开盘后经过的秒数"
+OPENSEC1.body = "OPENSEC1"
+OPENSEC1.markettype = 1
 OPENSEC1.type = 7
-OPENSEC1.description = `
+OPENSEC1.documentation = `
 OPENSEC1，返回开盘后经过的秒数。
 
 注：
@@ -5970,11 +6490,13 @@ AUTOFILTER;
 `
 
 const OPI = new MyFunc()
-OPI.body = "OPI"
-OPI.explanation = "取得K线图的持仓量"
+OPI.label = "OPI"
+OPI.insertText = ""
+OPI.detail = "取得K线图的持仓量"
 OPI.tip = "OPI取得持仓量"
+OPI.body = "OPI"
 OPI.type = 1
-OPI.description = `
+OPI.documentation = `
 OPI 取得K线图的持仓量。
 
 注：
@@ -5990,12 +6512,14 @@ OPID:REF(OPI,NN);//取的昨天收盘时的持仓量
 `
 
 const PANZHENG = new MyFunc()
-PANZHENG.body = "PANZHENG"
-PANZHENG.explanation = "判断是否为盘整"
-PANZHENG.markettype = 1
+PANZHENG.label = "PANZHENG"
+PANZHENG.insertText = ""
+PANZHENG.detail = "判断是否为盘整"
 PANZHENG.tip = "PANZHENG,判断行情是否盘整，返回1时表示盘整，返回0时表示非盘整"
+PANZHENG.body = "PANZHENG"
+PANZHENG.markettype = 1
 PANZHENG.type = 5
-PANZHENG.description = `
+PANZHENG.documentation = `
 PANZHENG 判断当前行情是否为盘整
 
 用法：返回1:表示盘整，返回0:表示不是盘整。
@@ -6013,11 +6537,13 @@ AUTOFILTER;
 `
 
 const PARTLINE = new MyFunc()
-PARTLINE.body = "PARTLINE( , , )"
-PARTLINE.explanation = "画线段"
+PARTLINE.label = "PARTLINE"
+PARTLINE.insertText = ""
+PARTLINE.detail = "画线段"
 PARTLINE.tip = "PARTLINE(COND,DATA,COLOR)条件COND满足时，以COLOR颜色的直线连接DATA各点"
+PARTLINE.body = "PARTLINE( , , )"
 PARTLINE.type = 8
-PARTLINE.description = `
+PARTLINE.documentation = `
 PARTLINE 画线段。
 
 用法：
@@ -6038,11 +6564,13 @@ PARTLINE(LOW<REF(LOW,1),LOW,COLORBLUE),LINETHICK5;//表示当期最低价小于�
 `
 
 const PARTLINE1 = new MyFunc()
-PARTLINE1.body = "PARTLINE1( , )"
-PARTLINE1.explanation = "画线段"
+PARTLINE1.label = "PARTLINE1"
+PARTLINE1.insertText = ""
+PARTLINE1.detail = "画线段"
 PARTLINE1.tip = "PARTLINE1(COND,DATA)条件COND满足时，用直线段连接DATA各点"
+PARTLINE1.body = "PARTLINE1( , )"
 PARTLINE1.type = 8
-PARTLINE1.description = `
+PARTLINE1.documentation = `
 PARTLINE1 画线段。
 
 用法：
@@ -6062,11 +6590,13 @@ PARTLINE1(HIGH>REF(HIGH,1),HIGH),COLORRED,LINETHICK5;//表示当期最高价大�
 `
 
 const PCRATE = new MyFunc()
-PCRATE.body = "PCRATE(,)"
-PCRATE.explanation = "求N周期内Y值的趋势"
+PCRATE.label = "PCRATE"
+PCRATE.insertText = ""
+PCRATE.detail = "求N周期内Y值的趋势"
 PCRATE.tip = "求N周期内Y值的趋势"
+PCRATE.body = "PCRATE(,)"
 PCRATE.type = 3
-PCRATE.description = `
+PCRATE.documentation = `
 PCRATE(Y,N)  求N周期内Y值的趋势
 
 算法：根据N周期内Y值，通过最小二乘法线性拟合为一阶多项式，即y1=aN+b
@@ -6091,11 +6621,13 @@ PCRATETREND(CLOSE,20);//20周期内收盘价趋势变化的速度
 `
 
 const PCRATETREND = new MyFunc()
-PCRATETREND.body = "PCRATETREND(,)"
-PCRATETREND.explanation = "求N周期内Y值的趋势变化速度"
+PCRATETREND.label = "PCRATETREND"
+PCRATETREND.insertText = ""
+PCRATETREND.detail = "求N周期内Y值的趋势变化速度"
 PCRATETREND.tip = "求N周期内Y值的趋势变化速度"
+PCRATETREND.body = "PCRATETREND(,)"
 PCRATETREND.type = 3
-PCRATETREND.description = `
+PCRATETREND.documentation = `
 PCRATETREND(Y,N)  求N周期内Y值的趋势变化速度
 
 算法:
@@ -6120,11 +6652,13 @@ PCRATETREND(CLOSE,20);//20周期内收盘价趋势变化的速度
 `
 
 const PERCENTILE = new MyFunc()
-PERCENTILE.body = "PERCENTILE"
-PERCENTILE.explanation = "百分位函数"
+PERCENTILE.label = "PERCENTILE"
+PERCENTILE.insertText = ""
+PERCENTILE.detail = "百分位函数"
 PERCENTILE.tip = "PERCENTILE(Data,N,Per)百分位函数取最近N个周期Data数据处于Per百分位的数值。Data为需要排序的数据，N为需要排序的周期数，Per是百分位数值。"
+PERCENTILE.body = "PERCENTILE"
 PERCENTILE.type = 2
-PERCENTILE.description = `
+PERCENTILE.documentation = `
 PERCENTILE 百分位函数。
 
 用法：
@@ -6144,11 +6678,13 @@ LL:PERCENTILE(LOW,50,5);//取最近50根k线最低价处于5%位置的数值
 `
 
 const PERIOD = new MyFunc()
-PERIOD.body = "PERIOD"
-PERIOD.explanation = "自动读取当前技术分析图表周期"
+PERIOD.label = "PERIOD"
+PERIOD.insertText = ""
+PERIOD.detail = "自动读取当前技术分析图表周期"
 PERIOD.tip = "PERIOD,自动读取当前技术图表周期"
+PERIOD.body = "PERIOD"
 PERIOD.type = 7
-PERIOD.description = `
+PERIOD.documentation = `
 PERIOD，返回当前技术分析图表的周期。
 
 注：
@@ -6162,11 +6698,13 @@ IFELSE(PERIOD=1,OO,NULL);//取当天一分钟周期的开盘价。
 `
 
 const PLAYSOUND = new MyFunc()
-PLAYSOUND.body = "PLAYSOUND( , )"
-PLAYSOUND.explanation = "声音函数"
+PLAYSOUND.label = "PLAYSOUND"
+PLAYSOUND.insertText = ""
+PLAYSOUND.detail = "声音函数"
 PLAYSOUND.tip = "PLAYSOUND(COND,N),条件COND满足时播放指定声音N为自定义声音代码(可在设置声音文件中设置)"
+PLAYSOUND.body = "PLAYSOUND( , )"
 PLAYSOUND.type = 8
-PLAYSOUND.description = `
+PLAYSOUND.documentation = `
 PLAYSOUND 条件满足时，播放指定声音。
 
 用法：
@@ -6185,10 +6723,12 @@ PLAYSOUND(CLOSE>OPEN,'A');表示CLOSE>OPEN时播放自定义声音'A'。
 `
 
 const POINTDOT = new MyFunc()
+POINTDOT.label = "POINTDOT"
+POINTDOT.insertText = ""
+POINTDOT.detail = "画点线"
 POINTDOT.body = "POINTDOT"
-POINTDOT.explanation = "画点线"
 POINTDOT.type = 8
-POINTDOT.description = `
+POINTDOT.documentation = `
 画点线。
 用法：
 POINTDOT 画点线。
@@ -6198,11 +6738,13 @@ POINTDOT 画点线。
 `
 
 const POLYLINE = new MyFunc()
-POLYLINE.body = "POLYLINE( , , )"
-POLYLINE.explanation = "画折线"
+POLYLINE.label = "POLYLINE"
+POLYLINE.insertText = ""
+POLYLINE.detail = "画折线"
 POLYLINE.tip = "POLYLINE(COND,DATA,COLOR)，条件满足时，用颜色COLOR的直线连接DATA的值"
+POLYLINE.body = "POLYLINE( , , )"
 POLYLINE.type = 8
-POLYLINE.description = `
+POLYLINE.documentation = `
 POLYLINE函数 画折线。
 
 用法：
@@ -6223,11 +6765,13 @@ POLYLINE(CLOSE<=LLV(CLOSE,10),CLOSE,COLORBLUE),LINETHICK7;//表示在收盘价�
 `
 
 const POLYLINE1 = new MyFunc()
-POLYLINE1.body = "POLYLINE1( , )"
-POLYLINE1.explanation = "画折线"
+POLYLINE1.label = "POLYLINE1"
+POLYLINE1.insertText = ""
+POLYLINE1.detail = "画折线"
 POLYLINE1.tip = "POLYLINE1(COND,DATA)，条件满足时，用折线连接DATA的值"
+POLYLINE1.body = "POLYLINE1( , )"
 POLYLINE1.type = 8
-POLYLINE1.description = `
+POLYLINE1.documentation = `
 POLYLINE1 画折线。
 
 用法：
@@ -6251,11 +6795,13 @@ POLYLINE1(CLOSE<=LLV(CLOSE,10),CLOSE),COLORBLUE,LINETHICK7;//表示在收盘价�
 `
 
 const POW = new MyFunc()
-POW.body = "POW( , )"
-POW.explanation = "幂"
+POW.label = "POW"
+POW.insertText = ""
+POW.detail = "幂"
 POW.tip = "POW(X,Y),求X的Y次幂"
+POW.body = "POW( , )"
 POW.type = 4
-POW.description = `
+POW.documentation = `
 POW(X,Y)：求X的Y次幂。
 
 注：
@@ -6273,10 +6819,12 @@ POW(100,O-C);//返回100的O-C次方
 `
 
 const PRECIS = new MyFunc()
+PRECIS.label = "PRECIS"
+PRECIS.insertText = ""
+PRECIS.detail = "指定数值的输出精度（小数位数）"
 PRECIS.body = "PRECIS"
-PRECIS.explanation = "指定数值的输出精度（小数位数）"
 PRECIS.type = 8
-PRECIS.description = `
+PRECIS.documentation = `
 指定数值的输出精度（小数位数）。
 用法：
 PRECISX，X为0至6，表示小数位数从0到6。
@@ -6288,12 +6836,14 @@ MA(C,5),PRECIS4;//计算五周期均线，数值精度为4位小数。
 `
 
 const PRECISION = new MyFunc()
-PRECISION.body = "PRECISION"
-PRECISION.explanation = "设置小数位数"
-PRECISION.markettype = 1
+PRECISION.label = "PRECISION"
+PRECISION.insertText = ""
+PRECISION.detail = "设置小数位数"
 PRECISION.tip = "PRECISION()，设置小数位数(范围0-6)"
+PRECISION.body = "PRECISION"
+PRECISION.markettype = 1
 PRECISION.type = 8
-PRECISION.description = `
+PRECISION.documentation = `
 PRECISION(N) 设置小数位数，N为位数范
 
 注：
@@ -6307,12 +6857,14 @@ C,PRECISION(PRICEPRECISION); //返回收盘价，设置小数点位数为当前�
 `
 
 const PRICEPRECISION = new MyFunc()
-PRICEPRECISION.body = "PRICEPRECISION"
-PRICEPRECISION.explanation = "取当前合约小数点位数"
-PRICEPRECISION.markettype = 1
+PRICEPRECISION.label = "PRICEPRECISION"
+PRICEPRECISION.insertText = ""
+PRICEPRECISION.detail = "取当前合约小数点位数"
 PRICEPRECISION.tip = "PRICEPRECISION，取当前合约小数位数"
+PRICEPRECISION.body = "PRICEPRECISION"
+PRICEPRECISION.markettype = 1
 PRICEPRECISION.type = 8
-PRICEPRECISION.description = `
+PRICEPRECISION.documentation = `
 PRICEPRECISION 取当前合约小数点位数
 
 用法：
@@ -6323,12 +6875,14 @@ C,PRECISION(PRICEPRECISION); //返回收盘价，设置小数点位数为当前�
 `
 
 const PRICEPRECISION1 = new MyFunc()
-PRICEPRECISION1.body = "PRICEPRECISION1"
-PRICEPRECISION1.explanation = "取指定合约设置的小数点位数"
-PRICEPRECISION1.markettype = 1
+PRICEPRECISION1.label = "PRICEPRECISION1"
+PRICEPRECISION1.insertText = ""
+PRICEPRECISION1.detail = "取指定合约设置的小数点位数"
 PRICEPRECISION1.tip = "PRICEPRECISION1()，取某合约小数位数"
+PRICEPRECISION1.body = "PRICEPRECISION1"
+PRICEPRECISION1.markettype = 1
 PRICEPRECISION1.type = 8
-PRICEPRECISION1.description = `
+PRICEPRECISION1.documentation = `
 PRICEPRECISION1('CODE') 取指定合约设置的小数点位数
 
 注：
@@ -6341,12 +6895,14 @@ C,PRECISION(PRICEPRECISION1('8608')); //返回收盘价，设置小数点位数�
 `
 
 const PROFIT = new MyFunc()
-PROFIT.body = "PROFIT"
-PROFIT.explanation = "理论逐笔浮盈"
-PROFIT.markettype = 1
+PROFIT.label = "PROFIT"
+PROFIT.insertText = ""
+PROFIT.detail = "理论逐笔浮盈"
 PROFIT.tip = "PROFIT理论逐笔浮盈"
+PROFIT.body = "PROFIT"
+PROFIT.markettype = 1
 PROFIT.type = 12
-PROFIT.description = `
+PROFIT.documentation = `
 PROFIT 理论逐笔浮盈
 
 用法：PROFIT返回当前理论逐笔浮动盈亏，用于交易策略风险控制。
@@ -6372,11 +6928,13 @@ PROFIT<-2000,SP;//亏损2000元止损
 `
 
 const QUARTER = new MyFunc()
-QUARTER.body = "QUARTER"
-QUARTER.explanation = "取得某周期的季度数"
+QUARTER.label = "QUARTER"
+QUARTER.insertText = ""
+QUARTER.detail = "取得某周期的季度数"
 QUARTER.tip = "QUARTER取得某周期的季度数"
+QUARTER.body = "QUARTER"
 QUARTER.type = 7
-QUARTER.description = `
+QUARTER.documentation = `
 QUARTER,返回某周期的季度数。
 
 注：
@@ -6390,12 +6948,14 @@ AUTOFILTER;
 `
 
 const QUARTERTRADE = new MyFunc()
-QUARTERTRADE.body = "QUARTERTRADE"
-QUARTERTRADE.explanation = "季内交易函数"
-QUARTERTRADE.markettype = 1
+QUARTERTRADE.label = "QUARTERTRADE"
+QUARTERTRADE.insertText = ""
+QUARTERTRADE.detail = "季内交易函数"
 QUARTERTRADE.tip = "QUARTERTRADE,季内交易函数"
+QUARTERTRADE.body = "QUARTERTRADE"
+QUARTERTRADE.markettype = 1
 QUARTERTRADE.type = 9
-QUARTERTRADE.description = `
+QUARTERTRADE.documentation = `
 QUARTERTRADE 季内交易函数。
 
 用法：
@@ -6421,12 +6981,14 @@ QUARTERTRADE;//使用每季度数据计算
 `
 
 const QUARTERTRADE1 = new MyFunc()
-QUARTERTRADE1.body = "QUARTERTRADE1"
-QUARTERTRADE1.explanation = "季内交易函数"
-QUARTERTRADE1.markettype = 1
+QUARTERTRADE1.label = "QUARTERTRADE1"
+QUARTERTRADE1.insertText = ""
+QUARTERTRADE1.detail = "季内交易函数"
 QUARTERTRADE1.tip = "QUARTERTRADE1季内交易函数，且历史数据不参与计算。"
+QUARTERTRADE1.body = "QUARTERTRADE1"
+QUARTERTRADE1.markettype = 1
 QUARTERTRADE1.type = 9
-QUARTERTRADE1.description = `
+QUARTERTRADE1.documentation = `
 QUARTERTRADE1 季内交易函数。
 
 用法：
@@ -6452,11 +7014,13 @@ QUARTERTRADE1;//使用每季度数据计算
 `
 
 const RAND = new MyFunc()
-RAND.body = "RAND"
-RAND.explanation = "产生随机数的随机函数"
+RAND.label = "RAND"
+RAND.insertText = ""
+RAND.detail = "产生随机数的随机函数"
 RAND.tip = "RAND(X,Y)产生随机数的随机函数,返回范围在X到Y之间的随机数。"
+RAND.body = "RAND"
 RAND.type = 4
-RAND.description = `
+RAND.documentation = `
 RAND(X,Y) 产生随机数的随机函数,返回范围在X到Y之间的随机数。
 
 注：
@@ -6472,11 +7036,13 @@ RAND(C,O);//返回收盘价到开盘价之间的随机数值
 `
 
 const RANGE = new MyFunc()
-RANGE.body = "RANGE( , , )"
-RANGE.explanation = "范围"
+RANGE.label = "RANGE"
+RANGE.insertText = ""
+RANGE.detail = "范围"
 RANGE.tip = "RANGE(A,B,C),判断是否A大于B同时小于C，如果是则返回1，否则返回0"
+RANGE.body = "RANGE( , , )"
 RANGE.type = 4
-RANGE.description = `
+RANGE.documentation = `
 RANGE(X,Y,Z)：介于某个范围之内。表示X大于Y同时小于Z时返回1，否则返回0
 例1：
 RANGE(5,4,6);//返回值为1；
@@ -6492,11 +7058,13 @@ RANGE(MA10,MA20,MA5),BK;//10周期均线在5周期均线与20周期均线之间�
 `
 
 const RAWDATA = new MyFunc()
-RAWDATA.body = "RAWDATA(  )"
-RAWDATA.explanation = "取原始数据的值"
+RAWDATA.label = "RAWDATA"
+RAWDATA.insertText = ""
+RAWDATA.detail = "取原始数据的值"
 RAWDATA.tip = "RAWDATA()，取原始数据的高开低收"
+RAWDATA.body = "RAWDATA(  )"
 RAWDATA.type = 1
-RAWDATA.description = `
+RAWDATA.documentation = `
 RAWDATA 取原始数据的高开低收
 注：
 1、该函数与STOCKDIVD或TRADE_SMOOTHING连用
@@ -6514,11 +7082,13 @@ STOCKDIVD(1);//设置股票向后复权
 `
 
 const REF = new MyFunc()
-REF.body = "REF( , )"
-REF.explanation = "向前引用"
+REF.label = "REF"
+REF.insertText = ""
+REF.detail = "向前引用"
 REF.tip = "REF(X,N),取X在N个周期前的值"
+REF.body = "REF( , )"
 REF.type = 1
-REF.description = `
+REF.documentation = `
 引用X在N个周期前的值。
 
 注：
@@ -6541,11 +7111,13 @@ K线返回 1 K线的收盘价。
 `
 
 const REFLINE = new MyFunc()
-REFLINE.body = "REFLINE"
-REFLINE.explanation = "设定指标参考线"
+REFLINE.label = "REFLINE"
+REFLINE.insertText = ""
+REFLINE.detail = "设定指标参考线"
 REFLINE.tip = "REFLINE设定指标参考线"
+REFLINE.body = "REFLINE"
 REFLINE.type = 8
-REFLINE.description = `
+REFLINE.documentation = `
 设定指标参考线。
 
 用法：
@@ -6564,11 +7136,13 @@ REFLINE:-100,0,100;//在-100,0,100的位置画出指标参考线。
 `
 
 const REFLINE1 = new MyFunc()
-REFLINE1.body = "REFLINE1"
-REFLINE1.explanation = "设定指标参考线"
+REFLINE1.label = "REFLINE1"
+REFLINE1.insertText = ""
+REFLINE1.detail = "设定指标参考线"
 REFLINE1.tip = "REFLINE1设定指标参考线"
+REFLINE1.body = "REFLINE1"
 REFLINE1.type = 8
-REFLINE1.description = `
+REFLINE1.documentation = `
 设定指标参考线。
 
 用法：
@@ -6587,12 +7161,14 @@ REFLINE1:-100,0,100;//在-100,0,100的位置画出指标参考线。
 `
 
 const REFSIG_PLACE = new MyFunc()
-REFSIG_PLACE.body = "REFSIG_PLACE( , )"
-REFSIG_PLACE.explanation = "判断指定信号的K线位置"
-REFSIG_PLACE.markettype = 1
+REFSIG_PLACE.label = "REFSIG_PLACE"
+REFSIG_PLACE.insertText = ""
+REFSIG_PLACE.detail = "判断指定信号的K线位置"
 REFSIG_PLACE.tip = "REFSIG_PLACE(Sig,N)判断从当根K线开始倒数第N个固定的Sig信号所在K线的位置"
+REFSIG_PLACE.body = "REFSIG_PLACE( , )"
+REFSIG_PLACE.markettype = 1
 REFSIG_PLACE.type = 10
-REFSIG_PLACE.description = `
+REFSIG_PLACE.documentation = `
 REFSIG_PLACE(Sig,N) 判断从当根K线开始倒数第N个固定的Sig信号所在K线的位置。
 
 用法：REFSIG_PLACE(Sig,N) 判断从当根K线开始倒数第N个固定的Sig信号所在K线的位置。如果没有Sig信号，或者没有固定的Sig信号，则该函数返回空值。
@@ -6609,12 +7185,14 @@ REFSIG_PLACE(BK,3)=5&&BKVOL>0,SP;//如果从当根K线开始倒数第3个固定�
 `
 
 const REFSIG_PRICE = new MyFunc()
-REFSIG_PRICE.body = "REFSIG_PRICE( , )"
-REFSIG_PRICE.explanation = "判断指定信号的信号价位"
-REFSIG_PRICE.markettype = 1
+REFSIG_PRICE.label = "REFSIG_PRICE"
+REFSIG_PRICE.insertText = ""
+REFSIG_PRICE.detail = "判断指定信号的信号价位"
 REFSIG_PRICE.tip = "REFSIG_PRICE(Sig,N)返回从当根K线开始倒数第N个固定的Sig信号的信号价位"
+REFSIG_PRICE.body = "REFSIG_PRICE( , )"
+REFSIG_PRICE.markettype = 1
 REFSIG_PRICE.type = 10
-REFSIG_PRICE.description = `
+REFSIG_PRICE.documentation = `
 REFSIG_PRICE(Sig,N) 返回从当根K线开始倒数第N个固定的Sig信号的信号价位。
 
 用法：REFSIG_PRICE(Sig,N) 判断从当根K线开始倒数第N个固定的Sig信号的信号价位。如果没有Sig信号，或者没有固定的Sig信号，则该函数返回空值。
@@ -6630,12 +7208,14 @@ REFSIG_PRICE(BK,3)=3000&&BKVOL>0,SP;//如果从当根K线开始倒数第3个固�
 `
 
 const REFSIG_PRICE1 = new MyFunc()
-REFSIG_PRICE1.body = "REFSIG_PRICE1( , )"
-REFSIG_PRICE1.explanation = "判断指定信号的委托价格"
-REFSIG_PRICE1.markettype = 1
+REFSIG_PRICE1.label = "REFSIG_PRICE1"
+REFSIG_PRICE1.insertText = ""
+REFSIG_PRICE1.detail = "判断指定信号的委托价格"
 REFSIG_PRICE1.tip = "REFSIG_PRICE1(Sig,N)返回从当根K线开始倒数第N个固定的Sig信号的委托价格"
+REFSIG_PRICE1.body = "REFSIG_PRICE1( , )"
+REFSIG_PRICE1.markettype = 1
 REFSIG_PRICE1.type = 10
-REFSIG_PRICE1.description = `
+REFSIG_PRICE1.documentation = `
 REFSIG_PRICE1(Sig,N) 返回从当根K线开始倒数第N个固定的Sig信号的委托价格。
 
 用法：REFSIG_PRICE1(Sig,N) 判断从当根K线开始倒数第N个固定的Sig信号的委托价格。如果没有Sig信号，或者没有固定的Sig信号，则该函数返回空值。
@@ -6658,12 +7238,14 @@ REFSIG_PRICE1(BK,3)=3000&&BKVOL>0,SP;//如果从当根K线开始倒数第3个固
 `
 
 const REFSIG_PRICE2 = new MyFunc()
-REFSIG_PRICE2.body = "REFSIG_PRICE2( , )"
-REFSIG_PRICE2.explanation = "判断指定信号的成交价格"
-REFSIG_PRICE2.markettype = 1
+REFSIG_PRICE2.label = "REFSIG_PRICE2"
+REFSIG_PRICE2.insertText = ""
+REFSIG_PRICE2.detail = "判断指定信号的成交价格"
 REFSIG_PRICE2.tip = "REFSIG_PRICE2(Sig,N)返回从当根K线开始倒数第N个固定的Sig信号的成交价格"
+REFSIG_PRICE2.body = "REFSIG_PRICE2( , )"
+REFSIG_PRICE2.markettype = 1
 REFSIG_PRICE2.type = 10
-REFSIG_PRICE2.description = `
+REFSIG_PRICE2.documentation = `
 REFSIG_PRICE2(Sig,N) 返回从当根K线开始倒数第N个固定的Sig信号的成交价格。
 
 用法：REFSIG_PRICE2(Sig,N) 判断从当根K线开始倒数第N个固定的Sig信号的成交价格。如果没有Sig信号，或者没有固定的Sig信号，则该函数返回空值。
@@ -6689,12 +7271,14 @@ REFSIG_PRICE2(BK,3)=3000&&BKVOL>0,SP;//如果从当根K线开始倒数第3个固
 `
 
 const REFSIG_VOL = new MyFunc()
-REFSIG_VOL.body = "REFSIG_VOL( , )"
-REFSIG_VOL.explanation = "判断指定信号的手数"
-REFSIG_VOL.markettype = 1
+REFSIG_VOL.label = "REFSIG_VOL"
+REFSIG_VOL.insertText = ""
+REFSIG_VOL.detail = "判断指定信号的手数"
 REFSIG_VOL.tip = "REFSIG_VOL(Sig,N)返回从当根K线开始倒数第N个固定的Sig信号的信号手数(反手指令取开仓手数)"
+REFSIG_VOL.body = "REFSIG_VOL( , )"
+REFSIG_VOL.markettype = 1
 REFSIG_VOL.type = 10
-REFSIG_VOL.description = `
+REFSIG_VOL.documentation = `
 REFSIG_VOL(Sig,N) 返回从当根K线开始倒数第N个固定的Sig信号的信号手数(反手指令取开仓手数)。
 
 用法：REFSIG_VOL(Sig,N) 判断从当根K线开始倒数第N个固定的Sig信号的手数。如果没有Sig信号，或者没有固定的Sig信号，则该函数返回0。
@@ -6710,11 +7294,13 @@ REFSIG_PLACE(BK,3)=5&&REFSIG_VOL(BK,3)>2,SP(BKVOL);//如果从当根K线开始�
 `
 
 const REFWH = new MyFunc()
-REFWH.body = "REFWH( , )"
-REFWH.explanation = "向前引用"
+REFWH.label = "REFWH"
+REFWH.insertText = ""
+REFWH.detail = "向前引用"
 REFWH.tip = "REFWH(X,N),取X在N个周期前的值"
+REFWH.body = "REFWH( , )"
 REFWH.type = 1
-REFWH.description = `
+REFWH.documentation = `
 引用N周期前的数据。
 
 用法：
@@ -6728,11 +7314,13 @@ REFWH(X,N)引用X在N个周期前的值。
 `
 
 const REVERSE = new MyFunc()
-REVERSE.body = "REVERSE( )"
-REVERSE.explanation = "取相反值"
+REVERSE.label = "REVERSE"
+REVERSE.insertText = ""
+REVERSE.detail = "取相反值"
 REVERSE.tip = "REVERSE(X)，取－X"
+REVERSE.body = "REVERSE( )"
 REVERSE.type = 4
-REVERSE.description = `
+REVERSE.documentation = `
 REVERSE(X)：取相反值，返回－X。
 
 例1：
@@ -6744,11 +7332,13 @@ REVERSE(0);//返回值为0
 `
 
 const ROUND = new MyFunc()
-ROUND.body = "ROUND( , )"
-ROUND.explanation = "指定位数四舍五入"
+ROUND.label = "ROUND"
+ROUND.insertText = ""
+ROUND.detail = "指定位数四舍五入"
 ROUND.tip = "ROUND(N,M),对N指定M位小数进行四舍五入"
+ROUND.body = "ROUND( , )"
 ROUND.type = 4
-ROUND.description = `
+ROUND.documentation = `
 ROUND(N,M) 对数字N进行位数为M的四舍五入。
 
 注：
@@ -6766,11 +7356,13 @@ ROUND(125.345,-1);//返回130
 `
 
 const SAR = new MyFunc()
-SAR.body = "SAR( , , )"
-SAR.explanation = "抛物转向"
+SAR.label = "SAR"
+SAR.insertText = ""
+SAR.detail = "抛物转向"
 SAR.tip = "SAR(N,Step,Max)，取抛物转向值N为周期数，Step为步长，Max为极值"
+SAR.body = "SAR( , , )"
 SAR.type = 2
-SAR.description = `
+SAR.documentation = `
 SAR(N,STEP,MAX) 返回抛物转向值。
 
 根据公式SAR(n)=SAR(n-1)+AF*(EP(n-1)-SAR(n-1))计算 
@@ -6795,11 +7387,13 @@ IF(SARLINE>0,NULL,ABS(SARLINE)),CIRCLEDOT,COLORCYAN,NOTEXT;//SARLINE不大于0�
 `
 
 const SAR1 = new MyFunc()
-SAR1.body = "SAR1( , , )"
-SAR1.explanation = "抛物转向"
+SAR1.label = "SAR1"
+SAR1.insertText = ""
+SAR1.detail = "抛物转向"
 SAR1.tip = "SAR1(N,Step,Max)，取抛物转向值N为周期数，Step为步长，Max为极值"
+SAR1.body = "SAR1( , , )"
 SAR1.type = 2
-SAR1.description = `
+SAR1.documentation = `
 SAR1(N,STEP,MAX) 返回抛物转向值。
 
 根据公式SAR1(n)=SAR1(n-1)+AF*(EP(n-1)-SAR1(n-1))计算 
@@ -6828,11 +7422,13 @@ IF(SARLINE>0,NULL,ABS(SARLINE)),CIRCLEDOT,COLORCYAN,NOTEXT;//SARLINE不大于0�
 `
 
 const SCALE = new MyFunc()
-SCALE.body = "SCALE"
-SCALE.explanation = "取得K线图主动买占总成交量的比例"
+SCALE.label = "SCALE"
+SCALE.insertText = ""
+SCALE.detail = "取得K线图主动买占总成交量的比例"
 SCALE.tip = "SCALE返回主动买占总成交量的比例"
+SCALE.body = "SCALE"
 SCALE.type = 1
-SCALE.description = `
+SCALE.documentation = `
 SCALE 取得K线图主动买占总成交量的比例。
 
 注：
@@ -6843,12 +7439,14 @@ BB:=(1-SCALE)*VOL;//主动卖
 `
 
 const SEEK = new MyFunc()
-SEEK.body = "Seek"
-SEEK.explanation = "标签统计函数"
-SEEK.markettype = 1
+SEEK.label = "SEEK"
+SEEK.insertText = ""
+SEEK.detail = "标签统计函数"
 SEEK.tip = "SEEK(Cond)标签统计函数Cond为需要满足的条件"
+SEEK.body = "Seek"
+SEEK.markettype = 1
 SEEK.type = 2
-SEEK.description = `
+SEEK.documentation = `
 SEEK 标签统计函数
 此函数为系统封装函数。
 
@@ -6866,12 +7464,14 @@ SEEK(C>O);
 `
 
 const SELECT = new MyFunc()
-SELECT.body = "SELECT"
-SELECT.explanation = "公式选股"
-SELECT.markettype = 3
+SELECT.label = "SELECT"
+SELECT.insertText = ""
+SELECT.detail = "公式选股"
 SELECT.tip = "SELECT公式选股"
+SELECT.body = "SELECT"
+SELECT.markettype = 3
 SELECT.type = 16
-SELECT.description = `
+SELECT.documentation = `
 SELECT 公式选股
 
 用法：
@@ -6893,12 +7493,14 @@ FINANCE_DATA('每股收益')>0,SELECT;//选出每股收益大于0的股票
 `
 
 const SETDEALPERCENT = new MyFunc()
-SETDEALPERCENT.body = "SETDEALPERCENT"
-SETDEALPERCENT.explanation = "按理论资金比例下单"
-SETDEALPERCENT.markettype = 1
+SETDEALPERCENT.label = "SETDEALPERCENT"
+SETDEALPERCENT.insertText = ""
+SETDEALPERCENT.detail = "按理论资金比例下单"
 SETDEALPERCENT.tip = "SETDEALPERCENT(fPercent,N)，每次按当前理论资金的fPercent比例下单，且最大为N手。"
+SETDEALPERCENT.body = "SETDEALPERCENT"
+SETDEALPERCENT.markettype = 1
 SETDEALPERCENT.type = 12
-SETDEALPERCENT.description = `
+SETDEALPERCENT.documentation = `
 SETDEALPERCENT  按理论资金比例下单
 
 用法：
@@ -6920,12 +7522,14 @@ SETDEALPERCENT(20,10); //每次按理论资金比例的20%下单，并设置最�
 `
 
 const SETEXPIREDATE = new MyFunc()
-SETEXPIREDATE.body = "SETEXPIREDATE()"
-SETEXPIREDATE.explanation = "设置加密模型的使用有效期的到期时间"
-SETEXPIREDATE.markettype = 1
+SETEXPIREDATE.label = "SETEXPIREDATE"
+SETEXPIREDATE.insertText = ""
+SETEXPIREDATE.detail = "设置加密模型的使用有效期的到期时间"
 SETEXPIREDATE.tip = "SETEXPIREDATE('yyyymmdd')设置加密模型的使用有效期的到期时间"
+SETEXPIREDATE.body = "SETEXPIREDATE()"
+SETEXPIREDATE.markettype = 1
 SETEXPIREDATE.type = 14
-SETEXPIREDATE.description = `
+SETEXPIREDATE.documentation = `
 SETEXPIREDATE 设置加密模型的使用有效期的到期时间。
 
 用法：SETEXPIREDATE('yyyymmdd'); 设置加密模型的使用有效期的到期时间为yyyymmdd。
@@ -6945,12 +7549,14 @@ AUTOFILTER;
 `
 
 const SETMOVEOPIPRICE = new MyFunc()
-SETMOVEOPIPRICE.body = "SETMOVEOPIPRICE()"
-SETMOVEOPIPRICE.explanation = "设置模组换月移仓的委托方式"
-SETMOVEOPIPRICE.markettype = 1
+SETMOVEOPIPRICE.label = "SETMOVEOPIPRICE"
+SETMOVEOPIPRICE.insertText = ""
+SETMOVEOPIPRICE.detail = "设置模组换月移仓的委托方式"
 SETMOVEOPIPRICE.tip = "SETMOVEOPIPRICE(PRICE),设置模组换月移仓的委托方式，PRICE为价格方式"
+SETMOVEOPIPRICE.body = "SETMOVEOPIPRICE()"
+SETMOVEOPIPRICE.markettype = 1
 SETMOVEOPIPRICE.type = 11
-SETMOVEOPIPRICE.description = `
+SETMOVEOPIPRICE.documentation = `
 SETMOVEOPIPRICE(PRICE),设置模组换月移仓的委托方式。
 
 用法：SETMOVEOPIPRICE(PRICE)，模组中如果设置为自动换月移仓，则主力合约切换时以PRICE的委托方式进行移仓。
@@ -6976,12 +7582,14 @@ AUTOFILTER;
 `
 
 const SETQUOTACCOUNT = new MyFunc()
-SETQUOTACCOUNT.body = "SETQUOTACCOUNT()"
-SETQUOTACCOUNT.explanation = "设置模型加密输出使用者的文华行情账号"
-SETQUOTACCOUNT.markettype = 1
+SETQUOTACCOUNT.label = "SETQUOTACCOUNT"
+SETQUOTACCOUNT.insertText = ""
+SETQUOTACCOUNT.detail = "设置模型加密输出使用者的文华行情账号"
 SETQUOTACCOUNT.tip = "SETQUOTACCOUNT('ACCOUNT1')设置模型加密输出使用者的文华行情账号"
+SETQUOTACCOUNT.body = "SETQUOTACCOUNT()"
+SETQUOTACCOUNT.markettype = 1
 SETQUOTACCOUNT.type = 14
-SETQUOTACCOUNT.description = `
+SETQUOTACCOUNT.documentation = `
 SETQUOTACCOUNT 设置模型加密输出使用者的文华行情账号。
 
 用法：SETQUOTACCOUNT('ACCOUNT1'); 设置该模型加密输出给文华行情账号为ACCOUNT1的使用者。
@@ -7002,12 +7610,14 @@ AUTOFILTER;
 `
 
 const SETSIGPRICE = new MyFunc()
-SETSIGPRICE.body = "SETSIGPRICE( , )"
-SETSIGPRICE.explanation = "指定信号的下单价格"
-SETSIGPRICE.markettype = 1
+SETSIGPRICE.label = "SETSIGPRICE"
+SETSIGPRICE.insertText = ""
+SETSIGPRICE.detail = "指定信号的下单价格"
 SETSIGPRICE.tip = "SETSIGPRICE(SIG,PRICE),设置SIG指令的下单价格，PRICE为下单价格。"
+SETSIGPRICE.body = "SETSIGPRICE( , )"
+SETSIGPRICE.markettype = 1
 SETSIGPRICE.type = 11
-SETSIGPRICE.description = `
+SETSIGPRICE.documentation = `
 SETSIGPRICE(SIG,PRICE),指定信号的下单价格
 
 用法：
@@ -7042,12 +7652,14 @@ AUTOFILTER;
 `
 
 const SETSIGPRICETYPE = new MyFunc()
-SETSIGPRICETYPE.body = "SETSIGPRICETYPE( , , )"
-SETSIGPRICETYPE.explanation = "设置信号的委托价格方式"
-SETSIGPRICETYPE.markettype = 1
+SETSIGPRICETYPE.label = "SETSIGPRICETYPE"
+SETSIGPRICETYPE.insertText = ""
+SETSIGPRICETYPE.detail = "设置信号的委托价格方式"
 SETSIGPRICETYPE.tip = "SETSIGPRICETYPE(SIG,PRICE,IsCancel),设置SIG指令的委托价格方式，PRICE为委托价格方式，IsCancel为是否启用终止下单。"
+SETSIGPRICETYPE.body = "SETSIGPRICETYPE( , , )"
+SETSIGPRICETYPE.markettype = 1
 SETSIGPRICETYPE.type = 11
-SETSIGPRICETYPE.description = `
+SETSIGPRICETYPE.documentation = `
 SETSIGPRICETYPE(SIG,PRICE,IsCancel),设置信号的委托价格方式
 
 用法：SETSIGPRICETYPE(SIG,PRICE,IsCancel),设置SIG指令的委托价格方式，PRICE为委托价格方式，IsCancel为是否启用终止下单。
@@ -7089,11 +7701,13 @@ AUTOFILTER;
 `
 
 const SETSTYLECOLOR = new MyFunc()
-SETSTYLECOLOR.body = "SETSTYLECOLOR( , )"
-SETSTYLECOLOR.explanation = "线型的粗细和颜色控制"
+SETSTYLECOLOR.label = "SETSTYLECOLOR"
+SETSTYLECOLOR.insertText = ""
+SETSTYLECOLOR.detail = "线型的粗细和颜色控制"
 SETSTYLECOLOR.tip = "SETSTYLECOLOR(LINETHICK,COLOR);设置线型的粗细和颜色LINETHICK表示线形的粗细，可以使用LINETHICK1——LINETHICK7；COLOR为颜色"
+SETSTYLECOLOR.body = "SETSTYLECOLOR( , )"
 SETSTYLECOLOR.type = 8
-SETSTYLECOLOR.description = `
+SETSTYLECOLOR.documentation = `
 SETSTYLECOLOR函数 设置线型的粗细和颜色。
 
 用法：
@@ -7111,11 +7725,13 @@ SETSTYLECOLOR(STYLE,COLOR);
 `
 
 const SETTLE = new MyFunc()
-SETTLE.body = "SETTLE"
-SETTLE.explanation = "取得K线图的结算价或者取得当日成交均价"
+SETTLE.label = "SETTLE"
+SETTLE.insertText = ""
+SETTLE.detail = "取得K线图的结算价或者取得当日成交均价"
 SETTLE.tip = "SETTLE求到某根k线的结算价"
+SETTLE.body = "SETTLE"
 SETTLE.type = 1
-SETTLE.description = `
+SETTLE.documentation = `
 SETTLE 取得K线图的结算价或者取得当日成交均价
 
 注：
@@ -7129,12 +7745,14 @@ CROSS(C,SETTLE);//收盘价上穿结算价
 `
 
 const SETTRADEACCOUNT = new MyFunc()
-SETTRADEACCOUNT.body = "SETTRADEACCOUNT()"
-SETTRADEACCOUNT.explanation = "设置模型加密输出使用者交易的资金账号"
-SETTRADEACCOUNT.markettype = 1
+SETTRADEACCOUNT.label = "SETTRADEACCOUNT"
+SETTRADEACCOUNT.insertText = ""
+SETTRADEACCOUNT.detail = "设置模型加密输出使用者交易的资金账号"
 SETTRADEACCOUNT.tip = "SETTRADEACCOUNT('ACCOUNT1')设置模型加密输出使用者交易的资金账号"
+SETTRADEACCOUNT.body = "SETTRADEACCOUNT()"
+SETTRADEACCOUNT.markettype = 1
 SETTRADEACCOUNT.type = 14
-SETTRADEACCOUNT.description = `
+SETTRADEACCOUNT.documentation = `
 SETTRADEACCOUNT 设置模型加密输出使用者交易的资金账号。
 
 用法：SETTRADEACCOUNT('ACCOUNT1'); 设置该模型加密输出给交易资金账号为ACCOUNT1的使用者。
@@ -7155,11 +7773,13 @@ AUTOFILTER;
 `
 
 const SGN = new MyFunc()
-SGN.body = "SGN( )"
-SGN.explanation = "取符号"
+SGN.label = "SGN"
+SGN.insertText = ""
+SGN.detail = "取符号"
 SGN.tip = "SGN(X)，判断X正负数（若X>0返回1,若X<0返回-1,否则返回0）"
+SGN.body = "SGN( )"
 SGN.type = 4
-SGN.description = `
+SGN.documentation = `
 SGN(X)：取符号。若X>0返回1,若X<0返回-1,否则返回0。
 
 例1：
@@ -7171,12 +7791,14 @@ SGN(0);//返回值为0
 `
 
 const SIGNUM = new MyFunc()
-SIGNUM.body = "SIGNUM"
-SIGNUM.explanation = "定位一次交易过程中的信号位置"
-SIGNUM.markettype = 1
+SIGNUM.label = "SIGNUM"
+SIGNUM.insertText = ""
+SIGNUM.detail = "定位一次交易过程中的信号位置"
 SIGNUM.tip = "SIGNUM，返回值为当前信号为一次交易过程中的第几个信号"
+SIGNUM.body = "SIGNUM"
+SIGNUM.markettype = 1
 SIGNUM.type = 10
-SIGNUM.description = `
+SIGNUM.documentation = `
 SIGNUM，返回值为当前信号为一次交易过程中的第几个信号
 
 注：
@@ -7191,12 +7813,14 @@ TRADE_AGAIN(4);
 `
 
 const SIGVOL = new MyFunc()
-SIGVOL.body = "SIGVOL()"
-SIGVOL.explanation = "一次交易中指定信号的下单手数"
-SIGVOL.markettype = 1
+SIGVOL.label = "SIGVOL"
+SIGVOL.insertText = ""
+SIGVOL.detail = "一次交易中指定信号的下单手数"
 SIGVOL.tip = "SIGVOL(N),返回一次交易中第N个信号的下单手数"
+SIGVOL.body = "SIGVOL()"
+SIGVOL.markettype = 1
 SIGVOL.type = 10
-SIGVOL.description = `
+SIGVOL.documentation = `
 SIGVOL(N),返回一次交易中第N个信号的下单手数。
 
 注：
@@ -7218,11 +7842,13 @@ TRADE_AGAIN(10);
 `
 
 const SIN = new MyFunc()
-SIN.body = "SIN( )"
-SIN.explanation = "求正弦"
+SIN.label = "SIN"
+SIN.insertText = ""
+SIN.detail = "求正弦"
 SIN.tip = "SIN(X)，求X的正弦值"
+SIN.body = "SIN( )"
 SIN.type = 4
-SIN.description = `
+SIN.documentation = `
 SIN(X)：求X的正弦值。
 
 注：
@@ -7236,11 +7862,13 @@ SIN(1.57);//返回1.57的正弦值
 `
 
 const SKEWNESS = new MyFunc()
-SKEWNESS.body = "SKEWNESS( , )"
-SKEWNESS.explanation = "偏度系数"
+SKEWNESS.label = "SKEWNESS"
+SKEWNESS.insertText = ""
+SKEWNESS.detail = "偏度系数"
 SKEWNESS.tip = "SKEWNESS(X,N)求X在N个周期内的偏度系数"
+SKEWNESS.body = "SKEWNESS( , )"
 SKEWNESS.type = 3
-SKEWNESS.description = `
+SKEWNESS.documentation = `
 SKEWNESS(X,N) 求X在N个周期内的偏度系数。
 
 注：
@@ -7261,12 +7889,14 @@ SKEWNESS(C,10);
 `
 
 const SKHIGH = new MyFunc()
-SKHIGH.body = "SKHIGH"
-SKHIGH.explanation = "返回数据合约卖开仓以来的最高价"
-SKHIGH.markettype = 1
+SKHIGH.label = "SKHIGH"
+SKHIGH.insertText = ""
+SKHIGH.detail = "返回数据合约卖开仓以来的最高价"
 SKHIGH.tip = "SKHIGH,返回数据合约卖开仓以来的最高价"
+SKHIGH.body = "SKHIGH"
+SKHIGH.markettype = 1
 SKHIGH.type = 10
-SKHIGH.description = `
+SKHIGH.documentation = `
 返回数据合约卖开仓以来的最高价
 用法：
 SKHIGH返回数据合约最近一次模型卖开位置到当前的最高价。
@@ -7289,12 +7919,14 @@ AUTOFILTER;//最新价低于卖开仓以来数据合约的最高价5个点，平
 `
 
 const SKLOW = new MyFunc()
-SKLOW.body = "SKLOW"
-SKLOW.explanation = "返回数据合约卖开仓以来的最低价"
-SKLOW.markettype = 1
+SKLOW.label = "SKLOW"
+SKLOW.insertText = ""
+SKLOW.detail = "返回数据合约卖开仓以来的最低价"
 SKLOW.tip = "SKLOW,返回数据合约卖开仓以来的最低价"
+SKLOW.body = "SKLOW"
+SKLOW.markettype = 1
 SKLOW.type = 10
-SKLOW.description = `
+SKLOW.documentation = `
 返回数据合约卖开仓以来的最低价
 用法：
 SKLOW返回数据合约最近一次模型卖开位置到当前的最低价。
@@ -7316,12 +7948,14 @@ AUTOFILTER;//最新价高于卖开仓以来数据合约的最低价5个点，止
 `
 
 const SKPRICE = new MyFunc()
-SKPRICE.body = "SKPRICE"
-SKPRICE.explanation = "返回数据合约最近一次卖开信号价位"
-SKPRICE.markettype = 1
+SKPRICE.label = "SKPRICE"
+SKPRICE.insertText = ""
+SKPRICE.detail = "返回数据合约最近一次卖开信号价位"
 SKPRICE.tip = "SKPRICE，返回数据合约最近一次卖开信号价位"
+SKPRICE.body = "SKPRICE"
+SKPRICE.markettype = 1
 SKPRICE.type = 10
-SKPRICE.description = `
+SKPRICE.documentation = `
 SKPRICE 返回数据合约最近一次卖开信号价位。
 
 用法：
@@ -7349,12 +7983,14 @@ CLOSE-SKPRICE>60 && SKPRICE>0 && SKVOL>0, BP;//如果卖开价位比当前价位
 `
 
 const SKPRICE1 = new MyFunc()
-SKPRICE1.body = "SKPRICE1"
-SKPRICE1.explanation = "返回交易合约最近一次卖开信号价位"
-SKPRICE1.markettype = 1
+SKPRICE1.label = "SKPRICE1"
+SKPRICE1.insertText = ""
+SKPRICE1.detail = "返回交易合约最近一次卖开信号价位"
 SKPRICE1.tip = "SKPRICE1，返回交易合约最近一次卖开信号价位"
+SKPRICE1.body = "SKPRICE1"
+SKPRICE1.markettype = 1
 SKPRICE1.type = 10
-SKPRICE1.description = `
+SKPRICE1.documentation = `
 SKPRICE1 返回交易合约最近一次卖开信号价位。
 
 用法：
@@ -7377,12 +8013,14 @@ SKPRICE1：返回交易合约最近一次卖开信号发出时的行情的最新
 `
 
 const SKPRICEAV = new MyFunc()
-SKPRICEAV.body = "SKPRICEAV"
-SKPRICEAV.explanation = "返回数据合约空头开仓均价"
-SKPRICEAV.markettype = 1
+SKPRICEAV.label = "SKPRICEAV"
+SKPRICEAV.insertText = ""
+SKPRICEAV.detail = "返回数据合约空头开仓均价"
 SKPRICEAV.tip = "SKPRICEAV返回数据合约空头开仓均价"
+SKPRICEAV.body = "SKPRICEAV"
+SKPRICEAV.markettype = 1
 SKPRICEAV.type = 12
-SKPRICEAV.description = `
+SKPRICEAV.documentation = `
 SKPRICEAV 返回数据合约空头开仓均价。
 
 用法：
@@ -7406,12 +8044,14 @@ SKPRICEAV-CLOSE>60,BP(SKVOL);//当前价位比空头开仓均价低出60,平掉�
 `
 
 const SKPRICEAV1 = new MyFunc()
-SKPRICEAV1.body = "SKPRICEAV1"
-SKPRICEAV1.explanation = "返回交易合约空头开仓均价"
-SKPRICEAV1.markettype = 1
+SKPRICEAV1.label = "SKPRICEAV1"
+SKPRICEAV1.insertText = ""
+SKPRICEAV1.detail = "返回交易合约空头开仓均价"
 SKPRICEAV1.tip = "SKPRICEAV1交易合约空头开仓均价"
+SKPRICEAV1.body = "SKPRICEAV1"
+SKPRICEAV1.markettype = 1
 SKPRICEAV1.type = 12
-SKPRICEAV1.description = `
+SKPRICEAV1.documentation = `
 SKPRICEAV1 返回交易合约空头开仓均价
 
 用法：
@@ -7435,12 +8075,14 @@ SKPRICEAV1-CLOSE>60,BP(SKVOL);//当前价位比交易合约空头开仓均价低
 `
 
 const SKVOL = new MyFunc()
-SKVOL.body = "SKVOL"
-SKVOL.explanation = "卖开信号手数"
-SKVOL.markettype = 1
+SKVOL.label = "SKVOL"
+SKVOL.insertText = ""
+SKVOL.detail = "卖开信号手数"
 SKVOL.tip = "SKVOL返回模型当前的空头理论持仓"
+SKVOL.body = "SKVOL"
+SKVOL.markettype = 1
 SKVOL.type = 12
-SKVOL.description = `
+SKVOL.documentation = `
 卖开信号手数
 用法：
 SKVOL返回模型当前的空头理论持仓。
@@ -7459,12 +8101,14 @@ SKVOL>0&&H>REF(H,5),BP(SKVOL); //空头持仓大于0，并且当根K线的最高
 `
 
 const SKVOL2 = new MyFunc()
-SKVOL2.body = "SKVOL2"
-SKVOL2.explanation = "卖开信号手数"
-SKVOL2.markettype = 1
+SKVOL2.label = "SKVOL2"
+SKVOL2.insertText = ""
+SKVOL2.detail = "卖开信号手数"
 SKVOL2.tip = "SKVOL2模组空头持仓"
+SKVOL2.body = "SKVOL2"
+SKVOL2.markettype = 1
 SKVOL2.type = 12
-SKVOL2.description = `
+SKVOL2.documentation = `
 卖开信号手数
 用法：
 SKVOL2返回模型当前的空头持仓。
@@ -7483,11 +8127,13 @@ SKVOL2>0&&H<REF(H,5),BP(SKVOL2); //空头持仓大于0，并且当根K线的最�
 `
 
 const SLOPE = new MyFunc()
-SLOPE.body = "SLOPE( , )"
-SLOPE.explanation = "线性回归的斜率"
+SLOPE.label = "SLOPE"
+SLOPE.insertText = ""
+SLOPE.detail = "线性回归的斜率"
 SLOPE.tip = "SLOPE(X,N)，求X的N周期的线型回归的斜率"
+SLOPE.body = "SLOPE( , )"
 SLOPE.type = 3
-SLOPE.description = `
+SLOPE.documentation = `
 SLOPE(X,N)：得到X的N周期的线型回归的斜率。
 
 注：
@@ -7518,11 +8164,13 @@ SLOPE(CLOSE,5);表示求收盘价5个周期线性回归线的斜率
 `
 
 const SMA = new MyFunc()
-SMA.body = "SMA( , , )"
-SMA.explanation = "扩展指数加权移动平均"
+SMA.label = "SMA"
+SMA.insertText = ""
+SMA.detail = "扩展指数加权移动平均"
 SMA.tip = "SMA(X,N,M)，求X的N个周期内的扩展指数加权移动平均。M为权重，N为周期数"
+SMA.body = "SMA( , , )"
 SMA.type = 2
-SMA.description = `
+SMA.documentation = `
 SMA(X,N,M) 求X的N个周期内的扩展指数加权移动平均。M为权重。
 
 计算公式：SMA(X,N,M)=REF(SMA(X,N,M),1)*(N-M)/N+X(N)*M/N
@@ -7535,11 +8183,13 @@ SMA10:=SMA(C,10,3);//求的10周期收盘价的扩展指数加权移动平均。
 `
 
 const SMMA = new MyFunc()
-SMMA.body = "SMMA(,)"
-SMMA.explanation = "通畅移动平均"
+SMMA.label = "SMMA"
+SMMA.insertText = ""
+SMMA.detail = "通畅移动平均"
 SMMA.tip = "SMMA(X,N),表示当前K线上X在N个周期的通畅移动平均线"
+SMMA.body = "SMMA(,)"
 SMMA.type = 2
-SMMA.description = `
+SMMA.documentation = `
 SMMA(X,N)，X为变量,N为周期，SMMA(X,N)表示当前K线上X在N个周期的通畅移动平均线
 算法：SMMA(X,N)=(SUM1-MMA+X)/N
 其中SUM1=X1+X2+.....+XN 
@@ -7549,11 +8199,13 @@ SMMA(C,5);//收盘价的5周期通畅移动平均线
 `
 
 const SOLID = new MyFunc()
-SOLID.body = "SOLID"
-SOLID.explanation = "实心显示"
+SOLID.label = "SOLID"
+SOLID.insertText = ""
+SOLID.detail = "实心显示"
 SOLID.tip = "SOLID,画实心柱线"
+SOLID.body = "SOLID"
 SOLID.type = 8
-SOLID.description = `
+SOLID.documentation = `
 SOLID 实心显示。
 
 用法：
@@ -7567,11 +8219,13 @@ VOL,VOLUMESTICK,SOLID;//画成交量柱状线，柱线实心显示。
 `
 
 const SORT = new MyFunc()
-SORT.body = "SORT"
-SORT.explanation = "取排序在相应位置的值"
+SORT.label = "SORT"
+SORT.insertText = ""
+SORT.detail = "取排序在相应位置的值"
 SORT.tip = "SORT(TYPE,POS,N1,N2,...,N30);按升(降)序排列，取第POS个参数对应的数值"
+SORT.body = "SORT"
 SORT.type = 2
-SORT.description = `
+SORT.documentation = `
 SORT(Type,POS,N1,N2,...,N30); 按升(降)序排列，取第POS个参数对应的值
 
 注：
@@ -7584,11 +8238,13 @@ SORT(0,3,2,1,5,3);//2、1、5、3按升序排列，取排列第三的数字3
 `
 
 const SORTPOS = new MyFunc()
-SORTPOS.body = "SORTPOS"
-SORTPOS.explanation = "取排序后数值的位置"
+SORTPOS.label = "SORTPOS"
+SORTPOS.insertText = ""
+SORTPOS.detail = "取排序后数值的位置"
 SORTPOS.tip = "SORTPOS(Type,POS,N1,N2,...,N30);按升(降)序排列，取第POS个参数的原始位置"
+SORTPOS.body = "SORTPOS"
 SORTPOS.type = 2
-SORTPOS.description = `
+SORTPOS.documentation = `
 SORTPOS(Type,POS,N1,N2,...,N30); 按升(降)序排列，取第POS个数据的原始位置
 
 注：
@@ -7603,11 +8259,13 @@ SORTPOS(0,3,2,1,5,3);//2、1、5、3按升序排列，排列第三的数字3，�
 `
 
 const SOUND = new MyFunc()
-SOUND.body = "SOUND( )"
-SOUND.explanation = "播放声音"
+SOUND.label = "SOUND"
+SOUND.insertText = ""
+SOUND.detail = "播放声音"
 SOUND.tip = "SOUND('N')，播放声音'N'"
+SOUND.body = "SOUND( )"
 SOUND.type = 8
-SOUND.description = `
+SOUND.documentation = `
 SOUND 播放声音。
 
 用法：SOUND(NAME)，播放NAME
@@ -7624,11 +8282,13 @@ CLOSE>OPEN,SOUND('A');表示K线收盘大于开盘时，播放声音"A"
 `
 
 const SPLIT = new MyFunc()
-SPLIT.body = "SPLIT()"
-SPLIT.explanation = "返回之前第N次除权(送股或配股)的除权比例"
+SPLIT.label = "SPLIT"
+SPLIT.insertText = ""
+SPLIT.detail = "返回之前第N次除权(送股或配股)的除权比例"
 SPLIT.tip = "SPLIT(N)返回之前第N次除权(送股或配股)的除权比例"
+SPLIT.body = "SPLIT()"
 SPLIT.type = 15
-SPLIT.description = `
+SPLIT.documentation = `
 SPLIT(N) 返回之前第N次除权(送股或配股)的除权比例，表示除权后股价的下跌比例。
 
 用法：
@@ -7652,11 +8312,13 @@ SPLIT(N) 返回之前第N次除权(送股或配股)的除权比例，表示除�
 `
 
 const SPLITBARS = new MyFunc()
-SPLITBARS.body = "SPLITBARS()"
-SPLITBARS.explanation = "返回从之前第N个除权日到当前的周期数"
+SPLITBARS.label = "SPLITBARS"
+SPLITBARS.insertText = ""
+SPLITBARS.detail = "返回从之前第N个除权日到当前的周期数"
 SPLITBARS.tip = "SPLITBARS(N)返回从之前第N次除权到当前的周期数"
+SPLITBARS.body = "SPLITBARS()"
 SPLITBARS.type = 15
-SPLITBARS.description = `
+SPLITBARS.documentation = `
 SPLITBARS(N) 返回从之前第N个除权日到当前的周期数。
 
 用法：
@@ -7673,11 +8335,13 @@ SPLITBARS(N) 返回从之前第N个除权日到当前的周期数。
 `
 
 const SQRT = new MyFunc()
-SQRT.body = "SQRT( )"
-SQRT.explanation = "平方根"
+SQRT.label = "SQRT"
+SQRT.insertText = ""
+SQRT.detail = "平方根"
 SQRT.tip = "SQRT(X)，求X的平方根"
+SQRT.body = "SQRT( )"
 SQRT.type = 4
-SQRT.description = `
+SQRT.documentation = `
 SQRT(X)：求X的平方根。
 
 注：
@@ -7688,11 +8352,13 @@ SQRT(CLOSE);//收盘价的平方根。
 `
 
 const SQUARE = new MyFunc()
-SQUARE.body = "SQUARE( )"
-SQUARE.explanation = "平方"
+SQUARE.label = "SQUARE"
+SQUARE.insertText = ""
+SQUARE.detail = "平方"
 SQUARE.tip = "SQUARE(X)，求X的平方"
+SQUARE.body = "SQUARE( )"
 SQUARE.type = 4
-SQUARE.description = `
+SQUARE.documentation = `
 SQUARE(X)求X的平方。
 
 例1：
@@ -7702,11 +8368,13 @@ SQUARE(2);//2的平方。
 `
 
 const STD = new MyFunc()
-STD.body = "STD( , )"
-STD.explanation = "样本标准差"
+STD.label = "STD"
+STD.insertText = ""
+STD.detail = "样本标准差"
 STD.tip = "STD(X,N)，求X在N个周期内的样本标准差"
+STD.body = "STD( , )"
 STD.type = 3
-STD.description = `
+STD.documentation = `
 STD(X,N)：求X在N个周期内的样本标准差。
 
 注：
@@ -7727,11 +8395,13 @@ STD(C,10)求收盘价在10个周期内的样本标准差。
 `
 
 const STDP = new MyFunc()
-STDP.body = "STDP( , )"
-STDP.explanation = "总体标准差"
+STDP.label = "STDP"
+STDP.insertText = ""
+STDP.detail = "总体标准差"
 STDP.tip = "STDP(X,N)，求X的N日总体标准差"
+STDP.body = "STDP( , )"
 STDP.type = 3
-STDP.description = `
+STDP.documentation = `
 STDP(X,N)：为X的N周期总体标准差。
 
 注：
@@ -7753,11 +8423,13 @@ STDP(C,10)为收盘价的10周期总体标准差。
 `
 
 const STICK = new MyFunc()
-STICK.body = "STICK(,,,,,)"
-STICK.explanation = "画指定粗细的柱线"
+STICK.label = "STICK"
+STICK.insertText = ""
+STICK.detail = "画指定粗细的柱线"
 STICK.tip = "STICK(COND,P1,P2,N,COLOR,Empty);画指定粗细的柱线当满足COND时，在P1与P2之间画一条粗细为N、颜色为COLOR的柱状图若Empty不为0，则为空心柱；Empty为0，则为实心柱；N取值0-9"
+STICK.body = "STICK(,,,,,)"
 STICK.type = 8
-STICK.description = `
+STICK.documentation = `
 STICK(COND,P1,P2,N,COLOR,Empty);画不同粗细的柱线
 用法：当满足COND时，在P1与P2之间画一条粗细为N、颜色为COLOR的柱状图；若Empty不为0，则为空心柱；Empty为 0，则为实心柱。。用法和STICKLINE函数类似。
 注：
@@ -7769,11 +8441,13 @@ STICK(OPEN-CLOSE>0,OPEN,CLOSE,3,COLORCYAN,0);//表示当开盘价大于收盘价
 `
 
 const STICKLINE = new MyFunc()
-STICKLINE.body = "STICKLINE( , , , , )"
-STICKLINE.explanation = "画柱线"
+STICKLINE.label = "STICKLINE"
+STICKLINE.insertText = ""
+STICKLINE.detail = "画柱线"
 STICKLINE.tip = "STICKLINE(C,P1,P2,Color,Empty)当C条件满足时，从P1画到P2柱线"
+STICKLINE.body = "STICKLINE( , , , , )"
 STICKLINE.type = 8
-STICKLINE.description = `
+STICKLINE.documentation = `
 STICKLINE 在图形上画柱线。
 
 用法：
@@ -7789,11 +8463,13 @@ STICKLINE(OPEN-CLOSE>0,OPEN,CLOSE,COLORCYAN,0);//表示当开盘价大于收盘�
 `
 
 const STICKLINE1 = new MyFunc()
-STICKLINE1.body = "STICKLINE1( , , , , )"
-STICKLINE1.explanation = "画柱线"
+STICKLINE1.label = "STICKLINE1"
+STICKLINE1.insertText = ""
+STICKLINE1.detail = "画柱线"
 STICKLINE1.tip = "STICKLINE1(C,P1,P2,Width,Empty)当C条件满足时，从P1画到P2柱线，Width为宽度，若Empty不为0，则为空心柱"
+STICKLINE1.body = "STICKLINE1( , , , , )"
 STICKLINE1.type = 8
-STICKLINE1.description = `
+STICKLINE1.documentation = `
 STICKLINE1 在图形上画柱线。
 
 用法：
@@ -7811,11 +8487,13 @@ STICKLINE1(OPEN-CLOSE>0,OPEN,CLOSE,4,0),COLORCYAN;//表示当开盘价大于收�
 `
 
 const STKTYPE = new MyFunc()
-STKTYPE.body = "STKTYPE"
-STKTYPE.explanation = "取市场类型"
+STKTYPE.label = "STKTYPE"
+STKTYPE.insertText = ""
+STKTYPE.detail = "取市场类型"
 STKTYPE.tip = "STKTYPE取市场类型，1为国内股票、2为美国股票、6为外汇、7为国内期货、8为国内期权、9为外盘、5为其它"
+STKTYPE.body = "STKTYPE"
 STKTYPE.type = 5
-STKTYPE.description = `
+STKTYPE.documentation = `
 STKTYPE 取市场类型。
 
 注：
@@ -7827,11 +8505,13 @@ A:STKTYPE;//加载到期货合约上，A返回值为7。
 `
 
 const STOCKDIVD = new MyFunc()
-STOCKDIVD.body = "STOCKDIVD"
-STOCKDIVD.explanation = "设置股票复权"
+STOCKDIVD.label = "STOCKDIVD"
+STOCKDIVD.insertText = ""
+STOCKDIVD.detail = "设置股票复权"
 STOCKDIVD.tip = "STOCKDIVD()设置股票除权复权"
+STOCKDIVD.body = "STOCKDIVD"
 STOCKDIVD.type = 15
-STOCKDIVD.description = `
+STOCKDIVD.documentation = `
 STOCKDIVD()  设置股票复权
 
 用法：
@@ -7853,11 +8533,13 @@ AUTOFILTER;
 `
 
 const SUM = new MyFunc()
-SUM.body = "SUM( , )"
-SUM.explanation = "求和"
+SUM.label = "SUM"
+SUM.insertText = ""
+SUM.detail = "求和"
 SUM.tip = "SUM(X,N)，求X在N个周期内的总和"
+SUM.body = "SUM( , )"
 SUM.type = 2
-SUM.description = `
+SUM.documentation = `
 SUM(X,N) 求X在N个周期内的总和。
 
 注：
@@ -7875,11 +8557,13 @@ SUM(VOL,N);//分钟周期上，取当天成交量总和。
 `
 
 const SUMBARS = new MyFunc()
-SUMBARS.body = "SUMBARS( , )"
-SUMBARS.explanation = "累加到指定值的周期数"
+SUMBARS.label = "SUMBARS"
+SUMBARS.insertText = ""
+SUMBARS.detail = "累加到指定值的周期数"
 SUMBARS.tip = "SUMBARS(X,A):求多少个周期的X向前累加能够大于等于A"
+SUMBARS.body = "SUMBARS( , )"
 SUMBARS.type = 2
-SUMBARS.description = `
+SUMBARS.documentation = `
 SUMBARS(X,A)：求累加到指定值的周期数
 
 注：
@@ -7890,11 +8574,13 @@ SUMBARS(VOL,20000); 将成交量向前累加直到大于等于20000，返回这�
 `
 
 const T0TOTIME = new MyFunc()
-T0TOTIME.body = "T0TOTIME()"
-T0TOTIME.explanation = "秒数转换为时间"
+T0TOTIME.label = "T0TOTIME"
+T0TOTIME.insertText = ""
+T0TOTIME.detail = "秒数转换为时间"
 T0TOTIME.tip = "T0TOTIME(X)返回自该日0点以来的X秒处的时间。X可为变量或常数"
+T0TOTIME.body = "T0TOTIME()"
 T0TOTIME.type = 7
-T0TOTIME.description = `
+T0TOTIME.documentation = `
 T0TOTIME(X) 秒数转换为时间。
 
 用法：T0TOTIME(X);返回自该日0点以来的X秒处的时间。X可为变量或常数。
@@ -7906,11 +8592,13 @@ A:=T0TOTIME(60);//变量A返回值为100，表示1分钟
 `
 
 const TAN = new MyFunc()
-TAN.body = "TAN( )"
-TAN.explanation = "正切"
+TAN.label = "TAN"
+TAN.insertText = ""
+TAN.detail = "正切"
 TAN.tip = "TAN(X)，求X的正切值"
+TAN.body = "TAN( )"
 TAN.type = 4
-TAN.description = `
+TAN.documentation = `
 TAN(X)：返回X的正切值。
 例1：
 TAN(0);//返回0的正切值；
@@ -7919,12 +8607,14 @@ TAN(-3.14);//返回-3.14的正切值。
 `
 
 const TAVLOSS = new MyFunc()
-TAVLOSS.body = "TAVLOSS"
-TAVLOSS.explanation = "返回平均亏损额"
-TAVLOSS.markettype = 1
+TAVLOSS.label = "TAVLOSS"
+TAVLOSS.insertText = ""
+TAVLOSS.detail = "返回平均亏损额"
 TAVLOSS.tip = "TAVLOSS平均亏损额"
+TAVLOSS.body = "TAVLOSS"
+TAVLOSS.markettype = 1
 TAVLOSS.type = 12
-TAVLOSS.description = `
+TAVLOSS.documentation = `
 TAVLOSS 返回平均亏损额
 
 注：
@@ -7945,12 +8635,14 @@ AUTOFILTER;
 `
 
 const TAVWIN = new MyFunc()
-TAVWIN.body = "TAVWIN"
-TAVWIN.explanation = "返回平均盈利额"
-TAVWIN.markettype = 1
+TAVWIN.label = "TAVWIN"
+TAVWIN.insertText = ""
+TAVWIN.detail = "返回平均盈利额"
 TAVWIN.tip = "TAVWIN平均盈利额"
+TAVWIN.body = "TAVWIN"
+TAVWIN.markettype = 1
 TAVWIN.type = 12
-TAVWIN.description = `
+TAVWIN.documentation = `
 TAVWIN 返回平均盈利额
 
 注：
@@ -7971,12 +8663,14 @@ AUTOFILTER;
 `
 
 const TAVWINLOSS = new MyFunc()
-TAVWINLOSS.body = "TAVWINLOSS"
-TAVWINLOSS.explanation = "返回平均盈亏额"
-TAVWINLOSS.markettype = 1
+TAVWINLOSS.label = "TAVWINLOSS"
+TAVWINLOSS.insertText = ""
+TAVWINLOSS.detail = "返回平均盈亏额"
 TAVWINLOSS.tip = "TAVWINLOSS平均盈亏额"
+TAVWINLOSS.body = "TAVWINLOSS"
+TAVWINLOSS.markettype = 1
 TAVWINLOSS.type = 12
-TAVWINLOSS.description = `
+TAVWINLOSS.documentation = `
 TAVWINLOSS 返回平均盈亏额
 
 注：
@@ -7997,11 +8691,13 @@ AUTOFILTER;
 `
 
 const TIME = new MyFunc()
-TIME.body = "TIME"
-TIME.explanation = "取K线的时间"
+TIME.label = "TIME"
+TIME.insertText = ""
+TIME.detail = "取K线的时间"
 TIME.tip = "TIME取周期的时数，分钟周期表示为0900，秒周期表示为090000"
+TIME.body = "TIME"
 TIME.type = 7
-TIME.description = `
+TIME.documentation = `
 TIME，取K线时间。
 
 注：
@@ -8025,10 +8721,12 @@ ISLASTSK=0&&C>O&&TIME>=0915,SK;
 `
 
 const TIME0 = new MyFunc()
+TIME0.label = "TIME0"
+TIME0.insertText = ""
+TIME0.detail = "求当前周期自该日0点以来的秒数"
 TIME0.body = "TIME0"
-TIME0.explanation = "求当前周期自该日0点以来的秒数"
 TIME0.type = 7
-TIME0.description = `
+TIME0.documentation = `
 TIME0 求当前周期自该日0点以来的秒数。
 
 用法：TIME0;求当前周期自该日0点以来的秒数。
@@ -8040,11 +8738,13 @@ AA:TIME0;//AA在商品合约当天最后一根K线上的返回值为54000，表�
 `
 
 const TIMETOT0 = new MyFunc()
-TIMETOT0.body = "TIMETOT0()"
-TIMETOT0.explanation = "时间转换为秒数"
+TIMETOT0.label = "TIMETOT0"
+TIMETOT0.insertText = ""
+TIMETOT0.detail = "时间转换为秒数"
 TIMETOT0.tip = "TIMETOT0(X)返回时间X自该日0点以来的秒数。X可为变量或常数"
+TIMETOT0.body = "TIMETOT0()"
 TIMETOT0.type = 7
-TIMETOT0.description = `
+TIMETOT0.documentation = `
 TIMETOT0(X) 时间转换为秒数。
 
 用法：TIMETOT0(X);返回时间X自该日0点以来的秒数。X可为变量或常数。
@@ -8056,12 +8756,14 @@ A:=TIMETOT0(100);//变量A返回值为60，表示60秒
 `
 
 const TMAXLOSS = new MyFunc()
-TMAXLOSS.body = "TMAXLOSS"
-TMAXLOSS.explanation = "返回单次亏损最大额"
-TMAXLOSS.markettype = 1
+TMAXLOSS.label = "TMAXLOSS"
+TMAXLOSS.insertText = ""
+TMAXLOSS.detail = "返回单次亏损最大额"
 TMAXLOSS.tip = "TMAXLOSS单次亏损最大额"
+TMAXLOSS.body = "TMAXLOSS"
+TMAXLOSS.markettype = 1
 TMAXLOSS.type = 12
-TMAXLOSS.description = `
+TMAXLOSS.documentation = `
 TMAXLOSS 返回单次亏损最大额
 
 注：
@@ -8082,12 +8784,14 @@ AUTOFILTER;
 `
 
 const TMAXSEQLOSS = new MyFunc()
-TMAXSEQLOSS.body = "TMAXSEQLOSS"
-TMAXSEQLOSS.explanation = "返回连续亏损交易的最大次数"
-TMAXSEQLOSS.markettype = 1
+TMAXSEQLOSS.label = "TMAXSEQLOSS"
+TMAXSEQLOSS.insertText = ""
+TMAXSEQLOSS.detail = "返回连续亏损交易的最大次数"
 TMAXSEQLOSS.tip = "TMAXSEQLOSS当前位置之前，连续亏损交易的最大次数"
+TMAXSEQLOSS.body = "TMAXSEQLOSS"
+TMAXSEQLOSS.markettype = 1
 TMAXSEQLOSS.type = 12
-TMAXSEQLOSS.description = `
+TMAXSEQLOSS.documentation = `
 TMAXSEQLOSS 返回连续亏损交易的最大次数。
 
 注：
@@ -8105,12 +8809,14 @@ TSEQLOSS>60||TMAXSEQLOSS>3,SP(BKVOL);//最大连续亏损额大于60时或最大
 `
 
 const TMAXSEQWIN = new MyFunc()
-TMAXSEQWIN.body = "TMAXSEQWIN"
-TMAXSEQWIN.explanation = "返回连续赢利交易的最大次数"
-TMAXSEQWIN.markettype = 1
+TMAXSEQWIN.label = "TMAXSEQWIN"
+TMAXSEQWIN.insertText = ""
+TMAXSEQWIN.detail = "返回连续赢利交易的最大次数"
 TMAXSEQWIN.tip = "TMAXSEQWIN当前位置之前，连续盈利交易的最大次数"
+TMAXSEQWIN.body = "TMAXSEQWIN"
+TMAXSEQWIN.markettype = 1
 TMAXSEQWIN.type = 12
-TMAXSEQWIN.description = `
+TMAXSEQWIN.documentation = `
 TMAXSEQWIN 返回连续赢利交易的最大次数。
 
 注：
@@ -8128,12 +8834,14 @@ TSEQWIN>20||TMAXSEQWIN>3,BK(2);//最大连续赢利额大于20时或最大连续
 `
 
 const TMAXWIN = new MyFunc()
-TMAXWIN.body = "TMAXWIN"
-TMAXWIN.explanation = "返回单次盈利最大额"
-TMAXWIN.markettype = 1
+TMAXWIN.label = "TMAXWIN"
+TMAXWIN.insertText = ""
+TMAXWIN.detail = "返回单次盈利最大额"
 TMAXWIN.tip = "TMAXWIN单次盈利最大额"
+TMAXWIN.body = "TMAXWIN"
+TMAXWIN.markettype = 1
 TMAXWIN.type = 12
-TMAXWIN.description = `
+TMAXWIN.documentation = `
 TMAXWIN 返回单次盈利最大额
 
 注：
@@ -8154,12 +8862,14 @@ AUTOFILTER;
 `
 
 const TNUMSEQLOSS = new MyFunc()
-TNUMSEQLOSS.body = "TNUMSEQLOSS"
-TNUMSEQLOSS.explanation = "返回持续亏损的次数"
-TNUMSEQLOSS.markettype = 1
+TNUMSEQLOSS.label = "TNUMSEQLOSS"
+TNUMSEQLOSS.insertText = ""
+TNUMSEQLOSS.detail = "返回持续亏损的次数"
 TNUMSEQLOSS.tip = "TNUMSEQLOSS返回持续亏损的次数"
+TNUMSEQLOSS.body = "TNUMSEQLOSS"
+TNUMSEQLOSS.markettype = 1
 TNUMSEQLOSS.type = 12
-TNUMSEQLOSS.description = `
+TNUMSEQLOSS.documentation = `
 TNUMSEQLOSS 返回持续亏损的次数。
 
 注：
@@ -8177,12 +8887,14 @@ TNUMSEQLOSS>2,SP(BKVOL);//连续亏损的次数大于2时，平掉全部多头�
 `
 
 const TNUMSEQWIN = new MyFunc()
-TNUMSEQWIN.body = "TNUMSEQWIN"
-TNUMSEQWIN.explanation = "返回持续赢利的次数"
-TNUMSEQWIN.markettype = 1
+TNUMSEQWIN.label = "TNUMSEQWIN"
+TNUMSEQWIN.insertText = ""
+TNUMSEQWIN.detail = "返回持续赢利的次数"
 TNUMSEQWIN.tip = "TNUMSEQWIN返回持续赢利的次数"
+TNUMSEQWIN.body = "TNUMSEQWIN"
+TNUMSEQWIN.markettype = 1
 TNUMSEQWIN.type = 12
-TNUMSEQWIN.description = `
+TNUMSEQWIN.documentation = `
 TNUMSEQWIN 返回持续赢利的次数。
 
 注：
@@ -8200,12 +8912,14 @@ TNUMSEQWIN>=2,BK(1);//连续赢利的次数大于等于2次时，加仓一手
 `
 
 const TODAYDEUCETIMES = new MyFunc()
-TODAYDEUCETIMES.body = "TODAYDEUCETIMES"
-TODAYDEUCETIMES.explanation = "返回当日平出次数"
-TODAYDEUCETIMES.markettype = 1
+TODAYDEUCETIMES.label = "TODAYDEUCETIMES"
+TODAYDEUCETIMES.insertText = ""
+TODAYDEUCETIMES.detail = "返回当日平出次数"
 TODAYDEUCETIMES.tip = "TODAYDEUCETIMES返回当日平出次数"
+TODAYDEUCETIMES.body = "TODAYDEUCETIMES"
+TODAYDEUCETIMES.markettype = 1
 TODAYDEUCETIMES.type = 12
-TODAYDEUCETIMES.description = `
+TODAYDEUCETIMES.documentation = `
 TODAYDEUCETIMES 返回当日平出次数。
 
 注：
@@ -8223,12 +8937,14 @@ CROSS(MA(C,5),C),SP(BKVOL);//最新价下穿五周期均线，卖平多头持仓
 `
 
 const TODAYLOSSTIMES = new MyFunc()
-TODAYLOSSTIMES.body = "TODAYLOSSTIMES"
-TODAYLOSSTIMES.explanation = "返回当日亏损次数"
-TODAYLOSSTIMES.markettype = 1
+TODAYLOSSTIMES.label = "TODAYLOSSTIMES"
+TODAYLOSSTIMES.insertText = ""
+TODAYLOSSTIMES.detail = "返回当日亏损次数"
 TODAYLOSSTIMES.tip = "TODAYLOSSTIMES返回当日亏损次数"
+TODAYLOSSTIMES.body = "TODAYLOSSTIMES"
+TODAYLOSSTIMES.markettype = 1
 TODAYLOSSTIMES.type = 12
-TODAYLOSSTIMES.description = `
+TODAYLOSSTIMES.documentation = `
 TODAYLOSSTIMES 返回当日亏损次数。
 
 注：
@@ -8246,12 +8962,14 @@ CROSS(MA(C,5),C),SP(BKVOL);//最新价下穿五周期均线，卖平多头持仓
 `
 
 const TODAYWINTIMES = new MyFunc()
-TODAYWINTIMES.body = "TODAYWINTIMES"
-TODAYWINTIMES.explanation = "返回当日赢利次数"
-TODAYWINTIMES.markettype = 1
+TODAYWINTIMES.label = "TODAYWINTIMES"
+TODAYWINTIMES.insertText = ""
+TODAYWINTIMES.detail = "返回当日赢利次数"
 TODAYWINTIMES.tip = "TODAYWINTIMES返回当日赢利次数"
+TODAYWINTIMES.body = "TODAYWINTIMES"
+TODAYWINTIMES.markettype = 1
 TODAYWINTIMES.type = 12
-TODAYWINTIMES.description = `
+TODAYWINTIMES.documentation = `
 TODAYWINTIMES 返回当日赢利次数。
 
 注：
@@ -8270,12 +8988,14 @@ CROSS(MA(C,5),C),SP(BKVOL);//最新价下穿五周期均线，卖平多头持仓
 `
 
 const TPROFIT_REF = new MyFunc()
-TPROFIT_REF.body = "TPROFIT_REF( )"
-TPROFIT_REF.explanation = "取得前第N次交易的盈亏额"
-TPROFIT_REF.markettype = 1
+TPROFIT_REF.label = "TPROFIT_REF"
+TPROFIT_REF.insertText = ""
+TPROFIT_REF.detail = "取得前第N次交易的盈亏额"
 TPROFIT_REF.tip = "TPROFIT_REF(N)取得前第N次交易的盈亏额"
+TPROFIT_REF.body = "TPROFIT_REF( )"
+TPROFIT_REF.markettype = 1
 TPROFIT_REF.type = 12
-TPROFIT_REF.description = `
+TPROFIT_REF.documentation = `
 TPROFIT_REF(N) 取得前第N次交易的盈亏额。
 
 注：
@@ -8294,12 +9014,14 @@ CROSS(MA(C,5),C),SP(BKVOL);//最新价下穿五周期均线，卖平多头持仓
 `
 
 const TRACING_ORDER = new MyFunc()
-TRACING_ORDER.body = "TRACING_ORDER( , , )"
-TRACING_ORDER.explanation = "设置信号进行追价下单"
-TRACING_ORDER.markettype = 1
+TRACING_ORDER.label = "TRACING_ORDER"
+TRACING_ORDER.insertText = ""
+TRACING_ORDER.detail = "设置信号进行追价下单"
 TRACING_ORDER.tip = "TRACING_ORDER(Sig,PriceType,Time);设置SIG指令按照追价方式委托，PriceType为首次下单委托价格，Time 秒不成交市价追"
+TRACING_ORDER.body = "TRACING_ORDER( , , )"
+TRACING_ORDER.markettype = 1
 TRACING_ORDER.type = 11
-TRACING_ORDER.description = `
+TRACING_ORDER.documentation = `
 TRACING_ORDER(Sig,PriceType,Time);设置信号进行追价下单
 
 用法：
@@ -8333,12 +9055,14 @@ AUTOFILTER;
 `
 
 const TRADE_AGAIN = new MyFunc()
-TRADE_AGAIN.body = "TRADE_AGAIN()"
-TRADE_AGAIN.explanation = "限制信号函数"
-TRADE_AGAIN.markettype = 1
+TRADE_AGAIN.label = "TRADE_AGAIN"
+TRADE_AGAIN.insertText = ""
+TRADE_AGAIN.detail = "限制信号函数"
 TRADE_AGAIN.tip = "TRADE_AGAIN(N),含有该函数的加减仓模型中,同一指令行可以连续出N个信号"
+TRADE_AGAIN.body = "TRADE_AGAIN()"
+TRADE_AGAIN.markettype = 1
 TRADE_AGAIN.type = 9
-TRADE_AGAIN.description = `
+TRADE_AGAIN.documentation = `
 TRADE_AGAIN(N) 同一指令行可以连续出N个信号。
 
 用法：
@@ -8357,12 +9081,14 @@ TRADE_AGAIN(3);//同一指令行可以连续执行3次（如果连续三根阳�
 `
 
 const TRADE_OTHER = new MyFunc()
-TRADE_OTHER.body = "TRADE_OTHER()"
-TRADE_OTHER.explanation = "指定交易合约"
-TRADE_OTHER.markettype = 1
+TRADE_OTHER.label = "TRADE_OTHER"
+TRADE_OTHER.insertText = ""
+TRADE_OTHER.detail = "指定交易合约"
 TRADE_OTHER.tip = "TRADE_OTHER('CODE')，指定CODE合约为交易合约"
+TRADE_OTHER.body = "TRADE_OTHER()"
+TRADE_OTHER.markettype = 1
 TRADE_OTHER.type = 11
-TRADE_OTHER.description = `
+TRADE_OTHER.documentation = `
 TRADE_OTHER('CODE') 指定CODE合约为交易合约
 模型出现信号后，下单时交易指定的CODE合约
 
@@ -8400,12 +9126,14 @@ AUTOFILTER;
 `
 
 const TRADE_REF = new MyFunc()
-TRADE_REF.body = "TRADE_REF( )"
-TRADE_REF.explanation = "判断前N次交易是否赢利"
-TRADE_REF.markettype = 1
+TRADE_REF.label = "TRADE_REF"
+TRADE_REF.insertText = ""
+TRADE_REF.detail = "判断前N次交易是否赢利"
 TRADE_REF.tip = "TRADE_REF(N)判断前N次交易是否赢利"
+TRADE_REF.body = "TRADE_REF( )"
+TRADE_REF.markettype = 1
 TRADE_REF.type = 12
-TRADE_REF.description = `
+TRADE_REF.documentation = `
 TRADE_REF(N) 判断前N次交易是否赢利。
 
 注：
@@ -8424,12 +9152,14 @@ CROSS(MA(C,5),C),SP(BKVOL);//最新价下穿五周期均线，卖平多头持仓
 `
 
 const TRADE_SMOOTHING = new MyFunc()
-TRADE_SMOOTHING.body = "TRADE_SMOOTHING"
-TRADE_SMOOTHING.explanation = "消除隔日跳空函数"
-TRADE_SMOOTHING.markettype = 1
+TRADE_SMOOTHING.label = "TRADE_SMOOTHING"
+TRADE_SMOOTHING.insertText = ""
+TRADE_SMOOTHING.detail = "消除隔日跳空函数"
 TRADE_SMOOTHING.tip = "TRADE_SMOOTHING;消除隔夜跳空函数"
+TRADE_SMOOTHING.body = "TRADE_SMOOTHING"
+TRADE_SMOOTHING.markettype = 1
 TRADE_SMOOTHING.type = 1
-TRADE_SMOOTHING.description = `
+TRADE_SMOOTHING.documentation = `
 TRADE_SMOOTHING 消除隔日跳空函数
 
 用法：
@@ -8457,12 +9187,14 @@ AUTOFILTER;
 `
 
 const TREND = new MyFunc()
-TREND.body = "TREND"
-TREND.explanation = "获取K线趋势"
-TREND.markettype = 1
+TREND.label = "TREND"
+TREND.insertText = ""
+TREND.detail = "获取K线趋势"
 TREND.tip = "TREND,获取K线趋势默认返回0，最高最低同时出现为1，最低先出现为2，最高先出现为3"
+TREND.body = "TREND"
+TREND.markettype = 1
 TREND.type = 5
-TREND.description = `
+TREND.documentation = `
 TREND 获取K线趋势。
 
 用法：
@@ -8470,11 +9202,13 @@ TREND  K线的形成过程中最高价先出现，则返回值为3；最低价�
 `
 
 const TRMA = new MyFunc()
-TRMA.body = "TRMA( , )"
-TRMA.explanation = "三角移动平均"
+TRMA.label = "TRMA"
+TRMA.insertText = ""
+TRMA.detail = "三角移动平均"
 TRMA.tip = "TRMA(X,N)，求X在N周期内的三角移动平均"
+TRMA.body = "TRMA( , )"
 TRMA.type = 2
-TRMA.description = `
+TRMA.documentation = `
 TRMA(X,N)： 求X在N个周期的三角移动平均值。
 
 算法：三角移动平均线公式，是采用算数移动平均，并且对第一个移动平均线再一次应用算数移动平均。
@@ -8497,12 +9231,14 @@ TRMA(CLOSE,10)=MA(MA(CLOSE,10/2),(10/2)+1);
 `
 
 const TSEQLOSS = new MyFunc()
-TSEQLOSS.body = "TSEQLOSS"
-TSEQLOSS.explanation = "返回最大连续亏损额"
-TSEQLOSS.markettype = 1
+TSEQLOSS.label = "TSEQLOSS"
+TSEQLOSS.insertText = ""
+TSEQLOSS.detail = "返回最大连续亏损额"
 TSEQLOSS.tip = "TSEQLOSS返回最大连续亏损额"
+TSEQLOSS.body = "TSEQLOSS"
+TSEQLOSS.markettype = 1
 TSEQLOSS.type = 12
-TSEQLOSS.description = `
+TSEQLOSS.documentation = `
 TSEQLOSS 返回最大连续亏损额。
 
 注：
@@ -8520,12 +9256,14 @@ TSEQLOSS<-5000,SK(2);//最大连续亏损额达到5000时，反向开仓2手
 `
 
 const TSEQWIN = new MyFunc()
-TSEQWIN.body = "TSEQWIN"
-TSEQWIN.explanation = "返回最大连续赢利额"
-TSEQWIN.markettype = 1
+TSEQWIN.label = "TSEQWIN"
+TSEQWIN.insertText = ""
+TSEQWIN.detail = "返回最大连续赢利额"
 TSEQWIN.tip = "TSEQWIN返回最大连续赢利额"
+TSEQWIN.body = "TSEQWIN"
+TSEQWIN.markettype = 1
 TSEQWIN.type = 12
-TSEQWIN.description = `
+TSEQWIN.documentation = `
 TSEQWIN 返回最大连续赢利额。
 
 注：
@@ -8543,11 +9281,13 @@ TSEQWIN>20,BK(2);//最大连续赢利额大于20时，加仓2手
 `
 
 const TSMA = new MyFunc()
-TSMA.body = "TSMA( , )"
-TSMA.explanation = "时间序列移动平均"
+TSMA.label = "TSMA"
+TSMA.insertText = ""
+TSMA.detail = "时间序列移动平均"
 TSMA.tip = "TSMA(X,N)，求X在N周期内的时间序列三角移动平均"
+TSMA.body = "TSMA( , )"
 TSMA.type = 2
-TSMA.description = `
+TSMA.documentation = `
 TSMA(X,N)：求X在N个周期内的时间序列三角移动平均
 TSMA(a,n) 算法如下：
 ysum=a[i]+a[i-1]+...+a[i-n+1]
@@ -8568,12 +9308,14 @@ TSMA5:TSMA(CLOSE,5);//计算5个周期内收盘价的序列三角移动平均
 `
 
 const T_CLOSE = new MyFunc()
-T_CLOSE.body = "T_CLOSE"
-T_CLOSE.explanation = "取交易合约收盘价"
-T_CLOSE.markettype = 1
+T_CLOSE.label = "T_CLOSE"
+T_CLOSE.insertText = ""
+T_CLOSE.detail = "取交易合约收盘价"
 T_CLOSE.tip = "T_CLOSE 取交易合约收盘价。"
+T_CLOSE.body = "T_CLOSE"
+T_CLOSE.markettype = 1
 T_CLOSE.type = 1
-T_CLOSE.description = `
+T_CLOSE.documentation = `
 T_CLOSE 取交易合约收盘价。
 
 注：
@@ -8584,12 +9326,14 @@ A:T_CLOSE;//定义变量A为交易合约收盘价（盘中k线没有走完的时
 `
 
 const T_MAX = new MyFunc()
-T_MAX.body = "T_MAX"
-T_MAX.explanation = "设置模组最大开仓手数"
-T_MAX.markettype = 1
+T_MAX.label = "T_MAX"
+T_MAX.insertText = ""
+T_MAX.detail = "设置模组最大开仓手数"
 T_MAX.tip = "T_MAX(TYPE,N),根据设置的资金占用百分比计算模组最大可开仓手数，用于模组资金风控"
+T_MAX.body = "T_MAX"
+T_MAX.markettype = 1
 T_MAX.type = 12
-T_MAX.description = `
+T_MAX.documentation = `
 T_MAX(TYPE,N) 设置模组最大开仓手数
 
 用法：T_MAX(TYPE,N),根据设置的资金占用百分比计算模组最大可开仓手数，用于模组资金风控
@@ -8622,12 +9366,14 @@ AUTOFILTER;
 `
 
 const T_PLUS = new MyFunc()
-T_PLUS.body = "T_PLUS()"
-T_PLUS.explanation = "设置开仓手数为默认手数的N倍"
-T_PLUS.markettype = 1
+T_PLUS.label = "T_PLUS"
+T_PLUS.insertText = ""
+T_PLUS.detail = "设置开仓手数为默认手数的N倍"
 T_PLUS.tip = "T_PLUS(N)当条件满足时，过滤模型的开仓手数为默认手数"
+T_PLUS.body = "T_PLUS()"
+T_PLUS.markettype = 1
 T_PLUS.type = 11
-T_PLUS.description = `
+T_PLUS.documentation = `
 T_PLUS 设置开仓手数为默认手数的N倍
 
 用法：COND,T_PLUS(N) 当条件满足时，过滤模型的开仓手数为默认手数*N倍。
@@ -8647,35 +9393,41 @@ AUTOFILTER;
 `
 
 const UNIT = new MyFunc()
-UNIT.body = "UNIT"
-UNIT.explanation = "取数据合约的交易单位"
+UNIT.label = "UNIT"
+UNIT.insertText = ""
+UNIT.detail = "取数据合约的交易单位"
 UNIT.tip = "UNIT,取加载数据合约的交易单位"
+UNIT.body = "UNIT"
 UNIT.type = 1
-UNIT.description = `
+UNIT.documentation = `
 取数据合约的交易单位。
 用法：
 UNIT 取加载数据合约的交易单位。
 `
 
 const UNIT1 = new MyFunc()
-UNIT1.body = "UNIT1"
-UNIT1.explanation = "取交易合约的交易单位"
-UNIT1.markettype = 1
+UNIT1.label = "UNIT1"
+UNIT1.insertText = ""
+UNIT1.detail = "取交易合约的交易单位"
 UNIT1.tip = "UNIT1,取交易合约的交易单位"
+UNIT1.body = "UNIT1"
+UNIT1.markettype = 1
 UNIT1.type = 1
-UNIT1.description = `
+UNIT1.documentation = `
 UNIT1  取交易合约的交易单位。
 用法：
 UNIT1 取交易合约的交易单位。
 `
 
 const UNITLIMIT = new MyFunc()
-UNITLIMIT.body = "UNITLIMIT"
-UNITLIMIT.explanation = "取交易合约的限制拥有持仓数"
-UNITLIMIT.markettype = 1
+UNITLIMIT.label = "UNITLIMIT"
+UNITLIMIT.insertText = ""
+UNITLIMIT.detail = "取交易合约的限制拥有持仓数"
 UNITLIMIT.tip = "UNITLIMIT，取交易合约的限制拥有持仓数"
+UNITLIMIT.body = "UNITLIMIT"
+UNITLIMIT.markettype = 1
 UNITLIMIT.type = 1
-UNITLIMIT.description = `
+UNITLIMIT.documentation = `
 UNITLIMIT 取交易合约的限制拥有持仓数
 
 用法：UNITLIMIT自动取该合约交易所规定的限制拥有持仓数，避免违规。
@@ -8688,11 +9440,13 @@ UNITLIMIT 取交易合约的限制拥有持仓数
 `
 
 const VALIGN = new MyFunc()
-VALIGN.body = "VALIGN"
-VALIGN.explanation = "设置文字对齐方式（上中下）"
+VALIGN.label = "VALIGN"
+VALIGN.insertText = ""
+VALIGN.detail = "设置文字对齐方式（上中下）"
 VALIGN.tip = "VALIGN0,VALIGN1,VALIGN2,分别表示文字上对齐，居中对齐，下对齐"
+VALIGN.body = "VALIGN"
 VALIGN.type = 8
-VALIGN.description = `
+VALIGN.documentation = `
 设置文字对齐方式（上中下）。
 
 用法：DRAWTEXT(COND,PRICE,TEXT),VALIGNX;
@@ -8704,11 +9458,13 @@ DRAWTEXT(C>O,H,'涨'),ALIGN1,VALIGN1,FONTSIZE20,COLORGREEN;//在阳线的最高�
 `
 
 const VALUEWHEN = new MyFunc()
-VALUEWHEN.body = "VALUEWHEN( , )"
-VALUEWHEN.explanation = "取值"
+VALUEWHEN.label = "VALUEWHEN"
+VALUEWHEN.insertText = ""
+VALUEWHEN.detail = "取值"
 VALUEWHEN.tip = "VALUEWHEN(COND,X)，取满足条件COND时的X值"
+VALUEWHEN.body = "VALUEWHEN( , )"
 VALUEWHEN.type = 5
-VALUEWHEN.description = `
+VALUEWHEN.documentation = `
 VALUEWHEN(COND,X) 当COND条件成立时，取X的当前值。如COND条件不成立，则取上一次COND条件成立时X的值。
 
 注：
@@ -8723,11 +9479,13 @@ VALUEWHEN(DATE<>REF(DATE,1),L>REF(H,1));//表示在当天第一根k线上判断�
 `
 
 const VAR = new MyFunc()
-VAR.body = "VAR( , )"
-VAR.explanation = "样本方差"
+VAR.label = "VAR"
+VAR.insertText = ""
+VAR.detail = "样本方差"
 VAR.tip = "VAR(X,N)，求X在N周期内的样本方差"
+VAR.body = "VAR( , )"
 VAR.type = 3
-VAR.description = `
+VAR.documentation = `
 VAR(X,N)求X在N周期内的样本方差。
 
 注：
@@ -8748,11 +9506,13 @@ VAR(C,5)求收盘价在5周期内的样本方差。
 `
 
 const VARP = new MyFunc()
-VARP.body = "VARP( , )"
-VARP.explanation = "总体方差"
+VARP.label = "VARP"
+VARP.insertText = ""
+VARP.detail = "总体方差"
 VARP.tip = "VARP(X,N)，求X的N周期总体方差"
+VARP.body = "VARP( , )"
 VARP.type = 3
-VARP.description = `
+VARP.documentation = `
 VARP(X,N)：为X的N周期总体方差
 
 注：
@@ -8772,11 +9532,13 @@ VARP(C,5)为收盘价的5周期总体方差
 `
 
 const VERTLINE = new MyFunc()
-VERTLINE.body = "VERTLINE( , )"
-VERTLINE.explanation = "画垂直线"
+VERTLINE.label = "VERTLINE"
+VERTLINE.insertText = ""
+VERTLINE.detail = "画垂直线"
 VERTLINE.tip = "VERTLINE(COND,COLOR)，条件COND满足时，以颜色COLOR画垂直线"
+VERTLINE.body = "VERTLINE( , )"
 VERTLINE.type = 8
-VERTLINE.description = `
+VERTLINE.documentation = `
 VERTLINE 画垂直线。
 
 用法：
@@ -8797,11 +9559,13 @@ VERTLINE(LOW<=LLV(LOW,30),COLORBLUE),LINETHICK3;//表示在价格创30天新低�
 `
 
 const VERTLINE1 = new MyFunc()
-VERTLINE1.body = "VERTLINE1( )"
-VERTLINE1.explanation = "画垂直线"
+VERTLINE1.label = "VERTLINE1"
+VERTLINE1.insertText = ""
+VERTLINE1.detail = "画垂直线"
 VERTLINE1.tip = "VERTLINE1(COND)条件COND满足时，画垂直线"
+VERTLINE1.body = "VERTLINE1( )"
 VERTLINE1.type = 8
-VERTLINE1.description = `
+VERTLINE1.documentation = `
 VERTLINE1 画垂直线。
 
 用法：
@@ -8822,11 +9586,13 @@ VERTLINE1(LOW<=LLV(LOW,30)),COLORBLUE,LINETHICK3;//表示在价格创30天新低
 `
 
 const VOL = new MyFunc()
-VOL.body = "VOL"
-VOL.explanation = "取得K线图的成交量"
+VOL.label = "VOL"
+VOL.insertText = ""
+VOL.detail = "取得K线图的成交量"
 VOL.tip = "VOL取成交量"
+VOL.body = "VOL"
 VOL.type = 1
-VOL.description = `
+VOL.documentation = `
 VOL 取得K线图的成交量。
 
 注：
@@ -8842,11 +9608,13 @@ V>=REF(V,1);//成交量大于前一个周期的成交量，表示成交量增加
 `
 
 const VOLATILITY = new MyFunc()
-VOLATILITY.body = "VOLATILITY()"
-VOLATILITY.explanation = "取期权历史波动率"
+VOLATILITY.label = "VOLATILITY"
+VOLATILITY.insertText = ""
+VOLATILITY.detail = "取期权历史波动率"
 VOLATILITY.tip = "VOLATILITY(N)，取期权历史波动率"
+VOLATILITY.body = "VOLATILITY()"
 VOLATILITY.type = 1
-VOLATILITY.description = `
+VOLATILITY.documentation = `
 VOLATILITY(N)，取期权历史波动率
 
 原理：
@@ -8868,12 +9636,14 @@ AA:VOLATILITY(60);//AA返回过去60个周期的历史波动率。
 `
 
 const VOLMARGIN = new MyFunc()
-VOLMARGIN.body = "VOLMARGIN"
-VOLMARGIN.explanation = "理论持仓保证金"
-VOLMARGIN.markettype = 1
+VOLMARGIN.label = "VOLMARGIN"
+VOLMARGIN.insertText = ""
+VOLMARGIN.detail = "理论持仓保证金"
 VOLMARGIN.tip = "VOLMARGIN理论持仓保证金"
+VOLMARGIN.body = "VOLMARGIN"
+VOLMARGIN.markettype = 1
 VOLMARGIN.type = 12
-VOLMARGIN.description = `
+VOLMARGIN.documentation = `
 VOLMARGIN 理论持仓保证金
 
 用法：VOLMARGIN返回当前理论持仓保证金，用于资金管理。
@@ -8891,11 +9661,13 @@ VOLMARGIN 理论持仓保证金
 `
 
 const VOLSTICK = new MyFunc()
-VOLSTICK.body = "VOLSTICK"
-VOLSTICK.explanation = "画柱线"
+VOLSTICK.label = "VOLSTICK"
+VOLSTICK.insertText = ""
+VOLSTICK.detail = "画柱线"
 VOLSTICK.tip = "VOLSTICK画柱线，K线为阳线为红色，K线为阴线为青色"
+VOLSTICK.body = "VOLSTICK"
 VOLSTICK.type = 8
-VOLSTICK.description = `
+VOLSTICK.documentation = `
 VOLSTICK 画柱线，K线为阳线画红色空心柱，K线为阴线画青色实心柱。
 
 注：
@@ -8911,35 +9683,41 @@ VOL,VOLSTICK,SOLID;//画成交量柱状线，柱线实心显示。
 `
 
 const VOLTICK = new MyFunc()
-VOLTICK.body = "VOLTICK"
-VOLTICK.explanation = "返回K线是由多少笔TICK生成"
-VOLTICK.markettype = 1
+VOLTICK.label = "VOLTICK"
+VOLTICK.insertText = ""
+VOLTICK.detail = "返回K线是由多少笔TICK生成"
 VOLTICK.tip = "VOLTICK返回K线是由多少笔TICK生成"
+VOLTICK.body = "VOLTICK"
+VOLTICK.markettype = 1
 VOLTICK.type = 7
-VOLTICK.description = `
+VOLTICK.documentation = `
 量能周期返回这根K线形成的TICK笔数，单位：笔。
 用法：
 VOLTICK 量能周期时，返回当前K线形成的TICK笔数。
 `
 
 const VOLTIME = new MyFunc()
-VOLTIME.body = "VOLTIME"
-VOLTIME.explanation = "取K线形成的时间（秒）"
-VOLTIME.markettype = 1
+VOLTIME.label = "VOLTIME"
+VOLTIME.insertText = ""
+VOLTIME.detail = "取K线形成的时间（秒）"
 VOLTIME.tip = "VOLTIME取K线形成的时间（秒）"
+VOLTIME.body = "VOLTIME"
+VOLTIME.markettype = 1
 VOLTIME.type = 7
-VOLTIME.description = `
+VOLTIME.documentation = `
 量能周期返回这根K线形成的时间，单位：秒。
 用法：
 VOLTIME 量能周期时，返回当前K线形成的时间。
 `
 
 const VOLUMESTICK = new MyFunc()
-VOLUMESTICK.body = "VOLUMESTICK"
-VOLUMESTICK.explanation = "画柱线"
+VOLUMESTICK.label = "VOLUMESTICK"
+VOLUMESTICK.insertText = ""
+VOLUMESTICK.detail = "画柱线"
 VOLUMESTICK.tip = "VOLUMESTICK画柱线，K线为阳线为红色，K线为阴线为青色"
+VOLUMESTICK.body = "VOLUMESTICK"
 VOLUMESTICK.type = 8
-VOLUMESTICK.description = `
+VOLUMESTICK.documentation = `
 VOLUMESTICK 画柱线，K线为阳线画红色空心柱，K线为阴线画青色实心柱。
 
 注：
@@ -8955,11 +9733,13 @@ VOL,VOLUMESTICK,SOLID;//画成交量柱状线，柱线实心显示。
 `
 
 const WEEKDAY = new MyFunc()
-WEEKDAY.body = "WEEKDAY"
-WEEKDAY.explanation = "取得星期数"
+WEEKDAY.label = "WEEKDAY"
+WEEKDAY.insertText = ""
+WEEKDAY.detail = "取得星期数"
 WEEKDAY.tip = "WEEKDAY取得星期数（0-6）"
+WEEKDAY.body = "WEEKDAY"
 WEEKDAY.type = 7
-WEEKDAY.description = `
+WEEKDAY.documentation = `
 WEEKDAY,取得星期数。
  
 注：
@@ -8977,12 +9757,14 @@ AUTOFILTER;
 `
 
 const WEEKTRADE = new MyFunc()
-WEEKTRADE.body = "WEEKTRADE"
-WEEKTRADE.explanation = "周内交易函数"
-WEEKTRADE.markettype = 1
+WEEKTRADE.label = "WEEKTRADE"
+WEEKTRADE.insertText = ""
+WEEKTRADE.detail = "周内交易函数"
 WEEKTRADE.tip = "WEEKTRADE,周内交易函数"
+WEEKTRADE.body = "WEEKTRADE"
+WEEKTRADE.markettype = 1
 WEEKTRADE.type = 9
-WEEKTRADE.description = `
+WEEKTRADE.documentation = `
 WEEKTRADE 周内交易函数。
 
 用法：
@@ -9008,12 +9790,14 @@ WEEKTRADE;//使用每周数据计算
 `
 
 const WEEKTRADE1 = new MyFunc()
-WEEKTRADE1.body = "WEEKTRADE1"
-WEEKTRADE1.explanation = "周内交易函数"
-WEEKTRADE1.markettype = 1
+WEEKTRADE1.label = "WEEKTRADE1"
+WEEKTRADE1.insertText = ""
+WEEKTRADE1.detail = "周内交易函数"
 WEEKTRADE1.tip = "WEEKTRADE1周内交易函数，且历史数据不参与计算。"
+WEEKTRADE1.body = "WEEKTRADE1"
+WEEKTRADE1.markettype = 1
 WEEKTRADE1.type = 9
-WEEKTRADE1.description = `
+WEEKTRADE1.documentation = `
 WEEKTRADE1 周内交易函数。
 
 用法：
@@ -9042,11 +9826,13 @@ WEEKTRADE1;//只用周内数据进行计算
 `
 
 const WINNER = new MyFunc()
-WINNER.body = "WINNER( )"
-WINNER.explanation = "获利盘比例"
+WINNER.label = "WINNER"
+WINNER.insertText = ""
+WINNER.detail = "获利盘比例"
 WINNER.tip = "WINNER()，获利盘比例"
+WINNER.body = "WINNER( )"
 WINNER.type = 2
-WINNER.description = `
+WINNER.documentation = `
 WINNER 获利盘比例
 用法:
  WINNER(CLOSE),表示以当前收市价卖出的获利盘比例,例如返回0.1表示10%获利盘;WINNER(10.5)表示10.5元价格的获利盘比例
@@ -9059,11 +9845,13 @@ WINNER 获利盘比例
 `
 
 const WORD = new MyFunc()
-WORD.body = "WORD( , )"
-WORD.explanation = "显示文字"
+WORD.label = "WORD"
+WORD.insertText = ""
+WORD.detail = "显示文字"
 WORD.tip = "WORD,显示文字"
+WORD.body = "WORD( , )"
 WORD.type = 8
-WORD.description = `
+WORD.documentation = `
 WORD,显示文字。
 
 用法：WORD(TYPE,TEXT) 当TYPE为1，则在K线最高价位置书写文字TEXT；不为1则在最低价位置书写文字TEXT。
@@ -9078,12 +9866,14 @@ CLOSE>OPEN,WORD(1,'阳'),ALIGN0,VALIGN0,FONTSIZE54,COLORRED;//表示K线收盘�
 `
 
 const YCLOSE = new MyFunc()
-YCLOSE.body = "YCLOSE"
-YCLOSE.explanation = "取得K线图的昨收盘价"
-YCLOSE.markettype = 1
+YCLOSE.label = "YCLOSE"
+YCLOSE.insertText = ""
+YCLOSE.detail = "取得K线图的昨收盘价"
 YCLOSE.tip = "YCLOSE求某根K线的昨收盘价。"
+YCLOSE.body = "YCLOSE"
+YCLOSE.markettype = 1
 YCLOSE.type = 1
-YCLOSE.description = `
+YCLOSE.documentation = `
 取得K线图的昨收盘价。
 用法：
 YCLOSE求某根K线的昨收盘价。
@@ -9094,11 +9884,13 @@ YCLOSE求某根K线的昨收盘价。
 `
 
 const YEAR = new MyFunc()
-YEAR.body = "YEAR"
-YEAR.explanation = "年份"
+YEAR.label = "YEAR"
+YEAR.insertText = ""
+YEAR.detail = "年份"
 YEAR.tip = "YEAR取得年份（1970-2033）"
+YEAR.body = "YEAR"
 YEAR.type = 7
-YEAR.description = `
+YEAR.documentation = `
 YEAR，取得年份。
  
 注：
@@ -9115,12 +9907,14 @@ NN:=IFELSE(YEAR>=2000 AND MONTH>=1,0,1);
 `
 
 const YEARTRADE = new MyFunc()
-YEARTRADE.body = "YEARTRADE"
-YEARTRADE.explanation = "年内交易函数"
-YEARTRADE.markettype = 1
+YEARTRADE.label = "YEARTRADE"
+YEARTRADE.insertText = ""
+YEARTRADE.detail = "年内交易函数"
 YEARTRADE.tip = "YEARTRADE,年内交易函数"
+YEARTRADE.body = "YEARTRADE"
+YEARTRADE.markettype = 1
 YEARTRADE.type = 9
-YEARTRADE.description = `
+YEARTRADE.documentation = `
 YEARTRADE 年内交易函数。
 
 用法：
@@ -9146,12 +9940,14 @@ YEARTRADE;//使用每年数据计算
 `
 
 const YEARTRADE1 = new MyFunc()
-YEARTRADE1.body = "YEARTRADE1"
-YEARTRADE1.explanation = "年内交易函数"
-YEARTRADE1.markettype = 1
+YEARTRADE1.label = "YEARTRADE1"
+YEARTRADE1.insertText = ""
+YEARTRADE1.detail = "年内交易函数"
 YEARTRADE1.tip = "YEARTRADE1年内交易函数，且历史数据不参与计算。"
+YEARTRADE1.body = "YEARTRADE1"
+YEARTRADE1.markettype = 1
 YEARTRADE1.type = 9
-YEARTRADE1.description = `
+YEARTRADE1.documentation = `
 YEARTRADE1 年内交易函数。
 
 用法：
@@ -9177,12 +9973,14 @@ YEARTRADE1;//使用每年数据计算
 `
 
 const YSETTLE = new MyFunc()
-YSETTLE.body = "YSETTLE"
-YSETTLE.explanation = "取得K线图的昨结算价"
-YSETTLE.markettype = 1
+YSETTLE.label = "YSETTLE"
+YSETTLE.insertText = ""
+YSETTLE.detail = "取得K线图的昨结算价"
 YSETTLE.tip = "YSETTLE,求某根k线的昨结算价"
+YSETTLE.body = "YSETTLE"
+YSETTLE.markettype = 1
 YSETTLE.type = 1
-YSETTLE.description = `
+YSETTLE.documentation = `
 取得K线图的昨结算价。
 用法：
 YSETTLE求某根k线的昨结算价
@@ -9191,3 +9989,5 @@ YSETTLE求某根k线的昨结算价
 2、该函数支持跨周期或跨合约引用
 `
 
+export const funcList = [ _CALL, _CALL_OTHER, _CALL_PLUS, _IMPORT, _$_, _$_$_, ABS, ACOS, ADMA, ALIGN, ASIN, ATAN, AUTOFILTER, AUTOFINANCING, AVAILABLE_OPI, AVEDEV, AVPRICE, BACKGROUNDSTYLE, BARINTERVAL, BARPOS, BARSBK, BARSBP, BARSBUY, BARSCOUNT, BARSLAST, BARSLASTCOUNT, BARSSELL, BARSSINCE, BARSSINCEN, BARSSK, BARSSP, BARSTATUS, BARTYPE, BETWEEN, BKHIGH, BKLOW, BKPRICE, BKPRICE1, BKPRICEAV, BKPRICEAV1, BKVOL, BKVOL2, BUYPRICE, CEILING, CHECKSIG, CHECKSIG_MIN, CIRCLEDOT, CJLVOL, CLOSE, CLOSEKLINE, CLOSEMINUTE, CLOSEMINUTE1, CLOSEMINUTEEVERY, CLOSEMINUTEEVERY1, CLOSESEC, CLOSESEC1, CLOSESECEVERY, CLOSESECEVERY1, CODELIKE, COEFFICIENTR, COLORSTICK, CONDBARS, COS, COST, COUNT, COUNTGROUPSIG, COUNTSIG, COVAR, CROSS, CROSS2, CROSSDOT, CROSSDOWN, CROSSUP, CUBE, CURRENTDATE, CURRENTTIME, DASH, DASHDOT, DASHDOTDOT, DATE, DATE1, DAY, DAYBARPOS, DAYSTOEXPIRED, DAYTRADE, DAYTRADE1, DEVSQ, DIVERGENCE, DIVIDEND, DIVIDENDBARS, DMA, DOT, DRAWBARLINE, DRAWBKBMP, DRAWBMP, DRAWCOLORKLINE, DRAWCOLORLINE, DRAWCOLUMNCHART, DRAWGBK, DRAWGBK1, DRAWICON, DRAWKLINE, DRAWKLINE1, DRAWKLINE2, DRAWLASTBARICON, DRAWLASTBARLINE, DRAWLASTBARNUMBER, DRAWLASTBARTEXT, DRAWLINE, DRAWLINE1, DRAWLINE2, DRAWLINE3, DRAWNUMBER, DRAWNUMBER1, DRAWSHIFTNUMBER, DRAWSL, DRAWSL1, DRAWTEXT, DRAWVALID, DUALVOLUME, EMA, EMA2, EMAWH, ENTRYSIG_PLACE, ENTRYSIG_PRICE, ENTRYSIG_VOL, EVERY, EXIST, EXITSIG_PLACE, EXITSIG_PRICE, EXITSIG_VOL, EXP, EXPIREDATE, FEE, FILLRGN, FILLRGN1, FILTER, FINANCE_DATA, FLOOR, FONTSIZE, FORCAST, FUNCTION_ORDER, FUNCTION_TYPE, GROUP, GROUPBKPRICE, GROUPBKVOL, GROUPSKPRICE, GROUPSKVOL, HARMEAN, HASTRADEDATA, HHV, HHVBARS, HIGH, HISEXPDATE, HISEXPDAYS, HOLLOW, HOUR, HV, ICON, IDLE, IF, IFELSE, IMPLIEDVOLATILITY, INITMONEY, INTPART, ISCONTRACT, ISDELIVERYDAY, ISDOWN, ISEQUAL, ISLASTBAR, ISLASTBK, ISLASTBP, ISLASTBPK, ISLASTBUY, ISLASTCLOSEOUT, ISLASTKLINE, ISLASTSELL, ISLASTSK, ISLASTSP, ISLASTSPK, ISLASTSTOP, ISMAINCONTRACT, ISMONTHEND, ISNEARHOLIDAY, ISNULL, ISRECORDDAY, ISTIMETOKLINEEND, ISUP, ISWEEKEND, KEYWORD, KLINESIG, KLINESTART, KTEXT, KURTOSIS, K_STATE, K_STATE1, K_STATE2, K_STATE3, K_STATE4, LAST, LASTOFFSETPROFIT, LASTSIG, LASTSIGGROUP, LINETHICK, LLV, LLVBARS, LN, LOG, LOG10, LONGCROSS, LOOP1, LOOP2, LOW, LV, MA, MARGIN, MARKET_TYPE, MAX, MAX1, MAXBKVOL, MAXSKVOL, MEDIAN, MEDIAN1, MIN, MIN1, MINPRICE, MINPRICE1, MINPRICED, MINUTE, MOD, MODE, MONEY, MONEYRATIO, MONEYTOT, MONTH, MONTHTRADE, MONTHTRADE1, MULTSIG, MULTSIG_MIN, MV, MYVOL, NAMELIKE, NEWHBARS, NEWHBARS1, NEWLBARS, NEWLBARS1, NODRAW, NORMPDF, NOT, NOTEXT, NULL, NUMPOW, OFFSETPROFIT, OFFSETPROFIT1, OPEN, OPENMINUTE, OPENMINUTE1, OPENSEC, OPENSEC1, OPI, PANZHENG, PARTLINE, PARTLINE1, PCRATE, PCRATETREND, PERCENTILE, PERIOD, PLAYSOUND, POINTDOT, POLYLINE, POLYLINE1, POW, PRECIS, PRECISION, PRICEPRECISION, PRICEPRECISION1, PROFIT, QUARTER, QUARTERTRADE, QUARTERTRADE1, RAND, RANGE, RAWDATA, REF, REFLINE, REFLINE1, REFSIG_PLACE, REFSIG_PRICE, REFSIG_PRICE1, REFSIG_PRICE2, REFSIG_VOL, REFWH, REVERSE, ROUND, SAR, SAR1, SCALE, SEEK, SELECT, SETDEALPERCENT, SETEXPIREDATE, SETMOVEOPIPRICE, SETQUOTACCOUNT, SETSIGPRICE, SETSIGPRICETYPE, SETSTYLECOLOR, SETTLE, SETTRADEACCOUNT, SGN, SIGNUM, SIGVOL, SIN, SKEWNESS, SKHIGH, SKLOW, SKPRICE, SKPRICE1, SKPRICEAV, SKPRICEAV1, SKVOL, SKVOL2, SLOPE, SMA, SMMA, SOLID, SORT, SORTPOS, SOUND, SPLIT, SPLITBARS, SQRT, SQUARE, STD, STDP, STICK, STICKLINE, STICKLINE1, STKTYPE, STOCKDIVD, SUM, SUMBARS, T0TOTIME, TAN, TAVLOSS, TAVWIN, TAVWINLOSS, TIME, TIME0, TIMETOT0, TMAXLOSS, TMAXSEQLOSS, TMAXSEQWIN, TMAXWIN, TNUMSEQLOSS, TNUMSEQWIN, TODAYDEUCETIMES, TODAYLOSSTIMES, TODAYWINTIMES, TPROFIT_REF, TRACING_ORDER, TRADE_AGAIN, TRADE_OTHER, TRADE_REF, TRADE_SMOOTHING, TREND, TRMA, TSEQLOSS, TSEQWIN, TSMA, T_CLOSE, T_MAX, T_PLUS, UNIT, UNIT1, UNITLIMIT, VALIGN, VALUEWHEN, VAR, VARP, VERTLINE, VERTLINE1, VOL, VOLATILITY, VOLMARGIN, VOLSTICK, VOLTICK, VOLTIME, VOLUMESTICK, WEEKDAY, WEEKTRADE, WEEKTRADE1, WINNER, WORD, YCLOSE, YEAR, YEARTRADE, YEARTRADE1, YSETTLE ]
+export const funcMap: { [key: string]: MyFunc } = { "CALL": _CALL, "CALL_OTHER": _CALL_OTHER, "CALL_PLUS": _CALL_PLUS, "IMPORT": _IMPORT, "$": _$_, "$ $": _$_$_, "ABS": ABS, "ACOS": ACOS, "ADMA": ADMA, "ALIGN": ALIGN, "ASIN": ASIN, "ATAN": ATAN, "AUTOFILTER": AUTOFILTER, "AUTOFINANCING": AUTOFINANCING, "AVAILABLE_OPI": AVAILABLE_OPI, "AVEDEV": AVEDEV, "AVPRICE": AVPRICE, "BACKGROUNDSTYLE": BACKGROUNDSTYLE, "BARINTERVAL": BARINTERVAL, "BARPOS": BARPOS, "BARSBK": BARSBK, "BARSBP": BARSBP, "BARSBUY": BARSBUY, "BARSCOUNT": BARSCOUNT, "BARSLAST": BARSLAST, "BARSLASTCOUNT": BARSLASTCOUNT, "BARSSELL": BARSSELL, "BARSSINCE": BARSSINCE, "BARSSINCEN": BARSSINCEN, "BARSSK": BARSSK, "BARSSP": BARSSP, "BARSTATUS": BARSTATUS, "BARTYPE": BARTYPE, "BETWEEN": BETWEEN, "BKHIGH": BKHIGH, "BKLOW": BKLOW, "BKPRICE": BKPRICE, "BKPRICE1": BKPRICE1, "BKPRICEAV": BKPRICEAV, "BKPRICEAV1": BKPRICEAV1, "BKVOL": BKVOL, "BKVOL2": BKVOL2, "BUYPRICE": BUYPRICE, "CEILING": CEILING, "CHECKSIG": CHECKSIG, "CHECKSIG_MIN": CHECKSIG_MIN, "CIRCLEDOT": CIRCLEDOT, "CJLVOL": CJLVOL, "CLOSE": CLOSE, "CLOSEKLINE": CLOSEKLINE, "CLOSEMINUTE": CLOSEMINUTE, "CLOSEMINUTE1": CLOSEMINUTE1, "CLOSEMINUTEEVERY": CLOSEMINUTEEVERY, "CLOSEMINUTEEVERY1": CLOSEMINUTEEVERY1, "CLOSESEC": CLOSESEC, "CLOSESEC1": CLOSESEC1, "CLOSESECEVERY": CLOSESECEVERY, "CLOSESECEVERY1": CLOSESECEVERY1, "CODELIKE": CODELIKE, "COEFFICIENTR": COEFFICIENTR, "COLORSTICK": COLORSTICK, "CONDBARS": CONDBARS, "COS": COS, "COST": COST, "COUNT": COUNT, "COUNTGROUPSIG": COUNTGROUPSIG, "COUNTSIG": COUNTSIG, "COVAR": COVAR, "CROSS": CROSS, "CROSS2": CROSS2, "CROSSDOT": CROSSDOT, "CROSSDOWN": CROSSDOWN, "CROSSUP": CROSSUP, "CUBE": CUBE, "CURRENTDATE": CURRENTDATE, "CURRENTTIME": CURRENTTIME, "DASH": DASH, "DASHDOT": DASHDOT, "DASHDOTDOT": DASHDOTDOT, "DATE": DATE, "DATE1": DATE1, "DAY": DAY, "DAYBARPOS": DAYBARPOS, "DAYSTOEXPIRED": DAYSTOEXPIRED, "DAYTRADE": DAYTRADE, "DAYTRADE1": DAYTRADE1, "DEVSQ": DEVSQ, "DIVERGENCE": DIVERGENCE, "DIVIDEND": DIVIDEND, "DIVIDENDBARS": DIVIDENDBARS, "DMA": DMA, "DOT": DOT, "DRAWBARLINE": DRAWBARLINE, "DRAWBKBMP": DRAWBKBMP, "DRAWBMP": DRAWBMP, "DRAWCOLORKLINE": DRAWCOLORKLINE, "DRAWCOLORLINE": DRAWCOLORLINE, "DRAWCOLUMNCHART": DRAWCOLUMNCHART, "DRAWGBK": DRAWGBK, "DRAWGBK1": DRAWGBK1, "DRAWICON": DRAWICON, "DRAWKLINE": DRAWKLINE, "DRAWKLINE1": DRAWKLINE1, "DRAWKLINE2": DRAWKLINE2, "DRAWLASTBARICON": DRAWLASTBARICON, "DRAWLASTBARLINE": DRAWLASTBARLINE, "DRAWLASTBARNUMBER": DRAWLASTBARNUMBER, "DRAWLASTBARTEXT": DRAWLASTBARTEXT, "DRAWLINE": DRAWLINE, "DRAWLINE1": DRAWLINE1, "DRAWLINE2": DRAWLINE2, "DRAWLINE3": DRAWLINE3, "DRAWNUMBER": DRAWNUMBER, "DRAWNUMBER1": DRAWNUMBER1, "DRAWSHIFTNUMBER": DRAWSHIFTNUMBER, "DRAWSL": DRAWSL, "DRAWSL1": DRAWSL1, "DRAWTEXT": DRAWTEXT, "DRAWVALID": DRAWVALID, "DUALVOLUME": DUALVOLUME, "EMA": EMA, "EMA2": EMA2, "EMAWH": EMAWH, "ENTRYSIG_PLACE": ENTRYSIG_PLACE, "ENTRYSIG_PRICE": ENTRYSIG_PRICE, "ENTRYSIG_VOL": ENTRYSIG_VOL, "EVERY": EVERY, "EXIST": EXIST, "EXITSIG_PLACE": EXITSIG_PLACE, "EXITSIG_PRICE": EXITSIG_PRICE, "EXITSIG_VOL": EXITSIG_VOL, "EXP": EXP, "EXPIREDATE": EXPIREDATE, "FEE": FEE, "FILLRGN": FILLRGN, "FILLRGN1": FILLRGN1, "FILTER": FILTER, "FINANCE_DATA": FINANCE_DATA, "FLOOR": FLOOR, "FONTSIZE": FONTSIZE, "FORCAST": FORCAST, "FUNCTION_ORDER": FUNCTION_ORDER, "FUNCTION_TYPE": FUNCTION_TYPE, "GROUP": GROUP, "GROUPBKPRICE": GROUPBKPRICE, "GROUPBKVOL": GROUPBKVOL, "GROUPSKPRICE": GROUPSKPRICE, "GROUPSKVOL": GROUPSKVOL, "HARMEAN": HARMEAN, "HASTRADEDATA": HASTRADEDATA, "HHV": HHV, "HHVBARS": HHVBARS, "HIGH": HIGH, "HISEXPDATE": HISEXPDATE, "HISEXPDAYS": HISEXPDAYS, "HOLLOW": HOLLOW, "HOUR": HOUR, "HV": HV, "ICON": ICON, "IDLE": IDLE, "IF": IF, "IFELSE": IFELSE, "IMPLIEDVOLATILITY": IMPLIEDVOLATILITY, "INITMONEY": INITMONEY, "INTPART": INTPART, "ISCONTRACT": ISCONTRACT, "ISDELIVERYDAY": ISDELIVERYDAY, "ISDOWN": ISDOWN, "ISEQUAL": ISEQUAL, "ISLASTBAR": ISLASTBAR, "ISLASTBK": ISLASTBK, "ISLASTBP": ISLASTBP, "ISLASTBPK": ISLASTBPK, "ISLASTBUY": ISLASTBUY, "ISLASTCLOSEOUT": ISLASTCLOSEOUT, "ISLASTKLINE": ISLASTKLINE, "ISLASTSELL": ISLASTSELL, "ISLASTSK": ISLASTSK, "ISLASTSP": ISLASTSP, "ISLASTSPK": ISLASTSPK, "ISLASTSTOP": ISLASTSTOP, "ISMAINCONTRACT": ISMAINCONTRACT, "ISMONTHEND": ISMONTHEND, "ISNEARHOLIDAY": ISNEARHOLIDAY, "ISNULL": ISNULL, "ISRECORDDAY": ISRECORDDAY, "ISTIMETOKLINEEND": ISTIMETOKLINEEND, "ISUP": ISUP, "ISWEEKEND": ISWEEKEND, "KEYWORD": KEYWORD, "KLINESIG": KLINESIG, "KLINESTART": KLINESTART, "KTEXT": KTEXT, "KURTOSIS": KURTOSIS, "K_STATE": K_STATE, "K_STATE1": K_STATE1, "K_STATE2": K_STATE2, "K_STATE3": K_STATE3, "K_STATE4": K_STATE4, "LAST": LAST, "LASTOFFSETPROFIT": LASTOFFSETPROFIT, "LASTSIG": LASTSIG, "LASTSIGGROUP": LASTSIGGROUP, "LINETHICK": LINETHICK, "LLV": LLV, "LLVBARS": LLVBARS, "LN": LN, "LOG": LOG, "LOG10": LOG10, "LONGCROSS": LONGCROSS, "LOOP1": LOOP1, "LOOP2": LOOP2, "LOW": LOW, "LV": LV, "MA": MA, "MARGIN": MARGIN, "MARKET_TYPE": MARKET_TYPE, "MAX": MAX, "MAX1": MAX1, "MAXBKVOL": MAXBKVOL, "MAXSKVOL": MAXSKVOL, "MEDIAN": MEDIAN, "MEDIAN1": MEDIAN1, "MIN": MIN, "MIN1": MIN1, "MINPRICE": MINPRICE, "MINPRICE1": MINPRICE1, "MINPRICED": MINPRICED, "MINUTE": MINUTE, "MOD": MOD, "MODE": MODE, "MONEY": MONEY, "MONEYRATIO": MONEYRATIO, "MONEYTOT": MONEYTOT, "MONTH": MONTH, "MONTHTRADE": MONTHTRADE, "MONTHTRADE1": MONTHTRADE1, "MULTSIG": MULTSIG, "MULTSIG_MIN": MULTSIG_MIN, "MV": MV, "MYVOL": MYVOL, "NAMELIKE": NAMELIKE, "NEWHBARS": NEWHBARS, "NEWHBARS1": NEWHBARS1, "NEWLBARS": NEWLBARS, "NEWLBARS1": NEWLBARS1, "NODRAW": NODRAW, "NORMPDF": NORMPDF, "NOT": NOT, "NOTEXT": NOTEXT, "NULL": NULL, "NUMPOW": NUMPOW, "OFFSETPROFIT": OFFSETPROFIT, "OFFSETPROFIT1": OFFSETPROFIT1, "OPEN": OPEN, "OPENMINUTE": OPENMINUTE, "OPENMINUTE1": OPENMINUTE1, "OPENSEC": OPENSEC, "OPENSEC1": OPENSEC1, "OPI": OPI, "PANZHENG": PANZHENG, "PARTLINE": PARTLINE, "PARTLINE1": PARTLINE1, "PCRATE": PCRATE, "PCRATETREND": PCRATETREND, "PERCENTILE": PERCENTILE, "PERIOD": PERIOD, "PLAYSOUND": PLAYSOUND, "POINTDOT": POINTDOT, "POLYLINE": POLYLINE, "POLYLINE1": POLYLINE1, "POW": POW, "PRECIS": PRECIS, "PRECISION": PRECISION, "PRICEPRECISION": PRICEPRECISION, "PRICEPRECISION1": PRICEPRECISION1, "PROFIT": PROFIT, "QUARTER": QUARTER, "QUARTERTRADE": QUARTERTRADE, "QUARTERTRADE1": QUARTERTRADE1, "RAND": RAND, "RANGE": RANGE, "RAWDATA": RAWDATA, "REF": REF, "REFLINE": REFLINE, "REFLINE1": REFLINE1, "REFSIG_PLACE": REFSIG_PLACE, "REFSIG_PRICE": REFSIG_PRICE, "REFSIG_PRICE1": REFSIG_PRICE1, "REFSIG_PRICE2": REFSIG_PRICE2, "REFSIG_VOL": REFSIG_VOL, "REFWH": REFWH, "REVERSE": REVERSE, "ROUND": ROUND, "SAR": SAR, "SAR1": SAR1, "SCALE": SCALE, "SEEK": SEEK, "SELECT": SELECT, "SETDEALPERCENT": SETDEALPERCENT, "SETEXPIREDATE": SETEXPIREDATE, "SETMOVEOPIPRICE": SETMOVEOPIPRICE, "SETQUOTACCOUNT": SETQUOTACCOUNT, "SETSIGPRICE": SETSIGPRICE, "SETSIGPRICETYPE": SETSIGPRICETYPE, "SETSTYLECOLOR": SETSTYLECOLOR, "SETTLE": SETTLE, "SETTRADEACCOUNT": SETTRADEACCOUNT, "SGN": SGN, "SIGNUM": SIGNUM, "SIGVOL": SIGVOL, "SIN": SIN, "SKEWNESS": SKEWNESS, "SKHIGH": SKHIGH, "SKLOW": SKLOW, "SKPRICE": SKPRICE, "SKPRICE1": SKPRICE1, "SKPRICEAV": SKPRICEAV, "SKPRICEAV1": SKPRICEAV1, "SKVOL": SKVOL, "SKVOL2": SKVOL2, "SLOPE": SLOPE, "SMA": SMA, "SMMA": SMMA, "SOLID": SOLID, "SORT": SORT, "SORTPOS": SORTPOS, "SOUND": SOUND, "SPLIT": SPLIT, "SPLITBARS": SPLITBARS, "SQRT": SQRT, "SQUARE": SQUARE, "STD": STD, "STDP": STDP, "STICK": STICK, "STICKLINE": STICKLINE, "STICKLINE1": STICKLINE1, "STKTYPE": STKTYPE, "STOCKDIVD": STOCKDIVD, "SUM": SUM, "SUMBARS": SUMBARS, "T0TOTIME": T0TOTIME, "TAN": TAN, "TAVLOSS": TAVLOSS, "TAVWIN": TAVWIN, "TAVWINLOSS": TAVWINLOSS, "TIME": TIME, "TIME0": TIME0, "TIMETOT0": TIMETOT0, "TMAXLOSS": TMAXLOSS, "TMAXSEQLOSS": TMAXSEQLOSS, "TMAXSEQWIN": TMAXSEQWIN, "TMAXWIN": TMAXWIN, "TNUMSEQLOSS": TNUMSEQLOSS, "TNUMSEQWIN": TNUMSEQWIN, "TODAYDEUCETIMES": TODAYDEUCETIMES, "TODAYLOSSTIMES": TODAYLOSSTIMES, "TODAYWINTIMES": TODAYWINTIMES, "TPROFIT_REF": TPROFIT_REF, "TRACING_ORDER": TRACING_ORDER, "TRADE_AGAIN": TRADE_AGAIN, "TRADE_OTHER": TRADE_OTHER, "TRADE_REF": TRADE_REF, "TRADE_SMOOTHING": TRADE_SMOOTHING, "TREND": TREND, "TRMA": TRMA, "TSEQLOSS": TSEQLOSS, "TSEQWIN": TSEQWIN, "TSMA": TSMA, "T_CLOSE": T_CLOSE, "T_MAX": T_MAX, "T_PLUS": T_PLUS, "UNIT": UNIT, "UNIT1": UNIT1, "UNITLIMIT": UNITLIMIT, "VALIGN": VALIGN, "VALUEWHEN": VALUEWHEN, "VAR": VAR, "VARP": VARP, "VERTLINE": VERTLINE, "VERTLINE1": VERTLINE1, "VOL": VOL, "VOLATILITY": VOLATILITY, "VOLMARGIN": VOLMARGIN, "VOLSTICK": VOLSTICK, "VOLTICK": VOLTICK, "VOLTIME": VOLTIME, "VOLUMESTICK": VOLUMESTICK, "WEEKDAY": WEEKDAY, "WEEKTRADE": WEEKTRADE, "WEEKTRADE1": WEEKTRADE1, "WINNER": WINNER, "WORD": WORD, "YCLOSE": YCLOSE, "YEAR": YEAR, "YEARTRADE": YEARTRADE, "YEARTRADE1": YEARTRADE1, "YSETTLE": YSETTLE }
