@@ -42,7 +42,7 @@ function rgbToHex(r: string, g: string, b: string) {
         let hex = parseInt(n, 10).toString(16);
         return hex.length === 1 ? "0" + hex : hex;
     };
-    return "#" + toHex(r) + toHex(g) + toHex(b);
+    return ("#" + toHex(r) + toHex(g) + toHex(b)).toUpperCase();
 }
 
 function updateDecorations(activeEditor: vscode.TextEditor) {
@@ -75,8 +75,9 @@ function updateDecorations(activeEditor: vscode.TextEditor) {
 
     // 更新颜色装饰器
     const colorDecorationsKeys = Object.keys(colorDecorations);
+    const colorDecorationTypes = Object.keys(decorationTypes);
     const allKeys = [
-        ...new Set([...colorDecorationsKeys, ...Object.keys(decorationTypes)]),
+        ...new Set([...colorDecorationsKeys, ...colorDecorationTypes]),
     ];
     allKeys.forEach((key) => {
         const decorationType = ensureDecorationType(key);
@@ -88,16 +89,22 @@ function updateDecorations(activeEditor: vscode.TextEditor) {
     });
 }
 
-export function activateColorDecorations(context: vscode.ExtensionContext) {
+export function activateColorDecorations(
+    context: vscode.ExtensionContext,
+    languageId: string
+) {
     let activeEditor = vscode.window.activeTextEditor;
-    if (activeEditor) {
+    if (activeEditor && activeEditor.document.languageId === languageId) {
         updateDecorations(activeEditor);
     }
 
     vscode.window.onDidChangeActiveTextEditor(
         (editor) => {
             activeEditor = editor;
-            if (activeEditor) {
+            if (
+                activeEditor &&
+                activeEditor.document.languageId === languageId
+            ) {
                 updateDecorations(activeEditor);
             }
         },
@@ -107,7 +114,11 @@ export function activateColorDecorations(context: vscode.ExtensionContext) {
 
     vscode.workspace.onDidChangeTextDocument(
         (event) => {
-            if (activeEditor && event.document === activeEditor.document) {
+            if (
+                activeEditor &&
+                event.document === activeEditor.document &&
+                activeEditor.document.languageId === languageId
+            ) {
                 updateDecorations(activeEditor);
             }
         },

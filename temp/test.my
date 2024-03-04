@@ -14,6 +14,7 @@ BB:=MA(C,5);
 CC^^MA(C,5);
 DD..MA(C,5);
 EE:=1;
+C>=MA(C,5),ICON(1, "ICON1");
 IF AA OR BB AND CC || DD && EE THEN
     CC:=1;
 ELSE

@@ -1,9 +1,12 @@
 import * as vscode from "vscode";
 import { funcList } from "./configs/func";
 
-export function activateCompletionItemProvider(context: vscode.ExtensionContext) {
+export function activateCompletionItemProvider(
+    context: vscode.ExtensionContext,
+    languageId: string
+) {
     const provider1 = vscode.languages.registerCompletionItemProvider(
-        "my-lang",
+        languageId,
         {
             provideCompletionItems(
                 document: vscode.TextDocument,
@@ -16,18 +19,20 @@ export function activateCompletionItemProvider(context: vscode.ExtensionContext)
                     const completion = new vscode.CompletionItem(func.label);
                     completion.kind = vscode.CompletionItemKind.Function;
                     completion.detail = func.detail;
-                    completion.insertText = func.insertText ? new vscode.SnippetString(func.insertText) : undefined;
-                    completion.documentation = new vscode.MarkdownString(func.documentation);
+                    completion.insertText = func.insertText
+                        ? new vscode.SnippetString(func.insertText)
+                        : undefined;
+                    completion.documentation = new vscode.MarkdownString(
+                        func.documentation
+                    );
                     completions.push(completion);
                 }
                 // a simple completion item which inserts `Hello World!`
-                const simpleCompletion = new vscode.CompletionItem(
-                    {
-                        label: "Hello World!",
-                        detail: "A completions item",
-                        description: "A completions item description",
-                    }
-                );
+                const simpleCompletion = new vscode.CompletionItem({
+                    label: "Hello World!",
+                    detail: "A completions item",
+                    description: "A completions item description",
+                });
 
                 // a completion item that inserts its text as snippet,
                 // the `insertText`-property is a `SnippetString` which will be
@@ -67,15 +72,23 @@ export function activateCompletionItemProvider(context: vscode.ExtensionContext)
                 };
 
                 // return all completion items as array
-                completions.push(...[simpleCompletion, snippetCompletion, commitCharacterCompletion, commandCompletion]);
+                completions.push(
+                    ...[
+                        simpleCompletion,
+                        snippetCompletion,
+                        commitCharacterCompletion,
+                        commandCompletion,
+                    ]
+                );
                 return completions;
             },
         },
-        " ", "#"
+        " ",
+        "#"
     );
 
     const provider2 = vscode.languages.registerCompletionItemProvider(
-        "my-lang",
+        languageId,
         {
             provideCompletionItems(
                 document: vscode.TextDocument,

@@ -1,12 +1,11 @@
 import * as vscode from "vscode";
 import { funcMap } from "./configs/func";
 
-export function activateHoverProvider(context: vscode.ExtensionContext) {
-    const provider = vscode.languages.registerHoverProvider("my-lang", {
+export function activateHoverProvider(context: vscode.ExtensionContext, languageId: string) {
+    const provider = vscode.languages.registerHoverProvider(languageId, {
         provideHover(document, position, token) {
             const range = document.getWordRangeAtPosition(position);
             const word = document.getText(range);
-            console.log("word", word);
 
             // 检查当前单词是否是我们感兴趣的变量或方法
             if (word in funcMap) {

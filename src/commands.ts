@@ -4,16 +4,7 @@ import * as path from "path";
 import * as funcDef from "./configs/funcDes";
 
 let a: string = `
-class MyFunc {
-    public label: string = "";
-    public insertText: string = "";
-    public detail: string = "";
-    public tip: string = "";
-    public documentation: string = "";
-    public body: string = "";
-    public markettype: number = 0;
-    public type: number = 0;
-}
+import { MyFunc } from "../common"
 
 `;
 let s: string = "";
@@ -83,7 +74,7 @@ function saveStringToFile(filePath: string, content: string): void {
     }
 }
 
-export function activateSaveString(context: vscode.ExtensionContext) {
+export function activateCommands(context: vscode.ExtensionContext) {
     let disposable = vscode.commands.registerCommand(
         "extension.saveString",
         () => {
@@ -97,7 +88,9 @@ export function activateSaveString(context: vscode.ExtensionContext) {
                 const workspaceFolder = vscode.workspace.workspaceFolders[0];
                 const workspaceFolderPath = workspaceFolder.uri.fsPath;
                 a += `export const funcList = [ ${labels.join(", ")} ]\n`;
-                a += `export const funcMap: { [key: string]: MyFunc } = { ${labelMaps.join(", ")} }\n`;
+                a += `export const funcMap: { [key: string]: MyFunc } = { ${labelMaps.join(
+                    ", "
+                )} }\n`;
                 saveStringToFile(path.join(workspaceFolderPath, "a.ts"), a);
                 saveStringToFile(path.join(workspaceFolderPath, "s.ts"), s);
                 saveStringToFile(path.join(workspaceFolderPath, "n.ts"), n);

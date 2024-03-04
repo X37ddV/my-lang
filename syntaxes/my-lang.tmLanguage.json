@@ -75,6 +75,10 @@
 		"keywords": {
 			"patterns": [
 				{
+					"name": "keyword.other.unit.my-lang",
+					"match": "'ICON(?:10[0-5]|[1-9][0-9]?)'"
+				},
+				{
 					"name": "keyword.operator.quantifier.regexp.my-lang",
 					"match": "\\b(BK|SK|BP|SP|BPK|SPK|STOP|CLOSEOUT|BUY|SELL)\\b"
 				},

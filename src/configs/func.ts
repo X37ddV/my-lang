@@ -1,14 +1,4 @@
-
-class MyFunc {
-    public label: string = "";
-    public insertText: string = "";
-    public detail: string = "";
-    public tip: string = "";
-    public documentation: string = "";
-    public body: string = "";
-    public markettype: number = 0;
-    public type: number = 0;
-}
+import { MyFunc } from "../common"
 
 const _CALL = new MyFunc()
 _CALL.label = "CALL"
