@@ -122,8 +122,8 @@
 		},
 		"strings": {
 			"name": "string.quoted.double.my-lang",
-			"begin": "\"",
-			"end": "\"",
+			"begin": "'",
+			"end": "'",
 			"patterns": [
 				{
 					"name": "constant.character.escape.my-lang",

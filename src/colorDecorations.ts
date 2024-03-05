@@ -50,8 +50,11 @@ function updateDecorations(activeEditor: vscode.TextEditor) {
     const colorDecorations: { [key: string]: vscode.DecorationOptions[] } = {};
 
     // 正则表达式匹配所有颜色标识符
-    const regex =
-        /\b(COLORRED|COLORGREEN|COLORBLUE|COLORMAGENTA|COLORYELLOW|COLORLIGHTGREY|COLORLIGHTRED|COLORLIGHTGREEN|COLORLIGHTBLUE|COLORBLACK|COLORWHITE|COLORCYAN|COLORGRAY)\b|\bRGB\s*\(\s*(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\s*,\s*(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\s*,\s*(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\s*\)/g;
+    const regex = RegExp(
+        `\\b(${Object.keys(colorMap).join("|")})\\b` +
+            "|\\bRGB\\s*\\(\\s*(25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\s*,\\s*(25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\s*,\\s*(25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\s*\\)",
+        "g"
+    );
     let match;
     while ((match = regex.exec(text)) !== null) {
         const startPos = activeEditor.document.positionAt(match.index);

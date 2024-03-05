@@ -26,3 +26,28 @@ export function getLanguageId(context: { extensionPath: string }): string {
 
     return languageId;
 }
+
+export function getIcons(context: { extensionPath: string }): {
+    [key: string]: string;
+} {
+    const iconsPath = path.join(context.extensionPath, "images/icons");
+    let icons: { [key: string]: string } = {};
+
+    try {
+        const files = fs.readdirSync(iconsPath);
+
+        files.forEach((file) => {
+            if (path.extname(file).toLowerCase() === ".ico") {
+                const filePath = path.join(iconsPath, file);
+                const fileContent = fs.readFileSync(filePath);
+                const base64String = fileContent.toString("base64");
+                const iconName = path.basename(file, ".ico").toUpperCase().replace(/_0*/, "");
+                icons[iconName] = base64String;
+            }
+        });
+    } catch (err) {
+        console.error("Error processing files:", err);
+    }
+
+    return icons;
+}
