@@ -10,6 +10,15 @@ export class MyFunc {
     public body: string = "";
     public markettype: number = 0;
     public type: number = 0;
+    static fromLabelAndDetail(label: string, detail: string): MyFunc {
+        const result = new MyFunc();
+        result.label = label;
+        result.detail = detail;
+        result.tip = detail;
+        result.documentation = detail;
+        result.body = label;
+        return result;
+    }
 }
 
 export function getLanguageId(context: { extensionPath: string }): string {
