@@ -10,7 +10,7 @@
   "publisher": "X37ddV",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.86.0"
+    "vscode": "^1.87.0"
   },
   "categories": [
     "Programming Languages"
@@ -41,7 +41,8 @@
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
 		"lint": "eslint \"src/**/*.ts\"",
-		"watch": "tsc -watch -p ./"
+		"watch": "tsc -watch -p ./",
+    "package": "vsce package"
 	},
 	"devDependencies": {
 		"@types/node": "^20.11.24",
