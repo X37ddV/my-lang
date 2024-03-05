@@ -14,7 +14,7 @@ export function activateHoverProvider(
             if (word in funcMap) {
                 const func = funcMap[word];
                 const contents = new vscode.MarkdownString(
-                    `**${func.detail}**(***${func.label}***)\n\n${func.tip}\n\n${func.documentation}`
+                    `**${func.label}**\n**${func.detail}**\n\n${func.tip}\n\n${func.documentation}`
                 );
                 contents.isTrusted = true;
                 return new vscode.Hover(contents, range);

@@ -76,7 +76,7 @@
 			"patterns": [
 				{
 					"name": "keyword.other.unit.my-lang",
-					"match": "'ICON(?:10[0-5]|[1-9][0-9]?)'"
+					"match": "'ICON(?:1(?:[0-5][0-9]?|6[0-5]?)|[1-9][0-9]?)'"
 				},
 				{
 					"name": "keyword.operator.quantifier.regexp.my-lang",

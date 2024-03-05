@@ -67,7 +67,7 @@ function updateDecorations(activeEditor: vscode.TextEditor) {
             : colorMap[matchString];
         const decoration: vscode.DecorationOptions = {
             range: new vscode.Range(startPos, endPos),
-            hoverMessage: "Color **" + key + "**",
+            hoverMessage: `${key}`,
         };
         if (colorDecorations[key]) {
             colorDecorations[key].push(decoration);
