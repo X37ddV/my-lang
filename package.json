@@ -38,11 +38,11 @@
     ]
   },
 	"scripts": {
-		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
 		"lint": "eslint \"src/**/*.ts\"",
 		"watch": "tsc -watch -p ./",
-    "package": "vsce package"
+    "package": "vsce package",
+    "publish": "vsce publish"
 	},
 	"devDependencies": {
 		"@types/node": "^20.11.24",
