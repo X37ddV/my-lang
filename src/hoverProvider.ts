@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { funcMap } from "./configs/func";
+import { completionMap } from "./configs/completions";
 import { getIcons } from "./common";
 
 export function activateHoverProvider(
@@ -11,14 +11,15 @@ export function activateHoverProvider(
         provideHover(document, position) {
             const range = document.getWordRangeAtPosition(position);
             const word = document.getText(range);
-            if (word in funcMap) {
-                const func = funcMap[word];
+            const item = completionMap.get(word);
+            if (item) {
                 const contents = new vscode.MarkdownString(
-                    `**${func.label}**\n**${func.detail}**\n\n${func.tip}\n\n${func.documentation}`
+                    `**${item.label}**\n**${item.detail}**\n\n${item.tip}\n\n${item.documentation}`
                 );
                 contents.isTrusted = true;
                 return new vscode.Hover(contents, range);
             } else if (word.startsWith("ICON") && icons[word]) {
+                // 显示图标
                 const contents = new vscode.MarkdownString(
                     `![Icon](data:image/x-icon;base64,${icons[word]})`
                 );

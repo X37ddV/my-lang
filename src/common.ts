@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 
-export class MyFunc {
+export class MyCompletion {
     public label: string = "";
     public insertText: string = "";
     public detail: string = "";
@@ -10,8 +10,8 @@ export class MyFunc {
     public body: string = "";
     public markettype: number = 0;
     public type: number = 0;
-    static fromLabelAndDetail(label: string, detail: string): MyFunc {
-        const result = new MyFunc();
+    static fromLabelAndDetail(label: string, detail: string): MyCompletion {
+        const result = new MyCompletion();
         result.label = label;
         result.detail = detail;
         result.tip = detail;
