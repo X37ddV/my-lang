@@ -1,0 +1,12 @@
+{
+    "name": "My Lang Dark Theme",
+    "colors": {},
+    "tokenColors": [
+        {
+            "scope": "keyword.operator.order.my-lang",
+            "settings": {
+                "foreground": "#FF0000"
+            }
+        }
+    ]
+}

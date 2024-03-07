@@ -2,7 +2,7 @@
   "name": "my-lang",
   "displayName": "MyLang",
   "description": "My language support for VS Code",
-	"license": "MIT",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/X37ddV/my-lang.git"
@@ -15,42 +15,63 @@
   "categories": [
     "Programming Languages"
   ],
-	"icon": "images/icon.ico",
+  "icon": "images/icon.ico",
   "activationEvents": [],
-	"main": "./out/extension.js",
+  "main": "./out/extension.js",
   "contributes": {
-    "languages": [{
-      "id": "my-lang",
-      "aliases": ["MyLang", "my-lang"],
-      "extensions": [".my"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "my-lang",
-      "scopeName": "source.my",
-      "path": "./syntaxes/my-lang.tmLanguage.json"
-    }],
+    "languages": [
+      {
+        "id": "my-lang",
+        "aliases": [
+          "MyLang",
+          "my-lang"
+        ],
+        "extensions": [
+          ".my"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "my-lang",
+        "scopeName": "source.my",
+        "path": "./syntaxes/my-lang.tmLanguage.json"
+      }
+    ],
+    "themes": [
+      {
+        "label": "My Lang Theme",
+        "uiTheme": "vs-dark",
+        "path": "./themes/my-lang-dark-theme.json"
+      },
+      {
+        "label": "My Lang Theme",
+        "uiTheme": "vs",
+        "path": "./themes/my-lang-light-theme.json"
+      }
+    ],
     "commands": [
-        {
-            "command": "extension.saveString",
-            "title": "Save String to File"
-        }
+      {
+        "command": "extension.saveString",
+        "title": "Save String to File"
+      }
     ]
   },
-	"scripts": {
-		"compile": "tsc -p ./",
-		"lint": "eslint \"src/**/*.ts\"",
-		"watch": "tsc -watch -p ./",
+  "scripts": {
+    "compile": "tsc -p ./",
+    "lint": "eslint \"src/**/*.ts\"",
+    "watch": "tsc -watch -p ./",
     "package": "vsce package",
     "publish": "vsce publish"
-	},
-	"devDependencies": {
-		"@types/node": "^20.11.24",
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
     "@types/vscode": "^1.87.0",
     "vscode-test": "^1.6.1",
-		"@typescript-eslint/eslint-plugin": "^7.1.1",
-		"@typescript-eslint/parser": "^7.1.1",
-		"eslint": "^8.57.0",
-		"typescript": "^5.3.3"
-	}
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.3"
+  }
 }
