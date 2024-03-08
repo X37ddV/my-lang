@@ -59,9 +59,11 @@
     ]
   },
   "scripts": {
-    "compile": "tsc -p ./",
+		"vscode:prepublish": "npm run compile",
+    "compile": "tsc -b",
     "lint": "eslint \"src/**/*.ts\"",
-    "watch": "tsc -watch -p ./",
+    "watch": "tsc -watch -b",
+		"postinstall": "cd client && npm install && cd ../server && npm install && cd ..",
     "package": "vsce package",
     "publish": "vsce publish"
   },

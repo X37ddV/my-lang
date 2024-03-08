@@ -1,23 +1,15 @@
 {
 	"compilerOptions": {
 		"module": "commonjs",
+		"moduleResolution": "node",
 		"target": "es2020",
 		"lib": ["es2020"],
 		"outDir": "out",
 		"rootDir": "src",
 		"sourceMap": true,
 		"strict": true,
+		"composite": true,
 	},
-	"include": [
-		"src"
-	],
-	"exclude": [
-		"node_modules",
-		"temp",
-		".vscode-test"
-	],
-	"references": [
-		{ "path": "./client" },
-		{ "path": "./server" }
-	]
+	"include": ["src"],
+	"exclude": ["node_modules", ".vscode-test"]
 }
