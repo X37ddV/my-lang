@@ -1,30 +1,67 @@
+/*
+    操作符  意义	                        举例
+    +       加法                            CLOSE＋OPEN；返回收盘价与开盘价的和。
+    -       减法	                        CLOSE－OPEN；返回收盘价与开盘价的差。
+    *       乘法	                        CLOSE*OPEN；返回收盘价与开盘价的积。
+    /       除法	                        CLOSE/OPEN；返回收盘价与开盘价的商。
+    &&      与（并且），也可简写为AND	    CLOSE>OPEN&&REF(CLOSE>OPEN,1)；当根k线与前一根k线都收阳返回1，否则返回0。
+    ||      或（或者），也可简写为OR	    CLOSE>OPEN||REF(CLOSE>OPEN,1)；当根k线收阳或前一根k线收阳返回1，否则返回0。
+    >       大于                            CLOSE>OPEN；当根k线的收盘价大于开盘价（阳线）返回1，否则返回0。
+    <       小于                            CLOSE<OPEN；当根k线的收盘价小于开盘价（阴线）返回1，否则返回0。
+    >=      大于等于                        CLOSE>=2000；当根k线收盘价大于等于2000返回1，否则返回0。
+    <=      小于等于                        CLOSE<=2000；当根k线收盘价小于等于2000返回1，否则返回0。
+    <>      不等于                          DATE<>REF(DATE,1)；当根k线的日期与前一根k线的日期不等（当根k线为当日第一根k线）返回1，否则返回0。
+    =       等于操作符                      TIME=1459；当根k线的时间为14点59分返回1，否则返回0。
+    :=      定义变量（模型加载时不显示线）      AA:=(OPEN+CLOSE)/2；定义变量AA，模型加载时AA在图表上不显示线。
+    :       定义变量（模型加载时显示线）        AA:(OPEN+CLOSE)/2；定义变量AA，模型加载时AA在图表上显示线。
+    ^^      定义变量（以主图附加坐标方式显示）  AA^^(OPEN+CLOSE)/2；定义变量AA，主图加载时，无论指标属性如何，AA都以主图附加坐标方式在主图显示。
+    ..      定义变量（以独立坐标方式显示）      AA..(OPEN+CLOSE)/2；定义变量AA，主图加载时，无论指标属性如何，AA以独立坐标方式在主图显示。
+*/
 
-// region 区域名称
+
+// region 引用语法
 #IMPORT [YEAR,N,FORMULA] AS VAR
+#IMPORT [WEEK,N,FORMULA] AS VAR
 #CALL [CODE, FORMULA] AS VAR
 #CALL_OTHER [FORMULA] AS VAR
 #CALL_PLUS[CODE,DAY,N,FORMULA] AS VAR
-#IMPORT [WEEK,N,FORMULA] AS VAR
 // endregion
 
+// region 全局变量 和 参考线语法
 VARIABLE:VK1:=1;
 REFLINE:-100,0,100;
+// endregion
+
+// region 变量定义语法
 AA:MA(C,5),ALIGN1,CIRCLEDOT,FONTSIZE72,WORD(12),COLORRED,RGB(112,92,125);
 BB:=MA(C,5);
 CC^^MA(C,5);
 DD..MA(C,5);
 EE:=1;
+// endregion
+
+// region 条件语句
 C>=MA(C,5),ICON(1, 'ICON155');
+CROSS(AA, VAR.XX), BK;
+// endregion
+
+// region 条件语法
 IF AA OR BB AND CC || DD && EE THEN
     CC:=1;
 ELSE
 BEGIN
     DD:=2;
 END
-ABS(C)
-VAR.XX, BK;
-DRAWTEXT(C>MA(C,5), LOW, 'C');
+// endregion
 
+// region 函数
+ABS(C);
+DRAWTEXT(C>MA(C,5), LOW, 'C');
+// endregion
+
+// region 无参数函数
+AVPRICE;
+AVAILABLE_OPI;
 AUTOFILTER;
 AUTOFINANCING;
 DAYTRADE;
@@ -38,3 +75,4 @@ WEEKTRADE;
 WEEKTRADE1;
 YEARTRADE;
 YEARTRADE1;
+// endregion
