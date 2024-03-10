@@ -1,7 +1,7 @@
 import { MyCompletion } from "../common";
 
 const _CALL = new MyCompletion();
-_CALL.label = "CALL";
+_CALL.label = "#CALL";
 _CALL.insertText = "";
 _CALL.detail = "跨合约引用指标";
 _CALL.tip = "#CALL[CODE,FORMULA]ASVAR引用CODE合约的指标FORMULA的数据";
@@ -39,7 +39,7 @@ CC:VAR.CC;//跨合约引用当前合约对应品种VIX指数一个周期前的�
 `;
 
 const _CALL_OTHER = new MyCompletion();
-_CALL_OTHER.label = "CALL_OTHER";
+_CALL_OTHER.label = "#CALL_OTHER";
 _CALL_OTHER.insertText = "";
 _CALL_OTHER.detail = "跨指标引用";
 _CALL_OTHER.tip = "#CALL_OTHER[FORMULA]ASVAR跨指标引用";
@@ -67,7 +67,7 @@ CC:VAR.CC;//跨指标引用当前合约的一个周期前的收盘价
 `;
 
 const _CALL_PLUS = new MyCompletion();
-_CALL_PLUS.label = "CALL_PLUS";
+_CALL_PLUS.label = "#CALL_PLUS";
 _CALL_PLUS.insertText = "";
 _CALL_PLUS.detail = "跨合约跨周期引用指标";
 _CALL_PLUS.tip =
@@ -112,7 +112,7 @@ CC:VAR.CC;//跨周期引用当前合约对应品种VIX指数昨天的收盘价
 `;
 
 const _IMPORT = new MyCompletion();
-_IMPORT.label = "IMPORT";
+_IMPORT.label = "#IMPORT";
 _IMPORT.insertText = "";
 _IMPORT.detail = "跨周期引用指标";
 _IMPORT.tip =
