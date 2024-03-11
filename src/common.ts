@@ -40,7 +40,7 @@ export function getIcons(context: { extensionPath: string }): {
     [key: string]: string;
 } {
     const iconsPath = path.join(context.extensionPath, "images/icons");
-    let icons: { [key: string]: string } = {};
+    const icons: { [key: string]: string } = {};
 
     try {
         const files = fs.readdirSync(iconsPath);

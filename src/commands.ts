@@ -9,52 +9,53 @@ import { MyFunc } from "../common"
 `;
 let s: string = "";
 let n: string = "";
-let labels: string[] = [];
-let labelMaps: string[] = [];
-for (const [key, value] of Object.entries(funcDef)) {
-    for (let [k, v] of Object.entries(value)) {
-        const label = k.replace("#", "");
-        if (k[0] === "#") {
-            k = k.replace("#", "_");
-        } else if (k === "$") {
-            k = "_$_";
-        } else if (k === "$ $") {
-            k = "_$_$_";
+const labels: string[] = [];
+const labelMaps: string[] = [];
+for (const [_key, value] of Object.entries(funcDef)) {
+    for (const [k, v] of Object.entries(value)) {
+        let key = k;
+        const label = key.replace("#", "");
+        if (key[0] === "#") {
+            key = key.replace("#", "_");
+        } else if (key === "$") {
+            key = "_$_";
+        } else if (key === "$ $") {
+            key = "_$_$_";
         }
         if (typeof v === "string") {
-            s += `const ${k} = "${v}"\n`;
+            s += `const ${key} = "${v}"\n`;
         } else if (typeof v === "number") {
-            n += `const ${k} = ${v}\n`;
+            n += `const ${key} = ${v}\n`;
         } else {
-            labels.push(k);
-            labelMaps.push(`"${label}": ${k}`);
-            a += `const ${k} = new MyFunc()\n`;
-            a += `${k}.label = "${label}"\n`;
-            a += `${k}.insertText = ""\n`;
+            labels.push(key);
+            labelMaps.push(`"${label}": ${key}`);
+            a += `const ${key} = new MyFunc()\n`;
+            a += `${key}.label = "${label}"\n`;
+            a += `${key}.insertText = ""\n`;
             const o = v as any;
             if (o["explanation"]) {
-                let oo = o["explanation"];
-                a += `${k}.detail = "${oo}"\n`;
+                const oo = o["explanation"];
+                a += `${key}.detail = "${oo}"\n`;
             }
             if (o["tip"]) {
-                let oo = o["tip"];
-                a += `${k}.tip = "${oo}"\n`;
+                const oo = o["tip"];
+                a += `${key}.tip = "${oo}"\n`;
             }
             if (o["body"]) {
-                a += `${k}.body = "${o["body"]}"\n`;
+                a += `${key}.body = "${o["body"]}"\n`;
             }
             if (o["markettype"]) {
-                let oo = o["markettype"];
-                a += `${k}.markettype = ${oo}\n`;
+                const oo = o["markettype"];
+                a += `${key}.markettype = ${oo}\n`;
             }
             if (o["type"]) {
-                let oo = o["type"];
-                a += `${k}.type = ${oo}\n`;
+                const oo = o["type"];
+                a += `${key}.type = ${oo}\n`;
             }
             if (o["description"]) {
                 let oo = o["description"];
                 oo = oo.replace(/\\r\\n/g, "\n");
-                a += `${k}.documentation = \`\n${oo}\n\`\n`;
+                a += `${key}.documentation = \`\n${oo}\n\`\n`;
             }
             a += "\n";
         }
@@ -75,7 +76,7 @@ function saveStringToFile(filePath: string, content: string): void {
 }
 
 export function activateCommands(context: vscode.ExtensionContext) {
-    let disposable = vscode.commands.registerCommand(
+    const disposable = vscode.commands.registerCommand(
         "extension.saveString",
         () => {
             // 指定要保存的文件路径和内容

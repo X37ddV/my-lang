@@ -39,7 +39,7 @@ function ensureDecorationType(colorKey: string) {
 
 function rgbToHex(r: string, g: string, b: string) {
     const toHex = (n: string) => {
-        let hex = parseInt(n, 10).toString(16);
+        const hex = parseInt(n, 10).toString(16);
         return hex.length === 1 ? "0" + hex : hex;
     };
     return ("#" + toHex(r) + toHex(g) + toHex(b)).toUpperCase();

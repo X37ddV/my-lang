@@ -371,8 +371,8 @@ AUTOFILTER 启用一开一平信号过滤机制。
 模型的过滤规则：
 1、连续的同方向指令只有第一个有效，其他的将被过滤；
 2、交易指令必须先开仓后平仓，一开一平配对出现：
-出现BK指令，下一个指令只允许出现SP\SPK指令；
-出现SK指令，下一个指令只允许出现BP\BPK指令；
+出现BK指令，下一个指令只允许出现SP\\SPK指令；
+出现SK指令，下一个指令只允许出现BP\\BPK指令；
 出现SP/BP/CLOSEOUT等平仓指令，下一个可以是BK/SK/SPK/BPK指令任一个；
 反手指令SPK和BPK交叉出现。
 
@@ -1252,7 +1252,7 @@ CHECKSIG(SIG,MODE1,TIME1,MODE2,TIME2,INTERVAL);
 注：
 1、该函数支持在期货月份合约和股票上运行。
 2、写了这个函数以后，模型会按照指令价方式运行。
-3、SIG位置为交易指令，交易指令包括BK\SK\BP\SP\BPK\SPK。
+3、SIG位置为交易指令，交易指令包括BK\\SK\\BP\\SP\\BPK\\SPK。
 4、MODE1位置为信号确认方式，有A和B两种：
 A：MODE1为'A'时
   1）当INTERVAL不为0时，出信号后第TIME1个数据时间间隔确认信号下单
@@ -1322,7 +1322,7 @@ CHECKSIG_MIN(SIG,MODE1,TIME1,MODE2,TIME2);SIG为信号,MODE1为信号确认方�
 1、写了这个函数以后，模型会按照指令价方式运行。
 2、使用该函数时，基础数据为1分钟数据。(TIME1 TIME2不支持小数)
 3、该函数不支持加载在15分钟以下周期使用
-4、SIG位置为交易指令，交易指令包括BK\SK\BP\SP\BPK\SPK。
+4、SIG位置为交易指令，交易指令包括BK\\SK\\BP\\SP\\BPK\\SPK。
 5、MODE1位置为信号确认方式，有A和B两种：
 A：出信号TIME1分钟确认信号下单。TIME1>0为出信号TIME1分钟确认信号下单，TIME1=0为出信号立即下单。
 B：K线走完前TIME1分钟确认信号下单。TIME1>0为K线走完前TIME1分钟确认信号下单(不支持加载在日线以上周期)，TIME1=0为K线走完确认信号下单
@@ -2311,7 +2311,7 @@ DAYTRADE 模型中写入该函数，信号和资金每天重新初始化进行�
 注：
 1、该函数适用于小时、分钟以下周期，不支持日、自定义N日、周、月、季、年周期。
 2、回测报告的出金/入金为日内的出金/入金的和。
-3、模型中不能同时使用DAYTRADE1\DAYTRADE\WEEKTRADE\WEEKTRADE1\MONTHTRADE\QUARTERTRADE\YEARTRADE函数。
+3、模型中不能同时使用DAYTRADE1\\DAYTRADE\\WEEKTRADE\\WEEKTRADE1\\MONTHTRADE\\QUARTERTRADE\\YEARTRADE函数。
 4、（1）历史回测中，当日K线走完持仓大于0，会对持仓进行全清处理。
    （2）模组运行中，当日K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
 
@@ -2347,7 +2347,7 @@ DAYTRADE1 模型中写入该函数，信号和资金每天重新初始化进行�
 3、不同函数对当天数据的引用不同，使用时需注意函数用法，如：
 MA(X,N)函数N的取值：当天如果k线小于N根，则返回空值。如果k线为大于等于N根，则取N。
 HHV(X,N)函数N的取值：当天如果k线小于N根，则返回实际根数，如果k线为大于等于N根，则取N。
-4、模型中不能同时使用DAYTRADE1\DAYTRADE\WEEKTRADE\WEEKTRADE1\MONTHTRADE\QUARTERTRADE\YEARTRADE函数。
+4、模型中不能同时使用DAYTRADE1\\DAYTRADE\\WEEKTRADE\\WEEKTRADE1\\MONTHTRADE\\QUARTERTRADE\\YEARTRADE函数。
 5、（1）历史回测中，当日K线走完持仓大于0，会对持仓进行全清处理。
    （2）模组运行中，当日K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
 
@@ -2530,13 +2530,13 @@ DRAWBKBMP(COND,IMAGE);
 当最后一根K线满足COND条件时，将图片IMAGE设置为背景。
 
 注：
-1、IMAGE指定的图片必须位于程序安装目录的Formula\Image目录下(Image文件夹需要用户自己建立)
+1、IMAGE指定的图片必须位于程序安装目录的Formula\\Image目录下(Image文件夹需要用户自己建立)
 2、图片格式必须为.BMP格式。
 3、不支持将函数定义为变量，即不支持下面的写法：
 A:DRAWBKBMP(COND,IMAGE);
 
 例1：
-DRAWBKBMP(CLOSE>OPEN,'壁纸20140410112435');//当最后一根K线为阳线时，将Formula\Image目录下的壁纸20140410112435图片设置为背景。
+DRAWBKBMP(CLOSE>OPEN,'壁纸20140410112435');//当最后一根K线为阳线时，将Formula\\Image目录下的壁纸20140410112435图片设置为背景。
 `;
 
 const DRAWBMP = new MyCompletion();
@@ -2554,7 +2554,7 @@ DRAWBMP(COND,DATA,IMAGE);
 当满足COND条件时，在DATA位置，输出图片IMAGE。
 
 注：
-1、IMAGE指定的图片必须位于程序安装目录的Formula\Image目录下(Image文件夹需要用户自己建立)
+1、IMAGE指定的图片必须位于程序安装目录的Formula\\Image目录下(Image文件夹需要用户自己建立)
 2、图片格式必须为.BMP格式
 3、图片路径同时支持写.BMP后缀和不写后缀两种形式
 4、不支持将函数定义为变量，即不支持下面的写法：
@@ -2562,7 +2562,7 @@ A:DRAWBMP(COND,DATA,IMAGE);
 5、输出的图片不能过大，否则会影响显示速度。
 
 例1：
-DRAWBMP(CLOSE>OPEN,H,'壁纸20140410112435.BMP');//当K线为阳线时，在K线最高价位置显示Formula\Image目录下的壁纸20140410112435图片。
+DRAWBMP(CLOSE>OPEN,H,'壁纸20140410112435.BMP');//当K线为阳线时，在K线最高价位置显示Formula\\Image目录下的壁纸20140410112435图片。
 `;
 
 const DRAWCOLORKLINE = new MyCompletion();
@@ -5977,7 +5977,7 @@ MONTHTRADE 模型中写入该函数，信号和资金每月重新初始化进行
 注：
 1、该函数不支持自定义N日、月、季、年周期，其他周期均支持。
 2、回测报告中的出金/入金，为每月出金/入金的和。
-3、模型中不能同时使用DAYTRADE1\DAYTRADE\WEEKTRADE\WEEKTRADE1\MONTHTRADE\QUARTERTRADE\YEARTRADE函数。
+3、模型中不能同时使用DAYTRADE1\\DAYTRADE\\WEEKTRADE\\WEEKTRADE1\\MONTHTRADE\\QUARTERTRADE\\YEARTRADE函数。
 4、（1）历史回测中，当月K线走完持仓大于0，会对持仓进行全清处理。
    （2）模组运行中，当月K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
 
@@ -6010,7 +6010,7 @@ MONTHTRADE1 模型中写入该函数，信号和资金每月重新初始化进�
 注：
 1、该函数不支持自定义N日、月、季、年周期，其他周期均支持。
 2、回测报告中的出金/入金，为每月出金/入金的和。
-3、模型中不能同时使用DAYTRADE1\DAYTRADE\WEEKTRADE\WEEKTRADE1\MONTHTRADE\MONTHTRADE1\QUARTERTRADE\QUARTERTRADE1\YEARTRADE\YEARTRADE1函数。
+3、模型中不能同时使用DAYTRADE1\\DAYTRADE\\WEEKTRADE\\WEEKTRADE1\\MONTHTRADE\\MONTHTRADE1\\QUARTERTRADE\\QUARTERTRADE1\\YEARTRADE\\YEARTRADE1函数。
 4、（1）历史回测中，当月K线走完持仓大于0，会对持仓进行全清处理。
    （2）模组运行中，当月K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
 
@@ -7041,7 +7041,7 @@ QUARTERTRADE 模型中写入该函数，信号和资金每季度重新初始化�
 注：
 1、该函数不支持自定义N日、季、年周期，其他周期均支持。
 2、回测报告中的出金/入金，为每季度出金/入金的和。
-3、模型中不能同时使用DAYTRADE1\DAYTRADE\WEEKTRADE\WEEKTRADE1\MONTHTRADE\QUARTERTRADE\YEARTRADE函数。
+3、模型中不能同时使用DAYTRADE1\\DAYTRADE\\WEEKTRADE\\WEEKTRADE1\\MONTHTRADE\\QUARTERTRADE\\YEARTRADE函数。
 4、（1）历史回测中，当季K线走完持仓大于0，会对持仓进行全清处理。
    （2）模组运行中，当季K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
 
@@ -7074,7 +7074,7 @@ QUARTERTRADE1 模型中写入该函数，信号和资金每季重新初始化进
 注：
 1、该函数不支持自定义N日、季、年周期，其他周期均支持。
 2、回测报告中的出金/入金，为每季度出金/入金的和。
-3、模型中不能同时使用DAYTRADE1\DAYTRADE\WEEKTRADE\WEEKTRADE1\MONTHTRADE\MONTHTRADE1\QUARTERTRADE\QUARTERTRADE1\YEARTRADE\YEARTRADE1函数。
+3、模型中不能同时使用DAYTRADE1\\DAYTRADE\\WEEKTRADE\\WEEKTRADE1\\MONTHTRADE\\MONTHTRADE1\\QUARTERTRADE\\QUARTERTRADE1\\YEARTRADE\\YEARTRADE1函数。
 4、（1）历史回测中，当季K线走完持仓大于0，会对持仓进行全清处理。
    （2）模组运行中，当季K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
 
@@ -7711,7 +7711,7 @@ SETSIGPRICE(SIG,PRICE),指定信号的下单价格
 SETSIGPRICE(SIG,PRICE),设置SIG指令的下单委托价格，PRICE为委托价格。
 
 注：
-1、SIG位置为交易指令，包括BK\SK\BP\SP\BPK\SPK 六种指令。
+1、SIG位置为交易指令，包括BK\\SK\\BP\\SP\\BPK\\SPK 六种指令。
 2、PRICE位置为下单价格，包括以下五种：
 （1）CUR_CLOSE 当根收盘价
 （2）NEXT_OPEN 下根开盘价
@@ -7753,7 +7753,7 @@ SETSIGPRICETYPE(SIG,PRICE,IsCancel),设置信号的委托价格方式
 用法：SETSIGPRICETYPE(SIG,PRICE,IsCancel),设置SIG指令的委托价格方式，PRICE为委托价格方式，IsCancel为是否启用终止下单。
 
 注：
-1、SIG位置为交易指令，包括BK\SK\BP\SP\BPK\SPK六种指令。
+1、SIG位置为交易指令，包括BK\\SK\\BP\\SP\\BPK\\SPK六种指令。
 2、PRICE位置为委托价格方式，包括以下六种：
 （1）NEW_ORDER 最新价
 （2）PASSIVE_ORDER 排队价
@@ -9125,7 +9125,7 @@ TRACING_ORDER(Sig,PriceType,Time);设置信号进行追价下单
 TRACING_ORDER(Sig,PriceType,Time)，设置SIG指令按照追价方式委托
 PriceType为首次下单委托价格，Time 秒不成交市价追
 
-1、SIG位置为交易指令，包括BK\SK\BP\SP\BPK\SPK六种指令
+1、SIG位置为交易指令，包括BK\\SK\\BP\\SP\\BPK\\SPK六种指令
 2、PriceType位置为追价首次下单价格，包括以下五种：
 （1）NEW_ORDER 最新价
 （2）PASSIVE_ORDER 排队价
@@ -9873,7 +9873,7 @@ WEEKTRADE 周内交易函数。
 注：
 1、该函数不支持自定义N日、周、月、季、年周期，其他周期均支持。
 2、回测报告中的出金/入金，为每周出金/入金的和。
-3、模型中不能同时使用DAYTRADE1\DAYTRADE\WEEKTRADE\WEEKTRADE1\MONTHTRADE\QUARTERTRADE\YEARTRADE函数。
+3、模型中不能同时使用DAYTRADE1\\DAYTRADE\\WEEKTRADE\\WEEKTRADE1\\MONTHTRADE\\QUARTERTRADE\\YEARTRADE函数。
 4、（1）历史回测中，当周K线走完持仓大于0，会对持仓进行全清处理。
    （2）模组运行中，当周K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
 
@@ -9909,7 +9909,7 @@ WEEKTRADE1 模型中写入该函数，信号和资金每周重新初始化进行
 3、不同函数对当周数据的引用不同，使用时需注意函数用法，如：
 MA(X,N)函数N的取值：当周如果k线小于N根，则返回空值。如果k线为大于等于N根，则取N。
 HHV(X,N)函数N的取值：当天如果k线小于N根，则返回实际根数，如果k线为大于等于N根，则取N。
-4、模型中不能同时使用DAYTRADE1\DAYTRADE\WEEKTRADE\WEEKTRADE1\MONTHTRADE\QUARTERTRADE\YEARTRADE函数。
+4、模型中不能同时使用DAYTRADE1\\DAYTRADE\\WEEKTRADE\\WEEKTRADE1\\MONTHTRADE\\QUARTERTRADE\\YEARTRADE函数。
 5、（1）历史回测中，当周K线走完持仓大于0，会对持仓进行全清处理。
    （2）模组运行中，当周K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
 
@@ -10023,7 +10023,7 @@ YEARTRADE 模型中写入该函数，信号和资金每年重新初始化进行�
 注：
 1、该函数不支持年周期，其他周期均支持。
 2、回测报告中的出金/入金，为每年出金/入金的和。
-3、模型中不能同时使用DAYTRADE1\DAYTRADE\WEEKTRADE\WEEKTRADE1\MONTHTRADE\QUARTERTRADE\YEARTRADE函数。
+3、模型中不能同时使用DAYTRADE1\\DAYTRADE\\WEEKTRADE\\WEEKTRADE1\\MONTHTRADE\\QUARTERTRADE\\YEARTRADE函数。
 4、（1）历史回测中，当年K线走完持仓大于0，会对持仓进行全清处理。
    （2）模组运行中，当年K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
 
@@ -10056,7 +10056,7 @@ YEARTRADE1 模型中写入该函数，信号和资金每年重新初始化进行
 注：
 1、该函数不支持年周期，其他周期均支持。
 2、回测报告中的出金/入金，为每年出金/入金的和。
-3、模型中不能同时使用DAYTRADE1\DAYTRADE\WEEKTRADE\WEEKTRADE1\MONTHTRADE\MONTHTRADE1\QUARTERTRADE\QUARTERTRADE1\YEARTRADE\YEARTRADE1函数。
+3、模型中不能同时使用DAYTRADE1\\DAYTRADE\\WEEKTRADE\\WEEKTRADE1\\MONTHTRADE\\MONTHTRADE1\\QUARTERTRADE\\QUARTERTRADE1\\YEARTRADE\\YEARTRADE1函数。
 4、（1）历史回测中，当年K线走完持仓大于0，会对持仓进行全清处理。
    （2）模组运行中，当年K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
 
