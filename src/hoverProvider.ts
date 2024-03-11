@@ -14,7 +14,7 @@ export function activateHoverProvider(
             const item = completionMap.get(word);
             if (item) {
                 const contents = new vscode.MarkdownString(
-                    `**${item.label}**\n**${item.detail}**\n\n${item.tip}\n\n${item.documentation}`
+                    `**${item.label}**\n**${item.detail}**\n\n${item.documentation}`
                 );
                 contents.isTrusted = true;
                 return new vscode.Hover(contents, range);

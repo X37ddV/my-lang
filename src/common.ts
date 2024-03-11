@@ -1,20 +1,44 @@
 import * as fs from "fs";
 import * as path from "path";
 
+export enum MyCompletionType {
+    CandlestickDataReference, // K线数据引用
+    FinancialStatisticsFunction, // 金融统计函数
+    MathematicalStatisticsFunction, // 数理统计函数
+    MathFunction, // 数学函数
+    LogicalJudgmentFunction, // 逻辑判断函数
+    LoopExecutionFunction, // 循环执行函数
+    TimeFunction, // 时间函数
+    DrawingFunction, // 绘图函数
+    CalculationControlFunction, // 计算控制函数
+    SignalLoggingFunction, // 信号记录函数
+    SignalExecutionFunction, // 信号执行函数
+    PositionManagementFunction, // 头寸管理函数
+    PerformanceOptimizationFunction, // 运行优化函数
+    EncryptionOutputFunction, // 加密输出函数
+    StockDataFunction, // 股票数据函数
+    FormulaBasedSelection, // 公式选股
+}
+
+export enum MyCompletionMarketType {
+    BasicFunction, // 基础函数
+    TPlusZeroStrategyFunction, // T+0策略函数
+    TPlusOneStrategyFunction, // T+1策略函数
+    StockSelectionFunction, // 选股函数
+}
+
 export class MyCompletion {
     public label: string = "";
     public insertText: string = "";
     public detail: string = "";
-    public tip: string = "";
     public documentation: string = "";
     public body: string = "";
-    public markettype: number = 0;
-    public type: number = 0;
+    public marketType: MyCompletionMarketType = MyCompletionMarketType.BasicFunction;
+    public type: MyCompletionType = MyCompletionType.CandlestickDataReference;
     static fromLabelAndDetail(label: string, detail: string): MyCompletion {
         const result = new MyCompletion();
         result.label = label;
         result.detail = detail;
-        result.tip = detail;
         result.documentation = detail;
         result.body = label;
         return result;
@@ -50,7 +74,10 @@ export function getIcons(context: { extensionPath: string }): {
                 const filePath = path.join(iconsPath, file);
                 const fileContent = fs.readFileSync(filePath);
                 const base64String = fileContent.toString("base64");
-                const iconName = path.basename(file, ".ico").toUpperCase().replace(/_0*/, "");
+                const iconName = path
+                    .basename(file, ".ico")
+                    .toUpperCase()
+                    .replace(/_0*/, "");
                 icons[iconName] = base64String;
             }
         });

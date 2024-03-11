@@ -2577,7 +2577,7 @@ export default {
     },
     "IS_WH9": 0,
     "KEYWORD": {
-        "Num": 158,
+        "NUM": 158,
         "keyword1": "O",
         "keyword10": "LIMIT_ORDER",
         "keyword100": "FONTSIZE36",
