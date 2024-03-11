@@ -58,7 +58,6 @@ export function activateCompletionItemProvider(
                 endregionCompletion.documentation = new vscode.MarkdownString('Ends a //#region block');
                 endregionCompletion.range = range;
                 
-                
                 return [
                     regionCompletion,
                     endregionCompletion,
