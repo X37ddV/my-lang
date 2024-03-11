@@ -111,6 +111,7 @@ for (const fk of functionOrders) {
         let oo = func["description"];
         oo = oo.replace(/\\r\\n/g, "\n");
         oo = oot + "\n" + oo;
+        oo = oo.replace(/\\/g, "\\\\");
         a += `${key}.documentation = \`\n${oo}\n\`\n`;
     }
     a += "\n";
