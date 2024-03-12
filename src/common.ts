@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 
-export enum MyCompletionType {
+export enum MyCompletionFunctionType {
     CandlestickDataReference, // K线数据引用
     FinancialStatisticsFunction, // 金融统计函数
     MathematicalStatisticsFunction, // 数理统计函数
@@ -27,20 +27,32 @@ export enum MyCompletionMarketType {
     StockSelectionFunction, // 选股函数
 }
 
+export enum MyCompletionType {
+    Keyword,
+    Function,
+}
+
+export enum MyCompletionReturnType {
+    None,
+    Number,
+    Boolean,
+}
+
 export class MyCompletion {
     public label: string = "";
     public insertText: string = "";
     public detail: string = "";
     public documentation: string = "";
     public body: string = "";
+    public type: MyCompletionType = MyCompletionType.Keyword;
     public marketType: MyCompletionMarketType = MyCompletionMarketType.BasicFunction;
-    public type: MyCompletionType = MyCompletionType.CandlestickDataReference;
+    public functionType: MyCompletionFunctionType = MyCompletionFunctionType.CandlestickDataReference;
+    public returnType: MyCompletionReturnType = MyCompletionReturnType.None;
+    public params: string[] = [];
     static fromLabelAndDetail(label: string, detail: string): MyCompletion {
         const result = new MyCompletion();
         result.label = label;
         result.detail = detail;
-        result.documentation = detail;
-        result.body = label;
         return result;
     }
 }

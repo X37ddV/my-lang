@@ -5076,4 +5076,4 @@ export default {
         "tip": "YSETTLE,求某根k线的昨结算价",
         "type": 1
     }
-}
+};

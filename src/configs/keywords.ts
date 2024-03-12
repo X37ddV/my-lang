@@ -7,8 +7,8 @@ const keywordList = Object.entries({
     ELSE: "ELSE",
     END: "END",
     OR: "OR 逻辑或",
-    SEC: "秒钟",
     THEN: "THEN",
+    SEC: "秒钟",
     WEEK: "WEEK 周",
     VARIABLE: "VARIABLE 定义全局变量并初始化",
 }).map(([label, detail]) => MyCompletion.fromLabelAndDetail(label, detail));

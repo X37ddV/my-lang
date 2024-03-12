@@ -4,30 +4,30 @@ import * as path from "path";
 import * as funcDef from "./configs/funcDes";
 
 const funcDes: any = funcDef.default;
-const functionOrder = funcDes["FUNCTION_ORDER"]
-const functionType = funcDes["FUNCTION_TYPE"]
-const keyword = funcDes["KEYWORD"]
-const markettype = funcDes["MARKET_TYPE"]
-delete funcDes["FUNCTION_ORDER"]
-delete funcDes["FUNCTION_TYPE"]
-delete funcDes["KEYWORD"]
-delete funcDes["MARKET_TYPE"]
-delete funcDes["IS_WH9"]
-const functionOrders: string[] = []
+const functionOrder = funcDes["FUNCTION_ORDER"];
+const functionType = funcDes["FUNCTION_TYPE"];
+const keyword = funcDes["KEYWORD"];
+const markettype = funcDes["MARKET_TYPE"];
+delete funcDes["FUNCTION_ORDER"];
+delete funcDes["FUNCTION_TYPE"];
+delete funcDes["KEYWORD"];
+delete funcDes["MARKET_TYPE"];
+delete funcDes["IS_WH9"];
+const functionOrders: string[] = [];
 for (let i = 1; i <= functionOrder["NUM"]; i++) {
-    functionOrders.push(functionOrder["function"+i]);
+    functionOrders.push(functionOrder["function" + i]);
 }
-const functionTypes: string[] = []
+const functionTypes: string[] = [];
 for (let i = 1; i <= functionType["NUM"]; i++) {
-    functionTypes.push(functionType["type"+i]);
+    functionTypes.push(functionType["type" + i]);
 }
-const keywords: string[] = []
+const keywords: string[] = [];
 for (let i = 1; i <= keyword["NUM"]; i++) {
-    keywords.push(keyword["keyword"+i]);
+    keywords.push(keyword["keyword" + i]);
 }
-const markettypes: string[] = []
+const markettypes: string[] = [];
 for (let i = 0; i < markettype["NUM"]; i++) {
-    markettypes.push(markettype["markettype"+i]);
+    markettypes.push(markettype["markettype" + i]);
 }
 
 const MarketType = [
@@ -35,30 +35,30 @@ const MarketType = [
     "MyCompletionMarketType.TPlusZeroStrategyFunction", // T+0策略函数
     "MyCompletionMarketType.TPlusOneStrategyFunction", // T+1策略函数
     "MyCompletionMarketType.StockSelectionFunction", // 选股函数
-]
+];
 
 const FuncType = [
     "",
-    "MyCompletionType.CandlestickDataReference", // K线数据引用
-    "MyCompletionType.FinancialStatisticsFunction", // 金融统计函数
-    "MyCompletionType.MathematicalStatisticsFunction", // 数理统计函数
-    "MyCompletionType.MathFunction", // 数学函数
-    "MyCompletionType.LogicalJudgmentFunction", // 逻辑判断函数
-    "MyCompletionType.LoopExecutionFunction", // 循环执行函数
-    "MyCompletionType.TimeFunction", // 时间函数
-    "MyCompletionType.DrawingFunction", // 绘图函数
-    "MyCompletionType.CalculationControlFunction", // 计算控制函数
-    "MyCompletionType.SignalLoggingFunction", // 信号记录函数
-    "MyCompletionType.SignalExecutionFunction", // 信号执行函数
-    "MyCompletionType.PositionManagementFunction", // 头寸管理函数
-    "MyCompletionType.PerformanceOptimizationFunction", // 运行优化函数
-    "MyCompletionType.EncryptionOutputFunction", // 加密输出函数
-    "MyCompletionType.StockDataFunction", // 股票数据函数
-    "MyCompletionType.FormulaBasedSelection", // 公式选股
-]
+    "MyCompletionFunctionType.CandlestickDataReference", // K线数据引用
+    "MyCompletionFunctionType.FinancialStatisticsFunction", // 金融统计函数
+    "MyCompletionFunctionType.MathematicalStatisticsFunction", // 数理统计函数
+    "MyCompletionFunctionType.MathFunction", // 数学函数
+    "MyCompletionFunctionType.LogicalJudgmentFunction", // 逻辑判断函数
+    "MyCompletionFunctionType.LoopExecutionFunction", // 循环执行函数
+    "MyCompletionFunctionType.TimeFunction", // 时间函数
+    "MyCompletionFunctionType.DrawingFunction", // 绘图函数
+    "MyCompletionFunctionType.CalculationControlFunction", // 计算控制函数
+    "MyCompletionFunctionType.SignalLoggingFunction", // 信号记录函数
+    "MyCompletionFunctionType.SignalExecutionFunction", // 信号执行函数
+    "MyCompletionFunctionType.PositionManagementFunction", // 头寸管理函数
+    "MyCompletionFunctionType.PerformanceOptimizationFunction", // 运行优化函数
+    "MyCompletionFunctionType.EncryptionOutputFunction", // 加密输出函数
+    "MyCompletionFunctionType.StockDataFunction", // 股票数据函数
+    "MyCompletionFunctionType.FormulaBasedSelection", // 公式选股
+];
 
 let a: string = `
-import { MyCompletion, MyCompletionMarketType, MyCompletionType } from "../common";
+import { MyCompletion, MyCompletionMarketType, MyCompletionFunctionType } from "../common";
 
 `;
 let s: string = "";
@@ -66,7 +66,7 @@ const funcKeys: string[] = [];
 const funcMap: { [key: string]: any } = {};
 for (const [_key, value] of Object.entries(funcDef)) {
     for (const [k, v] of Object.entries(value)) {
-        funcMap[k] = v
+        funcMap[k] = v;
     }
 }
 for (const fk of functionOrders) {
@@ -99,7 +99,7 @@ for (const fk of functionOrders) {
     if (func["type"] !== undefined) {
         const oo = func["type"];
         const oos = FuncType[oo] || "";
-        a += `${key}.type = ${oos}\n`;
+        a += `${key}.functionType = ${oos}\n`;
     }
     if (func["explanation"] !== undefined) {
         const oo = func["explanation"];
@@ -118,7 +118,7 @@ for (const fk of functionOrders) {
 }
 for (const kk of keywords) {
     const keyword = funcMap[kk];
-    let key = kk;
+    const key = kk;
     s += `const ${key} = "${keyword}"\n`;
 }
 

@@ -17,7 +17,8 @@ export function activateCompletionItemProvider(
                 const completionItems = [];
                 for (const item of completions) {
                     const completionItem = new vscode.CompletionItem(
-                        item.label
+                        { label: item.label, description: item.detail },
+                        vscode.CompletionItemKind.Function
                     );
                     completionItem.kind = vscode.CompletionItemKind.Function;
                     completionItem.detail = item.detail;
@@ -46,18 +47,20 @@ export function activateCompletionItemProvider(
                 const endPosition = position;
                 const range = new vscode.Range(startPosition, endPosition);
 
-                const regionCompletion = new vscode.CompletionItem('#region', vscode.CompletionItemKind.Snippet);
+                const regionCompletion = new vscode.CompletionItem({ label: '#region', description: 'Region Start' }, vscode.CompletionItemKind.Snippet);
                 regionCompletion.insertText = new vscode.SnippetString('//#region ${1:Region Name}\n$0\n//#endregion');
-                regionCompletion.detail = 'Region Start';
-                regionCompletion.documentation = new vscode.MarkdownString('Inserts a //#region block and a //#endregion block');
+                regionCompletion.detail = 'Folding Region Start (麦语言基础功能)';
+                regionCompletion.documentation = new vscode.MarkdownString();
+                regionCompletion.documentation.appendCodeblock('//#region', "javascript");
                 regionCompletion.range = range;
-                
-                const endregionCompletion = new vscode.CompletionItem('#endregion', vscode.CompletionItemKind.Snippet);
+
+                const endregionCompletion = new vscode.CompletionItem({ label: '#endregion', description: 'Region End' }, vscode.CompletionItemKind.Snippet);
                 endregionCompletion.insertText = new vscode.SnippetString('//#endregion');
-                endregionCompletion.detail = 'Region End';
-                endregionCompletion.documentation = new vscode.MarkdownString('Ends a //#region block');
+                endregionCompletion.detail = 'Folding Region End (麦语言基础功能)';
+                endregionCompletion.documentation = new vscode.MarkdownString();
+                endregionCompletion.documentation.appendCodeblock('//#endregion', 'javascript');
                 endregionCompletion.range = range;
-                
+
                 return [
                     regionCompletion,
                     endregionCompletion,

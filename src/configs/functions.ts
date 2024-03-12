@@ -1,7 +1,7 @@
 import {
     MyCompletion,
     MyCompletionMarketType,
-    MyCompletionType,
+    MyCompletionFunctionType,
 } from "../common";
 
 const ABS = new MyCompletion();
@@ -9,7 +9,7 @@ ABS.label = "ABS";
 ABS.insertText = "";
 ABS.body = "ABS( )";
 ABS.marketType = MyCompletionMarketType.BasicFunction;
-ABS.type = MyCompletionType.MathFunction;
+ABS.functionType = MyCompletionFunctionType.MathFunction;
 ABS.detail = "绝对值";
 ABS.documentation = `
 ABS(X),求X的绝对值
@@ -33,7 +33,7 @@ ACOS.label = "ACOS";
 ACOS.insertText = "";
 ACOS.body = "ACOS( )";
 ACOS.marketType = MyCompletionMarketType.BasicFunction;
-ACOS.type = MyCompletionType.MathFunction;
+ACOS.functionType = MyCompletionFunctionType.MathFunction;
 ACOS.detail = "反余弦值";
 ACOS.documentation = `
 ACOS(X),求X的反余弦值
@@ -54,7 +54,7 @@ ADMA.label = "ADMA";
 ADMA.insertText = "";
 ADMA.body = "ADMA(,,,)";
 ADMA.marketType = MyCompletionMarketType.BasicFunction;
-ADMA.type = MyCompletionType.MathematicalStatisticsFunction;
+ADMA.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
 ADMA.detail = "考夫曼均值";
 ADMA.documentation = `
 AMA(X,N,P,Q),考夫曼均值X为调用的k线数据（例如高、开、低，收），N为调用的间隔时间P为快线频率参数，Q为慢线频率参数
@@ -93,7 +93,7 @@ ALIGN.label = "ALIGN";
 ALIGN.insertText = "";
 ALIGN.body = "ALIGN";
 ALIGN.marketType = MyCompletionMarketType.BasicFunction;
-ALIGN.type = MyCompletionType.DrawingFunction;
+ALIGN.functionType = MyCompletionFunctionType.DrawingFunction;
 ALIGN.detail = "设置文字对齐方式（左中右）";
 ALIGN.documentation = `
 ALIGN0,ALIGN1,ALIGN2,分别表示文字左对齐，居中对齐，右对齐
@@ -112,7 +112,7 @@ ASIN.label = "ASIN";
 ASIN.insertText = "";
 ASIN.body = "ASIN( )";
 ASIN.marketType = MyCompletionMarketType.BasicFunction;
-ASIN.type = MyCompletionType.MathFunction;
+ASIN.functionType = MyCompletionFunctionType.MathFunction;
 ASIN.detail = "反正弦值";
 ASIN.documentation = `
 ASIN(X),求X的反正弦值
@@ -133,7 +133,7 @@ ATAN.label = "ATAN";
 ATAN.insertText = "";
 ATAN.body = "ATAN( )";
 ATAN.marketType = MyCompletionMarketType.BasicFunction;
-ATAN.type = MyCompletionType.MathFunction;
+ATAN.functionType = MyCompletionFunctionType.MathFunction;
 ATAN.detail = "反正切值";
 ATAN.documentation = `
 ATAN(X),求X的反正切值
@@ -152,7 +152,7 @@ AUTOFILTER.label = "AUTOFILTER";
 AUTOFILTER.insertText = "";
 AUTOFILTER.body = "AUTOFILTER";
 AUTOFILTER.marketType = MyCompletionMarketType.BasicFunction;
-AUTOFILTER.type = MyCompletionType.CalculationControlFunction;
+AUTOFILTER.functionType = MyCompletionFunctionType.CalculationControlFunction;
 AUTOFILTER.detail = "启用一开一平信号过滤机制";
 AUTOFILTER.documentation = `
 AUTOFILTER,启用一开一平信号过滤机制。
@@ -181,7 +181,7 @@ AUTOFINANCING.label = "AUTOFINANCING";
 AUTOFINANCING.insertText = "";
 AUTOFINANCING.body = "AUTOFINANCING";
 AUTOFINANCING.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-AUTOFINANCING.type = MyCompletionType.CalculationControlFunction;
+AUTOFINANCING.functionType = MyCompletionFunctionType.CalculationControlFunction;
 AUTOFINANCING.detail = "启用按需自动入金方式";
 AUTOFINANCING.documentation = `
 AUTOFINANCING，启用按需自动入金方式
@@ -213,7 +213,7 @@ AVAILABLE_OPI.label = "AVAILABLE_OPI";
 AVAILABLE_OPI.insertText = "";
 AVAILABLE_OPI.body = "AVAILABLE_OPI";
 AVAILABLE_OPI.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-AVAILABLE_OPI.type = MyCompletionType.PositionManagementFunction;
+AVAILABLE_OPI.functionType = MyCompletionFunctionType.PositionManagementFunction;
 AVAILABLE_OPI.detail = "可用股数";
 AVAILABLE_OPI.documentation = `
 AVAILABLE_OPI可用股数
@@ -238,7 +238,7 @@ AVEDEV.label = "AVEDEV";
 AVEDEV.insertText = "";
 AVEDEV.body = "AVEDEV( , )";
 AVEDEV.marketType = MyCompletionMarketType.BasicFunction;
-AVEDEV.type = MyCompletionType.MathematicalStatisticsFunction;
+AVEDEV.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
 AVEDEV.detail = "平均绝对偏差";
 AVEDEV.documentation = `
 AVEDEV(X,N),求X在N周期内的平均绝对偏差
@@ -266,7 +266,7 @@ AVPRICE.label = "AVPRICE";
 AVPRICE.insertText = "";
 AVPRICE.body = "AVPRICE";
 AVPRICE.marketType = MyCompletionMarketType.BasicFunction;
-AVPRICE.type = MyCompletionType.CandlestickDataReference;
+AVPRICE.functionType = MyCompletionFunctionType.CandlestickDataReference;
 AVPRICE.detail = "取得K线图的均价";
 AVPRICE.documentation = `
 AVPRICE,取均价
@@ -291,7 +291,7 @@ BACKGROUNDSTYLE.label = "BACKGROUNDSTYLE";
 BACKGROUNDSTYLE.insertText = "";
 BACKGROUNDSTYLE.body = "BACKGROUNDSTYLE( )";
 BACKGROUNDSTYLE.marketType = MyCompletionMarketType.BasicFunction;
-BACKGROUNDSTYLE.type = MyCompletionType.DrawingFunction;
+BACKGROUNDSTYLE.functionType = MyCompletionFunctionType.DrawingFunction;
 BACKGROUNDSTYLE.detail = "背景的样式";
 BACKGROUNDSTYLE.documentation = `
 BACKGROUNDSTYLE(i)设置背景的样式,i=0、1、2
@@ -325,7 +325,7 @@ BARINTERVAL.label = "BARINTERVAL";
 BARINTERVAL.insertText = "";
 BARINTERVAL.body = "BARINTERVAL";
 BARINTERVAL.marketType = MyCompletionMarketType.BasicFunction;
-BARINTERVAL.type = MyCompletionType.CandlestickDataReference;
+BARINTERVAL.functionType = MyCompletionFunctionType.CandlestickDataReference;
 BARINTERVAL.detail = "返回数据合约的K线周期数值";
 BARINTERVAL.documentation = `
 BARINTERVAL数据合约的K线周期数值。
@@ -347,7 +347,7 @@ BARPOS.label = "BARPOS";
 BARPOS.insertText = "";
 BARPOS.body = "BARPOS";
 BARPOS.marketType = MyCompletionMarketType.BasicFunction;
-BARPOS.type = MyCompletionType.TimeFunction;
+BARPOS.functionType = MyCompletionFunctionType.TimeFunction;
 BARPOS.detail = "取K线的位置";
 BARPOS.documentation = `
 BARPOS,取某K线的位置
@@ -367,7 +367,7 @@ BARSBK.label = "BARSBK";
 BARSBK.insertText = "";
 BARSBK.body = "BARSBK";
 BARSBK.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-BARSBK.type = MyCompletionType.SignalLoggingFunction;
+BARSBK.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 BARSBK.detail = "上一次买开信号位置";
 BARSBK.documentation = `
 BARSBK，取上一次买开信号位置
@@ -407,7 +407,7 @@ BARSBP.label = "BARSBP";
 BARSBP.insertText = "";
 BARSBP.body = "BARSBP";
 BARSBP.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-BARSBP.type = MyCompletionType.SignalLoggingFunction;
+BARSBP.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 BARSBP.detail = "上一次买平信号位置";
 BARSBP.documentation = `
 BARSBP，取上一次买平信号位置
@@ -446,7 +446,7 @@ BARSBUY.label = "BARSBUY";
 BARSBUY.insertText = "";
 BARSBUY.body = "BARSBUY";
 BARSBUY.marketType = MyCompletionMarketType.TPlusOneStrategyFunction;
-BARSBUY.type = MyCompletionType.SignalLoggingFunction;
+BARSBUY.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 BARSBUY.detail = "上一次买入信号位置";
 BARSBUY.documentation = `
 BARSBUY 上一次买入信号位置
@@ -474,7 +474,7 @@ BARSCOUNT.label = "BARSCOUNT";
 BARSCOUNT.insertText = "";
 BARSCOUNT.body = "BARSCOUNT()";
 BARSCOUNT.marketType = MyCompletionMarketType.BasicFunction;
-BARSCOUNT.type = MyCompletionType.FinancialStatisticsFunction;
+BARSCOUNT.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 BARSCOUNT.detail = "第一个有效周期到当前的周期数";
 BARSCOUNT.documentation = `
 BARSCOUNT(COND)返回COND第一个有效值的位置到当前的周期数
@@ -493,7 +493,7 @@ BARSLAST.label = "BARSLAST";
 BARSLAST.insertText = "";
 BARSLAST.body = "BARSLAST( )";
 BARSLAST.marketType = MyCompletionMarketType.BasicFunction;
-BARSLAST.type = MyCompletionType.FinancialStatisticsFunction;
+BARSLAST.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 BARSLAST.detail = "上一次条件成立位置";
 BARSLAST.documentation = `
 BARSLAST(X),求上一次条件X满足到现在的周期数
@@ -514,7 +514,7 @@ BARSLASTCOUNT.label = "BARSLASTCOUNT";
 BARSLASTCOUNT.insertText = "";
 BARSLASTCOUNT.body = "BARSLASTCOUNT()";
 BARSLASTCOUNT.marketType = MyCompletionMarketType.BasicFunction;
-BARSLASTCOUNT.type = MyCompletionType.FinancialStatisticsFunction;
+BARSLASTCOUNT.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 BARSLASTCOUNT.detail = "从当前周期向前计算，统计连续满足条件的周期数";
 BARSLASTCOUNT.documentation = `
 BARSLASTCOUNT,从当前周期向前计算，统计连续满足条件的周期数
@@ -534,7 +534,7 @@ BARSSELL.label = "BARSSELL";
 BARSSELL.insertText = "";
 BARSSELL.body = "BARSSELL";
 BARSSELL.marketType = MyCompletionMarketType.TPlusOneStrategyFunction;
-BARSSELL.type = MyCompletionType.SignalLoggingFunction;
+BARSSELL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 BARSSELL.detail = "上一次卖出信号位置";
 BARSSELL.documentation = `
 BARSSELL 上一次卖出信号位置
@@ -562,7 +562,7 @@ BARSSINCE.label = "BARSSINCE";
 BARSSINCE.insertText = "";
 BARSSINCE.body = "BARSSINCE()";
 BARSSINCE.marketType = MyCompletionMarketType.BasicFunction;
-BARSSINCE.type = MyCompletionType.FinancialStatisticsFunction;
+BARSSINCE.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 BARSSINCE.detail = "第一个条件成立到当前的周期数";
 BARSSINCE.documentation = `
 BARSSINCE,第一个条件成立到当前的周期数
@@ -582,7 +582,7 @@ BARSSINCEN.label = "BARSSINCEN";
 BARSSINCEN.insertText = "";
 BARSSINCEN.body = "BARSSINCEN";
 BARSSINCEN.marketType = MyCompletionMarketType.BasicFunction;
-BARSSINCEN.type = MyCompletionType.FinancialStatisticsFunction;
+BARSSINCEN.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 BARSSINCEN.detail = "统计N周期内第一次条件成立到当前的周期数";
 BARSSINCEN.documentation = `
 BARSSINCEN统计N周期内第一次条件成立到当前的周期数
@@ -604,7 +604,7 @@ BARSSK.label = "BARSSK";
 BARSSK.insertText = "";
 BARSSK.body = "BARSSK";
 BARSSK.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-BARSSK.type = MyCompletionType.SignalLoggingFunction;
+BARSSK.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 BARSSK.detail = "上一次卖开信号位置";
 BARSSK.documentation = `
 BARSSK，取上一次卖开信号位置
@@ -644,7 +644,7 @@ BARSSP.label = "BARSSP";
 BARSSP.insertText = "";
 BARSSP.body = "BARSSP";
 BARSSP.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-BARSSP.type = MyCompletionType.SignalLoggingFunction;
+BARSSP.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 BARSSP.detail = "上一次卖平信号位置";
 BARSSP.documentation = `
 BARSSP，取上一次卖平信号位置
@@ -683,7 +683,7 @@ BARSTATUS.label = "BARSTATUS";
 BARSTATUS.insertText = "";
 BARSTATUS.body = "BARSTATUS";
 BARSTATUS.marketType = MyCompletionMarketType.BasicFunction;
-BARSTATUS.type = MyCompletionType.DrawingFunction;
+BARSTATUS.functionType = MyCompletionFunctionType.DrawingFunction;
 BARSTATUS.detail = "返回当前周期的位置状态";
 BARSTATUS.documentation = `
 BARSTATUS返回当前周期的位置状态。1表示当前周期是第一个周期，2表示是最后一个周期，0表示当前周期处于中间位置。
@@ -702,7 +702,7 @@ BARTYPE.label = "BARTYPE";
 BARTYPE.insertText = "";
 BARTYPE.body = "BARTYPE";
 BARTYPE.marketType = MyCompletionMarketType.BasicFunction;
-BARTYPE.type = MyCompletionType.CandlestickDataReference;
+BARTYPE.functionType = MyCompletionFunctionType.CandlestickDataReference;
 BARTYPE.detail = "数据合约的K线周期类型值";
 BARTYPE.documentation = `
 BARTYPE数据合约的K线周期类型值。
@@ -730,7 +730,7 @@ BETWEEN.label = "BETWEEN";
 BETWEEN.insertText = "";
 BETWEEN.body = "BETWEEN( , , )";
 BETWEEN.marketType = MyCompletionMarketType.BasicFunction;
-BETWEEN.type = MyCompletionType.LogicalJudgmentFunction;
+BETWEEN.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 BETWEEN.detail = "介于";
 BETWEEN.documentation = `
 BETWEEN(A,B,C),A处于B和C之间时取1(Yes)，否则取0(No)
@@ -748,7 +748,7 @@ BKHIGH.label = "BKHIGH";
 BKHIGH.insertText = "";
 BKHIGH.body = "BKHIGH";
 BKHIGH.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-BKHIGH.type = MyCompletionType.SignalLoggingFunction;
+BKHIGH.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 BKHIGH.detail = "返回数据合约买开仓以来的最高价";
 BKHIGH.documentation = `
 BKHIGH,返回数据合约买开仓以来的最高价
@@ -778,7 +778,7 @@ BKLOW.label = "BKLOW";
 BKLOW.insertText = "";
 BKLOW.body = "BKLOW";
 BKLOW.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-BKLOW.type = MyCompletionType.SignalLoggingFunction;
+BKLOW.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 BKLOW.detail = "返回数据合约买开仓以来的最低价";
 BKLOW.documentation = `
 BKLOW,返回数据合约买开仓以来的最低价
@@ -808,7 +808,7 @@ BKPRICE.label = "BKPRICE";
 BKPRICE.insertText = "";
 BKPRICE.body = "BKPRICE";
 BKPRICE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-BKPRICE.type = MyCompletionType.SignalLoggingFunction;
+BKPRICE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 BKPRICE.detail = "返回数据合约最近一次买开信号价位";
 BKPRICE.documentation = `
 BKPRICE，返回数据合约最近一次买开信号价位
@@ -843,7 +843,7 @@ BKPRICE1.label = "BKPRICE1";
 BKPRICE1.insertText = "";
 BKPRICE1.body = "BKPRICE1";
 BKPRICE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-BKPRICE1.type = MyCompletionType.SignalLoggingFunction;
+BKPRICE1.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 BKPRICE1.detail = "返回交易合约最近一次买开信号价位";
 BKPRICE1.documentation = `
 BKPRICE1，返回交易合约最近一次买开信号价位
@@ -873,7 +873,7 @@ BKPRICEAV.label = "BKPRICEAV";
 BKPRICEAV.insertText = "";
 BKPRICEAV.body = "BKPRICEAV";
 BKPRICEAV.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-BKPRICEAV.type = MyCompletionType.PositionManagementFunction;
+BKPRICEAV.functionType = MyCompletionFunctionType.PositionManagementFunction;
 BKPRICEAV.detail = "返回数据合约多头开仓均价";
 BKPRICEAV.documentation = `
 BKPRICEAV返回数据合约多头开仓均价
@@ -904,7 +904,7 @@ BKPRICEAV1.label = "BKPRICEAV1";
 BKPRICEAV1.insertText = "";
 BKPRICEAV1.body = "BKPRICEAV1";
 BKPRICEAV1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-BKPRICEAV1.type = MyCompletionType.PositionManagementFunction;
+BKPRICEAV1.functionType = MyCompletionFunctionType.PositionManagementFunction;
 BKPRICEAV1.detail = "返回交易合约多头开仓均价";
 BKPRICEAV1.documentation = `
 BKPRICEAV1交易合约多头开仓均价
@@ -935,7 +935,7 @@ BKVOL.label = "BKVOL";
 BKVOL.insertText = "";
 BKVOL.body = "BKVOL";
 BKVOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-BKVOL.type = MyCompletionType.PositionManagementFunction;
+BKVOL.functionType = MyCompletionFunctionType.PositionManagementFunction;
 BKVOL.detail = "买开信号手数";
 BKVOL.documentation = `
 BKVOL返回模型当前的多头理论持仓
@@ -961,7 +961,7 @@ BKVOL2.label = "BKVOL2";
 BKVOL2.insertText = "";
 BKVOL2.body = "BKVOL2";
 BKVOL2.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-BKVOL2.type = MyCompletionType.PositionManagementFunction;
+BKVOL2.functionType = MyCompletionFunctionType.PositionManagementFunction;
 BKVOL2.detail = "买开信号手数";
 BKVOL2.documentation = `
 BKVOL2模组多头持仓
@@ -987,7 +987,7 @@ BUYPRICE.label = "BUYPRICE";
 BUYPRICE.insertText = "";
 BUYPRICE.body = "BUYPRICE";
 BUYPRICE.marketType = MyCompletionMarketType.TPlusOneStrategyFunction;
-BUYPRICE.type = MyCompletionType.SignalLoggingFunction;
+BUYPRICE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 BUYPRICE.detail = "返回最近一次买入信号所在K线的收盘价。";
 BUYPRICE.documentation = `
 BUYPRICE  返回最近一次买入信号所在K线的收盘价。
@@ -1008,7 +1008,7 @@ CEILING.label = "CEILING";
 CEILING.insertText = "";
 CEILING.body = "CEILING( , )";
 CEILING.marketType = MyCompletionMarketType.BasicFunction;
-CEILING.type = MyCompletionType.MathFunction;
+CEILING.functionType = MyCompletionFunctionType.MathFunction;
 CEILING.detail = "向上舍入";
 CEILING.documentation = `
 CEILING(X,Y)返回指定实数(X)在沿绝对值增大的方向上第一个能整除基数(Y)的值。
@@ -1039,7 +1039,7 @@ CHECKSIG.label = "CHECKSIG";
 CHECKSIG.insertText = "";
 CHECKSIG.body = "CHECKSIG( , , , , ,)";
 CHECKSIG.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-CHECKSIG.type = MyCompletionType.PerformanceOptimizationFunction;
+CHECKSIG.functionType = MyCompletionFunctionType.PerformanceOptimizationFunction;
 CHECKSIG.detail =
     "设置信号确认与复核的指令价方式（TICK逐笔回测，可设置回测精度）";
 CHECKSIG.documentation = `
@@ -1112,7 +1112,7 @@ CHECKSIG_MIN.label = "CHECKSIG_MIN";
 CHECKSIG_MIN.insertText = "";
 CHECKSIG_MIN.body = "CHECKSIG_MIN( , , , ,)";
 CHECKSIG_MIN.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-CHECKSIG_MIN.type = MyCompletionType.PerformanceOptimizationFunction;
+CHECKSIG_MIN.functionType = MyCompletionFunctionType.PerformanceOptimizationFunction;
 CHECKSIG_MIN.detail = "设置信号确认与复核的指令价方式（逐分钟回测）";
 CHECKSIG_MIN.documentation = `
 CHECKSIG_MIN(SIG,MODE1,TIME1,MODE2,TIME2);设置信号确认与复核的指令价方式（逐分钟回测）SIG为信号,MODE1为下单方式,TIME1下单确认时间,MODE2复核方式,TIME2复核确认时间
@@ -1169,7 +1169,7 @@ CIRCLEDOT.label = "CIRCLEDOT";
 CIRCLEDOT.insertText = "";
 CIRCLEDOT.body = "CIRCLEDOT";
 CIRCLEDOT.marketType = MyCompletionMarketType.BasicFunction;
-CIRCLEDOT.type = MyCompletionType.DrawingFunction;
+CIRCLEDOT.functionType = MyCompletionFunctionType.DrawingFunction;
 CIRCLEDOT.detail = "小圆点线";
 CIRCLEDOT.documentation = `
 
@@ -1189,7 +1189,7 @@ CJLVOL.label = "CJLVOL";
 CJLVOL.insertText = "";
 CJLVOL.body = "CJLVOL( )";
 CJLVOL.marketType = MyCompletionMarketType.BasicFunction;
-CJLVOL.type = MyCompletionType.DrawingFunction;
+CJLVOL.functionType = MyCompletionFunctionType.DrawingFunction;
 CJLVOL.detail = "绘制CJL成交量柱线";
 CJLVOL.documentation = `
 CJLVOL(N)，绘制CJL成交量柱线
@@ -1209,7 +1209,7 @@ CLOSE.label = "CLOSE";
 CLOSE.insertText = "";
 CLOSE.body = "CLOSE";
 CLOSE.marketType = MyCompletionMarketType.BasicFunction;
-CLOSE.type = MyCompletionType.CandlestickDataReference;
+CLOSE.functionType = MyCompletionFunctionType.CandlestickDataReference;
 CLOSE.detail = "取得K线图的收盘价";
 CLOSE.documentation = `
 CLOSE,取收盘(最新)价
@@ -1232,7 +1232,7 @@ CLOSEKLINE.label = "CLOSEKLINE";
 CLOSEKLINE.insertText = "";
 CLOSEKLINE.body = "CLOSEKLINE( , )";
 CLOSEKLINE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-CLOSEKLINE.type = MyCompletionType.SignalExecutionFunction;
+CLOSEKLINE.functionType = MyCompletionFunctionType.SignalExecutionFunction;
 CLOSEKLINE.detail = "设置K线提前N(1-30)秒走完";
 CLOSEKLINE.documentation = `
 CLOSEKLINE(TYPE,N),设置K线提前N(1-30)秒走完TYPE=0，代表每小节和收盘前最后一根K线提前N秒走完；
@@ -1270,7 +1270,7 @@ CLOSEMINUTE.label = "CLOSEMINUTE";
 CLOSEMINUTE.insertText = "";
 CLOSEMINUTE.body = "CLOSEMINUTE";
 CLOSEMINUTE.marketType = MyCompletionMarketType.BasicFunction;
-CLOSEMINUTE.type = MyCompletionType.TimeFunction;
+CLOSEMINUTE.functionType = MyCompletionFunctionType.TimeFunction;
 CLOSEMINUTE.detail = "距收盘前时间";
 CLOSEMINUTE.documentation = `
 CLOSEMINUTE,返回K线距离闭市前的时间（单位：分钟），方便闭市前及时平仓
@@ -1299,7 +1299,7 @@ CLOSEMINUTE1.label = "CLOSEMINUTE1";
 CLOSEMINUTE1.insertText = "";
 CLOSEMINUTE1.body = "CLOSEMINUTE1";
 CLOSEMINUTE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-CLOSEMINUTE1.type = MyCompletionType.TimeFunction;
+CLOSEMINUTE1.functionType = MyCompletionFunctionType.TimeFunction;
 CLOSEMINUTE1.detail = "距收盘前时间";
 CLOSEMINUTE1.documentation = `
 CLOSEMINUTE1,返回当前时间距离闭市前的时间（单位：分钟），方便闭市前及时平仓
@@ -1331,7 +1331,7 @@ CLOSEMINUTEEVERY.label = "CLOSEMINUTEEVERY";
 CLOSEMINUTEEVERY.insertText = "";
 CLOSEMINUTEEVERY.body = "CLOSEMINUTEEVERY()";
 CLOSEMINUTEEVERY.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-CLOSEMINUTEEVERY.type = MyCompletionType.TimeFunction;
+CLOSEMINUTEEVERY.functionType = MyCompletionFunctionType.TimeFunction;
 CLOSEMINUTEEVERY.detail = "距小节结束时间";
 CLOSEMINUTEEVERY.documentation = `
 CLOSEMINUTEEVERY(N),返回K线距离每个小节结束的时间（单位：分钟），N为第几个小节，方便小节前及时平仓
@@ -1364,7 +1364,7 @@ CLOSEMINUTEEVERY1.label = "CLOSEMINUTEEVERY1";
 CLOSEMINUTEEVERY1.insertText = "";
 CLOSEMINUTEEVERY1.body = "CLOSEMINUTEEVERY1()";
 CLOSEMINUTEEVERY1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-CLOSEMINUTEEVERY1.type = MyCompletionType.TimeFunction;
+CLOSEMINUTEEVERY1.functionType = MyCompletionFunctionType.TimeFunction;
 CLOSEMINUTEEVERY1.detail = "距小节结束时间";
 CLOSEMINUTEEVERY1.documentation = `
 CLOSEMINUTEEVERY1(N),返回当前时间距离每个小节结束的时间（单位：分钟），N为第几个小节，方便小节前及时平仓
@@ -1397,7 +1397,7 @@ CLOSESEC.label = "CLOSESEC";
 CLOSESEC.insertText = "";
 CLOSESEC.body = "CLOSESEC";
 CLOSESEC.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-CLOSESEC.type = MyCompletionType.TimeFunction;
+CLOSESEC.functionType = MyCompletionFunctionType.TimeFunction;
 CLOSESEC.detail = "距收盘前时间（秒数）";
 CLOSESEC.documentation = `
 CLOSESEC,返回K线开始时间距离闭市前的时间（单位：秒），方便闭市前及时平仓
@@ -1426,7 +1426,7 @@ CLOSESEC1.label = "CLOSESEC1";
 CLOSESEC1.insertText = "";
 CLOSESEC1.body = "CLOSESEC1";
 CLOSESEC1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-CLOSESEC1.type = MyCompletionType.TimeFunction;
+CLOSESEC1.functionType = MyCompletionFunctionType.TimeFunction;
 CLOSESEC1.detail = "距收盘前时间（秒数）";
 CLOSESEC1.documentation = `
 CLOSESEC1,返回当前时间距离闭市前的时间（单位：秒），方便闭市前及时平仓
@@ -1457,7 +1457,7 @@ CLOSESECEVERY.label = "CLOSESECEVERY";
 CLOSESECEVERY.insertText = "";
 CLOSESECEVERY.body = "CLOSESECEVERY()";
 CLOSESECEVERY.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-CLOSESECEVERY.type = MyCompletionType.TimeFunction;
+CLOSESECEVERY.functionType = MyCompletionFunctionType.TimeFunction;
 CLOSESECEVERY.detail = "距小节结束时间（秒）";
 CLOSESECEVERY.documentation = `
 CLOSESECEVERY(N),返回K线开始时间距离每个小节结束的时间（单位：秒），N为第几个小节，方便小节前及时平仓
@@ -1487,7 +1487,7 @@ CLOSESECEVERY1.label = "CLOSESECEVERY1";
 CLOSESECEVERY1.insertText = "";
 CLOSESECEVERY1.body = "CLOSESECEVERY1()";
 CLOSESECEVERY1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-CLOSESECEVERY1.type = MyCompletionType.TimeFunction;
+CLOSESECEVERY1.functionType = MyCompletionFunctionType.TimeFunction;
 CLOSESECEVERY1.detail = "距小节结束时间（秒）";
 CLOSESECEVERY1.documentation = `
 CLOSESECEVERY1(N),返回当前时间距离每个小节结束的时间（单位：秒），N为第几个小节，方便小节前及时平仓
@@ -1519,7 +1519,7 @@ CODELIKE.label = "CODELIKE";
 CODELIKE.insertText = "";
 CODELIKE.body = "CODELIKE('')";
 CODELIKE.marketType = MyCompletionMarketType.BasicFunction;
-CODELIKE.type = MyCompletionType.LogicalJudgmentFunction;
+CODELIKE.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 CODELIKE.detail = "模糊股票代码函数";
 CODELIKE.documentation = `
 CODELIKE('')模糊股票代码函数。CODELIKE('600')判断股票代码是否以600开头。是返回1（YES）,不是返回0（NO）。
@@ -1541,7 +1541,7 @@ COEFFICIENTR.label = "COEFFICIENTR";
 COEFFICIENTR.insertText = "";
 COEFFICIENTR.body = "COEFFICIENTR( , , )";
 COEFFICIENTR.marketType = MyCompletionMarketType.BasicFunction;
-COEFFICIENTR.type = MyCompletionType.MathematicalStatisticsFunction;
+COEFFICIENTR.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
 COEFFICIENTR.detail = "皮尔森相关系数";
 COEFFICIENTR.documentation = `
 COEFFICIENTR(X,Y,N)求X、Y在N个周期内的皮尔森相关系数
@@ -1573,7 +1573,7 @@ COLORSTICK.label = "COLORSTICK";
 COLORSTICK.insertText = "";
 COLORSTICK.body = "COLORSTICK";
 COLORSTICK.marketType = MyCompletionMarketType.BasicFunction;
-COLORSTICK.type = MyCompletionType.DrawingFunction;
+COLORSTICK.functionType = MyCompletionFunctionType.DrawingFunction;
 COLORSTICK.detail = "画柱线";
 COLORSTICK.documentation = `
 COLORSTICK画柱线，大于0为红色，小于0为青色
@@ -1592,7 +1592,7 @@ CONDBARS.label = "CONDBARS";
 CONDBARS.insertText = "";
 CONDBARS.body = "CONDBARS(,)";
 CONDBARS.marketType = MyCompletionMarketType.BasicFunction;
-CONDBARS.type = MyCompletionType.FinancialStatisticsFunction;
+CONDBARS.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 CONDBARS.detail = "取得最近满足A,B条件的K线间周期数";
 CONDBARS.documentation = `
 CONDBARS(A,B),取得最近满足A、B条件的k线间周期数
@@ -1613,7 +1613,7 @@ COS.label = "COS";
 COS.insertText = "";
 COS.body = "COS( )";
 COS.marketType = MyCompletionMarketType.BasicFunction;
-COS.type = MyCompletionType.MathFunction;
+COS.functionType = MyCompletionFunctionType.MathFunction;
 COS.detail = "余弦";
 COS.documentation = `
 COS(X),求X的余弦值
@@ -1634,7 +1634,7 @@ COST.label = "COST";
 COST.insertText = "";
 COST.body = "COST( )";
 COST.marketType = MyCompletionMarketType.BasicFunction;
-COST.type = MyCompletionType.FinancialStatisticsFunction;
+COST.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 COST.detail = "成本分布情况";
 COST.documentation = `
 COST(X)成本分布情况。
@@ -1656,7 +1656,7 @@ COUNT.label = "COUNT";
 COUNT.insertText = "";
 COUNT.body = "COUNT( , )";
 COUNT.marketType = MyCompletionMarketType.BasicFunction;
-COUNT.type = MyCompletionType.FinancialStatisticsFunction;
+COUNT.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 COUNT.detail = "统计总数";
 COUNT.documentation = `
 COUNT(X,N),统计N周期中满足X条件的周期数。若N为0则从第一个周期开始
@@ -1683,7 +1683,7 @@ COUNTGROUPSIG.label = "COUNTGROUPSIG";
 COUNTGROUPSIG.insertText = "";
 COUNTGROUPSIG.body = "COUNTGROUPSIG( , , )";
 COUNTGROUPSIG.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-COUNTGROUPSIG.type = MyCompletionType.SignalLoggingFunction;
+COUNTGROUPSIG.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 COUNTGROUPSIG.detail = "统计N周期内，分组为group的X信号的数量";
 COUNTGROUPSIG.documentation = `
 COUNTGROUPSIG(X,N,'group');统计N周期内,分组为group的X信号的数量X可以为BK、SK、SP、BP、SPK、BPK、CLOSEOUT、STOP
@@ -1716,7 +1716,7 @@ COUNTSIG.label = "COUNTSIG";
 COUNTSIG.insertText = "";
 COUNTSIG.body = "COUNTSIG(,)";
 COUNTSIG.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-COUNTSIG.type = MyCompletionType.SignalLoggingFunction;
+COUNTSIG.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 COUNTSIG.detail = "统计N周期内，X信号的数量";
 COUNTSIG.documentation = `
 COUNTSIG(X,N);统计N周期内,X信号的数量X可以为BK、SK、SP、BP、SPK、BPK、CLOSEOUT、STOP
@@ -1749,7 +1749,7 @@ COVAR.label = "COVAR";
 COVAR.insertText = "";
 COVAR.body = "COVAR( , , )";
 COVAR.marketType = MyCompletionMarketType.BasicFunction;
-COVAR.type = MyCompletionType.MathematicalStatisticsFunction;
+COVAR.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
 COVAR.detail = "协方差";
 COVAR.documentation = `
 COVAR(X,Y,N)求X、Y在N个周期内的协方差
@@ -1781,7 +1781,7 @@ CROSS.label = "CROSS";
 CROSS.insertText = "";
 CROSS.body = "CROSS( , )";
 CROSS.marketType = MyCompletionMarketType.BasicFunction;
-CROSS.type = MyCompletionType.LogicalJudgmentFunction;
+CROSS.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 CROSS.detail = "交叉函数";
 CROSS.documentation = `
 CROSS(A,B),A从下方向上穿过B时取1(Yes)，否则取0(No)
@@ -1799,7 +1799,7 @@ CROSS2.label = "CROSS2";
 CROSS2.insertText = "";
 CROSS2.body = "CROSS2( , , )";
 CROSS2.marketType = MyCompletionMarketType.BasicFunction;
-CROSS2.type = MyCompletionType.LogicalJudgmentFunction;
+CROSS2.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 CROSS2.detail = "二次交叉函数";
 CROSS2.documentation = `
 CROSS2(A,B,N),表示N个周期内当A从下方向上穿过B的次数为偶数次偶数次时返回1(Yes)，否则返回0(No)
@@ -1820,7 +1820,7 @@ CROSSDOT.label = "CROSSDOT";
 CROSSDOT.insertText = "";
 CROSSDOT.body = "CROSSDOT";
 CROSSDOT.marketType = MyCompletionMarketType.BasicFunction;
-CROSSDOT.type = MyCompletionType.DrawingFunction;
+CROSSDOT.functionType = MyCompletionFunctionType.DrawingFunction;
 CROSSDOT.detail = "小圆圈线";
 CROSSDOT.documentation = `
 
@@ -1840,7 +1840,7 @@ CROSSDOWN.label = "CROSSDOWN";
 CROSSDOWN.insertText = "";
 CROSSDOWN.body = "CROSSDOWN( , )";
 CROSSDOWN.marketType = MyCompletionMarketType.BasicFunction;
-CROSSDOWN.type = MyCompletionType.LogicalJudgmentFunction;
+CROSSDOWN.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 CROSSDOWN.detail = "向下穿越";
 CROSSDOWN.documentation = `
 CROSSDOWN(A,B),表示当A从上方向下穿过B时返回1(Yes)，否则返回0(No)
@@ -1861,7 +1861,7 @@ CROSSUP.label = "CROSSUP";
 CROSSUP.insertText = "";
 CROSSUP.body = "CROSSUP( , )";
 CROSSUP.marketType = MyCompletionMarketType.BasicFunction;
-CROSSUP.type = MyCompletionType.LogicalJudgmentFunction;
+CROSSUP.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 CROSSUP.detail = "向上穿越";
 CROSSUP.documentation = `
 CROSSUP(A,B),表示当A从下方向上穿过B时返回1(Yes)，否则返回0(No)
@@ -1882,7 +1882,7 @@ CUBE.label = "CUBE";
 CUBE.insertText = "";
 CUBE.body = "CUBE( )";
 CUBE.marketType = MyCompletionMarketType.BasicFunction;
-CUBE.type = MyCompletionType.MathFunction;
+CUBE.functionType = MyCompletionFunctionType.MathFunction;
 CUBE.detail = "立方函数";
 CUBE.documentation = `
 CUBE(X),求X的三次方
@@ -1897,7 +1897,7 @@ CURRENTDATE.label = "CURRENTDATE";
 CURRENTDATE.insertText = "";
 CURRENTDATE.body = "CURRENTDATE";
 CURRENTDATE.marketType = MyCompletionMarketType.BasicFunction;
-CURRENTDATE.type = MyCompletionType.TimeFunction;
+CURRENTDATE.functionType = MyCompletionFunctionType.TimeFunction;
 CURRENTDATE.detail = "返回当前的年月日";
 CURRENTDATE.documentation = `
 CURRENTDATE返回当前的年月日
@@ -1917,7 +1917,7 @@ CURRENTTIME.label = "CURRENTTIME";
 CURRENTTIME.insertText = "";
 CURRENTTIME.body = "CURRENTTIME";
 CURRENTTIME.marketType = MyCompletionMarketType.BasicFunction;
-CURRENTTIME.type = MyCompletionType.TimeFunction;
+CURRENTTIME.functionType = MyCompletionFunctionType.TimeFunction;
 CURRENTTIME.detail = "返回当前的时分秒";
 CURRENTTIME.documentation = `
 CURRENTTIME返回当前的时分秒
@@ -1937,7 +1937,7 @@ DASH.label = "DASH";
 DASH.insertText = "";
 DASH.body = "DASH";
 DASH.marketType = MyCompletionMarketType.BasicFunction;
-DASH.type = MyCompletionType.DrawingFunction;
+DASH.functionType = MyCompletionFunctionType.DrawingFunction;
 DASH.detail = "画虚线";
 DASH.documentation = `
 DASH,画虚线
@@ -1957,7 +1957,7 @@ DASHDOT.label = "DASHDOT";
 DASHDOT.insertText = "";
 DASHDOT.body = "DASHDOT";
 DASHDOT.marketType = MyCompletionMarketType.BasicFunction;
-DASHDOT.type = MyCompletionType.DrawingFunction;
+DASHDOT.functionType = MyCompletionFunctionType.DrawingFunction;
 DASHDOT.detail = "画点虚线";
 DASHDOT.documentation = `
 DASHDOT,画点虚线
@@ -1977,7 +1977,7 @@ DASHDOTDOT.label = "DASHDOTDOT";
 DASHDOTDOT.insertText = "";
 DASHDOTDOT.body = "DASHDOTDOT";
 DASHDOTDOT.marketType = MyCompletionMarketType.BasicFunction;
-DASHDOTDOT.type = MyCompletionType.DrawingFunction;
+DASHDOTDOT.functionType = MyCompletionFunctionType.DrawingFunction;
 DASHDOTDOT.detail = "画双点虚线";
 DASHDOTDOT.documentation = `
 DASHDOTDOT,画双点虚线
@@ -1997,7 +1997,7 @@ DATE.label = "DATE";
 DATE.insertText = "";
 DATE.body = "DATE";
 DATE.marketType = MyCompletionMarketType.BasicFunction;
-DATE.type = MyCompletionType.TimeFunction;
+DATE.functionType = MyCompletionFunctionType.TimeFunction;
 DATE.detail = "取得某周期的日期数";
 DATE.documentation = `
 DATE,取某周期的日期数（700101-331231）
@@ -2020,7 +2020,7 @@ DATE1.label = "DATE1";
 DATE1.insertText = "";
 DATE1.body = "DATE1";
 DATE1.marketType = MyCompletionMarketType.BasicFunction;
-DATE1.type = MyCompletionType.TimeFunction;
+DATE1.functionType = MyCompletionFunctionType.TimeFunction;
 DATE1.detail = "返回某周期的日期数";
 DATE1.documentation = `
 DATE1返回某周期的日期数
@@ -2044,7 +2044,7 @@ DAY.label = "DAY";
 DAY.insertText = "";
 DAY.body = "DAY";
 DAY.marketType = MyCompletionMarketType.BasicFunction;
-DAY.type = MyCompletionType.TimeFunction;
+DAY.functionType = MyCompletionFunctionType.TimeFunction;
 DAY.detail = "取得某周期的日数";
 DAY.documentation = `
 DAY,取某周期的日数（1-31）
@@ -2065,7 +2065,7 @@ DAYBARPOS.label = "DAYBARPOS";
 DAYBARPOS.insertText = "";
 DAYBARPOS.body = "DAYBARPOS";
 DAYBARPOS.marketType = MyCompletionMarketType.BasicFunction;
-DAYBARPOS.type = MyCompletionType.FinancialStatisticsFunction;
+DAYBARPOS.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 DAYBARPOS.detail = "当根k线为当天第几根k线";
 DAYBARPOS.documentation = `
 DAYBARPOS当根k线为当天第几根k线
@@ -2083,7 +2083,7 @@ DAYSTOEXPIRED.label = "DAYSTOEXPIRED";
 DAYSTOEXPIRED.insertText = "";
 DAYSTOEXPIRED.body = "DAYSTOEXPIRED()";
 DAYSTOEXPIRED.marketType = MyCompletionMarketType.BasicFunction;
-DAYSTOEXPIRED.type = MyCompletionType.TimeFunction;
+DAYSTOEXPIRED.functionType = MyCompletionFunctionType.TimeFunction;
 DAYSTOEXPIRED.detail = "期货合约距最后交易日的天数";
 DAYSTOEXPIRED.documentation = `
 DAYSTOEXPIRED(CODE)期货合约距最后交易日的天数,CODE为文华码
@@ -2118,7 +2118,7 @@ DAYTRADE.label = "DAYTRADE";
 DAYTRADE.insertText = "";
 DAYTRADE.body = "DAYTRADE";
 DAYTRADE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-DAYTRADE.type = MyCompletionType.CalculationControlFunction;
+DAYTRADE.functionType = MyCompletionFunctionType.CalculationControlFunction;
 DAYTRADE.detail = "日内交易函数";
 DAYTRADE.documentation = `
 DAYTRADE,日内交易函数
@@ -2151,7 +2151,7 @@ DAYTRADE1.label = "DAYTRADE1";
 DAYTRADE1.insertText = "";
 DAYTRADE1.body = "DAYTRADE1";
 DAYTRADE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-DAYTRADE1.type = MyCompletionType.CalculationControlFunction;
+DAYTRADE1.functionType = MyCompletionFunctionType.CalculationControlFunction;
 DAYTRADE1.detail = "日内交易函数";
 DAYTRADE1.documentation = `
 DAYTRADE1,日内交易函数
@@ -2187,7 +2187,7 @@ DEVSQ.label = "DEVSQ";
 DEVSQ.insertText = "";
 DEVSQ.body = "DEVSQ( , )";
 DEVSQ.marketType = MyCompletionMarketType.BasicFunction;
-DEVSQ.type = MyCompletionType.MathematicalStatisticsFunction;
+DEVSQ.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
 DEVSQ.detail = "取得数据偏差平方和";
 DEVSQ.documentation = `
 DEVSQ(X,N),求X的N个周期的数据偏差平方和
@@ -2215,7 +2215,7 @@ DIVERGENCE.label = "DIVERGENCE";
 DIVERGENCE.insertText = "";
 DIVERGENCE.body = "DIVERGENCE(,,,,)";
 DIVERGENCE.marketType = MyCompletionMarketType.BasicFunction;
-DIVERGENCE.type = MyCompletionType.LogicalJudgmentFunction;
+DIVERGENCE.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 DIVERGENCE.detail = "变量X1与X2在指定周期内是否发生背离";
 DIVERGENCE.documentation = `
 DIVERGENCE(X1,X2,S,L,HL);变量X1与X2在指定周期内是否发生背离S:设置转折点两边需要的周期数；L:计算的总的范围的周期数HL为1，表示顶背离，HL为-1，表示底背离
@@ -2241,7 +2241,7 @@ DIVIDEND.label = "DIVIDEND";
 DIVIDEND.insertText = "";
 DIVIDEND.body = "DIVIDEND()";
 DIVIDEND.marketType = MyCompletionMarketType.BasicFunction;
-DIVIDEND.type = MyCompletionType.StockDataFunction;
+DIVIDEND.functionType = MyCompletionFunctionType.StockDataFunction;
 DIVIDEND.detail = "返回之前第N次派息的每股派息数量";
 DIVIDEND.documentation = `
 DIVIDEND(N)返回之前第N次派息的每股派息数量
@@ -2265,7 +2265,7 @@ DIVIDENDBARS.label = "DIVIDENDBARS";
 DIVIDENDBARS.insertText = "";
 DIVIDENDBARS.body = "DIVIDENDBARS()";
 DIVIDENDBARS.marketType = MyCompletionMarketType.BasicFunction;
-DIVIDENDBARS.type = MyCompletionType.StockDataFunction;
+DIVIDENDBARS.functionType = MyCompletionFunctionType.StockDataFunction;
 DIVIDENDBARS.detail = "返回从之前第N个派息日到当前的周期数";
 DIVIDENDBARS.documentation = `
 DIVIDENDBARS(N)返回从之前第N次派息到当前的周期数
@@ -2287,7 +2287,7 @@ DMA.label = "DMA";
 DMA.insertText = "";
 DMA.body = "DMA( , )";
 DMA.marketType = MyCompletionMarketType.BasicFunction;
-DMA.type = MyCompletionType.FinancialStatisticsFunction;
+DMA.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 DMA.detail = "动态移动平均";
 DMA.documentation = `
 DMA(X,A),求X的动态移动平均。A必须小于1大于0
@@ -2307,7 +2307,7 @@ DOT.label = "DOT";
 DOT.insertText = "";
 DOT.body = "DOT";
 DOT.marketType = MyCompletionMarketType.BasicFunction;
-DOT.type = MyCompletionType.DrawingFunction;
+DOT.functionType = MyCompletionFunctionType.DrawingFunction;
 DOT.detail = "画点线";
 DOT.documentation = `
 DOT,画点线
@@ -2324,7 +2324,7 @@ DRAWBARLINE.label = "DRAWBARLINE";
 DRAWBARLINE.insertText = "";
 DRAWBARLINE.body = "DRAWBARLINE(,,,)";
 DRAWBARLINE.marketType = MyCompletionMarketType.BasicFunction;
-DRAWBARLINE.type = MyCompletionType.DrawingFunction;
+DRAWBARLINE.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWBARLINE.detail = "绘制BAR线（美国线）";
 DRAWBARLINE.documentation = `
 DRAWBARLINE(H1,O1,L1,C1);在L1到H1之间绘制柱线，在O1位置绘制左侧横线，在C1位置绘制右侧横线
@@ -2344,7 +2344,7 @@ DRAWBKBMP.label = "DRAWBKBMP";
 DRAWBKBMP.insertText = "";
 DRAWBKBMP.body = "DRAWBKBMP( , )";
 DRAWBKBMP.marketType = MyCompletionMarketType.BasicFunction;
-DRAWBKBMP.type = MyCompletionType.DrawingFunction;
+DRAWBKBMP.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWBKBMP.detail = "设置背景图片";
 DRAWBKBMP.documentation = `
 DRAWBKBMP(COND,IMAGE);设置背景图片
@@ -2369,7 +2369,7 @@ DRAWBMP.label = "DRAWBMP";
 DRAWBMP.insertText = "";
 DRAWBMP.body = "DRAWBMP( , )";
 DRAWBMP.marketType = MyCompletionMarketType.BasicFunction;
-DRAWBMP.type = MyCompletionType.DrawingFunction;
+DRAWBMP.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWBMP.detail = "输出图片";
 DRAWBMP.documentation = `
 DRAWBMP(COND,DATA,IMAGE);满足条件COND时，输出图片IMAGE
@@ -2396,7 +2396,7 @@ DRAWCOLORKLINE.label = "DRAWCOLORKLINE";
 DRAWCOLORKLINE.insertText = "";
 DRAWCOLORKLINE.body = "DRAWCOLORKLINE";
 DRAWCOLORKLINE.marketType = MyCompletionMarketType.BasicFunction;
-DRAWCOLORKLINE.type = MyCompletionType.DrawingFunction;
+DRAWCOLORKLINE.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWCOLORKLINE.detail = "绘制K线";
 DRAWCOLORKLINE.documentation = `
 DRAWCOLORKLINE(Cond,Color,Empty);绘制K线
@@ -2419,7 +2419,7 @@ DRAWCOLORLINE.label = "DRAWCOLORLINE";
 DRAWCOLORLINE.insertText = "";
 DRAWCOLORLINE.body = "DRAWCOLORLINE(,,,)";
 DRAWCOLORLINE.marketType = MyCompletionMarketType.BasicFunction;
-DRAWCOLORLINE.type = MyCompletionType.DrawingFunction;
+DRAWCOLORLINE.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWCOLORLINE.detail = "根据条件画相应颜色的线";
 DRAWCOLORLINE.documentation = `
 DRAWCOLORLINE（COND,DATA,COLOR1,COLOR2）;根据条件画相应颜色的线当满足COND时，DATA为COLOR1颜色的线，不满足COND时，DATA为COLOR2颜色的线
@@ -2443,7 +2443,7 @@ DRAWCOLUMNCHART.label = "DRAWCOLUMNCHART";
 DRAWCOLUMNCHART.insertText = "";
 DRAWCOLUMNCHART.body = "DRAWCOLUMNCHART( , , )";
 DRAWCOLUMNCHART.marketType = MyCompletionMarketType.BasicFunction;
-DRAWCOLUMNCHART.type = MyCompletionType.DrawingFunction;
+DRAWCOLUMNCHART.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWCOLUMNCHART.detail = "画双向柱形图";
 DRAWCOLUMNCHART.documentation = `
 DRAWCOLUMNCHART(X,C1,C2)，X表示柱高,C1判断柱的方向,C2判断柱的颜色C1条件满足时从0轴向上画柱，不满足时从0轴向下画柱，C2条件满足时柱为红色，不满足时柱为青色
@@ -2467,7 +2467,7 @@ DRAWGBK.label = "DRAWGBK";
 DRAWGBK.insertText = "";
 DRAWGBK.body = "DRAWGBK(,,,)";
 DRAWGBK.marketType = MyCompletionMarketType.BasicFunction;
-DRAWGBK.type = MyCompletionType.DrawingFunction;
+DRAWGBK.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWGBK.detail = "设置渐变背景色";
 DRAWGBK.documentation = `
 DRAWGBK(COND,C1,C2,D);以C1至C2的渐变色填充背景,D指定渐变方向，0表示从左到右，1表示从上到下
@@ -2495,7 +2495,7 @@ DRAWGBK1.label = "DRAWGBK1";
 DRAWGBK1.insertText = "";
 DRAWGBK1.body = "DRAWGBK1(,)";
 DRAWGBK1.marketType = MyCompletionMarketType.BasicFunction;
-DRAWGBK1.type = MyCompletionType.DrawingFunction;
+DRAWGBK1.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWGBK1.detail = "设置满足条件K线的背景颜色";
 DRAWGBK1.documentation = `
 DRAWGBK1(COND,COLOR)当条件COND成立时，以K线宽度、COLOR颜色填充背景区域，高度为整个显示区域的最高到最低
@@ -2521,7 +2521,7 @@ DRAWICON.label = "DRAWICON";
 DRAWICON.insertText = "";
 DRAWICON.body = "DRAWICON( , , )";
 DRAWICON.marketType = MyCompletionMarketType.BasicFunction;
-DRAWICON.type = MyCompletionType.DrawingFunction;
+DRAWICON.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWICON.detail = "画图标";
 DRAWICON.documentation = `
 DRAWICON(COND,PRICE,ICON),当条件COND满足时,在PRICE位置画图标ICONICON图标用'ICO1'~'ICO105'表示
@@ -2553,7 +2553,7 @@ DRAWKLINE.label = "DRAWKLINE";
 DRAWKLINE.insertText = "";
 DRAWKLINE.body = "DRAWKLINE( , , , , )";
 DRAWKLINE.marketType = MyCompletionMarketType.BasicFunction;
-DRAWKLINE.type = MyCompletionType.DrawingFunction;
+DRAWKLINE.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWKLINE.detail = "绘制K线";
 DRAWKLINE.documentation = `
 DRAWKLINE(WidthRatio,COLOR1,EMPTY1,COLOR2,EMPTY2)按照宽度比例WidthRatio画线（WidthRadio从0到1），阳线以COLOR1和EMPTY1判断阴线以COLOR2和EMPTY2判断。（COLOR1、COLOR2代表颜色，Empty非0为空心）
@@ -2578,7 +2578,7 @@ DRAWKLINE1.label = "DRAWKLINE1";
 DRAWKLINE1.insertText = "";
 DRAWKLINE1.body = "DRAWKLINE1( , , , )";
 DRAWKLINE1.marketType = MyCompletionMarketType.BasicFunction;
-DRAWKLINE1.type = MyCompletionType.DrawingFunction;
+DRAWKLINE1.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWKLINE1.detail = "绘制K线";
 DRAWKLINE1.documentation = `
 DRAWKLINE1(H1,O1,L1,C1)以H1为最高价，L1为最低价，O1为开盘价，C1为收盘价绘制K线
@@ -2606,7 +2606,7 @@ DRAWKLINE2.label = "DRAWKLINE2";
 DRAWKLINE2.insertText = "";
 DRAWKLINE2.body = "DRAWKLINE2( , , , , )";
 DRAWKLINE2.marketType = MyCompletionMarketType.BasicFunction;
-DRAWKLINE2.type = MyCompletionType.DrawingFunction;
+DRAWKLINE2.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWKLINE2.detail = "绘制K线";
 DRAWKLINE2.documentation = `
 DRAWKLINE2(SET,COLOR1,EMPTY1,COLOR2,EMPTY2)绘制K线，黑色背景下，盘整时K线显示为黄色；白色背景下，盘整时K线显示为蓝色
@@ -2633,7 +2633,7 @@ DRAWLASTBARICON.label = "DRAWLASTBARICON";
 DRAWLASTBARICON.insertText = "";
 DRAWLASTBARICON.body = "DRAWLASTBARICON( , )";
 DRAWLASTBARICON.marketType = MyCompletionMarketType.BasicFunction;
-DRAWLASTBARICON.type = MyCompletionType.DrawingFunction;
+DRAWLASTBARICON.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWLASTBARICON.detail = "在最后一根k线绘制图标";
 DRAWLASTBARICON.documentation = `
 DRAWLASTBARICON(PRICE,ICON)最后一根k线,在PRICE位置画图标ICON
@@ -2665,7 +2665,7 @@ DRAWLASTBARLINE.label = "DRAWLASTBARLINE";
 DRAWLASTBARLINE.insertText = "";
 DRAWLASTBARLINE.body = "DRAWLASTBARLINE(,,,,,,)";
 DRAWLASTBARLINE.marketType = MyCompletionMarketType.BasicFunction;
-DRAWLASTBARLINE.type = MyCompletionType.DrawingFunction;
+DRAWLASTBARLINE.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWLASTBARLINE.detail = "最后一根k线满足条件偏移周期画线";
 DRAWLASTBARLINE.documentation = `
 DRAWLASTBARLINE(C1,P1,X1,C2,P2,X2,EXP);最后一根k线满足条件C1时向左偏移X1个周期及最后一根k线满足条件C2时向左偏移X2个周期从P1向P2画线。EXP为0表示画线不延伸，EXP不为0表示画线延伸
@@ -2696,7 +2696,7 @@ DRAWLASTBARNUMBER.label = "DRAWLASTBARNUMBER";
 DRAWLASTBARNUMBER.insertText = "";
 DRAWLASTBARNUMBER.body = "DRAWLASTBARNUMBER( , , ,)";
 DRAWLASTBARNUMBER.marketType = MyCompletionMarketType.BasicFunction;
-DRAWLASTBARNUMBER.type = MyCompletionType.DrawingFunction;
+DRAWLASTBARNUMBER.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWLASTBARNUMBER.detail = "在最后一根k线输出数值";
 DRAWLASTBARNUMBER.documentation = `
 DRAWLASTBARNUMBER(DATA,NUMBER,PRECISION,COLOR);最后一根k线,在DATA位置写数字NUMBER
@@ -2721,7 +2721,7 @@ DRAWLASTBARTEXT.label = "DRAWLASTBARTEXT";
 DRAWLASTBARTEXT.insertText = "";
 DRAWLASTBARTEXT.body = "DRAWLASTBARTEXT( , )";
 DRAWLASTBARTEXT.marketType = MyCompletionMarketType.BasicFunction;
-DRAWLASTBARTEXT.type = MyCompletionType.DrawingFunction;
+DRAWLASTBARTEXT.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWLASTBARTEXT.detail = "在最后一根k线显示文字";
 DRAWLASTBARTEXT.documentation = `
 DRAWLASTBARTEXT(PRICE,TEXT)最后一根k线,在PRICE位置书写文字TEXT
@@ -2747,7 +2747,7 @@ DRAWLINE.label = "DRAWLINE";
 DRAWLINE.insertText = "";
 DRAWLINE.body = "DRAWLINE( , , , , )";
 DRAWLINE.marketType = MyCompletionMarketType.BasicFunction;
-DRAWLINE.type = MyCompletionType.DrawingFunction;
+DRAWLINE.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWLINE.detail = "画线";
 DRAWLINE.documentation = `
 DRAWLINE(C1,P1,C2,P2,COLOR)满足条件C1时及C2时从P1向P2画线
@@ -2778,7 +2778,7 @@ DRAWLINE1.label = "DRAWLINE1";
 DRAWLINE1.insertText = "";
 DRAWLINE1.body = "DRAWLINE1( , , , , )";
 DRAWLINE1.marketType = MyCompletionMarketType.BasicFunction;
-DRAWLINE1.type = MyCompletionType.DrawingFunction;
+DRAWLINE1.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWLINE1.detail = "画线";
 DRAWLINE1.documentation = `
 DRAWLINE1(C1,P1,C2,P2,EXP)满足条件C1时及该K线后最近一个满足C2时从P1向P2画线。EXP为画线0不延伸，EXP不为0画线延伸
@@ -2806,7 +2806,7 @@ DRAWLINE2.label = "DRAWLINE2";
 DRAWLINE2.insertText = "";
 DRAWLINE2.body = "DRAWLINE2( , , , , )";
 DRAWLINE2.marketType = MyCompletionMarketType.BasicFunction;
-DRAWLINE2.type = MyCompletionType.DrawingFunction;
+DRAWLINE2.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWLINE2.detail = "画线";
 DRAWLINE2.documentation = `
 DRAWLINE2(C1,P1,C2,P2,EXP)满足条件C1时及之后最后一次满足C2时从P1向P2画线。EXP为画线0不延伸，EXP不为0画线延伸
@@ -2834,7 +2834,7 @@ DRAWLINE3.label = "DRAWLINE3";
 DRAWLINE3.insertText = "";
 DRAWLINE3.body = "DRAWLINE3(,,,,,,)";
 DRAWLINE3.marketType = MyCompletionMarketType.BasicFunction;
-DRAWLINE3.type = MyCompletionType.DrawingFunction;
+DRAWLINE3.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWLINE3.detail = "偏移周期画线";
 DRAWLINE3.documentation = `
 DRAWLINE3(C1,P1,X1,C2,P2,X2,EXP);满足条件C1时向左偏移X1个周期及满足条件C2时向左偏移X2个周期从P1向P2画线。EXP为0表示画线不延伸，EXP不为0表示画线延伸
@@ -2869,7 +2869,7 @@ DRAWNUMBER.label = "DRAWNUMBER";
 DRAWNUMBER.insertText = "";
 DRAWNUMBER.body = "DRAWNUMBER( , , , , )";
 DRAWNUMBER.marketType = MyCompletionMarketType.BasicFunction;
-DRAWNUMBER.type = MyCompletionType.DrawingFunction;
+DRAWNUMBER.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWNUMBER.detail = "写数字";
 DRAWNUMBER.documentation = `
 DRAWNUMBER(COND,DATA,NUMBER,PRECISION,COLOR)当条件COND满足时在DATA位置写数字NUMBERPRECISION为精度（小数点后有几位数字）。COLOR为颜色
@@ -2894,7 +2894,7 @@ DRAWNUMBER1.label = "DRAWNUMBER1";
 DRAWNUMBER1.insertText = "";
 DRAWNUMBER1.body = "DRAWNUMBER1( , , , )";
 DRAWNUMBER1.marketType = MyCompletionMarketType.BasicFunction;
-DRAWNUMBER1.type = MyCompletionType.DrawingFunction;
+DRAWNUMBER1.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWNUMBER1.detail = "写数字";
 DRAWNUMBER1.documentation = `
 DRAWNUMBER1(COND,DATA,NUMBER,PRECISION)当条件满足时在DATA位置写数字NUMBER
@@ -2920,7 +2920,7 @@ DRAWSHIFTNUMBER.label = "DRAWSHIFTNUMBER";
 DRAWSHIFTNUMBER.insertText = "";
 DRAWSHIFTNUMBER.body = "DRAWSHIFTNUMBER( , , , , , , )";
 DRAWSHIFTNUMBER.marketType = MyCompletionMarketType.BasicFunction;
-DRAWSHIFTNUMBER.type = MyCompletionType.DrawingFunction;
+DRAWSHIFTNUMBER.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWSHIFTNUMBER.detail = "输出数值";
 DRAWSHIFTNUMBER.documentation = `
 DRAWSHIFTNUMBER(COND,DATA,NUMBER,,PRECISION,COLOR,DIRECTION,X);当条件满足时在DATA位置写数字NUMBER。PRECISION为精度（小数点后有几位数字）。COLOR为颜色。DIRECTION为偏移的方向：0左1右,X为偏移的K线根数。
@@ -2944,7 +2944,7 @@ DRAWSL.label = "DRAWSL";
 DRAWSL.insertText = "";
 DRAWSL.body = "DRAWSL( , , , , , )";
 DRAWSL.marketType = MyCompletionMarketType.BasicFunction;
-DRAWSL.type = MyCompletionType.DrawingFunction;
+DRAWSL.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWSL.detail = "画线（段）";
 DRAWSL.documentation = `
 DRAWSL(COND,DATA,SLOPE,LEN,EXPAND,COLOR),当条件满足时，在DATA数据处以每个周期相差SLOPE个价位作为斜率画LEN个周期长的线段
@@ -2975,7 +2975,7 @@ DRAWSL1.label = "DRAWSL1";
 DRAWSL1.insertText = "";
 DRAWSL1.body = "DRAWSL1( , , , , )";
 DRAWSL1.marketType = MyCompletionMarketType.BasicFunction;
-DRAWSL1.type = MyCompletionType.DrawingFunction;
+DRAWSL1.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWSL1.detail = "画线（段）";
 DRAWSL1.documentation = `
 DRAWSL1(COND,DATA,SLOPE,LEN,EXPAND),当条件满足时，在DATA数据处以每个周期相差SLOPE个价位作为斜率画LEN个周期长的线段
@@ -3007,7 +3007,7 @@ DRAWTEXT.label = "DRAWTEXT";
 DRAWTEXT.insertText = "";
 DRAWTEXT.body = "DRAWTEXT( , , )";
 DRAWTEXT.marketType = MyCompletionMarketType.BasicFunction;
-DRAWTEXT.type = MyCompletionType.DrawingFunction;
+DRAWTEXT.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWTEXT.detail = "显示文字";
 DRAWTEXT.documentation = `
 DRAWTEXT(COND,PRICE,TEXT),当COND条件满足时,在PRICE位置书写文字TEXT
@@ -3037,7 +3037,7 @@ DRAWVALID.label = "DRAWVALID";
 DRAWVALID.insertText = "";
 DRAWVALID.body = "DRAWVALID()";
 DRAWVALID.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-DRAWVALID.type = MyCompletionType.DrawingFunction;
+DRAWVALID.functionType = MyCompletionFunctionType.DrawingFunction;
 DRAWVALID.detail = "连接数据的有效值画折线";
 DRAWVALID.documentation = `
 DRAWVALID(DATA);连接DATA中的有效值画折线
@@ -3055,7 +3055,7 @@ DUALVOLUME.label = "DUALVOLUME";
 DUALVOLUME.insertText = "";
 DUALVOLUME.body = "DUALVOLUME( )";
 DUALVOLUME.marketType = MyCompletionMarketType.BasicFunction;
-DUALVOLUME.type = MyCompletionType.CandlestickDataReference;
+DUALVOLUME.functionType = MyCompletionFunctionType.CandlestickDataReference;
 DUALVOLUME.detail = "多空量函数";
 DUALVOLUME.documentation = `
 DUALVOLUME('M'),返回值代表一段时间内的（主动买-主动卖）的平均数值DUALVOLUME('N'),返回值代表主动买-主动卖的量差
@@ -3091,7 +3091,7 @@ EMA.label = "EMA";
 EMA.insertText = "";
 EMA.body = "EMA( , )";
 EMA.marketType = MyCompletionMarketType.BasicFunction;
-EMA.type = MyCompletionType.FinancialStatisticsFunction;
+EMA.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 EMA.detail = "指数加权移动平均";
 EMA.documentation = `
 EMA(X,N),求X的N日指数加权移动平均值
@@ -3115,7 +3115,7 @@ EMA2.label = "EMA2";
 EMA2.insertText = "";
 EMA2.body = "EMA2( , )";
 EMA2.marketType = MyCompletionMarketType.BasicFunction;
-EMA2.type = MyCompletionType.FinancialStatisticsFunction;
+EMA2.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 EMA2.detail = "线性加权移动平均";
 EMA2.documentation = `
 EMA2(X,N),求X的N个周期的线性加权平均值
@@ -3138,7 +3138,7 @@ EMAWH.label = "EMAWH";
 EMAWH.insertText = "";
 EMAWH.body = "EMAWH( , )";
 EMAWH.marketType = MyCompletionMarketType.BasicFunction;
-EMAWH.type = MyCompletionType.FinancialStatisticsFunction;
+EMAWH.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 EMAWH.detail = "指数加权移动平均";
 EMAWH.documentation = `
 EMAWH（X,N),求X的N日指数加权移动平均值
@@ -3160,7 +3160,7 @@ ENTRYSIG_PLACE.label = "ENTRYSIG_PLACE";
 ENTRYSIG_PLACE.insertText = "";
 ENTRYSIG_PLACE.body = "ENTRYSIG_PLACE()";
 ENTRYSIG_PLACE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-ENTRYSIG_PLACE.type = MyCompletionType.SignalLoggingFunction;
+ENTRYSIG_PLACE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 ENTRYSIG_PLACE.detail = "取指定开仓信号的K线位置";
 ENTRYSIG_PLACE.documentation = `
 ENTRYSIG_PLACE(N)取一次完整交易第N个开仓信号距离当前K线的位置。
@@ -3185,7 +3185,7 @@ ENTRYSIG_PRICE.label = "ENTRYSIG_PRICE";
 ENTRYSIG_PRICE.insertText = "";
 ENTRYSIG_PRICE.body = "ENTRYSIG_PRICE()";
 ENTRYSIG_PRICE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-ENTRYSIG_PRICE.type = MyCompletionType.SignalLoggingFunction;
+ENTRYSIG_PRICE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 ENTRYSIG_PRICE.detail = "取指定开仓信号的价格";
 ENTRYSIG_PRICE.documentation = `
 ENTRYSIG_PRICE(N)取一次完整交易第N个开仓信号的价格。
@@ -3212,7 +3212,7 @@ ENTRYSIG_VOL.label = "ENTRYSIG_VOL";
 ENTRYSIG_VOL.insertText = "";
 ENTRYSIG_VOL.body = "ENTRYSIG_VOL()";
 ENTRYSIG_VOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-ENTRYSIG_VOL.type = MyCompletionType.SignalLoggingFunction;
+ENTRYSIG_VOL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 ENTRYSIG_VOL.detail = "取指定开仓信号的信号手数";
 ENTRYSIG_VOL.documentation = `
 ENTRYSIG_VOL(N)取一次完整交易第N个开仓信号的信号手数。
@@ -3238,7 +3238,7 @@ EVERY.label = "EVERY";
 EVERY.insertText = "";
 EVERY.body = "EVERY( , )";
 EVERY.marketType = MyCompletionMarketType.BasicFunction;
-EVERY.type = MyCompletionType.LogicalJudgmentFunction;
+EVERY.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 EVERY.detail = "判断是否持续满足";
 EVERY.documentation = `
 EVERY(X,N),判断过去一定周期N内，是否一直满足条件X如果一直满足返回1，否则返回0
@@ -3263,7 +3263,7 @@ EXIST.label = "EXIST";
 EXIST.insertText = "";
 EXIST.body = "EXIST( , )";
 EXIST.marketType = MyCompletionMarketType.BasicFunction;
-EXIST.type = MyCompletionType.LogicalJudgmentFunction;
+EXIST.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 EXIST.detail = "判断是否存在满足";
 EXIST.documentation = `
 EXIST(X,N),判断过去周期N内，是否有满足条件X如果有满足X条件的K线，返回1；如果没有满足X条件的K线，则返回0
@@ -3286,7 +3286,7 @@ EXITSIG_PLACE.label = "EXITSIG_PLACE";
 EXITSIG_PLACE.insertText = "";
 EXITSIG_PLACE.body = "EXITSIG_PLACE()";
 EXITSIG_PLACE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-EXITSIG_PLACE.type = MyCompletionType.SignalLoggingFunction;
+EXITSIG_PLACE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 EXITSIG_PLACE.detail = "取指定平仓信号的K线位置";
 EXITSIG_PLACE.documentation = `
 EXITSIG_PLACE(N)取一次完整交易第N个平仓信号距离当前K线的位置。
@@ -3311,7 +3311,7 @@ EXITSIG_PRICE.label = "EXITSIG_PRICE";
 EXITSIG_PRICE.insertText = "";
 EXITSIG_PRICE.body = "EXITSIG_PRICE()";
 EXITSIG_PRICE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-EXITSIG_PRICE.type = MyCompletionType.SignalLoggingFunction;
+EXITSIG_PRICE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 EXITSIG_PRICE.detail = "取指定平仓信号的价格";
 EXITSIG_PRICE.documentation = `
 EXITSIG_PRICE(N)取一次完整交易第N个平仓信号的价格。
@@ -3338,7 +3338,7 @@ EXITSIG_VOL.label = "EXITSIG_VOL";
 EXITSIG_VOL.insertText = "";
 EXITSIG_VOL.body = "EXITSIG_VOL()";
 EXITSIG_VOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-EXITSIG_VOL.type = MyCompletionType.SignalLoggingFunction;
+EXITSIG_VOL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 EXITSIG_VOL.detail = "取指定平仓信号的信号手数";
 EXITSIG_VOL.documentation = `
 EXITSIG_VOL(N)取一次完整交易第N个平仓信号的信号手数。
@@ -3364,7 +3364,7 @@ EXP.label = "EXP";
 EXP.insertText = "";
 EXP.body = "EXP( )";
 EXP.marketType = MyCompletionMarketType.BasicFunction;
-EXP.type = MyCompletionType.MathFunction;
+EXP.functionType = MyCompletionFunctionType.MathFunction;
 EXP.detail = "指数";
 EXP.documentation = `
 EXP(X),求e的X次幂
@@ -3379,7 +3379,7 @@ EXPIREDATE.label = "EXPIREDATE";
 EXPIREDATE.insertText = "";
 EXPIREDATE.body = "EXPIREDATE()";
 EXPIREDATE.marketType = MyCompletionMarketType.BasicFunction;
-EXPIREDATE.type = MyCompletionType.TimeFunction;
+EXPIREDATE.functionType = MyCompletionFunctionType.TimeFunction;
 EXPIREDATE.detail = "返回期货合约的最后交易日";
 EXPIREDATE.documentation = `
 TIME0求当前周期自该日0点以来的秒数EXPIREDATE(CODE)返回期货合约的最后交易日,CODE为文华码
@@ -3412,7 +3412,7 @@ FEE.label = "FEE";
 FEE.insertText = "";
 FEE.body = "FEE";
 FEE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-FEE.type = MyCompletionType.PositionManagementFunction;
+FEE.functionType = MyCompletionFunctionType.PositionManagementFunction;
 FEE.detail = "手续费";
 FEE.documentation = `
 FEE返回当前合约的手续费
@@ -3435,7 +3435,7 @@ FILLRGN.label = "FILLRGN";
 FILLRGN.insertText = "";
 FILLRGN.body = "FILLRGN( , , , )";
 FILLRGN.marketType = MyCompletionMarketType.BasicFunction;
-FILLRGN.type = MyCompletionType.DrawingFunction;
+FILLRGN.functionType = MyCompletionFunctionType.DrawingFunction;
 FILLRGN.detail = "填充函数";
 FILLRGN.documentation = `
 FILLRGN(COND,DATA1,DATA2,COLOR),当条件满足时，以颜色COLOR填充DATA1及DATA2之间形成的区域
@@ -3462,7 +3462,7 @@ FILLRGN1.label = "FILLRGN1";
 FILLRGN1.insertText = "";
 FILLRGN1.body = "FILLRGN1( , , )";
 FILLRGN1.marketType = MyCompletionMarketType.BasicFunction;
-FILLRGN1.type = MyCompletionType.DrawingFunction;
+FILLRGN1.functionType = MyCompletionFunctionType.DrawingFunction;
 FILLRGN1.detail = "填充函数";
 FILLRGN1.documentation = `
 FILLRGN1(COND,DATA1,DATA2),当条件满足时，填充DATA1及DATA2之间的区域
@@ -3492,7 +3492,7 @@ FILTER.label = "FILTER";
 FILTER.insertText = "";
 FILTER.body = "FILTER( , )";
 FILTER.marketType = MyCompletionMarketType.BasicFunction;
-FILTER.type = MyCompletionType.LogicalJudgmentFunction;
+FILTER.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 FILTER.detail = "过滤";
 FILTER.documentation = `
 FILTER(COND,N)当COND条件成立时，将其后N周期内的数据设置为0.
@@ -3511,7 +3511,7 @@ FINANCE_DATA.label = "FINANCE_DATA";
 FINANCE_DATA.insertText = "";
 FINANCE_DATA.body = "FINANCE_DATA('')";
 FINANCE_DATA.marketType = MyCompletionMarketType.BasicFunction;
-FINANCE_DATA.type = MyCompletionType.StockDataFunction;
+FINANCE_DATA.functionType = MyCompletionFunctionType.StockDataFunction;
 FINANCE_DATA.detail = "取某一股票合约的财务数据";
 FINANCE_DATA.documentation = `
 FINANCE_DATA('')取某一股票合约的财务数据。
@@ -3587,7 +3587,7 @@ FLOOR.label = "FLOOR";
 FLOOR.insertText = "";
 FLOOR.body = "FLOOR( )";
 FLOOR.marketType = MyCompletionMarketType.BasicFunction;
-FLOOR.type = MyCompletionType.MathFunction;
+FLOOR.functionType = MyCompletionFunctionType.MathFunction;
 FLOOR.detail = "向下舍入";
 FLOOR.documentation = `
 FLOOR(A),取沿A数值减小方向最接近的整数
@@ -3611,7 +3611,7 @@ FONTSIZE.label = "FONTSIZE";
 FONTSIZE.insertText = "";
 FONTSIZE.body = "FONTSIZE";
 FONTSIZE.marketType = MyCompletionMarketType.BasicFunction;
-FONTSIZE.type = MyCompletionType.DrawingFunction;
+FONTSIZE.functionType = MyCompletionFunctionType.DrawingFunction;
 FONTSIZE.detail = "设置字体大小";
 FONTSIZE.documentation = `
 
@@ -3632,7 +3632,7 @@ FORCAST.label = "FORCAST";
 FORCAST.insertText = "";
 FORCAST.body = "FORCAST( , )";
 FORCAST.marketType = MyCompletionMarketType.BasicFunction;
-FORCAST.type = MyCompletionType.MathematicalStatisticsFunction;
+FORCAST.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
 FORCAST.detail = "线性回归值";
 FORCAST.documentation = `
 FORCAST(X,N),求X的N周期线性回归预测值
@@ -3673,7 +3673,7 @@ GROUP.label = "GROUP";
 GROUP.insertText = "";
 GROUP.body = "GROUP()";
 GROUP.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-GROUP.type = MyCompletionType.SignalLoggingFunction;
+GROUP.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 GROUP.detail = "判断分组的组别";
 GROUP.documentation = `
 GROUP判断分组的组别
@@ -3695,7 +3695,7 @@ GROUPBKPRICE.label = "GROUPBKPRICE";
 GROUPBKPRICE.insertText = "";
 GROUPBKPRICE.body = "GROUPBKPRICE";
 GROUPBKPRICE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-GROUPBKPRICE.type = MyCompletionType.SignalLoggingFunction;
+GROUPBKPRICE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 GROUPBKPRICE.detail = "指令分组模型相应组别的最近一次买开信号价位";
 GROUPBKPRICE.documentation = `
 GROUPBKPRICE('X'),X为指令分组组别，A-I返回分组指令X组最近一次模型买开位置的买开信号价位
@@ -3714,7 +3714,7 @@ GROUPBKVOL.label = "GROUPBKVOL";
 GROUPBKVOL.insertText = "";
 GROUPBKVOL.body = "BKVOL";
 GROUPBKVOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-GROUPBKVOL.type = MyCompletionType.SignalLoggingFunction;
+GROUPBKVOL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 GROUPBKVOL.detail = "指令分组模型买开信号手数";
 GROUPBKVOL.documentation = `
 GROUPBKVOL('X'),X为指令分组组别，A-I取指令分组模型X组的模组多头持仓.
@@ -3743,7 +3743,7 @@ GROUPSKPRICE.label = "GROUPSKPRICE";
 GROUPSKPRICE.insertText = "";
 GROUPSKPRICE.body = "GROUPSKPRICE";
 GROUPSKPRICE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-GROUPSKPRICE.type = MyCompletionType.SignalLoggingFunction;
+GROUPSKPRICE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 GROUPSKPRICE.detail = "指令分组模型相应组别的最近一次卖开信号价位";
 GROUPSKPRICE.documentation = `
 GROUPSKPRICE('X'),X为指令分组组别，A-I,返回分组指令X组最近一次模型卖开位置的卖开信号价位
@@ -3762,7 +3762,7 @@ GROUPSKVOL.label = "GROUPSKVOL";
 GROUPSKVOL.insertText = "";
 GROUPSKVOL.body = "GROUPSKVOL";
 GROUPSKVOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-GROUPSKVOL.type = MyCompletionType.SignalLoggingFunction;
+GROUPSKVOL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 GROUPSKVOL.detail = "指令分组模型卖开信号手数";
 GROUPSKVOL.documentation = `
 GROUPSKVOL('X'),X为指令分组组别，A-I取指令分组模型X组的模组空头持仓.
@@ -3791,7 +3791,7 @@ HARMEAN.label = "HARMEAN";
 HARMEAN.insertText = "";
 HARMEAN.body = "HARMEAN( , )";
 HARMEAN.marketType = MyCompletionMarketType.BasicFunction;
-HARMEAN.type = MyCompletionType.FinancialStatisticsFunction;
+HARMEAN.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 HARMEAN.detail = "调和平均值";
 HARMEAN.documentation = `
 HARMEAN(X,N)求X在N个周期内的调和平均值
@@ -3816,7 +3816,7 @@ HASTRADEDATA.label = "HASTRADEDATA";
 HASTRADEDATA.insertText = "";
 HASTRADEDATA.body = "HASTRADEDATA";
 HASTRADEDATA.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-HASTRADEDATA.type = MyCompletionType.LogicalJudgmentFunction;
+HASTRADEDATA.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 HASTRADEDATA.detail = "判断数据合约当根K线交易合约是否有数据";
 HASTRADEDATA.documentation = `
 HASTRADEDATA判断数据合约当根K线交易合约是否有数据
@@ -3833,7 +3833,7 @@ HHV.label = "HHV";
 HHV.insertText = "";
 HHV.body = "HHV( , )";
 HHV.marketType = MyCompletionMarketType.BasicFunction;
-HHV.type = MyCompletionType.FinancialStatisticsFunction;
+HHV.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 HHV.detail = "最高值";
 HHV.documentation = `
 HHV(X,N),求X在N个周期内的最高值
@@ -3858,7 +3858,7 @@ HHVBARS.label = "HHVBARS";
 HHVBARS.insertText = "";
 HHVBARS.body = "HHVBARS( , )";
 HHVBARS.marketType = MyCompletionMarketType.BasicFunction;
-HHVBARS.type = MyCompletionType.FinancialStatisticsFunction;
+HHVBARS.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 HHVBARS.detail = "前一最高点位置";
 HHVBARS.documentation = `
 HHVBARS(X,N),求N周期内X最高值到当前周期数
@@ -3882,7 +3882,7 @@ HIGH.label = "HIGH";
 HIGH.insertText = "";
 HIGH.body = "HIGH";
 HIGH.marketType = MyCompletionMarketType.BasicFunction;
-HIGH.type = MyCompletionType.CandlestickDataReference;
+HIGH.functionType = MyCompletionFunctionType.CandlestickDataReference;
 HIGH.detail = "取得K线图的最高价";
 HIGH.documentation = `
 HIGH,取最高价
@@ -3904,7 +3904,7 @@ HISEXPDATE.label = "HISEXPDATE";
 HISEXPDATE.insertText = "";
 HISEXPDATE.body = "HISEXPDATE";
 HISEXPDATE.marketType = MyCompletionMarketType.BasicFunction;
-HISEXPDATE.type = MyCompletionType.TimeFunction;
+HISEXPDATE.functionType = MyCompletionFunctionType.TimeFunction;
 HISEXPDATE.detail = "返回当前周期期货合约的最后交易日";
 HISEXPDATE.documentation = `
 HISEXPDATE返回当前周期期货合约的最后交易日
@@ -3930,7 +3930,7 @@ HISEXPDAYS.label = "HISEXPDAYS";
 HISEXPDAYS.insertText = "";
 HISEXPDAYS.body = "HISEXPDAYS";
 HISEXPDAYS.marketType = MyCompletionMarketType.BasicFunction;
-HISEXPDAYS.type = MyCompletionType.TimeFunction;
+HISEXPDAYS.functionType = MyCompletionFunctionType.TimeFunction;
 HISEXPDAYS.detail = "返回当前周期期货合约距离最后交易日的天数";
 HISEXPDAYS.documentation = `
 HISEXPDAYS返回当前周期期货合约距离最后交易日的天数
@@ -3954,7 +3954,7 @@ HOLLOW.label = "HOLLOW";
 HOLLOW.insertText = "";
 HOLLOW.body = "HOLLOW";
 HOLLOW.marketType = MyCompletionMarketType.BasicFunction;
-HOLLOW.type = MyCompletionType.DrawingFunction;
+HOLLOW.functionType = MyCompletionFunctionType.DrawingFunction;
 HOLLOW.detail = "空心显示";
 HOLLOW.documentation = `
 HOLLOW,画空心柱线
@@ -3975,7 +3975,7 @@ HOUR.label = "HOUR";
 HOUR.insertText = "";
 HOUR.body = "HOUR";
 HOUR.marketType = MyCompletionMarketType.BasicFunction;
-HOUR.type = MyCompletionType.TimeFunction;
+HOUR.functionType = MyCompletionFunctionType.TimeFunction;
 HOUR.detail = "小时";
 HOUR.documentation = `
 HOUR取某周期的小时（0-23）
@@ -3997,7 +3997,7 @@ HV.label = "HV";
 HV.insertText = "";
 HV.body = "HV( , )";
 HV.marketType = MyCompletionMarketType.BasicFunction;
-HV.type = MyCompletionType.FinancialStatisticsFunction;
+HV.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 HV.detail = "除当前K线外最高值";
 HV.documentation = `
 HV(X,N)求X在N个周期内的最高值(不包含当前K线)
@@ -4024,7 +4024,7 @@ ICON.label = "ICON";
 ICON.insertText = "";
 ICON.body = "ICON( , )";
 ICON.marketType = MyCompletionMarketType.BasicFunction;
-ICON.type = MyCompletionType.DrawingFunction;
+ICON.functionType = MyCompletionFunctionType.DrawingFunction;
 ICON.detail = "显示图标";
 ICON.documentation = `
 ICON(TYPE,ICON),在k线图上，显示小图标当TYPE为1，则在K线最高价位置显示图标ICON当TYPE为0，则在K线最低价位置显示图标ICON
@@ -4050,7 +4050,7 @@ IDLE.label = "IDLE";
 IDLE.insertText = "";
 IDLE.body = "IDLE()";
 IDLE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-IDLE.type = MyCompletionType.SignalExecutionFunction;
+IDLE.functionType = MyCompletionFunctionType.SignalExecutionFunction;
 IDLE.detail = "限制开仓信号发出委托";
 IDLE.documentation = `
 IDLE(CONE),限制开仓信号发出委托
@@ -4090,7 +4090,7 @@ IF.label = "IF";
 IF.insertText = "";
 IF.body = "IF( , , )";
 IF.marketType = MyCompletionMarketType.BasicFunction;
-IF.type = MyCompletionType.LogicalJudgmentFunction;
+IF.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 IF.detail = "条件函数";
 IF.documentation = `
 IF(X,A,B),若满足条件X则取A，否则取B
@@ -4112,7 +4112,7 @@ IFELSE.label = "IFELSE";
 IFELSE.insertText = "";
 IFELSE.body = "IFELSE( , , )";
 IFELSE.marketType = MyCompletionMarketType.BasicFunction;
-IFELSE.type = MyCompletionType.LogicalJudgmentFunction;
+IFELSE.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 IFELSE.detail = "条件函数";
 IFELSE.documentation = `
 IFELSE(X,A,B),若满足条件X则取A，否则取B
@@ -4134,7 +4134,7 @@ IMPLIEDVOLATILITY.label = "IMPLIEDVOLATILITY";
 IMPLIEDVOLATILITY.insertText = "";
 IMPLIEDVOLATILITY.body = "IMPLIEDVOLATILITY";
 IMPLIEDVOLATILITY.marketType = MyCompletionMarketType.BasicFunction;
-IMPLIEDVOLATILITY.type = MyCompletionType.CandlestickDataReference;
+IMPLIEDVOLATILITY.functionType = MyCompletionFunctionType.CandlestickDataReference;
 IMPLIEDVOLATILITY.detail = "取期权隐含波动率";
 IMPLIEDVOLATILITY.documentation = `
 IMPLIEDVOLATILITY，取期权隐含波动率
@@ -4159,7 +4159,7 @@ INITMONEY.label = "INITMONEY";
 INITMONEY.insertText = "";
 INITMONEY.body = "INITMONEY";
 INITMONEY.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-INITMONEY.type = MyCompletionType.PositionManagementFunction;
+INITMONEY.functionType = MyCompletionFunctionType.PositionManagementFunction;
 INITMONEY.detail = "初次加载时的起始资金";
 INITMONEY.documentation = `
 INITMONEY,返回初次加载时的起始资金
@@ -4183,7 +4183,7 @@ INTPART.label = "INTPART";
 INTPART.insertText = "";
 INTPART.body = "INTPART( )";
 INTPART.marketType = MyCompletionMarketType.BasicFunction;
-INTPART.type = MyCompletionType.MathFunction;
+INTPART.functionType = MyCompletionFunctionType.MathFunction;
 INTPART.detail = "取整";
 INTPART.documentation = `
 INTPART(X),取X的整数部分
@@ -4204,7 +4204,7 @@ ISCONTRACT.label = "ISCONTRACT";
 ISCONTRACT.insertText = "";
 ISCONTRACT.body = "ISCONTRACT()";
 ISCONTRACT.marketType = MyCompletionMarketType.BasicFunction;
-ISCONTRACT.type = MyCompletionType.LogicalJudgmentFunction;
+ISCONTRACT.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 ISCONTRACT.detail = "当前是否为指定的合约";
 ISCONTRACT.documentation = `
 ISCONTRACT('CODE')当前是否为指定的合约
@@ -4228,7 +4228,7 @@ ISDELIVERYDAY.label = "ISDELIVERYDAY";
 ISDELIVERYDAY.insertText = "";
 ISDELIVERYDAY.body = "ISDELIVERYDAY";
 ISDELIVERYDAY.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-ISDELIVERYDAY.type = MyCompletionType.LogicalJudgmentFunction;
+ISDELIVERYDAY.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 ISDELIVERYDAY.detail = "判断该周期是不是最后交易日";
 ISDELIVERYDAY.documentation = `
 ISDELIVERYDAY,判断当根k线是否是最后交易日
@@ -4248,7 +4248,7 @@ ISDOWN.label = "ISDOWN";
 ISDOWN.insertText = "";
 ISDOWN.body = "ISDOWN";
 ISDOWN.marketType = MyCompletionMarketType.BasicFunction;
-ISDOWN.type = MyCompletionType.LogicalJudgmentFunction;
+ISDOWN.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 ISDOWN.detail = "阴线";
 ISDOWN.documentation = `
 ISDOWN,判断该周期是否收阴。如果为阴线返回1，否则返回0
@@ -4267,7 +4267,7 @@ ISEQUAL.label = "ISEQUAL";
 ISEQUAL.insertText = "";
 ISEQUAL.body = "ISEQUAL";
 ISEQUAL.marketType = MyCompletionMarketType.BasicFunction;
-ISEQUAL.type = MyCompletionType.LogicalJudgmentFunction;
+ISEQUAL.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 ISEQUAL.detail = "平盘";
 ISEQUAL.documentation = `
 ISEQUAL,判断该周期是否平盘，如果K线为平盘返回1，否则返回0
@@ -4285,7 +4285,7 @@ ISLASTBAR.label = "ISLASTBAR";
 ISLASTBAR.insertText = "";
 ISLASTBAR.body = "ISLASTBAR";
 ISLASTBAR.marketType = MyCompletionMarketType.BasicFunction;
-ISLASTBAR.type = MyCompletionType.DrawingFunction;
+ISLASTBAR.functionType = MyCompletionFunctionType.DrawingFunction;
 ISLASTBAR.detail = "判断该周期是否为最后一根K线";
 ISLASTBAR.documentation = `
 ISLASTBAR,判断是否是最后一个K线，如果为最后一根K线返回1，否则返回0
@@ -4303,7 +4303,7 @@ ISLASTBK.label = "ISLASTBK";
 ISLASTBK.insertText = "";
 ISLASTBK.body = "ISLASTBK";
 ISLASTBK.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-ISLASTBK.type = MyCompletionType.SignalLoggingFunction;
+ISLASTBK.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 ISLASTBK.detail = "判断上一个信号是否是BK";
 ISLASTBK.documentation = `
 ISLASTBK，判断上一个指令是否是买开
@@ -4329,7 +4329,7 @@ ISLASTBP.label = "ISLASTBP";
 ISLASTBP.insertText = "";
 ISLASTBP.body = "ISLASTBP";
 ISLASTBP.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-ISLASTBP.type = MyCompletionType.SignalLoggingFunction;
+ISLASTBP.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 ISLASTBP.detail = "判断上一个信号是否是BP";
 ISLASTBP.documentation = `
 ISLASTBP，判断上一个指令是否是买平
@@ -4353,7 +4353,7 @@ ISLASTBPK.label = "ISLASTBPK";
 ISLASTBPK.insertText = "";
 ISLASTBPK.body = "ISLASTBPK";
 ISLASTBPK.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-ISLASTBPK.type = MyCompletionType.SignalLoggingFunction;
+ISLASTBPK.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 ISLASTBPK.detail = "判断上一个信号是否是BPK";
 ISLASTBPK.documentation = `
 ISLASTBPK，判断上一个指令是否是买平开
@@ -4379,7 +4379,7 @@ ISLASTBUY.label = "ISLASTBUY";
 ISLASTBUY.insertText = "";
 ISLASTBUY.body = "ISLASTBUY";
 ISLASTBUY.marketType = MyCompletionMarketType.TPlusOneStrategyFunction;
-ISLASTBUY.type = MyCompletionType.SignalLoggingFunction;
+ISLASTBUY.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 ISLASTBUY.detail = "判断上一个交易信号是否是BUY";
 ISLASTBUY.documentation = `
 ISLASTBUY 判断上一个交易信号是否是BUY。
@@ -4402,7 +4402,7 @@ ISLASTCLOSEOUT.label = "ISLASTCLOSEOUT";
 ISLASTCLOSEOUT.insertText = "";
 ISLASTCLOSEOUT.body = "ISLASTCLOSEOUT";
 ISLASTCLOSEOUT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-ISLASTCLOSEOUT.type = MyCompletionType.SignalLoggingFunction;
+ISLASTCLOSEOUT.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 ISLASTCLOSEOUT.detail = "判断上一个信号是否是CLOSEOUT";
 ISLASTCLOSEOUT.documentation = `
 ISLASTCLOSEOUT，判断上一个指令是否是全平
@@ -4423,7 +4423,7 @@ ISLASTKLINE.label = "ISLASTKLINE";
 ISLASTKLINE.insertText = "";
 ISLASTKLINE.body = "ISLASTKLINE";
 ISLASTKLINE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-ISLASTKLINE.type = MyCompletionType.LogicalJudgmentFunction;
+ISLASTKLINE.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 ISLASTKLINE.detail = "判断该周期是否收盘前最后一根K线";
 ISLASTKLINE.documentation = `
 ISLASTKLINE,判断该周期是否是当日收盘前最后一个K线，如果是返回1，否则返回0
@@ -4442,7 +4442,7 @@ ISLASTSELL.label = "ISLASTSELL";
 ISLASTSELL.insertText = "";
 ISLASTSELL.body = "ISLASTSELL";
 ISLASTSELL.marketType = MyCompletionMarketType.TPlusOneStrategyFunction;
-ISLASTSELL.type = MyCompletionType.SignalLoggingFunction;
+ISLASTSELL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 ISLASTSELL.detail = "判断上一个交易信号是否是SELL";
 ISLASTSELL.documentation = `
 ISLASTSELL判断上一个交易信号是否是SELL。
@@ -4462,7 +4462,7 @@ ISLASTSK.label = "ISLASTSK";
 ISLASTSK.insertText = "";
 ISLASTSK.body = "ISLASTSK";
 ISLASTSK.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-ISLASTSK.type = MyCompletionType.SignalLoggingFunction;
+ISLASTSK.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 ISLASTSK.detail = "判断上一个信号是否是SK";
 ISLASTSK.documentation = `
 ISLASTSK，判断上一个指令是否是卖开
@@ -4488,7 +4488,7 @@ ISLASTSP.label = "ISLASTSP";
 ISLASTSP.insertText = "";
 ISLASTSP.body = "ISLASTSP";
 ISLASTSP.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-ISLASTSP.type = MyCompletionType.SignalLoggingFunction;
+ISLASTSP.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 ISLASTSP.detail = "判断上一个信号是否是SP";
 ISLASTSP.documentation = `
 ISLASTSP，判断上一个指令是否是卖平
@@ -4512,7 +4512,7 @@ ISLASTSPK.label = "ISLASTSPK";
 ISLASTSPK.insertText = "";
 ISLASTSPK.body = "ISLASTSPK";
 ISLASTSPK.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-ISLASTSPK.type = MyCompletionType.SignalLoggingFunction;
+ISLASTSPK.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 ISLASTSPK.detail = "判断上一个信号是否是SPK";
 ISLASTSPK.documentation = `
 ISLASTSPK，判断上一个指令是否是卖平开
@@ -4538,7 +4538,7 @@ ISLASTSTOP.label = "ISLASTSTOP";
 ISLASTSTOP.insertText = "";
 ISLASTSTOP.body = "ISLASTSTOP";
 ISLASTSTOP.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-ISLASTSTOP.type = MyCompletionType.SignalLoggingFunction;
+ISLASTSTOP.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 ISLASTSTOP.detail = "判断上一个信号是否是STOP";
 ISLASTSTOP.documentation = `
 ISLASTSTOP，判断上一个指令是否是STOP指令
@@ -4560,7 +4560,7 @@ ISMAINCONTRACT.label = "ISMAINCONTRACT";
 ISMAINCONTRACT.insertText = "";
 ISMAINCONTRACT.body = "ISMAINCONTRACT";
 ISMAINCONTRACT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-ISMAINCONTRACT.type = MyCompletionType.LogicalJudgmentFunction;
+ISMAINCONTRACT.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 ISMAINCONTRACT.detail = "当前是否为主力合约";
 ISMAINCONTRACT.documentation = `
 ISMAINCONTRACT当前是否为主力合约
@@ -4582,7 +4582,7 @@ ISMONTHEND.label = "ISMONTHEND";
 ISMONTHEND.insertText = "";
 ISMONTHEND.body = "ISMONTHEND";
 ISMONTHEND.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-ISMONTHEND.type = MyCompletionType.LogicalJudgmentFunction;
+ISMONTHEND.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 ISMONTHEND.detail = "是否为本月最后一个交易日";
 ISMONTHEND.documentation = `
 ISMONTHEND是否为本月最后一个交易日
@@ -4601,7 +4601,7 @@ ISNEARHOLIDAY.label = "ISNEARHOLIDAY";
 ISNEARHOLIDAY.insertText = "";
 ISNEARHOLIDAY.body = "ISNEARHOLIDAY";
 ISNEARHOLIDAY.marketType = MyCompletionMarketType.BasicFunction;
-ISNEARHOLIDAY.type = MyCompletionType.LogicalJudgmentFunction;
+ISNEARHOLIDAY.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 ISNEARHOLIDAY.detail = "判断下一交易日是否是交易合约的节假日";
 ISNEARHOLIDAY.documentation = `
 ISNEARHOLIDAY，判断下一交易日是否是交易合约的节假日。
@@ -4620,7 +4620,7 @@ ISNULL.label = "ISNULL";
 ISNULL.insertText = "";
 ISNULL.body = "ISNULL";
 ISNULL.marketType = MyCompletionMarketType.BasicFunction;
-ISNULL.type = MyCompletionType.LogicalJudgmentFunction;
+ISNULL.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 ISNULL.detail = "判断空值";
 ISNULL.documentation = `
 ISNULL(N)判断空值，如果N为空值返回1，否则返回0
@@ -4636,7 +4636,7 @@ ISRECORDDAY.label = "ISRECORDDAY";
 ISRECORDDAY.insertText = "";
 ISRECORDDAY.body = "ISRECORDDAY";
 ISRECORDDAY.marketType = MyCompletionMarketType.BasicFunction;
-ISRECORDDAY.type = MyCompletionType.StockDataFunction;
+ISRECORDDAY.functionType = MyCompletionFunctionType.StockDataFunction;
 ISRECORDDAY.detail = "判断当根K线是否为股权登记日";
 ISRECORDDAY.documentation = `
 ISRECORDDAY判断当根K线是否为股权登记日
@@ -4654,7 +4654,7 @@ ISTIMETOKLINEEND.label = "ISTIMETOKLINEEND";
 ISTIMETOKLINEEND.insertText = "";
 ISTIMETOKLINEEND.body = "ISTIMETOKLINEEND";
 ISTIMETOKLINEEND.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-ISTIMETOKLINEEND.type = MyCompletionType.LogicalJudgmentFunction;
+ISTIMETOKLINEEND.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 ISTIMETOKLINEEND.detail = "判断当前K线时间是否满足K线走完前N秒";
 ISTIMETOKLINEEND.documentation = `
 ISTIMETOKLINEEND(N)判断当前K线时间是否满足K线走完前N秒满足返回1，不满足返回0。参数N为秒数。
@@ -4680,7 +4680,7 @@ ISUP.label = "ISUP";
 ISUP.insertText = "";
 ISUP.body = "ISUP";
 ISUP.marketType = MyCompletionMarketType.BasicFunction;
-ISUP.type = MyCompletionType.LogicalJudgmentFunction;
+ISUP.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 ISUP.detail = "阳线";
 ISUP.documentation = `
 ISUP,判断该周期是否收阳，如果K线为阳线返回1，否则返回0
@@ -4699,7 +4699,7 @@ ISWEEKEND.label = "ISWEEKEND";
 ISWEEKEND.insertText = "";
 ISWEEKEND.body = "ISWEEKEND";
 ISWEEKEND.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-ISWEEKEND.type = MyCompletionType.LogicalJudgmentFunction;
+ISWEEKEND.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 ISWEEKEND.detail = "是否为本周最后一个交易日";
 ISWEEKEND.documentation = `
 ISWEEKEND判断是否为本周最后一个交易日
@@ -4718,7 +4718,7 @@ K_STATE.label = "K_STATE";
 K_STATE.insertText = "";
 K_STATE.body = "K_STATE()";
 K_STATE.marketType = MyCompletionMarketType.BasicFunction;
-K_STATE.type = MyCompletionType.LogicalJudgmentFunction;
+K_STATE.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 K_STATE.detail = "判断k线形态";
 K_STATE.documentation = `
 K_STATE()判断K线形态
@@ -4768,7 +4768,7 @@ K_STATE1.label = "K_STATE1";
 K_STATE1.insertText = "";
 K_STATE1.body = "K_STATE1()";
 K_STATE1.marketType = MyCompletionMarketType.BasicFunction;
-K_STATE1.type = MyCompletionType.LogicalJudgmentFunction;
+K_STATE1.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 K_STATE1.detail = "判断k线形态";
 K_STATE1.documentation = `
 K_STATE1()判断K线形态
@@ -4804,7 +4804,7 @@ K_STATE2.label = "K_STATE2";
 K_STATE2.insertText = "";
 K_STATE2.body = "K_STATE2()";
 K_STATE2.marketType = MyCompletionMarketType.BasicFunction;
-K_STATE2.type = MyCompletionType.LogicalJudgmentFunction;
+K_STATE2.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 K_STATE2.detail = "判断k线形态";
 K_STATE2.documentation = `
 K_STATE2()判断K线形态
@@ -4829,7 +4829,7 @@ K_STATE3.label = "K_STATE3";
 K_STATE3.insertText = "";
 K_STATE3.body = "K_STATE3()";
 K_STATE3.marketType = MyCompletionMarketType.BasicFunction;
-K_STATE3.type = MyCompletionType.LogicalJudgmentFunction;
+K_STATE3.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 K_STATE3.detail = "判断k线形态";
 K_STATE3.documentation = `
 K_STATE3()判断K线形态
@@ -4855,7 +4855,7 @@ K_STATE4.label = "K_STATE4";
 K_STATE4.insertText = "";
 K_STATE4.body = "K_STATE4()";
 K_STATE4.marketType = MyCompletionMarketType.BasicFunction;
-K_STATE4.type = MyCompletionType.LogicalJudgmentFunction;
+K_STATE4.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 K_STATE4.detail = "判断k线形态";
 K_STATE4.documentation = `
 K_STATE4()判断K线形态
@@ -4873,7 +4873,7 @@ KLINESIG.label = "KLINESIG";
 KLINESIG.insertText = "";
 KLINESIG.body = "KLINESIG";
 KLINESIG.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-KLINESIG.type = MyCompletionType.SignalLoggingFunction;
+KLINESIG.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 KLINESIG.detail = "判断当根K线上最后一个固定的信号";
 KLINESIG.documentation = `
 KLINESIG判断当根K线上最后一个固定的信号
@@ -4903,7 +4903,7 @@ KLINESTART.label = "KLINESTART";
 KLINESTART.insertText = "";
 KLINESTART.body = "KLINESTART";
 KLINESTART.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-KLINESTART.type = MyCompletionType.LogicalJudgmentFunction;
+KLINESTART.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 KLINESTART.detail = "判断K线当前状态是否是K线开始";
 KLINESTART.documentation = `
 KLINESTART,判断K线当前状态是否是K线开始
@@ -4925,7 +4925,7 @@ KTEXT.label = "KTEXT";
 KTEXT.insertText = "";
 KTEXT.body = "KTEXT( , , , , ,)";
 KTEXT.marketType = MyCompletionMarketType.BasicFunction;
-KTEXT.type = MyCompletionType.DrawingFunction;
+KTEXT.functionType = MyCompletionFunctionType.DrawingFunction;
 KTEXT.detail = "在K线附近标注文字";
 KTEXT.documentation = `
 KTEXT(COND,POSITION,PRICE,LCR,COLOR,TEXT)在k线上标注文字当COND条件满足时,移动POSITION根K线,在PRICE位置书写COLOR色文字TEXTLCR是文字占K线左(0)中(1)右(2)位置
@@ -4953,7 +4953,7 @@ KURTOSIS.label = "KURTOSIS";
 KURTOSIS.insertText = "";
 KURTOSIS.body = "KURTOSIS( , )";
 KURTOSIS.marketType = MyCompletionMarketType.BasicFunction;
-KURTOSIS.type = MyCompletionType.MathematicalStatisticsFunction;
+KURTOSIS.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
 KURTOSIS.detail = "峰度系数";
 KURTOSIS.documentation = `
 KURTOSIS(X,N)求X在N个周期内的峰度系数
@@ -4981,7 +4981,7 @@ LAST.label = "LAST";
 LAST.insertText = "";
 LAST.body = "LAST( , , )";
 LAST.marketType = MyCompletionMarketType.BasicFunction;
-LAST.type = MyCompletionType.LogicalJudgmentFunction;
+LAST.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 LAST.detail = "判断函数";
 LAST.documentation = `
 LAST(X,N1,N2),判断过去N1到N2周期内，是否一直满足条件X一直满足返回1，否则返回0
@@ -5004,7 +5004,7 @@ LASTOFFSETPROFIT.label = "LASTOFFSETPROFIT";
 LASTOFFSETPROFIT.insertText = "";
 LASTOFFSETPROFIT.body = "LASTOFFSETPROFIT";
 LASTOFFSETPROFIT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-LASTOFFSETPROFIT.type = MyCompletionType.PositionManagementFunction;
+LASTOFFSETPROFIT.functionType = MyCompletionFunctionType.PositionManagementFunction;
 LASTOFFSETPROFIT.detail = "最近一次交易的平仓盈亏";
 LASTOFFSETPROFIT.documentation = `
 LASTOFFSETPROFIT最近一次交易的平仓盈亏
@@ -5031,7 +5031,7 @@ LASTSIG.label = "LASTSIG";
 LASTSIG.insertText = "";
 LASTSIG.body = "LASTSIG";
 LASTSIG.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-LASTSIG.type = MyCompletionType.SignalLoggingFunction;
+LASTSIG.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 LASTSIG.detail = "判断最近一个信号";
 LASTSIG.documentation = `
 LASTSIG，取上一次交易指令方向
@@ -5056,7 +5056,7 @@ LASTSIGGROUP.label = "LASTSIGGROUP";
 LASTSIGGROUP.insertText = "";
 LASTSIGGROUP.body = "LASTSIGGROUP";
 LASTSIGGROUP.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-LASTSIGGROUP.type = MyCompletionType.SignalLoggingFunction;
+LASTSIGGROUP.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 LASTSIGGROUP.detail = "判断最近一个信号所在的分组";
 LASTSIGGROUP.documentation = `
 LASTSIGGROUP判断最近一个信号所在的分组
@@ -5079,7 +5079,7 @@ LINETHICK.label = "LINETHICK";
 LINETHICK.insertText = "";
 LINETHICK.body = "LINETHICK";
 LINETHICK.marketType = MyCompletionMarketType.BasicFunction;
-LINETHICK.type = MyCompletionType.DrawingFunction;
+LINETHICK.functionType = MyCompletionFunctionType.DrawingFunction;
 LINETHICK.detail = "线型粗细控制";
 LINETHICK.documentation = `
 
@@ -5097,7 +5097,7 @@ LLV.label = "LLV";
 LLV.insertText = "";
 LLV.body = "LLV( , )";
 LLV.marketType = MyCompletionMarketType.BasicFunction;
-LLV.type = MyCompletionType.FinancialStatisticsFunction;
+LLV.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 LLV.detail = "最低值";
 LLV.documentation = `
 LLV(X,N),求X在N个周期内的最小值
@@ -5122,7 +5122,7 @@ LLVBARS.label = "LLVBARS";
 LLVBARS.insertText = "";
 LLVBARS.body = "LLVBARS( , )";
 LLVBARS.marketType = MyCompletionMarketType.BasicFunction;
-LLVBARS.type = MyCompletionType.FinancialStatisticsFunction;
+LLVBARS.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 LLVBARS.detail = "前一个最低点位置";
 LLVBARS.documentation = `
 LLVBARS(X,N),求N周期内X最低值到当前周期数
@@ -5146,7 +5146,7 @@ LN.label = "LN";
 LN.insertText = "";
 LN.body = "LN( )";
 LN.marketType = MyCompletionMarketType.BasicFunction;
-LN.type = MyCompletionType.MathFunction;
+LN.functionType = MyCompletionFunctionType.MathFunction;
 LN.detail = "自然对数";
 LN.documentation = `
 LN(X),求X的自然对数
@@ -5164,7 +5164,7 @@ LOG.label = "LOG";
 LOG.insertText = "";
 LOG.body = "LOG( )";
 LOG.marketType = MyCompletionMarketType.BasicFunction;
-LOG.type = MyCompletionType.MathFunction;
+LOG.functionType = MyCompletionFunctionType.MathFunction;
 LOG.detail = "求以Y为底X的对数值";
 LOG.documentation = `
 LOG(X,Y)求以Y为底X的对数值。
@@ -5187,7 +5187,7 @@ LOG10.label = "LOG10";
 LOG10.insertText = "";
 LOG10.body = "LOG10( )";
 LOG10.marketType = MyCompletionMarketType.BasicFunction;
-LOG10.type = MyCompletionType.MathFunction;
+LOG10.functionType = MyCompletionFunctionType.MathFunction;
 LOG10.detail = "常用对数";
 LOG10.documentation = `
 LOG10(X)求X的常用对数。
@@ -5208,7 +5208,7 @@ LONGCROSS.label = "LONGCROSS";
 LONGCROSS.insertText = "";
 LONGCROSS.body = "LONGCROSS( , , )";
 LONGCROSS.marketType = MyCompletionMarketType.BasicFunction;
-LONGCROSS.type = MyCompletionType.LogicalJudgmentFunction;
+LONGCROSS.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 LONGCROSS.detail = "维持交叉函数";
 LONGCROSS.documentation = `
 LONGCROSS(A,B,N),判断A在是否在N个周期内都小于B如果是则返回1，否则返回0
@@ -5227,7 +5227,7 @@ LOOP1.label = "LOOP1";
 LOOP1.insertText = "";
 LOOP1.body = "LOOP1( , , )";
 LOOP1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-LOOP1.type = MyCompletionType.LoopExecutionFunction;
+LOOP1.functionType = MyCompletionFunctionType.LoopExecutionFunction;
 LOOP1.detail = "循环统计函数";
 LOOP1.documentation = `
 LOOP1(X,N,TYPE)循环统计函数；对变量X在N个周期进行TYPE相应的操作
@@ -5293,7 +5293,7 @@ LOOP2.label = "LOOP2";
 LOOP2.insertText = "";
 LOOP2.body = "LOOP2( , , )";
 LOOP2.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-LOOP2.type = MyCompletionType.LoopExecutionFunction;
+LOOP2.functionType = MyCompletionFunctionType.LoopExecutionFunction;
 LOOP2.detail = "循环条件函数";
 LOOP2.documentation = `
 LOOP2(COND,A,B);循环条件函数；若COND条件成立，则返回A，否则返回B
@@ -5321,7 +5321,7 @@ LOW.label = "LOW";
 LOW.insertText = "";
 LOW.body = "LOW";
 LOW.marketType = MyCompletionMarketType.BasicFunction;
-LOW.type = MyCompletionType.CandlestickDataReference;
+LOW.functionType = MyCompletionFunctionType.CandlestickDataReference;
 LOW.detail = "取得K线图的最低价";
 LOW.documentation = `
 LOW取得当根K线的最低价
@@ -5343,7 +5343,7 @@ LV.label = "LV";
 LV.insertText = "";
 LV.body = "LV( , )";
 LV.marketType = MyCompletionMarketType.BasicFunction;
-LV.type = MyCompletionType.FinancialStatisticsFunction;
+LV.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 LV.detail = "除当前K线外最低值";
 LV.documentation = `
 LV(X,N)求X在N个周期内的最小值(不包含当前K线)
@@ -5370,7 +5370,7 @@ MA.label = "MA";
 MA.insertText = "";
 MA.body = "MA( , )";
 MA.marketType = MyCompletionMarketType.BasicFunction;
-MA.type = MyCompletionType.FinancialStatisticsFunction;
+MA.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 MA.detail = "算数移动平均";
 MA.documentation = `
 MA(X,N),求X在N个周期内的简单移动平均
@@ -5397,7 +5397,7 @@ MARGIN.label = "MARGIN";
 MARGIN.insertText = "";
 MARGIN.body = "MARGIN";
 MARGIN.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-MARGIN.type = MyCompletionType.PositionManagementFunction;
+MARGIN.functionType = MyCompletionFunctionType.PositionManagementFunction;
 MARGIN.detail = "保证金";
 MARGIN.documentation = `
 MARGIN返回国内期货合约合约的保证金比率或者外盘期货合约的每手保证金
@@ -5421,7 +5421,7 @@ MAX.label = "MAX";
 MAX.insertText = "";
 MAX.body = "MAX( , )";
 MAX.marketType = MyCompletionMarketType.BasicFunction;
-MAX.type = MyCompletionType.MathFunction;
+MAX.functionType = MyCompletionFunctionType.MathFunction;
 MAX.detail = "最大值";
 MAX.documentation = `
 MAX(A,B),取A，B中较大者
@@ -5443,7 +5443,7 @@ MAX1.label = "MAX1";
 MAX1.insertText = "";
 MAX1.body = "MAX1( )";
 MAX1.marketType = MyCompletionMarketType.BasicFunction;
-MAX1.type = MyCompletionType.MathFunction;
+MAX1.functionType = MyCompletionFunctionType.MathFunction;
 MAX1.detail = "取最大值";
 MAX1.documentation = `
 MAX1(A1,...,A30),取A1...A30中的最大值（支持2-30个参数进行比较）
@@ -5465,7 +5465,7 @@ MAXBKVOL.label = "MAXBKVOL";
 MAXBKVOL.insertText = "";
 MAXBKVOL.body = "MAXBKVOL";
 MAXBKVOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-MAXBKVOL.type = MyCompletionType.SignalLoggingFunction;
+MAXBKVOL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 MAXBKVOL.detail = "多头最大持仓手数";
 MAXBKVOL.documentation = `
 MAXBKVOL相邻两次多头持仓为0之间的多头最大持仓手数
@@ -5491,7 +5491,7 @@ MAXSKVOL.label = "MAXSKVOL";
 MAXSKVOL.insertText = "";
 MAXSKVOL.body = "MAXSKVOL";
 MAXSKVOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-MAXSKVOL.type = MyCompletionType.SignalLoggingFunction;
+MAXSKVOL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 MAXSKVOL.detail = "空头最大持仓手数";
 MAXSKVOL.documentation = `
 MAXBKVOL相邻两次空头持仓为0之间的空头最大持仓手数
@@ -5517,7 +5517,7 @@ MEDIAN.label = "MEDIAN";
 MEDIAN.insertText = "";
 MEDIAN.body = "MEDIAN( , )";
 MEDIAN.marketType = MyCompletionMarketType.BasicFunction;
-MEDIAN.type = MyCompletionType.MathFunction;
+MEDIAN.functionType = MyCompletionFunctionType.MathFunction;
 MEDIAN.detail = "求中位数";
 MEDIAN.documentation = `
 MEDIAN(X,N)求X在N个周期内的中位数
@@ -5539,7 +5539,7 @@ MEDIAN1.label = "MEDIAN1";
 MEDIAN1.insertText = "";
 MEDIAN1.body = "MEDIAN1()";
 MEDIAN1.marketType = MyCompletionMarketType.BasicFunction;
-MEDIAN1.type = MyCompletionType.MathFunction;
+MEDIAN1.functionType = MyCompletionFunctionType.MathFunction;
 MEDIAN1.detail = "求中位数";
 MEDIAN1.documentation = `
 MEDIAN1(A1,..,A30),求A1...A30的中位数（支持最多30个参数）
@@ -5561,7 +5561,7 @@ MIN.label = "MIN";
 MIN.insertText = "";
 MIN.body = "MIN( , )";
 MIN.marketType = MyCompletionMarketType.BasicFunction;
-MIN.type = MyCompletionType.MathFunction;
+MIN.functionType = MyCompletionFunctionType.MathFunction;
 MIN.detail = "最小值";
 MIN.documentation = `
 MIN(A,B),取A，B中较小者
@@ -5581,7 +5581,7 @@ MIN1.label = "MIN1";
 MIN1.insertText = "";
 MIN1.body = "MIN1( )";
 MIN1.marketType = MyCompletionMarketType.BasicFunction;
-MIN1.type = MyCompletionType.MathFunction;
+MIN1.functionType = MyCompletionFunctionType.MathFunction;
 MIN1.detail = "取最小值";
 MIN1.documentation = `
 MIN1(A1,...,A30),取A1...A30中的最小值（支持2-30个参数进行比较）
@@ -5603,7 +5603,7 @@ MINPRICE.label = "MINPRICE";
 MINPRICE.insertText = "";
 MINPRICE.body = "MINPRICE";
 MINPRICE.marketType = MyCompletionMarketType.BasicFunction;
-MINPRICE.type = MyCompletionType.CandlestickDataReference;
+MINPRICE.functionType = MyCompletionFunctionType.CandlestickDataReference;
 MINPRICE.detail = "数据合约的最小变动价位";
 MINPRICE.documentation = `
 MINPRICE,取数据合约的最小变动价位
@@ -5617,7 +5617,7 @@ MINPRICE1.label = "MINPRICE1";
 MINPRICE1.insertText = "";
 MINPRICE1.body = "MINPRICE1";
 MINPRICE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-MINPRICE1.type = MyCompletionType.CandlestickDataReference;
+MINPRICE1.functionType = MyCompletionFunctionType.CandlestickDataReference;
 MINPRICE1.detail = "交易合约的最小变动价位";
 MINPRICE1.documentation = `
 MINPRICE1,取交易合约的最小变动价位
@@ -5631,7 +5631,7 @@ MINPRICED.label = "MINPRICED";
 MINPRICED.insertText = "";
 MINPRICED.body = "MINPRICED";
 MINPRICED.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-MINPRICED.type = MyCompletionType.CandlestickDataReference;
+MINPRICED.functionType = MyCompletionFunctionType.CandlestickDataReference;
 MINPRICED.detail = "最小变动价位";
 MINPRICED.documentation = `
 MINPRICED(N),返回N所对应合约的最小变动价位N只能为文华码
@@ -5651,7 +5651,7 @@ MINUTE.label = "MINUTE";
 MINUTE.insertText = "";
 MINUTE.body = "MINUTE";
 MINUTE.marketType = MyCompletionMarketType.BasicFunction;
-MINUTE.type = MyCompletionType.TimeFunction;
+MINUTE.functionType = MyCompletionFunctionType.TimeFunction;
 MINUTE.detail = "分钟";
 MINUTE.documentation = `
 MINUTE,取某个周期的分钟数（0-59）
@@ -5671,7 +5671,7 @@ MOD.label = "MOD";
 MOD.insertText = "";
 MOD.body = "MOD( , )";
 MOD.marketType = MyCompletionMarketType.BasicFunction;
-MOD.type = MyCompletionType.MathFunction;
+MOD.functionType = MyCompletionFunctionType.MathFunction;
 MOD.detail = "取模";
 MOD.documentation = `
 MOD(A,B),A对B求模
@@ -5694,7 +5694,7 @@ MODE.label = "MODE";
 MODE.insertText = "";
 MODE.body = "MODE( , )";
 MODE.marketType = MyCompletionMarketType.BasicFunction;
-MODE.type = MyCompletionType.MathFunction;
+MODE.functionType = MyCompletionFunctionType.MathFunction;
 MODE.detail = "求众数";
 MODE.documentation = `
 MODE(X,N)求X在N个周期内最常出现的值
@@ -5710,7 +5710,7 @@ MONEY.label = "MONEY";
 MONEY.insertText = "";
 MONEY.body = "MONEY";
 MONEY.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-MONEY.type = MyCompletionType.PositionManagementFunction;
+MONEY.functionType = MyCompletionFunctionType.PositionManagementFunction;
 MONEY.detail = "理论可用资金";
 MONEY.documentation = `
 MONEY，理论可用资金
@@ -5746,7 +5746,7 @@ MONEYRATIO.label = "MONEYRATIO";
 MONEYRATIO.insertText = "";
 MONEYRATIO.body = "MONEYRATIO";
 MONEYRATIO.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-MONEYRATIO.type = MyCompletionType.PositionManagementFunction;
+MONEYRATIO.functionType = MyCompletionFunctionType.PositionManagementFunction;
 MONEYRATIO.detail = "理论资金使用率";
 MONEYRATIO.documentation = `
 MONEYRATIO返回理论资金使用率
@@ -5774,7 +5774,7 @@ MONEYTOT.label = "MONEYTOT";
 MONEYTOT.insertText = "";
 MONEYTOT.body = "MONEYTOT";
 MONEYTOT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-MONEYTOT.type = MyCompletionType.PositionManagementFunction;
+MONEYTOT.functionType = MyCompletionFunctionType.PositionManagementFunction;
 MONEYTOT.detail = "理论权益";
 MONEYTOT.documentation = `
 MONEYTOT理论权益
@@ -5805,7 +5805,7 @@ MONTH.label = "MONTH";
 MONTH.insertText = "";
 MONTH.body = "MONTH";
 MONTH.marketType = MyCompletionMarketType.BasicFunction;
-MONTH.type = MyCompletionType.TimeFunction;
+MONTH.functionType = MyCompletionFunctionType.TimeFunction;
 MONTH.detail = "取月份";
 MONTH.documentation = `
 MONTH,取得某周期的月份（1-12）
@@ -5825,7 +5825,7 @@ MONTHTRADE.label = "MONTHTRADE";
 MONTHTRADE.insertText = "";
 MONTHTRADE.body = "MONTHTRADE";
 MONTHTRADE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-MONTHTRADE.type = MyCompletionType.CalculationControlFunction;
+MONTHTRADE.functionType = MyCompletionFunctionType.CalculationControlFunction;
 MONTHTRADE.detail = "月内交易函数";
 MONTHTRADE.documentation = `
 MONTHTRADE,月内交易函数
@@ -5858,7 +5858,7 @@ MONTHTRADE1.label = "MONTHTRADE1";
 MONTHTRADE1.insertText = "";
 MONTHTRADE1.body = "MONTHTRADE1";
 MONTHTRADE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-MONTHTRADE1.type = MyCompletionType.CalculationControlFunction;
+MONTHTRADE1.functionType = MyCompletionFunctionType.CalculationControlFunction;
 MONTHTRADE1.detail = "月内交易函数";
 MONTHTRADE1.documentation = `
 MONTHTRADE1月内交易函数，且历史数据不参与计算。
@@ -5891,7 +5891,7 @@ MULTSIG.label = "MULTSIG";
 MULTSIG.insertText = "";
 MULTSIG.body = "MULTSIG( , , , )";
 MULTSIG.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-MULTSIG.type = MyCompletionType.PerformanceOptimizationFunction;
+MULTSIG.functionType = MyCompletionFunctionType.PerformanceOptimizationFunction;
 MULTSIG.detail =
     "设置一根k线多信号的指令价方式（TICK逐笔回测，可设置回测精度）";
 MULTSIG.documentation = `
@@ -5938,7 +5938,7 @@ MULTSIG_MIN.label = "MULTSIG_MIN";
 MULTSIG_MIN.insertText = "";
 MULTSIG_MIN.body = "MULTSIG_MIN( , , )";
 MULTSIG_MIN.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-MULTSIG_MIN.type = MyCompletionType.PerformanceOptimizationFunction;
+MULTSIG_MIN.functionType = MyCompletionFunctionType.PerformanceOptimizationFunction;
 MULTSIG_MIN.detail = "设置一根k线多信号的指令价方式（逐分钟回测）";
 MULTSIG_MIN.documentation = `
 MULTSIG_MIN(min1,min2,N),设置一根k线多信号的指令价方式（逐分钟回测）开仓信号出信号min1分钟下单，不复核；平仓信号出信号min2分钟下单，不复核，一根K线最大的信号个数为N
@@ -5973,7 +5973,7 @@ MV.label = "MV";
 MV.insertText = "";
 MV.body = "MV(,)";
 MV.marketType = MyCompletionMarketType.BasicFunction;
-MV.type = MyCompletionType.FinancialStatisticsFunction;
+MV.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 MV.detail = "取均值";
 MV.documentation = `
 MV(A,...P),取A到P的均值
@@ -5993,7 +5993,7 @@ MYVOL.label = "MYVOL";
 MYVOL.insertText = "";
 MYVOL.body = "MYVOL";
 MYVOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-MYVOL.type = MyCompletionType.SignalLoggingFunction;
+MYVOL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 MYVOL.detail = "取下单手数";
 MYVOL.documentation = `
 MYVOL,取下单手数
@@ -6018,7 +6018,7 @@ NAMELIKE.label = "NAMELIKE";
 NAMELIKE.insertText = "";
 NAMELIKE.body = "NAMELIKE('')";
 NAMELIKE.marketType = MyCompletionMarketType.BasicFunction;
-NAMELIKE.type = MyCompletionType.LogicalJudgmentFunction;
+NAMELIKE.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 NAMELIKE.detail = "模糊合约名称函数";
 NAMELIKE.documentation = `
 NAMELIKE('')模糊股票名称函数。NAMELIKE('ST')判断股票名称是否含有ST。是返回1（YES）,不是返回0（NO）。
@@ -6043,7 +6043,7 @@ NEWHBARS.label = "NEWHBARS";
 NEWHBARS.insertText = "";
 NEWHBARS.body = "NEWHBARS( , )";
 NEWHBARS.marketType = MyCompletionMarketType.BasicFunction;
-NEWHBARS.type = MyCompletionType.FinancialStatisticsFunction;
+NEWHBARS.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 NEWHBARS.detail = "创新高跨度";
 NEWHBARS.documentation = `
 NEWHBARS(X,N)求高于当前X的第N个X的距离
@@ -6065,7 +6065,7 @@ NEWHBARS1.label = "NEWHBARS1";
 NEWHBARS1.insertText = "";
 NEWHBARS1.body = "NEWHBARS1( , , )";
 NEWHBARS1.marketType = MyCompletionMarketType.BasicFunction;
-NEWHBARS1.type = MyCompletionType.FinancialStatisticsFunction;
+NEWHBARS1.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 NEWHBARS1.detail = "创新高跨度";
 NEWHBARS1.documentation = `
 NEWHBARS1(X,Y,N)，计算高于当前X的第N个Y到现在K线的距离
@@ -6088,7 +6088,7 @@ NEWLBARS.label = "NEWLBARS";
 NEWLBARS.insertText = "";
 NEWLBARS.body = "NEWLBARS( , )";
 NEWLBARS.marketType = MyCompletionMarketType.BasicFunction;
-NEWLBARS.type = MyCompletionType.FinancialStatisticsFunction;
+NEWLBARS.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 NEWLBARS.detail = "创新低跨度";
 NEWLBARS.documentation = `
 NEWLBARS(X,N)求低于当前X的第N个X的距离
@@ -6110,7 +6110,7 @@ NEWLBARS1.label = "NEWLBARS1";
 NEWLBARS1.insertText = "";
 NEWLBARS1.body = "NEWLBARS1( , , )";
 NEWLBARS1.marketType = MyCompletionMarketType.BasicFunction;
-NEWLBARS1.type = MyCompletionType.FinancialStatisticsFunction;
+NEWLBARS1.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 NEWLBARS1.detail = "创新低跨度";
 NEWLBARS1.documentation = `
 NEWLBARS1(X,Y,N)，计算低于当前X的第N个Y到现在K线的距离
@@ -6133,7 +6133,7 @@ NODRAW.label = "NODRAW";
 NODRAW.insertText = "";
 NODRAW.body = "NODRAW";
 NODRAW.marketType = MyCompletionMarketType.BasicFunction;
-NODRAW.type = MyCompletionType.DrawingFunction;
+NODRAW.functionType = MyCompletionFunctionType.DrawingFunction;
 NODRAW.detail = "不画线";
 NODRAW.documentation = `
 NODRAW,不画线
@@ -6150,7 +6150,7 @@ NORMPDF.label = "NORMPDF";
 NORMPDF.insertText = "";
 NORMPDF.body = "NORMPDF( , , )";
 NORMPDF.marketType = MyCompletionMarketType.BasicFunction;
-NORMPDF.type = MyCompletionType.MathematicalStatisticsFunction;
+NORMPDF.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
 NORMPDF.detail = "正态分布概率密度";
 NORMPDF.documentation = `
 NORMPDF(X,MU,SIGMA),返回参数为MU和SIGMA的正态分布密度函数在X处的值
@@ -6182,7 +6182,7 @@ NOT.label = "NOT";
 NOT.insertText = "";
 NOT.body = "NOT( )";
 NOT.marketType = MyCompletionMarketType.BasicFunction;
-NOT.type = MyCompletionType.LogicalJudgmentFunction;
+NOT.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 NOT.detail = "非";
 NOT.documentation = `
 NOT(X),不满足条件X，不满足条件X返回1，否则返回0
@@ -6199,7 +6199,7 @@ NOTEXT.label = "NOTEXT";
 NOTEXT.insertText = "";
 NOTEXT.body = "NOTEXT";
 NOTEXT.marketType = MyCompletionMarketType.BasicFunction;
-NOTEXT.type = MyCompletionType.DrawingFunction;
+NOTEXT.functionType = MyCompletionFunctionType.DrawingFunction;
 NOTEXT.detail = "不显示数值";
 NOTEXT.documentation = `
 NOTEXT不显示数值
@@ -6217,7 +6217,7 @@ NULL.label = "NULL";
 NULL.insertText = "";
 NULL.body = "NULL";
 NULL.marketType = MyCompletionMarketType.BasicFunction;
-NULL.type = MyCompletionType.LogicalJudgmentFunction;
+NULL.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 NULL.detail = "返回空值";
 NULL.documentation = `
 NULL,返回空值
@@ -6233,7 +6233,7 @@ NUMPOW.label = "NUMPOW";
 NUMPOW.insertText = "";
 NUMPOW.body = "NUMPOW(,,)";
 NUMPOW.marketType = MyCompletionMarketType.BasicFunction;
-NUMPOW.type = MyCompletionType.FinancialStatisticsFunction;
+NUMPOW.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 NUMPOW.detail = "自然数幂方和";
 NUMPOW.documentation = `
 NUMPOW(X,N,M),自然数幂方和X为基础变量，N为自然数，M为实数
@@ -6253,7 +6253,7 @@ OFFSETPROFIT.label = "OFFSETPROFIT";
 OFFSETPROFIT.insertText = "";
 OFFSETPROFIT.body = "OFFSETPROFIT";
 OFFSETPROFIT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-OFFSETPROFIT.type = MyCompletionType.PositionManagementFunction;
+OFFSETPROFIT.functionType = MyCompletionFunctionType.PositionManagementFunction;
 OFFSETPROFIT.detail = "理论平仓盈亏";
 OFFSETPROFIT.documentation = `
 OFFSETPROFIT,返回理论平仓盈亏
@@ -6280,7 +6280,7 @@ OFFSETPROFIT1.label = "OFFSETPROFIT1";
 OFFSETPROFIT1.insertText = "";
 OFFSETPROFIT1.body = "OFFSETPROFIT1";
 OFFSETPROFIT1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-OFFSETPROFIT1.type = MyCompletionType.PositionManagementFunction;
+OFFSETPROFIT1.functionType = MyCompletionFunctionType.PositionManagementFunction;
 OFFSETPROFIT1.detail = "累计平仓盈亏";
 OFFSETPROFIT1.documentation = `
 OFFSETPROFIT1累计平仓盈亏
@@ -6307,7 +6307,7 @@ OPEN.label = "OPEN";
 OPEN.insertText = "";
 OPEN.body = "OPEN";
 OPEN.marketType = MyCompletionMarketType.BasicFunction;
-OPEN.type = MyCompletionType.CandlestickDataReference;
+OPEN.functionType = MyCompletionFunctionType.CandlestickDataReference;
 OPEN.detail = "取得K线图的开盘价";
 OPEN.documentation = `
 OPEN取得开盘价
@@ -6330,7 +6330,7 @@ OPENMINUTE.label = "OPENMINUTE";
 OPENMINUTE.insertText = "";
 OPENMINUTE.body = "OPENMINUTE";
 OPENMINUTE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-OPENMINUTE.type = MyCompletionType.TimeFunction;
+OPENMINUTE.functionType = MyCompletionFunctionType.TimeFunction;
 OPENMINUTE.detail = "开盘后经过的分钟数";
 OPENMINUTE.documentation = `
 OPENMINUTE,返回开盘后经过的分钟数
@@ -6355,7 +6355,7 @@ OPENMINUTE1.label = "OPENMINUTE1";
 OPENMINUTE1.insertText = "";
 OPENMINUTE1.body = "OPENMINUTE1";
 OPENMINUTE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-OPENMINUTE1.type = MyCompletionType.TimeFunction;
+OPENMINUTE1.functionType = MyCompletionFunctionType.TimeFunction;
 OPENMINUTE1.detail = "开盘后经过的分钟数";
 OPENMINUTE1.documentation = `
 OPENMINUTE1,返回开盘后经过的分钟数
@@ -6383,7 +6383,7 @@ OPENSEC.label = "OPENSEC";
 OPENSEC.insertText = "";
 OPENSEC.body = "OPENSEC";
 OPENSEC.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-OPENSEC.type = MyCompletionType.TimeFunction;
+OPENSEC.functionType = MyCompletionFunctionType.TimeFunction;
 OPENSEC.detail = "开盘后经过的秒数";
 OPENSEC.documentation = `
 OPENSEC,返回开盘后经过的秒数
@@ -6408,7 +6408,7 @@ OPENSEC1.label = "OPENSEC1";
 OPENSEC1.insertText = "";
 OPENSEC1.body = "OPENSEC1";
 OPENSEC1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-OPENSEC1.type = MyCompletionType.TimeFunction;
+OPENSEC1.functionType = MyCompletionFunctionType.TimeFunction;
 OPENSEC1.detail = "开盘后经过的秒数";
 OPENSEC1.documentation = `
 OPENSEC1,返回开盘后经过的秒数
@@ -6436,7 +6436,7 @@ OPI.label = "OPI";
 OPI.insertText = "";
 OPI.body = "OPI";
 OPI.marketType = MyCompletionMarketType.BasicFunction;
-OPI.type = MyCompletionType.CandlestickDataReference;
+OPI.functionType = MyCompletionFunctionType.CandlestickDataReference;
 OPI.detail = "取得K线图的持仓量";
 OPI.documentation = `
 OPI取得持仓量
@@ -6459,7 +6459,7 @@ PANZHENG.label = "PANZHENG";
 PANZHENG.insertText = "";
 PANZHENG.body = "PANZHENG";
 PANZHENG.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-PANZHENG.type = MyCompletionType.LogicalJudgmentFunction;
+PANZHENG.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 PANZHENG.detail = "判断是否为盘整";
 PANZHENG.documentation = `
 PANZHENG,判断行情是否盘整，返回1时表示盘整，返回0时表示非盘整
@@ -6484,7 +6484,7 @@ PARTLINE.label = "PARTLINE";
 PARTLINE.insertText = "";
 PARTLINE.body = "PARTLINE( , , )";
 PARTLINE.marketType = MyCompletionMarketType.BasicFunction;
-PARTLINE.type = MyCompletionType.DrawingFunction;
+PARTLINE.functionType = MyCompletionFunctionType.DrawingFunction;
 PARTLINE.detail = "画线段";
 PARTLINE.documentation = `
 PARTLINE(COND,DATA,COLOR)条件COND满足时，以COLOR颜色的直线连接DATA各点
@@ -6512,7 +6512,7 @@ PARTLINE1.label = "PARTLINE1";
 PARTLINE1.insertText = "";
 PARTLINE1.body = "PARTLINE1( , )";
 PARTLINE1.marketType = MyCompletionMarketType.BasicFunction;
-PARTLINE1.type = MyCompletionType.DrawingFunction;
+PARTLINE1.functionType = MyCompletionFunctionType.DrawingFunction;
 PARTLINE1.detail = "画线段";
 PARTLINE1.documentation = `
 PARTLINE1(COND,DATA)条件COND满足时，用直线段连接DATA各点
@@ -6539,7 +6539,7 @@ PCRATE.label = "PCRATE";
 PCRATE.insertText = "";
 PCRATE.body = "PCRATE(,)";
 PCRATE.marketType = MyCompletionMarketType.BasicFunction;
-PCRATE.type = MyCompletionType.MathematicalStatisticsFunction;
+PCRATE.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
 PCRATE.detail = "求N周期内Y值的趋势";
 PCRATE.documentation = `
 求N周期内Y值的趋势
@@ -6571,7 +6571,7 @@ PCRATETREND.label = "PCRATETREND";
 PCRATETREND.insertText = "";
 PCRATETREND.body = "PCRATETREND(,)";
 PCRATETREND.marketType = MyCompletionMarketType.BasicFunction;
-PCRATETREND.type = MyCompletionType.MathematicalStatisticsFunction;
+PCRATETREND.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
 PCRATETREND.detail = "求N周期内Y值的趋势变化速度";
 PCRATETREND.documentation = `
 求N周期内Y值的趋势变化速度
@@ -6603,7 +6603,7 @@ PERCENTILE.label = "PERCENTILE";
 PERCENTILE.insertText = "";
 PERCENTILE.body = "PERCENTILE";
 PERCENTILE.marketType = MyCompletionMarketType.BasicFunction;
-PERCENTILE.type = MyCompletionType.FinancialStatisticsFunction;
+PERCENTILE.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 PERCENTILE.detail = "百分位函数";
 PERCENTILE.documentation = `
 PERCENTILE(Data,N,Per)百分位函数取最近N个周期Data数据处于Per百分位的数值。Data为需要排序的数据，N为需要排序的周期数，Per是百分位数值。
@@ -6630,7 +6630,7 @@ PERIOD.label = "PERIOD";
 PERIOD.insertText = "";
 PERIOD.body = "PERIOD";
 PERIOD.marketType = MyCompletionMarketType.BasicFunction;
-PERIOD.type = MyCompletionType.TimeFunction;
+PERIOD.functionType = MyCompletionFunctionType.TimeFunction;
 PERIOD.detail = "自动读取当前技术分析图表周期";
 PERIOD.documentation = `
 PERIOD,自动读取当前技术图表周期
@@ -6651,7 +6651,7 @@ PLAYSOUND.label = "PLAYSOUND";
 PLAYSOUND.insertText = "";
 PLAYSOUND.body = "PLAYSOUND( , )";
 PLAYSOUND.marketType = MyCompletionMarketType.BasicFunction;
-PLAYSOUND.type = MyCompletionType.DrawingFunction;
+PLAYSOUND.functionType = MyCompletionFunctionType.DrawingFunction;
 PLAYSOUND.detail = "声音函数";
 PLAYSOUND.documentation = `
 PLAYSOUND(COND,N),条件COND满足时播放指定声音N为自定义声音代码(可在设置声音文件中设置)
@@ -6677,7 +6677,7 @@ POINTDOT.label = "POINTDOT";
 POINTDOT.insertText = "";
 POINTDOT.body = "POINTDOT";
 POINTDOT.marketType = MyCompletionMarketType.BasicFunction;
-POINTDOT.type = MyCompletionType.DrawingFunction;
+POINTDOT.functionType = MyCompletionFunctionType.DrawingFunction;
 POINTDOT.detail = "画点线";
 POINTDOT.documentation = `
 
@@ -6694,7 +6694,7 @@ POLYLINE.label = "POLYLINE";
 POLYLINE.insertText = "";
 POLYLINE.body = "POLYLINE( , , )";
 POLYLINE.marketType = MyCompletionMarketType.BasicFunction;
-POLYLINE.type = MyCompletionType.DrawingFunction;
+POLYLINE.functionType = MyCompletionFunctionType.DrawingFunction;
 POLYLINE.detail = "画折线";
 POLYLINE.documentation = `
 POLYLINE(COND,DATA,COLOR)，条件满足时，用颜色COLOR的直线连接DATA的值
@@ -6722,7 +6722,7 @@ POLYLINE1.label = "POLYLINE1";
 POLYLINE1.insertText = "";
 POLYLINE1.body = "POLYLINE1( , )";
 POLYLINE1.marketType = MyCompletionMarketType.BasicFunction;
-POLYLINE1.type = MyCompletionType.DrawingFunction;
+POLYLINE1.functionType = MyCompletionFunctionType.DrawingFunction;
 POLYLINE1.detail = "画折线";
 POLYLINE1.documentation = `
 POLYLINE1(COND,DATA)，条件满足时，用折线连接DATA的值
@@ -6753,7 +6753,7 @@ POW.label = "POW";
 POW.insertText = "";
 POW.body = "POW( , )";
 POW.marketType = MyCompletionMarketType.BasicFunction;
-POW.type = MyCompletionType.MathFunction;
+POW.functionType = MyCompletionFunctionType.MathFunction;
 POW.detail = "幂";
 POW.documentation = `
 POW(X,Y),求X的Y次幂
@@ -6778,7 +6778,7 @@ PRECIS.label = "PRECIS";
 PRECIS.insertText = "";
 PRECIS.body = "PRECIS";
 PRECIS.marketType = MyCompletionMarketType.BasicFunction;
-PRECIS.type = MyCompletionType.DrawingFunction;
+PRECIS.functionType = MyCompletionFunctionType.DrawingFunction;
 PRECIS.detail = "指定数值的输出精度（小数位数）";
 PRECIS.documentation = `
 
@@ -6797,7 +6797,7 @@ PRECISION.label = "PRECISION";
 PRECISION.insertText = "";
 PRECISION.body = "PRECISION";
 PRECISION.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-PRECISION.type = MyCompletionType.DrawingFunction;
+PRECISION.functionType = MyCompletionFunctionType.DrawingFunction;
 PRECISION.detail = "设置小数位数";
 PRECISION.documentation = `
 PRECISION()，设置小数位数(范围0-6)
@@ -6818,7 +6818,7 @@ PRICEPRECISION.label = "PRICEPRECISION";
 PRICEPRECISION.insertText = "";
 PRICEPRECISION.body = "PRICEPRECISION";
 PRICEPRECISION.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-PRICEPRECISION.type = MyCompletionType.DrawingFunction;
+PRICEPRECISION.functionType = MyCompletionFunctionType.DrawingFunction;
 PRICEPRECISION.detail = "取当前合约小数点位数";
 PRICEPRECISION.documentation = `
 PRICEPRECISION，取当前合约小数位数
@@ -6836,7 +6836,7 @@ PRICEPRECISION1.label = "PRICEPRECISION1";
 PRICEPRECISION1.insertText = "";
 PRICEPRECISION1.body = "PRICEPRECISION1";
 PRICEPRECISION1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-PRICEPRECISION1.type = MyCompletionType.DrawingFunction;
+PRICEPRECISION1.functionType = MyCompletionFunctionType.DrawingFunction;
 PRICEPRECISION1.detail = "取指定合约设置的小数点位数";
 PRICEPRECISION1.documentation = `
 PRICEPRECISION1()，取某合约小数位数
@@ -6856,7 +6856,7 @@ PROFIT.label = "PROFIT";
 PROFIT.insertText = "";
 PROFIT.body = "PROFIT";
 PROFIT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-PROFIT.type = MyCompletionType.PositionManagementFunction;
+PROFIT.functionType = MyCompletionFunctionType.PositionManagementFunction;
 PROFIT.detail = "理论逐笔浮盈";
 PROFIT.documentation = `
 PROFIT理论逐笔浮盈
@@ -6889,7 +6889,7 @@ QUARTER.label = "QUARTER";
 QUARTER.insertText = "";
 QUARTER.body = "QUARTER";
 QUARTER.marketType = MyCompletionMarketType.BasicFunction;
-QUARTER.type = MyCompletionType.TimeFunction;
+QUARTER.functionType = MyCompletionFunctionType.TimeFunction;
 QUARTER.detail = "取得某周期的季度数";
 QUARTER.documentation = `
 QUARTER取得某周期的季度数
@@ -6910,7 +6910,7 @@ QUARTERTRADE.label = "QUARTERTRADE";
 QUARTERTRADE.insertText = "";
 QUARTERTRADE.body = "QUARTERTRADE";
 QUARTERTRADE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-QUARTERTRADE.type = MyCompletionType.CalculationControlFunction;
+QUARTERTRADE.functionType = MyCompletionFunctionType.CalculationControlFunction;
 QUARTERTRADE.detail = "季内交易函数";
 QUARTERTRADE.documentation = `
 QUARTERTRADE,季内交易函数
@@ -6943,7 +6943,7 @@ QUARTERTRADE1.label = "QUARTERTRADE1";
 QUARTERTRADE1.insertText = "";
 QUARTERTRADE1.body = "QUARTERTRADE1";
 QUARTERTRADE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-QUARTERTRADE1.type = MyCompletionType.CalculationControlFunction;
+QUARTERTRADE1.functionType = MyCompletionFunctionType.CalculationControlFunction;
 QUARTERTRADE1.detail = "季内交易函数";
 QUARTERTRADE1.documentation = `
 QUARTERTRADE1季内交易函数，且历史数据不参与计算。
@@ -6976,7 +6976,7 @@ RAND.label = "RAND";
 RAND.insertText = "";
 RAND.body = "RAND";
 RAND.marketType = MyCompletionMarketType.BasicFunction;
-RAND.type = MyCompletionType.MathFunction;
+RAND.functionType = MyCompletionFunctionType.MathFunction;
 RAND.detail = "产生随机数的随机函数";
 RAND.documentation = `
 RAND(X,Y)产生随机数的随机函数,返回范围在X到Y之间的随机数。
@@ -6999,7 +6999,7 @@ RANGE.label = "RANGE";
 RANGE.insertText = "";
 RANGE.body = "RANGE( , , )";
 RANGE.marketType = MyCompletionMarketType.BasicFunction;
-RANGE.type = MyCompletionType.MathFunction;
+RANGE.functionType = MyCompletionFunctionType.MathFunction;
 RANGE.detail = "范围";
 RANGE.documentation = `
 RANGE(A,B,C),判断是否A大于B同时小于C，如果是则返回1，否则返回0
@@ -7022,7 +7022,7 @@ RAWDATA.label = "RAWDATA";
 RAWDATA.insertText = "";
 RAWDATA.body = "RAWDATA(  )";
 RAWDATA.marketType = MyCompletionMarketType.BasicFunction;
-RAWDATA.type = MyCompletionType.CandlestickDataReference;
+RAWDATA.functionType = MyCompletionFunctionType.CandlestickDataReference;
 RAWDATA.detail = "取原始数据的值";
 RAWDATA.documentation = `
 RAWDATA()，取原始数据的高开低收
@@ -7047,7 +7047,7 @@ REF.label = "REF";
 REF.insertText = "";
 REF.body = "REF( , )";
 REF.marketType = MyCompletionMarketType.BasicFunction;
-REF.type = MyCompletionType.CandlestickDataReference;
+REF.functionType = MyCompletionFunctionType.CandlestickDataReference;
 REF.detail = "向前引用";
 REF.documentation = `
 REF(X,N),取X在N个周期前的值
@@ -7077,7 +7077,7 @@ REFLINE.label = "REFLINE";
 REFLINE.insertText = "";
 REFLINE.body = "REFLINE";
 REFLINE.marketType = MyCompletionMarketType.BasicFunction;
-REFLINE.type = MyCompletionType.DrawingFunction;
+REFLINE.functionType = MyCompletionFunctionType.DrawingFunction;
 REFLINE.detail = "设定指标参考线";
 REFLINE.documentation = `
 REFLINE设定指标参考线
@@ -7103,7 +7103,7 @@ REFLINE1.label = "REFLINE1";
 REFLINE1.insertText = "";
 REFLINE1.body = "REFLINE1";
 REFLINE1.marketType = MyCompletionMarketType.BasicFunction;
-REFLINE1.type = MyCompletionType.DrawingFunction;
+REFLINE1.functionType = MyCompletionFunctionType.DrawingFunction;
 REFLINE1.detail = "设定指标参考线";
 REFLINE1.documentation = `
 REFLINE1设定指标参考线
@@ -7129,7 +7129,7 @@ REFSIG_PLACE.label = "REFSIG_PLACE";
 REFSIG_PLACE.insertText = "";
 REFSIG_PLACE.body = "REFSIG_PLACE( , )";
 REFSIG_PLACE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-REFSIG_PLACE.type = MyCompletionType.SignalLoggingFunction;
+REFSIG_PLACE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 REFSIG_PLACE.detail = "判断指定信号的K线位置";
 REFSIG_PLACE.documentation = `
 REFSIG_PLACE(Sig,N)判断从当根K线开始倒数第N个固定的Sig信号所在K线的位置
@@ -7153,7 +7153,7 @@ REFSIG_PRICE.label = "REFSIG_PRICE";
 REFSIG_PRICE.insertText = "";
 REFSIG_PRICE.body = "REFSIG_PRICE( , )";
 REFSIG_PRICE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-REFSIG_PRICE.type = MyCompletionType.SignalLoggingFunction;
+REFSIG_PRICE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 REFSIG_PRICE.detail = "判断指定信号的信号价位";
 REFSIG_PRICE.documentation = `
 REFSIG_PRICE(Sig,N)返回从当根K线开始倒数第N个固定的Sig信号的信号价位
@@ -7176,7 +7176,7 @@ REFSIG_PRICE1.label = "REFSIG_PRICE1";
 REFSIG_PRICE1.insertText = "";
 REFSIG_PRICE1.body = "REFSIG_PRICE1( , )";
 REFSIG_PRICE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-REFSIG_PRICE1.type = MyCompletionType.SignalLoggingFunction;
+REFSIG_PRICE1.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 REFSIG_PRICE1.detail = "判断指定信号的委托价格";
 REFSIG_PRICE1.documentation = `
 REFSIG_PRICE1(Sig,N)返回从当根K线开始倒数第N个固定的Sig信号的委托价格
@@ -7206,7 +7206,7 @@ REFSIG_PRICE2.label = "REFSIG_PRICE2";
 REFSIG_PRICE2.insertText = "";
 REFSIG_PRICE2.body = "REFSIG_PRICE2( , )";
 REFSIG_PRICE2.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-REFSIG_PRICE2.type = MyCompletionType.SignalLoggingFunction;
+REFSIG_PRICE2.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 REFSIG_PRICE2.detail = "判断指定信号的成交价格";
 REFSIG_PRICE2.documentation = `
 REFSIG_PRICE2(Sig,N)返回从当根K线开始倒数第N个固定的Sig信号的成交价格
@@ -7239,7 +7239,7 @@ REFSIG_VOL.label = "REFSIG_VOL";
 REFSIG_VOL.insertText = "";
 REFSIG_VOL.body = "REFSIG_VOL( , )";
 REFSIG_VOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-REFSIG_VOL.type = MyCompletionType.SignalLoggingFunction;
+REFSIG_VOL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 REFSIG_VOL.detail = "判断指定信号的手数";
 REFSIG_VOL.documentation = `
 REFSIG_VOL(Sig,N)返回从当根K线开始倒数第N个固定的Sig信号的信号手数(反手指令取开仓手数)
@@ -7262,7 +7262,7 @@ REFWH.label = "REFWH";
 REFWH.insertText = "";
 REFWH.body = "REFWH( , )";
 REFWH.marketType = MyCompletionMarketType.BasicFunction;
-REFWH.type = MyCompletionType.CandlestickDataReference;
+REFWH.functionType = MyCompletionFunctionType.CandlestickDataReference;
 REFWH.detail = "向前引用";
 REFWH.documentation = `
 REFWH(X,N),取X在N个周期前的值
@@ -7283,7 +7283,7 @@ REVERSE.label = "REVERSE";
 REVERSE.insertText = "";
 REVERSE.body = "REVERSE( )";
 REVERSE.marketType = MyCompletionMarketType.BasicFunction;
-REVERSE.type = MyCompletionType.MathFunction;
+REVERSE.functionType = MyCompletionFunctionType.MathFunction;
 REVERSE.detail = "取相反值";
 REVERSE.documentation = `
 REVERSE(X)，取－X
@@ -7302,7 +7302,7 @@ ROUND.label = "ROUND";
 ROUND.insertText = "";
 ROUND.body = "ROUND( , )";
 ROUND.marketType = MyCompletionMarketType.BasicFunction;
-ROUND.type = MyCompletionType.MathFunction;
+ROUND.functionType = MyCompletionFunctionType.MathFunction;
 ROUND.detail = "指定位数四舍五入";
 ROUND.documentation = `
 ROUND(N,M),对N指定M位小数进行四舍五入
@@ -7327,7 +7327,7 @@ SAR.label = "SAR";
 SAR.insertText = "";
 SAR.body = "SAR( , , )";
 SAR.marketType = MyCompletionMarketType.BasicFunction;
-SAR.type = MyCompletionType.FinancialStatisticsFunction;
+SAR.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 SAR.detail = "抛物转向";
 SAR.documentation = `
 SAR(N,Step,Max)，取抛物转向值N为周期数，Step为步长，Max为极值
@@ -7359,7 +7359,7 @@ SAR1.label = "SAR1";
 SAR1.insertText = "";
 SAR1.body = "SAR1( , , )";
 SAR1.marketType = MyCompletionMarketType.BasicFunction;
-SAR1.type = MyCompletionType.FinancialStatisticsFunction;
+SAR1.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 SAR1.detail = "抛物转向";
 SAR1.documentation = `
 SAR1(N,Step,Max)，取抛物转向值N为周期数，Step为步长，Max为极值
@@ -7395,7 +7395,7 @@ SCALE.label = "SCALE";
 SCALE.insertText = "";
 SCALE.body = "SCALE";
 SCALE.marketType = MyCompletionMarketType.BasicFunction;
-SCALE.type = MyCompletionType.CandlestickDataReference;
+SCALE.functionType = MyCompletionFunctionType.CandlestickDataReference;
 SCALE.detail = "取得K线图主动买占总成交量的比例";
 SCALE.documentation = `
 SCALE返回主动买占总成交量的比例
@@ -7413,7 +7413,7 @@ SEEK.label = "SEEK";
 SEEK.insertText = "";
 SEEK.body = "Seek";
 SEEK.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-SEEK.type = MyCompletionType.FinancialStatisticsFunction;
+SEEK.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 SEEK.detail = "标签统计函数";
 SEEK.documentation = `
 SEEK(Cond)标签统计函数Cond为需要满足的条件
@@ -7438,7 +7438,7 @@ SELECT.label = "SELECT";
 SELECT.insertText = "";
 SELECT.body = "SELECT";
 SELECT.marketType = MyCompletionMarketType.StockSelectionFunction;
-SELECT.type = MyCompletionType.FormulaBasedSelection;
+SELECT.functionType = MyCompletionFunctionType.FormulaBasedSelection;
 SELECT.detail = "公式选股";
 SELECT.documentation = `
 SELECT公式选股
@@ -7467,7 +7467,7 @@ SETDEALPERCENT.label = "SETDEALPERCENT";
 SETDEALPERCENT.insertText = "";
 SETDEALPERCENT.body = "SETDEALPERCENT";
 SETDEALPERCENT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-SETDEALPERCENT.type = MyCompletionType.PositionManagementFunction;
+SETDEALPERCENT.functionType = MyCompletionFunctionType.PositionManagementFunction;
 SETDEALPERCENT.detail = "按理论资金比例下单";
 SETDEALPERCENT.documentation = `
 SETDEALPERCENT(fPercent,N)，每次按当前理论资金的fPercent比例下单，且最大为N手。
@@ -7496,7 +7496,7 @@ SETEXPIREDATE.label = "SETEXPIREDATE";
 SETEXPIREDATE.insertText = "";
 SETEXPIREDATE.body = "SETEXPIREDATE()";
 SETEXPIREDATE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-SETEXPIREDATE.type = MyCompletionType.EncryptionOutputFunction;
+SETEXPIREDATE.functionType = MyCompletionFunctionType.EncryptionOutputFunction;
 SETEXPIREDATE.detail = "设置加密模型的使用有效期的到期时间";
 SETEXPIREDATE.documentation = `
 SETEXPIREDATE('yyyymmdd')设置加密模型的使用有效期的到期时间
@@ -7523,7 +7523,7 @@ SETMOVEOPIPRICE.label = "SETMOVEOPIPRICE";
 SETMOVEOPIPRICE.insertText = "";
 SETMOVEOPIPRICE.body = "SETMOVEOPIPRICE()";
 SETMOVEOPIPRICE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-SETMOVEOPIPRICE.type = MyCompletionType.SignalExecutionFunction;
+SETMOVEOPIPRICE.functionType = MyCompletionFunctionType.SignalExecutionFunction;
 SETMOVEOPIPRICE.detail = "设置模组换月移仓的委托方式";
 SETMOVEOPIPRICE.documentation = `
 SETMOVEOPIPRICE(PRICE),设置模组换月移仓的委托方式，PRICE为价格方式
@@ -7556,7 +7556,7 @@ SETQUOTACCOUNT.label = "SETQUOTACCOUNT";
 SETQUOTACCOUNT.insertText = "";
 SETQUOTACCOUNT.body = "SETQUOTACCOUNT()";
 SETQUOTACCOUNT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-SETQUOTACCOUNT.type = MyCompletionType.EncryptionOutputFunction;
+SETQUOTACCOUNT.functionType = MyCompletionFunctionType.EncryptionOutputFunction;
 SETQUOTACCOUNT.detail = "设置模型加密输出使用者的文华行情账号";
 SETQUOTACCOUNT.documentation = `
 SETQUOTACCOUNT('ACCOUNT1')设置模型加密输出使用者的文华行情账号
@@ -7584,7 +7584,7 @@ SETSIGPRICE.label = "SETSIGPRICE";
 SETSIGPRICE.insertText = "";
 SETSIGPRICE.body = "SETSIGPRICE( , )";
 SETSIGPRICE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-SETSIGPRICE.type = MyCompletionType.SignalExecutionFunction;
+SETSIGPRICE.functionType = MyCompletionFunctionType.SignalExecutionFunction;
 SETSIGPRICE.detail = "指定信号的下单价格";
 SETSIGPRICE.documentation = `
 SETSIGPRICE(SIG,PRICE),设置SIG指令的下单价格，PRICE为下单价格。
@@ -7626,7 +7626,7 @@ SETSIGPRICETYPE.label = "SETSIGPRICETYPE";
 SETSIGPRICETYPE.insertText = "";
 SETSIGPRICETYPE.body = "SETSIGPRICETYPE( , , )";
 SETSIGPRICETYPE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-SETSIGPRICETYPE.type = MyCompletionType.SignalExecutionFunction;
+SETSIGPRICETYPE.functionType = MyCompletionFunctionType.SignalExecutionFunction;
 SETSIGPRICETYPE.detail = "设置信号的委托价格方式";
 SETSIGPRICETYPE.documentation = `
 SETSIGPRICETYPE(SIG,PRICE,IsCancel),设置SIG指令的委托价格方式，PRICE为委托价格方式，IsCancel为是否启用终止下单。
@@ -7675,7 +7675,7 @@ SETSTYLECOLOR.label = "SETSTYLECOLOR";
 SETSTYLECOLOR.insertText = "";
 SETSTYLECOLOR.body = "SETSTYLECOLOR( , )";
 SETSTYLECOLOR.marketType = MyCompletionMarketType.BasicFunction;
-SETSTYLECOLOR.type = MyCompletionType.DrawingFunction;
+SETSTYLECOLOR.functionType = MyCompletionFunctionType.DrawingFunction;
 SETSTYLECOLOR.detail = "线型的粗细和颜色控制";
 SETSTYLECOLOR.documentation = `
 SETSTYLECOLOR(LINETHICK,COLOR);设置线型的粗细和颜色LINETHICK表示线形的粗细，可以使用LINETHICK1——LINETHICK7；COLOR为颜色
@@ -7700,7 +7700,7 @@ SETTLE.label = "SETTLE";
 SETTLE.insertText = "";
 SETTLE.body = "SETTLE";
 SETTLE.marketType = MyCompletionMarketType.BasicFunction;
-SETTLE.type = MyCompletionType.CandlestickDataReference;
+SETTLE.functionType = MyCompletionFunctionType.CandlestickDataReference;
 SETTLE.detail = "取得K线图的结算价或者取得当日成交均价";
 SETTLE.documentation = `
 SETTLE求到某根k线的结算价
@@ -7721,7 +7721,7 @@ SETTRADEACCOUNT.label = "SETTRADEACCOUNT";
 SETTRADEACCOUNT.insertText = "";
 SETTRADEACCOUNT.body = "SETTRADEACCOUNT()";
 SETTRADEACCOUNT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-SETTRADEACCOUNT.type = MyCompletionType.EncryptionOutputFunction;
+SETTRADEACCOUNT.functionType = MyCompletionFunctionType.EncryptionOutputFunction;
 SETTRADEACCOUNT.detail = "设置模型加密输出使用者交易的资金账号";
 SETTRADEACCOUNT.documentation = `
 SETTRADEACCOUNT('ACCOUNT1')设置模型加密输出使用者交易的资金账号
@@ -7749,7 +7749,7 @@ SGN.label = "SGN";
 SGN.insertText = "";
 SGN.body = "SGN( )";
 SGN.marketType = MyCompletionMarketType.BasicFunction;
-SGN.type = MyCompletionType.MathFunction;
+SGN.functionType = MyCompletionFunctionType.MathFunction;
 SGN.detail = "取符号";
 SGN.documentation = `
 SGN(X)，判断X正负数（若X>0返回1,若X<0返回-1,否则返回0）
@@ -7768,7 +7768,7 @@ SIGNUM.label = "SIGNUM";
 SIGNUM.insertText = "";
 SIGNUM.body = "SIGNUM";
 SIGNUM.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-SIGNUM.type = MyCompletionType.SignalLoggingFunction;
+SIGNUM.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 SIGNUM.detail = "定位一次交易过程中的信号位置";
 SIGNUM.documentation = `
 SIGNUM，返回值为当前信号为一次交易过程中的第几个信号
@@ -7790,7 +7790,7 @@ SIGVOL.label = "SIGVOL";
 SIGVOL.insertText = "";
 SIGVOL.body = "SIGVOL()";
 SIGVOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-SIGVOL.type = MyCompletionType.SignalLoggingFunction;
+SIGVOL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 SIGVOL.detail = "一次交易中指定信号的下单手数";
 SIGVOL.documentation = `
 SIGVOL(N),返回一次交易中第N个信号的下单手数
@@ -7819,7 +7819,7 @@ SIN.label = "SIN";
 SIN.insertText = "";
 SIN.body = "SIN( )";
 SIN.marketType = MyCompletionMarketType.BasicFunction;
-SIN.type = MyCompletionType.MathFunction;
+SIN.functionType = MyCompletionFunctionType.MathFunction;
 SIN.detail = "求正弦";
 SIN.documentation = `
 SIN(X)，求X的正弦值
@@ -7840,7 +7840,7 @@ SKEWNESS.label = "SKEWNESS";
 SKEWNESS.insertText = "";
 SKEWNESS.body = "SKEWNESS( , )";
 SKEWNESS.marketType = MyCompletionMarketType.BasicFunction;
-SKEWNESS.type = MyCompletionType.MathematicalStatisticsFunction;
+SKEWNESS.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
 SKEWNESS.detail = "偏度系数";
 SKEWNESS.documentation = `
 SKEWNESS(X,N)求X在N个周期内的偏度系数
@@ -7868,7 +7868,7 @@ SKHIGH.label = "SKHIGH";
 SKHIGH.insertText = "";
 SKHIGH.body = "SKHIGH";
 SKHIGH.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-SKHIGH.type = MyCompletionType.SignalLoggingFunction;
+SKHIGH.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 SKHIGH.detail = "返回数据合约卖开仓以来的最高价";
 SKHIGH.documentation = `
 SKHIGH,返回数据合约卖开仓以来的最高价
@@ -7898,7 +7898,7 @@ SKLOW.label = "SKLOW";
 SKLOW.insertText = "";
 SKLOW.body = "SKLOW";
 SKLOW.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-SKLOW.type = MyCompletionType.SignalLoggingFunction;
+SKLOW.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 SKLOW.detail = "返回数据合约卖开仓以来的最低价";
 SKLOW.documentation = `
 SKLOW,返回数据合约卖开仓以来的最低价
@@ -7927,7 +7927,7 @@ SKPRICE.label = "SKPRICE";
 SKPRICE.insertText = "";
 SKPRICE.body = "SKPRICE";
 SKPRICE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-SKPRICE.type = MyCompletionType.SignalLoggingFunction;
+SKPRICE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 SKPRICE.detail = "返回数据合约最近一次卖开信号价位";
 SKPRICE.documentation = `
 SKPRICE，返回数据合约最近一次卖开信号价位
@@ -7962,7 +7962,7 @@ SKPRICE1.label = "SKPRICE1";
 SKPRICE1.insertText = "";
 SKPRICE1.body = "SKPRICE1";
 SKPRICE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-SKPRICE1.type = MyCompletionType.SignalLoggingFunction;
+SKPRICE1.functionType = MyCompletionFunctionType.SignalLoggingFunction;
 SKPRICE1.detail = "返回交易合约最近一次卖开信号价位";
 SKPRICE1.documentation = `
 SKPRICE1，返回交易合约最近一次卖开信号价位
@@ -7992,7 +7992,7 @@ SKPRICEAV.label = "SKPRICEAV";
 SKPRICEAV.insertText = "";
 SKPRICEAV.body = "SKPRICEAV";
 SKPRICEAV.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-SKPRICEAV.type = MyCompletionType.PositionManagementFunction;
+SKPRICEAV.functionType = MyCompletionFunctionType.PositionManagementFunction;
 SKPRICEAV.detail = "返回数据合约空头开仓均价";
 SKPRICEAV.documentation = `
 SKPRICEAV返回数据合约空头开仓均价
@@ -8023,7 +8023,7 @@ SKPRICEAV1.label = "SKPRICEAV1";
 SKPRICEAV1.insertText = "";
 SKPRICEAV1.body = "SKPRICEAV1";
 SKPRICEAV1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-SKPRICEAV1.type = MyCompletionType.PositionManagementFunction;
+SKPRICEAV1.functionType = MyCompletionFunctionType.PositionManagementFunction;
 SKPRICEAV1.detail = "返回交易合约空头开仓均价";
 SKPRICEAV1.documentation = `
 SKPRICEAV1交易合约空头开仓均价
@@ -8054,7 +8054,7 @@ SKVOL.label = "SKVOL";
 SKVOL.insertText = "";
 SKVOL.body = "SKVOL";
 SKVOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-SKVOL.type = MyCompletionType.PositionManagementFunction;
+SKVOL.functionType = MyCompletionFunctionType.PositionManagementFunction;
 SKVOL.detail = "卖开信号手数";
 SKVOL.documentation = `
 SKVOL返回模型当前的空头理论持仓
@@ -8080,7 +8080,7 @@ SKVOL2.label = "SKVOL2";
 SKVOL2.insertText = "";
 SKVOL2.body = "SKVOL2";
 SKVOL2.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-SKVOL2.type = MyCompletionType.PositionManagementFunction;
+SKVOL2.functionType = MyCompletionFunctionType.PositionManagementFunction;
 SKVOL2.detail = "卖开信号手数";
 SKVOL2.documentation = `
 SKVOL2模组空头持仓
@@ -8106,7 +8106,7 @@ SLOPE.label = "SLOPE";
 SLOPE.insertText = "";
 SLOPE.body = "SLOPE( , )";
 SLOPE.marketType = MyCompletionMarketType.BasicFunction;
-SLOPE.type = MyCompletionType.MathematicalStatisticsFunction;
+SLOPE.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
 SLOPE.detail = "线性回归的斜率";
 SLOPE.documentation = `
 SLOPE(X,N)，求X的N周期的线型回归的斜率
@@ -8144,7 +8144,7 @@ SMA.label = "SMA";
 SMA.insertText = "";
 SMA.body = "SMA( , , )";
 SMA.marketType = MyCompletionMarketType.BasicFunction;
-SMA.type = MyCompletionType.FinancialStatisticsFunction;
+SMA.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 SMA.detail = "扩展指数加权移动平均";
 SMA.documentation = `
 SMA(X,N,M)，求X的N个周期内的扩展指数加权移动平均。M为权重，N为周期数
@@ -8164,7 +8164,7 @@ SMMA.label = "SMMA";
 SMMA.insertText = "";
 SMMA.body = "SMMA(,)";
 SMMA.marketType = MyCompletionMarketType.BasicFunction;
-SMMA.type = MyCompletionType.FinancialStatisticsFunction;
+SMMA.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 SMMA.detail = "通畅移动平均";
 SMMA.documentation = `
 SMMA(X,N),表示当前K线上X在N个周期的通畅移动平均线
@@ -8181,7 +8181,7 @@ SOLID.label = "SOLID";
 SOLID.insertText = "";
 SOLID.body = "SOLID";
 SOLID.marketType = MyCompletionMarketType.BasicFunction;
-SOLID.type = MyCompletionType.DrawingFunction;
+SOLID.functionType = MyCompletionFunctionType.DrawingFunction;
 SOLID.detail = "实心显示";
 SOLID.documentation = `
 SOLID,画实心柱线
@@ -8202,7 +8202,7 @@ SORT.label = "SORT";
 SORT.insertText = "";
 SORT.body = "SORT";
 SORT.marketType = MyCompletionMarketType.BasicFunction;
-SORT.type = MyCompletionType.FinancialStatisticsFunction;
+SORT.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 SORT.detail = "取排序在相应位置的值";
 SORT.documentation = `
 SORT(TYPE,POS,N1,N2,...,N30);按升(降)序排列，取第POS个参数对应的数值
@@ -8222,7 +8222,7 @@ SORTPOS.label = "SORTPOS";
 SORTPOS.insertText = "";
 SORTPOS.body = "SORTPOS";
 SORTPOS.marketType = MyCompletionMarketType.BasicFunction;
-SORTPOS.type = MyCompletionType.FinancialStatisticsFunction;
+SORTPOS.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 SORTPOS.detail = "取排序后数值的位置";
 SORTPOS.documentation = `
 SORTPOS(Type,POS,N1,N2,...,N30);按升(降)序排列，取第POS个参数的原始位置
@@ -8244,7 +8244,7 @@ SOUND.label = "SOUND";
 SOUND.insertText = "";
 SOUND.body = "SOUND( )";
 SOUND.marketType = MyCompletionMarketType.BasicFunction;
-SOUND.type = MyCompletionType.DrawingFunction;
+SOUND.functionType = MyCompletionFunctionType.DrawingFunction;
 SOUND.detail = "播放声音";
 SOUND.documentation = `
 SOUND('N')，播放声音'N'
@@ -8268,7 +8268,7 @@ SPLIT.label = "SPLIT";
 SPLIT.insertText = "";
 SPLIT.body = "SPLIT()";
 SPLIT.marketType = MyCompletionMarketType.BasicFunction;
-SPLIT.type = MyCompletionType.StockDataFunction;
+SPLIT.functionType = MyCompletionFunctionType.StockDataFunction;
 SPLIT.detail = "返回之前第N次除权(送股或配股)的除权比例";
 SPLIT.documentation = `
 SPLIT(N)返回之前第N次除权(送股或配股)的除权比例
@@ -8299,7 +8299,7 @@ SPLITBARS.label = "SPLITBARS";
 SPLITBARS.insertText = "";
 SPLITBARS.body = "SPLITBARS()";
 SPLITBARS.marketType = MyCompletionMarketType.BasicFunction;
-SPLITBARS.type = MyCompletionType.StockDataFunction;
+SPLITBARS.functionType = MyCompletionFunctionType.StockDataFunction;
 SPLITBARS.detail = "返回从之前第N个除权日到当前的周期数";
 SPLITBARS.documentation = `
 SPLITBARS(N)返回从之前第N次除权到当前的周期数
@@ -8323,7 +8323,7 @@ SQRT.label = "SQRT";
 SQRT.insertText = "";
 SQRT.body = "SQRT( )";
 SQRT.marketType = MyCompletionMarketType.BasicFunction;
-SQRT.type = MyCompletionType.MathFunction;
+SQRT.functionType = MyCompletionFunctionType.MathFunction;
 SQRT.detail = "平方根";
 SQRT.documentation = `
 SQRT(X)，求X的平方根
@@ -8341,7 +8341,7 @@ SQUARE.label = "SQUARE";
 SQUARE.insertText = "";
 SQUARE.body = "SQUARE( )";
 SQUARE.marketType = MyCompletionMarketType.BasicFunction;
-SQUARE.type = MyCompletionType.MathFunction;
+SQUARE.functionType = MyCompletionFunctionType.MathFunction;
 SQUARE.detail = "平方";
 SQUARE.documentation = `
 SQUARE(X)，求X的平方
@@ -8358,7 +8358,7 @@ STD.label = "STD";
 STD.insertText = "";
 STD.body = "STD( , )";
 STD.marketType = MyCompletionMarketType.BasicFunction;
-STD.type = MyCompletionType.MathematicalStatisticsFunction;
+STD.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
 STD.detail = "样本标准差";
 STD.documentation = `
 STD(X,N)，求X在N个周期内的样本标准差
@@ -8386,7 +8386,7 @@ STDP.label = "STDP";
 STDP.insertText = "";
 STDP.body = "STDP( , )";
 STDP.marketType = MyCompletionMarketType.BasicFunction;
-STDP.type = MyCompletionType.MathematicalStatisticsFunction;
+STDP.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
 STDP.detail = "总体标准差";
 STDP.documentation = `
 STDP(X,N)，求X的N日总体标准差
@@ -8415,7 +8415,7 @@ STICK.label = "STICK";
 STICK.insertText = "";
 STICK.body = "STICK(,,,,,)";
 STICK.marketType = MyCompletionMarketType.BasicFunction;
-STICK.type = MyCompletionType.DrawingFunction;
+STICK.functionType = MyCompletionFunctionType.DrawingFunction;
 STICK.detail = "画指定粗细的柱线";
 STICK.documentation = `
 STICK(COND,P1,P2,N,COLOR,Empty);画指定粗细的柱线当满足COND时，在P1与P2之间画一条粗细为N、颜色为COLOR的柱状图若Empty不为0，则为空心柱；Empty为0，则为实心柱；N取值0-9
@@ -8434,7 +8434,7 @@ STICKLINE.label = "STICKLINE";
 STICKLINE.insertText = "";
 STICKLINE.body = "STICKLINE( , , , , )";
 STICKLINE.marketType = MyCompletionMarketType.BasicFunction;
-STICKLINE.type = MyCompletionType.DrawingFunction;
+STICKLINE.functionType = MyCompletionFunctionType.DrawingFunction;
 STICKLINE.detail = "画柱线";
 STICKLINE.documentation = `
 STICKLINE(C,P1,P2,Color,Empty)当C条件满足时，从P1画到P2柱线
@@ -8457,7 +8457,7 @@ STICKLINE1.label = "STICKLINE1";
 STICKLINE1.insertText = "";
 STICKLINE1.body = "STICKLINE1( , , , , )";
 STICKLINE1.marketType = MyCompletionMarketType.BasicFunction;
-STICKLINE1.type = MyCompletionType.DrawingFunction;
+STICKLINE1.functionType = MyCompletionFunctionType.DrawingFunction;
 STICKLINE1.detail = "画柱线";
 STICKLINE1.documentation = `
 STICKLINE1(C,P1,P2,Width,Empty)当C条件满足时，从P1画到P2柱线，Width为宽度，若Empty不为0，则为空心柱
@@ -8482,7 +8482,7 @@ STKTYPE.label = "STKTYPE";
 STKTYPE.insertText = "";
 STKTYPE.body = "STKTYPE";
 STKTYPE.marketType = MyCompletionMarketType.BasicFunction;
-STKTYPE.type = MyCompletionType.LogicalJudgmentFunction;
+STKTYPE.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 STKTYPE.detail = "取市场类型";
 STKTYPE.documentation = `
 STKTYPE取市场类型，1为国内股票、2为美国股票、6为外汇、7为国内期货、8为国内期权、9为外盘、5为其它
@@ -8501,7 +8501,7 @@ STOCKDIVD.label = "STOCKDIVD";
 STOCKDIVD.insertText = "";
 STOCKDIVD.body = "STOCKDIVD";
 STOCKDIVD.marketType = MyCompletionMarketType.BasicFunction;
-STOCKDIVD.type = MyCompletionType.StockDataFunction;
+STOCKDIVD.functionType = MyCompletionFunctionType.StockDataFunction;
 STOCKDIVD.detail = "设置股票复权";
 STOCKDIVD.documentation = `
 STOCKDIVD()设置股票除权复权
@@ -8530,7 +8530,7 @@ SUM.label = "SUM";
 SUM.insertText = "";
 SUM.body = "SUM( , )";
 SUM.marketType = MyCompletionMarketType.BasicFunction;
-SUM.type = MyCompletionType.FinancialStatisticsFunction;
+SUM.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 SUM.detail = "求和";
 SUM.documentation = `
 SUM(X,N)，求X在N个周期内的总和
@@ -8555,7 +8555,7 @@ SUMBARS.label = "SUMBARS";
 SUMBARS.insertText = "";
 SUMBARS.body = "SUMBARS( , )";
 SUMBARS.marketType = MyCompletionMarketType.BasicFunction;
-SUMBARS.type = MyCompletionType.FinancialStatisticsFunction;
+SUMBARS.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 SUMBARS.detail = "累加到指定值的周期数";
 SUMBARS.documentation = `
 SUMBARS(X,A):求多少个周期的X向前累加能够大于等于A
@@ -8573,7 +8573,7 @@ T_CLOSE.label = "T_CLOSE";
 T_CLOSE.insertText = "";
 T_CLOSE.body = "T_CLOSE";
 T_CLOSE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-T_CLOSE.type = MyCompletionType.CandlestickDataReference;
+T_CLOSE.functionType = MyCompletionFunctionType.CandlestickDataReference;
 T_CLOSE.detail = "取交易合约收盘价";
 T_CLOSE.documentation = `
 T_CLOSE 取交易合约收盘价。
@@ -8591,7 +8591,7 @@ T_MAX.label = "T_MAX";
 T_MAX.insertText = "";
 T_MAX.body = "T_MAX";
 T_MAX.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-T_MAX.type = MyCompletionType.PositionManagementFunction;
+T_MAX.functionType = MyCompletionFunctionType.PositionManagementFunction;
 T_MAX.detail = "设置模组最大开仓手数";
 T_MAX.documentation = `
 T_MAX(TYPE,N),根据设置的资金占用百分比计算模组最大可开仓手数，用于模组资金风控
@@ -8631,7 +8631,7 @@ T_PLUS.label = "T_PLUS";
 T_PLUS.insertText = "";
 T_PLUS.body = "T_PLUS()";
 T_PLUS.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-T_PLUS.type = MyCompletionType.SignalExecutionFunction;
+T_PLUS.functionType = MyCompletionFunctionType.SignalExecutionFunction;
 T_PLUS.detail = "设置开仓手数为默认手数的N倍";
 T_PLUS.documentation = `
 T_PLUS(N)当条件满足时，过滤模型的开仓手数为默认手数
@@ -8658,7 +8658,7 @@ T0TOTIME.label = "T0TOTIME";
 T0TOTIME.insertText = "";
 T0TOTIME.body = "T0TOTIME()";
 T0TOTIME.marketType = MyCompletionMarketType.BasicFunction;
-T0TOTIME.type = MyCompletionType.TimeFunction;
+T0TOTIME.functionType = MyCompletionFunctionType.TimeFunction;
 T0TOTIME.detail = "秒数转换为时间";
 T0TOTIME.documentation = `
 T0TOTIME(X)返回自该日0点以来的X秒处的时间。X可为变量或常数
@@ -8677,7 +8677,7 @@ TAN.label = "TAN";
 TAN.insertText = "";
 TAN.body = "TAN( )";
 TAN.marketType = MyCompletionMarketType.BasicFunction;
-TAN.type = MyCompletionType.MathFunction;
+TAN.functionType = MyCompletionFunctionType.MathFunction;
 TAN.detail = "正切";
 TAN.documentation = `
 TAN(X)，求X的正切值
@@ -8693,7 +8693,7 @@ TAVLOSS.label = "TAVLOSS";
 TAVLOSS.insertText = "";
 TAVLOSS.body = "TAVLOSS";
 TAVLOSS.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TAVLOSS.type = MyCompletionType.PositionManagementFunction;
+TAVLOSS.functionType = MyCompletionFunctionType.PositionManagementFunction;
 TAVLOSS.detail = "返回平均亏损额";
 TAVLOSS.documentation = `
 TAVLOSS平均亏损额
@@ -8721,7 +8721,7 @@ TAVWIN.label = "TAVWIN";
 TAVWIN.insertText = "";
 TAVWIN.body = "TAVWIN";
 TAVWIN.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TAVWIN.type = MyCompletionType.PositionManagementFunction;
+TAVWIN.functionType = MyCompletionFunctionType.PositionManagementFunction;
 TAVWIN.detail = "返回平均盈利额";
 TAVWIN.documentation = `
 TAVWIN平均盈利额
@@ -8749,7 +8749,7 @@ TAVWINLOSS.label = "TAVWINLOSS";
 TAVWINLOSS.insertText = "";
 TAVWINLOSS.body = "TAVWINLOSS";
 TAVWINLOSS.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TAVWINLOSS.type = MyCompletionType.PositionManagementFunction;
+TAVWINLOSS.functionType = MyCompletionFunctionType.PositionManagementFunction;
 TAVWINLOSS.detail = "返回平均盈亏额";
 TAVWINLOSS.documentation = `
 TAVWINLOSS平均盈亏额
@@ -8777,7 +8777,7 @@ TIME.label = "TIME";
 TIME.insertText = "";
 TIME.body = "TIME";
 TIME.marketType = MyCompletionMarketType.BasicFunction;
-TIME.type = MyCompletionType.TimeFunction;
+TIME.functionType = MyCompletionFunctionType.TimeFunction;
 TIME.detail = "取K线的时间";
 TIME.documentation = `
 TIME取周期的时数，分钟周期表示为0900，秒周期表示为090000
@@ -8808,7 +8808,7 @@ TIME0.label = "TIME0";
 TIME0.insertText = "";
 TIME0.body = "TIME0";
 TIME0.marketType = MyCompletionMarketType.BasicFunction;
-TIME0.type = MyCompletionType.TimeFunction;
+TIME0.functionType = MyCompletionFunctionType.TimeFunction;
 TIME0.detail = "求当前周期自该日0点以来的秒数";
 TIME0.documentation = `
 
@@ -8827,7 +8827,7 @@ TIMETOT0.label = "TIMETOT0";
 TIMETOT0.insertText = "";
 TIMETOT0.body = "TIMETOT0()";
 TIMETOT0.marketType = MyCompletionMarketType.BasicFunction;
-TIMETOT0.type = MyCompletionType.TimeFunction;
+TIMETOT0.functionType = MyCompletionFunctionType.TimeFunction;
 TIMETOT0.detail = "时间转换为秒数";
 TIMETOT0.documentation = `
 TIMETOT0(X)返回时间X自该日0点以来的秒数。X可为变量或常数
@@ -8846,7 +8846,7 @@ TMAXLOSS.label = "TMAXLOSS";
 TMAXLOSS.insertText = "";
 TMAXLOSS.body = "TMAXLOSS";
 TMAXLOSS.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TMAXLOSS.type = MyCompletionType.PositionManagementFunction;
+TMAXLOSS.functionType = MyCompletionFunctionType.PositionManagementFunction;
 TMAXLOSS.detail = "返回单次亏损最大额";
 TMAXLOSS.documentation = `
 TMAXLOSS单次亏损最大额
@@ -8874,7 +8874,7 @@ TMAXSEQLOSS.label = "TMAXSEQLOSS";
 TMAXSEQLOSS.insertText = "";
 TMAXSEQLOSS.body = "TMAXSEQLOSS";
 TMAXSEQLOSS.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TMAXSEQLOSS.type = MyCompletionType.PositionManagementFunction;
+TMAXSEQLOSS.functionType = MyCompletionFunctionType.PositionManagementFunction;
 TMAXSEQLOSS.detail = "返回连续亏损交易的最大次数";
 TMAXSEQLOSS.documentation = `
 TMAXSEQLOSS当前位置之前，连续亏损交易的最大次数
@@ -8899,7 +8899,7 @@ TMAXSEQWIN.label = "TMAXSEQWIN";
 TMAXSEQWIN.insertText = "";
 TMAXSEQWIN.body = "TMAXSEQWIN";
 TMAXSEQWIN.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TMAXSEQWIN.type = MyCompletionType.PositionManagementFunction;
+TMAXSEQWIN.functionType = MyCompletionFunctionType.PositionManagementFunction;
 TMAXSEQWIN.detail = "返回连续赢利交易的最大次数";
 TMAXSEQWIN.documentation = `
 TMAXSEQWIN当前位置之前，连续盈利交易的最大次数
@@ -8924,7 +8924,7 @@ TMAXWIN.label = "TMAXWIN";
 TMAXWIN.insertText = "";
 TMAXWIN.body = "TMAXWIN";
 TMAXWIN.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TMAXWIN.type = MyCompletionType.PositionManagementFunction;
+TMAXWIN.functionType = MyCompletionFunctionType.PositionManagementFunction;
 TMAXWIN.detail = "返回单次盈利最大额";
 TMAXWIN.documentation = `
 TMAXWIN单次盈利最大额
@@ -8952,7 +8952,7 @@ TNUMSEQLOSS.label = "TNUMSEQLOSS";
 TNUMSEQLOSS.insertText = "";
 TNUMSEQLOSS.body = "TNUMSEQLOSS";
 TNUMSEQLOSS.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TNUMSEQLOSS.type = MyCompletionType.PositionManagementFunction;
+TNUMSEQLOSS.functionType = MyCompletionFunctionType.PositionManagementFunction;
 TNUMSEQLOSS.detail = "返回持续亏损的次数";
 TNUMSEQLOSS.documentation = `
 TNUMSEQLOSS返回持续亏损的次数
@@ -8977,7 +8977,7 @@ TNUMSEQWIN.label = "TNUMSEQWIN";
 TNUMSEQWIN.insertText = "";
 TNUMSEQWIN.body = "TNUMSEQWIN";
 TNUMSEQWIN.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TNUMSEQWIN.type = MyCompletionType.PositionManagementFunction;
+TNUMSEQWIN.functionType = MyCompletionFunctionType.PositionManagementFunction;
 TNUMSEQWIN.detail = "返回持续赢利的次数";
 TNUMSEQWIN.documentation = `
 TNUMSEQWIN返回持续赢利的次数
@@ -9002,7 +9002,7 @@ TODAYDEUCETIMES.label = "TODAYDEUCETIMES";
 TODAYDEUCETIMES.insertText = "";
 TODAYDEUCETIMES.body = "TODAYDEUCETIMES";
 TODAYDEUCETIMES.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TODAYDEUCETIMES.type = MyCompletionType.PositionManagementFunction;
+TODAYDEUCETIMES.functionType = MyCompletionFunctionType.PositionManagementFunction;
 TODAYDEUCETIMES.detail = "返回当日平出次数";
 TODAYDEUCETIMES.documentation = `
 TODAYDEUCETIMES返回当日平出次数
@@ -9027,7 +9027,7 @@ TODAYLOSSTIMES.label = "TODAYLOSSTIMES";
 TODAYLOSSTIMES.insertText = "";
 TODAYLOSSTIMES.body = "TODAYLOSSTIMES";
 TODAYLOSSTIMES.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TODAYLOSSTIMES.type = MyCompletionType.PositionManagementFunction;
+TODAYLOSSTIMES.functionType = MyCompletionFunctionType.PositionManagementFunction;
 TODAYLOSSTIMES.detail = "返回当日亏损次数";
 TODAYLOSSTIMES.documentation = `
 TODAYLOSSTIMES返回当日亏损次数
@@ -9052,7 +9052,7 @@ TODAYWINTIMES.label = "TODAYWINTIMES";
 TODAYWINTIMES.insertText = "";
 TODAYWINTIMES.body = "TODAYWINTIMES";
 TODAYWINTIMES.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TODAYWINTIMES.type = MyCompletionType.PositionManagementFunction;
+TODAYWINTIMES.functionType = MyCompletionFunctionType.PositionManagementFunction;
 TODAYWINTIMES.detail = "返回当日赢利次数";
 TODAYWINTIMES.documentation = `
 TODAYWINTIMES返回当日赢利次数
@@ -9078,7 +9078,7 @@ TPROFIT_REF.label = "TPROFIT_REF";
 TPROFIT_REF.insertText = "";
 TPROFIT_REF.body = "TPROFIT_REF( )";
 TPROFIT_REF.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TPROFIT_REF.type = MyCompletionType.PositionManagementFunction;
+TPROFIT_REF.functionType = MyCompletionFunctionType.PositionManagementFunction;
 TPROFIT_REF.detail = "取得前第N次交易的盈亏额";
 TPROFIT_REF.documentation = `
 TPROFIT_REF(N)取得前第N次交易的盈亏额
@@ -9104,7 +9104,7 @@ TRACING_ORDER.label = "TRACING_ORDER";
 TRACING_ORDER.insertText = "";
 TRACING_ORDER.body = "TRACING_ORDER( , , )";
 TRACING_ORDER.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TRACING_ORDER.type = MyCompletionType.SignalExecutionFunction;
+TRACING_ORDER.functionType = MyCompletionFunctionType.SignalExecutionFunction;
 TRACING_ORDER.detail = "设置信号进行追价下单";
 TRACING_ORDER.documentation = `
 TRACING_ORDER(Sig,PriceType,Time);设置SIG指令按照追价方式委托，PriceType为首次下单委托价格，Time 秒不成交市价追
@@ -9145,7 +9145,7 @@ TRADE_AGAIN.label = "TRADE_AGAIN";
 TRADE_AGAIN.insertText = "";
 TRADE_AGAIN.body = "TRADE_AGAIN()";
 TRADE_AGAIN.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TRADE_AGAIN.type = MyCompletionType.CalculationControlFunction;
+TRADE_AGAIN.functionType = MyCompletionFunctionType.CalculationControlFunction;
 TRADE_AGAIN.detail = "限制信号函数";
 TRADE_AGAIN.documentation = `
 TRADE_AGAIN(N),含有该函数的加减仓模型中,同一指令行可以连续出N个信号
@@ -9171,7 +9171,7 @@ TRADE_OTHER.label = "TRADE_OTHER";
 TRADE_OTHER.insertText = "";
 TRADE_OTHER.body = "TRADE_OTHER()";
 TRADE_OTHER.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TRADE_OTHER.type = MyCompletionType.SignalExecutionFunction;
+TRADE_OTHER.functionType = MyCompletionFunctionType.SignalExecutionFunction;
 TRADE_OTHER.detail = "指定交易合约";
 TRADE_OTHER.documentation = `
 TRADE_OTHER('CODE')，指定CODE合约为交易合约
@@ -9216,7 +9216,7 @@ TRADE_REF.label = "TRADE_REF";
 TRADE_REF.insertText = "";
 TRADE_REF.body = "TRADE_REF( )";
 TRADE_REF.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TRADE_REF.type = MyCompletionType.PositionManagementFunction;
+TRADE_REF.functionType = MyCompletionFunctionType.PositionManagementFunction;
 TRADE_REF.detail = "判断前N次交易是否赢利";
 TRADE_REF.documentation = `
 TRADE_REF(N)判断前N次交易是否赢利
@@ -9242,7 +9242,7 @@ TRADE_SMOOTHING.label = "TRADE_SMOOTHING";
 TRADE_SMOOTHING.insertText = "";
 TRADE_SMOOTHING.body = "TRADE_SMOOTHING";
 TRADE_SMOOTHING.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TRADE_SMOOTHING.type = MyCompletionType.CandlestickDataReference;
+TRADE_SMOOTHING.functionType = MyCompletionFunctionType.CandlestickDataReference;
 TRADE_SMOOTHING.detail = "消除隔日跳空函数";
 TRADE_SMOOTHING.documentation = `
 TRADE_SMOOTHING;消除隔夜跳空函数
@@ -9277,7 +9277,7 @@ TREND.label = "TREND";
 TREND.insertText = "";
 TREND.body = "TREND";
 TREND.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TREND.type = MyCompletionType.LogicalJudgmentFunction;
+TREND.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 TREND.detail = "获取K线趋势";
 TREND.documentation = `
 TREND,获取K线趋势默认返回0，最高最低同时出现为1，最低先出现为2，最高先出现为3
@@ -9292,7 +9292,7 @@ TRMA.label = "TRMA";
 TRMA.insertText = "";
 TRMA.body = "TRMA( , )";
 TRMA.marketType = MyCompletionMarketType.BasicFunction;
-TRMA.type = MyCompletionType.FinancialStatisticsFunction;
+TRMA.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 TRMA.detail = "三角移动平均";
 TRMA.documentation = `
 TRMA(X,N)，求X在N周期内的三角移动平均
@@ -9322,7 +9322,7 @@ TSEQLOSS.label = "TSEQLOSS";
 TSEQLOSS.insertText = "";
 TSEQLOSS.body = "TSEQLOSS";
 TSEQLOSS.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TSEQLOSS.type = MyCompletionType.PositionManagementFunction;
+TSEQLOSS.functionType = MyCompletionFunctionType.PositionManagementFunction;
 TSEQLOSS.detail = "返回最大连续亏损额";
 TSEQLOSS.documentation = `
 TSEQLOSS返回最大连续亏损额
@@ -9347,7 +9347,7 @@ TSEQWIN.label = "TSEQWIN";
 TSEQWIN.insertText = "";
 TSEQWIN.body = "TSEQWIN";
 TSEQWIN.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TSEQWIN.type = MyCompletionType.PositionManagementFunction;
+TSEQWIN.functionType = MyCompletionFunctionType.PositionManagementFunction;
 TSEQWIN.detail = "返回最大连续赢利额";
 TSEQWIN.documentation = `
 TSEQWIN返回最大连续赢利额
@@ -9372,7 +9372,7 @@ TSMA.label = "TSMA";
 TSMA.insertText = "";
 TSMA.body = "TSMA( , )";
 TSMA.marketType = MyCompletionMarketType.BasicFunction;
-TSMA.type = MyCompletionType.FinancialStatisticsFunction;
+TSMA.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 TSMA.detail = "时间序列移动平均";
 TSMA.documentation = `
 TSMA(X,N)，求X在N周期内的时间序列三角移动平均
@@ -9400,7 +9400,7 @@ UNIT.label = "UNIT";
 UNIT.insertText = "";
 UNIT.body = "UNIT";
 UNIT.marketType = MyCompletionMarketType.BasicFunction;
-UNIT.type = MyCompletionType.CandlestickDataReference;
+UNIT.functionType = MyCompletionFunctionType.CandlestickDataReference;
 UNIT.detail = "取数据合约的交易单位";
 UNIT.documentation = `
 UNIT,取加载数据合约的交易单位
@@ -9414,7 +9414,7 @@ UNIT1.label = "UNIT1";
 UNIT1.insertText = "";
 UNIT1.body = "UNIT1";
 UNIT1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-UNIT1.type = MyCompletionType.CandlestickDataReference;
+UNIT1.functionType = MyCompletionFunctionType.CandlestickDataReference;
 UNIT1.detail = "取交易合约的交易单位";
 UNIT1.documentation = `
 UNIT1,取交易合约的交易单位
@@ -9428,7 +9428,7 @@ UNITLIMIT.label = "UNITLIMIT";
 UNITLIMIT.insertText = "";
 UNITLIMIT.body = "UNITLIMIT";
 UNITLIMIT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-UNITLIMIT.type = MyCompletionType.CandlestickDataReference;
+UNITLIMIT.functionType = MyCompletionFunctionType.CandlestickDataReference;
 UNITLIMIT.detail = "取交易合约的限制拥有持仓数";
 UNITLIMIT.documentation = `
 UNITLIMIT，取交易合约的限制拥有持仓数
@@ -9448,7 +9448,7 @@ VALIGN.label = "VALIGN";
 VALIGN.insertText = "";
 VALIGN.body = "VALIGN";
 VALIGN.marketType = MyCompletionMarketType.BasicFunction;
-VALIGN.type = MyCompletionType.DrawingFunction;
+VALIGN.functionType = MyCompletionFunctionType.DrawingFunction;
 VALIGN.detail = "设置文字对齐方式（上中下）";
 VALIGN.documentation = `
 VALIGN0,VALIGN1,VALIGN2,分别表示文字上对齐，居中对齐，下对齐
@@ -9467,7 +9467,7 @@ VALUEWHEN.label = "VALUEWHEN";
 VALUEWHEN.insertText = "";
 VALUEWHEN.body = "VALUEWHEN( , )";
 VALUEWHEN.marketType = MyCompletionMarketType.BasicFunction;
-VALUEWHEN.type = MyCompletionType.LogicalJudgmentFunction;
+VALUEWHEN.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
 VALUEWHEN.detail = "取值";
 VALUEWHEN.documentation = `
 VALUEWHEN(COND,X)，取满足条件COND时的X值
@@ -9489,7 +9489,7 @@ VAR.label = "VAR";
 VAR.insertText = "";
 VAR.body = "VAR( , )";
 VAR.marketType = MyCompletionMarketType.BasicFunction;
-VAR.type = MyCompletionType.MathematicalStatisticsFunction;
+VAR.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
 VAR.detail = "样本方差";
 VAR.documentation = `
 VAR(X,N)，求X在N周期内的样本方差
@@ -9517,7 +9517,7 @@ VARP.label = "VARP";
 VARP.insertText = "";
 VARP.body = "VARP( , )";
 VARP.marketType = MyCompletionMarketType.BasicFunction;
-VARP.type = MyCompletionType.MathematicalStatisticsFunction;
+VARP.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
 VARP.detail = "总体方差";
 VARP.documentation = `
 VARP(X,N)，求X的N周期总体方差
@@ -9544,7 +9544,7 @@ VERTLINE.label = "VERTLINE";
 VERTLINE.insertText = "";
 VERTLINE.body = "VERTLINE( , )";
 VERTLINE.marketType = MyCompletionMarketType.BasicFunction;
-VERTLINE.type = MyCompletionType.DrawingFunction;
+VERTLINE.functionType = MyCompletionFunctionType.DrawingFunction;
 VERTLINE.detail = "画垂直线";
 VERTLINE.documentation = `
 VERTLINE(COND,COLOR)，条件COND满足时，以颜色COLOR画垂直线
@@ -9572,7 +9572,7 @@ VERTLINE1.label = "VERTLINE1";
 VERTLINE1.insertText = "";
 VERTLINE1.body = "VERTLINE1( )";
 VERTLINE1.marketType = MyCompletionMarketType.BasicFunction;
-VERTLINE1.type = MyCompletionType.DrawingFunction;
+VERTLINE1.functionType = MyCompletionFunctionType.DrawingFunction;
 VERTLINE1.detail = "画垂直线";
 VERTLINE1.documentation = `
 VERTLINE1(COND)条件COND满足时，画垂直线
@@ -9600,7 +9600,7 @@ VOL.label = "VOL";
 VOL.insertText = "";
 VOL.body = "VOL";
 VOL.marketType = MyCompletionMarketType.BasicFunction;
-VOL.type = MyCompletionType.CandlestickDataReference;
+VOL.functionType = MyCompletionFunctionType.CandlestickDataReference;
 VOL.detail = "取得K线图的成交量";
 VOL.documentation = `
 VOL取成交量
@@ -9623,7 +9623,7 @@ VOLATILITY.label = "VOLATILITY";
 VOLATILITY.insertText = "";
 VOLATILITY.body = "VOLATILITY()";
 VOLATILITY.marketType = MyCompletionMarketType.BasicFunction;
-VOLATILITY.type = MyCompletionType.CandlestickDataReference;
+VOLATILITY.functionType = MyCompletionFunctionType.CandlestickDataReference;
 VOLATILITY.detail = "取期权历史波动率";
 VOLATILITY.documentation = `
 VOLATILITY(N)，取期权历史波动率
@@ -9652,7 +9652,7 @@ VOLMARGIN.label = "VOLMARGIN";
 VOLMARGIN.insertText = "";
 VOLMARGIN.body = "VOLMARGIN";
 VOLMARGIN.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-VOLMARGIN.type = MyCompletionType.PositionManagementFunction;
+VOLMARGIN.functionType = MyCompletionFunctionType.PositionManagementFunction;
 VOLMARGIN.detail = "理论持仓保证金";
 VOLMARGIN.documentation = `
 VOLMARGIN理论持仓保证金
@@ -9677,7 +9677,7 @@ VOLSTICK.label = "VOLSTICK";
 VOLSTICK.insertText = "";
 VOLSTICK.body = "VOLSTICK";
 VOLSTICK.marketType = MyCompletionMarketType.BasicFunction;
-VOLSTICK.type = MyCompletionType.DrawingFunction;
+VOLSTICK.functionType = MyCompletionFunctionType.DrawingFunction;
 VOLSTICK.detail = "画柱线";
 VOLSTICK.documentation = `
 VOLSTICK画柱线，K线为阳线为红色，K线为阴线为青色
@@ -9700,7 +9700,7 @@ VOLTICK.label = "VOLTICK";
 VOLTICK.insertText = "";
 VOLTICK.body = "VOLTICK";
 VOLTICK.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-VOLTICK.type = MyCompletionType.TimeFunction;
+VOLTICK.functionType = MyCompletionFunctionType.TimeFunction;
 VOLTICK.detail = "返回K线是由多少笔TICK生成";
 VOLTICK.documentation = `
 VOLTICK返回K线是由多少笔TICK生成
@@ -9714,7 +9714,7 @@ VOLTIME.label = "VOLTIME";
 VOLTIME.insertText = "";
 VOLTIME.body = "VOLTIME";
 VOLTIME.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-VOLTIME.type = MyCompletionType.TimeFunction;
+VOLTIME.functionType = MyCompletionFunctionType.TimeFunction;
 VOLTIME.detail = "取K线形成的时间（秒）";
 VOLTIME.documentation = `
 VOLTIME取K线形成的时间（秒）
@@ -9728,7 +9728,7 @@ VOLUMESTICK.label = "VOLUMESTICK";
 VOLUMESTICK.insertText = "";
 VOLUMESTICK.body = "VOLUMESTICK";
 VOLUMESTICK.marketType = MyCompletionMarketType.BasicFunction;
-VOLUMESTICK.type = MyCompletionType.DrawingFunction;
+VOLUMESTICK.functionType = MyCompletionFunctionType.DrawingFunction;
 VOLUMESTICK.detail = "画柱线";
 VOLUMESTICK.documentation = `
 VOLUMESTICK画柱线，K线为阳线为红色，K线为阴线为青色
@@ -9751,7 +9751,7 @@ WEEKDAY.label = "WEEKDAY";
 WEEKDAY.insertText = "";
 WEEKDAY.body = "WEEKDAY";
 WEEKDAY.marketType = MyCompletionMarketType.BasicFunction;
-WEEKDAY.type = MyCompletionType.TimeFunction;
+WEEKDAY.functionType = MyCompletionFunctionType.TimeFunction;
 WEEKDAY.detail = "取得星期数";
 WEEKDAY.documentation = `
 WEEKDAY取得星期数（0-6）
@@ -9776,7 +9776,7 @@ WEEKTRADE.label = "WEEKTRADE";
 WEEKTRADE.insertText = "";
 WEEKTRADE.body = "WEEKTRADE";
 WEEKTRADE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-WEEKTRADE.type = MyCompletionType.CalculationControlFunction;
+WEEKTRADE.functionType = MyCompletionFunctionType.CalculationControlFunction;
 WEEKTRADE.detail = "周内交易函数";
 WEEKTRADE.documentation = `
 WEEKTRADE,周内交易函数
@@ -9809,7 +9809,7 @@ WEEKTRADE1.label = "WEEKTRADE1";
 WEEKTRADE1.insertText = "";
 WEEKTRADE1.body = "WEEKTRADE1";
 WEEKTRADE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-WEEKTRADE1.type = MyCompletionType.CalculationControlFunction;
+WEEKTRADE1.functionType = MyCompletionFunctionType.CalculationControlFunction;
 WEEKTRADE1.detail = "周内交易函数";
 WEEKTRADE1.documentation = `
 WEEKTRADE1周内交易函数，且历史数据不参与计算。
@@ -9845,7 +9845,7 @@ WINNER.label = "WINNER";
 WINNER.insertText = "";
 WINNER.body = "WINNER( )";
 WINNER.marketType = MyCompletionMarketType.BasicFunction;
-WINNER.type = MyCompletionType.FinancialStatisticsFunction;
+WINNER.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
 WINNER.detail = "获利盘比例";
 WINNER.documentation = `
 WINNER()，获利盘比例
@@ -9865,7 +9865,7 @@ WORD.label = "WORD";
 WORD.insertText = "";
 WORD.body = "WORD( , )";
 WORD.marketType = MyCompletionMarketType.BasicFunction;
-WORD.type = MyCompletionType.DrawingFunction;
+WORD.functionType = MyCompletionFunctionType.DrawingFunction;
 WORD.detail = "显示文字";
 WORD.documentation = `
 WORD,显示文字
@@ -9887,7 +9887,7 @@ YCLOSE.label = "YCLOSE";
 YCLOSE.insertText = "";
 YCLOSE.body = "YCLOSE";
 YCLOSE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-YCLOSE.type = MyCompletionType.CandlestickDataReference;
+YCLOSE.functionType = MyCompletionFunctionType.CandlestickDataReference;
 YCLOSE.detail = "取得K线图的昨收盘价";
 YCLOSE.documentation = `
 YCLOSE求某根K线的昨收盘价。
@@ -9905,7 +9905,7 @@ YEAR.label = "YEAR";
 YEAR.insertText = "";
 YEAR.body = "YEAR";
 YEAR.marketType = MyCompletionMarketType.BasicFunction;
-YEAR.type = MyCompletionType.TimeFunction;
+YEAR.functionType = MyCompletionFunctionType.TimeFunction;
 YEAR.detail = "年份";
 YEAR.documentation = `
 YEAR取得年份（1970-2033）
@@ -9929,7 +9929,7 @@ YEARTRADE.label = "YEARTRADE";
 YEARTRADE.insertText = "";
 YEARTRADE.body = "YEARTRADE";
 YEARTRADE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-YEARTRADE.type = MyCompletionType.CalculationControlFunction;
+YEARTRADE.functionType = MyCompletionFunctionType.CalculationControlFunction;
 YEARTRADE.detail = "年内交易函数";
 YEARTRADE.documentation = `
 YEARTRADE,年内交易函数
@@ -9962,7 +9962,7 @@ YEARTRADE1.label = "YEARTRADE1";
 YEARTRADE1.insertText = "";
 YEARTRADE1.body = "YEARTRADE1";
 YEARTRADE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-YEARTRADE1.type = MyCompletionType.CalculationControlFunction;
+YEARTRADE1.functionType = MyCompletionFunctionType.CalculationControlFunction;
 YEARTRADE1.detail = "年内交易函数";
 YEARTRADE1.documentation = `
 YEARTRADE1年内交易函数，且历史数据不参与计算。
@@ -9995,7 +9995,7 @@ YSETTLE.label = "YSETTLE";
 YSETTLE.insertText = "";
 YSETTLE.body = "YSETTLE";
 YSETTLE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-YSETTLE.type = MyCompletionType.CandlestickDataReference;
+YSETTLE.functionType = MyCompletionFunctionType.CandlestickDataReference;
 YSETTLE.detail = "取得K线图的昨结算价";
 YSETTLE.documentation = `
 YSETTLE,求某根k线的昨结算价
@@ -10012,7 +10012,7 @@ _CALL.label = "#CALL";
 _CALL.insertText = "";
 _CALL.body = "#CALL [ , ] AS";
 _CALL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-_CALL.type = MyCompletionType.CandlestickDataReference;
+_CALL.functionType = MyCompletionFunctionType.CandlestickDataReference;
 _CALL.detail = "跨合约引用指标";
 _CALL.documentation = `
 #CALL[CODE,FORMULA]ASVAR引用CODE合约的指标FORMULA的数据
@@ -10050,7 +10050,7 @@ _CALL_OTHER.label = "#CALL_OTHER";
 _CALL_OTHER.insertText = "";
 _CALL_OTHER.body = "#CALL_OTHER [ ] AS";
 _CALL_OTHER.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-_CALL_OTHER.type = MyCompletionType.CandlestickDataReference;
+_CALL_OTHER.functionType = MyCompletionFunctionType.CandlestickDataReference;
 _CALL_OTHER.detail = "跨指标引用";
 _CALL_OTHER.documentation = `
 #CALL_OTHER[FORMULA]ASVAR跨指标引用
@@ -10078,7 +10078,7 @@ _CALL_PLUS.label = "#CALL_PLUS";
 _CALL_PLUS.insertText = "";
 _CALL_PLUS.body = "#CALL_PLUS [ , , , ] AS";
 _CALL_PLUS.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-_CALL_PLUS.type = MyCompletionType.CandlestickDataReference;
+_CALL_PLUS.functionType = MyCompletionFunctionType.CandlestickDataReference;
 _CALL_PLUS.detail = "跨合约跨周期引用指标";
 _CALL_PLUS.documentation = `
 #CALL_PLUS[CODE,PERIOD,N,FORMULA]ASVAR引用CODE合约PERIOD参数为N的周期下的指标FORMULA的数据
@@ -10122,7 +10122,7 @@ _IMPORT.label = "#IMPORT";
 _IMPORT.insertText = "";
 _IMPORT.body = "#IMPORT [ , , ] AS";
 _IMPORT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-_IMPORT.type = MyCompletionType.CandlestickDataReference;
+_IMPORT.functionType = MyCompletionFunctionType.CandlestickDataReference;
 _IMPORT.detail = "跨周期引用指标";
 _IMPORT.documentation = `
 #IMPORT[PERIOD,N,FORMULA]ASVAR引用PERIOD参数为N的周期下的指标FORMULA的数据
@@ -10174,7 +10174,7 @@ _$_.label = "$";
 _$_.insertText = "";
 _$_.body = " $ ";
 _$_.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-_$_.type = MyCompletionType.CandlestickDataReference;
+_$_.functionType = MyCompletionFunctionType.CandlestickDataReference;
 _$_.detail = "引用其他合约的K线数据";
 _$_.documentation = `
 
@@ -10200,7 +10200,7 @@ _$_$_.label = "$ $";
 _$_$_.insertText = "";
 _$_$_.body = " $ $ ";
 _$_$_.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-_$_$_.type = MyCompletionType.CandlestickDataReference;
+_$_$_.functionType = MyCompletionFunctionType.CandlestickDataReference;
 _$_$_.detail = "引用其他周期的K线数据";
 _$_$_.documentation = `
 
