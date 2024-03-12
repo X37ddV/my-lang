@@ -38,6 +38,12 @@ export enum MyCompletionReturnType {
     Boolean,
 }
 
+export class MyCompletionArgument {
+    public label: string = "";
+    public type: string = "";  // TODO: use a type enum
+    public description: string = "";
+}
+
 export class MyCompletion {
     public label: string = "";
     public insertText: string = "";
@@ -48,7 +54,7 @@ export class MyCompletion {
     public marketType: MyCompletionMarketType = MyCompletionMarketType.BasicFunction;
     public functionType: MyCompletionFunctionType = MyCompletionFunctionType.CandlestickDataReference;
     public returnType: MyCompletionReturnType = MyCompletionReturnType.None;
-    public params: string[] = [];
+    public arguments: MyCompletionArgument[] = [];
     static fromLabelAndDetail(label: string, detail: string): MyCompletion {
         const result = new MyCompletion();
         result.label = label;
