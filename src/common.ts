@@ -38,9 +38,14 @@ export enum MyCompletionReturnType {
     Boolean,
 }
 
+export enum MyCompletionArgumentType {
+    Any,
+    // TODO: Add more types
+}
+
 export class MyCompletionArgument {
     public label: string = "";
-    public type: string = "";  // TODO: use a type enum
+    public type: MyCompletionArgumentType = MyCompletionArgumentType.Any;
     public description: string = "";
 }
 
