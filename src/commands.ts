@@ -90,6 +90,10 @@ for (const fk of functionOrders) {
     funcKeys.push(key);
     a += `const ${key} = new MyCompletion()\n`;
     a += `${key}.label = "${label}"\n`;
+    if (func["explanation"] !== undefined) {
+        const oo = func["explanation"];
+        a += `${key}.description = "${oo}"\n`;
+    }
     a += `${key}.insertText = ""\n`;
     if (func["body"] !== undefined) {
         a += `${key}.body = "${func["body"]}"\n`;

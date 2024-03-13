@@ -17,7 +17,7 @@ export function activateCompletionItemProvider(
                 const completionItems = [];
                 for (const item of completions) {
                     const completionItem = new vscode.CompletionItem(
-                        { label: item.label, description: item.detail },
+                        { label: item.label, description: item.description },
                         vscode.CompletionItemKind.Function
                     );
                     completionItem.kind = vscode.CompletionItemKind.Function;

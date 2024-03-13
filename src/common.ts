@@ -53,6 +53,7 @@ export class MyCompletionParameter {
 
 export class MyCompletion {
     public label: string = "";
+    public description: string = "";
     public insertText: string = "";
     public body: string = "";
     public detail: string = "";

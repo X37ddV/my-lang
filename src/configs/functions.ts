@@ -9,6 +9,7 @@ import {
 
 const ABS = new MyCompletion();
 ABS.label = "ABS";
+ABS.description = "绝对值";
 ABS.insertText = "";
 ABS.body = "ABS( )";
 ABS.type = MyCompletionType.Function;
@@ -36,6 +37,7 @@ ABS(C-O);//当前K线实体长度
 
 const ACOS = new MyCompletion();
 ACOS.label = "ACOS";
+ACOS.description = "反余弦值";
 ACOS.insertText = "";
 ACOS.body = "ACOS( )";
 ACOS.type = MyCompletionType.Function;
@@ -60,6 +62,7 @@ ACOS(1);//求1的反余弦值；
 
 const ADMA = new MyCompletion();
 ADMA.label = "ADMA";
+ADMA.description = "考夫曼均值";
 ADMA.insertText = "";
 ADMA.body = "ADMA(,,,)";
 ADMA.type = MyCompletionType.Function;
@@ -102,6 +105,7 @@ AMACLOSE:REF(EMA(C,9),1)+CONSTANT*(C-REF(EMA(C,9),1));
 
 const ALIGN = new MyCompletion();
 ALIGN.label = "ALIGN";
+ALIGN.description = "设置文字对齐方式（左中右）";
 ALIGN.insertText = "";
 ALIGN.body = "ALIGN";
 ALIGN.type = MyCompletionType.Function;
@@ -124,6 +128,7 @@ DRAWTEXT(C>O,H,'涨'),ALIGN1,VALIGN1,FONTSIZE20,COLORGREEN;//在阳线的最高�
 
 const ASIN = new MyCompletion();
 ASIN.label = "ASIN";
+ASIN.description = "反正弦值";
 ASIN.insertText = "";
 ASIN.body = "ASIN( )";
 ASIN.type = MyCompletionType.Function;
@@ -148,6 +153,7 @@ ASIN(1);//求1的反正弦值；
 
 const ATAN = new MyCompletion();
 ATAN.label = "ATAN";
+ATAN.description = "反正切值";
 ATAN.insertText = "";
 ATAN.body = "ATAN( )";
 ATAN.type = MyCompletionType.Function;
@@ -170,6 +176,7 @@ ATAN(1.75);//求1.75的反正切值；
 
 const AUTOFILTER = new MyCompletion();
 AUTOFILTER.label = "AUTOFILTER";
+AUTOFILTER.description = "启用一开一平信号过滤机制";
 AUTOFILTER.insertText = "";
 AUTOFILTER.body = "AUTOFILTER";
 AUTOFILTER.type = MyCompletionType.Function;
@@ -202,6 +209,7 @@ AUTOFILTER; //启用一开一平信号过滤机制
 
 const AUTOFINANCING = new MyCompletion();
 AUTOFINANCING.label = "AUTOFINANCING";
+AUTOFINANCING.description = "启用按需自动入金方式";
 AUTOFINANCING.insertText = "";
 AUTOFINANCING.body = "AUTOFINANCING";
 AUTOFINANCING.type = MyCompletionType.Function;
@@ -238,6 +246,7 @@ AUTOFINANCING;//启用自动入金方式
 
 const AVAILABLE_OPI = new MyCompletion();
 AVAILABLE_OPI.label = "AVAILABLE_OPI";
+AVAILABLE_OPI.description = "可用股数";
 AVAILABLE_OPI.insertText = "";
 AVAILABLE_OPI.body = "AVAILABLE_OPI";
 AVAILABLE_OPI.type = MyCompletionType.Function;
@@ -267,6 +276,7 @@ AVAILABLE_OPI>0&&CROSSDOWN(MA5,MA10),SP(AVAILABLE_OPI);//当前可用股数大�
 
 const AVEDEV = new MyCompletion();
 AVEDEV.label = "AVEDEV";
+AVEDEV.description = "平均绝对偏差";
 AVEDEV.insertText = "";
 AVEDEV.body = "AVEDEV( , )";
 AVEDEV.type = MyCompletionType.Function;
@@ -298,6 +308,7 @@ AVEDEV(C,5);//返回收盘价在5周期内的平均绝对偏差。
 
 const AVPRICE = new MyCompletion();
 AVPRICE.label = "AVPRICE";
+AVPRICE.description = "取得K线图的均价";
 AVPRICE.insertText = "";
 AVPRICE.body = "AVPRICE";
 AVPRICE.type = MyCompletionType.Function;
@@ -326,6 +337,7 @@ C>MA(AVPRICE,5);//价格大于五个周期均价的平均值则返回1，否则�
 
 const BACKGROUNDSTYLE = new MyCompletion();
 BACKGROUNDSTYLE.label = "BACKGROUNDSTYLE";
+BACKGROUNDSTYLE.description = "背景的样式";
 BACKGROUNDSTYLE.insertText = "";
 BACKGROUNDSTYLE.body = "BACKGROUNDSTYLE( )";
 BACKGROUNDSTYLE.type = MyCompletionType.Function;
@@ -363,6 +375,7 @@ BACKGROUNDSTYLE(2);
 
 const BARINTERVAL = new MyCompletion();
 BARINTERVAL.label = "BARINTERVAL";
+BARINTERVAL.description = "返回数据合约的K线周期数值";
 BARINTERVAL.insertText = "";
 BARINTERVAL.body = "BARINTERVAL";
 BARINTERVAL.type = MyCompletionType.Function;
@@ -388,6 +401,7 @@ BARINTERVAL;
 
 const BARPOS = new MyCompletion();
 BARPOS.label = "BARPOS";
+BARPOS.description = "取K线的位置";
 BARPOS.insertText = "";
 BARPOS.body = "BARPOS";
 BARPOS.type = MyCompletionType.Function;
@@ -411,6 +425,7 @@ BARPOS，返回从第一根K线开始到当前的周期数。
 
 const BARSBK = new MyCompletion();
 BARSBK.label = "BARSBK";
+BARSBK.description = "上一次买开信号位置";
 BARSBK.insertText = "";
 BARSBK.body = "BARSBK";
 BARSBK.type = MyCompletionType.Function;
@@ -454,6 +469,7 @@ AA:IFELSE(BARSBK>=1,HHV(H,BARSBK+1),H);
 
 const BARSBP = new MyCompletion();
 BARSBP.label = "BARSBP";
+BARSBP.description = "上一次买平信号位置";
 BARSBP.insertText = "";
 BARSBP.body = "BARSBP";
 BARSBP.type = MyCompletionType.Function;
@@ -496,6 +512,7 @@ AA:IFELSE(BARSBP>=1,HHV(H,BARSBP+1),H);
 
 const BARSBUY = new MyCompletion();
 BARSBUY.label = "BARSBUY";
+BARSBUY.description = "上一次买入信号位置";
 BARSBUY.insertText = "";
 BARSBUY.body = "BARSBUY";
 BARSBUY.type = MyCompletionType.Function;
@@ -527,6 +544,7 @@ BARSBUY 上一次买入信号位置
 
 const BARSCOUNT = new MyCompletion();
 BARSCOUNT.label = "BARSCOUNT";
+BARSCOUNT.description = "第一个有效周期到当前的周期数";
 BARSCOUNT.insertText = "";
 BARSCOUNT.body = "BARSCOUNT()";
 BARSCOUNT.type = MyCompletionType.Function;
@@ -549,6 +567,7 @@ BARSCOUNT(MA(C,4));//计算MA(C,4)第一次有返回值到当前的周期数。
 
 const BARSLAST = new MyCompletion();
 BARSLAST.label = "BARSLAST";
+BARSLAST.description = "上一次条件成立位置";
 BARSLAST.insertText = "";
 BARSLAST.body = "BARSLAST( )";
 BARSLAST.type = MyCompletionType.Function;
@@ -573,6 +592,7 @@ N:=BARSLAST(DATE<>REF(DATE,1))+1;//分钟周期，当日k线数。
 
 const BARSLASTCOUNT = new MyCompletion();
 BARSLASTCOUNT.label = "BARSLASTCOUNT";
+BARSLASTCOUNT.description = "从当前周期向前计算，统计连续满足条件的周期数";
 BARSLASTCOUNT.insertText = "";
 BARSLASTCOUNT.body = "BARSLASTCOUNT()";
 BARSLASTCOUNT.type = MyCompletionType.Function;
@@ -597,6 +617,7 @@ BARSLASTCOUNT(CLOSE>OPEN);
 
 const BARSSELL = new MyCompletion();
 BARSSELL.label = "BARSSELL";
+BARSSELL.description = "上一次卖出信号位置";
 BARSSELL.insertText = "";
 BARSSELL.body = "BARSSELL";
 BARSSELL.type = MyCompletionType.Function;
@@ -628,6 +649,7 @@ BARSSELL 上一次卖出信号位置
 
 const BARSSINCE = new MyCompletion();
 BARSSINCE.label = "BARSSINCE";
+BARSSINCE.description = "第一个条件成立到当前的周期数";
 BARSSINCE.insertText = "";
 BARSSINCE.body = "BARSSINCE()";
 BARSSINCE.type = MyCompletionType.Function;
@@ -651,6 +673,7 @@ BARSSINCE(CLOSE>OPEN);
 
 const BARSSINCEN = new MyCompletion();
 BARSSINCEN.label = "BARSSINCEN";
+BARSSINCEN.description = "统计N周期内第一次条件成立到当前的周期数";
 BARSSINCEN.insertText = "";
 BARSSINCEN.body = "BARSSINCEN";
 BARSSINCEN.type = MyCompletionType.Function;
@@ -676,6 +699,7 @@ BARSSINCEN(ISUP,N);//统计N周期内第一次满足阳线到当前的周期数
 
 const BARSSK = new MyCompletion();
 BARSSK.label = "BARSSK";
+BARSSK.description = "上一次卖开信号位置";
 BARSSK.insertText = "";
 BARSSK.body = "BARSSK";
 BARSSK.type = MyCompletionType.Function;
@@ -719,6 +743,7 @@ AA:IFELSE(BARSSK>=1,LLV(L,BARSSK+1),L);
 
 const BARSSP = new MyCompletion();
 BARSSP.label = "BARSSP";
+BARSSP.description = "上一次卖平信号位置";
 BARSSP.insertText = "";
 BARSSP.body = "BARSSP";
 BARSSP.type = MyCompletionType.Function;
@@ -761,6 +786,7 @@ AA:IFELSE(BARSSP>=1,HHV(H,BARSSP+1),H);
 
 const BARSTATUS = new MyCompletion();
 BARSTATUS.label = "BARSTATUS";
+BARSTATUS.description = "返回当前周期的位置状态";
 BARSTATUS.insertText = "";
 BARSTATUS.body = "BARSTATUS";
 BARSTATUS.type = MyCompletionType.Function;
@@ -783,6 +809,7 @@ DRAWNUMBER(BARSTATUS=1,HIGH,OPEN,0,COLORRED);//如果当前K线是第一个周�
 
 const BARTYPE = new MyCompletion();
 BARTYPE.label = "BARTYPE";
+BARTYPE.description = "数据合约的K线周期类型值";
 BARTYPE.insertText = "";
 BARTYPE.body = "BARTYPE";
 BARTYPE.type = MyCompletionType.Function;
@@ -814,6 +841,7 @@ BARINTERVAL;
 
 const BETWEEN = new MyCompletion();
 BETWEEN.label = "BETWEEN";
+BETWEEN.description = "介于";
 BETWEEN.insertText = "";
 BETWEEN.body = "BETWEEN( , , )";
 BETWEEN.type = MyCompletionType.Function;
@@ -835,6 +863,7 @@ BETWEEN(CLOSE,MA5,MA10); //表示收盘价介于5日均线与10日均线之间�
 
 const BKHIGH = new MyCompletion();
 BKHIGH.label = "BKHIGH";
+BKHIGH.description = "返回数据合约买开仓以来的最高价";
 BKHIGH.insertText = "";
 BKHIGH.body = "BKHIGH";
 BKHIGH.type = MyCompletionType.Function;
@@ -868,6 +897,7 @@ AUTOFILTER;//最新价低于买开仓以来的数据合约最高价5个点，止
 
 const BKLOW = new MyCompletion();
 BKLOW.label = "BKLOW";
+BKLOW.description = "返回数据合约买开仓以来的最低价";
 BKLOW.insertText = "";
 BKLOW.body = "BKLOW";
 BKLOW.type = MyCompletionType.Function;
@@ -901,6 +931,7 @@ AUTOFILTER;//最新价高于买开仓以来数据合约的最低价5个点，平
 
 const BKPRICE = new MyCompletion();
 BKPRICE.label = "BKPRICE";
+BKPRICE.description = "返回数据合约最近一次买开信号价位";
 BKPRICE.insertText = "";
 BKPRICE.body = "BKPRICE";
 BKPRICE.type = MyCompletionType.Function;
@@ -939,6 +970,7 @@ BKPRICE-CLOSE>60 && BKPRICE>0 && BKVOL>0, SP;//如果买开价位比当前价位
 
 const BKPRICE1 = new MyCompletion();
 BKPRICE1.label = "BKPRICE1";
+BKPRICE1.description = "返回交易合约最近一次买开信号价位";
 BKPRICE1.insertText = "";
 BKPRICE1.body = "BKPRICE1";
 BKPRICE1.type = MyCompletionType.Function;
@@ -972,6 +1004,7 @@ b.模组运行：复核前，返回上一次BK信号当根K线交易合约的行
 
 const BKPRICEAV = new MyCompletion();
 BKPRICEAV.label = "BKPRICEAV";
+BKPRICEAV.description = "返回数据合约多头开仓均价";
 BKPRICEAV.insertText = "";
 BKPRICEAV.body = "BKPRICEAV";
 BKPRICEAV.type = MyCompletionType.Function;
@@ -1006,6 +1039,7 @@ CLOSE-BKPRICEAV>60,SP(BKVOL);//当前价位比多头开仓均价高出60,平掉�
 
 const BKPRICEAV1 = new MyCompletion();
 BKPRICEAV1.label = "BKPRICEAV1";
+BKPRICEAV1.description = "返回交易合约多头开仓均价";
 BKPRICEAV1.insertText = "";
 BKPRICEAV1.body = "BKPRICEAV1";
 BKPRICEAV1.type = MyCompletionType.Function;
@@ -1040,6 +1074,7 @@ CLOSE-BKPRICEAV1>60,SP(BKVOL);//当前价位比交易合约多头开仓均价高
 
 const BKVOL = new MyCompletion();
 BKVOL.label = "BKVOL";
+BKVOL.description = "买开信号手数";
 BKVOL.insertText = "";
 BKVOL.body = "BKVOL";
 BKVOL.type = MyCompletionType.Function;
@@ -1069,6 +1104,7 @@ BKVOL>0&&L<REF(L,5),SP(BKVOL); //多头持仓大于0，并且当根K线的最低
 
 const BKVOL2 = new MyCompletion();
 BKVOL2.label = "BKVOL2";
+BKVOL2.description = "买开信号手数";
 BKVOL2.insertText = "";
 BKVOL2.body = "BKVOL2";
 BKVOL2.type = MyCompletionType.Function;
@@ -1098,6 +1134,7 @@ BKVOL2>0&&L<REF(L,5),SP(BKVOL2); //多头持仓大于0，并且当根K线的最�
 
 const BUYPRICE = new MyCompletion();
 BUYPRICE.label = "BUYPRICE";
+BUYPRICE.description = "返回最近一次买入信号所在K线的收盘价。";
 BUYPRICE.insertText = "";
 BUYPRICE.body = "BUYPRICE";
 BUYPRICE.type = MyCompletionType.Function;
@@ -1122,6 +1159,7 @@ BUYPRICE-CLOSE>60 && BUYPRICE>0 && BUYVOL>0, SELL;//如果买入价位比当前�
 
 const CEILING = new MyCompletion();
 CEILING.label = "CEILING";
+CEILING.description = "向上舍入";
 CEILING.insertText = "";
 CEILING.body = "CEILING( , )";
 CEILING.type = MyCompletionType.Function;
@@ -1156,6 +1194,8 @@ CEILING(8,-2);//返回无效值。
 
 const CHECKSIG = new MyCompletion();
 CHECKSIG.label = "CHECKSIG";
+CHECKSIG.description =
+   "设置信号确认与复核的指令价方式（TICK逐笔回测，可设置回测精度）";
 CHECKSIG.insertText = "";
 CHECKSIG.body = "CHECKSIG( , , , , ,)";
 CHECKSIG.type = MyCompletionType.Function;
@@ -1233,6 +1273,7 @@ AUTOFILTER;
 
 const CHECKSIG_MIN = new MyCompletion();
 CHECKSIG_MIN.label = "CHECKSIG_MIN";
+CHECKSIG_MIN.description = "设置信号确认与复核的指令价方式（逐分钟回测）";
 CHECKSIG_MIN.insertText = "";
 CHECKSIG_MIN.body = "CHECKSIG_MIN( , , , ,)";
 CHECKSIG_MIN.type = MyCompletionType.Function;
@@ -1294,6 +1335,7 @@ AUTOFILTER;
 
 const CIRCLEDOT = new MyCompletion();
 CIRCLEDOT.label = "CIRCLEDOT";
+CIRCLEDOT.description = "小圆点线";
 CIRCLEDOT.insertText = "";
 CIRCLEDOT.body = "CIRCLEDOT";
 CIRCLEDOT.type = MyCompletionType.Function;
@@ -1317,6 +1359,7 @@ CIRCLEDOT 画小圆点线。
 
 const CJLVOL = new MyCompletion();
 CJLVOL.label = "CJLVOL";
+CJLVOL.description = "绘制CJL成交量柱线";
 CJLVOL.insertText = "";
 CJLVOL.body = "CJLVOL( )";
 CJLVOL.type = MyCompletionType.Function;
@@ -1340,6 +1383,7 @@ CJLVOL(0);//绘制CJL成交量红绿柱线
 
 const CLOSE = new MyCompletion();
 CLOSE.label = "CLOSE";
+CLOSE.description = "取得K线图的收盘价";
 CLOSE.insertText = "";
 CLOSE.body = "CLOSE";
 CLOSE.type = MyCompletionType.Function;
@@ -1366,6 +1410,7 @@ A:=REF(C,1);//取得前一根k线的收盘价。
 
 const CLOSEKLINE = new MyCompletion();
 CLOSEKLINE.label = "CLOSEKLINE";
+CLOSEKLINE.description = "设置K线提前N(1-30)秒走完";
 CLOSEKLINE.insertText = "";
 CLOSEKLINE.body = "CLOSEKLINE( , )";
 CLOSEKLINE.type = MyCompletionType.Function;
@@ -1407,6 +1452,7 @@ AUTOFILTER;
 
 const CLOSEMINUTE = new MyCompletion();
 CLOSEMINUTE.label = "CLOSEMINUTE";
+CLOSEMINUTE.description = "距收盘前时间";
 CLOSEMINUTE.insertText = "";
 CLOSEMINUTE.body = "CLOSEMINUTE";
 CLOSEMINUTE.type = MyCompletionType.Function;
@@ -1439,6 +1485,7 @@ AUTOFILTER;
 
 const CLOSEMINUTE1 = new MyCompletion();
 CLOSEMINUTE1.label = "CLOSEMINUTE1";
+CLOSEMINUTE1.description = "距收盘前时间";
 CLOSEMINUTE1.insertText = "";
 CLOSEMINUTE1.body = "CLOSEMINUTE1";
 CLOSEMINUTE1.type = MyCompletionType.Function;
@@ -1474,6 +1521,7 @@ AUTOFILTER;
 
 const CLOSEMINUTEEVERY = new MyCompletion();
 CLOSEMINUTEEVERY.label = "CLOSEMINUTEEVERY";
+CLOSEMINUTEEVERY.description = "距小节结束时间";
 CLOSEMINUTEEVERY.insertText = "";
 CLOSEMINUTEEVERY.body = "CLOSEMINUTEEVERY()";
 CLOSEMINUTEEVERY.type = MyCompletionType.Function;
@@ -1510,6 +1558,7 @@ AUTOFILTER;
 
 const CLOSEMINUTEEVERY1 = new MyCompletion();
 CLOSEMINUTEEVERY1.label = "CLOSEMINUTEEVERY1";
+CLOSEMINUTEEVERY1.description = "距小节结束时间";
 CLOSEMINUTEEVERY1.insertText = "";
 CLOSEMINUTEEVERY1.body = "CLOSEMINUTEEVERY1()";
 CLOSEMINUTEEVERY1.type = MyCompletionType.Function;
@@ -1546,6 +1595,7 @@ AUTOFILTER;
 
 const CLOSESEC = new MyCompletion();
 CLOSESEC.label = "CLOSESEC";
+CLOSESEC.description = "距收盘前时间（秒数）";
 CLOSESEC.insertText = "";
 CLOSESEC.body = "CLOSESEC";
 CLOSESEC.type = MyCompletionType.Function;
@@ -1578,6 +1628,7 @@ AUTOFILTER;
 
 const CLOSESEC1 = new MyCompletion();
 CLOSESEC1.label = "CLOSESEC1";
+CLOSESEC1.description = "距收盘前时间（秒数）";
 CLOSESEC1.insertText = "";
 CLOSESEC1.body = "CLOSESEC1";
 CLOSESEC1.type = MyCompletionType.Function;
@@ -1612,6 +1663,7 @@ AUTOFILTER;
 
 const CLOSESECEVERY = new MyCompletion();
 CLOSESECEVERY.label = "CLOSESECEVERY";
+CLOSESECEVERY.description = "距小节结束时间（秒）";
 CLOSESECEVERY.insertText = "";
 CLOSESECEVERY.body = "CLOSESECEVERY()";
 CLOSESECEVERY.type = MyCompletionType.Function;
@@ -1645,6 +1697,7 @@ AUTOFILTER;
 
 const CLOSESECEVERY1 = new MyCompletion();
 CLOSESECEVERY1.label = "CLOSESECEVERY1";
+CLOSESECEVERY1.description = "距小节结束时间（秒）";
 CLOSESECEVERY1.insertText = "";
 CLOSESECEVERY1.body = "CLOSESECEVERY1()";
 CLOSESECEVERY1.type = MyCompletionType.Function;
@@ -1680,6 +1733,7 @@ AUTOFILTER;
 
 const CODELIKE = new MyCompletion();
 CODELIKE.label = "CODELIKE";
+CODELIKE.description = "模糊股票代码函数";
 CODELIKE.insertText = "";
 CODELIKE.body = "CODELIKE('')";
 CODELIKE.type = MyCompletionType.Function;
@@ -1705,6 +1759,7 @@ C>O&&CODELIKE('300')=1;//最后一根K线为阳线并且代码以300开头（创
 
 const COEFFICIENTR = new MyCompletion();
 COEFFICIENTR.label = "COEFFICIENTR";
+COEFFICIENTR.description = "皮尔森相关系数";
 COEFFICIENTR.insertText = "";
 COEFFICIENTR.body = "COEFFICIENTR( , , )";
 COEFFICIENTR.type = MyCompletionType.Function;
@@ -1741,6 +1796,7 @@ COEFFICIENTR(C1,C,10);//求文华商品和豆粕在10个周期内的皮尔森相
 
 const COLORSTICK = new MyCompletion();
 COLORSTICK.label = "COLORSTICK";
+COLORSTICK.description = "画柱线";
 COLORSTICK.insertText = "";
 COLORSTICK.body = "COLORSTICK";
 COLORSTICK.type = MyCompletionType.Function;
@@ -1763,6 +1819,7 @@ C-O,COLORSTICK;//画柱线，阳线时画红色向上柱线，阴线时画青色
 
 const CONDBARS = new MyCompletion();
 CONDBARS.label = "CONDBARS";
+CONDBARS.description = "取得最近满足A,B条件的K线间周期数";
 CONDBARS.insertText = "";
 CONDBARS.body = "CONDBARS(,)";
 CONDBARS.type = MyCompletionType.Function;
@@ -1787,6 +1844,7 @@ CONDBARS(CROSSUP(MA5,MA10),CROSSDOWN(MA5,MA10));//最近一次满足5周期均�
 
 const COS = new MyCompletion();
 COS.label = "COS";
+COS.description = "余弦";
 COS.insertText = "";
 COS.body = "COS( )";
 COS.type = MyCompletionType.Function;
@@ -1811,6 +1869,7 @@ COS(1.57);//返回1.57的余弦值
 
 const COST = new MyCompletion();
 COST.label = "COST";
+COST.description = "成本分布情况";
 COST.insertText = "";
 COST.body = "COST( )";
 COST.type = MyCompletionType.Function;
@@ -1836,6 +1895,7 @@ COST(X) 表示X%获利盘的价格,即有X%的持仓成本在该价格下，其�
 
 const COUNT = new MyCompletion();
 COUNT.label = "COUNT";
+COUNT.description = "统计总数";
 COUNT.insertText = "";
 COUNT.body = "COUNT( , )";
 COUNT.type = MyCompletionType.Function;
@@ -1866,6 +1926,7 @@ M:COUNT(CROSSUP(MA5,MA10),0);//统计从申请到的行情数据以来到当前�
 
 const COUNTGROUPSIG = new MyCompletion();
 COUNTGROUPSIG.label = "COUNTGROUPSIG";
+COUNTGROUPSIG.description = "统计N周期内，分组为group的X信号的数量";
 COUNTGROUPSIG.insertText = "";
 COUNTGROUPSIG.body = "COUNTGROUPSIG( , , )";
 COUNTGROUPSIG.type = MyCompletionType.Function;
@@ -1902,6 +1963,7 @@ BKN=0&&C>MA5,BK('A',1);//当日内日未出现过BK信号并且最新价大于5�
 
 const COUNTSIG = new MyCompletion();
 COUNTSIG.label = "COUNTSIG";
+COUNTSIG.description = "统计N周期内，X信号的数量";
 COUNTSIG.insertText = "";
 COUNTSIG.body = "COUNTSIG(,)";
 COUNTSIG.type = MyCompletionType.Function;
@@ -1938,6 +2000,7 @@ BKN=0&&C>MA5,BK;//当日内日未出现过BK信号并且最新价大于5周期�
 
 const COVAR = new MyCompletion();
 COVAR.label = "COVAR";
+COVAR.description = "协方差";
 COVAR.insertText = "";
 COVAR.body = "COVAR( , , )";
 COVAR.type = MyCompletionType.Function;
@@ -1973,6 +2036,7 @@ COVAR(C1,C,10);//求文华商品和豆粕在10个周期内的协方差。
 
 const CROSS = new MyCompletion();
 CROSS.label = "CROSS";
+CROSS.description = "交叉函数";
 CROSS.insertText = "";
 CROSS.body = "CROSS( , )";
 CROSS.type = MyCompletionType.Function;
@@ -1994,6 +2058,7 @@ CROSS(CLOSE,MA(CLOSE,5));//表示收盘线从下方向上穿过5周期均线
 
 const CROSS2 = new MyCompletion();
 CROSS2.label = "CROSS2";
+CROSS2.description = "二次交叉函数";
 CROSS2.insertText = "";
 CROSS2.body = "CROSS2( , , )";
 CROSS2.type = MyCompletionType.Function;
@@ -2018,6 +2083,7 @@ CROSS2(C,MA5,10) 返回值为1(Yes)，表示当前周期是10个周期内(包含
 
 const CROSSDOT = new MyCompletion();
 CROSSDOT.label = "CROSSDOT";
+CROSSDOT.description = "小圆圈线";
 CROSSDOT.insertText = "";
 CROSSDOT.body = "CROSSDOT";
 CROSSDOT.type = MyCompletionType.Function;
@@ -2041,6 +2107,7 @@ CROSSDOT 画小圆圈线。
 
 const CROSSDOWN = new MyCompletion();
 CROSSDOWN.label = "CROSSDOWN";
+CROSSDOWN.description = "向下穿越";
 CROSSDOWN.insertText = "";
 CROSSDOWN.body = "CROSSDOWN( , )";
 CROSSDOWN.type = MyCompletionType.Function;
@@ -2065,6 +2132,7 @@ CROSSDOWN(MA5,MA10),SK;//MA5下穿MA10卖开仓
 
 const CROSSUP = new MyCompletion();
 CROSSUP.label = "CROSSUP";
+CROSSUP.description = "向上穿越";
 CROSSUP.insertText = "";
 CROSSUP.body = "CROSSUP( , )";
 CROSSUP.type = MyCompletionType.Function;
@@ -2089,6 +2157,7 @@ CROSSUP(MA5,MA10),BK;//MA5上穿MA10，买开仓。
 
 const CUBE = new MyCompletion();
 CUBE.label = "CUBE";
+CUBE.description = "立方函数";
 CUBE.insertText = "";
 CUBE.body = "CUBE( )";
 CUBE.type = MyCompletionType.Function;
@@ -2107,6 +2176,7 @@ CUBE(4);//求4的立方。
 
 const CURRENTDATE = new MyCompletion();
 CURRENTDATE.label = "CURRENTDATE";
+CURRENTDATE.description = "返回当前的年月日";
 CURRENTDATE.insertText = "";
 CURRENTDATE.body = "CURRENTDATE";
 CURRENTDATE.type = MyCompletionType.Function;
@@ -2130,6 +2200,7 @@ A:CURRENTDATE;//返回的是现在的本机时间。
 
 const CURRENTTIME = new MyCompletion();
 CURRENTTIME.label = "CURRENTTIME";
+CURRENTTIME.description = "返回当前的时分秒";
 CURRENTTIME.insertText = "";
 CURRENTTIME.body = "CURRENTTIME";
 CURRENTTIME.type = MyCompletionType.Function;
@@ -2153,6 +2224,7 @@ A:CURRENTTIME;//返回的是现在的本机时间。
 
 const DASH = new MyCompletion();
 DASH.label = "DASH";
+DASH.description = "画虚线";
 DASH.insertText = "";
 DASH.body = "DASH";
 DASH.type = MyCompletionType.Function;
@@ -2176,6 +2248,7 @@ DASH 画虚线。
 
 const DASHDOT = new MyCompletion();
 DASHDOT.label = "DASHDOT";
+DASHDOT.description = "画点虚线";
 DASHDOT.insertText = "";
 DASHDOT.body = "DASHDOT";
 DASHDOT.type = MyCompletionType.Function;
@@ -2199,6 +2272,7 @@ DASHDOT 画点虚线。
 
 const DASHDOTDOT = new MyCompletion();
 DASHDOTDOT.label = "DASHDOTDOT";
+DASHDOTDOT.description = "画双点虚线";
 DASHDOTDOT.insertText = "";
 DASHDOTDOT.body = "DASHDOTDOT";
 DASHDOTDOT.type = MyCompletionType.Function;
@@ -2222,6 +2296,7 @@ DASHDOTDOT 画双点虚线。
 
 const DATE = new MyCompletion();
 DATE.label = "DATE";
+DATE.description = "取得某周期的日期数";
 DATE.insertText = "";
 DATE.body = "DATE";
 DATE.type = MyCompletionType.Function;
@@ -2248,6 +2323,7 @@ HH:VALUEWHEN(AA=1,H);// 取201305071037分钟位置，同时取201305071037分�
 
 const DATE1 = new MyCompletion();
 DATE1.label = "DATE1";
+DATE1.description = "返回某周期的日期数";
 DATE1.insertText = "";
 DATE1.body = "DATE1";
 DATE1.type = MyCompletionType.Function;
@@ -2275,6 +2351,7 @@ HH:VALUEWHEN(AA=1，H);// 取201305071037分钟位置，同时取201305071037分
 
 const DAY = new MyCompletion();
 DAY.label = "DAY";
+DAY.description = "取得某周期的日数";
 DAY.insertText = "";
 DAY.body = "DAY";
 DAY.type = MyCompletionType.Function;
@@ -2299,6 +2376,7 @@ CC:IFELSE(DAY=1,VALUEWHEN(N=1,O),0);//当日期为1时，取开盘价，否则�
 
 const DAYBARPOS = new MyCompletion();
 DAYBARPOS.label = "DAYBARPOS";
+DAYBARPOS.description = "当根k线为当天第几根k线";
 DAYBARPOS.insertText = "";
 DAYBARPOS.body = "DAYBARPOS";
 DAYBARPOS.type = MyCompletionType.Function;
@@ -2320,6 +2398,7 @@ VALUEWHEN(DAYBARPOS=1,C);//取当天第一根K线的收盘价
 
 const DAYSTOEXPIRED = new MyCompletion();
 DAYSTOEXPIRED.label = "DAYSTOEXPIRED";
+DAYSTOEXPIRED.description = "期货合约距最后交易日的天数";
 DAYSTOEXPIRED.insertText = "";
 DAYSTOEXPIRED.body = "DAYSTOEXPIRED()";
 DAYSTOEXPIRED.type = MyCompletionType.Function;
@@ -2358,6 +2437,7 @@ A:=DAYSTOEXPIRED('')=1&&CLOSEMINUTE=5;//定义变量A为最后交易日收盘前
 
 const DAYTRADE = new MyCompletion();
 DAYTRADE.label = "DAYTRADE";
+DAYTRADE.description = "日内交易函数";
 DAYTRADE.insertText = "";
 DAYTRADE.body = "DAYTRADE";
 DAYTRADE.type = MyCompletionType.Function;
@@ -2394,6 +2474,7 @@ DAYTRADE;//只用日内数据进行计算
 
 const DAYTRADE1 = new MyCompletion();
 DAYTRADE1.label = "DAYTRADE1";
+DAYTRADE1.description = "日内交易函数";
 DAYTRADE1.insertText = "";
 DAYTRADE1.body = "DAYTRADE1";
 DAYTRADE1.type = MyCompletionType.Function;
@@ -2433,6 +2514,7 @@ DAYTRADE1;//只用日内数据进行计算
 
 const DEVSQ = new MyCompletion();
 DEVSQ.label = "DEVSQ";
+DEVSQ.description = "取得数据偏差平方和";
 DEVSQ.insertText = "";
 DEVSQ.body = "DEVSQ( , )";
 DEVSQ.type = MyCompletionType.Function;
@@ -2464,6 +2546,7 @@ DEVSQ(C,5);计算数据收盘价5个周期的数据偏差平方和。
 
 const DIVERGENCE = new MyCompletion();
 DIVERGENCE.label = "DIVERGENCE";
+DIVERGENCE.description = "变量X1与X2在指定周期内是否发生背离";
 DIVERGENCE.insertText = "";
 DIVERGENCE.body = "DIVERGENCE(,,,,)";
 DIVERGENCE.type = MyCompletionType.Function;
@@ -2493,6 +2576,7 @@ DIVERGENCE(C,MA10,2,20,1);//在20个周期内，收盘价与10周期均线存在
 
 const DIVIDEND = new MyCompletion();
 DIVIDEND.label = "DIVIDEND";
+DIVIDEND.description = "返回之前第N次派息的每股派息数量";
 DIVIDEND.insertText = "";
 DIVIDEND.body = "DIVIDEND()";
 DIVIDEND.type = MyCompletionType.Function;
@@ -2520,6 +2604,7 @@ DIVIDEND(N) 返回之前第N次派息的每股派息数量。
 
 const DIVIDENDBARS = new MyCompletion();
 DIVIDENDBARS.label = "DIVIDENDBARS";
+DIVIDENDBARS.description = "返回从之前第N个派息日到当前的周期数";
 DIVIDENDBARS.insertText = "";
 DIVIDENDBARS.body = "DIVIDENDBARS()";
 DIVIDENDBARS.type = MyCompletionType.Function;
@@ -2545,6 +2630,7 @@ DIVIDENDBARS(N) 返回从之前第N个派息日到当前的周期数。
 
 const DMA = new MyCompletion();
 DMA.label = "DMA";
+DMA.description = "动态移动平均";
 DMA.insertText = "";
 DMA.body = "DMA( , )";
 DMA.type = MyCompletionType.Function;
@@ -2568,6 +2654,7 @@ DMA3:=DMA(C,0.3);//计算结果为REF(DMA3,1)*(1-0.3)+C*0.3
 
 const DOT = new MyCompletion();
 DOT.label = "DOT";
+DOT.description = "画点线";
 DOT.insertText = "";
 DOT.body = "DOT";
 DOT.type = MyCompletionType.Function;
@@ -2588,6 +2675,7 @@ DOT 画点线。
 
 const DRAWBARLINE = new MyCompletion();
 DRAWBARLINE.label = "DRAWBARLINE";
+DRAWBARLINE.description = "绘制BAR线（美国线）";
 DRAWBARLINE.insertText = "";
 DRAWBARLINE.body = "DRAWBARLINE(,,,)";
 DRAWBARLINE.type = MyCompletionType.Function;
@@ -2611,6 +2699,7 @@ DRAWBARLINE(H,O,L,C); //在最高价和最低价之间绘制BAR线，在开盘�
 
 const DRAWBKBMP = new MyCompletion();
 DRAWBKBMP.label = "DRAWBKBMP";
+DRAWBKBMP.description = "设置背景图片";
 DRAWBKBMP.insertText = "";
 DRAWBKBMP.body = "DRAWBKBMP( , )";
 DRAWBKBMP.type = MyCompletionType.Function;
@@ -2639,6 +2728,7 @@ DRAWBKBMP(CLOSE>OPEN,'壁纸20140410112435');//当最后一根K线为阳线时�
 
 const DRAWBMP = new MyCompletion();
 DRAWBMP.label = "DRAWBMP";
+DRAWBMP.description = "输出图片";
 DRAWBMP.insertText = "";
 DRAWBMP.body = "DRAWBMP( , )";
 DRAWBMP.type = MyCompletionType.Function;
@@ -2669,6 +2759,7 @@ DRAWBMP(CLOSE>OPEN,H,'壁纸20140410112435.BMP');//当K线为阳线时，在K线
 
 const DRAWCOLORKLINE = new MyCompletion();
 DRAWCOLORKLINE.label = "DRAWCOLORKLINE";
+DRAWCOLORKLINE.description = "绘制K线";
 DRAWCOLORKLINE.insertText = "";
 DRAWCOLORKLINE.body = "DRAWCOLORKLINE";
 DRAWCOLORKLINE.type = MyCompletionType.Function;
@@ -2695,6 +2786,7 @@ DRAWCOLORKLINE(C>O,COLORBLUE,0);//收盘价大于开盘价，用蓝色绘制实�
 
 const DRAWCOLORLINE = new MyCompletion();
 DRAWCOLORLINE.label = "DRAWCOLORLINE";
+DRAWCOLORLINE.description = "根据条件画相应颜色的线";
 DRAWCOLORLINE.insertText = "";
 DRAWCOLORLINE.body = "DRAWCOLORLINE(,,,)";
 DRAWCOLORLINE.type = MyCompletionType.Function;
@@ -2722,6 +2814,7 @@ DRAWCOLORLINE(MA1>REF(MA1,1),MA1,COLORRED,COLORGREEN); //如果当根5日均线�
 
 const DRAWCOLUMNCHART = new MyCompletion();
 DRAWCOLUMNCHART.label = "DRAWCOLUMNCHART";
+DRAWCOLUMNCHART.description = "画双向柱形图";
 DRAWCOLUMNCHART.insertText = "";
 DRAWCOLUMNCHART.body = "DRAWCOLUMNCHART( , , )";
 DRAWCOLUMNCHART.type = MyCompletionType.Function;
@@ -2749,6 +2842,7 @@ DRAWCOLUMNCHART(10,C>O,C>O);//满足收阳条件从0轴向上10个高度画红�
 
 const DRAWGBK = new MyCompletion();
 DRAWGBK.label = "DRAWGBK";
+DRAWGBK.description = "设置渐变背景色";
 DRAWGBK.insertText = "";
 DRAWGBK.body = "DRAWGBK(,,,)";
 DRAWGBK.type = MyCompletionType.Function;
@@ -2780,6 +2874,7 @@ DRAWGBK(CLOSE>OPEN,COLORRED,COLORGREEN,1);//当最后一根K线为阳线时，�
 
 const DRAWGBK1 = new MyCompletion();
 DRAWGBK1.label = "DRAWGBK1";
+DRAWGBK1.description = "设置满足条件K线的背景颜色";
 DRAWGBK1.insertText = "";
 DRAWGBK1.body = "DRAWGBK1(,)";
 DRAWGBK1.type = MyCompletionType.Function;
@@ -2809,6 +2904,7 @@ DRAWGBK1(C>MA5,COLORRED);//表示在收盘价大于5周期均线的k线对应背
 
 const DRAWICON = new MyCompletion();
 DRAWICON.label = "DRAWICON";
+DRAWICON.description = "画图标";
 DRAWICON.insertText = "";
 DRAWICON.body = "DRAWICON( , , )";
 DRAWICON.type = MyCompletionType.Function;
@@ -2844,6 +2940,7 @@ DRAWICON(C>MA5,MA5,2),ALIGN0,VALIGN0;//表示在收盘价大于5周期均线的k
 
 const DRAWKLINE = new MyCompletion();
 DRAWKLINE.label = "DRAWKLINE";
+DRAWKLINE.description = "绘制K线";
 DRAWKLINE.insertText = "";
 DRAWKLINE.body = "DRAWKLINE( , , , , )";
 DRAWKLINE.type = MyCompletionType.Function;
@@ -2872,6 +2969,7 @@ DRAWKLINE(0.5,COLORYELLOW,0,COLORBLUE,1);//绘制K线宽度比例为0.5,阳线�
 
 const DRAWKLINE1 = new MyCompletion();
 DRAWKLINE1.label = "DRAWKLINE1";
+DRAWKLINE1.description = "绘制K线";
 DRAWKLINE1.insertText = "";
 DRAWKLINE1.body = "DRAWKLINE1( , , , )";
 DRAWKLINE1.type = MyCompletionType.Function;
@@ -2903,6 +3001,7 @@ DRAWKLINE1(H1,O1,L1,C);//以昨日收盘价作为开盘价绘制K线
 
 const DRAWKLINE2 = new MyCompletion();
 DRAWKLINE2.label = "DRAWKLINE2";
+DRAWKLINE2.description = "绘制K线";
 DRAWKLINE2.insertText = "";
 DRAWKLINE2.body = "DRAWKLINE2( , , , , )";
 DRAWKLINE2.type = MyCompletionType.Function;
@@ -2933,6 +3032,7 @@ DRAWKLINE2(1,COLORRED,1,COLORCYAN,0);//处于盘整状态下的K线显示为黄�
 
 const DRAWLASTBARICON = new MyCompletion();
 DRAWLASTBARICON.label = "DRAWLASTBARICON";
+DRAWLASTBARICON.description = "在最后一根k线绘制图标";
 DRAWLASTBARICON.insertText = "";
 DRAWLASTBARICON.body = "DRAWLASTBARICON( , )";
 DRAWLASTBARICON.type = MyCompletionType.Function;
@@ -2968,6 +3068,7 @@ DRAWLASTBARICON(MA5,2);//表示在最后一根k线对应的MA5数值位置上画
 
 const DRAWLASTBARLINE = new MyCompletion();
 DRAWLASTBARLINE.label = "DRAWLASTBARLINE";
+DRAWLASTBARLINE.description = "最后一根k线满足条件偏移周期画线";
 DRAWLASTBARLINE.insertText = "";
 DRAWLASTBARLINE.body = "DRAWLASTBARLINE(,,,,,,)";
 DRAWLASTBARLINE.type = MyCompletionType.Function;
@@ -3002,6 +3103,7 @@ DRAWLASTBARLINE(COD2,REF(L,2),2,COD1,REF(H,1),1,0),COLORRED;//最后一根k线�
 
 const DRAWLASTBARNUMBER = new MyCompletion();
 DRAWLASTBARNUMBER.label = "DRAWLASTBARNUMBER";
+DRAWLASTBARNUMBER.description = "在最后一根k线输出数值";
 DRAWLASTBARNUMBER.insertText = "";
 DRAWLASTBARNUMBER.body = "DRAWLASTBARNUMBER( , , ,)";
 DRAWLASTBARNUMBER.type = MyCompletionType.Function;
@@ -3030,6 +3132,7 @@ DRAWLASTBARNUMBER(L,REF(C,1),2,COLORRED),ALIGN0,VALIGN0;//表示最后一根k线
 
 const DRAWLASTBARTEXT = new MyCompletion();
 DRAWLASTBARTEXT.label = "DRAWLASTBARTEXT";
+DRAWLASTBARTEXT.description = "在最后一根k线显示文字";
 DRAWLASTBARTEXT.insertText = "";
 DRAWLASTBARTEXT.body = "DRAWLASTBARTEXT( , )";
 DRAWLASTBARTEXT.type = MyCompletionType.Function;
@@ -3059,6 +3162,7 @@ DRAWLASTBARTEXT(LOW,'低'),ALIGN0,FONTSIZE16,COLORRED;//在最后一根k线，�
 
 const DRAWLINE = new MyCompletion();
 DRAWLINE.label = "DRAWLINE";
+DRAWLINE.description = "画线";
 DRAWLINE.insertText = "";
 DRAWLINE.body = "DRAWLINE( , , , , )";
 DRAWLINE.type = MyCompletionType.Function;
@@ -3093,6 +3197,7 @@ DRAWLINE(ISUP,C,ISUP,H,COLORRED),LINETHICK7;//表示当前k线收阳时，从收
 
 const DRAWLINE1 = new MyCompletion();
 DRAWLINE1.label = "DRAWLINE1";
+DRAWLINE1.description = "画线";
 DRAWLINE1.insertText = "";
 DRAWLINE1.body = "DRAWLINE1( , , , , )";
 DRAWLINE1.type = MyCompletionType.Function;
@@ -3124,6 +3229,7 @@ DRAWLINE1(ISUP,H,ISDOWN,L,0),COLORBLUE,LINETHICK7;//表示在阳线的最高价�
 
 const DRAWLINE2 = new MyCompletion();
 DRAWLINE2.label = "DRAWLINE2";
+DRAWLINE2.description = "画线";
 DRAWLINE2.insertText = "";
 DRAWLINE2.body = "DRAWLINE2( , , , , )";
 DRAWLINE2.type = MyCompletionType.Function;
@@ -3155,6 +3261,7 @@ DRAWLINE2(ISUP,H,ISDOWN,L,0),COLORBLUE,LINETHICK7;//表示在阳线的最高价�
 
 const DRAWLINE3 = new MyCompletion();
 DRAWLINE3.label = "DRAWLINE3";
+DRAWLINE3.description = "偏移周期画线";
 DRAWLINE3.insertText = "";
 DRAWLINE3.body = "DRAWLINE3(,,,,,,)";
 DRAWLINE3.type = MyCompletionType.Function;
@@ -3193,6 +3300,7 @@ DRAWLINE3(COD2,REF(L,2),2,COD1,REF(H,2),2,0),COLORRED;//满足COD2时向左偏�
 
 const DRAWNUMBER = new MyCompletion();
 DRAWNUMBER.label = "DRAWNUMBER";
+DRAWNUMBER.description = "写数字";
 DRAWNUMBER.insertText = "";
 DRAWNUMBER.body = "DRAWNUMBER( , , , , )";
 DRAWNUMBER.type = MyCompletionType.Function;
@@ -3221,6 +3329,7 @@ DRAWNUMBER(DATE<>REF(DATE,1),L,REF(C,1),2,COLORRED),ALIGN0,VALIGN0;//表示在�
 
 const DRAWNUMBER1 = new MyCompletion();
 DRAWNUMBER1.label = "DRAWNUMBER1";
+DRAWNUMBER1.description = "写数字";
 DRAWNUMBER1.insertText = "";
 DRAWNUMBER1.body = "DRAWNUMBER1( , , , )";
 DRAWNUMBER1.type = MyCompletionType.Function;
@@ -3250,6 +3359,7 @@ DRAWNUMBER1(DATE<>REF(DATE,1),L,REF(C,1),2),COLORRED,ALIGN0,VALIGN0;//表示在�
 
 const DRAWSHIFTNUMBER = new MyCompletion();
 DRAWSHIFTNUMBER.label = "DRAWSHIFTNUMBER";
+DRAWSHIFTNUMBER.description = "输出数值";
 DRAWSHIFTNUMBER.insertText = "";
 DRAWSHIFTNUMBER.body = "DRAWSHIFTNUMBER( , , , , , , )";
 DRAWSHIFTNUMBER.type = MyCompletionType.Function;
@@ -3277,6 +3387,7 @@ DRAWSHIFTNUMBER(DATE<>REF(DATE,1),L,REF(C,1),2,COLORRED,1,1),ALIGN0,VALIGN0;//�
 
 const DRAWSL = new MyCompletion();
 DRAWSL.label = "DRAWSL";
+DRAWSL.description = "画线（段）";
 DRAWSL.insertText = "";
 DRAWSL.body = "DRAWSL( , , , , , )";
 DRAWSL.type = MyCompletionType.Function;
@@ -3311,6 +3422,7 @@ DRAWSL(LOW=LLV(LOW,50),LOW,5,3,2,COLORRED),LINETHICK5;//表示当前最低价等
 
 const DRAWSL1 = new MyCompletion();
 DRAWSL1.label = "DRAWSL1";
+DRAWSL1.description = "画线（段）";
 DRAWSL1.insertText = "";
 DRAWSL1.body = "DRAWSL1( , , , , )";
 DRAWSL1.type = MyCompletionType.Function;
@@ -3346,6 +3458,7 @@ DRAWSL1(LOW=LLV(LOW,50),LOW,5,3,1),COLORRED,LINETHICK5;//表示当前最低价�
 
 const DRAWTEXT = new MyCompletion();
 DRAWTEXT.label = "DRAWTEXT";
+DRAWTEXT.description = "显示文字";
 DRAWTEXT.insertText = "";
 DRAWTEXT.body = "DRAWTEXT( , , )";
 DRAWTEXT.type = MyCompletionType.Function;
@@ -3379,6 +3492,7 @@ DRAWTEXT(L<=LLV(L,10),LOW,'新低'),ALIGN0,FONTSIZE16,COLORRED;//表示当根k�
 
 const DRAWVALID = new MyCompletion();
 DRAWVALID.label = "DRAWVALID";
+DRAWVALID.description = "连接数据的有效值画折线";
 DRAWVALID.insertText = "";
 DRAWVALID.body = "DRAWVALID()";
 DRAWVALID.type = MyCompletionType.Function;
@@ -3400,6 +3514,7 @@ DRAWVALID(DATA);连接DATA中的有效值画折线
 
 const DUALVOLUME = new MyCompletion();
 DUALVOLUME.label = "DUALVOLUME";
+DUALVOLUME.description = "多空量函数";
 DUALVOLUME.insertText = "";
 DUALVOLUME.body = "DUALVOLUME( )";
 DUALVOLUME.type = MyCompletionType.Function;
@@ -3439,6 +3554,7 @@ DRAWCOLUMNCHART(N,SCALE>=0.5,M>=0);
 
 const EMA = new MyCompletion();
 EMA.label = "EMA";
+EMA.description = "指数加权移动平均";
 EMA.insertText = "";
 EMA.body = "EMA( , )";
 EMA.type = MyCompletionType.Function;
@@ -3466,6 +3582,7 @@ EMA10:=EMA(C,10);//求收盘价10周期指数加权移动平均值
 
 const EMA2 = new MyCompletion();
 EMA2.label = "EMA2";
+EMA2.description = "线性加权移动平均";
 EMA2.insertText = "";
 EMA2.body = "EMA2( , )";
 EMA2.type = MyCompletionType.Function;
@@ -3492,6 +3609,7 @@ EMA2(H,5);//求最高价在5个周期的线性加权移动平均值。
 
 const EMAWH = new MyCompletion();
 EMAWH.label = "EMAWH";
+EMAWH.description = "指数加权移动平均";
 EMAWH.insertText = "";
 EMAWH.body = "EMAWH( , )";
 EMAWH.type = MyCompletionType.Function;
@@ -3517,6 +3635,7 @@ EMAWH用法同EMA(C,N)
 
 const ENTRYSIG_PLACE = new MyCompletion();
 ENTRYSIG_PLACE.label = "ENTRYSIG_PLACE";
+ENTRYSIG_PLACE.description = "取指定开仓信号的K线位置";
 ENTRYSIG_PLACE.insertText = "";
 ENTRYSIG_PLACE.body = "ENTRYSIG_PLACE()";
 ENTRYSIG_PLACE.type = MyCompletionType.Function;
@@ -3545,6 +3664,7 @@ ENTRYSIG_PLACE(3)=5&&BKVOL>0,SP(BKVOL);//如果第3个开仓信号所在K线距�
 
 const ENTRYSIG_PRICE = new MyCompletion();
 ENTRYSIG_PRICE.label = "ENTRYSIG_PRICE";
+ENTRYSIG_PRICE.description = "取指定开仓信号的价格";
 ENTRYSIG_PRICE.insertText = "";
 ENTRYSIG_PRICE.body = "ENTRYSIG_PRICE()";
 ENTRYSIG_PRICE.type = MyCompletionType.Function;
@@ -3575,6 +3695,7 @@ ENTRYSIG_PRICE(3)=3000&&BKVOL>0,SP(BKVOL);//如果第3个固定的开仓信号�
 
 const ENTRYSIG_VOL = new MyCompletion();
 ENTRYSIG_VOL.label = "ENTRYSIG_VOL";
+ENTRYSIG_VOL.description = "取指定开仓信号的信号手数";
 ENTRYSIG_VOL.insertText = "";
 ENTRYSIG_VOL.body = "ENTRYSIG_VOL()";
 ENTRYSIG_VOL.type = MyCompletionType.Function;
@@ -3604,6 +3725,7 @@ ENTRYSIG_PRICE(3)=3000&&ENTRYSIG_VOL(3)>2,SP(BKVOL);//如果第3个固定的开�
 
 const EVERY = new MyCompletion();
 EVERY.label = "EVERY";
+EVERY.description = "判断是否持续满足";
 EVERY.insertText = "";
 EVERY.body = "EVERY( , )";
 EVERY.type = MyCompletionType.Function;
@@ -3632,6 +3754,7 @@ EVERY(MA5>MA10,4),BK;//4个周期内MA5都大于MA10，则买开仓。
 
 const EXIST = new MyCompletion();
 EXIST.label = "EXIST";
+EXIST.description = "判断是否存在满足";
 EXIST.insertText = "";
 EXIST.body = "EXIST( , )";
 EXIST.type = MyCompletionType.Function;
@@ -3658,6 +3781,7 @@ EXIST(C>MA(C,5),N);// 表示当天是否有满足收盘价大于5周期均线的
 
 const EXITSIG_PLACE = new MyCompletion();
 EXITSIG_PLACE.label = "EXITSIG_PLACE";
+EXITSIG_PLACE.description = "取指定平仓信号的K线位置";
 EXITSIG_PLACE.insertText = "";
 EXITSIG_PLACE.body = "EXITSIG_PLACE()";
 EXITSIG_PLACE.type = MyCompletionType.Function;
@@ -3686,6 +3810,7 @@ EXITSIG_PLACE(3)=5&&BKVOL<=0,BK(2);//如果第3个平仓信号所在K线距离�
 
 const EXITSIG_PRICE = new MyCompletion();
 EXITSIG_PRICE.label = "EXITSIG_PRICE";
+EXITSIG_PRICE.description = "取指定平仓信号的价格";
 EXITSIG_PRICE.insertText = "";
 EXITSIG_PRICE.body = "EXITSIG_PRICE()";
 EXITSIG_PRICE.type = MyCompletionType.Function;
@@ -3716,6 +3841,7 @@ EXITSIG_PRICE(3)=3000&&BKVOL>0,SP(BKVOL);//如果第3个固定的平仓信号的
 
 const EXITSIG_VOL = new MyCompletion();
 EXITSIG_VOL.label = "EXITSIG_VOL";
+EXITSIG_VOL.description = "取指定平仓信号的信号手数";
 EXITSIG_VOL.insertText = "";
 EXITSIG_VOL.body = "EXITSIG_VOL()";
 EXITSIG_VOL.type = MyCompletionType.Function;
@@ -3745,6 +3871,7 @@ EXITSIG_PRICE(3)=3000&&EXITSIG_VOL(3)>2,BK(2);//如果第3个固定的平仓信�
 
 const EXP = new MyCompletion();
 EXP.label = "EXP";
+EXP.description = "指数";
 EXP.insertText = "";
 EXP.body = "EXP( )";
 EXP.type = MyCompletionType.Function;
@@ -3763,6 +3890,7 @@ C*EXP(0.01);//求收盘价乘以e的0.01次幂
 
 const EXPIREDATE = new MyCompletion();
 EXPIREDATE.label = "EXPIREDATE";
+EXPIREDATE.description = "返回期货合约的最后交易日";
 EXPIREDATE.insertText = "";
 EXPIREDATE.body = "EXPIREDATE()";
 EXPIREDATE.type = MyCompletionType.Function;
@@ -3799,6 +3927,7 @@ EXPIREDATE('');//加载到IF1406上返回值为140620。
 
 const FEE = new MyCompletion();
 FEE.label = "FEE";
+FEE.description = "手续费";
 FEE.insertText = "";
 FEE.body = "FEE";
 FEE.type = MyCompletionType.Function;
@@ -3825,6 +3954,7 @@ K:=MONEYTOT*0.2/(C*MARGIN*UNIT+FEE); //理论权益的20%可以开仓的手数�
 
 const FILLRGN = new MyCompletion();
 FILLRGN.label = "FILLRGN";
+FILLRGN.description = "填充函数";
 FILLRGN.insertText = "";
 FILLRGN.body = "FILLRGN( , , , )";
 FILLRGN.type = MyCompletionType.Function;
@@ -3855,6 +3985,7 @@ FILLRGN(MA5>MA10,MA5,MA10,COLORRED);//表示MA5>MA10时以红色填充MA5和MA10
 
 const FILLRGN1 = new MyCompletion();
 FILLRGN1.label = "FILLRGN1";
+FILLRGN1.description = "填充函数";
 FILLRGN1.insertText = "";
 FILLRGN1.body = "FILLRGN1( , , )";
 FILLRGN1.type = MyCompletionType.Function;
@@ -3888,6 +4019,7 @@ FILLRGN1(MA5>MA10,MA5,MA10),COLORRED;//表示MA5>MA10时以红色填充MA5和MA1
 
 const FILTER = new MyCompletion();
 FILTER.label = "FILTER";
+FILTER.description = "过滤";
 FILTER.insertText = "";
 FILTER.body = "FILTER( , )";
 FILTER.type = MyCompletionType.Function;
@@ -3910,6 +4042,7 @@ FILTER(CLOSE>OPEN,3);// 查找阳线，3天内再次出现的阳线不被记录�
 
 const FINANCE_DATA = new MyCompletion();
 FINANCE_DATA.label = "FINANCE_DATA";
+FINANCE_DATA.description = "取某一股票合约的财务数据";
 FINANCE_DATA.insertText = "";
 FINANCE_DATA.body = "FINANCE_DATA('')";
 FINANCE_DATA.type = MyCompletionType.Function;
@@ -3989,6 +4122,7 @@ FINANCE_DATA('每股收益');//返回当前股票合约财务数据中每股收�
 
 const FLOOR = new MyCompletion();
 FLOOR.label = "FLOOR";
+FLOOR.description = "向下舍入";
 FLOOR.insertText = "";
 FLOOR.body = "FLOOR( )";
 FLOOR.type = MyCompletionType.Function;
@@ -4016,6 +4150,7 @@ IFELSE(C-INTPART(C)>=0.5,CEILING(C,1),FLOOR(C));//对收盘价四舍五入后取
 
 const FONTSIZE = new MyCompletion();
 FONTSIZE.label = "FONTSIZE";
+FONTSIZE.description = "设置字体大小";
 FONTSIZE.insertText = "";
 FONTSIZE.body = "FONTSIZE";
 FONTSIZE.type = MyCompletionType.Function;
@@ -4040,6 +4175,7 @@ DRAWTEXT(C<O,L,'阴线'),ALIGN0,VALIGN2,FONTSIZE30;//收盘价小于开盘价，
 
 const FORCAST = new MyCompletion();
 FORCAST.label = "FORCAST";
+FORCAST.description = "线性回归值";
 FORCAST.insertText = "";
 FORCAST.body = "FORCAST( , )";
 FORCAST.type = MyCompletionType.Function;
@@ -4084,6 +4220,7 @@ FORCAST(CLOSE,5);//表示求5周期线性回归预测值
 
 const GROUP = new MyCompletion();
 GROUP.label = "GROUP";
+GROUP.description = "判断分组的组别";
 GROUP.insertText = "";
 GROUP.body = "GROUP()";
 GROUP.type = MyCompletionType.Function;
@@ -4109,6 +4246,7 @@ LASTSIG=200&&LASTSIGGROUP=GROUP('B'),SP('B',BKVOL);//上一个信号是B组的BK
 
 const GROUPBKPRICE = new MyCompletion();
 GROUPBKPRICE.label = "GROUPBKPRICE";
+GROUPBKPRICE.description = "指令分组模型相应组别的最近一次买开信号价位";
 GROUPBKPRICE.insertText = "";
 GROUPBKPRICE.body = "GROUPBKPRICE";
 GROUPBKPRICE.type = MyCompletionType.Function;
@@ -4131,6 +4269,7 @@ BB:GROUPBKPRICE('A');//给BB赋值为A组指令中最近一次买开信号价位
 
 const GROUPBKVOL = new MyCompletion();
 GROUPBKVOL.label = "GROUPBKVOL";
+GROUPBKVOL.description = "指令分组模型买开信号手数";
 GROUPBKVOL.insertText = "";
 GROUPBKVOL.body = "BKVOL";
 GROUPBKVOL.type = MyCompletionType.Function;
@@ -4163,6 +4302,7 @@ C<O,SP('B',GROUPBKVOL('B'));//K线收阴线，卖平所有的B组多头持仓
 
 const GROUPSKPRICE = new MyCompletion();
 GROUPSKPRICE.label = "GROUPSKPRICE";
+GROUPSKPRICE.description = "指令分组模型相应组别的最近一次卖开信号价位";
 GROUPSKPRICE.insertText = "";
 GROUPSKPRICE.body = "GROUPSKPRICE";
 GROUPSKPRICE.type = MyCompletionType.Function;
@@ -4185,6 +4325,7 @@ SS:GROUPSKPRICE('B');//给SS赋值为B组指令中最近一次卖开信号价位
 
 const GROUPSKVOL = new MyCompletion();
 GROUPSKVOL.label = "GROUPSKVOL";
+GROUPSKVOL.description = "指令分组模型卖开信号手数";
 GROUPSKVOL.insertText = "";
 GROUPSKVOL.body = "GROUPSKVOL";
 GROUPSKVOL.type = MyCompletionType.Function;
@@ -4217,6 +4358,7 @@ C>O,BP('B',GROUPSKVOL('B')); //K线收阳线，买平所有的B组空头持仓
 
 const HARMEAN = new MyCompletion();
 HARMEAN.label = "HARMEAN";
+HARMEAN.description = "调和平均值";
 HARMEAN.insertText = "";
 HARMEAN.body = "HARMEAN( , )";
 HARMEAN.type = MyCompletionType.Function;
@@ -4245,6 +4387,7 @@ HM5:=HARMEAN(C,5);//求5周期收盘价的调和平均值。
 
 const HASTRADEDATA = new MyCompletion();
 HASTRADEDATA.label = "HASTRADEDATA";
+HASTRADEDATA.description = "判断数据合约当根K线交易合约是否有数据";
 HASTRADEDATA.insertText = "";
 HASTRADEDATA.body = "HASTRADEDATA";
 HASTRADEDATA.type = MyCompletionType.Function;
@@ -4265,6 +4408,7 @@ HASTRADEDATA;
 
 const HHV = new MyCompletion();
 HHV.label = "HHV";
+HHV.description = "最高值";
 HHV.insertText = "";
 HHV.body = "HHV( , )";
 HHV.type = MyCompletionType.Function;
@@ -4293,6 +4437,7 @@ HH1:=HHV(H,N);//在分钟周期上，日内高点
 
 const HHVBARS = new MyCompletion();
 HHVBARS.label = "HHVBARS";
+HHVBARS.description = "前一最高点位置";
 HHVBARS.insertText = "";
 HHVBARS.body = "HHVBARS( , )";
 HHVBARS.type = MyCompletionType.Function;
@@ -4320,6 +4465,7 @@ ZHBARS:REF(HHVBARS(H,N),N)+N;//在分钟周期上，求昨天最高价所在的k
 
 const HIGH = new MyCompletion();
 HIGH.label = "HIGH";
+HIGH.description = "取得K线图的最高价";
 HIGH.insertText = "";
 HIGH.body = "HIGH";
 HIGH.type = MyCompletionType.Function;
@@ -4345,6 +4491,7 @@ REF(H,1);//取的前一根K线的最高价
 
 const HISEXPDATE = new MyCompletion();
 HISEXPDATE.label = "HISEXPDATE";
+HISEXPDATE.description = "返回当前周期期货合约的最后交易日";
 HISEXPDATE.insertText = "";
 HISEXPDATE.body = "HISEXPDATE";
 HISEXPDATE.type = MyCompletionType.Function;
@@ -4374,6 +4521,7 @@ B:EXPIREDATE('');//A和B的返回值一样。加载到IF1406上返回值为14062
 
 const HISEXPDAYS = new MyCompletion();
 HISEXPDAYS.label = "HISEXPDAYS";
+HISEXPDAYS.description = "返回当前周期期货合约距离最后交易日的天数";
 HISEXPDAYS.insertText = "";
 HISEXPDAYS.body = "HISEXPDAYS";
 HISEXPDAYS.type = MyCompletionType.Function;
@@ -4401,6 +4549,7 @@ A:=HISEXPDAYS=1&&CLOSEMINUTE=5;//定义变量A为最后交易日收盘前五分�
 
 const HOLLOW = new MyCompletion();
 HOLLOW.label = "HOLLOW";
+HOLLOW.description = "空心显示";
 HOLLOW.insertText = "";
 HOLLOW.body = "HOLLOW";
 HOLLOW.type = MyCompletionType.Function;
@@ -4425,6 +4574,7 @@ VOL,VOLUMESTICK,HOLLOW;//画成交量柱状线，柱线空心显示。
 
 const HOUR = new MyCompletion();
 HOUR.label = "HOUR";
+HOUR.description = "小时";
 HOUR.insertText = "";
 HOUR.body = "HOUR";
 HOUR.type = MyCompletionType.Function;
@@ -4450,6 +4600,7 @@ HOUR=10;//在10:00的K线上返回值为1，其余K线上返回值为0。
 
 const HV = new MyCompletion();
 HV.label = "HV";
+HV.description = "除当前K线外最高值";
 HV.insertText = "";
 HV.body = "HV( , )";
 HV.type = MyCompletionType.Function;
@@ -4480,6 +4631,7 @@ HV(H,5) 和 REF(HHV(H,5),1) 的结果是一样的，用HV编写更加方便。
 
 const ICON = new MyCompletion();
 ICON.label = "ICON";
+ICON.description = "显示图标";
 ICON.insertText = "";
 ICON.body = "ICON( , )";
 ICON.type = MyCompletionType.Function;
@@ -4509,6 +4661,7 @@ CLOSE>OPEN,ICON(1,'ICO1');//表示K线收盘大于开盘时，在最高价上显
 
 const IDLE = new MyCompletion();
 IDLE.label = "IDLE";
+IDLE.description = "限制开仓信号发出委托";
 IDLE.insertText = "";
 IDLE.body = "IDLE()";
 IDLE.type = MyCompletionType.Function;
@@ -4552,6 +4705,7 @@ AUTOFILTER;
 
 const IF = new MyCompletion();
 IF.label = "IF";
+IF.description = "条件函数";
 IF.insertText = "";
 IF.body = "IF( , , )";
 IF.type = MyCompletionType.Function;
@@ -4577,6 +4731,7 @@ A=2,SPK;//当MA5不大于MA10，以K、D死叉作为开空仓条件
 
 const IFELSE = new MyCompletion();
 IFELSE.label = "IFELSE";
+IFELSE.description = "条件函数";
 IFELSE.insertText = "";
 IFELSE.body = "IFELSE( , , )";
 IFELSE.type = MyCompletionType.Function;
@@ -4602,6 +4757,7 @@ A=2,SPK;//当MA5不大于MA10，以K、D死叉作为开空仓条件
 
 const IMPLIEDVOLATILITY = new MyCompletion();
 IMPLIEDVOLATILITY.label = "IMPLIEDVOLATILITY";
+IMPLIEDVOLATILITY.description = "取期权隐含波动率";
 IMPLIEDVOLATILITY.insertText = "";
 IMPLIEDVOLATILITY.body = "IMPLIEDVOLATILITY";
 IMPLIEDVOLATILITY.type = MyCompletionType.Function;
@@ -4631,6 +4787,7 @@ AA:IMPLIEDVOLATILITY;//AA返回期权的隐含波动率。
 
 const INITMONEY = new MyCompletion();
 INITMONEY.label = "INITMONEY";
+INITMONEY.description = "初次加载时的起始资金";
 INITMONEY.insertText = "";
 INITMONEY.body = "INITMONEY";
 INITMONEY.type = MyCompletionType.Function;
@@ -4658,6 +4815,7 @@ K:=INITMONEY*0.2/(C*MARGIN*UNIT+FEE); //初始资金的20%可以开仓的手数�
 
 const INTPART = new MyCompletion();
 INTPART.label = "INTPART";
+INTPART.description = "取整";
 INTPART.insertText = "";
 INTPART.body = "INTPART( )";
 INTPART.type = MyCompletionType.Function;
@@ -4682,6 +4840,7 @@ INTPART(C);//求收盘价的整数部分。
 
 const ISCONTRACT = new MyCompletion();
 ISCONTRACT.label = "ISCONTRACT";
+ISCONTRACT.description = "当前是否为指定的合约";
 ISCONTRACT.insertText = "";
 ISCONTRACT.body = "ISCONTRACT()";
 ISCONTRACT.type = MyCompletionType.Function;
@@ -4709,6 +4868,7 @@ ISCONTRACT('沪铜');//加载到沪铜合约上返回值为1，加载到非沪�
 
 const ISDELIVERYDAY = new MyCompletion();
 ISDELIVERYDAY.label = "ISDELIVERYDAY";
+ISDELIVERYDAY.description = "判断该周期是不是最后交易日";
 ISDELIVERYDAY.insertText = "";
 ISDELIVERYDAY.body = "ISDELIVERYDAY";
 ISDELIVERYDAY.type = MyCompletionType.Function;
@@ -4732,6 +4892,7 @@ ISDELIVERYDAY=1&&TIME>=1000,CLOSEOUT;//当根k线是最后交易日并且时间�
 
 const ISDOWN = new MyCompletion();
 ISDOWN.label = "ISDOWN";
+ISDOWN.description = "阴线";
 ISDOWN.insertText = "";
 ISDOWN.body = "ISDOWN";
 ISDOWN.type = MyCompletionType.Function;
@@ -4754,6 +4915,7 @@ ISDOWN=1&&C<REF(C,1),SK;//当根k线收阴并且收盘价小于前一周期收�
 
 const ISEQUAL = new MyCompletion();
 ISEQUAL.label = "ISEQUAL";
+ISEQUAL.description = "平盘";
 ISEQUAL.insertText = "";
 ISEQUAL.body = "ISEQUAL";
 ISEQUAL.type = MyCompletionType.Function;
@@ -4775,6 +4937,7 @@ EVERY(ISEQUAL=1,2),CLOSEOUT;//持续2根k线都是平盘，则全平。
 
 const ISLASTBAR = new MyCompletion();
 ISLASTBAR.label = "ISLASTBAR";
+ISLASTBAR.description = "判断该周期是否为最后一根K线";
 ISLASTBAR.insertText = "";
 ISLASTBAR.body = "ISLASTBAR";
 ISLASTBAR.type = MyCompletionType.Function;
@@ -4796,6 +4959,7 @@ DRAWNUMBER(ISLASTBAR=1,HIGH,CLOSE,0,COLORRED);//当前k线是最后一根k线，
 
 const ISLASTBK = new MyCompletion();
 ISLASTBK.label = "ISLASTBK";
+ISLASTBK.description = "判断上一个信号是否是BK";
 ISLASTBK.insertText = "";
 ISLASTBK.body = "ISLASTBK";
 ISLASTBK.type = MyCompletionType.Function;
@@ -4825,6 +4989,7 @@ AUTOFILTER;//上一个信号是BK信号，且最新价大于开仓价格，卖�
 
 const ISLASTBP = new MyCompletion();
 ISLASTBP.label = "ISLASTBP";
+ISLASTBP.description = "判断上一个信号是否是BP";
 ISLASTBP.insertText = "";
 ISLASTBP.body = "ISLASTBP";
 ISLASTBP.type = MyCompletionType.Function;
@@ -4852,6 +5017,7 @@ ISLASTBP,BP(1);//上一个信号是买平仓信号，则减仓一手
 
 const ISLASTBPK = new MyCompletion();
 ISLASTBPK.label = "ISLASTBPK";
+ISLASTBPK.description = "判断上一个信号是否是BPK";
 ISLASTBPK.insertText = "";
 ISLASTBPK.body = "ISLASTBPK";
 ISLASTBPK.type = MyCompletionType.Function;
@@ -4881,6 +5047,7 @@ AUTOFILTER;//上一个信号是BPK信号，则反手SPK
 
 const ISLASTBUY = new MyCompletion();
 ISLASTBUY.label = "ISLASTBUY";
+ISLASTBUY.description = "判断上一个交易信号是否是BUY";
 ISLASTBUY.insertText = "";
 ISLASTBUY.body = "ISLASTBUY";
 ISLASTBUY.type = MyCompletionType.Function;
@@ -4907,6 +5074,7 @@ AUTOFILTER;//上一个信号是BUY信号，且最新价大于买入价格，卖�
 
 const ISLASTCLOSEOUT = new MyCompletion();
 ISLASTCLOSEOUT.label = "ISLASTCLOSEOUT";
+ISLASTCLOSEOUT.description = "判断上一个信号是否是CLOSEOUT";
 ISLASTCLOSEOUT.insertText = "";
 ISLASTCLOSEOUT.body = "ISLASTCLOSEOUT";
 ISLASTCLOSEOUT.type = MyCompletionType.Function;
@@ -4931,6 +5099,7 @@ ISLASTCLOSEOUT&&C>O,BK(1);//上一个信号是清仓信号，并且当根K线是
 
 const ISLASTKLINE = new MyCompletion();
 ISLASTKLINE.label = "ISLASTKLINE";
+ISLASTKLINE.description = "判断该周期是否收盘前最后一根K线";
 ISLASTKLINE.insertText = "";
 ISLASTKLINE.body = "ISLASTKLINE";
 ISLASTKLINE.type = MyCompletionType.Function;
@@ -4953,6 +5122,7 @@ ISLASTKLINE=1,CLOSEOUT;//若该周期是当日收盘前最后一根k线，则全
 
 const ISLASTSELL = new MyCompletion();
 ISLASTSELL.label = "ISLASTSELL";
+ISLASTSELL.description = "判断上一个交易信号是否是SELL";
 ISLASTSELL.insertText = "";
 ISLASTSELL.body = "ISLASTSELL";
 ISLASTSELL.type = MyCompletionType.Function;
@@ -4976,6 +5146,7 @@ ISLASTSELL 上一个交易信号是SELL则返回1（Yes），否则返回0（No�
 
 const ISLASTSK = new MyCompletion();
 ISLASTSK.label = "ISLASTSK";
+ISLASTSK.description = "判断上一个信号是否是SK";
 ISLASTSK.insertText = "";
 ISLASTSK.body = "ISLASTSK";
 ISLASTSK.type = MyCompletionType.Function;
@@ -5005,6 +5176,7 @@ AUTOFILTER;//上一个信号是SK信号，且最新价小于开仓价格，买�
 
 const ISLASTSP = new MyCompletion();
 ISLASTSP.label = "ISLASTSP";
+ISLASTSP.description = "判断上一个信号是否是SP";
 ISLASTSP.insertText = "";
 ISLASTSP.body = "ISLASTSP";
 ISLASTSP.type = MyCompletionType.Function;
@@ -5032,6 +5204,7 @@ ISLASTSP,SP(1);//上一个信号是卖平仓信号，则减仓一手
 
 const ISLASTSPK = new MyCompletion();
 ISLASTSPK.label = "ISLASTSPK";
+ISLASTSPK.description = "判断上一个信号是否是SPK";
 ISLASTSPK.insertText = "";
 ISLASTSPK.body = "ISLASTSPK";
 ISLASTSPK.type = MyCompletionType.Function;
@@ -5061,6 +5234,7 @@ AUTOFILTER;//上一个信号是SPK信号，则反手BPK
 
 const ISLASTSTOP = new MyCompletion();
 ISLASTSTOP.label = "ISLASTSTOP";
+ISLASTSTOP.description = "判断上一个信号是否是STOP";
 ISLASTSTOP.insertText = "";
 ISLASTSTOP.body = "ISLASTSTOP";
 ISLASTSTOP.type = MyCompletionType.Function;
@@ -5086,6 +5260,7 @@ ISLASTSTOP&&CROSS(C,MA(C,10)),BK(1);//上一个信号是STOP信号，且价格�
 
 const ISMAINCONTRACT = new MyCompletion();
 ISMAINCONTRACT.label = "ISMAINCONTRACT";
+ISMAINCONTRACT.description = "当前是否为主力合约";
 ISMAINCONTRACT.insertText = "";
 ISMAINCONTRACT.body = "ISMAINCONTRACT";
 ISMAINCONTRACT.type = MyCompletionType.Function;
@@ -5111,6 +5286,7 @@ ISMAINCONTRACT;//当前的交易合约为主力合约，返回1，否则返回0
 
 const ISMONTHEND = new MyCompletion();
 ISMONTHEND.label = "ISMONTHEND";
+ISMONTHEND.description = "是否为本月最后一个交易日";
 ISMONTHEND.insertText = "";
 ISMONTHEND.body = "ISMONTHEND";
 ISMONTHEND.type = MyCompletionType.Function;
@@ -5133,6 +5309,7 @@ CLOSE<MA(CLOSE,5) || ISMONTHEND,SP;//如果满足平仓条件或者当前为本�
 
 const ISNEARHOLIDAY = new MyCompletion();
 ISNEARHOLIDAY.label = "ISNEARHOLIDAY";
+ISNEARHOLIDAY.description = "判断下一交易日是否是交易合约的节假日";
 ISNEARHOLIDAY.insertText = "";
 ISNEARHOLIDAY.body = "ISNEARHOLIDAY";
 ISNEARHOLIDAY.type = MyCompletionType.Function;
@@ -5155,6 +5332,7 @@ ISNEARHOLIDAY=1&&TIME>=1000,CLOSEOUT;//下一个交易日是节假日并且时�
 
 const ISNULL = new MyCompletion();
 ISNULL.label = "ISNULL";
+ISNULL.description = "判断空值";
 ISNULL.insertText = "";
 ISNULL.body = "ISNULL";
 ISNULL.type = MyCompletionType.Function;
@@ -5174,6 +5352,7 @@ ISNULL 判断空值
 
 const ISRECORDDAY = new MyCompletion();
 ISRECORDDAY.label = "ISRECORDDAY";
+ISRECORDDAY.description = "判断当根K线是否为股权登记日";
 ISRECORDDAY.insertText = "";
 ISRECORDDAY.body = "ISRECORDDAY";
 ISRECORDDAY.type = MyCompletionType.Function;
@@ -5195,6 +5374,7 @@ ISRECORDDAY  判断当根K线是否为股权登记日
 
 const ISTIMETOKLINEEND = new MyCompletion();
 ISTIMETOKLINEEND.label = "ISTIMETOKLINEEND";
+ISTIMETOKLINEEND.description = "判断当前K线时间是否满足K线走完前N秒";
 ISTIMETOKLINEEND.insertText = "";
 ISTIMETOKLINEEND.body = "ISTIMETOKLINEEND";
 ISTIMETOKLINEEND.type = MyCompletionType.Function;
@@ -5225,6 +5405,7 @@ MULTSIG(0,0,3,0);
 
 const ISUP = new MyCompletion();
 ISUP.label = "ISUP";
+ISUP.description = "阳线";
 ISUP.insertText = "";
 ISUP.body = "ISUP";
 ISUP.type = MyCompletionType.Function;
@@ -5247,6 +5428,7 @@ ISUP=1&&C>REF(C,1),BK;//若当根k线收阳并且收盘价大于前一周期收�
 
 const ISWEEKEND = new MyCompletion();
 ISWEEKEND.label = "ISWEEKEND";
+ISWEEKEND.description = "是否为本周最后一个交易日";
 ISWEEKEND.insertText = "";
 ISWEEKEND.body = "ISWEEKEND";
 ISWEEKEND.type = MyCompletionType.Function;
@@ -5269,6 +5451,7 @@ C<MA(C,5) || ISWEEKEND,SP;//如果满足平仓条件或者当前为本周最后�
 
 const K_STATE = new MyCompletion();
 K_STATE.label = "K_STATE";
+K_STATE.description = "判断k线形态";
 K_STATE.insertText = "";
 K_STATE.body = "K_STATE()";
 K_STATE.type = MyCompletionType.Function;
@@ -5322,6 +5505,7 @@ K_STATE('红三兵');//判断当前k线形态是否为红三兵
 
 const K_STATE1 = new MyCompletion();
 K_STATE1.label = "K_STATE1";
+K_STATE1.description = "判断k线形态";
 K_STATE1.insertText = "";
 K_STATE1.body = "K_STATE1()";
 K_STATE1.type = MyCompletionType.Function;
@@ -5361,6 +5545,7 @@ K_STATE1(3,'上升三法');//上升三法为股价持续上涨中，某日出现
 
 const K_STATE2 = new MyCompletion();
 K_STATE2.label = "K_STATE2";
+K_STATE2.description = "判断k线形态";
 K_STATE2.insertText = "";
 K_STATE2.body = "K_STATE2()";
 K_STATE2.type = MyCompletionType.Function;
@@ -5389,6 +5574,7 @@ K_STATE2(3,5,'早晨之星');//早晨之星为启示后市见底回升的阴阳�
 
 const K_STATE3 = new MyCompletion();
 K_STATE3.label = "K_STATE3";
+K_STATE3.description = "判断k线形态";
 K_STATE3.insertText = "";
 K_STATE3.body = "K_STATE3()";
 K_STATE3.type = MyCompletionType.Function;
@@ -5418,6 +5604,7 @@ K_STATE3(5,10,20,'出水芙蓉');//一根大阳线上穿三条均线，均线为
 
 const K_STATE4 = new MyCompletion();
 K_STATE4.label = "K_STATE4";
+K_STATE4.description = "判断k线形态";
 K_STATE4.insertText = "";
 K_STATE4.body = "K_STATE4()";
 K_STATE4.type = MyCompletionType.Function;
@@ -5439,6 +5626,7 @@ K_STATE4(5,5,10,20,'九阴白骨爪')：参数N1为连续N根K线满足阴线，
 
 const KLINESIG = new MyCompletion();
 KLINESIG.label = "KLINESIG";
+KLINESIG.description = "判断当根K线上最后一个固定的信号";
 KLINESIG.insertText = "";
 KLINESIG.body = "KLINESIG";
 KLINESIG.type = MyCompletionType.Function;
@@ -5472,6 +5660,7 @@ KLINESIG=200&&BKVOL>0,SP;//如果最后一个固定的信号是BK信号，并且
 
 const KLINESTART = new MyCompletion();
 KLINESTART.label = "KLINESTART";
+KLINESTART.description = "判断K线当前状态是否是K线开始";
 KLINESTART.insertText = "";
 KLINESTART.body = "KLINESTART";
 KLINESTART.type = MyCompletionType.Function;
@@ -5497,6 +5686,7 @@ AUTOFILTER;
 
 const KTEXT = new MyCompletion();
 KTEXT.label = "KTEXT";
+KTEXT.description = "在K线附近标注文字";
 KTEXT.insertText = "";
 KTEXT.body = "KTEXT( , , , , ,)";
 KTEXT.type = MyCompletionType.Function;
@@ -5528,6 +5718,7 @@ KTEXT(CROSS(C,MA5),-3,MA5,2,COLORRED,'买入');//在收盘价金叉5周期均线
 
 const KURTOSIS = new MyCompletion();
 KURTOSIS.label = "KURTOSIS";
+KURTOSIS.description = "峰度系数";
 KURTOSIS.insertText = "";
 KURTOSIS.body = "KURTOSIS( , )";
 KURTOSIS.type = MyCompletionType.Function;
@@ -5559,6 +5750,7 @@ KURTOSIS(C,10);
 
 const LAST = new MyCompletion();
 LAST.label = "LAST";
+LAST.description = "判断函数";
 LAST.insertText = "";
 LAST.body = "LAST( , , )";
 LAST.type = MyCompletionType.Function;
@@ -5585,6 +5777,7 @@ LAST(C>MA5,4,3);//判断距离当前k线3个周期的那根k线上是否满足C�
 
 const LASTOFFSETPROFIT = new MyCompletion();
 LASTOFFSETPROFIT.label = "LASTOFFSETPROFIT";
+LASTOFFSETPROFIT.description = "最近一次交易的平仓盈亏";
 LASTOFFSETPROFIT.insertText = "";
 LASTOFFSETPROFIT.body = "LASTOFFSETPROFIT";
 LASTOFFSETPROFIT.type = MyCompletionType.Function;
@@ -5616,6 +5809,7 @@ LASTOFFSETPROFIT<=-40 && C<BKPRICE-60,CLOSEOUT;//最近一次交易的亏损额�
 
 const LASTSIG = new MyCompletion();
 LASTSIG.label = "LASTSIG";
+LASTSIG.description = "判断最近一个信号";
 LASTSIG.insertText = "";
 LASTSIG.body = "LASTSIG";
 LASTSIG.type = MyCompletionType.Function;
@@ -5644,6 +5838,7 @@ STOP:207;
 
 const LASTSIGGROUP = new MyCompletion();
 LASTSIGGROUP.label = "LASTSIGGROUP";
+LASTSIGGROUP.description = "判断最近一个信号所在的分组";
 LASTSIGGROUP.insertText = "";
 LASTSIGGROUP.body = "LASTSIGGROUP";
 LASTSIGGROUP.type = MyCompletionType.Function;
@@ -5670,6 +5865,7 @@ LASTSIG=200&&LASTSIGGROUP=2,SP('B',BKVOL);//上一个信号是B组的BK信号，
 
 const LINETHICK = new MyCompletion();
 LINETHICK.label = "LINETHICK";
+LINETHICK.description = "线型粗细控制";
 LINETHICK.insertText = "";
 LINETHICK.body = "LINETHICK";
 LINETHICK.type = MyCompletionType.Function;
@@ -5691,6 +5887,7 @@ LINETHICK1  LINETHICK2————LINETHICK7 线型由细至粗。
 
 const LLV = new MyCompletion();
 LLV.label = "LLV";
+LLV.description = "最低值";
 LLV.insertText = "";
 LLV.body = "LLV( , )";
 LLV.type = MyCompletionType.Function;
@@ -5719,6 +5916,7 @@ LL1:=LLV(L,N);//在分钟周期上，求当天第一根k线到当前周期内所
 
 const LLVBARS = new MyCompletion();
 LLVBARS.label = "LLVBARS";
+LLVBARS.description = "前一个最低点位置";
 LLVBARS.insertText = "";
 LLVBARS.body = "LLVBARS( , )";
 LLVBARS.type = MyCompletionType.Function;
@@ -5746,6 +5944,7 @@ ZLBARS:REF(LLVBARS(L,N),N)+N;//在分钟周期上，求昨天最低价所在的k
 
 const LN = new MyCompletion();
 LN.label = "LN";
+LN.description = "自然对数";
 LN.insertText = "";
 LN.body = "LN( )";
 LN.type = MyCompletionType.Function;
@@ -5767,6 +5966,7 @@ LN(OPEN);//求开盘价的对数。
 
 const LOG = new MyCompletion();
 LOG.label = "LOG";
+LOG.description = "求以Y为底X的对数值";
 LOG.insertText = "";
 LOG.body = "LOG( )";
 LOG.type = MyCompletionType.Function;
@@ -5793,6 +5993,7 @@ LOG(0,7);//返回空值。
 
 const LOG10 = new MyCompletion();
 LOG10.label = "LOG10";
+LOG10.description = "常用对数";
 LOG10.insertText = "";
 LOG10.body = "LOG10( )";
 LOG10.type = MyCompletionType.Function;
@@ -5817,6 +6018,7 @@ LOG10(0);//返回空值。
 
 const LONGCROSS = new MyCompletion();
 LONGCROSS.label = "LONGCROSS";
+LONGCROSS.description = "维持交叉函数";
 LONGCROSS.insertText = "";
 LONGCROSS.body = "LONGCROSS( , , )";
 LONGCROSS.type = MyCompletionType.Function;
@@ -5839,6 +6041,7 @@ LONGCROSS(CLOSE,MA(CLOSE,10),20);//表示收盘线在10日均线之下持续20�
 
 const LOOP1 = new MyCompletion();
 LOOP1.label = "LOOP1";
+LOOP1.description = "循环统计函数";
 LOOP1.insertText = "";
 LOOP1.body = "LOOP1( , , )";
 LOOP1.type = MyCompletionType.Function;
@@ -5908,6 +6111,7 @@ LOOP1(X,N, AVERAGE)=MA(X,N)
 
 const LOOP2 = new MyCompletion();
 LOOP2.label = "LOOP2";
+LOOP2.description = "循环条件函数";
 LOOP2.insertText = "";
 LOOP2.body = "LOOP2( , , )";
 LOOP2.type = MyCompletionType.Function;
@@ -5939,6 +6143,7 @@ AUTOFILTER;
 
 const LOW = new MyCompletion();
 LOW.label = "LOW";
+LOW.description = "取得K线图的最低价";
 LOW.insertText = "";
 LOW.body = "LOW";
 LOW.type = MyCompletionType.Function;
@@ -5964,6 +6169,7 @@ REF(L,1);//取得前一根K线的最低价
 
 const LV = new MyCompletion();
 LV.label = "LV";
+LV.description = "除当前K线外最低值";
 LV.insertText = "";
 LV.body = "LV( , )";
 LV.type = MyCompletionType.Function;
@@ -5994,6 +6200,7 @@ LV(L,5) 和 REF(LLV(L,5),1) 的结果是一样的，用LV编写更加方便。
 
 const MA = new MyCompletion();
 MA.label = "MA";
+MA.description = "算数移动平均";
 MA.insertText = "";
 MA.body = "MA( , )";
 MA.type = MyCompletionType.Function;
@@ -6024,6 +6231,7 @@ MA10:MA(C,M);//在分钟周期上，当天k线不足10根，按照实际根数�
 
 const MARGIN = new MyCompletion();
 MARGIN.label = "MARGIN";
+MARGIN.description = "保证金";
 MARGIN.insertText = "";
 MARGIN.body = "MARGIN";
 MARGIN.type = MyCompletionType.Function;
@@ -6051,6 +6259,7 @@ K:=MONEYTOT*0.2/(MARGIN+FEE); //外盘期货合约理论权益的20%可以开仓
 
 const MAX = new MyCompletion();
 MAX.label = "MAX";
+MAX.description = "最大值";
 MAX.insertText = "";
 MAX.body = "MAX( , )";
 MAX.type = MyCompletionType.Function;
@@ -6076,6 +6285,7 @@ MAX(A,MAX(B,MAX(C,D)));//求 A B C D四者中的最大值
 
 const MAX1 = new MyCompletion();
 MAX1.label = "MAX1";
+MAX1.description = "取最大值";
 MAX1.insertText = "";
 MAX1.body = "MAX1( )";
 MAX1.type = MyCompletionType.Function;
@@ -6101,6 +6311,7 @@ MAX1(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16);//表示取数字1-16中的最大�
 
 const MAXBKVOL = new MyCompletion();
 MAXBKVOL.label = "MAXBKVOL";
+MAXBKVOL.description = "多头最大持仓手数";
 MAXBKVOL.insertText = "";
 MAXBKVOL.body = "MAXBKVOL";
 MAXBKVOL.type = MyCompletionType.Function;
@@ -6130,6 +6341,7 @@ MAXBKVOL=3,SP(BKVOL);//多头最大持仓手数为3时，卖平多头持仓
 
 const MAXSKVOL = new MyCompletion();
 MAXSKVOL.label = "MAXSKVOL";
+MAXSKVOL.description = "空头最大持仓手数";
 MAXSKVOL.insertText = "";
 MAXSKVOL.body = "MAXSKVOL";
 MAXSKVOL.type = MyCompletionType.Function;
@@ -6159,6 +6371,7 @@ MAXSKVOL=3,BP(SKVOL);//空头最大持仓手数为3时，买平空头持仓
 
 const MEDIAN = new MyCompletion();
 MEDIAN.label = "MEDIAN";
+MEDIAN.description = "求中位数";
 MEDIAN.insertText = "";
 MEDIAN.body = "MEDIAN( , )";
 MEDIAN.type = MyCompletionType.Function;
@@ -6184,6 +6397,7 @@ MEDIAN(X,N) 求X在N个周期内居于中间的数值。
 
 const MEDIAN1 = new MyCompletion();
 MEDIAN1.label = "MEDIAN1";
+MEDIAN1.description = "求中位数";
 MEDIAN1.insertText = "";
 MEDIAN1.body = "MEDIAN1()";
 MEDIAN1.type = MyCompletionType.Function;
@@ -6209,6 +6423,7 @@ BB:MEDIAN1(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16);//表示取数字1-16的中�
 
 const MIN = new MyCompletion();
 MIN.label = "MIN";
+MIN.description = "最小值";
 MIN.insertText = "";
 MIN.body = "MIN( , )";
 MIN.type = MyCompletionType.Function;
@@ -6232,6 +6447,7 @@ MIN(C,MIN(O,REF(C,1)));//求当前周期的开盘价，收盘价，以及上周�
 
 const MIN1 = new MyCompletion();
 MIN1.label = "MIN1";
+MIN1.description = "取最小值";
 MIN1.insertText = "";
 MIN1.body = "MIN1( )";
 MIN1.type = MyCompletionType.Function;
@@ -6257,6 +6473,7 @@ MIN1(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16);//表示取数字1-16中的最小�
 
 const MINPRICE = new MyCompletion();
 MINPRICE.label = "MINPRICE";
+MINPRICE.description = "数据合约的最小变动价位";
 MINPRICE.insertText = "";
 MINPRICE.body = "MINPRICE";
 MINPRICE.type = MyCompletionType.Function;
@@ -6274,6 +6491,7 @@ MINPRICE; 取加载数据合约的最小变动价位。
 
 const MINPRICE1 = new MyCompletion();
 MINPRICE1.label = "MINPRICE1";
+MINPRICE1.description = "交易合约的最小变动价位";
 MINPRICE1.insertText = "";
 MINPRICE1.body = "MINPRICE1";
 MINPRICE1.type = MyCompletionType.Function;
@@ -6291,6 +6509,7 @@ MINPRICE1; 取交易合约的最小变动价位。
 
 const MINPRICED = new MyCompletion();
 MINPRICED.label = "MINPRICED";
+MINPRICED.description = "最小变动价位";
 MINPRICED.insertText = "";
 MINPRICED.body = "MINPRICED";
 MINPRICED.type = MyCompletionType.Function;
@@ -6314,6 +6533,7 @@ MINPRICED(N);返回8603所对应IF1203合约的最小变动价位。
 
 const MINUTE = new MyCompletion();
 MINUTE.label = "MINUTE";
+MINUTE.description = "分钟";
 MINUTE.insertText = "";
 MINUTE.body = "MINUTE";
 MINUTE.type = MyCompletionType.Function;
@@ -6337,6 +6557,7 @@ TIME>1400&&MINUTE=50,SP;//在14:50的时候卖平仓。
 
 const MOD = new MyCompletion();
 MOD.label = "MOD";
+MOD.description = "取模";
 MOD.insertText = "";
 MOD.body = "MOD( , )";
 MOD.type = MyCompletionType.Function;
@@ -6363,6 +6584,7 @@ MOD(A,2)=0;//判断A为偶数。
 
 const MODE = new MyCompletion();
 MODE.label = "MODE";
+MODE.description = "求众数";
 MODE.insertText = "";
 MODE.body = "MODE( , )";
 MODE.type = MyCompletionType.Function;
@@ -6382,6 +6604,7 @@ MODE(X,N) 求X在N个周期内最常出现的值。
 
 const MONEY = new MyCompletion();
 MONEY.label = "MONEY";
+MONEY.description = "理论可用资金";
 MONEY.insertText = "";
 MONEY.body = "MONEY";
 MONEY.type = MyCompletionType.Function;
@@ -6421,6 +6644,7 @@ K:=MONEY*0.2/(C*MARGIN*UNIT+FEE); //理论可用资金的20%可以开仓的手�
 
 const MONEYRATIO = new MyCompletion();
 MONEYRATIO.label = "MONEYRATIO";
+MONEYRATIO.description = "理论资金使用率";
 MONEYRATIO.insertText = "";
 MONEYRATIO.body = "MONEYRATIO";
 MONEYRATIO.type = MyCompletionType.Function;
@@ -6452,6 +6676,7 @@ A&&MONEYRATIO<0.3,BK;//A条件满足并资金使用率不超过30%时，买开�
 
 const MONEYTOT = new MyCompletion();
 MONEYTOT.label = "MONEYTOT";
+MONEYTOT.description = "理论权益";
 MONEYTOT.insertText = "";
 MONEYTOT.body = "MONEYTOT";
 MONEYTOT.type = MyCompletionType.Function;
@@ -6486,6 +6711,7 @@ K:=MONEYTOT*0.2/(C*MARGIN*UNIT+FEE); //理论权益的20%可以开仓的手数�
 
 const MONTH = new MyCompletion();
 MONTH.label = "MONTH";
+MONTH.description = "取月份";
 MONTH.insertText = "";
 MONTH.body = "MONTH";
 MONTH.type = MyCompletionType.Function;
@@ -6509,6 +6735,7 @@ C>=VALUEWHEN(MONTH<REF(MONTH,1),O),SP;
 
 const MONTHTRADE = new MyCompletion();
 MONTHTRADE.label = "MONTHTRADE";
+MONTHTRADE.description = "月内交易函数";
 MONTHTRADE.insertText = "";
 MONTHTRADE.body = "MONTHTRADE";
 MONTHTRADE.type = MyCompletionType.Function;
@@ -6545,6 +6772,7 @@ MONTHTRADE;//使用每月数据计算
 
 const MONTHTRADE1 = new MyCompletion();
 MONTHTRADE1.label = "MONTHTRADE1";
+MONTHTRADE1.description = "月内交易函数";
 MONTHTRADE1.insertText = "";
 MONTHTRADE1.body = "MONTHTRADE1";
 MONTHTRADE1.type = MyCompletionType.Function;
@@ -6581,6 +6809,8 @@ MONTHTRADE1;//使用每月数据计算
 
 const MULTSIG = new MyCompletion();
 MULTSIG.label = "MULTSIG";
+MULTSIG.description =
+   "设置一根k线多信号的指令价方式（TICK逐笔回测，可设置回测精度）";
 MULTSIG.insertText = "";
 MULTSIG.body = "MULTSIG( , , , )";
 MULTSIG.type = MyCompletionType.Function;
@@ -6631,6 +6861,7 @@ AUTOFILTER;
 
 const MULTSIG_MIN = new MyCompletion();
 MULTSIG_MIN.label = "MULTSIG_MIN";
+MULTSIG_MIN.description = "设置一根k线多信号的指令价方式（逐分钟回测）";
 MULTSIG_MIN.insertText = "";
 MULTSIG_MIN.body = "MULTSIG_MIN( , , )";
 MULTSIG_MIN.type = MyCompletionType.Function;
@@ -6670,6 +6901,7 @@ AUTOFILTER;
 
 const MV = new MyCompletion();
 MV.label = "MV";
+MV.description = "取均值";
 MV.insertText = "";
 MV.body = "MV(,)";
 MV.type = MyCompletionType.Function;
@@ -6693,6 +6925,7 @@ MV(CLOSE,OPEN);
 
 const MYVOL = new MyCompletion();
 MYVOL.label = "MYVOL";
+MYVOL.description = "取下单手数";
 MYVOL.insertText = "";
 MYVOL.body = "MYVOL";
 MYVOL.type = MyCompletionType.Function;
@@ -6721,6 +6954,7 @@ C<O,SP(BKVOL);
 
 const NAMELIKE = new MyCompletion();
 NAMELIKE.label = "NAMELIKE";
+NAMELIKE.description = "模糊合约名称函数";
 NAMELIKE.insertText = "";
 NAMELIKE.body = "NAMELIKE('')";
 NAMELIKE.type = MyCompletionType.Function;
@@ -6749,6 +6983,7 @@ C>O&&NAMELIKE('ST')=0;//最后一根K线为阳线并且名称不含有ST。
 
 const NEWHBARS = new MyCompletion();
 NEWHBARS.label = "NEWHBARS";
+NEWHBARS.description = "创新高跨度";
 NEWHBARS.insertText = "";
 NEWHBARS.body = "NEWHBARS( , )";
 NEWHBARS.type = MyCompletionType.Function;
@@ -6774,6 +7009,7 @@ AUTOFILTER;
 
 const NEWHBARS1 = new MyCompletion();
 NEWHBARS1.label = "NEWHBARS1";
+NEWHBARS1.description = "创新高跨度";
 NEWHBARS1.insertText = "";
 NEWHBARS1.body = "NEWHBARS1( , , )";
 NEWHBARS1.type = MyCompletionType.Function;
@@ -6800,6 +7036,7 @@ AUTOFILTER;
 
 const NEWLBARS = new MyCompletion();
 NEWLBARS.label = "NEWLBARS";
+NEWLBARS.description = "创新低跨度";
 NEWLBARS.insertText = "";
 NEWLBARS.body = "NEWLBARS( , )";
 NEWLBARS.type = MyCompletionType.Function;
@@ -6825,6 +7062,7 @@ AUTOFILTER;
 
 const NEWLBARS1 = new MyCompletion();
 NEWLBARS1.label = "NEWLBARS1";
+NEWLBARS1.description = "创新低跨度";
 NEWLBARS1.insertText = "";
 NEWLBARS1.body = "NEWLBARS1( , , )";
 NEWLBARS1.type = MyCompletionType.Function;
@@ -6851,6 +7089,7 @@ AUTOFILTER;
 
 const NODRAW = new MyCompletion();
 NODRAW.label = "NODRAW";
+NODRAW.description = "不画线";
 NODRAW.insertText = "";
 NODRAW.body = "NODRAW";
 NODRAW.type = MyCompletionType.Function;
@@ -6871,6 +7110,7 @@ MA5:MA(C,5), NODRAW;显示5周期均线的返回值，K线图上不显示均线�
 
 const NORMPDF = new MyCompletion();
 NORMPDF.label = "NORMPDF";
+NORMPDF.description = "正态分布概率密度";
 NORMPDF.insertText = "";
 NORMPDF.body = "NORMPDF( , , )";
 NORMPDF.type = MyCompletionType.Function;
@@ -6906,6 +7146,7 @@ ZZ..NORMPDF(ATR,MU,SIGMA);//定义变量ZZ，返回ATR服从正态分布的概�
 
 const NOT = new MyCompletion();
 NOT.label = "NOT";
+NOT.description = "非";
 NOT.insertText = "";
 NOT.body = "NOT( )";
 NOT.type = MyCompletionType.Function;
@@ -6926,6 +7167,7 @@ NOT(BARSBK>=1)=1;//BK信号发出的当根K线上满足条件。
 
 const NOTEXT = new MyCompletion();
 NOTEXT.label = "NOTEXT";
+NOTEXT.description = "不显示数值";
 NOTEXT.insertText = "";
 NOTEXT.body = "NOTEXT";
 NOTEXT.type = MyCompletionType.Function;
@@ -6947,6 +7189,7 @@ MA5:MA(C,5), NOTEXT;K线图上显示5周期均线，不显示均线的数值。
 
 const NULL = new MyCompletion();
 NULL.label = "NULL";
+NULL.description = "返回空值";
 NULL.insertText = "";
 NULL.body = "NULL";
 NULL.type = MyCompletionType.Function;
@@ -6966,6 +7209,7 @@ A:IFELSE(MA5>MA10,MA5,NULL),COLORRED;//当MA5>MA10时，画五日均线MA5，不
 
 const NUMPOW = new MyCompletion();
 NUMPOW.label = "NUMPOW";
+NUMPOW.description = "自然数幂方和";
 NUMPOW.insertText = "";
 NUMPOW.body = "NUMPOW(,,)";
 NUMPOW.type = MyCompletionType.Function;
@@ -6989,6 +7233,7 @@ JZ:=NUMPOW(C,5,2);
 
 const OFFSETPROFIT = new MyCompletion();
 OFFSETPROFIT.label = "OFFSETPROFIT";
+OFFSETPROFIT.description = "理论平仓盈亏";
 OFFSETPROFIT.insertText = "";
 OFFSETPROFIT.body = "OFFSETPROFIT";
 OFFSETPROFIT.type = MyCompletionType.Function;
@@ -7019,6 +7264,7 @@ OFFSETPROFIT<-5000&&C>O,BK;//亏损大于5000，并且当前K线为阳线时，�
 
 const OFFSETPROFIT1 = new MyCompletion();
 OFFSETPROFIT1.label = "OFFSETPROFIT1";
+OFFSETPROFIT1.description = "累计平仓盈亏";
 OFFSETPROFIT1.insertText = "";
 OFFSETPROFIT1.body = "OFFSETPROFIT1";
 OFFSETPROFIT1.type = MyCompletionType.Function;
@@ -7050,6 +7296,7 @@ OFFSETPROFIT1<=-100,CLOSEOUT;//累计亏损大于100，清仓
 
 const OPEN = new MyCompletion();
 OPEN.label = "OPEN";
+OPEN.description = "取得K线图的开盘价";
 OPEN.insertText = "";
 OPEN.body = "OPEN";
 OPEN.type = MyCompletionType.Function;
@@ -7076,6 +7323,7 @@ MA5:MA(O,5);//定义开盘价的5周期均线（O为OPEN简写）。
 
 const OPENMINUTE = new MyCompletion();
 OPENMINUTE.label = "OPENMINUTE";
+OPENMINUTE.description = "开盘后经过的分钟数";
 OPENMINUTE.insertText = "";
 OPENMINUTE.body = "OPENMINUTE";
 OPENMINUTE.type = MyCompletionType.Function;
@@ -7104,6 +7352,7 @@ AUTOFILTER;
 
 const OPENMINUTE1 = new MyCompletion();
 OPENMINUTE1.label = "OPENMINUTE1";
+OPENMINUTE1.description = "开盘后经过的分钟数";
 OPENMINUTE1.insertText = "";
 OPENMINUTE1.body = "OPENMINUTE1";
 OPENMINUTE1.type = MyCompletionType.Function;
@@ -7135,6 +7384,7 @@ AUTOFILTER;
 
 const OPENSEC = new MyCompletion();
 OPENSEC.label = "OPENSEC";
+OPENSEC.description = "开盘后经过的秒数";
 OPENSEC.insertText = "";
 OPENSEC.body = "OPENSEC";
 OPENSEC.type = MyCompletionType.Function;
@@ -7163,6 +7413,7 @@ AUTOFILTER;
 
 const OPENSEC1 = new MyCompletion();
 OPENSEC1.label = "OPENSEC1";
+OPENSEC1.description = "开盘后经过的秒数";
 OPENSEC1.insertText = "";
 OPENSEC1.body = "OPENSEC1";
 OPENSEC1.type = MyCompletionType.Function;
@@ -7194,6 +7445,7 @@ AUTOFILTER;
 
 const OPI = new MyCompletion();
 OPI.label = "OPI";
+OPI.description = "取得K线图的持仓量";
 OPI.insertText = "";
 OPI.body = "OPI";
 OPI.type = MyCompletionType.Function;
@@ -7220,6 +7472,7 @@ OPID:REF(OPI,NN);//取的昨天收盘时的持仓量
 
 const PANZHENG = new MyCompletion();
 PANZHENG.label = "PANZHENG";
+PANZHENG.description = "判断是否为盘整";
 PANZHENG.insertText = "";
 PANZHENG.body = "PANZHENG";
 PANZHENG.type = MyCompletionType.Function;
@@ -7248,6 +7501,7 @@ AUTOFILTER;
 
 const PARTLINE = new MyCompletion();
 PARTLINE.label = "PARTLINE";
+PARTLINE.description = "画线段";
 PARTLINE.insertText = "";
 PARTLINE.body = "PARTLINE( , , )";
 PARTLINE.type = MyCompletionType.Function;
@@ -7279,6 +7533,7 @@ PARTLINE(LOW<REF(LOW,1),LOW,COLORBLUE),LINETHICK5;//表示当期最低价小于�
 
 const PARTLINE1 = new MyCompletion();
 PARTLINE1.label = "PARTLINE1";
+PARTLINE1.description = "画线段";
 PARTLINE1.insertText = "";
 PARTLINE1.body = "PARTLINE1( , )";
 PARTLINE1.type = MyCompletionType.Function;
@@ -7309,6 +7564,7 @@ PARTLINE1(HIGH>REF(HIGH,1),HIGH),COLORRED,LINETHICK5;//表示当期最高价大�
 
 const PCRATE = new MyCompletion();
 PCRATE.label = "PCRATE";
+PCRATE.description = "求N周期内Y值的趋势";
 PCRATE.insertText = "";
 PCRATE.body = "PCRATE(,)";
 PCRATE.type = MyCompletionType.Function;
@@ -7344,6 +7600,7 @@ PCRATETREND(CLOSE,20);//20周期内收盘价趋势变化的速度
 
 const PCRATETREND = new MyCompletion();
 PCRATETREND.label = "PCRATETREND";
+PCRATETREND.description = "求N周期内Y值的趋势变化速度";
 PCRATETREND.insertText = "";
 PCRATETREND.body = "PCRATETREND(,)";
 PCRATETREND.type = MyCompletionType.Function;
@@ -7380,6 +7637,7 @@ PCRATETREND(CLOSE,20);//20周期内收盘价趋势变化的速度
 
 const PERCENTILE = new MyCompletion();
 PERCENTILE.label = "PERCENTILE";
+PERCENTILE.description = "百分位函数";
 PERCENTILE.insertText = "";
 PERCENTILE.body = "PERCENTILE";
 PERCENTILE.type = MyCompletionType.Function;
@@ -7410,6 +7668,7 @@ LL:PERCENTILE(LOW,50,5);//取最近50根k线最低价处于5%位置的数值
 
 const PERIOD = new MyCompletion();
 PERIOD.label = "PERIOD";
+PERIOD.description = "自动读取当前技术分析图表周期";
 PERIOD.insertText = "";
 PERIOD.body = "PERIOD";
 PERIOD.type = MyCompletionType.Function;
@@ -7434,6 +7693,7 @@ IFELSE(PERIOD=1,OO,NULL);//取当天一分钟周期的开盘价。
 
 const PLAYSOUND = new MyCompletion();
 PLAYSOUND.label = "PLAYSOUND";
+PLAYSOUND.description = "声音函数";
 PLAYSOUND.insertText = "";
 PLAYSOUND.body = "PLAYSOUND( , )";
 PLAYSOUND.type = MyCompletionType.Function;
@@ -7463,6 +7723,7 @@ PLAYSOUND(CLOSE>OPEN,'A');表示CLOSE>OPEN时播放自定义声音'A'。
 
 const POINTDOT = new MyCompletion();
 POINTDOT.label = "POINTDOT";
+POINTDOT.description = "画点线";
 POINTDOT.insertText = "";
 POINTDOT.body = "POINTDOT";
 POINTDOT.type = MyCompletionType.Function;
@@ -7483,6 +7744,7 @@ POINTDOT 画点线。
 
 const POLYLINE = new MyCompletion();
 POLYLINE.label = "POLYLINE";
+POLYLINE.description = "画折线";
 POLYLINE.insertText = "";
 POLYLINE.body = "POLYLINE( , , )";
 POLYLINE.type = MyCompletionType.Function;
@@ -7514,6 +7776,7 @@ POLYLINE(CLOSE<=LLV(CLOSE,10),CLOSE,COLORBLUE),LINETHICK7;//表示在收盘价�
 
 const POLYLINE1 = new MyCompletion();
 POLYLINE1.label = "POLYLINE1";
+POLYLINE1.description = "画折线";
 POLYLINE1.insertText = "";
 POLYLINE1.body = "POLYLINE1( , )";
 POLYLINE1.type = MyCompletionType.Function;
@@ -7548,6 +7811,7 @@ POLYLINE1(CLOSE<=LLV(CLOSE,10),CLOSE),COLORBLUE,LINETHICK7;//表示在收盘价�
 
 const POW = new MyCompletion();
 POW.label = "POW";
+POW.description = "幂";
 POW.insertText = "";
 POW.body = "POW( , )";
 POW.type = MyCompletionType.Function;
@@ -7576,6 +7840,7 @@ POW(100,O-C);//返回100的O-C次方
 
 const PRECIS = new MyCompletion();
 PRECIS.label = "PRECIS";
+PRECIS.description = "指定数值的输出精度（小数位数）";
 PRECIS.insertText = "";
 PRECIS.body = "PRECIS";
 PRECIS.type = MyCompletionType.Function;
@@ -7598,6 +7863,7 @@ MA(C,5),PRECIS4;//计算五周期均线，数值精度为4位小数。
 
 const PRECISION = new MyCompletion();
 PRECISION.label = "PRECISION";
+PRECISION.description = "设置小数位数";
 PRECISION.insertText = "";
 PRECISION.body = "PRECISION";
 PRECISION.type = MyCompletionType.Function;
@@ -7622,6 +7888,7 @@ C,PRECISION(PRICEPRECISION); //返回收盘价，设置小数点位数为当前�
 
 const PRICEPRECISION = new MyCompletion();
 PRICEPRECISION.label = "PRICEPRECISION";
+PRICEPRECISION.description = "取当前合约小数点位数";
 PRICEPRECISION.insertText = "";
 PRICEPRECISION.body = "PRICEPRECISION";
 PRICEPRECISION.type = MyCompletionType.Function;
@@ -7643,6 +7910,7 @@ C,PRECISION(PRICEPRECISION); //返回收盘价，设置小数点位数为当前�
 
 const PRICEPRECISION1 = new MyCompletion();
 PRICEPRECISION1.label = "PRICEPRECISION1";
+PRICEPRECISION1.description = "取指定合约设置的小数点位数";
 PRICEPRECISION1.insertText = "";
 PRICEPRECISION1.body = "PRICEPRECISION1";
 PRICEPRECISION1.type = MyCompletionType.Function;
@@ -7666,6 +7934,7 @@ C,PRECISION(PRICEPRECISION1('8608')); //返回收盘价，设置小数点位数�
 
 const PROFIT = new MyCompletion();
 PROFIT.label = "PROFIT";
+PROFIT.description = "理论逐笔浮盈";
 PROFIT.insertText = "";
 PROFIT.body = "PROFIT";
 PROFIT.type = MyCompletionType.Function;
@@ -7702,6 +7971,7 @@ PROFIT<-2000,SP;//亏损2000元止损
 
 const QUARTER = new MyCompletion();
 QUARTER.label = "QUARTER";
+QUARTER.description = "取得某周期的季度数";
 QUARTER.insertText = "";
 QUARTER.body = "QUARTER";
 QUARTER.type = MyCompletionType.Function;
@@ -7726,6 +7996,7 @@ AUTOFILTER;
 
 const QUARTERTRADE = new MyCompletion();
 QUARTERTRADE.label = "QUARTERTRADE";
+QUARTERTRADE.description = "季内交易函数";
 QUARTERTRADE.insertText = "";
 QUARTERTRADE.body = "QUARTERTRADE";
 QUARTERTRADE.type = MyCompletionType.Function;
@@ -7762,6 +8033,7 @@ QUARTERTRADE;//使用每季度数据计算
 
 const QUARTERTRADE1 = new MyCompletion();
 QUARTERTRADE1.label = "QUARTERTRADE1";
+QUARTERTRADE1.description = "季内交易函数";
 QUARTERTRADE1.insertText = "";
 QUARTERTRADE1.body = "QUARTERTRADE1";
 QUARTERTRADE1.type = MyCompletionType.Function;
@@ -7799,6 +8071,7 @@ QUARTERTRADE1;//使用每季度数据计算
 
 const RAND = new MyCompletion();
 RAND.label = "RAND";
+RAND.description = "产生随机数的随机函数";
 RAND.insertText = "";
 RAND.body = "RAND";
 RAND.type = MyCompletionType.Function;
@@ -7825,6 +8098,7 @@ RAND(C,O);//返回收盘价到开盘价之间的随机数值
 
 const RANGE = new MyCompletion();
 RANGE.label = "RANGE";
+RANGE.description = "范围";
 RANGE.insertText = "";
 RANGE.body = "RANGE( , , )";
 RANGE.type = MyCompletionType.Function;
@@ -7851,6 +8125,7 @@ RANGE(MA10,MA20,MA5),BK;//10周期均线在5周期均线与20周期均线之间�
 
 const RAWDATA = new MyCompletion();
 RAWDATA.label = "RAWDATA";
+RAWDATA.description = "取原始数据的值";
 RAWDATA.insertText = "";
 RAWDATA.body = "RAWDATA(  )";
 RAWDATA.type = MyCompletionType.Function;
@@ -7879,6 +8154,7 @@ STOCKDIVD(1);//设置股票向后复权
 
 const REF = new MyCompletion();
 REF.label = "REF";
+REF.description = "向前引用";
 REF.insertText = "";
 REF.body = "REF( , )";
 REF.type = MyCompletionType.Function;
@@ -7912,6 +8188,7 @@ K线返回 1 K线的收盘价。
 
 const REFLINE = new MyCompletion();
 REFLINE.label = "REFLINE";
+REFLINE.description = "设定指标参考线";
 REFLINE.insertText = "";
 REFLINE.body = "REFLINE";
 REFLINE.type = MyCompletionType.Function;
@@ -7941,6 +8218,7 @@ REFLINE:-100,0,100;//在-100,0,100的位置画出指标参考线。
 
 const REFLINE1 = new MyCompletion();
 REFLINE1.label = "REFLINE1";
+REFLINE1.description = "设定指标参考线";
 REFLINE1.insertText = "";
 REFLINE1.body = "REFLINE1";
 REFLINE1.type = MyCompletionType.Function;
@@ -7970,6 +8248,7 @@ REFLINE1:-100,0,100;//在-100,0,100的位置画出指标参考线。
 
 const REFSIG_PLACE = new MyCompletion();
 REFSIG_PLACE.label = "REFSIG_PLACE";
+REFSIG_PLACE.description = "判断指定信号的K线位置";
 REFSIG_PLACE.insertText = "";
 REFSIG_PLACE.body = "REFSIG_PLACE( , )";
 REFSIG_PLACE.type = MyCompletionType.Function;
@@ -7997,6 +8276,7 @@ REFSIG_PLACE(BK,3)=5&&BKVOL>0,SP;//如果从当根K线开始倒数第3个固定�
 
 const REFSIG_PRICE = new MyCompletion();
 REFSIG_PRICE.label = "REFSIG_PRICE";
+REFSIG_PRICE.description = "判断指定信号的信号价位";
 REFSIG_PRICE.insertText = "";
 REFSIG_PRICE.body = "REFSIG_PRICE( , )";
 REFSIG_PRICE.type = MyCompletionType.Function;
@@ -8023,6 +8303,7 @@ REFSIG_PRICE(BK,3)=3000&&BKVOL>0,SP;//如果从当根K线开始倒数第3个固�
 
 const REFSIG_PRICE1 = new MyCompletion();
 REFSIG_PRICE1.label = "REFSIG_PRICE1";
+REFSIG_PRICE1.description = "判断指定信号的委托价格";
 REFSIG_PRICE1.insertText = "";
 REFSIG_PRICE1.body = "REFSIG_PRICE1( , )";
 REFSIG_PRICE1.type = MyCompletionType.Function;
@@ -8056,6 +8337,7 @@ REFSIG_PRICE1(BK,3)=3000&&BKVOL>0,SP;//如果从当根K线开始倒数第3个固
 
 const REFSIG_PRICE2 = new MyCompletion();
 REFSIG_PRICE2.label = "REFSIG_PRICE2";
+REFSIG_PRICE2.description = "判断指定信号的成交价格";
 REFSIG_PRICE2.insertText = "";
 REFSIG_PRICE2.body = "REFSIG_PRICE2( , )";
 REFSIG_PRICE2.type = MyCompletionType.Function;
@@ -8092,6 +8374,7 @@ REFSIG_PRICE2(BK,3)=3000&&BKVOL>0,SP;//如果从当根K线开始倒数第3个固
 
 const REFSIG_VOL = new MyCompletion();
 REFSIG_VOL.label = "REFSIG_VOL";
+REFSIG_VOL.description = "判断指定信号的手数";
 REFSIG_VOL.insertText = "";
 REFSIG_VOL.body = "REFSIG_VOL( , )";
 REFSIG_VOL.type = MyCompletionType.Function;
@@ -8118,6 +8401,7 @@ REFSIG_PLACE(BK,3)=5&&REFSIG_VOL(BK,3)>2,SP(BKVOL);//如果从当根K线开始�
 
 const REFWH = new MyCompletion();
 REFWH.label = "REFWH";
+REFWH.description = "向前引用";
 REFWH.insertText = "";
 REFWH.body = "REFWH( , )";
 REFWH.type = MyCompletionType.Function;
@@ -8142,6 +8426,7 @@ REFWH(X,N)引用X在N个周期前的值。
 
 const REVERSE = new MyCompletion();
 REVERSE.label = "REVERSE";
+REVERSE.description = "取相反值";
 REVERSE.insertText = "";
 REVERSE.body = "REVERSE( )";
 REVERSE.type = MyCompletionType.Function;
@@ -8164,6 +8449,7 @@ REVERSE(0);//返回值为0
 
 const ROUND = new MyCompletion();
 ROUND.label = "ROUND";
+ROUND.description = "指定位数四舍五入";
 ROUND.insertText = "";
 ROUND.body = "ROUND( , )";
 ROUND.type = MyCompletionType.Function;
@@ -8192,6 +8478,7 @@ ROUND(125.345,-1);//返回130
 
 const SAR = new MyCompletion();
 SAR.label = "SAR";
+SAR.description = "抛物转向";
 SAR.insertText = "";
 SAR.body = "SAR( , , )";
 SAR.type = MyCompletionType.Function;
@@ -8227,6 +8514,7 @@ IF(SARLINE>0,NULL,ABS(SARLINE)),CIRCLEDOT,COLORCYAN,NOTEXT;//SARLINE不大于0�
 
 const SAR1 = new MyCompletion();
 SAR1.label = "SAR1";
+SAR1.description = "抛物转向";
 SAR1.insertText = "";
 SAR1.body = "SAR1( , , )";
 SAR1.type = MyCompletionType.Function;
@@ -8266,6 +8554,7 @@ IF(SARLINE>0,NULL,ABS(SARLINE)),CIRCLEDOT,COLORCYAN,NOTEXT;//SARLINE不大于0�
 
 const SCALE = new MyCompletion();
 SCALE.label = "SCALE";
+SCALE.description = "取得K线图主动买占总成交量的比例";
 SCALE.insertText = "";
 SCALE.body = "SCALE";
 SCALE.type = MyCompletionType.Function;
@@ -8287,6 +8576,7 @@ BB:=(1-SCALE)*VOL;//主动卖
 
 const SEEK = new MyCompletion();
 SEEK.label = "SEEK";
+SEEK.description = "标签统计函数";
 SEEK.insertText = "";
 SEEK.body = "Seek";
 SEEK.type = MyCompletionType.Function;
@@ -8315,6 +8605,7 @@ SEEK(C>O);
 
 const SELECT = new MyCompletion();
 SELECT.label = "SELECT";
+SELECT.description = "公式选股";
 SELECT.insertText = "";
 SELECT.body = "SELECT";
 SELECT.type = MyCompletionType.Function;
@@ -8347,6 +8638,7 @@ FINANCE_DATA('每股收益')>0,SELECT;//选出每股收益大于0的股票
 
 const SETDEALPERCENT = new MyCompletion();
 SETDEALPERCENT.label = "SETDEALPERCENT";
+SETDEALPERCENT.description = "按理论资金比例下单";
 SETDEALPERCENT.insertText = "";
 SETDEALPERCENT.body = "SETDEALPERCENT";
 SETDEALPERCENT.type = MyCompletionType.Function;
@@ -8380,6 +8672,7 @@ SETDEALPERCENT(20,10); //每次按理论资金比例的20%下单，并设置最�
 
 const SETEXPIREDATE = new MyCompletion();
 SETEXPIREDATE.label = "SETEXPIREDATE";
+SETEXPIREDATE.description = "设置加密模型的使用有效期的到期时间";
 SETEXPIREDATE.insertText = "";
 SETEXPIREDATE.body = "SETEXPIREDATE()";
 SETEXPIREDATE.type = MyCompletionType.Function;
@@ -8410,6 +8703,7 @@ AUTOFILTER;
 
 const SETMOVEOPIPRICE = new MyCompletion();
 SETMOVEOPIPRICE.label = "SETMOVEOPIPRICE";
+SETMOVEOPIPRICE.description = "设置模组换月移仓的委托方式";
 SETMOVEOPIPRICE.insertText = "";
 SETMOVEOPIPRICE.body = "SETMOVEOPIPRICE()";
 SETMOVEOPIPRICE.type = MyCompletionType.Function;
@@ -8446,6 +8740,7 @@ AUTOFILTER;
 
 const SETQUOTACCOUNT = new MyCompletion();
 SETQUOTACCOUNT.label = "SETQUOTACCOUNT";
+SETQUOTACCOUNT.description = "设置模型加密输出使用者的文华行情账号";
 SETQUOTACCOUNT.insertText = "";
 SETQUOTACCOUNT.body = "SETQUOTACCOUNT()";
 SETQUOTACCOUNT.type = MyCompletionType.Function;
@@ -8477,6 +8772,7 @@ AUTOFILTER;
 
 const SETSIGPRICE = new MyCompletion();
 SETSIGPRICE.label = "SETSIGPRICE";
+SETSIGPRICE.description = "指定信号的下单价格";
 SETSIGPRICE.insertText = "";
 SETSIGPRICE.body = "SETSIGPRICE( , )";
 SETSIGPRICE.type = MyCompletionType.Function;
@@ -8522,6 +8818,7 @@ AUTOFILTER;
 
 const SETSIGPRICETYPE = new MyCompletion();
 SETSIGPRICETYPE.label = "SETSIGPRICETYPE";
+SETSIGPRICETYPE.description = "设置信号的委托价格方式";
 SETSIGPRICETYPE.insertText = "";
 SETSIGPRICETYPE.body = "SETSIGPRICETYPE( , , )";
 SETSIGPRICETYPE.type = MyCompletionType.Function;
@@ -8574,6 +8871,7 @@ AUTOFILTER;
 
 const SETSTYLECOLOR = new MyCompletion();
 SETSTYLECOLOR.label = "SETSTYLECOLOR";
+SETSTYLECOLOR.description = "线型的粗细和颜色控制";
 SETSTYLECOLOR.insertText = "";
 SETSTYLECOLOR.body = "SETSTYLECOLOR( , )";
 SETSTYLECOLOR.type = MyCompletionType.Function;
@@ -8602,6 +8900,7 @@ A:C,SETSTYLECOLOR(LINETHICK5,COLORGREEN);//以绿色LINETHICK5的粗细大小画
 
 const SETTLE = new MyCompletion();
 SETTLE.label = "SETTLE";
+SETTLE.description = "取得K线图的结算价或者取得当日成交均价";
 SETTLE.insertText = "";
 SETTLE.body = "SETTLE";
 SETTLE.type = MyCompletionType.Function;
@@ -8626,6 +8925,7 @@ CROSS(C,SETTLE);//收盘价上穿结算价
 
 const SETTRADEACCOUNT = new MyCompletion();
 SETTRADEACCOUNT.label = "SETTRADEACCOUNT";
+SETTRADEACCOUNT.description = "设置模型加密输出使用者交易的资金账号";
 SETTRADEACCOUNT.insertText = "";
 SETTRADEACCOUNT.body = "SETTRADEACCOUNT()";
 SETTRADEACCOUNT.type = MyCompletionType.Function;
@@ -8658,6 +8958,7 @@ AUTOFILTER;
 
 const SGN = new MyCompletion();
 SGN.label = "SGN";
+SGN.description = "取符号";
 SGN.insertText = "";
 SGN.body = "SGN( )";
 SGN.type = MyCompletionType.Function;
@@ -8680,6 +8981,7 @@ SGN(0);//返回值为0
 
 const SIGNUM = new MyCompletion();
 SIGNUM.label = "SIGNUM";
+SIGNUM.description = "定位一次交易过程中的信号位置";
 SIGNUM.insertText = "";
 SIGNUM.body = "SIGNUM";
 SIGNUM.type = MyCompletionType.Function;
@@ -8705,6 +9007,7 @@ TRADE_AGAIN(4);
 
 const SIGVOL = new MyCompletion();
 SIGVOL.label = "SIGVOL";
+SIGVOL.description = "一次交易中指定信号的下单手数";
 SIGVOL.insertText = "";
 SIGVOL.body = "SIGVOL()";
 SIGVOL.type = MyCompletionType.Function;
@@ -8737,6 +9040,7 @@ TRADE_AGAIN(10);
 
 const SIN = new MyCompletion();
 SIN.label = "SIN";
+SIN.description = "求正弦";
 SIN.insertText = "";
 SIN.body = "SIN( )";
 SIN.type = MyCompletionType.Function;
@@ -8761,6 +9065,7 @@ SIN(1.57);//返回1.57的正弦值
 
 const SKEWNESS = new MyCompletion();
 SKEWNESS.label = "SKEWNESS";
+SKEWNESS.description = "偏度系数";
 SKEWNESS.insertText = "";
 SKEWNESS.body = "SKEWNESS( , )";
 SKEWNESS.type = MyCompletionType.Function;
@@ -8792,6 +9097,7 @@ SKEWNESS(C,10);
 
 const SKHIGH = new MyCompletion();
 SKHIGH.label = "SKHIGH";
+SKHIGH.description = "返回数据合约卖开仓以来的最高价";
 SKHIGH.insertText = "";
 SKHIGH.body = "SKHIGH";
 SKHIGH.type = MyCompletionType.Function;
@@ -8825,6 +9131,7 @@ AUTOFILTER;//最新价低于卖开仓以来数据合约的最高价5个点，平
 
 const SKLOW = new MyCompletion();
 SKLOW.label = "SKLOW";
+SKLOW.description = "返回数据合约卖开仓以来的最低价";
 SKLOW.insertText = "";
 SKLOW.body = "SKLOW";
 SKLOW.type = MyCompletionType.Function;
@@ -8857,6 +9164,7 @@ AUTOFILTER;//最新价高于卖开仓以来数据合约的最低价5个点，止
 
 const SKPRICE = new MyCompletion();
 SKPRICE.label = "SKPRICE";
+SKPRICE.description = "返回数据合约最近一次卖开信号价位";
 SKPRICE.insertText = "";
 SKPRICE.body = "SKPRICE";
 SKPRICE.type = MyCompletionType.Function;
@@ -8895,6 +9203,7 @@ CLOSE-SKPRICE>60 && SKPRICE>0 && SKVOL>0, BP;//如果卖开价位比当前价位
 
 const SKPRICE1 = new MyCompletion();
 SKPRICE1.label = "SKPRICE1";
+SKPRICE1.description = "返回交易合约最近一次卖开信号价位";
 SKPRICE1.insertText = "";
 SKPRICE1.body = "SKPRICE1";
 SKPRICE1.type = MyCompletionType.Function;
@@ -8928,6 +9237,7 @@ SKPRICE1：返回交易合约最近一次卖开信号发出时的行情的最新
 
 const SKPRICEAV = new MyCompletion();
 SKPRICEAV.label = "SKPRICEAV";
+SKPRICEAV.description = "返回数据合约空头开仓均价";
 SKPRICEAV.insertText = "";
 SKPRICEAV.body = "SKPRICEAV";
 SKPRICEAV.type = MyCompletionType.Function;
@@ -8962,6 +9272,7 @@ SKPRICEAV-CLOSE>60,BP(SKVOL);//当前价位比空头开仓均价低出60,平掉�
 
 const SKPRICEAV1 = new MyCompletion();
 SKPRICEAV1.label = "SKPRICEAV1";
+SKPRICEAV1.description = "返回交易合约空头开仓均价";
 SKPRICEAV1.insertText = "";
 SKPRICEAV1.body = "SKPRICEAV1";
 SKPRICEAV1.type = MyCompletionType.Function;
@@ -8996,6 +9307,7 @@ SKPRICEAV1-CLOSE>60,BP(SKVOL);//当前价位比交易合约空头开仓均价低
 
 const SKVOL = new MyCompletion();
 SKVOL.label = "SKVOL";
+SKVOL.description = "卖开信号手数";
 SKVOL.insertText = "";
 SKVOL.body = "SKVOL";
 SKVOL.type = MyCompletionType.Function;
@@ -9025,6 +9337,7 @@ SKVOL>0&&H>REF(H,5),BP(SKVOL); //空头持仓大于0，并且当根K线的最高
 
 const SKVOL2 = new MyCompletion();
 SKVOL2.label = "SKVOL2";
+SKVOL2.description = "卖开信号手数";
 SKVOL2.insertText = "";
 SKVOL2.body = "SKVOL2";
 SKVOL2.type = MyCompletionType.Function;
@@ -9054,6 +9367,7 @@ SKVOL2>0&&H<REF(H,5),BP(SKVOL2); //空头持仓大于0，并且当根K线的最�
 
 const SLOPE = new MyCompletion();
 SLOPE.label = "SLOPE";
+SLOPE.description = "线性回归的斜率";
 SLOPE.insertText = "";
 SLOPE.body = "SLOPE( , )";
 SLOPE.type = MyCompletionType.Function;
@@ -9095,6 +9409,7 @@ SLOPE(CLOSE,5);表示求收盘价5个周期线性回归线的斜率
 
 const SMA = new MyCompletion();
 SMA.label = "SMA";
+SMA.description = "扩展指数加权移动平均";
 SMA.insertText = "";
 SMA.body = "SMA( , , )";
 SMA.type = MyCompletionType.Function;
@@ -9118,6 +9433,7 @@ SMA10:=SMA(C,10,3);//求的10周期收盘价的扩展指数加权移动平均。
 
 const SMMA = new MyCompletion();
 SMMA.label = "SMMA";
+SMMA.description = "通畅移动平均";
 SMMA.insertText = "";
 SMMA.body = "SMMA(,)";
 SMMA.type = MyCompletionType.Function;
@@ -9138,6 +9454,7 @@ SMMA(C,5);//收盘价的5周期通畅移动平均线
 
 const SOLID = new MyCompletion();
 SOLID.label = "SOLID";
+SOLID.description = "实心显示";
 SOLID.insertText = "";
 SOLID.body = "SOLID";
 SOLID.type = MyCompletionType.Function;
@@ -9162,6 +9479,7 @@ VOL,VOLUMESTICK,SOLID;//画成交量柱状线，柱线实心显示。
 
 const SORT = new MyCompletion();
 SORT.label = "SORT";
+SORT.description = "取排序在相应位置的值";
 SORT.insertText = "";
 SORT.body = "SORT";
 SORT.type = MyCompletionType.Function;
@@ -9185,6 +9503,7 @@ SORT(0,3,2,1,5,3);//2、1、5、3按升序排列，取排列第三的数字3
 
 const SORTPOS = new MyCompletion();
 SORTPOS.label = "SORTPOS";
+SORTPOS.description = "取排序后数值的位置";
 SORTPOS.insertText = "";
 SORTPOS.body = "SORTPOS";
 SORTPOS.type = MyCompletionType.Function;
@@ -9210,6 +9529,7 @@ SORTPOS(0,3,2,1,5,3);//2、1、5、3按升序排列，排列第三的数字3，�
 
 const SOUND = new MyCompletion();
 SOUND.label = "SOUND";
+SOUND.description = "播放声音";
 SOUND.insertText = "";
 SOUND.body = "SOUND( )";
 SOUND.type = MyCompletionType.Function;
@@ -9237,6 +9557,7 @@ CLOSE>OPEN,SOUND('A');表示K线收盘大于开盘时，播放声音"A"
 
 const SPLIT = new MyCompletion();
 SPLIT.label = "SPLIT";
+SPLIT.description = "返回之前第N次除权(送股或配股)的除权比例";
 SPLIT.insertText = "";
 SPLIT.body = "SPLIT()";
 SPLIT.type = MyCompletionType.Function;
@@ -9271,6 +9592,7 @@ SPLIT(N) 返回之前第N次除权(送股或配股)的除权比例，表示除�
 
 const SPLITBARS = new MyCompletion();
 SPLITBARS.label = "SPLITBARS";
+SPLITBARS.description = "返回从之前第N个除权日到当前的周期数";
 SPLITBARS.insertText = "";
 SPLITBARS.body = "SPLITBARS()";
 SPLITBARS.type = MyCompletionType.Function;
@@ -9298,6 +9620,7 @@ SPLITBARS(N) 返回从之前第N个除权日到当前的周期数。
 
 const SQRT = new MyCompletion();
 SQRT.label = "SQRT";
+SQRT.description = "平方根";
 SQRT.insertText = "";
 SQRT.body = "SQRT( )";
 SQRT.type = MyCompletionType.Function;
@@ -9319,6 +9642,7 @@ SQRT(CLOSE);//收盘价的平方根。
 
 const SQUARE = new MyCompletion();
 SQUARE.label = "SQUARE";
+SQUARE.description = "平方";
 SQUARE.insertText = "";
 SQUARE.body = "SQUARE( )";
 SQUARE.type = MyCompletionType.Function;
@@ -9339,6 +9663,7 @@ SQUARE(2);//2的平方。
 
 const STD = new MyCompletion();
 STD.label = "STD";
+STD.description = "样本标准差";
 STD.insertText = "";
 STD.body = "STD( , )";
 STD.type = MyCompletionType.Function;
@@ -9370,6 +9695,7 @@ STD(C,10)求收盘价在10个周期内的样本标准差。
 
 const STDP = new MyCompletion();
 STDP.label = "STDP";
+STDP.description = "总体标准差";
 STDP.insertText = "";
 STDP.body = "STDP( , )";
 STDP.type = MyCompletionType.Function;
@@ -9402,6 +9728,7 @@ STDP(C,10)为收盘价的10周期总体标准差。
 
 const STICK = new MyCompletion();
 STICK.label = "STICK";
+STICK.description = "画指定粗细的柱线";
 STICK.insertText = "";
 STICK.body = "STICK(,,,,,)";
 STICK.type = MyCompletionType.Function;
@@ -9424,6 +9751,7 @@ STICK(OPEN-CLOSE>0,OPEN,CLOSE,3,COLORCYAN,0);//表示当开盘价大于收盘价
 
 const STICKLINE = new MyCompletion();
 STICKLINE.label = "STICKLINE";
+STICKLINE.description = "画柱线";
 STICKLINE.insertText = "";
 STICKLINE.body = "STICKLINE( , , , , )";
 STICKLINE.type = MyCompletionType.Function;
@@ -9450,6 +9778,7 @@ STICKLINE(OPEN-CLOSE>0,OPEN,CLOSE,COLORCYAN,0);//表示当开盘价大于收盘�
 
 const STICKLINE1 = new MyCompletion();
 STICKLINE1.label = "STICKLINE1";
+STICKLINE1.description = "画柱线";
 STICKLINE1.insertText = "";
 STICKLINE1.body = "STICKLINE1( , , , , )";
 STICKLINE1.type = MyCompletionType.Function;
@@ -9478,6 +9807,7 @@ STICKLINE1(OPEN-CLOSE>0,OPEN,CLOSE,4,0),COLORCYAN;//表示当开盘价大于收�
 
 const STKTYPE = new MyCompletion();
 STKTYPE.label = "STKTYPE";
+STKTYPE.description = "取市场类型";
 STKTYPE.insertText = "";
 STKTYPE.body = "STKTYPE";
 STKTYPE.type = MyCompletionType.Function;
@@ -9500,6 +9830,7 @@ A:STKTYPE;//加载到期货合约上，A返回值为7。
 
 const STOCKDIVD = new MyCompletion();
 STOCKDIVD.label = "STOCKDIVD";
+STOCKDIVD.description = "设置股票复权";
 STOCKDIVD.insertText = "";
 STOCKDIVD.body = "STOCKDIVD";
 STOCKDIVD.type = MyCompletionType.Function;
@@ -9532,6 +9863,7 @@ AUTOFILTER;
 
 const SUM = new MyCompletion();
 SUM.label = "SUM";
+SUM.description = "求和";
 SUM.insertText = "";
 SUM.body = "SUM( , )";
 SUM.type = MyCompletionType.Function;
@@ -9560,6 +9892,7 @@ SUM(VOL,N);//分钟周期上，取当天成交量总和。
 
 const SUMBARS = new MyCompletion();
 SUMBARS.label = "SUMBARS";
+SUMBARS.description = "累加到指定值的周期数";
 SUMBARS.insertText = "";
 SUMBARS.body = "SUMBARS( , )";
 SUMBARS.type = MyCompletionType.Function;
@@ -9581,6 +9914,7 @@ SUMBARS(VOL,20000); 将成交量向前累加直到大于等于20000，返回这�
 
 const T_CLOSE = new MyCompletion();
 T_CLOSE.label = "T_CLOSE";
+T_CLOSE.description = "取交易合约收盘价";
 T_CLOSE.insertText = "";
 T_CLOSE.body = "T_CLOSE";
 T_CLOSE.type = MyCompletionType.Function;
@@ -9602,6 +9936,7 @@ A:T_CLOSE;//定义变量A为交易合约收盘价（盘中k线没有走完的时
 
 const T_MAX = new MyCompletion();
 T_MAX.label = "T_MAX";
+T_MAX.description = "设置模组最大开仓手数";
 T_MAX.insertText = "";
 T_MAX.body = "T_MAX";
 T_MAX.type = MyCompletionType.Function;
@@ -9645,6 +9980,7 @@ AUTOFILTER;
 
 const T_PLUS = new MyCompletion();
 T_PLUS.label = "T_PLUS";
+T_PLUS.description = "设置开仓手数为默认手数的N倍";
 T_PLUS.insertText = "";
 T_PLUS.body = "T_PLUS()";
 T_PLUS.type = MyCompletionType.Function;
@@ -9675,6 +10011,7 @@ AUTOFILTER;
 
 const T0TOTIME = new MyCompletion();
 T0TOTIME.label = "T0TOTIME";
+T0TOTIME.description = "秒数转换为时间";
 T0TOTIME.insertText = "";
 T0TOTIME.body = "T0TOTIME()";
 T0TOTIME.type = MyCompletionType.Function;
@@ -9697,6 +10034,7 @@ A:=T0TOTIME(60);//变量A返回值为100，表示1分钟
 
 const TAN = new MyCompletion();
 TAN.label = "TAN";
+TAN.description = "正切";
 TAN.insertText = "";
 TAN.body = "TAN( )";
 TAN.type = MyCompletionType.Function;
@@ -9716,6 +10054,7 @@ TAN(-3.14);//返回-3.14的正切值。
 
 const TAVLOSS = new MyCompletion();
 TAVLOSS.label = "TAVLOSS";
+TAVLOSS.description = "返回平均亏损额";
 TAVLOSS.insertText = "";
 TAVLOSS.body = "TAVLOSS";
 TAVLOSS.type = MyCompletionType.Function;
@@ -9747,6 +10086,7 @@ AUTOFILTER;
 
 const TAVWIN = new MyCompletion();
 TAVWIN.label = "TAVWIN";
+TAVWIN.description = "返回平均盈利额";
 TAVWIN.insertText = "";
 TAVWIN.body = "TAVWIN";
 TAVWIN.type = MyCompletionType.Function;
@@ -9778,6 +10118,7 @@ AUTOFILTER;
 
 const TAVWINLOSS = new MyCompletion();
 TAVWINLOSS.label = "TAVWINLOSS";
+TAVWINLOSS.description = "返回平均盈亏额";
 TAVWINLOSS.insertText = "";
 TAVWINLOSS.body = "TAVWINLOSS";
 TAVWINLOSS.type = MyCompletionType.Function;
@@ -9809,6 +10150,7 @@ AUTOFILTER;
 
 const TIME = new MyCompletion();
 TIME.label = "TIME";
+TIME.description = "取K线的时间";
 TIME.insertText = "";
 TIME.body = "TIME";
 TIME.type = MyCompletionType.Function;
@@ -9843,6 +10185,7 @@ ISLASTSK=0&&C>O&&TIME>=0915,SK;
 
 const TIME0 = new MyCompletion();
 TIME0.label = "TIME0";
+TIME0.description = "求当前周期自该日0点以来的秒数";
 TIME0.insertText = "";
 TIME0.body = "TIME0";
 TIME0.type = MyCompletionType.Function;
@@ -9865,6 +10208,7 @@ AA:TIME0;//AA在商品合约当天最后一根K线上的返回值为54000，表�
 
 const TIMETOT0 = new MyCompletion();
 TIMETOT0.label = "TIMETOT0";
+TIMETOT0.description = "时间转换为秒数";
 TIMETOT0.insertText = "";
 TIMETOT0.body = "TIMETOT0()";
 TIMETOT0.type = MyCompletionType.Function;
@@ -9887,6 +10231,7 @@ A:=TIMETOT0(100);//变量A返回值为60，表示60秒
 
 const TMAXLOSS = new MyCompletion();
 TMAXLOSS.label = "TMAXLOSS";
+TMAXLOSS.description = "返回单次亏损最大额";
 TMAXLOSS.insertText = "";
 TMAXLOSS.body = "TMAXLOSS";
 TMAXLOSS.type = MyCompletionType.Function;
@@ -9918,6 +10263,7 @@ AUTOFILTER;
 
 const TMAXSEQLOSS = new MyCompletion();
 TMAXSEQLOSS.label = "TMAXSEQLOSS";
+TMAXSEQLOSS.description = "返回连续亏损交易的最大次数";
 TMAXSEQLOSS.insertText = "";
 TMAXSEQLOSS.body = "TMAXSEQLOSS";
 TMAXSEQLOSS.type = MyCompletionType.Function;
@@ -9946,6 +10292,7 @@ TSEQLOSS>60||TMAXSEQLOSS>3,SP(BKVOL);//最大连续亏损额大于60时或最大
 
 const TMAXSEQWIN = new MyCompletion();
 TMAXSEQWIN.label = "TMAXSEQWIN";
+TMAXSEQWIN.description = "返回连续赢利交易的最大次数";
 TMAXSEQWIN.insertText = "";
 TMAXSEQWIN.body = "TMAXSEQWIN";
 TMAXSEQWIN.type = MyCompletionType.Function;
@@ -9974,6 +10321,7 @@ TSEQWIN>20||TMAXSEQWIN>3,BK(2);//最大连续赢利额大于20时或最大连续
 
 const TMAXWIN = new MyCompletion();
 TMAXWIN.label = "TMAXWIN";
+TMAXWIN.description = "返回单次盈利最大额";
 TMAXWIN.insertText = "";
 TMAXWIN.body = "TMAXWIN";
 TMAXWIN.type = MyCompletionType.Function;
@@ -10005,6 +10353,7 @@ AUTOFILTER;
 
 const TNUMSEQLOSS = new MyCompletion();
 TNUMSEQLOSS.label = "TNUMSEQLOSS";
+TNUMSEQLOSS.description = "返回持续亏损的次数";
 TNUMSEQLOSS.insertText = "";
 TNUMSEQLOSS.body = "TNUMSEQLOSS";
 TNUMSEQLOSS.type = MyCompletionType.Function;
@@ -10033,6 +10382,7 @@ TNUMSEQLOSS>2,SP(BKVOL);//连续亏损的次数大于2时，平掉全部多头�
 
 const TNUMSEQWIN = new MyCompletion();
 TNUMSEQWIN.label = "TNUMSEQWIN";
+TNUMSEQWIN.description = "返回持续赢利的次数";
 TNUMSEQWIN.insertText = "";
 TNUMSEQWIN.body = "TNUMSEQWIN";
 TNUMSEQWIN.type = MyCompletionType.Function;
@@ -10061,6 +10411,7 @@ TNUMSEQWIN>=2,BK(1);//连续赢利的次数大于等于2次时，加仓一手
 
 const TODAYDEUCETIMES = new MyCompletion();
 TODAYDEUCETIMES.label = "TODAYDEUCETIMES";
+TODAYDEUCETIMES.description = "返回当日平出次数";
 TODAYDEUCETIMES.insertText = "";
 TODAYDEUCETIMES.body = "TODAYDEUCETIMES";
 TODAYDEUCETIMES.type = MyCompletionType.Function;
@@ -10090,6 +10441,7 @@ CROSS(MA(C,5),C),SP(BKVOL);//最新价下穿五周期均线，卖平多头持仓
 
 const TODAYLOSSTIMES = new MyCompletion();
 TODAYLOSSTIMES.label = "TODAYLOSSTIMES";
+TODAYLOSSTIMES.description = "返回当日亏损次数";
 TODAYLOSSTIMES.insertText = "";
 TODAYLOSSTIMES.body = "TODAYLOSSTIMES";
 TODAYLOSSTIMES.type = MyCompletionType.Function;
@@ -10119,6 +10471,7 @@ CROSS(MA(C,5),C),SP(BKVOL);//最新价下穿五周期均线，卖平多头持仓
 
 const TODAYWINTIMES = new MyCompletion();
 TODAYWINTIMES.label = "TODAYWINTIMES";
+TODAYWINTIMES.description = "返回当日赢利次数";
 TODAYWINTIMES.insertText = "";
 TODAYWINTIMES.body = "TODAYWINTIMES";
 TODAYWINTIMES.type = MyCompletionType.Function;
@@ -10149,6 +10502,7 @@ CROSS(MA(C,5),C),SP(BKVOL);//最新价下穿五周期均线，卖平多头持仓
 
 const TPROFIT_REF = new MyCompletion();
 TPROFIT_REF.label = "TPROFIT_REF";
+TPROFIT_REF.description = "取得前第N次交易的盈亏额";
 TPROFIT_REF.insertText = "";
 TPROFIT_REF.body = "TPROFIT_REF( )";
 TPROFIT_REF.type = MyCompletionType.Function;
@@ -10178,6 +10532,7 @@ CROSS(MA(C,5),C),SP(BKVOL);//最新价下穿五周期均线，卖平多头持仓
 
 const TRACING_ORDER = new MyCompletion();
 TRACING_ORDER.label = "TRACING_ORDER";
+TRACING_ORDER.description = "设置信号进行追价下单";
 TRACING_ORDER.insertText = "";
 TRACING_ORDER.body = "TRACING_ORDER( , , )";
 TRACING_ORDER.type = MyCompletionType.Function;
@@ -10222,6 +10577,7 @@ AUTOFILTER;
 
 const TRADE_AGAIN = new MyCompletion();
 TRADE_AGAIN.label = "TRADE_AGAIN";
+TRADE_AGAIN.description = "限制信号函数";
 TRADE_AGAIN.insertText = "";
 TRADE_AGAIN.body = "TRADE_AGAIN()";
 TRADE_AGAIN.type = MyCompletionType.Function;
@@ -10251,6 +10607,7 @@ TRADE_AGAIN(3);//同一指令行可以连续执行3次（如果连续三根阳�
 
 const TRADE_OTHER = new MyCompletion();
 TRADE_OTHER.label = "TRADE_OTHER";
+TRADE_OTHER.description = "指定交易合约";
 TRADE_OTHER.insertText = "";
 TRADE_OTHER.body = "TRADE_OTHER()";
 TRADE_OTHER.type = MyCompletionType.Function;
@@ -10299,6 +10656,7 @@ AUTOFILTER;
 
 const TRADE_REF = new MyCompletion();
 TRADE_REF.label = "TRADE_REF";
+TRADE_REF.description = "判断前N次交易是否赢利";
 TRADE_REF.insertText = "";
 TRADE_REF.body = "TRADE_REF( )";
 TRADE_REF.type = MyCompletionType.Function;
@@ -10328,6 +10686,7 @@ CROSS(MA(C,5),C),SP(BKVOL);//最新价下穿五周期均线，卖平多头持仓
 
 const TRADE_SMOOTHING = new MyCompletion();
 TRADE_SMOOTHING.label = "TRADE_SMOOTHING";
+TRADE_SMOOTHING.description = "消除隔日跳空函数";
 TRADE_SMOOTHING.insertText = "";
 TRADE_SMOOTHING.body = "TRADE_SMOOTHING";
 TRADE_SMOOTHING.type = MyCompletionType.Function;
@@ -10367,6 +10726,7 @@ AUTOFILTER;
 
 const TREND = new MyCompletion();
 TREND.label = "TREND";
+TREND.description = "获取K线趋势";
 TREND.insertText = "";
 TREND.body = "TREND";
 TREND.type = MyCompletionType.Function;
@@ -10385,6 +10745,7 @@ TREND  K线的形成过程中最高价先出现，则返回值为3；最低价�
 
 const TRMA = new MyCompletion();
 TRMA.label = "TRMA";
+TRMA.description = "三角移动平均";
 TRMA.insertText = "";
 TRMA.body = "TRMA( , )";
 TRMA.type = MyCompletionType.Function;
@@ -10418,6 +10779,7 @@ TRMA(CLOSE,10)=MA(MA(CLOSE,10/2),(10/2)+1);
 
 const TSEQLOSS = new MyCompletion();
 TSEQLOSS.label = "TSEQLOSS";
+TSEQLOSS.description = "返回最大连续亏损额";
 TSEQLOSS.insertText = "";
 TSEQLOSS.body = "TSEQLOSS";
 TSEQLOSS.type = MyCompletionType.Function;
@@ -10446,6 +10808,7 @@ TSEQLOSS<-5000,SK(2);//最大连续亏损额达到5000时，反向开仓2手
 
 const TSEQWIN = new MyCompletion();
 TSEQWIN.label = "TSEQWIN";
+TSEQWIN.description = "返回最大连续赢利额";
 TSEQWIN.insertText = "";
 TSEQWIN.body = "TSEQWIN";
 TSEQWIN.type = MyCompletionType.Function;
@@ -10474,6 +10837,7 @@ TSEQWIN>20,BK(2);//最大连续赢利额大于20时，加仓2手
 
 const TSMA = new MyCompletion();
 TSMA.label = "TSMA";
+TSMA.description = "时间序列移动平均";
 TSMA.insertText = "";
 TSMA.body = "TSMA( , )";
 TSMA.type = MyCompletionType.Function;
@@ -10505,6 +10869,7 @@ TSMA5:TSMA(CLOSE,5);//计算5个周期内收盘价的序列三角移动平均
 
 const UNIT = new MyCompletion();
 UNIT.label = "UNIT";
+UNIT.description = "取数据合约的交易单位";
 UNIT.insertText = "";
 UNIT.body = "UNIT";
 UNIT.type = MyCompletionType.Function;
@@ -10522,6 +10887,7 @@ UNIT 取加载数据合约的交易单位。
 
 const UNIT1 = new MyCompletion();
 UNIT1.label = "UNIT1";
+UNIT1.description = "取交易合约的交易单位";
 UNIT1.insertText = "";
 UNIT1.body = "UNIT1";
 UNIT1.type = MyCompletionType.Function;
@@ -10539,6 +10905,7 @@ UNIT1 取交易合约的交易单位。
 
 const UNITLIMIT = new MyCompletion();
 UNITLIMIT.label = "UNITLIMIT";
+UNITLIMIT.description = "取交易合约的限制拥有持仓数";
 UNITLIMIT.insertText = "";
 UNITLIMIT.body = "UNITLIMIT";
 UNITLIMIT.type = MyCompletionType.Function;
@@ -10562,6 +10929,7 @@ UNITLIMIT 取交易合约的限制拥有持仓数
 
 const VALIGN = new MyCompletion();
 VALIGN.label = "VALIGN";
+VALIGN.description = "设置文字对齐方式（上中下）";
 VALIGN.insertText = "";
 VALIGN.body = "VALIGN";
 VALIGN.type = MyCompletionType.Function;
@@ -10584,6 +10952,7 @@ DRAWTEXT(C>O,H,'涨'),ALIGN1,VALIGN1,FONTSIZE20,COLORGREEN;//在阳线的最高�
 
 const VALUEWHEN = new MyCompletion();
 VALUEWHEN.label = "VALUEWHEN";
+VALUEWHEN.description = "取值";
 VALUEWHEN.insertText = "";
 VALUEWHEN.body = "VALUEWHEN( , )";
 VALUEWHEN.type = MyCompletionType.Function;
@@ -10609,6 +10978,7 @@ VALUEWHEN(DATE<>REF(DATE,1),L>REF(H,1));//表示在当天第一根k线上判断�
 
 const VAR = new MyCompletion();
 VAR.label = "VAR";
+VAR.description = "样本方差";
 VAR.insertText = "";
 VAR.body = "VAR( , )";
 VAR.type = MyCompletionType.Function;
@@ -10640,6 +11010,7 @@ VAR(C,5)求收盘价在5周期内的样本方差。
 
 const VARP = new MyCompletion();
 VARP.label = "VARP";
+VARP.description = "总体方差";
 VARP.insertText = "";
 VARP.body = "VARP( , )";
 VARP.type = MyCompletionType.Function;
@@ -10670,6 +11041,7 @@ VARP(C,5)为收盘价的5周期总体方差
 
 const VERTLINE = new MyCompletion();
 VERTLINE.label = "VERTLINE";
+VERTLINE.description = "画垂直线";
 VERTLINE.insertText = "";
 VERTLINE.body = "VERTLINE( , )";
 VERTLINE.type = MyCompletionType.Function;
@@ -10701,6 +11073,7 @@ VERTLINE(LOW<=LLV(LOW,30),COLORBLUE),LINETHICK3;//表示在价格创30天新低�
 
 const VERTLINE1 = new MyCompletion();
 VERTLINE1.label = "VERTLINE1";
+VERTLINE1.description = "画垂直线";
 VERTLINE1.insertText = "";
 VERTLINE1.body = "VERTLINE1( )";
 VERTLINE1.type = MyCompletionType.Function;
@@ -10732,6 +11105,7 @@ VERTLINE1(LOW<=LLV(LOW,30)),COLORBLUE,LINETHICK3;//表示在价格创30天新低
 
 const VOL = new MyCompletion();
 VOL.label = "VOL";
+VOL.description = "取得K线图的成交量";
 VOL.insertText = "";
 VOL.body = "VOL";
 VOL.type = MyCompletionType.Function;
@@ -10758,6 +11132,7 @@ V>=REF(V,1);//成交量大于前一个周期的成交量，表示成交量增加
 
 const VOLATILITY = new MyCompletion();
 VOLATILITY.label = "VOLATILITY";
+VOLATILITY.description = "取期权历史波动率";
 VOLATILITY.insertText = "";
 VOLATILITY.body = "VOLATILITY()";
 VOLATILITY.type = MyCompletionType.Function;
@@ -10790,6 +11165,7 @@ AA:VOLATILITY(60);//AA返回过去60个周期的历史波动率。
 
 const VOLMARGIN = new MyCompletion();
 VOLMARGIN.label = "VOLMARGIN";
+VOLMARGIN.description = "理论持仓保证金";
 VOLMARGIN.insertText = "";
 VOLMARGIN.body = "VOLMARGIN";
 VOLMARGIN.type = MyCompletionType.Function;
@@ -10818,6 +11194,7 @@ VOLMARGIN 理论持仓保证金
 
 const VOLSTICK = new MyCompletion();
 VOLSTICK.label = "VOLSTICK";
+VOLSTICK.description = "画柱线";
 VOLSTICK.insertText = "";
 VOLSTICK.body = "VOLSTICK";
 VOLSTICK.type = MyCompletionType.Function;
@@ -10844,6 +11221,7 @@ VOL,VOLSTICK,SOLID;//画成交量柱状线，柱线实心显示。
 
 const VOLTICK = new MyCompletion();
 VOLTICK.label = "VOLTICK";
+VOLTICK.description = "返回K线是由多少笔TICK生成";
 VOLTICK.insertText = "";
 VOLTICK.body = "VOLTICK";
 VOLTICK.type = MyCompletionType.Function;
@@ -10861,6 +11239,7 @@ VOLTICK 量能周期时，返回当前K线形成的TICK笔数。
 
 const VOLTIME = new MyCompletion();
 VOLTIME.label = "VOLTIME";
+VOLTIME.description = "取K线形成的时间（秒）";
 VOLTIME.insertText = "";
 VOLTIME.body = "VOLTIME";
 VOLTIME.type = MyCompletionType.Function;
@@ -10878,6 +11257,7 @@ VOLTIME 量能周期时，返回当前K线形成的时间。
 
 const VOLUMESTICK = new MyCompletion();
 VOLUMESTICK.label = "VOLUMESTICK";
+VOLUMESTICK.description = "画柱线";
 VOLUMESTICK.insertText = "";
 VOLUMESTICK.body = "VOLUMESTICK";
 VOLUMESTICK.type = MyCompletionType.Function;
@@ -10904,6 +11284,7 @@ VOL,VOLUMESTICK,SOLID;//画成交量柱状线，柱线实心显示。
 
 const WEEKDAY = new MyCompletion();
 WEEKDAY.label = "WEEKDAY";
+WEEKDAY.description = "取得星期数";
 WEEKDAY.insertText = "";
 WEEKDAY.body = "WEEKDAY";
 WEEKDAY.type = MyCompletionType.Function;
@@ -10932,6 +11313,7 @@ AUTOFILTER;
 
 const WEEKTRADE = new MyCompletion();
 WEEKTRADE.label = "WEEKTRADE";
+WEEKTRADE.description = "周内交易函数";
 WEEKTRADE.insertText = "";
 WEEKTRADE.body = "WEEKTRADE";
 WEEKTRADE.type = MyCompletionType.Function;
@@ -10968,6 +11350,7 @@ WEEKTRADE;//使用每周数据计算
 
 const WEEKTRADE1 = new MyCompletion();
 WEEKTRADE1.label = "WEEKTRADE1";
+WEEKTRADE1.description = "周内交易函数";
 WEEKTRADE1.insertText = "";
 WEEKTRADE1.body = "WEEKTRADE1";
 WEEKTRADE1.type = MyCompletionType.Function;
@@ -11007,6 +11390,7 @@ WEEKTRADE1;//只用周内数据进行计算
 
 const WINNER = new MyCompletion();
 WINNER.label = "WINNER";
+WINNER.description = "获利盘比例";
 WINNER.insertText = "";
 WINNER.body = "WINNER( )";
 WINNER.type = MyCompletionType.Function;
@@ -11030,6 +11414,7 @@ WINNER(CLOSE),表示以当前收市价卖出的获利盘比例,例如返回0.1�
 
 const WORD = new MyCompletion();
 WORD.label = "WORD";
+WORD.description = "显示文字";
 WORD.insertText = "";
 WORD.body = "WORD( , )";
 WORD.type = MyCompletionType.Function;
@@ -11055,6 +11440,7 @@ CLOSE>OPEN,WORD(1,'阳'),ALIGN0,VALIGN0,FONTSIZE54,COLORRED;//表示K线收盘�
 
 const YCLOSE = new MyCompletion();
 YCLOSE.label = "YCLOSE";
+YCLOSE.description = "取得K线图的昨收盘价";
 YCLOSE.insertText = "";
 YCLOSE.body = "YCLOSE";
 YCLOSE.type = MyCompletionType.Function;
@@ -11076,6 +11462,7 @@ YCLOSE求某根K线的昨收盘价。
 
 const YEAR = new MyCompletion();
 YEAR.label = "YEAR";
+YEAR.description = "年份";
 YEAR.insertText = "";
 YEAR.body = "YEAR";
 YEAR.type = MyCompletionType.Function;
@@ -11103,6 +11490,7 @@ NN:=IFELSE(YEAR>=2000 AND MONTH>=1,0,1);
 
 const YEARTRADE = new MyCompletion();
 YEARTRADE.label = "YEARTRADE";
+YEARTRADE.description = "年内交易函数";
 YEARTRADE.insertText = "";
 YEARTRADE.body = "YEARTRADE";
 YEARTRADE.type = MyCompletionType.Function;
@@ -11139,6 +11527,7 @@ YEARTRADE;//使用每年数据计算
 
 const YEARTRADE1 = new MyCompletion();
 YEARTRADE1.label = "YEARTRADE1";
+YEARTRADE1.description = "年内交易函数";
 YEARTRADE1.insertText = "";
 YEARTRADE1.body = "YEARTRADE1";
 YEARTRADE1.type = MyCompletionType.Function;
@@ -11175,6 +11564,7 @@ YEARTRADE1;//使用每年数据计算
 
 const YSETTLE = new MyCompletion();
 YSETTLE.label = "YSETTLE";
+YSETTLE.description = "取得K线图的昨结算价";
 YSETTLE.insertText = "";
 YSETTLE.body = "YSETTLE";
 YSETTLE.type = MyCompletionType.Function;
@@ -11195,6 +11585,7 @@ YSETTLE求某根k线的昨结算价
 
 const _CALL = new MyCompletion();
 _CALL.label = "#CALL";
+_CALL.description = "跨合约引用指标";
 _CALL.insertText = "";
 _CALL.body = "#CALL [ , ] AS";
 _CALL.type = MyCompletionType.Function;
@@ -11236,6 +11627,7 @@ CC:VAR.CC;//跨合约引用当前合约对应品种VIX指数一个周期前的�
 
 const _CALL_OTHER = new MyCompletion();
 _CALL_OTHER.label = "#CALL_OTHER";
+_CALL_OTHER.description = "跨指标引用";
 _CALL_OTHER.insertText = "";
 _CALL_OTHER.body = "#CALL_OTHER [ ] AS";
 _CALL_OTHER.type = MyCompletionType.Function;
@@ -11267,6 +11659,7 @@ CC:VAR.CC;//跨指标引用当前合约的一个周期前的收盘价
 
 const _CALL_PLUS = new MyCompletion();
 _CALL_PLUS.label = "#CALL_PLUS";
+_CALL_PLUS.description = "跨合约跨周期引用指标";
 _CALL_PLUS.insertText = "";
 _CALL_PLUS.body = "#CALL_PLUS [ , , , ] AS";
 _CALL_PLUS.type = MyCompletionType.Function;
@@ -11314,6 +11707,7 @@ CC:VAR.CC;//跨周期引用当前合约对应品种VIX指数昨天的收盘价
 
 const _IMPORT = new MyCompletion();
 _IMPORT.label = "#IMPORT";
+_IMPORT.description = "跨周期引用指标";
 _IMPORT.insertText = "";
 _IMPORT.body = "#IMPORT [ , , ] AS";
 _IMPORT.type = MyCompletionType.Function;
@@ -11369,6 +11763,7 @@ CC2:=R.CC;//跨周期引用自定义1分钟周期的一个周期前的收盘价
 
 const _$_ = new MyCompletion();
 _$_.label = "$";
+_$_.description = "引用其他合约的K线数据";
 _$_.insertText = "";
 _$_.body = " $ ";
 _$_.type = MyCompletionType.Function;
@@ -11398,6 +11793,7 @@ A:"8606$OPI";//返回文华码为8606合约的持仓量。
 
 const _$_$_ = new MyCompletion();
 _$_$_.label = "$ $";
+_$_$_.description = "引用其他周期的K线数据";
 _$_$_.insertText = "";
 _$_$_.body = " $ $ ";
 _$_$_.type = MyCompletionType.Function;
