@@ -8,9 +8,12 @@ const keywordList = Object.entries({
     END: "END",
     OR: "OR 逻辑或",
     THEN: "THEN",
-    SEC: "秒钟",
-    WEEK: "WEEK 周",
     VARIABLE: "VARIABLE 定义全局变量并初始化",
+}).map(([label, detail]) => MyCompletion.fromLabelAndDetail(label, detail));
+
+const periodList = Object.entries({
+    SEC: "秒",
+    WEEK: "周",
 }).map(([label, detail]) => MyCompletion.fromLabelAndDetail(label, detail));
 
 const drawList = Object.entries({
@@ -129,6 +132,7 @@ const fontSizeList = Array.from({ length: 65 }, (_, i) => i + 8).map((i) =>
 
 export const keywords = [
     ...keywordList,
+    ...periodList,
     ...drawList,
     ...orderOpList,
     ...ratioList,

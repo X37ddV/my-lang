@@ -1,15 +1,21 @@
 import {
-    MyCompletion,
-    MyCompletionMarketType,
-    MyCompletionFunctionType,
+   MyCompletion,
+   MyCompletionType,
+   MyCompletionMarketType,
+   MyCompletionReturnType,
+   MyCompletionFunctionType,
+   MyCompletionParameterType,
 } from "../common";
 
 const ABS = new MyCompletion();
 ABS.label = "ABS";
 ABS.insertText = "";
 ABS.body = "ABS( )";
+ABS.type = MyCompletionType.Function;
 ABS.marketType = MyCompletionMarketType.BasicFunction;
 ABS.functionType = MyCompletionFunctionType.MathFunction;
+ABS.returnType = MyCompletionReturnType.None;
+ABS.parameters = MyCompletion.createParametersFromStrings([]);
 ABS.detail = "绝对值";
 ABS.documentation = `
 ABS(X),求X的绝对值
@@ -32,8 +38,11 @@ const ACOS = new MyCompletion();
 ACOS.label = "ACOS";
 ACOS.insertText = "";
 ACOS.body = "ACOS( )";
+ACOS.type = MyCompletionType.Function;
 ACOS.marketType = MyCompletionMarketType.BasicFunction;
 ACOS.functionType = MyCompletionFunctionType.MathFunction;
+ACOS.returnType = MyCompletionReturnType.None;
+ACOS.parameters = MyCompletion.createParametersFromStrings([]);
 ACOS.detail = "反余弦值";
 ACOS.documentation = `
 ACOS(X),求X的反余弦值
@@ -53,8 +62,11 @@ const ADMA = new MyCompletion();
 ADMA.label = "ADMA";
 ADMA.insertText = "";
 ADMA.body = "ADMA(,,,)";
+ADMA.type = MyCompletionType.Function;
 ADMA.marketType = MyCompletionMarketType.BasicFunction;
 ADMA.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
+ADMA.returnType = MyCompletionReturnType.None;
+ADMA.parameters = MyCompletion.createParametersFromStrings([]);
 ADMA.detail = "考夫曼均值";
 ADMA.documentation = `
 AMA(X,N,P,Q),考夫曼均值X为调用的k线数据（例如高、开、低，收），N为调用的间隔时间P为快线频率参数，Q为慢线频率参数
@@ -92,8 +104,11 @@ const ALIGN = new MyCompletion();
 ALIGN.label = "ALIGN";
 ALIGN.insertText = "";
 ALIGN.body = "ALIGN";
+ALIGN.type = MyCompletionType.Function;
 ALIGN.marketType = MyCompletionMarketType.BasicFunction;
 ALIGN.functionType = MyCompletionFunctionType.DrawingFunction;
+ALIGN.returnType = MyCompletionReturnType.None;
+ALIGN.parameters = MyCompletion.createParametersFromStrings([]);
 ALIGN.detail = "设置文字对齐方式（左中右）";
 ALIGN.documentation = `
 ALIGN0,ALIGN1,ALIGN2,分别表示文字左对齐，居中对齐，右对齐
@@ -111,8 +126,11 @@ const ASIN = new MyCompletion();
 ASIN.label = "ASIN";
 ASIN.insertText = "";
 ASIN.body = "ASIN( )";
+ASIN.type = MyCompletionType.Function;
 ASIN.marketType = MyCompletionMarketType.BasicFunction;
 ASIN.functionType = MyCompletionFunctionType.MathFunction;
+ASIN.returnType = MyCompletionReturnType.None;
+ASIN.parameters = MyCompletion.createParametersFromStrings([]);
 ASIN.detail = "反正弦值";
 ASIN.documentation = `
 ASIN(X),求X的反正弦值
@@ -132,8 +150,11 @@ const ATAN = new MyCompletion();
 ATAN.label = "ATAN";
 ATAN.insertText = "";
 ATAN.body = "ATAN( )";
+ATAN.type = MyCompletionType.Function;
 ATAN.marketType = MyCompletionMarketType.BasicFunction;
 ATAN.functionType = MyCompletionFunctionType.MathFunction;
+ATAN.returnType = MyCompletionReturnType.None;
+ATAN.parameters = MyCompletion.createParametersFromStrings([]);
 ATAN.detail = "反正切值";
 ATAN.documentation = `
 ATAN(X),求X的反正切值
@@ -151,8 +172,11 @@ const AUTOFILTER = new MyCompletion();
 AUTOFILTER.label = "AUTOFILTER";
 AUTOFILTER.insertText = "";
 AUTOFILTER.body = "AUTOFILTER";
+AUTOFILTER.type = MyCompletionType.Function;
 AUTOFILTER.marketType = MyCompletionMarketType.BasicFunction;
 AUTOFILTER.functionType = MyCompletionFunctionType.CalculationControlFunction;
+AUTOFILTER.returnType = MyCompletionReturnType.None;
+AUTOFILTER.parameters = MyCompletion.createParametersFromStrings([]);
 AUTOFILTER.detail = "启用一开一平信号过滤机制";
 AUTOFILTER.documentation = `
 AUTOFILTER,启用一开一平信号过滤机制。
@@ -180,8 +204,12 @@ const AUTOFINANCING = new MyCompletion();
 AUTOFINANCING.label = "AUTOFINANCING";
 AUTOFINANCING.insertText = "";
 AUTOFINANCING.body = "AUTOFINANCING";
+AUTOFINANCING.type = MyCompletionType.Function;
 AUTOFINANCING.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-AUTOFINANCING.functionType = MyCompletionFunctionType.CalculationControlFunction;
+AUTOFINANCING.functionType =
+   MyCompletionFunctionType.CalculationControlFunction;
+AUTOFINANCING.returnType = MyCompletionReturnType.None;
+AUTOFINANCING.parameters = MyCompletion.createParametersFromStrings([]);
 AUTOFINANCING.detail = "启用按需自动入金方式";
 AUTOFINANCING.documentation = `
 AUTOFINANCING，启用按需自动入金方式
@@ -212,8 +240,12 @@ const AVAILABLE_OPI = new MyCompletion();
 AVAILABLE_OPI.label = "AVAILABLE_OPI";
 AVAILABLE_OPI.insertText = "";
 AVAILABLE_OPI.body = "AVAILABLE_OPI";
+AVAILABLE_OPI.type = MyCompletionType.Function;
 AVAILABLE_OPI.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-AVAILABLE_OPI.functionType = MyCompletionFunctionType.PositionManagementFunction;
+AVAILABLE_OPI.functionType =
+   MyCompletionFunctionType.PositionManagementFunction;
+AVAILABLE_OPI.returnType = MyCompletionReturnType.None;
+AVAILABLE_OPI.parameters = MyCompletion.createParametersFromStrings([]);
 AVAILABLE_OPI.detail = "可用股数";
 AVAILABLE_OPI.documentation = `
 AVAILABLE_OPI可用股数
@@ -237,8 +269,11 @@ const AVEDEV = new MyCompletion();
 AVEDEV.label = "AVEDEV";
 AVEDEV.insertText = "";
 AVEDEV.body = "AVEDEV( , )";
+AVEDEV.type = MyCompletionType.Function;
 AVEDEV.marketType = MyCompletionMarketType.BasicFunction;
 AVEDEV.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
+AVEDEV.returnType = MyCompletionReturnType.None;
+AVEDEV.parameters = MyCompletion.createParametersFromStrings([]);
 AVEDEV.detail = "平均绝对偏差";
 AVEDEV.documentation = `
 AVEDEV(X,N),求X在N周期内的平均绝对偏差
@@ -265,8 +300,11 @@ const AVPRICE = new MyCompletion();
 AVPRICE.label = "AVPRICE";
 AVPRICE.insertText = "";
 AVPRICE.body = "AVPRICE";
+AVPRICE.type = MyCompletionType.Function;
 AVPRICE.marketType = MyCompletionMarketType.BasicFunction;
 AVPRICE.functionType = MyCompletionFunctionType.CandlestickDataReference;
+AVPRICE.returnType = MyCompletionReturnType.None;
+AVPRICE.parameters = MyCompletion.createParametersFromStrings([]);
 AVPRICE.detail = "取得K线图的均价";
 AVPRICE.documentation = `
 AVPRICE,取均价
@@ -290,8 +328,11 @@ const BACKGROUNDSTYLE = new MyCompletion();
 BACKGROUNDSTYLE.label = "BACKGROUNDSTYLE";
 BACKGROUNDSTYLE.insertText = "";
 BACKGROUNDSTYLE.body = "BACKGROUNDSTYLE( )";
+BACKGROUNDSTYLE.type = MyCompletionType.Function;
 BACKGROUNDSTYLE.marketType = MyCompletionMarketType.BasicFunction;
 BACKGROUNDSTYLE.functionType = MyCompletionFunctionType.DrawingFunction;
+BACKGROUNDSTYLE.returnType = MyCompletionReturnType.None;
+BACKGROUNDSTYLE.parameters = MyCompletion.createParametersFromStrings([]);
 BACKGROUNDSTYLE.detail = "背景的样式";
 BACKGROUNDSTYLE.documentation = `
 BACKGROUNDSTYLE(i)设置背景的样式,i=0、1、2
@@ -324,8 +365,11 @@ const BARINTERVAL = new MyCompletion();
 BARINTERVAL.label = "BARINTERVAL";
 BARINTERVAL.insertText = "";
 BARINTERVAL.body = "BARINTERVAL";
+BARINTERVAL.type = MyCompletionType.Function;
 BARINTERVAL.marketType = MyCompletionMarketType.BasicFunction;
 BARINTERVAL.functionType = MyCompletionFunctionType.CandlestickDataReference;
+BARINTERVAL.returnType = MyCompletionReturnType.None;
+BARINTERVAL.parameters = MyCompletion.createParametersFromStrings([]);
 BARINTERVAL.detail = "返回数据合约的K线周期数值";
 BARINTERVAL.documentation = `
 BARINTERVAL数据合约的K线周期数值。
@@ -346,8 +390,11 @@ const BARPOS = new MyCompletion();
 BARPOS.label = "BARPOS";
 BARPOS.insertText = "";
 BARPOS.body = "BARPOS";
+BARPOS.type = MyCompletionType.Function;
 BARPOS.marketType = MyCompletionMarketType.BasicFunction;
 BARPOS.functionType = MyCompletionFunctionType.TimeFunction;
+BARPOS.returnType = MyCompletionReturnType.None;
+BARPOS.parameters = MyCompletion.createParametersFromStrings([]);
 BARPOS.detail = "取K线的位置";
 BARPOS.documentation = `
 BARPOS,取某K线的位置
@@ -366,8 +413,11 @@ const BARSBK = new MyCompletion();
 BARSBK.label = "BARSBK";
 BARSBK.insertText = "";
 BARSBK.body = "BARSBK";
+BARSBK.type = MyCompletionType.Function;
 BARSBK.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 BARSBK.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+BARSBK.returnType = MyCompletionReturnType.None;
+BARSBK.parameters = MyCompletion.createParametersFromStrings([]);
 BARSBK.detail = "上一次买开信号位置";
 BARSBK.documentation = `
 BARSBK，取上一次买开信号位置
@@ -383,8 +433,8 @@ BARSBK返回上一次买开仓的K线距离当前K线的周期数（不包含出
 （1）设置信号执行方式为K线走完确认信号下单
 BARSBK返回值为上一个BK信号距离当前的K线根数（包含当前K线）
 （2）设置信号执行方式为出信号立即下单，不复核（例如：在模型中写入MULTSIG或MULTSIG_MIN;）
-    a.历史信号计算中，出现BK信号的当根K线，BARSBK返回空值
-    b.加载运行过程中,信号固定后BARSBK返回空值
+   a.历史信号计算中，出现BK信号的当根K线，BARSBK返回空值
+   b.加载运行过程中,信号固定后BARSBK返回空值
 （3）设置信号执行方式为K线走完复核（例如：在模型中写入CHECKSIG(BK,'A',N,'D',0,0);）
 BARSBK返回值为上一个BK信号距离当前的K线根数（包含当前K线）
 
@@ -406,8 +456,11 @@ const BARSBP = new MyCompletion();
 BARSBP.label = "BARSBP";
 BARSBP.insertText = "";
 BARSBP.body = "BARSBP";
+BARSBP.type = MyCompletionType.Function;
 BARSBP.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 BARSBP.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+BARSBP.returnType = MyCompletionReturnType.None;
+BARSBP.parameters = MyCompletion.createParametersFromStrings([]);
 BARSBP.detail = "上一次买平信号位置";
 BARSBP.documentation = `
 BARSBP，取上一次买平信号位置
@@ -423,8 +476,8 @@ BARSBP返回上一次买平仓的K线距离当前K线的周期数（不包含出
 （1）设置信号执行方式为K线走完确认信号下单
 BARSBP返回值为上一个BP信号距离当前的K线根数（包含当前K线）
 （2）设置信号执行方式为出信号立即下单，不复核（例如：在模型中写入MULTSIG或MULTSIG_MIN;）
-    a.历史信号计算中，出现BP信号当根K线，BARSBP返回空值
-    b.加载运行过程中，BP信号当根K线,信号固定后BARSBP返回空值
+   a.历史信号计算中，出现BP信号当根K线，BARSBP返回空值
+   b.加载运行过程中，BP信号当根K线,信号固定后BARSBP返回空值
 （3）设置信号执行方式为K线走完复核（例如：在模型中写入CHECKSIG(BP,'A',N,'D',0,0);）
 BARSBP返回值为上一个BP信号距离当前的K线根数（包含当前K线）
 
@@ -445,8 +498,11 @@ const BARSBUY = new MyCompletion();
 BARSBUY.label = "BARSBUY";
 BARSBUY.insertText = "";
 BARSBUY.body = "BARSBUY";
+BARSBUY.type = MyCompletionType.Function;
 BARSBUY.marketType = MyCompletionMarketType.TPlusOneStrategyFunction;
 BARSBUY.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+BARSBUY.returnType = MyCompletionReturnType.None;
+BARSBUY.parameters = MyCompletion.createParametersFromStrings([]);
 BARSBUY.detail = "上一次买入信号位置";
 BARSBUY.documentation = `
 BARSBUY 上一次买入信号位置
@@ -473,8 +529,11 @@ const BARSCOUNT = new MyCompletion();
 BARSCOUNT.label = "BARSCOUNT";
 BARSCOUNT.insertText = "";
 BARSCOUNT.body = "BARSCOUNT()";
+BARSCOUNT.type = MyCompletionType.Function;
 BARSCOUNT.marketType = MyCompletionMarketType.BasicFunction;
 BARSCOUNT.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+BARSCOUNT.returnType = MyCompletionReturnType.None;
+BARSCOUNT.parameters = MyCompletion.createParametersFromStrings([]);
 BARSCOUNT.detail = "第一个有效周期到当前的周期数";
 BARSCOUNT.documentation = `
 BARSCOUNT(COND)返回COND第一个有效值的位置到当前的周期数
@@ -492,8 +551,11 @@ const BARSLAST = new MyCompletion();
 BARSLAST.label = "BARSLAST";
 BARSLAST.insertText = "";
 BARSLAST.body = "BARSLAST( )";
+BARSLAST.type = MyCompletionType.Function;
 BARSLAST.marketType = MyCompletionMarketType.BasicFunction;
 BARSLAST.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+BARSLAST.returnType = MyCompletionReturnType.None;
+BARSLAST.parameters = MyCompletion.createParametersFromStrings([]);
 BARSLAST.detail = "上一次条件成立位置";
 BARSLAST.documentation = `
 BARSLAST(X),求上一次条件X满足到现在的周期数
@@ -513,8 +575,12 @@ const BARSLASTCOUNT = new MyCompletion();
 BARSLASTCOUNT.label = "BARSLASTCOUNT";
 BARSLASTCOUNT.insertText = "";
 BARSLASTCOUNT.body = "BARSLASTCOUNT()";
+BARSLASTCOUNT.type = MyCompletionType.Function;
 BARSLASTCOUNT.marketType = MyCompletionMarketType.BasicFunction;
-BARSLASTCOUNT.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+BARSLASTCOUNT.functionType =
+   MyCompletionFunctionType.FinancialStatisticsFunction;
+BARSLASTCOUNT.returnType = MyCompletionReturnType.None;
+BARSLASTCOUNT.parameters = MyCompletion.createParametersFromStrings([]);
 BARSLASTCOUNT.detail = "从当前周期向前计算，统计连续满足条件的周期数";
 BARSLASTCOUNT.documentation = `
 BARSLASTCOUNT,从当前周期向前计算，统计连续满足条件的周期数
@@ -533,8 +599,11 @@ const BARSSELL = new MyCompletion();
 BARSSELL.label = "BARSSELL";
 BARSSELL.insertText = "";
 BARSSELL.body = "BARSSELL";
+BARSSELL.type = MyCompletionType.Function;
 BARSSELL.marketType = MyCompletionMarketType.TPlusOneStrategyFunction;
 BARSSELL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+BARSSELL.returnType = MyCompletionReturnType.None;
+BARSSELL.parameters = MyCompletion.createParametersFromStrings([]);
 BARSSELL.detail = "上一次卖出信号位置";
 BARSSELL.documentation = `
 BARSSELL 上一次卖出信号位置
@@ -561,8 +630,11 @@ const BARSSINCE = new MyCompletion();
 BARSSINCE.label = "BARSSINCE";
 BARSSINCE.insertText = "";
 BARSSINCE.body = "BARSSINCE()";
+BARSSINCE.type = MyCompletionType.Function;
 BARSSINCE.marketType = MyCompletionMarketType.BasicFunction;
 BARSSINCE.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+BARSSINCE.returnType = MyCompletionReturnType.None;
+BARSSINCE.parameters = MyCompletion.createParametersFromStrings([]);
 BARSSINCE.detail = "第一个条件成立到当前的周期数";
 BARSSINCE.documentation = `
 BARSSINCE,第一个条件成立到当前的周期数
@@ -581,8 +653,11 @@ const BARSSINCEN = new MyCompletion();
 BARSSINCEN.label = "BARSSINCEN";
 BARSSINCEN.insertText = "";
 BARSSINCEN.body = "BARSSINCEN";
+BARSSINCEN.type = MyCompletionType.Function;
 BARSSINCEN.marketType = MyCompletionMarketType.BasicFunction;
 BARSSINCEN.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+BARSSINCEN.returnType = MyCompletionReturnType.None;
+BARSSINCEN.parameters = MyCompletion.createParametersFromStrings([]);
 BARSSINCEN.detail = "统计N周期内第一次条件成立到当前的周期数";
 BARSSINCEN.documentation = `
 BARSSINCEN统计N周期内第一次条件成立到当前的周期数
@@ -603,8 +678,11 @@ const BARSSK = new MyCompletion();
 BARSSK.label = "BARSSK";
 BARSSK.insertText = "";
 BARSSK.body = "BARSSK";
+BARSSK.type = MyCompletionType.Function;
 BARSSK.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 BARSSK.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+BARSSK.returnType = MyCompletionReturnType.None;
+BARSSK.parameters = MyCompletion.createParametersFromStrings([]);
 BARSSK.detail = "上一次卖开信号位置";
 BARSSK.documentation = `
 BARSSK，取上一次卖开信号位置
@@ -620,8 +698,8 @@ BARSSK返回上一次卖开仓的K线距离当前K线的周期数（不包含出
 （1）设置信号执行方式为K线走完确认信号下单
 BARSSK返回值为上一个SK信号距离当前的K线根数（包含当前K线）
 （2）设置信号执行方式为出信号立即下单，不复核（例如：在模型中写入MULTSIG或MULTSIG_MIN;）
-    a.历史信号计算中，出现SK信号当根K线，BARSSK返回空值
-    b.加载运行过程中，SK信号当根K线,信号固定后BARSSK返回空值
+   a.历史信号计算中，出现SK信号当根K线，BARSSK返回空值
+   b.加载运行过程中，SK信号当根K线,信号固定后BARSSK返回空值
 （3）设置信号执行方式为K线走完复核（例如：在模型中写入CHECKSIG(SK,'A',N,'D',0,0);）
 BARSSK返回值为上一个SK信号距离当前的K线根数（包含当前K线）
 
@@ -643,8 +721,11 @@ const BARSSP = new MyCompletion();
 BARSSP.label = "BARSSP";
 BARSSP.insertText = "";
 BARSSP.body = "BARSSP";
+BARSSP.type = MyCompletionType.Function;
 BARSSP.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 BARSSP.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+BARSSP.returnType = MyCompletionReturnType.None;
+BARSSP.parameters = MyCompletion.createParametersFromStrings([]);
 BARSSP.detail = "上一次卖平信号位置";
 BARSSP.documentation = `
 BARSSP，取上一次卖平信号位置
@@ -660,8 +741,8 @@ BARSSP返回上一次卖平仓的K线距离当前K线的周期数（不包含出
 （1）设置信号执行方式为K线走完确认信号下单
 BARSBP返回值为上一个BP信号距离当前的K线根数（包含当前K线）
 （2）设置信号执行方式为出信号立即下单，不复核（例如：在模型中写入MULTSIG或MULTSIG_MIN;）
-    a.历史信号计算中，出现SP信号当根K线，BARSSP返回空值
-    b.加载运行过程中，SP信号当根K线,信号固定后BARSSP返回空值
+   a.历史信号计算中，出现SP信号当根K线，BARSSP返回空值
+   b.加载运行过程中，SP信号当根K线,信号固定后BARSSP返回空值
 （3）设置信号执行方式为K线走完复核（例如：在模型中写入CHECKSIG(SP,'A',N,'D',0,0);）
 BARSSP返回值为上一个SP信号距离当前的K线根数（包含当前K线）
 
@@ -682,8 +763,11 @@ const BARSTATUS = new MyCompletion();
 BARSTATUS.label = "BARSTATUS";
 BARSTATUS.insertText = "";
 BARSTATUS.body = "BARSTATUS";
+BARSTATUS.type = MyCompletionType.Function;
 BARSTATUS.marketType = MyCompletionMarketType.BasicFunction;
 BARSTATUS.functionType = MyCompletionFunctionType.DrawingFunction;
+BARSTATUS.returnType = MyCompletionReturnType.None;
+BARSTATUS.parameters = MyCompletion.createParametersFromStrings([]);
 BARSTATUS.detail = "返回当前周期的位置状态";
 BARSTATUS.documentation = `
 BARSTATUS返回当前周期的位置状态。1表示当前周期是第一个周期，2表示是最后一个周期，0表示当前周期处于中间位置。
@@ -701,8 +785,11 @@ const BARTYPE = new MyCompletion();
 BARTYPE.label = "BARTYPE";
 BARTYPE.insertText = "";
 BARTYPE.body = "BARTYPE";
+BARTYPE.type = MyCompletionType.Function;
 BARTYPE.marketType = MyCompletionMarketType.BasicFunction;
 BARTYPE.functionType = MyCompletionFunctionType.CandlestickDataReference;
+BARTYPE.returnType = MyCompletionReturnType.None;
+BARTYPE.parameters = MyCompletion.createParametersFromStrings([]);
 BARTYPE.detail = "数据合约的K线周期类型值";
 BARTYPE.documentation = `
 BARTYPE数据合约的K线周期类型值。
@@ -729,8 +816,11 @@ const BETWEEN = new MyCompletion();
 BETWEEN.label = "BETWEEN";
 BETWEEN.insertText = "";
 BETWEEN.body = "BETWEEN( , , )";
+BETWEEN.type = MyCompletionType.Function;
 BETWEEN.marketType = MyCompletionMarketType.BasicFunction;
 BETWEEN.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+BETWEEN.returnType = MyCompletionReturnType.None;
+BETWEEN.parameters = MyCompletion.createParametersFromStrings([]);
 BETWEEN.detail = "介于";
 BETWEEN.documentation = `
 BETWEEN(A,B,C),A处于B和C之间时取1(Yes)，否则取0(No)
@@ -747,8 +837,11 @@ const BKHIGH = new MyCompletion();
 BKHIGH.label = "BKHIGH";
 BKHIGH.insertText = "";
 BKHIGH.body = "BKHIGH";
+BKHIGH.type = MyCompletionType.Function;
 BKHIGH.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 BKHIGH.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+BKHIGH.returnType = MyCompletionReturnType.None;
+BKHIGH.parameters = MyCompletion.createParametersFromStrings([]);
 BKHIGH.detail = "返回数据合约买开仓以来的最高价";
 BKHIGH.documentation = `
 BKHIGH,返回数据合约买开仓以来的最高价
@@ -777,8 +870,11 @@ const BKLOW = new MyCompletion();
 BKLOW.label = "BKLOW";
 BKLOW.insertText = "";
 BKLOW.body = "BKLOW";
+BKLOW.type = MyCompletionType.Function;
 BKLOW.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 BKLOW.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+BKLOW.returnType = MyCompletionReturnType.None;
+BKLOW.parameters = MyCompletion.createParametersFromStrings([]);
 BKLOW.detail = "返回数据合约买开仓以来的最低价";
 BKLOW.documentation = `
 BKLOW,返回数据合约买开仓以来的最低价
@@ -807,8 +903,11 @@ const BKPRICE = new MyCompletion();
 BKPRICE.label = "BKPRICE";
 BKPRICE.insertText = "";
 BKPRICE.body = "BKPRICE";
+BKPRICE.type = MyCompletionType.Function;
 BKPRICE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 BKPRICE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+BKPRICE.returnType = MyCompletionReturnType.None;
+BKPRICE.parameters = MyCompletion.createParametersFromStrings([]);
 BKPRICE.detail = "返回数据合约最近一次买开信号价位";
 BKPRICE.documentation = `
 BKPRICE，返回数据合约最近一次买开信号价位
@@ -842,8 +941,11 @@ const BKPRICE1 = new MyCompletion();
 BKPRICE1.label = "BKPRICE1";
 BKPRICE1.insertText = "";
 BKPRICE1.body = "BKPRICE1";
+BKPRICE1.type = MyCompletionType.Function;
 BKPRICE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 BKPRICE1.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+BKPRICE1.returnType = MyCompletionReturnType.None;
+BKPRICE1.parameters = MyCompletion.createParametersFromStrings([]);
 BKPRICE1.detail = "返回交易合约最近一次买开信号价位";
 BKPRICE1.documentation = `
 BKPRICE1，返回交易合约最近一次买开信号价位
@@ -872,8 +974,11 @@ const BKPRICEAV = new MyCompletion();
 BKPRICEAV.label = "BKPRICEAV";
 BKPRICEAV.insertText = "";
 BKPRICEAV.body = "BKPRICEAV";
+BKPRICEAV.type = MyCompletionType.Function;
 BKPRICEAV.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 BKPRICEAV.functionType = MyCompletionFunctionType.PositionManagementFunction;
+BKPRICEAV.returnType = MyCompletionReturnType.None;
+BKPRICEAV.parameters = MyCompletion.createParametersFromStrings([]);
 BKPRICEAV.detail = "返回数据合约多头开仓均价";
 BKPRICEAV.documentation = `
 BKPRICEAV返回数据合约多头开仓均价
@@ -903,8 +1008,11 @@ const BKPRICEAV1 = new MyCompletion();
 BKPRICEAV1.label = "BKPRICEAV1";
 BKPRICEAV1.insertText = "";
 BKPRICEAV1.body = "BKPRICEAV1";
+BKPRICEAV1.type = MyCompletionType.Function;
 BKPRICEAV1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 BKPRICEAV1.functionType = MyCompletionFunctionType.PositionManagementFunction;
+BKPRICEAV1.returnType = MyCompletionReturnType.None;
+BKPRICEAV1.parameters = MyCompletion.createParametersFromStrings([]);
 BKPRICEAV1.detail = "返回交易合约多头开仓均价";
 BKPRICEAV1.documentation = `
 BKPRICEAV1交易合约多头开仓均价
@@ -934,8 +1042,11 @@ const BKVOL = new MyCompletion();
 BKVOL.label = "BKVOL";
 BKVOL.insertText = "";
 BKVOL.body = "BKVOL";
+BKVOL.type = MyCompletionType.Function;
 BKVOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 BKVOL.functionType = MyCompletionFunctionType.PositionManagementFunction;
+BKVOL.returnType = MyCompletionReturnType.None;
+BKVOL.parameters = MyCompletion.createParametersFromStrings([]);
 BKVOL.detail = "买开信号手数";
 BKVOL.documentation = `
 BKVOL返回模型当前的多头理论持仓
@@ -960,8 +1071,11 @@ const BKVOL2 = new MyCompletion();
 BKVOL2.label = "BKVOL2";
 BKVOL2.insertText = "";
 BKVOL2.body = "BKVOL2";
+BKVOL2.type = MyCompletionType.Function;
 BKVOL2.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 BKVOL2.functionType = MyCompletionFunctionType.PositionManagementFunction;
+BKVOL2.returnType = MyCompletionReturnType.None;
+BKVOL2.parameters = MyCompletion.createParametersFromStrings([]);
 BKVOL2.detail = "买开信号手数";
 BKVOL2.documentation = `
 BKVOL2模组多头持仓
@@ -986,8 +1100,11 @@ const BUYPRICE = new MyCompletion();
 BUYPRICE.label = "BUYPRICE";
 BUYPRICE.insertText = "";
 BUYPRICE.body = "BUYPRICE";
+BUYPRICE.type = MyCompletionType.Function;
 BUYPRICE.marketType = MyCompletionMarketType.TPlusOneStrategyFunction;
 BUYPRICE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+BUYPRICE.returnType = MyCompletionReturnType.None;
+BUYPRICE.parameters = MyCompletion.createParametersFromStrings([]);
 BUYPRICE.detail = "返回最近一次买入信号所在K线的收盘价。";
 BUYPRICE.documentation = `
 BUYPRICE  返回最近一次买入信号所在K线的收盘价。
@@ -1007,8 +1124,11 @@ const CEILING = new MyCompletion();
 CEILING.label = "CEILING";
 CEILING.insertText = "";
 CEILING.body = "CEILING( , )";
+CEILING.type = MyCompletionType.Function;
 CEILING.marketType = MyCompletionMarketType.BasicFunction;
 CEILING.functionType = MyCompletionFunctionType.MathFunction;
+CEILING.returnType = MyCompletionReturnType.None;
+CEILING.parameters = MyCompletion.createParametersFromStrings([]);
 CEILING.detail = "向上舍入";
 CEILING.documentation = `
 CEILING(X,Y)返回指定实数(X)在沿绝对值增大的方向上第一个能整除基数(Y)的值。
@@ -1038,10 +1158,14 @@ const CHECKSIG = new MyCompletion();
 CHECKSIG.label = "CHECKSIG";
 CHECKSIG.insertText = "";
 CHECKSIG.body = "CHECKSIG( , , , , ,)";
+CHECKSIG.type = MyCompletionType.Function;
 CHECKSIG.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-CHECKSIG.functionType = MyCompletionFunctionType.PerformanceOptimizationFunction;
+CHECKSIG.functionType =
+   MyCompletionFunctionType.PerformanceOptimizationFunction;
+CHECKSIG.returnType = MyCompletionReturnType.None;
+CHECKSIG.parameters = MyCompletion.createParametersFromStrings([]);
 CHECKSIG.detail =
-    "设置信号确认与复核的指令价方式（TICK逐笔回测，可设置回测精度）";
+   "设置信号确认与复核的指令价方式（TICK逐笔回测，可设置回测精度）";
 CHECKSIG.documentation = `
 CHECKSIG(SIG,MODE1,TIME1,MODE2,TIME2,INTERVAL);设置信号确认与复核的指令价方式（TICK逐笔回测，可设置回测精度）SIG为信号,MODE1为下单方式,TIME1下单确认时间,MODE2复核方式,TIME2复核确认时间,INTERVAL代表数据时间间隔
 CHECKSIG 设置信号确认与复核的指令价方式（TICK逐笔回测，可设置回测精度）
@@ -1059,34 +1183,34 @@ CHECKSIG(SIG,MODE1,TIME1,MODE2,TIME2,INTERVAL);
 3、SIG位置为交易指令，交易指令包括BK\\SK\\BP\\SP\\BPK\\SPK。
 4、MODE1位置为信号确认方式，有A和B两种：
 A：MODE1为'A'时
-  1）当INTERVAL不为0时，出信号后第TIME1个数据时间间隔确认信号下单
-  2）当INTERVAL为0时，出信号TIME1秒后确认信号下单
+ 1）当INTERVAL不为0时，出信号后第TIME1个数据时间间隔确认信号下单
+ 2）当INTERVAL为0时，出信号TIME1秒后确认信号下单
 B：MODE1为'B'时
-  1）当INTERVAL不为0时，K线走完前TIME1个时间间隔确认信号下单
-  2）当INTERVAL为0时，K线走完前TIME1秒确认信号下单
-  3）TIME1=0为K线走完确认信号下单
+ 1）当INTERVAL不为0时，K线走完前TIME1个时间间隔确认信号下单
+ 2）当INTERVAL为0时，K线走完前TIME1秒确认信号下单
+ 3）TIME1=0为K线走完确认信号下单
 5、MODE2位置为信号复核方式，有C，D，E和F四种：
 C：MODE2为'C'时
-  1）当INTERVAL不为0时，下单后第TIME2个数据时间间隔进行信号复核
-  2）当INTERVAL为0时，下单TIME2秒后进行信号复核，TIME2=0为不复核
+ 1）当INTERVAL不为0时，下单后第TIME2个数据时间间隔进行信号复核
+ 2）当INTERVAL为0时，下单TIME2秒后进行信号复核，TIME2=0为不复核
 D：MODE2为'D'时
-  1）当INTERVAL不为0时，K线走完前TIME2个时间间隔进行信号复核
-  2）当INTERVAL为0时，K线走完前TIME2秒进行信号复核
-  3）TIME2=0为K线走完复核
+ 1）当INTERVAL不为0时，K线走完前TIME2个时间间隔进行信号复核
+ 2）当INTERVAL为0时，K线走完前TIME2秒进行信号复核
+ 3）TIME2=0为K线走完复核
 E：每一个以小节为结束时间的K线提前复核，其他非小节时间结束的K线为K线走完复核。(小节包括：商品合约10:15-10:30休盘、11:30-13:30休市、21:00-23:00(或23:30或1:00或2:30)期间夜盘小节、收盘前最后一根k线；股指合约11:30-13:00休市以及收盘前最后一根k线)
-  1）当INTERVAL不为0时，提前TIME2个时间间隔进行信号复核
-  2）当INTERVAL为0时，提前TIME2秒进行信号复核
-  3）TIME2=0为K线走完复核
+ 1）当INTERVAL不为0时，提前TIME2个时间间隔进行信号复核
+ 2）当INTERVAL为0时，提前TIME2秒进行信号复核
+ 3）TIME2=0为K线走完复核
 F：每天以收盘时间为结束时间的K线提前复核，其他不以收盘时间为结束时间的K线为K线走完复核
-  1）当INTERVAL不为0时，提前TIME2个时间间隔进行信号复核
-  2）当INTERVAL为0时，提前TIME2秒进行信号复核
-  3）TIME2=0为K线走完复核
+ 1）当INTERVAL不为0时，提前TIME2个时间间隔进行信号复核
+ 2）当INTERVAL为0时，提前TIME2秒进行信号复核
+ 3）TIME2=0为K线走完复核
 6、INTERVAL代表数据时间间隔
-  1）支持0、3、5、10四个值，不支持变量。
-  2）3、5、10分别代表用每隔3秒、5秒、10秒，计算一次模型
-  3）参数为3、5、10 ，回测速度可提升3-10倍，回测精度稍差
-  4）参数为0的时 为每笔TICK计算一次模型
-  5）一个模型中只能写入一个INTERVAL值
+ 1）支持0、3、5、10四个值，不支持变量。
+ 2）3、5、10分别代表用每隔3秒、5秒、10秒，计算一次模型
+ 3）参数为3、5、10 ，回测速度可提升3-10倍，回测精度稍差
+ 4）参数为0的时 为每笔TICK计算一次模型
+ 5）一个模型中只能写入一个INTERVAL值
 7、模型中写入该函数，一根K线只能有一个信号。
 8、CHECKSIG、MULTSIG、MULTSIG_MIN、CHECKSIG_MIN函数不能同时出现在一个模型中
 9、该函数只允许在模组中使用，不支持加载到盒子。
@@ -1111,8 +1235,12 @@ const CHECKSIG_MIN = new MyCompletion();
 CHECKSIG_MIN.label = "CHECKSIG_MIN";
 CHECKSIG_MIN.insertText = "";
 CHECKSIG_MIN.body = "CHECKSIG_MIN( , , , ,)";
+CHECKSIG_MIN.type = MyCompletionType.Function;
 CHECKSIG_MIN.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-CHECKSIG_MIN.functionType = MyCompletionFunctionType.PerformanceOptimizationFunction;
+CHECKSIG_MIN.functionType =
+   MyCompletionFunctionType.PerformanceOptimizationFunction;
+CHECKSIG_MIN.returnType = MyCompletionReturnType.None;
+CHECKSIG_MIN.parameters = MyCompletion.createParametersFromStrings([]);
 CHECKSIG_MIN.detail = "设置信号确认与复核的指令价方式（逐分钟回测）";
 CHECKSIG_MIN.documentation = `
 CHECKSIG_MIN(SIG,MODE1,TIME1,MODE2,TIME2);设置信号确认与复核的指令价方式（逐分钟回测）SIG为信号,MODE1为下单方式,TIME1下单确认时间,MODE2复核方式,TIME2复核确认时间
@@ -1168,8 +1296,11 @@ const CIRCLEDOT = new MyCompletion();
 CIRCLEDOT.label = "CIRCLEDOT";
 CIRCLEDOT.insertText = "";
 CIRCLEDOT.body = "CIRCLEDOT";
+CIRCLEDOT.type = MyCompletionType.Function;
 CIRCLEDOT.marketType = MyCompletionMarketType.BasicFunction;
 CIRCLEDOT.functionType = MyCompletionFunctionType.DrawingFunction;
+CIRCLEDOT.returnType = MyCompletionReturnType.None;
+CIRCLEDOT.parameters = MyCompletion.createParametersFromStrings([]);
 CIRCLEDOT.detail = "小圆点线";
 CIRCLEDOT.documentation = `
 
@@ -1188,8 +1319,11 @@ const CJLVOL = new MyCompletion();
 CJLVOL.label = "CJLVOL";
 CJLVOL.insertText = "";
 CJLVOL.body = "CJLVOL( )";
+CJLVOL.type = MyCompletionType.Function;
 CJLVOL.marketType = MyCompletionMarketType.BasicFunction;
 CJLVOL.functionType = MyCompletionFunctionType.DrawingFunction;
+CJLVOL.returnType = MyCompletionReturnType.None;
+CJLVOL.parameters = MyCompletion.createParametersFromStrings([]);
 CJLVOL.detail = "绘制CJL成交量柱线";
 CJLVOL.documentation = `
 CJLVOL(N)，绘制CJL成交量柱线
@@ -1208,8 +1342,11 @@ const CLOSE = new MyCompletion();
 CLOSE.label = "CLOSE";
 CLOSE.insertText = "";
 CLOSE.body = "CLOSE";
+CLOSE.type = MyCompletionType.Function;
 CLOSE.marketType = MyCompletionMarketType.BasicFunction;
 CLOSE.functionType = MyCompletionFunctionType.CandlestickDataReference;
+CLOSE.returnType = MyCompletionReturnType.None;
+CLOSE.parameters = MyCompletion.createParametersFromStrings([]);
 CLOSE.detail = "取得K线图的收盘价";
 CLOSE.documentation = `
 CLOSE,取收盘(最新)价
@@ -1231,8 +1368,11 @@ const CLOSEKLINE = new MyCompletion();
 CLOSEKLINE.label = "CLOSEKLINE";
 CLOSEKLINE.insertText = "";
 CLOSEKLINE.body = "CLOSEKLINE( , )";
+CLOSEKLINE.type = MyCompletionType.Function;
 CLOSEKLINE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 CLOSEKLINE.functionType = MyCompletionFunctionType.SignalExecutionFunction;
+CLOSEKLINE.returnType = MyCompletionReturnType.None;
+CLOSEKLINE.parameters = MyCompletion.createParametersFromStrings([]);
 CLOSEKLINE.detail = "设置K线提前N(1-30)秒走完";
 CLOSEKLINE.documentation = `
 CLOSEKLINE(TYPE,N),设置K线提前N(1-30)秒走完TYPE=0，代表每小节和收盘前最后一根K线提前N秒走完；
@@ -1269,8 +1409,11 @@ const CLOSEMINUTE = new MyCompletion();
 CLOSEMINUTE.label = "CLOSEMINUTE";
 CLOSEMINUTE.insertText = "";
 CLOSEMINUTE.body = "CLOSEMINUTE";
+CLOSEMINUTE.type = MyCompletionType.Function;
 CLOSEMINUTE.marketType = MyCompletionMarketType.BasicFunction;
 CLOSEMINUTE.functionType = MyCompletionFunctionType.TimeFunction;
+CLOSEMINUTE.returnType = MyCompletionReturnType.None;
+CLOSEMINUTE.parameters = MyCompletion.createParametersFromStrings([]);
 CLOSEMINUTE.detail = "距收盘前时间";
 CLOSEMINUTE.documentation = `
 CLOSEMINUTE,返回K线距离闭市前的时间（单位：分钟），方便闭市前及时平仓
@@ -1298,8 +1441,11 @@ const CLOSEMINUTE1 = new MyCompletion();
 CLOSEMINUTE1.label = "CLOSEMINUTE1";
 CLOSEMINUTE1.insertText = "";
 CLOSEMINUTE1.body = "CLOSEMINUTE1";
+CLOSEMINUTE1.type = MyCompletionType.Function;
 CLOSEMINUTE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 CLOSEMINUTE1.functionType = MyCompletionFunctionType.TimeFunction;
+CLOSEMINUTE1.returnType = MyCompletionReturnType.None;
+CLOSEMINUTE1.parameters = MyCompletion.createParametersFromStrings([]);
 CLOSEMINUTE1.detail = "距收盘前时间";
 CLOSEMINUTE1.documentation = `
 CLOSEMINUTE1,返回当前时间距离闭市前的时间（单位：分钟），方便闭市前及时平仓
@@ -1330,8 +1476,11 @@ const CLOSEMINUTEEVERY = new MyCompletion();
 CLOSEMINUTEEVERY.label = "CLOSEMINUTEEVERY";
 CLOSEMINUTEEVERY.insertText = "";
 CLOSEMINUTEEVERY.body = "CLOSEMINUTEEVERY()";
+CLOSEMINUTEEVERY.type = MyCompletionType.Function;
 CLOSEMINUTEEVERY.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 CLOSEMINUTEEVERY.functionType = MyCompletionFunctionType.TimeFunction;
+CLOSEMINUTEEVERY.returnType = MyCompletionReturnType.None;
+CLOSEMINUTEEVERY.parameters = MyCompletion.createParametersFromStrings([]);
 CLOSEMINUTEEVERY.detail = "距小节结束时间";
 CLOSEMINUTEEVERY.documentation = `
 CLOSEMINUTEEVERY(N),返回K线距离每个小节结束的时间（单位：分钟），N为第几个小节，方便小节前及时平仓
@@ -1363,8 +1512,11 @@ const CLOSEMINUTEEVERY1 = new MyCompletion();
 CLOSEMINUTEEVERY1.label = "CLOSEMINUTEEVERY1";
 CLOSEMINUTEEVERY1.insertText = "";
 CLOSEMINUTEEVERY1.body = "CLOSEMINUTEEVERY1()";
+CLOSEMINUTEEVERY1.type = MyCompletionType.Function;
 CLOSEMINUTEEVERY1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 CLOSEMINUTEEVERY1.functionType = MyCompletionFunctionType.TimeFunction;
+CLOSEMINUTEEVERY1.returnType = MyCompletionReturnType.None;
+CLOSEMINUTEEVERY1.parameters = MyCompletion.createParametersFromStrings([]);
 CLOSEMINUTEEVERY1.detail = "距小节结束时间";
 CLOSEMINUTEEVERY1.documentation = `
 CLOSEMINUTEEVERY1(N),返回当前时间距离每个小节结束的时间（单位：分钟），N为第几个小节，方便小节前及时平仓
@@ -1396,8 +1548,11 @@ const CLOSESEC = new MyCompletion();
 CLOSESEC.label = "CLOSESEC";
 CLOSESEC.insertText = "";
 CLOSESEC.body = "CLOSESEC";
+CLOSESEC.type = MyCompletionType.Function;
 CLOSESEC.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 CLOSESEC.functionType = MyCompletionFunctionType.TimeFunction;
+CLOSESEC.returnType = MyCompletionReturnType.None;
+CLOSESEC.parameters = MyCompletion.createParametersFromStrings([]);
 CLOSESEC.detail = "距收盘前时间（秒数）";
 CLOSESEC.documentation = `
 CLOSESEC,返回K线开始时间距离闭市前的时间（单位：秒），方便闭市前及时平仓
@@ -1425,8 +1580,11 @@ const CLOSESEC1 = new MyCompletion();
 CLOSESEC1.label = "CLOSESEC1";
 CLOSESEC1.insertText = "";
 CLOSESEC1.body = "CLOSESEC1";
+CLOSESEC1.type = MyCompletionType.Function;
 CLOSESEC1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 CLOSESEC1.functionType = MyCompletionFunctionType.TimeFunction;
+CLOSESEC1.returnType = MyCompletionReturnType.None;
+CLOSESEC1.parameters = MyCompletion.createParametersFromStrings([]);
 CLOSESEC1.detail = "距收盘前时间（秒数）";
 CLOSESEC1.documentation = `
 CLOSESEC1,返回当前时间距离闭市前的时间（单位：秒），方便闭市前及时平仓
@@ -1456,8 +1614,11 @@ const CLOSESECEVERY = new MyCompletion();
 CLOSESECEVERY.label = "CLOSESECEVERY";
 CLOSESECEVERY.insertText = "";
 CLOSESECEVERY.body = "CLOSESECEVERY()";
+CLOSESECEVERY.type = MyCompletionType.Function;
 CLOSESECEVERY.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 CLOSESECEVERY.functionType = MyCompletionFunctionType.TimeFunction;
+CLOSESECEVERY.returnType = MyCompletionReturnType.None;
+CLOSESECEVERY.parameters = MyCompletion.createParametersFromStrings([]);
 CLOSESECEVERY.detail = "距小节结束时间（秒）";
 CLOSESECEVERY.documentation = `
 CLOSESECEVERY(N),返回K线开始时间距离每个小节结束的时间（单位：秒），N为第几个小节，方便小节前及时平仓
@@ -1486,8 +1647,11 @@ const CLOSESECEVERY1 = new MyCompletion();
 CLOSESECEVERY1.label = "CLOSESECEVERY1";
 CLOSESECEVERY1.insertText = "";
 CLOSESECEVERY1.body = "CLOSESECEVERY1()";
+CLOSESECEVERY1.type = MyCompletionType.Function;
 CLOSESECEVERY1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 CLOSESECEVERY1.functionType = MyCompletionFunctionType.TimeFunction;
+CLOSESECEVERY1.returnType = MyCompletionReturnType.None;
+CLOSESECEVERY1.parameters = MyCompletion.createParametersFromStrings([]);
 CLOSESECEVERY1.detail = "距小节结束时间（秒）";
 CLOSESECEVERY1.documentation = `
 CLOSESECEVERY1(N),返回当前时间距离每个小节结束的时间（单位：秒），N为第几个小节，方便小节前及时平仓
@@ -1518,8 +1682,11 @@ const CODELIKE = new MyCompletion();
 CODELIKE.label = "CODELIKE";
 CODELIKE.insertText = "";
 CODELIKE.body = "CODELIKE('')";
+CODELIKE.type = MyCompletionType.Function;
 CODELIKE.marketType = MyCompletionMarketType.BasicFunction;
 CODELIKE.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+CODELIKE.returnType = MyCompletionReturnType.None;
+CODELIKE.parameters = MyCompletion.createParametersFromStrings([]);
 CODELIKE.detail = "模糊股票代码函数";
 CODELIKE.documentation = `
 CODELIKE('')模糊股票代码函数。CODELIKE('600')判断股票代码是否以600开头。是返回1（YES）,不是返回0（NO）。
@@ -1540,8 +1707,12 @@ const COEFFICIENTR = new MyCompletion();
 COEFFICIENTR.label = "COEFFICIENTR";
 COEFFICIENTR.insertText = "";
 COEFFICIENTR.body = "COEFFICIENTR( , , )";
+COEFFICIENTR.type = MyCompletionType.Function;
 COEFFICIENTR.marketType = MyCompletionMarketType.BasicFunction;
-COEFFICIENTR.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
+COEFFICIENTR.functionType =
+   MyCompletionFunctionType.MathematicalStatisticsFunction;
+COEFFICIENTR.returnType = MyCompletionReturnType.None;
+COEFFICIENTR.parameters = MyCompletion.createParametersFromStrings([]);
 COEFFICIENTR.detail = "皮尔森相关系数";
 COEFFICIENTR.documentation = `
 COEFFICIENTR(X,Y,N)求X、Y在N个周期内的皮尔森相关系数
@@ -1572,8 +1743,11 @@ const COLORSTICK = new MyCompletion();
 COLORSTICK.label = "COLORSTICK";
 COLORSTICK.insertText = "";
 COLORSTICK.body = "COLORSTICK";
+COLORSTICK.type = MyCompletionType.Function;
 COLORSTICK.marketType = MyCompletionMarketType.BasicFunction;
 COLORSTICK.functionType = MyCompletionFunctionType.DrawingFunction;
+COLORSTICK.returnType = MyCompletionReturnType.None;
+COLORSTICK.parameters = MyCompletion.createParametersFromStrings([]);
 COLORSTICK.detail = "画柱线";
 COLORSTICK.documentation = `
 COLORSTICK画柱线，大于0为红色，小于0为青色
@@ -1591,8 +1765,11 @@ const CONDBARS = new MyCompletion();
 CONDBARS.label = "CONDBARS";
 CONDBARS.insertText = "";
 CONDBARS.body = "CONDBARS(,)";
+CONDBARS.type = MyCompletionType.Function;
 CONDBARS.marketType = MyCompletionMarketType.BasicFunction;
 CONDBARS.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+CONDBARS.returnType = MyCompletionReturnType.None;
+CONDBARS.parameters = MyCompletion.createParametersFromStrings([]);
 CONDBARS.detail = "取得最近满足A,B条件的K线间周期数";
 CONDBARS.documentation = `
 CONDBARS(A,B),取得最近满足A、B条件的k线间周期数
@@ -1612,8 +1789,11 @@ const COS = new MyCompletion();
 COS.label = "COS";
 COS.insertText = "";
 COS.body = "COS( )";
+COS.type = MyCompletionType.Function;
 COS.marketType = MyCompletionMarketType.BasicFunction;
 COS.functionType = MyCompletionFunctionType.MathFunction;
+COS.returnType = MyCompletionReturnType.None;
+COS.parameters = MyCompletion.createParametersFromStrings([]);
 COS.detail = "余弦";
 COS.documentation = `
 COS(X),求X的余弦值
@@ -1633,14 +1813,17 @@ const COST = new MyCompletion();
 COST.label = "COST";
 COST.insertText = "";
 COST.body = "COST( )";
+COST.type = MyCompletionType.Function;
 COST.marketType = MyCompletionMarketType.BasicFunction;
 COST.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+COST.returnType = MyCompletionReturnType.None;
+COST.parameters = MyCompletion.createParametersFromStrings([]);
 COST.detail = "成本分布情况";
 COST.documentation = `
 COST(X)成本分布情况。
 COST(X) 成本分布情况。
 用法:
- COST(X) 表示X%获利盘的价格,即有X%的持仓成本在该价格下，其余(100-X)%的持仓成本在该价格以上，是套牢盘。 
+COST(X) 表示X%获利盘的价格,即有X%的持仓成本在该价格下，其余(100-X)%的持仓成本在该价格以上，是套牢盘。 
 例如COST(1);返回10.5表示1%获利盘的价格是10.5。
 
 注：
@@ -1648,15 +1831,18 @@ COST(X) 成本分布情况。
 2、该函数仅对日线分析周期有效。
 
 算法：
- 根据获利盘和套牢盘的比例求得价格。
+根据获利盘和套牢盘的比例求得价格。
 `;
 
 const COUNT = new MyCompletion();
 COUNT.label = "COUNT";
 COUNT.insertText = "";
 COUNT.body = "COUNT( , )";
+COUNT.type = MyCompletionType.Function;
 COUNT.marketType = MyCompletionMarketType.BasicFunction;
 COUNT.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+COUNT.returnType = MyCompletionReturnType.None;
+COUNT.parameters = MyCompletion.createParametersFromStrings([]);
 COUNT.detail = "统计总数";
 COUNT.documentation = `
 COUNT(X,N),统计N周期中满足X条件的周期数。若N为0则从第一个周期开始
@@ -1682,8 +1868,11 @@ const COUNTGROUPSIG = new MyCompletion();
 COUNTGROUPSIG.label = "COUNTGROUPSIG";
 COUNTGROUPSIG.insertText = "";
 COUNTGROUPSIG.body = "COUNTGROUPSIG( , , )";
+COUNTGROUPSIG.type = MyCompletionType.Function;
 COUNTGROUPSIG.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 COUNTGROUPSIG.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+COUNTGROUPSIG.returnType = MyCompletionReturnType.None;
+COUNTGROUPSIG.parameters = MyCompletion.createParametersFromStrings([]);
 COUNTGROUPSIG.detail = "统计N周期内，分组为group的X信号的数量";
 COUNTGROUPSIG.documentation = `
 COUNTGROUPSIG(X,N,'group');统计N周期内,分组为group的X信号的数量X可以为BK、SK、SP、BP、SPK、BPK、CLOSEOUT、STOP
@@ -1715,8 +1904,11 @@ const COUNTSIG = new MyCompletion();
 COUNTSIG.label = "COUNTSIG";
 COUNTSIG.insertText = "";
 COUNTSIG.body = "COUNTSIG(,)";
+COUNTSIG.type = MyCompletionType.Function;
 COUNTSIG.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 COUNTSIG.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+COUNTSIG.returnType = MyCompletionReturnType.None;
+COUNTSIG.parameters = MyCompletion.createParametersFromStrings([]);
 COUNTSIG.detail = "统计N周期内，X信号的数量";
 COUNTSIG.documentation = `
 COUNTSIG(X,N);统计N周期内,X信号的数量X可以为BK、SK、SP、BP、SPK、BPK、CLOSEOUT、STOP
@@ -1748,8 +1940,11 @@ const COVAR = new MyCompletion();
 COVAR.label = "COVAR";
 COVAR.insertText = "";
 COVAR.body = "COVAR( , , )";
+COVAR.type = MyCompletionType.Function;
 COVAR.marketType = MyCompletionMarketType.BasicFunction;
 COVAR.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
+COVAR.returnType = MyCompletionReturnType.None;
+COVAR.parameters = MyCompletion.createParametersFromStrings([]);
 COVAR.detail = "协方差";
 COVAR.documentation = `
 COVAR(X,Y,N)求X、Y在N个周期内的协方差
@@ -1780,8 +1975,11 @@ const CROSS = new MyCompletion();
 CROSS.label = "CROSS";
 CROSS.insertText = "";
 CROSS.body = "CROSS( , )";
+CROSS.type = MyCompletionType.Function;
 CROSS.marketType = MyCompletionMarketType.BasicFunction;
 CROSS.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+CROSS.returnType = MyCompletionReturnType.None;
+CROSS.parameters = MyCompletion.createParametersFromStrings([]);
 CROSS.detail = "交叉函数";
 CROSS.documentation = `
 CROSS(A,B),A从下方向上穿过B时取1(Yes)，否则取0(No)
@@ -1798,8 +1996,11 @@ const CROSS2 = new MyCompletion();
 CROSS2.label = "CROSS2";
 CROSS2.insertText = "";
 CROSS2.body = "CROSS2( , , )";
+CROSS2.type = MyCompletionType.Function;
 CROSS2.marketType = MyCompletionMarketType.BasicFunction;
 CROSS2.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+CROSS2.returnType = MyCompletionReturnType.None;
+CROSS2.parameters = MyCompletion.createParametersFromStrings([]);
 CROSS2.detail = "二次交叉函数";
 CROSS2.documentation = `
 CROSS2(A,B,N),表示N个周期内当A从下方向上穿过B的次数为偶数次偶数次时返回1(Yes)，否则返回0(No)
@@ -1819,8 +2020,11 @@ const CROSSDOT = new MyCompletion();
 CROSSDOT.label = "CROSSDOT";
 CROSSDOT.insertText = "";
 CROSSDOT.body = "CROSSDOT";
+CROSSDOT.type = MyCompletionType.Function;
 CROSSDOT.marketType = MyCompletionMarketType.BasicFunction;
 CROSSDOT.functionType = MyCompletionFunctionType.DrawingFunction;
+CROSSDOT.returnType = MyCompletionReturnType.None;
+CROSSDOT.parameters = MyCompletion.createParametersFromStrings([]);
 CROSSDOT.detail = "小圆圈线";
 CROSSDOT.documentation = `
 
@@ -1839,8 +2043,11 @@ const CROSSDOWN = new MyCompletion();
 CROSSDOWN.label = "CROSSDOWN";
 CROSSDOWN.insertText = "";
 CROSSDOWN.body = "CROSSDOWN( , )";
+CROSSDOWN.type = MyCompletionType.Function;
 CROSSDOWN.marketType = MyCompletionMarketType.BasicFunction;
 CROSSDOWN.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+CROSSDOWN.returnType = MyCompletionReturnType.None;
+CROSSDOWN.parameters = MyCompletion.createParametersFromStrings([]);
 CROSSDOWN.detail = "向下穿越";
 CROSSDOWN.documentation = `
 CROSSDOWN(A,B),表示当A从上方向下穿过B时返回1(Yes)，否则返回0(No)
@@ -1860,8 +2067,11 @@ const CROSSUP = new MyCompletion();
 CROSSUP.label = "CROSSUP";
 CROSSUP.insertText = "";
 CROSSUP.body = "CROSSUP( , )";
+CROSSUP.type = MyCompletionType.Function;
 CROSSUP.marketType = MyCompletionMarketType.BasicFunction;
 CROSSUP.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+CROSSUP.returnType = MyCompletionReturnType.None;
+CROSSUP.parameters = MyCompletion.createParametersFromStrings([]);
 CROSSUP.detail = "向上穿越";
 CROSSUP.documentation = `
 CROSSUP(A,B),表示当A从下方向上穿过B时返回1(Yes)，否则返回0(No)
@@ -1881,8 +2091,11 @@ const CUBE = new MyCompletion();
 CUBE.label = "CUBE";
 CUBE.insertText = "";
 CUBE.body = "CUBE( )";
+CUBE.type = MyCompletionType.Function;
 CUBE.marketType = MyCompletionMarketType.BasicFunction;
 CUBE.functionType = MyCompletionFunctionType.MathFunction;
+CUBE.returnType = MyCompletionReturnType.None;
+CUBE.parameters = MyCompletion.createParametersFromStrings([]);
 CUBE.detail = "立方函数";
 CUBE.documentation = `
 CUBE(X),求X的三次方
@@ -1896,8 +2109,11 @@ const CURRENTDATE = new MyCompletion();
 CURRENTDATE.label = "CURRENTDATE";
 CURRENTDATE.insertText = "";
 CURRENTDATE.body = "CURRENTDATE";
+CURRENTDATE.type = MyCompletionType.Function;
 CURRENTDATE.marketType = MyCompletionMarketType.BasicFunction;
 CURRENTDATE.functionType = MyCompletionFunctionType.TimeFunction;
+CURRENTDATE.returnType = MyCompletionReturnType.None;
+CURRENTDATE.parameters = MyCompletion.createParametersFromStrings([]);
 CURRENTDATE.detail = "返回当前的年月日";
 CURRENTDATE.documentation = `
 CURRENTDATE返回当前的年月日
@@ -1916,8 +2132,11 @@ const CURRENTTIME = new MyCompletion();
 CURRENTTIME.label = "CURRENTTIME";
 CURRENTTIME.insertText = "";
 CURRENTTIME.body = "CURRENTTIME";
+CURRENTTIME.type = MyCompletionType.Function;
 CURRENTTIME.marketType = MyCompletionMarketType.BasicFunction;
 CURRENTTIME.functionType = MyCompletionFunctionType.TimeFunction;
+CURRENTTIME.returnType = MyCompletionReturnType.None;
+CURRENTTIME.parameters = MyCompletion.createParametersFromStrings([]);
 CURRENTTIME.detail = "返回当前的时分秒";
 CURRENTTIME.documentation = `
 CURRENTTIME返回当前的时分秒
@@ -1936,8 +2155,11 @@ const DASH = new MyCompletion();
 DASH.label = "DASH";
 DASH.insertText = "";
 DASH.body = "DASH";
+DASH.type = MyCompletionType.Function;
 DASH.marketType = MyCompletionMarketType.BasicFunction;
 DASH.functionType = MyCompletionFunctionType.DrawingFunction;
+DASH.returnType = MyCompletionReturnType.None;
+DASH.parameters = MyCompletion.createParametersFromStrings([]);
 DASH.detail = "画虚线";
 DASH.documentation = `
 DASH,画虚线
@@ -1956,8 +2178,11 @@ const DASHDOT = new MyCompletion();
 DASHDOT.label = "DASHDOT";
 DASHDOT.insertText = "";
 DASHDOT.body = "DASHDOT";
+DASHDOT.type = MyCompletionType.Function;
 DASHDOT.marketType = MyCompletionMarketType.BasicFunction;
 DASHDOT.functionType = MyCompletionFunctionType.DrawingFunction;
+DASHDOT.returnType = MyCompletionReturnType.None;
+DASHDOT.parameters = MyCompletion.createParametersFromStrings([]);
 DASHDOT.detail = "画点虚线";
 DASHDOT.documentation = `
 DASHDOT,画点虚线
@@ -1976,8 +2201,11 @@ const DASHDOTDOT = new MyCompletion();
 DASHDOTDOT.label = "DASHDOTDOT";
 DASHDOTDOT.insertText = "";
 DASHDOTDOT.body = "DASHDOTDOT";
+DASHDOTDOT.type = MyCompletionType.Function;
 DASHDOTDOT.marketType = MyCompletionMarketType.BasicFunction;
 DASHDOTDOT.functionType = MyCompletionFunctionType.DrawingFunction;
+DASHDOTDOT.returnType = MyCompletionReturnType.None;
+DASHDOTDOT.parameters = MyCompletion.createParametersFromStrings([]);
 DASHDOTDOT.detail = "画双点虚线";
 DASHDOTDOT.documentation = `
 DASHDOTDOT,画双点虚线
@@ -1996,13 +2224,16 @@ const DATE = new MyCompletion();
 DATE.label = "DATE";
 DATE.insertText = "";
 DATE.body = "DATE";
+DATE.type = MyCompletionType.Function;
 DATE.marketType = MyCompletionMarketType.BasicFunction;
 DATE.functionType = MyCompletionFunctionType.TimeFunction;
+DATE.returnType = MyCompletionReturnType.None;
+DATE.parameters = MyCompletion.createParametersFromStrings([]);
 DATE.detail = "取得某周期的日期数";
 DATE.documentation = `
 DATE,取某周期的日期数（700101-331231）
 DATE,返回某周期的日期数。
- 
+
 注：
 1：DATE的取值范围为700101-331231(即1970年1月1日—2033年12月31日)。
 2：DATE返回六位数字，YYMMDD，
@@ -2019,8 +2250,11 @@ const DATE1 = new MyCompletion();
 DATE1.label = "DATE1";
 DATE1.insertText = "";
 DATE1.body = "DATE1";
+DATE1.type = MyCompletionType.Function;
 DATE1.marketType = MyCompletionMarketType.BasicFunction;
 DATE1.functionType = MyCompletionFunctionType.TimeFunction;
+DATE1.returnType = MyCompletionReturnType.None;
+DATE1.parameters = MyCompletion.createParametersFromStrings([]);
 DATE1.detail = "返回某周期的日期数";
 DATE1.documentation = `
 DATE1返回某周期的日期数
@@ -2043,8 +2277,11 @@ const DAY = new MyCompletion();
 DAY.label = "DAY";
 DAY.insertText = "";
 DAY.body = "DAY";
+DAY.type = MyCompletionType.Function;
 DAY.marketType = MyCompletionMarketType.BasicFunction;
 DAY.functionType = MyCompletionFunctionType.TimeFunction;
+DAY.returnType = MyCompletionReturnType.None;
+DAY.parameters = MyCompletion.createParametersFromStrings([]);
 DAY.detail = "取得某周期的日数";
 DAY.documentation = `
 DAY,取某周期的日数（1-31）
@@ -2064,8 +2301,11 @@ const DAYBARPOS = new MyCompletion();
 DAYBARPOS.label = "DAYBARPOS";
 DAYBARPOS.insertText = "";
 DAYBARPOS.body = "DAYBARPOS";
+DAYBARPOS.type = MyCompletionType.Function;
 DAYBARPOS.marketType = MyCompletionMarketType.BasicFunction;
 DAYBARPOS.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+DAYBARPOS.returnType = MyCompletionReturnType.None;
+DAYBARPOS.parameters = MyCompletion.createParametersFromStrings([]);
 DAYBARPOS.detail = "当根k线为当天第几根k线";
 DAYBARPOS.documentation = `
 DAYBARPOS当根k线为当天第几根k线
@@ -2082,8 +2322,11 @@ const DAYSTOEXPIRED = new MyCompletion();
 DAYSTOEXPIRED.label = "DAYSTOEXPIRED";
 DAYSTOEXPIRED.insertText = "";
 DAYSTOEXPIRED.body = "DAYSTOEXPIRED()";
+DAYSTOEXPIRED.type = MyCompletionType.Function;
 DAYSTOEXPIRED.marketType = MyCompletionMarketType.BasicFunction;
 DAYSTOEXPIRED.functionType = MyCompletionFunctionType.TimeFunction;
+DAYSTOEXPIRED.returnType = MyCompletionReturnType.None;
+DAYSTOEXPIRED.parameters = MyCompletion.createParametersFromStrings([]);
 DAYSTOEXPIRED.detail = "期货合约距最后交易日的天数";
 DAYSTOEXPIRED.documentation = `
 DAYSTOEXPIRED(CODE)期货合约距最后交易日的天数,CODE为文华码
@@ -2097,12 +2340,12 @@ DAYSTOEXPIRED(CODE) 期货合约距最后交易日的天数。
 
 3、CODE位置：
 
-   写入''时默认取当前合约。
+  写入''时默认取当前合约。
 
-   写入主连合约，返回对应的主力合约距最后交易日的天数。
-   写入连续合约，返回对应的月份合约距最后交易日的天数。
+  写入主连合约，返回对应的主力合约距最后交易日的天数。
+  写入连续合约，返回对应的月份合约距最后交易日的天数。
 
-   写入加权合约，返回值为0。
+  写入加权合约，返回值为0。
 
 4、该函数不支持在外盘主连合约上使用。
 
@@ -2117,8 +2360,11 @@ const DAYTRADE = new MyCompletion();
 DAYTRADE.label = "DAYTRADE";
 DAYTRADE.insertText = "";
 DAYTRADE.body = "DAYTRADE";
+DAYTRADE.type = MyCompletionType.Function;
 DAYTRADE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 DAYTRADE.functionType = MyCompletionFunctionType.CalculationControlFunction;
+DAYTRADE.returnType = MyCompletionReturnType.None;
+DAYTRADE.parameters = MyCompletion.createParametersFromStrings([]);
 DAYTRADE.detail = "日内交易函数";
 DAYTRADE.documentation = `
 DAYTRADE,日内交易函数
@@ -2132,7 +2378,7 @@ DAYTRADE 模型中写入该函数，信号和资金每天重新初始化进行�
 2、回测报告的出金/入金为日内的出金/入金的和。
 3、模型中不能同时使用DAYTRADE1\\DAYTRADE\\WEEKTRADE\\WEEKTRADE1\\MONTHTRADE\\QUARTERTRADE\\YEARTRADE函数。
 4、（1）历史回测中，当日K线走完持仓大于0，会对持仓进行全清处理。
-   （2）模组运行中，当日K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
+  （2）模组运行中，当日K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
 
 例：
 MA5^^MA(C,5);
@@ -2150,8 +2396,11 @@ const DAYTRADE1 = new MyCompletion();
 DAYTRADE1.label = "DAYTRADE1";
 DAYTRADE1.insertText = "";
 DAYTRADE1.body = "DAYTRADE1";
+DAYTRADE1.type = MyCompletionType.Function;
 DAYTRADE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 DAYTRADE1.functionType = MyCompletionFunctionType.CalculationControlFunction;
+DAYTRADE1.returnType = MyCompletionReturnType.None;
+DAYTRADE1.parameters = MyCompletion.createParametersFromStrings([]);
 DAYTRADE1.detail = "日内交易函数";
 DAYTRADE1.documentation = `
 DAYTRADE1,日内交易函数
@@ -2168,7 +2417,7 @@ MA(X,N)函数N的取值：当天如果k线小于N根，则返回空值。如果k
 HHV(X,N)函数N的取值：当天如果k线小于N根，则返回实际根数，如果k线为大于等于N根，则取N。
 4、模型中不能同时使用DAYTRADE1\\DAYTRADE\\WEEKTRADE\\WEEKTRADE1\\MONTHTRADE\\QUARTERTRADE\\YEARTRADE函数。
 5、（1）历史回测中，当日K线走完持仓大于0，会对持仓进行全清处理。
-   （2）模组运行中，当日K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
+  （2）模组运行中，当日K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
 
 例：
 MA5^^MA(C,5);
@@ -2186,8 +2435,11 @@ const DEVSQ = new MyCompletion();
 DEVSQ.label = "DEVSQ";
 DEVSQ.insertText = "";
 DEVSQ.body = "DEVSQ( , )";
+DEVSQ.type = MyCompletionType.Function;
 DEVSQ.marketType = MyCompletionMarketType.BasicFunction;
 DEVSQ.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
+DEVSQ.returnType = MyCompletionReturnType.None;
+DEVSQ.parameters = MyCompletion.createParametersFromStrings([]);
 DEVSQ.detail = "取得数据偏差平方和";
 DEVSQ.documentation = `
 DEVSQ(X,N),求X的N个周期的数据偏差平方和
@@ -2214,8 +2466,11 @@ const DIVERGENCE = new MyCompletion();
 DIVERGENCE.label = "DIVERGENCE";
 DIVERGENCE.insertText = "";
 DIVERGENCE.body = "DIVERGENCE(,,,,)";
+DIVERGENCE.type = MyCompletionType.Function;
 DIVERGENCE.marketType = MyCompletionMarketType.BasicFunction;
 DIVERGENCE.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+DIVERGENCE.returnType = MyCompletionReturnType.None;
+DIVERGENCE.parameters = MyCompletion.createParametersFromStrings([]);
 DIVERGENCE.detail = "变量X1与X2在指定周期内是否发生背离";
 DIVERGENCE.documentation = `
 DIVERGENCE(X1,X2,S,L,HL);变量X1与X2在指定周期内是否发生背离S:设置转折点两边需要的周期数；L:计算的总的范围的周期数HL为1，表示顶背离，HL为-1，表示底背离
@@ -2240,8 +2495,11 @@ const DIVIDEND = new MyCompletion();
 DIVIDEND.label = "DIVIDEND";
 DIVIDEND.insertText = "";
 DIVIDEND.body = "DIVIDEND()";
+DIVIDEND.type = MyCompletionType.Function;
 DIVIDEND.marketType = MyCompletionMarketType.BasicFunction;
 DIVIDEND.functionType = MyCompletionFunctionType.StockDataFunction;
+DIVIDEND.returnType = MyCompletionReturnType.None;
+DIVIDEND.parameters = MyCompletion.createParametersFromStrings([]);
 DIVIDEND.detail = "返回之前第N次派息的每股派息数量";
 DIVIDEND.documentation = `
 DIVIDEND(N)返回之前第N次派息的每股派息数量
@@ -2264,8 +2522,11 @@ const DIVIDENDBARS = new MyCompletion();
 DIVIDENDBARS.label = "DIVIDENDBARS";
 DIVIDENDBARS.insertText = "";
 DIVIDENDBARS.body = "DIVIDENDBARS()";
+DIVIDENDBARS.type = MyCompletionType.Function;
 DIVIDENDBARS.marketType = MyCompletionMarketType.BasicFunction;
 DIVIDENDBARS.functionType = MyCompletionFunctionType.StockDataFunction;
+DIVIDENDBARS.returnType = MyCompletionReturnType.None;
+DIVIDENDBARS.parameters = MyCompletion.createParametersFromStrings([]);
 DIVIDENDBARS.detail = "返回从之前第N个派息日到当前的周期数";
 DIVIDENDBARS.documentation = `
 DIVIDENDBARS(N)返回从之前第N次派息到当前的周期数
@@ -2286,8 +2547,11 @@ const DMA = new MyCompletion();
 DMA.label = "DMA";
 DMA.insertText = "";
 DMA.body = "DMA( , )";
+DMA.type = MyCompletionType.Function;
 DMA.marketType = MyCompletionMarketType.BasicFunction;
 DMA.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+DMA.returnType = MyCompletionReturnType.None;
+DMA.parameters = MyCompletion.createParametersFromStrings([]);
 DMA.detail = "动态移动平均";
 DMA.documentation = `
 DMA(X,A),求X的动态移动平均。A必须小于1大于0
@@ -2306,8 +2570,11 @@ const DOT = new MyCompletion();
 DOT.label = "DOT";
 DOT.insertText = "";
 DOT.body = "DOT";
+DOT.type = MyCompletionType.Function;
 DOT.marketType = MyCompletionMarketType.BasicFunction;
 DOT.functionType = MyCompletionFunctionType.DrawingFunction;
+DOT.returnType = MyCompletionReturnType.None;
+DOT.parameters = MyCompletion.createParametersFromStrings([]);
 DOT.detail = "画点线";
 DOT.documentation = `
 DOT,画点线
@@ -2323,8 +2590,11 @@ const DRAWBARLINE = new MyCompletion();
 DRAWBARLINE.label = "DRAWBARLINE";
 DRAWBARLINE.insertText = "";
 DRAWBARLINE.body = "DRAWBARLINE(,,,)";
+DRAWBARLINE.type = MyCompletionType.Function;
 DRAWBARLINE.marketType = MyCompletionMarketType.BasicFunction;
 DRAWBARLINE.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWBARLINE.returnType = MyCompletionReturnType.None;
+DRAWBARLINE.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWBARLINE.detail = "绘制BAR线（美国线）";
 DRAWBARLINE.documentation = `
 DRAWBARLINE(H1,O1,L1,C1);在L1到H1之间绘制柱线，在O1位置绘制左侧横线，在C1位置绘制右侧横线
@@ -2343,8 +2613,11 @@ const DRAWBKBMP = new MyCompletion();
 DRAWBKBMP.label = "DRAWBKBMP";
 DRAWBKBMP.insertText = "";
 DRAWBKBMP.body = "DRAWBKBMP( , )";
+DRAWBKBMP.type = MyCompletionType.Function;
 DRAWBKBMP.marketType = MyCompletionMarketType.BasicFunction;
 DRAWBKBMP.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWBKBMP.returnType = MyCompletionReturnType.None;
+DRAWBKBMP.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWBKBMP.detail = "设置背景图片";
 DRAWBKBMP.documentation = `
 DRAWBKBMP(COND,IMAGE);设置背景图片
@@ -2368,8 +2641,11 @@ const DRAWBMP = new MyCompletion();
 DRAWBMP.label = "DRAWBMP";
 DRAWBMP.insertText = "";
 DRAWBMP.body = "DRAWBMP( , )";
+DRAWBMP.type = MyCompletionType.Function;
 DRAWBMP.marketType = MyCompletionMarketType.BasicFunction;
 DRAWBMP.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWBMP.returnType = MyCompletionReturnType.None;
+DRAWBMP.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWBMP.detail = "输出图片";
 DRAWBMP.documentation = `
 DRAWBMP(COND,DATA,IMAGE);满足条件COND时，输出图片IMAGE
@@ -2395,8 +2671,11 @@ const DRAWCOLORKLINE = new MyCompletion();
 DRAWCOLORKLINE.label = "DRAWCOLORKLINE";
 DRAWCOLORKLINE.insertText = "";
 DRAWCOLORKLINE.body = "DRAWCOLORKLINE";
+DRAWCOLORKLINE.type = MyCompletionType.Function;
 DRAWCOLORKLINE.marketType = MyCompletionMarketType.BasicFunction;
 DRAWCOLORKLINE.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWCOLORKLINE.returnType = MyCompletionReturnType.None;
+DRAWCOLORKLINE.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWCOLORKLINE.detail = "绘制K线";
 DRAWCOLORKLINE.documentation = `
 DRAWCOLORKLINE(Cond,Color,Empty);绘制K线
@@ -2418,8 +2697,11 @@ const DRAWCOLORLINE = new MyCompletion();
 DRAWCOLORLINE.label = "DRAWCOLORLINE";
 DRAWCOLORLINE.insertText = "";
 DRAWCOLORLINE.body = "DRAWCOLORLINE(,,,)";
+DRAWCOLORLINE.type = MyCompletionType.Function;
 DRAWCOLORLINE.marketType = MyCompletionMarketType.BasicFunction;
 DRAWCOLORLINE.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWCOLORLINE.returnType = MyCompletionReturnType.None;
+DRAWCOLORLINE.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWCOLORLINE.detail = "根据条件画相应颜色的线";
 DRAWCOLORLINE.documentation = `
 DRAWCOLORLINE（COND,DATA,COLOR1,COLOR2）;根据条件画相应颜色的线当满足COND时，DATA为COLOR1颜色的线，不满足COND时，DATA为COLOR2颜色的线
@@ -2442,8 +2724,11 @@ const DRAWCOLUMNCHART = new MyCompletion();
 DRAWCOLUMNCHART.label = "DRAWCOLUMNCHART";
 DRAWCOLUMNCHART.insertText = "";
 DRAWCOLUMNCHART.body = "DRAWCOLUMNCHART( , , )";
+DRAWCOLUMNCHART.type = MyCompletionType.Function;
 DRAWCOLUMNCHART.marketType = MyCompletionMarketType.BasicFunction;
 DRAWCOLUMNCHART.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWCOLUMNCHART.returnType = MyCompletionReturnType.None;
+DRAWCOLUMNCHART.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWCOLUMNCHART.detail = "画双向柱形图";
 DRAWCOLUMNCHART.documentation = `
 DRAWCOLUMNCHART(X,C1,C2)，X表示柱高,C1判断柱的方向,C2判断柱的颜色C1条件满足时从0轴向上画柱，不满足时从0轴向下画柱，C2条件满足时柱为红色，不满足时柱为青色
@@ -2466,8 +2751,11 @@ const DRAWGBK = new MyCompletion();
 DRAWGBK.label = "DRAWGBK";
 DRAWGBK.insertText = "";
 DRAWGBK.body = "DRAWGBK(,,,)";
+DRAWGBK.type = MyCompletionType.Function;
 DRAWGBK.marketType = MyCompletionMarketType.BasicFunction;
 DRAWGBK.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWGBK.returnType = MyCompletionReturnType.None;
+DRAWGBK.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWGBK.detail = "设置渐变背景色";
 DRAWGBK.documentation = `
 DRAWGBK(COND,C1,C2,D);以C1至C2的渐变色填充背景,D指定渐变方向，0表示从左到右，1表示从上到下
@@ -2494,8 +2782,11 @@ const DRAWGBK1 = new MyCompletion();
 DRAWGBK1.label = "DRAWGBK1";
 DRAWGBK1.insertText = "";
 DRAWGBK1.body = "DRAWGBK1(,)";
+DRAWGBK1.type = MyCompletionType.Function;
 DRAWGBK1.marketType = MyCompletionMarketType.BasicFunction;
 DRAWGBK1.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWGBK1.returnType = MyCompletionReturnType.None;
+DRAWGBK1.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWGBK1.detail = "设置满足条件K线的背景颜色";
 DRAWGBK1.documentation = `
 DRAWGBK1(COND,COLOR)当条件COND成立时，以K线宽度、COLOR颜色填充背景区域，高度为整个显示区域的最高到最低
@@ -2520,8 +2811,11 @@ const DRAWICON = new MyCompletion();
 DRAWICON.label = "DRAWICON";
 DRAWICON.insertText = "";
 DRAWICON.body = "DRAWICON( , , )";
+DRAWICON.type = MyCompletionType.Function;
 DRAWICON.marketType = MyCompletionMarketType.BasicFunction;
 DRAWICON.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWICON.returnType = MyCompletionReturnType.None;
+DRAWICON.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWICON.detail = "画图标";
 DRAWICON.documentation = `
 DRAWICON(COND,PRICE,ICON),当条件COND满足时,在PRICE位置画图标ICONICON图标用'ICO1'~'ICO105'表示
@@ -2552,8 +2846,11 @@ const DRAWKLINE = new MyCompletion();
 DRAWKLINE.label = "DRAWKLINE";
 DRAWKLINE.insertText = "";
 DRAWKLINE.body = "DRAWKLINE( , , , , )";
+DRAWKLINE.type = MyCompletionType.Function;
 DRAWKLINE.marketType = MyCompletionMarketType.BasicFunction;
 DRAWKLINE.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWKLINE.returnType = MyCompletionReturnType.None;
+DRAWKLINE.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWKLINE.detail = "绘制K线";
 DRAWKLINE.documentation = `
 DRAWKLINE(WidthRatio,COLOR1,EMPTY1,COLOR2,EMPTY2)按照宽度比例WidthRatio画线（WidthRadio从0到1），阳线以COLOR1和EMPTY1判断阴线以COLOR2和EMPTY2判断。（COLOR1、COLOR2代表颜色，Empty非0为空心）
@@ -2577,8 +2874,11 @@ const DRAWKLINE1 = new MyCompletion();
 DRAWKLINE1.label = "DRAWKLINE1";
 DRAWKLINE1.insertText = "";
 DRAWKLINE1.body = "DRAWKLINE1( , , , )";
+DRAWKLINE1.type = MyCompletionType.Function;
 DRAWKLINE1.marketType = MyCompletionMarketType.BasicFunction;
 DRAWKLINE1.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWKLINE1.returnType = MyCompletionReturnType.None;
+DRAWKLINE1.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWKLINE1.detail = "绘制K线";
 DRAWKLINE1.documentation = `
 DRAWKLINE1(H1,O1,L1,C1)以H1为最高价，L1为最低价，O1为开盘价，C1为收盘价绘制K线
@@ -2605,8 +2905,11 @@ const DRAWKLINE2 = new MyCompletion();
 DRAWKLINE2.label = "DRAWKLINE2";
 DRAWKLINE2.insertText = "";
 DRAWKLINE2.body = "DRAWKLINE2( , , , , )";
+DRAWKLINE2.type = MyCompletionType.Function;
 DRAWKLINE2.marketType = MyCompletionMarketType.BasicFunction;
 DRAWKLINE2.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWKLINE2.returnType = MyCompletionReturnType.None;
+DRAWKLINE2.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWKLINE2.detail = "绘制K线";
 DRAWKLINE2.documentation = `
 DRAWKLINE2(SET,COLOR1,EMPTY1,COLOR2,EMPTY2)绘制K线，黑色背景下，盘整时K线显示为黄色；白色背景下，盘整时K线显示为蓝色
@@ -2632,8 +2935,11 @@ const DRAWLASTBARICON = new MyCompletion();
 DRAWLASTBARICON.label = "DRAWLASTBARICON";
 DRAWLASTBARICON.insertText = "";
 DRAWLASTBARICON.body = "DRAWLASTBARICON( , )";
+DRAWLASTBARICON.type = MyCompletionType.Function;
 DRAWLASTBARICON.marketType = MyCompletionMarketType.BasicFunction;
 DRAWLASTBARICON.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWLASTBARICON.returnType = MyCompletionReturnType.None;
+DRAWLASTBARICON.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWLASTBARICON.detail = "在最后一根k线绘制图标";
 DRAWLASTBARICON.documentation = `
 DRAWLASTBARICON(PRICE,ICON)最后一根k线,在PRICE位置画图标ICON
@@ -2664,8 +2970,11 @@ const DRAWLASTBARLINE = new MyCompletion();
 DRAWLASTBARLINE.label = "DRAWLASTBARLINE";
 DRAWLASTBARLINE.insertText = "";
 DRAWLASTBARLINE.body = "DRAWLASTBARLINE(,,,,,,)";
+DRAWLASTBARLINE.type = MyCompletionType.Function;
 DRAWLASTBARLINE.marketType = MyCompletionMarketType.BasicFunction;
 DRAWLASTBARLINE.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWLASTBARLINE.returnType = MyCompletionReturnType.None;
+DRAWLASTBARLINE.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWLASTBARLINE.detail = "最后一根k线满足条件偏移周期画线";
 DRAWLASTBARLINE.documentation = `
 DRAWLASTBARLINE(C1,P1,X1,C2,P2,X2,EXP);最后一根k线满足条件C1时向左偏移X1个周期及最后一根k线满足条件C2时向左偏移X2个周期从P1向P2画线。EXP为0表示画线不延伸，EXP不为0表示画线延伸
@@ -2695,8 +3004,11 @@ const DRAWLASTBARNUMBER = new MyCompletion();
 DRAWLASTBARNUMBER.label = "DRAWLASTBARNUMBER";
 DRAWLASTBARNUMBER.insertText = "";
 DRAWLASTBARNUMBER.body = "DRAWLASTBARNUMBER( , , ,)";
+DRAWLASTBARNUMBER.type = MyCompletionType.Function;
 DRAWLASTBARNUMBER.marketType = MyCompletionMarketType.BasicFunction;
 DRAWLASTBARNUMBER.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWLASTBARNUMBER.returnType = MyCompletionReturnType.None;
+DRAWLASTBARNUMBER.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWLASTBARNUMBER.detail = "在最后一根k线输出数值";
 DRAWLASTBARNUMBER.documentation = `
 DRAWLASTBARNUMBER(DATA,NUMBER,PRECISION,COLOR);最后一根k线,在DATA位置写数字NUMBER
@@ -2720,8 +3032,11 @@ const DRAWLASTBARTEXT = new MyCompletion();
 DRAWLASTBARTEXT.label = "DRAWLASTBARTEXT";
 DRAWLASTBARTEXT.insertText = "";
 DRAWLASTBARTEXT.body = "DRAWLASTBARTEXT( , )";
+DRAWLASTBARTEXT.type = MyCompletionType.Function;
 DRAWLASTBARTEXT.marketType = MyCompletionMarketType.BasicFunction;
 DRAWLASTBARTEXT.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWLASTBARTEXT.returnType = MyCompletionReturnType.None;
+DRAWLASTBARTEXT.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWLASTBARTEXT.detail = "在最后一根k线显示文字";
 DRAWLASTBARTEXT.documentation = `
 DRAWLASTBARTEXT(PRICE,TEXT)最后一根k线,在PRICE位置书写文字TEXT
@@ -2746,8 +3061,11 @@ const DRAWLINE = new MyCompletion();
 DRAWLINE.label = "DRAWLINE";
 DRAWLINE.insertText = "";
 DRAWLINE.body = "DRAWLINE( , , , , )";
+DRAWLINE.type = MyCompletionType.Function;
 DRAWLINE.marketType = MyCompletionMarketType.BasicFunction;
 DRAWLINE.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWLINE.returnType = MyCompletionReturnType.None;
+DRAWLINE.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWLINE.detail = "画线";
 DRAWLINE.documentation = `
 DRAWLINE(C1,P1,C2,P2,COLOR)满足条件C1时及C2时从P1向P2画线
@@ -2777,8 +3095,11 @@ const DRAWLINE1 = new MyCompletion();
 DRAWLINE1.label = "DRAWLINE1";
 DRAWLINE1.insertText = "";
 DRAWLINE1.body = "DRAWLINE1( , , , , )";
+DRAWLINE1.type = MyCompletionType.Function;
 DRAWLINE1.marketType = MyCompletionMarketType.BasicFunction;
 DRAWLINE1.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWLINE1.returnType = MyCompletionReturnType.None;
+DRAWLINE1.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWLINE1.detail = "画线";
 DRAWLINE1.documentation = `
 DRAWLINE1(C1,P1,C2,P2,EXP)满足条件C1时及该K线后最近一个满足C2时从P1向P2画线。EXP为画线0不延伸，EXP不为0画线延伸
@@ -2805,8 +3126,11 @@ const DRAWLINE2 = new MyCompletion();
 DRAWLINE2.label = "DRAWLINE2";
 DRAWLINE2.insertText = "";
 DRAWLINE2.body = "DRAWLINE2( , , , , )";
+DRAWLINE2.type = MyCompletionType.Function;
 DRAWLINE2.marketType = MyCompletionMarketType.BasicFunction;
 DRAWLINE2.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWLINE2.returnType = MyCompletionReturnType.None;
+DRAWLINE2.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWLINE2.detail = "画线";
 DRAWLINE2.documentation = `
 DRAWLINE2(C1,P1,C2,P2,EXP)满足条件C1时及之后最后一次满足C2时从P1向P2画线。EXP为画线0不延伸，EXP不为0画线延伸
@@ -2833,8 +3157,11 @@ const DRAWLINE3 = new MyCompletion();
 DRAWLINE3.label = "DRAWLINE3";
 DRAWLINE3.insertText = "";
 DRAWLINE3.body = "DRAWLINE3(,,,,,,)";
+DRAWLINE3.type = MyCompletionType.Function;
 DRAWLINE3.marketType = MyCompletionMarketType.BasicFunction;
 DRAWLINE3.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWLINE3.returnType = MyCompletionReturnType.None;
+DRAWLINE3.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWLINE3.detail = "偏移周期画线";
 DRAWLINE3.documentation = `
 DRAWLINE3(C1,P1,X1,C2,P2,X2,EXP);满足条件C1时向左偏移X1个周期及满足条件C2时向左偏移X2个周期从P1向P2画线。EXP为0表示画线不延伸，EXP不为0表示画线延伸
@@ -2868,8 +3195,11 @@ const DRAWNUMBER = new MyCompletion();
 DRAWNUMBER.label = "DRAWNUMBER";
 DRAWNUMBER.insertText = "";
 DRAWNUMBER.body = "DRAWNUMBER( , , , , )";
+DRAWNUMBER.type = MyCompletionType.Function;
 DRAWNUMBER.marketType = MyCompletionMarketType.BasicFunction;
 DRAWNUMBER.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWNUMBER.returnType = MyCompletionReturnType.None;
+DRAWNUMBER.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWNUMBER.detail = "写数字";
 DRAWNUMBER.documentation = `
 DRAWNUMBER(COND,DATA,NUMBER,PRECISION,COLOR)当条件COND满足时在DATA位置写数字NUMBERPRECISION为精度（小数点后有几位数字）。COLOR为颜色
@@ -2893,8 +3223,11 @@ const DRAWNUMBER1 = new MyCompletion();
 DRAWNUMBER1.label = "DRAWNUMBER1";
 DRAWNUMBER1.insertText = "";
 DRAWNUMBER1.body = "DRAWNUMBER1( , , , )";
+DRAWNUMBER1.type = MyCompletionType.Function;
 DRAWNUMBER1.marketType = MyCompletionMarketType.BasicFunction;
 DRAWNUMBER1.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWNUMBER1.returnType = MyCompletionReturnType.None;
+DRAWNUMBER1.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWNUMBER1.detail = "写数字";
 DRAWNUMBER1.documentation = `
 DRAWNUMBER1(COND,DATA,NUMBER,PRECISION)当条件满足时在DATA位置写数字NUMBER
@@ -2919,8 +3252,11 @@ const DRAWSHIFTNUMBER = new MyCompletion();
 DRAWSHIFTNUMBER.label = "DRAWSHIFTNUMBER";
 DRAWSHIFTNUMBER.insertText = "";
 DRAWSHIFTNUMBER.body = "DRAWSHIFTNUMBER( , , , , , , )";
+DRAWSHIFTNUMBER.type = MyCompletionType.Function;
 DRAWSHIFTNUMBER.marketType = MyCompletionMarketType.BasicFunction;
 DRAWSHIFTNUMBER.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWSHIFTNUMBER.returnType = MyCompletionReturnType.None;
+DRAWSHIFTNUMBER.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWSHIFTNUMBER.detail = "输出数值";
 DRAWSHIFTNUMBER.documentation = `
 DRAWSHIFTNUMBER(COND,DATA,NUMBER,,PRECISION,COLOR,DIRECTION,X);当条件满足时在DATA位置写数字NUMBER。PRECISION为精度（小数点后有几位数字）。COLOR为颜色。DIRECTION为偏移的方向：0左1右,X为偏移的K线根数。
@@ -2943,8 +3279,11 @@ const DRAWSL = new MyCompletion();
 DRAWSL.label = "DRAWSL";
 DRAWSL.insertText = "";
 DRAWSL.body = "DRAWSL( , , , , , )";
+DRAWSL.type = MyCompletionType.Function;
 DRAWSL.marketType = MyCompletionMarketType.BasicFunction;
 DRAWSL.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWSL.returnType = MyCompletionReturnType.None;
+DRAWSL.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWSL.detail = "画线（段）";
 DRAWSL.documentation = `
 DRAWSL(COND,DATA,SLOPE,LEN,EXPAND,COLOR),当条件满足时，在DATA数据处以每个周期相差SLOPE个价位作为斜率画LEN个周期长的线段
@@ -2974,8 +3313,11 @@ const DRAWSL1 = new MyCompletion();
 DRAWSL1.label = "DRAWSL1";
 DRAWSL1.insertText = "";
 DRAWSL1.body = "DRAWSL1( , , , , )";
+DRAWSL1.type = MyCompletionType.Function;
 DRAWSL1.marketType = MyCompletionMarketType.BasicFunction;
 DRAWSL1.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWSL1.returnType = MyCompletionReturnType.None;
+DRAWSL1.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWSL1.detail = "画线（段）";
 DRAWSL1.documentation = `
 DRAWSL1(COND,DATA,SLOPE,LEN,EXPAND),当条件满足时，在DATA数据处以每个周期相差SLOPE个价位作为斜率画LEN个周期长的线段
@@ -3006,8 +3348,11 @@ const DRAWTEXT = new MyCompletion();
 DRAWTEXT.label = "DRAWTEXT";
 DRAWTEXT.insertText = "";
 DRAWTEXT.body = "DRAWTEXT( , , )";
+DRAWTEXT.type = MyCompletionType.Function;
 DRAWTEXT.marketType = MyCompletionMarketType.BasicFunction;
 DRAWTEXT.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWTEXT.returnType = MyCompletionReturnType.None;
+DRAWTEXT.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWTEXT.detail = "显示文字";
 DRAWTEXT.documentation = `
 DRAWTEXT(COND,PRICE,TEXT),当COND条件满足时,在PRICE位置书写文字TEXT
@@ -3036,8 +3381,11 @@ const DRAWVALID = new MyCompletion();
 DRAWVALID.label = "DRAWVALID";
 DRAWVALID.insertText = "";
 DRAWVALID.body = "DRAWVALID()";
+DRAWVALID.type = MyCompletionType.Function;
 DRAWVALID.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 DRAWVALID.functionType = MyCompletionFunctionType.DrawingFunction;
+DRAWVALID.returnType = MyCompletionReturnType.None;
+DRAWVALID.parameters = MyCompletion.createParametersFromStrings([]);
 DRAWVALID.detail = "连接数据的有效值画折线";
 DRAWVALID.documentation = `
 DRAWVALID(DATA);连接DATA中的有效值画折线
@@ -3054,8 +3402,11 @@ const DUALVOLUME = new MyCompletion();
 DUALVOLUME.label = "DUALVOLUME";
 DUALVOLUME.insertText = "";
 DUALVOLUME.body = "DUALVOLUME( )";
+DUALVOLUME.type = MyCompletionType.Function;
 DUALVOLUME.marketType = MyCompletionMarketType.BasicFunction;
 DUALVOLUME.functionType = MyCompletionFunctionType.CandlestickDataReference;
+DUALVOLUME.returnType = MyCompletionReturnType.None;
+DUALVOLUME.parameters = MyCompletion.createParametersFromStrings([]);
 DUALVOLUME.detail = "多空量函数";
 DUALVOLUME.documentation = `
 DUALVOLUME('M'),返回值代表一段时间内的（主动买-主动卖）的平均数值DUALVOLUME('N'),返回值代表主动买-主动卖的量差
@@ -3090,8 +3441,11 @@ const EMA = new MyCompletion();
 EMA.label = "EMA";
 EMA.insertText = "";
 EMA.body = "EMA( , )";
+EMA.type = MyCompletionType.Function;
 EMA.marketType = MyCompletionMarketType.BasicFunction;
 EMA.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+EMA.returnType = MyCompletionReturnType.None;
+EMA.parameters = MyCompletion.createParametersFromStrings([]);
 EMA.detail = "指数加权移动平均";
 EMA.documentation = `
 EMA(X,N),求X的N日指数加权移动平均值
@@ -3114,8 +3468,11 @@ const EMA2 = new MyCompletion();
 EMA2.label = "EMA2";
 EMA2.insertText = "";
 EMA2.body = "EMA2( , )";
+EMA2.type = MyCompletionType.Function;
 EMA2.marketType = MyCompletionMarketType.BasicFunction;
 EMA2.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+EMA2.returnType = MyCompletionReturnType.None;
+EMA2.parameters = MyCompletion.createParametersFromStrings([]);
 EMA2.detail = "线性加权移动平均";
 EMA2.documentation = `
 EMA2(X,N),求X的N个周期的线性加权平均值
@@ -3137,8 +3494,11 @@ const EMAWH = new MyCompletion();
 EMAWH.label = "EMAWH";
 EMAWH.insertText = "";
 EMAWH.body = "EMAWH( , )";
+EMAWH.type = MyCompletionType.Function;
 EMAWH.marketType = MyCompletionMarketType.BasicFunction;
 EMAWH.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+EMAWH.returnType = MyCompletionReturnType.None;
+EMAWH.parameters = MyCompletion.createParametersFromStrings([]);
 EMAWH.detail = "指数加权移动平均";
 EMAWH.documentation = `
 EMAWH（X,N),求X的N日指数加权移动平均值
@@ -3159,8 +3519,11 @@ const ENTRYSIG_PLACE = new MyCompletion();
 ENTRYSIG_PLACE.label = "ENTRYSIG_PLACE";
 ENTRYSIG_PLACE.insertText = "";
 ENTRYSIG_PLACE.body = "ENTRYSIG_PLACE()";
+ENTRYSIG_PLACE.type = MyCompletionType.Function;
 ENTRYSIG_PLACE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 ENTRYSIG_PLACE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+ENTRYSIG_PLACE.returnType = MyCompletionReturnType.None;
+ENTRYSIG_PLACE.parameters = MyCompletion.createParametersFromStrings([]);
 ENTRYSIG_PLACE.detail = "取指定开仓信号的K线位置";
 ENTRYSIG_PLACE.documentation = `
 ENTRYSIG_PLACE(N)取一次完整交易第N个开仓信号距离当前K线的位置。
@@ -3184,8 +3547,11 @@ const ENTRYSIG_PRICE = new MyCompletion();
 ENTRYSIG_PRICE.label = "ENTRYSIG_PRICE";
 ENTRYSIG_PRICE.insertText = "";
 ENTRYSIG_PRICE.body = "ENTRYSIG_PRICE()";
+ENTRYSIG_PRICE.type = MyCompletionType.Function;
 ENTRYSIG_PRICE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 ENTRYSIG_PRICE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+ENTRYSIG_PRICE.returnType = MyCompletionReturnType.None;
+ENTRYSIG_PRICE.parameters = MyCompletion.createParametersFromStrings([]);
 ENTRYSIG_PRICE.detail = "取指定开仓信号的价格";
 ENTRYSIG_PRICE.documentation = `
 ENTRYSIG_PRICE(N)取一次完整交易第N个开仓信号的价格。
@@ -3201,7 +3567,7 @@ ENTRYSIG_PRICE(N) 取一次完整交易中第N个开仓信号的价格。
 5、参数N不支持为变量。
 6、该函数的计算包含滑点
 7、收盘价模型：在指定信号的当根K线函数的取值不会发生变化；
-   指令价模型：在指定信号的当根K线返回当次交易第N个开仓信号的价格。
+  指令价模型：在指定信号的当根K线返回当次交易第N个开仓信号的价格。
 
 例：
 ENTRYSIG_PRICE(3)=3000&&BKVOL>0,SP(BKVOL);//如果第3个固定的开仓信号的开仓价位为3000，并且多头持仓大于0，卖平仓
@@ -3211,8 +3577,11 @@ const ENTRYSIG_VOL = new MyCompletion();
 ENTRYSIG_VOL.label = "ENTRYSIG_VOL";
 ENTRYSIG_VOL.insertText = "";
 ENTRYSIG_VOL.body = "ENTRYSIG_VOL()";
+ENTRYSIG_VOL.type = MyCompletionType.Function;
 ENTRYSIG_VOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 ENTRYSIG_VOL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+ENTRYSIG_VOL.returnType = MyCompletionReturnType.None;
+ENTRYSIG_VOL.parameters = MyCompletion.createParametersFromStrings([]);
 ENTRYSIG_VOL.detail = "取指定开仓信号的信号手数";
 ENTRYSIG_VOL.documentation = `
 ENTRYSIG_VOL(N)取一次完整交易第N个开仓信号的信号手数。
@@ -3227,7 +3596,7 @@ ENTRYSIG_VOL(N) 取一次完整交易中第N个开仓信号的信号手数。
 4、N为0或空值时，该函数返回空值。
 5、参数N不支持为变量。
 6、收盘价模型：在指定信号的当根K线函数的取值不会发生变化；
-   指令价模型：在指定信号的当根K线返回当次交易第N个开仓信号的信号手数。
+  指令价模型：在指定信号的当根K线返回当次交易第N个开仓信号的信号手数。
 
 例：
 ENTRYSIG_PRICE(3)=3000&&ENTRYSIG_VOL(3)>2,SP(BKVOL);//如果第3个固定的开仓信号的开仓价位为3000，并且第3个固定的开仓信号的信号手数大于2，卖平仓
@@ -3237,8 +3606,11 @@ const EVERY = new MyCompletion();
 EVERY.label = "EVERY";
 EVERY.insertText = "";
 EVERY.body = "EVERY( , )";
+EVERY.type = MyCompletionType.Function;
 EVERY.marketType = MyCompletionMarketType.BasicFunction;
 EVERY.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+EVERY.returnType = MyCompletionReturnType.None;
+EVERY.parameters = MyCompletion.createParametersFromStrings([]);
 EVERY.detail = "判断是否持续满足";
 EVERY.documentation = `
 EVERY(X,N),判断过去一定周期N内，是否一直满足条件X如果一直满足返回1，否则返回0
@@ -3262,8 +3634,11 @@ const EXIST = new MyCompletion();
 EXIST.label = "EXIST";
 EXIST.insertText = "";
 EXIST.body = "EXIST( , )";
+EXIST.type = MyCompletionType.Function;
 EXIST.marketType = MyCompletionMarketType.BasicFunction;
 EXIST.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+EXIST.returnType = MyCompletionReturnType.None;
+EXIST.parameters = MyCompletion.createParametersFromStrings([]);
 EXIST.detail = "判断是否存在满足";
 EXIST.documentation = `
 EXIST(X,N),判断过去周期N内，是否有满足条件X如果有满足X条件的K线，返回1；如果没有满足X条件的K线，则返回0
@@ -3285,8 +3660,11 @@ const EXITSIG_PLACE = new MyCompletion();
 EXITSIG_PLACE.label = "EXITSIG_PLACE";
 EXITSIG_PLACE.insertText = "";
 EXITSIG_PLACE.body = "EXITSIG_PLACE()";
+EXITSIG_PLACE.type = MyCompletionType.Function;
 EXITSIG_PLACE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 EXITSIG_PLACE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+EXITSIG_PLACE.returnType = MyCompletionReturnType.None;
+EXITSIG_PLACE.parameters = MyCompletion.createParametersFromStrings([]);
 EXITSIG_PLACE.detail = "取指定平仓信号的K线位置";
 EXITSIG_PLACE.documentation = `
 EXITSIG_PLACE(N)取一次完整交易第N个平仓信号距离当前K线的位置。
@@ -3310,8 +3688,11 @@ const EXITSIG_PRICE = new MyCompletion();
 EXITSIG_PRICE.label = "EXITSIG_PRICE";
 EXITSIG_PRICE.insertText = "";
 EXITSIG_PRICE.body = "EXITSIG_PRICE()";
+EXITSIG_PRICE.type = MyCompletionType.Function;
 EXITSIG_PRICE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 EXITSIG_PRICE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+EXITSIG_PRICE.returnType = MyCompletionReturnType.None;
+EXITSIG_PRICE.parameters = MyCompletion.createParametersFromStrings([]);
 EXITSIG_PRICE.detail = "取指定平仓信号的价格";
 EXITSIG_PRICE.documentation = `
 EXITSIG_PRICE(N)取一次完整交易第N个平仓信号的价格。
@@ -3327,7 +3708,7 @@ EXITSIG_PRICE(N) 取一次完整交易中第N个平仓信号的价格。
 5、参数N不支持为变量。
 6、该函数的计算包含滑点
 7、收盘价模型：在指定信号的当根K线函数的取值不会发生变化；
-   指令价模型：在指定信号的当根K线返回当次交易第N个平仓信号的价格。
+  指令价模型：在指定信号的当根K线返回当次交易第N个平仓信号的价格。
 
 例：
 EXITSIG_PRICE(3)=3000&&BKVOL>0,SP(BKVOL);//如果第3个固定的平仓信号的平仓价位为3000，并且多头持仓大于0，卖平仓
@@ -3337,8 +3718,11 @@ const EXITSIG_VOL = new MyCompletion();
 EXITSIG_VOL.label = "EXITSIG_VOL";
 EXITSIG_VOL.insertText = "";
 EXITSIG_VOL.body = "EXITSIG_VOL()";
+EXITSIG_VOL.type = MyCompletionType.Function;
 EXITSIG_VOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 EXITSIG_VOL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+EXITSIG_VOL.returnType = MyCompletionReturnType.None;
+EXITSIG_VOL.parameters = MyCompletion.createParametersFromStrings([]);
 EXITSIG_VOL.detail = "取指定平仓信号的信号手数";
 EXITSIG_VOL.documentation = `
 EXITSIG_VOL(N)取一次完整交易第N个平仓信号的信号手数。
@@ -3353,7 +3737,7 @@ EXITSIG_VOL(N) 取一次完整交易中第N个平仓信号的信号手数。
 4、N为0或空值时，该函数返回0。
 5、参数N不支持为变量。
 6、收盘价模型：在指定信号的当根K线函数的取值不会发生变化；
-   指令价模型：在指定信号的当根K线返回当次交易第N个平仓信号的信号手数。
+  指令价模型：在指定信号的当根K线返回当次交易第N个平仓信号的信号手数。
 
 例：
 EXITSIG_PRICE(3)=3000&&EXITSIG_VOL(3)>2,BK(2);//如果第3个固定的平仓信号的平仓价位为3000，并且第3个固定的平仓信号的信号手数大于2，买开仓2手
@@ -3363,8 +3747,11 @@ const EXP = new MyCompletion();
 EXP.label = "EXP";
 EXP.insertText = "";
 EXP.body = "EXP( )";
+EXP.type = MyCompletionType.Function;
 EXP.marketType = MyCompletionMarketType.BasicFunction;
 EXP.functionType = MyCompletionFunctionType.MathFunction;
+EXP.returnType = MyCompletionReturnType.None;
+EXP.parameters = MyCompletion.createParametersFromStrings([]);
 EXP.detail = "指数";
 EXP.documentation = `
 EXP(X),求e的X次幂
@@ -3378,8 +3765,11 @@ const EXPIREDATE = new MyCompletion();
 EXPIREDATE.label = "EXPIREDATE";
 EXPIREDATE.insertText = "";
 EXPIREDATE.body = "EXPIREDATE()";
+EXPIREDATE.type = MyCompletionType.Function;
 EXPIREDATE.marketType = MyCompletionMarketType.BasicFunction;
 EXPIREDATE.functionType = MyCompletionFunctionType.TimeFunction;
+EXPIREDATE.returnType = MyCompletionReturnType.None;
+EXPIREDATE.parameters = MyCompletion.createParametersFromStrings([]);
 EXPIREDATE.detail = "返回期货合约的最后交易日";
 EXPIREDATE.documentation = `
 TIME0求当前周期自该日0点以来的秒数EXPIREDATE(CODE)返回期货合约的最后交易日,CODE为文华码
@@ -3393,13 +3783,13 @@ EXPIREDATE(CODE) 返回期货合约的最后交易日。
 
 3、CODE位置：
 
-   写入''时默认取当前合约。
+  写入''时默认取当前合约。
 
-   写入主连合约，返回对应的主力合约的最后交易日
- 。
-   写入月份合约，返回对应的月份合约的最后交易日。
+  写入主连合约，返回对应的主力合约的最后交易日
+。
+  写入月份合约，返回对应的月份合约的最后交易日。
 
-   写入加权合约，返回值为0。
+  写入加权合约，返回值为0。
 
 4、该函数不支持在外盘主连合约上使用。
 
@@ -3411,8 +3801,11 @@ const FEE = new MyCompletion();
 FEE.label = "FEE";
 FEE.insertText = "";
 FEE.body = "FEE";
+FEE.type = MyCompletionType.Function;
 FEE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 FEE.functionType = MyCompletionFunctionType.PositionManagementFunction;
+FEE.returnType = MyCompletionReturnType.None;
+FEE.parameters = MyCompletion.createParametersFromStrings([]);
 FEE.detail = "手续费";
 FEE.documentation = `
 FEE返回当前合约的手续费
@@ -3434,8 +3827,11 @@ const FILLRGN = new MyCompletion();
 FILLRGN.label = "FILLRGN";
 FILLRGN.insertText = "";
 FILLRGN.body = "FILLRGN( , , , )";
+FILLRGN.type = MyCompletionType.Function;
 FILLRGN.marketType = MyCompletionMarketType.BasicFunction;
 FILLRGN.functionType = MyCompletionFunctionType.DrawingFunction;
+FILLRGN.returnType = MyCompletionReturnType.None;
+FILLRGN.parameters = MyCompletion.createParametersFromStrings([]);
 FILLRGN.detail = "填充函数";
 FILLRGN.documentation = `
 FILLRGN(COND,DATA1,DATA2,COLOR),当条件满足时，以颜色COLOR填充DATA1及DATA2之间形成的区域
@@ -3461,8 +3857,11 @@ const FILLRGN1 = new MyCompletion();
 FILLRGN1.label = "FILLRGN1";
 FILLRGN1.insertText = "";
 FILLRGN1.body = "FILLRGN1( , , )";
+FILLRGN1.type = MyCompletionType.Function;
 FILLRGN1.marketType = MyCompletionMarketType.BasicFunction;
 FILLRGN1.functionType = MyCompletionFunctionType.DrawingFunction;
+FILLRGN1.returnType = MyCompletionReturnType.None;
+FILLRGN1.parameters = MyCompletion.createParametersFromStrings([]);
 FILLRGN1.detail = "填充函数";
 FILLRGN1.documentation = `
 FILLRGN1(COND,DATA1,DATA2),当条件满足时，填充DATA1及DATA2之间的区域
@@ -3491,8 +3890,11 @@ const FILTER = new MyCompletion();
 FILTER.label = "FILTER";
 FILTER.insertText = "";
 FILTER.body = "FILTER( , )";
+FILTER.type = MyCompletionType.Function;
 FILTER.marketType = MyCompletionMarketType.BasicFunction;
 FILTER.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+FILTER.returnType = MyCompletionReturnType.None;
+FILTER.parameters = MyCompletion.createParametersFromStrings([]);
 FILTER.detail = "过滤";
 FILTER.documentation = `
 FILTER(COND,N)当COND条件成立时，将其后N周期内的数据设置为0.
@@ -3510,8 +3912,11 @@ const FINANCE_DATA = new MyCompletion();
 FINANCE_DATA.label = "FINANCE_DATA";
 FINANCE_DATA.insertText = "";
 FINANCE_DATA.body = "FINANCE_DATA('')";
+FINANCE_DATA.type = MyCompletionType.Function;
 FINANCE_DATA.marketType = MyCompletionMarketType.BasicFunction;
 FINANCE_DATA.functionType = MyCompletionFunctionType.StockDataFunction;
+FINANCE_DATA.returnType = MyCompletionReturnType.None;
+FINANCE_DATA.parameters = MyCompletion.createParametersFromStrings([]);
 FINANCE_DATA.detail = "取某一股票合约的财务数据";
 FINANCE_DATA.documentation = `
 FINANCE_DATA('')取某一股票合约的财务数据。
@@ -3586,8 +3991,11 @@ const FLOOR = new MyCompletion();
 FLOOR.label = "FLOOR";
 FLOOR.insertText = "";
 FLOOR.body = "FLOOR( )";
+FLOOR.type = MyCompletionType.Function;
 FLOOR.marketType = MyCompletionMarketType.BasicFunction;
 FLOOR.functionType = MyCompletionFunctionType.MathFunction;
+FLOOR.returnType = MyCompletionReturnType.None;
+FLOOR.parameters = MyCompletion.createParametersFromStrings([]);
 FLOOR.detail = "向下舍入";
 FLOOR.documentation = `
 FLOOR(A),取沿A数值减小方向最接近的整数
@@ -3610,8 +4018,11 @@ const FONTSIZE = new MyCompletion();
 FONTSIZE.label = "FONTSIZE";
 FONTSIZE.insertText = "";
 FONTSIZE.body = "FONTSIZE";
+FONTSIZE.type = MyCompletionType.Function;
 FONTSIZE.marketType = MyCompletionMarketType.BasicFunction;
 FONTSIZE.functionType = MyCompletionFunctionType.DrawingFunction;
+FONTSIZE.returnType = MyCompletionReturnType.None;
+FONTSIZE.parameters = MyCompletion.createParametersFromStrings([]);
 FONTSIZE.detail = "设置字体大小";
 FONTSIZE.documentation = `
 
@@ -3631,8 +4042,11 @@ const FORCAST = new MyCompletion();
 FORCAST.label = "FORCAST";
 FORCAST.insertText = "";
 FORCAST.body = "FORCAST( , )";
+FORCAST.type = MyCompletionType.Function;
 FORCAST.marketType = MyCompletionMarketType.BasicFunction;
 FORCAST.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
+FORCAST.returnType = MyCompletionReturnType.None;
+FORCAST.parameters = MyCompletion.createParametersFromStrings([]);
 FORCAST.detail = "线性回归值";
 FORCAST.documentation = `
 FORCAST(X,N),求X的N周期线性回归预测值
@@ -3672,8 +4086,11 @@ const GROUP = new MyCompletion();
 GROUP.label = "GROUP";
 GROUP.insertText = "";
 GROUP.body = "GROUP()";
+GROUP.type = MyCompletionType.Function;
 GROUP.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 GROUP.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+GROUP.returnType = MyCompletionReturnType.None;
+GROUP.parameters = MyCompletion.createParametersFromStrings([]);
 GROUP.detail = "判断分组的组别";
 GROUP.documentation = `
 GROUP判断分组的组别
@@ -3694,8 +4111,11 @@ const GROUPBKPRICE = new MyCompletion();
 GROUPBKPRICE.label = "GROUPBKPRICE";
 GROUPBKPRICE.insertText = "";
 GROUPBKPRICE.body = "GROUPBKPRICE";
+GROUPBKPRICE.type = MyCompletionType.Function;
 GROUPBKPRICE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 GROUPBKPRICE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+GROUPBKPRICE.returnType = MyCompletionReturnType.None;
+GROUPBKPRICE.parameters = MyCompletion.createParametersFromStrings([]);
 GROUPBKPRICE.detail = "指令分组模型相应组别的最近一次买开信号价位";
 GROUPBKPRICE.documentation = `
 GROUPBKPRICE('X'),X为指令分组组别，A-I返回分组指令X组最近一次模型买开位置的买开信号价位
@@ -3713,8 +4133,11 @@ const GROUPBKVOL = new MyCompletion();
 GROUPBKVOL.label = "GROUPBKVOL";
 GROUPBKVOL.insertText = "";
 GROUPBKVOL.body = "BKVOL";
+GROUPBKVOL.type = MyCompletionType.Function;
 GROUPBKVOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 GROUPBKVOL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+GROUPBKVOL.returnType = MyCompletionReturnType.None;
+GROUPBKVOL.parameters = MyCompletion.createParametersFromStrings([]);
 GROUPBKVOL.detail = "指令分组模型买开信号手数";
 GROUPBKVOL.documentation = `
 GROUPBKVOL('X'),X为指令分组组别，A-I取指令分组模型X组的模组多头持仓.
@@ -3742,8 +4165,11 @@ const GROUPSKPRICE = new MyCompletion();
 GROUPSKPRICE.label = "GROUPSKPRICE";
 GROUPSKPRICE.insertText = "";
 GROUPSKPRICE.body = "GROUPSKPRICE";
+GROUPSKPRICE.type = MyCompletionType.Function;
 GROUPSKPRICE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 GROUPSKPRICE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+GROUPSKPRICE.returnType = MyCompletionReturnType.None;
+GROUPSKPRICE.parameters = MyCompletion.createParametersFromStrings([]);
 GROUPSKPRICE.detail = "指令分组模型相应组别的最近一次卖开信号价位";
 GROUPSKPRICE.documentation = `
 GROUPSKPRICE('X'),X为指令分组组别，A-I,返回分组指令X组最近一次模型卖开位置的卖开信号价位
@@ -3761,8 +4187,11 @@ const GROUPSKVOL = new MyCompletion();
 GROUPSKVOL.label = "GROUPSKVOL";
 GROUPSKVOL.insertText = "";
 GROUPSKVOL.body = "GROUPSKVOL";
+GROUPSKVOL.type = MyCompletionType.Function;
 GROUPSKVOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 GROUPSKVOL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+GROUPSKVOL.returnType = MyCompletionReturnType.None;
+GROUPSKVOL.parameters = MyCompletion.createParametersFromStrings([]);
 GROUPSKVOL.detail = "指令分组模型卖开信号手数";
 GROUPSKVOL.documentation = `
 GROUPSKVOL('X'),X为指令分组组别，A-I取指令分组模型X组的模组空头持仓.
@@ -3790,8 +4219,11 @@ const HARMEAN = new MyCompletion();
 HARMEAN.label = "HARMEAN";
 HARMEAN.insertText = "";
 HARMEAN.body = "HARMEAN( , )";
+HARMEAN.type = MyCompletionType.Function;
 HARMEAN.marketType = MyCompletionMarketType.BasicFunction;
 HARMEAN.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+HARMEAN.returnType = MyCompletionReturnType.None;
+HARMEAN.parameters = MyCompletion.createParametersFromStrings([]);
 HARMEAN.detail = "调和平均值";
 HARMEAN.documentation = `
 HARMEAN(X,N)求X在N个周期内的调和平均值
@@ -3815,8 +4247,11 @@ const HASTRADEDATA = new MyCompletion();
 HASTRADEDATA.label = "HASTRADEDATA";
 HASTRADEDATA.insertText = "";
 HASTRADEDATA.body = "HASTRADEDATA";
+HASTRADEDATA.type = MyCompletionType.Function;
 HASTRADEDATA.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 HASTRADEDATA.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+HASTRADEDATA.returnType = MyCompletionReturnType.None;
+HASTRADEDATA.parameters = MyCompletion.createParametersFromStrings([]);
 HASTRADEDATA.detail = "判断数据合约当根K线交易合约是否有数据";
 HASTRADEDATA.documentation = `
 HASTRADEDATA判断数据合约当根K线交易合约是否有数据
@@ -3832,8 +4267,11 @@ const HHV = new MyCompletion();
 HHV.label = "HHV";
 HHV.insertText = "";
 HHV.body = "HHV( , )";
+HHV.type = MyCompletionType.Function;
 HHV.marketType = MyCompletionMarketType.BasicFunction;
 HHV.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+HHV.returnType = MyCompletionReturnType.None;
+HHV.parameters = MyCompletion.createParametersFromStrings([]);
 HHV.detail = "最高值";
 HHV.documentation = `
 HHV(X,N),求X在N个周期内的最高值
@@ -3857,8 +4295,11 @@ const HHVBARS = new MyCompletion();
 HHVBARS.label = "HHVBARS";
 HHVBARS.insertText = "";
 HHVBARS.body = "HHVBARS( , )";
+HHVBARS.type = MyCompletionType.Function;
 HHVBARS.marketType = MyCompletionMarketType.BasicFunction;
 HHVBARS.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+HHVBARS.returnType = MyCompletionReturnType.None;
+HHVBARS.parameters = MyCompletion.createParametersFromStrings([]);
 HHVBARS.detail = "前一最高点位置";
 HHVBARS.documentation = `
 HHVBARS(X,N),求N周期内X最高值到当前周期数
@@ -3881,8 +4322,11 @@ const HIGH = new MyCompletion();
 HIGH.label = "HIGH";
 HIGH.insertText = "";
 HIGH.body = "HIGH";
+HIGH.type = MyCompletionType.Function;
 HIGH.marketType = MyCompletionMarketType.BasicFunction;
 HIGH.functionType = MyCompletionFunctionType.CandlestickDataReference;
+HIGH.returnType = MyCompletionReturnType.None;
+HIGH.parameters = MyCompletion.createParametersFromStrings([]);
 HIGH.detail = "取得K线图的最高价";
 HIGH.documentation = `
 HIGH,取最高价
@@ -3903,8 +4347,11 @@ const HISEXPDATE = new MyCompletion();
 HISEXPDATE.label = "HISEXPDATE";
 HISEXPDATE.insertText = "";
 HISEXPDATE.body = "HISEXPDATE";
+HISEXPDATE.type = MyCompletionType.Function;
 HISEXPDATE.marketType = MyCompletionMarketType.BasicFunction;
 HISEXPDATE.functionType = MyCompletionFunctionType.TimeFunction;
+HISEXPDATE.returnType = MyCompletionReturnType.None;
+HISEXPDATE.parameters = MyCompletion.createParametersFromStrings([]);
 HISEXPDATE.detail = "返回当前周期期货合约的最后交易日";
 HISEXPDATE.documentation = `
 HISEXPDATE返回当前周期期货合约的最后交易日
@@ -3916,8 +4363,8 @@ HISEXPDATE 返回当前周期期货合约的最后交易日。
 1、该函数返回期货合约的最后交易日，返回YYMMDD的形式。
 2、该函数只支持应用在日线及以下周期使用，在日周期以上的周期该函数返回值为0。
 3、应用到主连合约，返回对应的主力合约的最后交易日。
-   应用到月份合约，返回对应的月份合约的最后交易日。
-   应用到加权合约，返回值为0。
+  应用到月份合约，返回对应的月份合约的最后交易日。
+  应用到加权合约，返回值为0。
 4、该函数不支持在外盘主连合约上使用。
 
 例：
@@ -3929,8 +4376,11 @@ const HISEXPDAYS = new MyCompletion();
 HISEXPDAYS.label = "HISEXPDAYS";
 HISEXPDAYS.insertText = "";
 HISEXPDAYS.body = "HISEXPDAYS";
+HISEXPDAYS.type = MyCompletionType.Function;
 HISEXPDAYS.marketType = MyCompletionMarketType.BasicFunction;
 HISEXPDAYS.functionType = MyCompletionFunctionType.TimeFunction;
+HISEXPDAYS.returnType = MyCompletionReturnType.None;
+HISEXPDAYS.parameters = MyCompletion.createParametersFromStrings([]);
 HISEXPDAYS.detail = "返回当前周期期货合约距离最后交易日的天数";
 HISEXPDAYS.documentation = `
 HISEXPDAYS返回当前周期期货合约距离最后交易日的天数
@@ -3941,8 +4391,8 @@ HISEXPDAYS 返回当前周期期货合约距离最后交易日的天数。
 注：
 1、该函数只支持应用在日线及以下周期使用，在日周期以上的周期该函数返回值为0。
 2、应用到主连合约，返回对应的主力合约距最后交易日的天数。
-   应用到连续合约，返回对应的月份合约距最后交易日的天数。
-   应用到加权合约，返回值为0。
+  应用到连续合约，返回对应的月份合约距最后交易日的天数。
+  应用到加权合约，返回值为0。
 3、该函数不支持在外盘主连合约上使用。
 
 例：
@@ -3953,8 +4403,11 @@ const HOLLOW = new MyCompletion();
 HOLLOW.label = "HOLLOW";
 HOLLOW.insertText = "";
 HOLLOW.body = "HOLLOW";
+HOLLOW.type = MyCompletionType.Function;
 HOLLOW.marketType = MyCompletionMarketType.BasicFunction;
 HOLLOW.functionType = MyCompletionFunctionType.DrawingFunction;
+HOLLOW.returnType = MyCompletionReturnType.None;
+HOLLOW.parameters = MyCompletion.createParametersFromStrings([]);
 HOLLOW.detail = "空心显示";
 HOLLOW.documentation = `
 HOLLOW,画空心柱线
@@ -3974,8 +4427,11 @@ const HOUR = new MyCompletion();
 HOUR.label = "HOUR";
 HOUR.insertText = "";
 HOUR.body = "HOUR";
+HOUR.type = MyCompletionType.Function;
 HOUR.marketType = MyCompletionMarketType.BasicFunction;
 HOUR.functionType = MyCompletionFunctionType.TimeFunction;
+HOUR.returnType = MyCompletionReturnType.None;
+HOUR.parameters = MyCompletion.createParametersFromStrings([]);
 HOUR.detail = "小时";
 HOUR.documentation = `
 HOUR取某周期的小时（0-23）
@@ -3996,8 +4452,11 @@ const HV = new MyCompletion();
 HV.label = "HV";
 HV.insertText = "";
 HV.body = "HV( , )";
+HV.type = MyCompletionType.Function;
 HV.marketType = MyCompletionMarketType.BasicFunction;
 HV.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+HV.returnType = MyCompletionReturnType.None;
+HV.parameters = MyCompletion.createParametersFromStrings([]);
 HV.detail = "除当前K线外最高值";
 HV.documentation = `
 HV(X,N)求X在N个周期内的最高值(不包含当前K线)
@@ -4023,8 +4482,11 @@ const ICON = new MyCompletion();
 ICON.label = "ICON";
 ICON.insertText = "";
 ICON.body = "ICON( , )";
+ICON.type = MyCompletionType.Function;
 ICON.marketType = MyCompletionMarketType.BasicFunction;
 ICON.functionType = MyCompletionFunctionType.DrawingFunction;
+ICON.returnType = MyCompletionReturnType.None;
+ICON.parameters = MyCompletion.createParametersFromStrings([]);
 ICON.detail = "显示图标";
 ICON.documentation = `
 ICON(TYPE,ICON),在k线图上，显示小图标当TYPE为1，则在K线最高价位置显示图标ICON当TYPE为0，则在K线最低价位置显示图标ICON
@@ -4049,8 +4511,11 @@ const IDLE = new MyCompletion();
 IDLE.label = "IDLE";
 IDLE.insertText = "";
 IDLE.body = "IDLE()";
+IDLE.type = MyCompletionType.Function;
 IDLE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 IDLE.functionType = MyCompletionFunctionType.SignalExecutionFunction;
+IDLE.returnType = MyCompletionReturnType.None;
+IDLE.parameters = MyCompletion.createParametersFromStrings([]);
 IDLE.detail = "限制开仓信号发出委托";
 IDLE.documentation = `
 IDLE(CONE),限制开仓信号发出委托
@@ -4089,8 +4554,11 @@ const IF = new MyCompletion();
 IF.label = "IF";
 IF.insertText = "";
 IF.body = "IF( , , )";
+IF.type = MyCompletionType.Function;
 IF.marketType = MyCompletionMarketType.BasicFunction;
 IF.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+IF.returnType = MyCompletionReturnType.None;
+IF.parameters = MyCompletion.createParametersFromStrings([]);
 IF.detail = "条件函数";
 IF.documentation = `
 IF(X,A,B),若满足条件X则取A，否则取B
@@ -4111,8 +4579,11 @@ const IFELSE = new MyCompletion();
 IFELSE.label = "IFELSE";
 IFELSE.insertText = "";
 IFELSE.body = "IFELSE( , , )";
+IFELSE.type = MyCompletionType.Function;
 IFELSE.marketType = MyCompletionMarketType.BasicFunction;
 IFELSE.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+IFELSE.returnType = MyCompletionReturnType.None;
+IFELSE.parameters = MyCompletion.createParametersFromStrings([]);
 IFELSE.detail = "条件函数";
 IFELSE.documentation = `
 IFELSE(X,A,B),若满足条件X则取A，否则取B
@@ -4133,8 +4604,12 @@ const IMPLIEDVOLATILITY = new MyCompletion();
 IMPLIEDVOLATILITY.label = "IMPLIEDVOLATILITY";
 IMPLIEDVOLATILITY.insertText = "";
 IMPLIEDVOLATILITY.body = "IMPLIEDVOLATILITY";
+IMPLIEDVOLATILITY.type = MyCompletionType.Function;
 IMPLIEDVOLATILITY.marketType = MyCompletionMarketType.BasicFunction;
-IMPLIEDVOLATILITY.functionType = MyCompletionFunctionType.CandlestickDataReference;
+IMPLIEDVOLATILITY.functionType =
+   MyCompletionFunctionType.CandlestickDataReference;
+IMPLIEDVOLATILITY.returnType = MyCompletionReturnType.None;
+IMPLIEDVOLATILITY.parameters = MyCompletion.createParametersFromStrings([]);
 IMPLIEDVOLATILITY.detail = "取期权隐含波动率";
 IMPLIEDVOLATILITY.documentation = `
 IMPLIEDVOLATILITY，取期权隐含波动率
@@ -4151,15 +4626,18 @@ IMPLIEDVOLATILITY  取期权隐含波动率
 
 例：
 AA:IMPLIEDVOLATILITY;//AA返回期权的隐含波动率。
- 
+
 `;
 
 const INITMONEY = new MyCompletion();
 INITMONEY.label = "INITMONEY";
 INITMONEY.insertText = "";
 INITMONEY.body = "INITMONEY";
+INITMONEY.type = MyCompletionType.Function;
 INITMONEY.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 INITMONEY.functionType = MyCompletionFunctionType.PositionManagementFunction;
+INITMONEY.returnType = MyCompletionReturnType.None;
+INITMONEY.parameters = MyCompletion.createParametersFromStrings([]);
 INITMONEY.detail = "初次加载时的起始资金";
 INITMONEY.documentation = `
 INITMONEY,返回初次加载时的起始资金
@@ -4182,8 +4660,11 @@ const INTPART = new MyCompletion();
 INTPART.label = "INTPART";
 INTPART.insertText = "";
 INTPART.body = "INTPART( )";
+INTPART.type = MyCompletionType.Function;
 INTPART.marketType = MyCompletionMarketType.BasicFunction;
 INTPART.functionType = MyCompletionFunctionType.MathFunction;
+INTPART.returnType = MyCompletionReturnType.None;
+INTPART.parameters = MyCompletion.createParametersFromStrings([]);
 INTPART.detail = "取整";
 INTPART.documentation = `
 INTPART(X),取X的整数部分
@@ -4203,8 +4684,11 @@ const ISCONTRACT = new MyCompletion();
 ISCONTRACT.label = "ISCONTRACT";
 ISCONTRACT.insertText = "";
 ISCONTRACT.body = "ISCONTRACT()";
+ISCONTRACT.type = MyCompletionType.Function;
 ISCONTRACT.marketType = MyCompletionMarketType.BasicFunction;
 ISCONTRACT.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+ISCONTRACT.returnType = MyCompletionReturnType.None;
+ISCONTRACT.parameters = MyCompletion.createParametersFromStrings([]);
 ISCONTRACT.detail = "当前是否为指定的合约";
 ISCONTRACT.documentation = `
 ISCONTRACT('CODE')当前是否为指定的合约
@@ -4227,8 +4711,11 @@ const ISDELIVERYDAY = new MyCompletion();
 ISDELIVERYDAY.label = "ISDELIVERYDAY";
 ISDELIVERYDAY.insertText = "";
 ISDELIVERYDAY.body = "ISDELIVERYDAY";
+ISDELIVERYDAY.type = MyCompletionType.Function;
 ISDELIVERYDAY.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 ISDELIVERYDAY.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+ISDELIVERYDAY.returnType = MyCompletionReturnType.None;
+ISDELIVERYDAY.parameters = MyCompletion.createParametersFromStrings([]);
 ISDELIVERYDAY.detail = "判断该周期是不是最后交易日";
 ISDELIVERYDAY.documentation = `
 ISDELIVERYDAY,判断当根k线是否是最后交易日
@@ -4247,8 +4734,11 @@ const ISDOWN = new MyCompletion();
 ISDOWN.label = "ISDOWN";
 ISDOWN.insertText = "";
 ISDOWN.body = "ISDOWN";
+ISDOWN.type = MyCompletionType.Function;
 ISDOWN.marketType = MyCompletionMarketType.BasicFunction;
 ISDOWN.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+ISDOWN.returnType = MyCompletionReturnType.None;
+ISDOWN.parameters = MyCompletion.createParametersFromStrings([]);
 ISDOWN.detail = "阴线";
 ISDOWN.documentation = `
 ISDOWN,判断该周期是否收阴。如果为阴线返回1，否则返回0
@@ -4266,8 +4756,11 @@ const ISEQUAL = new MyCompletion();
 ISEQUAL.label = "ISEQUAL";
 ISEQUAL.insertText = "";
 ISEQUAL.body = "ISEQUAL";
+ISEQUAL.type = MyCompletionType.Function;
 ISEQUAL.marketType = MyCompletionMarketType.BasicFunction;
 ISEQUAL.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+ISEQUAL.returnType = MyCompletionReturnType.None;
+ISEQUAL.parameters = MyCompletion.createParametersFromStrings([]);
 ISEQUAL.detail = "平盘";
 ISEQUAL.documentation = `
 ISEQUAL,判断该周期是否平盘，如果K线为平盘返回1，否则返回0
@@ -4284,8 +4777,11 @@ const ISLASTBAR = new MyCompletion();
 ISLASTBAR.label = "ISLASTBAR";
 ISLASTBAR.insertText = "";
 ISLASTBAR.body = "ISLASTBAR";
+ISLASTBAR.type = MyCompletionType.Function;
 ISLASTBAR.marketType = MyCompletionMarketType.BasicFunction;
 ISLASTBAR.functionType = MyCompletionFunctionType.DrawingFunction;
+ISLASTBAR.returnType = MyCompletionReturnType.None;
+ISLASTBAR.parameters = MyCompletion.createParametersFromStrings([]);
 ISLASTBAR.detail = "判断该周期是否为最后一根K线";
 ISLASTBAR.documentation = `
 ISLASTBAR,判断是否是最后一个K线，如果为最后一根K线返回1，否则返回0
@@ -4293,7 +4789,7 @@ ISLASTBAR 判断该周期是否为最后一根k线。
 
 注：
 该函数仅支持在绘图函数中使用。
- 
+
 例1：
 DRAWNUMBER(ISLASTBAR=1,HIGH,CLOSE,0,COLORRED);//当前k线是最后一根k线，则在最高价位置红色显示收盘价。
 `;
@@ -4302,8 +4798,11 @@ const ISLASTBK = new MyCompletion();
 ISLASTBK.label = "ISLASTBK";
 ISLASTBK.insertText = "";
 ISLASTBK.body = "ISLASTBK";
+ISLASTBK.type = MyCompletionType.Function;
 ISLASTBK.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 ISLASTBK.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+ISLASTBK.returnType = MyCompletionReturnType.None;
+ISLASTBK.parameters = MyCompletion.createParametersFromStrings([]);
 ISLASTBK.detail = "判断上一个信号是否是BK";
 ISLASTBK.documentation = `
 ISLASTBK，判断上一个指令是否是买开
@@ -4328,8 +4827,11 @@ const ISLASTBP = new MyCompletion();
 ISLASTBP.label = "ISLASTBP";
 ISLASTBP.insertText = "";
 ISLASTBP.body = "ISLASTBP";
+ISLASTBP.type = MyCompletionType.Function;
 ISLASTBP.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 ISLASTBP.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+ISLASTBP.returnType = MyCompletionReturnType.None;
+ISLASTBP.parameters = MyCompletion.createParametersFromStrings([]);
 ISLASTBP.detail = "判断上一个信号是否是BP";
 ISLASTBP.documentation = `
 ISLASTBP，判断上一个指令是否是买平
@@ -4352,8 +4854,11 @@ const ISLASTBPK = new MyCompletion();
 ISLASTBPK.label = "ISLASTBPK";
 ISLASTBPK.insertText = "";
 ISLASTBPK.body = "ISLASTBPK";
+ISLASTBPK.type = MyCompletionType.Function;
 ISLASTBPK.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 ISLASTBPK.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+ISLASTBPK.returnType = MyCompletionReturnType.None;
+ISLASTBPK.parameters = MyCompletion.createParametersFromStrings([]);
 ISLASTBPK.detail = "判断上一个信号是否是BPK";
 ISLASTBPK.documentation = `
 ISLASTBPK，判断上一个指令是否是买平开
@@ -4378,8 +4883,11 @@ const ISLASTBUY = new MyCompletion();
 ISLASTBUY.label = "ISLASTBUY";
 ISLASTBUY.insertText = "";
 ISLASTBUY.body = "ISLASTBUY";
+ISLASTBUY.type = MyCompletionType.Function;
 ISLASTBUY.marketType = MyCompletionMarketType.TPlusOneStrategyFunction;
 ISLASTBUY.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+ISLASTBUY.returnType = MyCompletionReturnType.None;
+ISLASTBUY.parameters = MyCompletion.createParametersFromStrings([]);
 ISLASTBUY.detail = "判断上一个交易信号是否是BUY";
 ISLASTBUY.documentation = `
 ISLASTBUY 判断上一个交易信号是否是BUY。
@@ -4401,8 +4909,11 @@ const ISLASTCLOSEOUT = new MyCompletion();
 ISLASTCLOSEOUT.label = "ISLASTCLOSEOUT";
 ISLASTCLOSEOUT.insertText = "";
 ISLASTCLOSEOUT.body = "ISLASTCLOSEOUT";
+ISLASTCLOSEOUT.type = MyCompletionType.Function;
 ISLASTCLOSEOUT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 ISLASTCLOSEOUT.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+ISLASTCLOSEOUT.returnType = MyCompletionReturnType.None;
+ISLASTCLOSEOUT.parameters = MyCompletion.createParametersFromStrings([]);
 ISLASTCLOSEOUT.detail = "判断上一个信号是否是CLOSEOUT";
 ISLASTCLOSEOUT.documentation = `
 ISLASTCLOSEOUT，判断上一个指令是否是全平
@@ -4422,8 +4933,11 @@ const ISLASTKLINE = new MyCompletion();
 ISLASTKLINE.label = "ISLASTKLINE";
 ISLASTKLINE.insertText = "";
 ISLASTKLINE.body = "ISLASTKLINE";
+ISLASTKLINE.type = MyCompletionType.Function;
 ISLASTKLINE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 ISLASTKLINE.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+ISLASTKLINE.returnType = MyCompletionReturnType.None;
+ISLASTKLINE.parameters = MyCompletion.createParametersFromStrings([]);
 ISLASTKLINE.detail = "判断该周期是否收盘前最后一根K线";
 ISLASTKLINE.documentation = `
 ISLASTKLINE,判断该周期是否是当日收盘前最后一个K线，如果是返回1，否则返回0
@@ -4441,8 +4955,11 @@ const ISLASTSELL = new MyCompletion();
 ISLASTSELL.label = "ISLASTSELL";
 ISLASTSELL.insertText = "";
 ISLASTSELL.body = "ISLASTSELL";
+ISLASTSELL.type = MyCompletionType.Function;
 ISLASTSELL.marketType = MyCompletionMarketType.TPlusOneStrategyFunction;
 ISLASTSELL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+ISLASTSELL.returnType = MyCompletionReturnType.None;
+ISLASTSELL.parameters = MyCompletion.createParametersFromStrings([]);
 ISLASTSELL.detail = "判断上一个交易信号是否是SELL";
 ISLASTSELL.documentation = `
 ISLASTSELL判断上一个交易信号是否是SELL。
@@ -4461,8 +4978,11 @@ const ISLASTSK = new MyCompletion();
 ISLASTSK.label = "ISLASTSK";
 ISLASTSK.insertText = "";
 ISLASTSK.body = "ISLASTSK";
+ISLASTSK.type = MyCompletionType.Function;
 ISLASTSK.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 ISLASTSK.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+ISLASTSK.returnType = MyCompletionReturnType.None;
+ISLASTSK.parameters = MyCompletion.createParametersFromStrings([]);
 ISLASTSK.detail = "判断上一个信号是否是SK";
 ISLASTSK.documentation = `
 ISLASTSK，判断上一个指令是否是卖开
@@ -4487,8 +5007,11 @@ const ISLASTSP = new MyCompletion();
 ISLASTSP.label = "ISLASTSP";
 ISLASTSP.insertText = "";
 ISLASTSP.body = "ISLASTSP";
+ISLASTSP.type = MyCompletionType.Function;
 ISLASTSP.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 ISLASTSP.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+ISLASTSP.returnType = MyCompletionReturnType.None;
+ISLASTSP.parameters = MyCompletion.createParametersFromStrings([]);
 ISLASTSP.detail = "判断上一个信号是否是SP";
 ISLASTSP.documentation = `
 ISLASTSP，判断上一个指令是否是卖平
@@ -4511,8 +5034,11 @@ const ISLASTSPK = new MyCompletion();
 ISLASTSPK.label = "ISLASTSPK";
 ISLASTSPK.insertText = "";
 ISLASTSPK.body = "ISLASTSPK";
+ISLASTSPK.type = MyCompletionType.Function;
 ISLASTSPK.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 ISLASTSPK.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+ISLASTSPK.returnType = MyCompletionReturnType.None;
+ISLASTSPK.parameters = MyCompletion.createParametersFromStrings([]);
 ISLASTSPK.detail = "判断上一个信号是否是SPK";
 ISLASTSPK.documentation = `
 ISLASTSPK，判断上一个指令是否是卖平开
@@ -4537,8 +5063,11 @@ const ISLASTSTOP = new MyCompletion();
 ISLASTSTOP.label = "ISLASTSTOP";
 ISLASTSTOP.insertText = "";
 ISLASTSTOP.body = "ISLASTSTOP";
+ISLASTSTOP.type = MyCompletionType.Function;
 ISLASTSTOP.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 ISLASTSTOP.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+ISLASTSTOP.returnType = MyCompletionReturnType.None;
+ISLASTSTOP.parameters = MyCompletion.createParametersFromStrings([]);
 ISLASTSTOP.detail = "判断上一个信号是否是STOP";
 ISLASTSTOP.documentation = `
 ISLASTSTOP，判断上一个指令是否是STOP指令
@@ -4559,8 +5088,11 @@ const ISMAINCONTRACT = new MyCompletion();
 ISMAINCONTRACT.label = "ISMAINCONTRACT";
 ISMAINCONTRACT.insertText = "";
 ISMAINCONTRACT.body = "ISMAINCONTRACT";
+ISMAINCONTRACT.type = MyCompletionType.Function;
 ISMAINCONTRACT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 ISMAINCONTRACT.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+ISMAINCONTRACT.returnType = MyCompletionReturnType.None;
+ISMAINCONTRACT.parameters = MyCompletion.createParametersFromStrings([]);
 ISMAINCONTRACT.detail = "当前是否为主力合约";
 ISMAINCONTRACT.documentation = `
 ISMAINCONTRACT当前是否为主力合约
@@ -4581,8 +5113,11 @@ const ISMONTHEND = new MyCompletion();
 ISMONTHEND.label = "ISMONTHEND";
 ISMONTHEND.insertText = "";
 ISMONTHEND.body = "ISMONTHEND";
+ISMONTHEND.type = MyCompletionType.Function;
 ISMONTHEND.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 ISMONTHEND.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+ISMONTHEND.returnType = MyCompletionReturnType.None;
+ISMONTHEND.parameters = MyCompletion.createParametersFromStrings([]);
 ISMONTHEND.detail = "是否为本月最后一个交易日";
 ISMONTHEND.documentation = `
 ISMONTHEND是否为本月最后一个交易日
@@ -4600,8 +5135,11 @@ const ISNEARHOLIDAY = new MyCompletion();
 ISNEARHOLIDAY.label = "ISNEARHOLIDAY";
 ISNEARHOLIDAY.insertText = "";
 ISNEARHOLIDAY.body = "ISNEARHOLIDAY";
+ISNEARHOLIDAY.type = MyCompletionType.Function;
 ISNEARHOLIDAY.marketType = MyCompletionMarketType.BasicFunction;
 ISNEARHOLIDAY.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+ISNEARHOLIDAY.returnType = MyCompletionReturnType.None;
+ISNEARHOLIDAY.parameters = MyCompletion.createParametersFromStrings([]);
 ISNEARHOLIDAY.detail = "判断下一交易日是否是交易合约的节假日";
 ISNEARHOLIDAY.documentation = `
 ISNEARHOLIDAY，判断下一交易日是否是交易合约的节假日。
@@ -4619,8 +5157,11 @@ const ISNULL = new MyCompletion();
 ISNULL.label = "ISNULL";
 ISNULL.insertText = "";
 ISNULL.body = "ISNULL";
+ISNULL.type = MyCompletionType.Function;
 ISNULL.marketType = MyCompletionMarketType.BasicFunction;
 ISNULL.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+ISNULL.returnType = MyCompletionReturnType.None;
+ISNULL.parameters = MyCompletion.createParametersFromStrings([]);
 ISNULL.detail = "判断空值";
 ISNULL.documentation = `
 ISNULL(N)判断空值，如果N为空值返回1，否则返回0
@@ -4635,8 +5176,11 @@ const ISRECORDDAY = new MyCompletion();
 ISRECORDDAY.label = "ISRECORDDAY";
 ISRECORDDAY.insertText = "";
 ISRECORDDAY.body = "ISRECORDDAY";
+ISRECORDDAY.type = MyCompletionType.Function;
 ISRECORDDAY.marketType = MyCompletionMarketType.BasicFunction;
 ISRECORDDAY.functionType = MyCompletionFunctionType.StockDataFunction;
+ISRECORDDAY.returnType = MyCompletionReturnType.None;
+ISRECORDDAY.parameters = MyCompletion.createParametersFromStrings([]);
 ISRECORDDAY.detail = "判断当根K线是否为股权登记日";
 ISRECORDDAY.documentation = `
 ISRECORDDAY判断当根K线是否为股权登记日
@@ -4653,8 +5197,12 @@ const ISTIMETOKLINEEND = new MyCompletion();
 ISTIMETOKLINEEND.label = "ISTIMETOKLINEEND";
 ISTIMETOKLINEEND.insertText = "";
 ISTIMETOKLINEEND.body = "ISTIMETOKLINEEND";
+ISTIMETOKLINEEND.type = MyCompletionType.Function;
 ISTIMETOKLINEEND.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-ISTIMETOKLINEEND.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+ISTIMETOKLINEEND.functionType =
+   MyCompletionFunctionType.LogicalJudgmentFunction;
+ISTIMETOKLINEEND.returnType = MyCompletionReturnType.None;
+ISTIMETOKLINEEND.parameters = MyCompletion.createParametersFromStrings([]);
 ISTIMETOKLINEEND.detail = "判断当前K线时间是否满足K线走完前N秒";
 ISTIMETOKLINEEND.documentation = `
 ISTIMETOKLINEEND(N)判断当前K线时间是否满足K线走完前N秒满足返回1，不满足返回0。参数N为秒数。
@@ -4679,8 +5227,11 @@ const ISUP = new MyCompletion();
 ISUP.label = "ISUP";
 ISUP.insertText = "";
 ISUP.body = "ISUP";
+ISUP.type = MyCompletionType.Function;
 ISUP.marketType = MyCompletionMarketType.BasicFunction;
 ISUP.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+ISUP.returnType = MyCompletionReturnType.None;
+ISUP.parameters = MyCompletion.createParametersFromStrings([]);
 ISUP.detail = "阳线";
 ISUP.documentation = `
 ISUP,判断该周期是否收阳，如果K线为阳线返回1，否则返回0
@@ -4698,8 +5249,11 @@ const ISWEEKEND = new MyCompletion();
 ISWEEKEND.label = "ISWEEKEND";
 ISWEEKEND.insertText = "";
 ISWEEKEND.body = "ISWEEKEND";
+ISWEEKEND.type = MyCompletionType.Function;
 ISWEEKEND.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 ISWEEKEND.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+ISWEEKEND.returnType = MyCompletionReturnType.None;
+ISWEEKEND.parameters = MyCompletion.createParametersFromStrings([]);
 ISWEEKEND.detail = "是否为本周最后一个交易日";
 ISWEEKEND.documentation = `
 ISWEEKEND判断是否为本周最后一个交易日
@@ -4717,8 +5271,11 @@ const K_STATE = new MyCompletion();
 K_STATE.label = "K_STATE";
 K_STATE.insertText = "";
 K_STATE.body = "K_STATE()";
+K_STATE.type = MyCompletionType.Function;
 K_STATE.marketType = MyCompletionMarketType.BasicFunction;
 K_STATE.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+K_STATE.returnType = MyCompletionReturnType.None;
+K_STATE.parameters = MyCompletion.createParametersFromStrings([]);
 K_STATE.detail = "判断k线形态";
 K_STATE.documentation = `
 K_STATE()判断K线形态
@@ -4767,8 +5324,11 @@ const K_STATE1 = new MyCompletion();
 K_STATE1.label = "K_STATE1";
 K_STATE1.insertText = "";
 K_STATE1.body = "K_STATE1()";
+K_STATE1.type = MyCompletionType.Function;
 K_STATE1.marketType = MyCompletionMarketType.BasicFunction;
 K_STATE1.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+K_STATE1.returnType = MyCompletionReturnType.None;
+K_STATE1.parameters = MyCompletion.createParametersFromStrings([]);
 K_STATE1.detail = "判断k线形态";
 K_STATE1.documentation = `
 K_STATE1()判断K线形态
@@ -4803,8 +5363,11 @@ const K_STATE2 = new MyCompletion();
 K_STATE2.label = "K_STATE2";
 K_STATE2.insertText = "";
 K_STATE2.body = "K_STATE2()";
+K_STATE2.type = MyCompletionType.Function;
 K_STATE2.marketType = MyCompletionMarketType.BasicFunction;
 K_STATE2.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+K_STATE2.returnType = MyCompletionReturnType.None;
+K_STATE2.parameters = MyCompletion.createParametersFromStrings([]);
 K_STATE2.detail = "判断k线形态";
 K_STATE2.documentation = `
 K_STATE2()判断K线形态
@@ -4828,8 +5391,11 @@ const K_STATE3 = new MyCompletion();
 K_STATE3.label = "K_STATE3";
 K_STATE3.insertText = "";
 K_STATE3.body = "K_STATE3()";
+K_STATE3.type = MyCompletionType.Function;
 K_STATE3.marketType = MyCompletionMarketType.BasicFunction;
 K_STATE3.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+K_STATE3.returnType = MyCompletionReturnType.None;
+K_STATE3.parameters = MyCompletion.createParametersFromStrings([]);
 K_STATE3.detail = "判断k线形态";
 K_STATE3.documentation = `
 K_STATE3()判断K线形态
@@ -4854,8 +5420,11 @@ const K_STATE4 = new MyCompletion();
 K_STATE4.label = "K_STATE4";
 K_STATE4.insertText = "";
 K_STATE4.body = "K_STATE4()";
+K_STATE4.type = MyCompletionType.Function;
 K_STATE4.marketType = MyCompletionMarketType.BasicFunction;
 K_STATE4.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+K_STATE4.returnType = MyCompletionReturnType.None;
+K_STATE4.parameters = MyCompletion.createParametersFromStrings([]);
 K_STATE4.detail = "判断k线形态";
 K_STATE4.documentation = `
 K_STATE4()判断K线形态
@@ -4872,8 +5441,11 @@ const KLINESIG = new MyCompletion();
 KLINESIG.label = "KLINESIG";
 KLINESIG.insertText = "";
 KLINESIG.body = "KLINESIG";
+KLINESIG.type = MyCompletionType.Function;
 KLINESIG.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 KLINESIG.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+KLINESIG.returnType = MyCompletionReturnType.None;
+KLINESIG.parameters = MyCompletion.createParametersFromStrings([]);
 KLINESIG.detail = "判断当根K线上最后一个固定的信号";
 KLINESIG.documentation = `
 KLINESIG判断当根K线上最后一个固定的信号
@@ -4902,8 +5474,11 @@ const KLINESTART = new MyCompletion();
 KLINESTART.label = "KLINESTART";
 KLINESTART.insertText = "";
 KLINESTART.body = "KLINESTART";
+KLINESTART.type = MyCompletionType.Function;
 KLINESTART.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 KLINESTART.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+KLINESTART.returnType = MyCompletionReturnType.None;
+KLINESTART.parameters = MyCompletion.createParametersFromStrings([]);
 KLINESTART.detail = "判断K线当前状态是否是K线开始";
 KLINESTART.documentation = `
 KLINESTART,判断K线当前状态是否是K线开始
@@ -4924,8 +5499,11 @@ const KTEXT = new MyCompletion();
 KTEXT.label = "KTEXT";
 KTEXT.insertText = "";
 KTEXT.body = "KTEXT( , , , , ,)";
+KTEXT.type = MyCompletionType.Function;
 KTEXT.marketType = MyCompletionMarketType.BasicFunction;
 KTEXT.functionType = MyCompletionFunctionType.DrawingFunction;
+KTEXT.returnType = MyCompletionReturnType.None;
+KTEXT.parameters = MyCompletion.createParametersFromStrings([]);
 KTEXT.detail = "在K线附近标注文字";
 KTEXT.documentation = `
 KTEXT(COND,POSITION,PRICE,LCR,COLOR,TEXT)在k线上标注文字当COND条件满足时,移动POSITION根K线,在PRICE位置书写COLOR色文字TEXTLCR是文字占K线左(0)中(1)右(2)位置
@@ -4952,8 +5530,11 @@ const KURTOSIS = new MyCompletion();
 KURTOSIS.label = "KURTOSIS";
 KURTOSIS.insertText = "";
 KURTOSIS.body = "KURTOSIS( , )";
+KURTOSIS.type = MyCompletionType.Function;
 KURTOSIS.marketType = MyCompletionMarketType.BasicFunction;
 KURTOSIS.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
+KURTOSIS.returnType = MyCompletionReturnType.None;
+KURTOSIS.parameters = MyCompletion.createParametersFromStrings([]);
 KURTOSIS.detail = "峰度系数";
 KURTOSIS.documentation = `
 KURTOSIS(X,N)求X在N个周期内的峰度系数
@@ -4980,8 +5561,11 @@ const LAST = new MyCompletion();
 LAST.label = "LAST";
 LAST.insertText = "";
 LAST.body = "LAST( , , )";
+LAST.type = MyCompletionType.Function;
 LAST.marketType = MyCompletionMarketType.BasicFunction;
 LAST.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+LAST.returnType = MyCompletionReturnType.None;
+LAST.parameters = MyCompletion.createParametersFromStrings([]);
 LAST.detail = "判断函数";
 LAST.documentation = `
 LAST(X,N1,N2),判断过去N1到N2周期内，是否一直满足条件X一直满足返回1，否则返回0
@@ -5003,8 +5587,12 @@ const LASTOFFSETPROFIT = new MyCompletion();
 LASTOFFSETPROFIT.label = "LASTOFFSETPROFIT";
 LASTOFFSETPROFIT.insertText = "";
 LASTOFFSETPROFIT.body = "LASTOFFSETPROFIT";
+LASTOFFSETPROFIT.type = MyCompletionType.Function;
 LASTOFFSETPROFIT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-LASTOFFSETPROFIT.functionType = MyCompletionFunctionType.PositionManagementFunction;
+LASTOFFSETPROFIT.functionType =
+   MyCompletionFunctionType.PositionManagementFunction;
+LASTOFFSETPROFIT.returnType = MyCompletionReturnType.None;
+LASTOFFSETPROFIT.parameters = MyCompletion.createParametersFromStrings([]);
 LASTOFFSETPROFIT.detail = "最近一次交易的平仓盈亏";
 LASTOFFSETPROFIT.documentation = `
 LASTOFFSETPROFIT最近一次交易的平仓盈亏
@@ -5030,8 +5618,11 @@ const LASTSIG = new MyCompletion();
 LASTSIG.label = "LASTSIG";
 LASTSIG.insertText = "";
 LASTSIG.body = "LASTSIG";
+LASTSIG.type = MyCompletionType.Function;
 LASTSIG.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 LASTSIG.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+LASTSIG.returnType = MyCompletionReturnType.None;
+LASTSIG.parameters = MyCompletion.createParametersFromStrings([]);
 LASTSIG.detail = "判断最近一个信号";
 LASTSIG.documentation = `
 LASTSIG，取上一次交易指令方向
@@ -5055,8 +5646,11 @@ const LASTSIGGROUP = new MyCompletion();
 LASTSIGGROUP.label = "LASTSIGGROUP";
 LASTSIGGROUP.insertText = "";
 LASTSIGGROUP.body = "LASTSIGGROUP";
+LASTSIGGROUP.type = MyCompletionType.Function;
 LASTSIGGROUP.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 LASTSIGGROUP.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+LASTSIGGROUP.returnType = MyCompletionReturnType.None;
+LASTSIGGROUP.parameters = MyCompletion.createParametersFromStrings([]);
 LASTSIGGROUP.detail = "判断最近一个信号所在的分组";
 LASTSIGGROUP.documentation = `
 LASTSIGGROUP判断最近一个信号所在的分组
@@ -5078,8 +5672,11 @@ const LINETHICK = new MyCompletion();
 LINETHICK.label = "LINETHICK";
 LINETHICK.insertText = "";
 LINETHICK.body = "LINETHICK";
+LINETHICK.type = MyCompletionType.Function;
 LINETHICK.marketType = MyCompletionMarketType.BasicFunction;
 LINETHICK.functionType = MyCompletionFunctionType.DrawingFunction;
+LINETHICK.returnType = MyCompletionReturnType.None;
+LINETHICK.parameters = MyCompletion.createParametersFromStrings([]);
 LINETHICK.detail = "线型粗细控制";
 LINETHICK.documentation = `
 
@@ -5096,8 +5693,11 @@ const LLV = new MyCompletion();
 LLV.label = "LLV";
 LLV.insertText = "";
 LLV.body = "LLV( , )";
+LLV.type = MyCompletionType.Function;
 LLV.marketType = MyCompletionMarketType.BasicFunction;
 LLV.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+LLV.returnType = MyCompletionReturnType.None;
+LLV.parameters = MyCompletion.createParametersFromStrings([]);
 LLV.detail = "最低值";
 LLV.documentation = `
 LLV(X,N),求X在N个周期内的最小值
@@ -5121,8 +5721,11 @@ const LLVBARS = new MyCompletion();
 LLVBARS.label = "LLVBARS";
 LLVBARS.insertText = "";
 LLVBARS.body = "LLVBARS( , )";
+LLVBARS.type = MyCompletionType.Function;
 LLVBARS.marketType = MyCompletionMarketType.BasicFunction;
 LLVBARS.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+LLVBARS.returnType = MyCompletionReturnType.None;
+LLVBARS.parameters = MyCompletion.createParametersFromStrings([]);
 LLVBARS.detail = "前一个最低点位置";
 LLVBARS.documentation = `
 LLVBARS(X,N),求N周期内X最低值到当前周期数
@@ -5145,8 +5748,11 @@ const LN = new MyCompletion();
 LN.label = "LN";
 LN.insertText = "";
 LN.body = "LN( )";
+LN.type = MyCompletionType.Function;
 LN.marketType = MyCompletionMarketType.BasicFunction;
 LN.functionType = MyCompletionFunctionType.MathFunction;
+LN.returnType = MyCompletionReturnType.None;
+LN.parameters = MyCompletion.createParametersFromStrings([]);
 LN.detail = "自然对数";
 LN.documentation = `
 LN(X),求X的自然对数
@@ -5163,8 +5769,11 @@ const LOG = new MyCompletion();
 LOG.label = "LOG";
 LOG.insertText = "";
 LOG.body = "LOG( )";
+LOG.type = MyCompletionType.Function;
 LOG.marketType = MyCompletionMarketType.BasicFunction;
 LOG.functionType = MyCompletionFunctionType.MathFunction;
+LOG.returnType = MyCompletionReturnType.None;
+LOG.parameters = MyCompletion.createParametersFromStrings([]);
 LOG.detail = "求以Y为底X的对数值";
 LOG.documentation = `
 LOG(X,Y)求以Y为底X的对数值。
@@ -5186,8 +5795,11 @@ const LOG10 = new MyCompletion();
 LOG10.label = "LOG10";
 LOG10.insertText = "";
 LOG10.body = "LOG10( )";
+LOG10.type = MyCompletionType.Function;
 LOG10.marketType = MyCompletionMarketType.BasicFunction;
 LOG10.functionType = MyCompletionFunctionType.MathFunction;
+LOG10.returnType = MyCompletionReturnType.None;
+LOG10.parameters = MyCompletion.createParametersFromStrings([]);
 LOG10.detail = "常用对数";
 LOG10.documentation = `
 LOG10(X)求X的常用对数。
@@ -5207,8 +5819,11 @@ const LONGCROSS = new MyCompletion();
 LONGCROSS.label = "LONGCROSS";
 LONGCROSS.insertText = "";
 LONGCROSS.body = "LONGCROSS( , , )";
+LONGCROSS.type = MyCompletionType.Function;
 LONGCROSS.marketType = MyCompletionMarketType.BasicFunction;
 LONGCROSS.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+LONGCROSS.returnType = MyCompletionReturnType.None;
+LONGCROSS.parameters = MyCompletion.createParametersFromStrings([]);
 LONGCROSS.detail = "维持交叉函数";
 LONGCROSS.documentation = `
 LONGCROSS(A,B,N),判断A在是否在N个周期内都小于B如果是则返回1，否则返回0
@@ -5226,8 +5841,11 @@ const LOOP1 = new MyCompletion();
 LOOP1.label = "LOOP1";
 LOOP1.insertText = "";
 LOOP1.body = "LOOP1( , , )";
+LOOP1.type = MyCompletionType.Function;
 LOOP1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 LOOP1.functionType = MyCompletionFunctionType.LoopExecutionFunction;
+LOOP1.returnType = MyCompletionReturnType.None;
+LOOP1.parameters = MyCompletion.createParametersFromStrings([]);
 LOOP1.detail = "循环统计函数";
 LOOP1.documentation = `
 LOOP1(X,N,TYPE)循环统计函数；对变量X在N个周期进行TYPE相应的操作
@@ -5292,8 +5910,11 @@ const LOOP2 = new MyCompletion();
 LOOP2.label = "LOOP2";
 LOOP2.insertText = "";
 LOOP2.body = "LOOP2( , , )";
+LOOP2.type = MyCompletionType.Function;
 LOOP2.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 LOOP2.functionType = MyCompletionFunctionType.LoopExecutionFunction;
+LOOP2.returnType = MyCompletionReturnType.None;
+LOOP2.parameters = MyCompletion.createParametersFromStrings([]);
 LOOP2.detail = "循环条件函数";
 LOOP2.documentation = `
 LOOP2(COND,A,B);循环条件函数；若COND条件成立，则返回A，否则返回B
@@ -5320,8 +5941,11 @@ const LOW = new MyCompletion();
 LOW.label = "LOW";
 LOW.insertText = "";
 LOW.body = "LOW";
+LOW.type = MyCompletionType.Function;
 LOW.marketType = MyCompletionMarketType.BasicFunction;
 LOW.functionType = MyCompletionFunctionType.CandlestickDataReference;
+LOW.returnType = MyCompletionReturnType.None;
+LOW.parameters = MyCompletion.createParametersFromStrings([]);
 LOW.detail = "取得K线图的最低价";
 LOW.documentation = `
 LOW取得当根K线的最低价
@@ -5342,8 +5966,11 @@ const LV = new MyCompletion();
 LV.label = "LV";
 LV.insertText = "";
 LV.body = "LV( , )";
+LV.type = MyCompletionType.Function;
 LV.marketType = MyCompletionMarketType.BasicFunction;
 LV.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+LV.returnType = MyCompletionReturnType.None;
+LV.parameters = MyCompletion.createParametersFromStrings([]);
 LV.detail = "除当前K线外最低值";
 LV.documentation = `
 LV(X,N)求X在N个周期内的最小值(不包含当前K线)
@@ -5369,8 +5996,11 @@ const MA = new MyCompletion();
 MA.label = "MA";
 MA.insertText = "";
 MA.body = "MA( , )";
+MA.type = MyCompletionType.Function;
 MA.marketType = MyCompletionMarketType.BasicFunction;
 MA.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+MA.returnType = MyCompletionReturnType.None;
+MA.parameters = MyCompletion.createParametersFromStrings([]);
 MA.detail = "算数移动平均";
 MA.documentation = `
 MA(X,N),求X在N个周期内的简单移动平均
@@ -5396,8 +6026,11 @@ const MARGIN = new MyCompletion();
 MARGIN.label = "MARGIN";
 MARGIN.insertText = "";
 MARGIN.body = "MARGIN";
+MARGIN.type = MyCompletionType.Function;
 MARGIN.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 MARGIN.functionType = MyCompletionFunctionType.PositionManagementFunction;
+MARGIN.returnType = MyCompletionReturnType.None;
+MARGIN.parameters = MyCompletion.createParametersFromStrings([]);
 MARGIN.detail = "保证金";
 MARGIN.documentation = `
 MARGIN返回国内期货合约合约的保证金比率或者外盘期货合约的每手保证金
@@ -5420,8 +6053,11 @@ const MAX = new MyCompletion();
 MAX.label = "MAX";
 MAX.insertText = "";
 MAX.body = "MAX( , )";
+MAX.type = MyCompletionType.Function;
 MAX.marketType = MyCompletionMarketType.BasicFunction;
 MAX.functionType = MyCompletionFunctionType.MathFunction;
+MAX.returnType = MyCompletionReturnType.None;
+MAX.parameters = MyCompletion.createParametersFromStrings([]);
 MAX.detail = "最大值";
 MAX.documentation = `
 MAX(A,B),取A，B中较大者
@@ -5442,8 +6078,11 @@ const MAX1 = new MyCompletion();
 MAX1.label = "MAX1";
 MAX1.insertText = "";
 MAX1.body = "MAX1( )";
+MAX1.type = MyCompletionType.Function;
 MAX1.marketType = MyCompletionMarketType.BasicFunction;
 MAX1.functionType = MyCompletionFunctionType.MathFunction;
+MAX1.returnType = MyCompletionReturnType.None;
+MAX1.parameters = MyCompletion.createParametersFromStrings([]);
 MAX1.detail = "取最大值";
 MAX1.documentation = `
 MAX1(A1,...,A30),取A1...A30中的最大值（支持2-30个参数进行比较）
@@ -5464,8 +6103,11 @@ const MAXBKVOL = new MyCompletion();
 MAXBKVOL.label = "MAXBKVOL";
 MAXBKVOL.insertText = "";
 MAXBKVOL.body = "MAXBKVOL";
+MAXBKVOL.type = MyCompletionType.Function;
 MAXBKVOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 MAXBKVOL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+MAXBKVOL.returnType = MyCompletionReturnType.None;
+MAXBKVOL.parameters = MyCompletion.createParametersFromStrings([]);
 MAXBKVOL.detail = "多头最大持仓手数";
 MAXBKVOL.documentation = `
 MAXBKVOL相邻两次多头持仓为0之间的多头最大持仓手数
@@ -5490,8 +6132,11 @@ const MAXSKVOL = new MyCompletion();
 MAXSKVOL.label = "MAXSKVOL";
 MAXSKVOL.insertText = "";
 MAXSKVOL.body = "MAXSKVOL";
+MAXSKVOL.type = MyCompletionType.Function;
 MAXSKVOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 MAXSKVOL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+MAXSKVOL.returnType = MyCompletionReturnType.None;
+MAXSKVOL.parameters = MyCompletion.createParametersFromStrings([]);
 MAXSKVOL.detail = "空头最大持仓手数";
 MAXSKVOL.documentation = `
 MAXBKVOL相邻两次空头持仓为0之间的空头最大持仓手数
@@ -5516,8 +6161,11 @@ const MEDIAN = new MyCompletion();
 MEDIAN.label = "MEDIAN";
 MEDIAN.insertText = "";
 MEDIAN.body = "MEDIAN( , )";
+MEDIAN.type = MyCompletionType.Function;
 MEDIAN.marketType = MyCompletionMarketType.BasicFunction;
 MEDIAN.functionType = MyCompletionFunctionType.MathFunction;
+MEDIAN.returnType = MyCompletionReturnType.None;
+MEDIAN.parameters = MyCompletion.createParametersFromStrings([]);
 MEDIAN.detail = "求中位数";
 MEDIAN.documentation = `
 MEDIAN(X,N)求X在N个周期内的中位数
@@ -5538,8 +6186,11 @@ const MEDIAN1 = new MyCompletion();
 MEDIAN1.label = "MEDIAN1";
 MEDIAN1.insertText = "";
 MEDIAN1.body = "MEDIAN1()";
+MEDIAN1.type = MyCompletionType.Function;
 MEDIAN1.marketType = MyCompletionMarketType.BasicFunction;
 MEDIAN1.functionType = MyCompletionFunctionType.MathFunction;
+MEDIAN1.returnType = MyCompletionReturnType.None;
+MEDIAN1.parameters = MyCompletion.createParametersFromStrings([]);
 MEDIAN1.detail = "求中位数";
 MEDIAN1.documentation = `
 MEDIAN1(A1,..,A30),求A1...A30的中位数（支持最多30个参数）
@@ -5560,8 +6211,11 @@ const MIN = new MyCompletion();
 MIN.label = "MIN";
 MIN.insertText = "";
 MIN.body = "MIN( , )";
+MIN.type = MyCompletionType.Function;
 MIN.marketType = MyCompletionMarketType.BasicFunction;
 MIN.functionType = MyCompletionFunctionType.MathFunction;
+MIN.returnType = MyCompletionReturnType.None;
+MIN.parameters = MyCompletion.createParametersFromStrings([]);
 MIN.detail = "最小值";
 MIN.documentation = `
 MIN(A,B),取A，B中较小者
@@ -5580,8 +6234,11 @@ const MIN1 = new MyCompletion();
 MIN1.label = "MIN1";
 MIN1.insertText = "";
 MIN1.body = "MIN1( )";
+MIN1.type = MyCompletionType.Function;
 MIN1.marketType = MyCompletionMarketType.BasicFunction;
 MIN1.functionType = MyCompletionFunctionType.MathFunction;
+MIN1.returnType = MyCompletionReturnType.None;
+MIN1.parameters = MyCompletion.createParametersFromStrings([]);
 MIN1.detail = "取最小值";
 MIN1.documentation = `
 MIN1(A1,...,A30),取A1...A30中的最小值（支持2-30个参数进行比较）
@@ -5602,8 +6259,11 @@ const MINPRICE = new MyCompletion();
 MINPRICE.label = "MINPRICE";
 MINPRICE.insertText = "";
 MINPRICE.body = "MINPRICE";
+MINPRICE.type = MyCompletionType.Function;
 MINPRICE.marketType = MyCompletionMarketType.BasicFunction;
 MINPRICE.functionType = MyCompletionFunctionType.CandlestickDataReference;
+MINPRICE.returnType = MyCompletionReturnType.None;
+MINPRICE.parameters = MyCompletion.createParametersFromStrings([]);
 MINPRICE.detail = "数据合约的最小变动价位";
 MINPRICE.documentation = `
 MINPRICE,取数据合约的最小变动价位
@@ -5616,8 +6276,11 @@ const MINPRICE1 = new MyCompletion();
 MINPRICE1.label = "MINPRICE1";
 MINPRICE1.insertText = "";
 MINPRICE1.body = "MINPRICE1";
+MINPRICE1.type = MyCompletionType.Function;
 MINPRICE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 MINPRICE1.functionType = MyCompletionFunctionType.CandlestickDataReference;
+MINPRICE1.returnType = MyCompletionReturnType.None;
+MINPRICE1.parameters = MyCompletion.createParametersFromStrings([]);
 MINPRICE1.detail = "交易合约的最小变动价位";
 MINPRICE1.documentation = `
 MINPRICE1,取交易合约的最小变动价位
@@ -5630,8 +6293,11 @@ const MINPRICED = new MyCompletion();
 MINPRICED.label = "MINPRICED";
 MINPRICED.insertText = "";
 MINPRICED.body = "MINPRICED";
+MINPRICED.type = MyCompletionType.Function;
 MINPRICED.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 MINPRICED.functionType = MyCompletionFunctionType.CandlestickDataReference;
+MINPRICED.returnType = MyCompletionReturnType.None;
+MINPRICED.parameters = MyCompletion.createParametersFromStrings([]);
 MINPRICED.detail = "最小变动价位";
 MINPRICED.documentation = `
 MINPRICED(N),返回N所对应合约的最小变动价位N只能为文华码
@@ -5650,13 +6316,16 @@ const MINUTE = new MyCompletion();
 MINUTE.label = "MINUTE";
 MINUTE.insertText = "";
 MINUTE.body = "MINUTE";
+MINUTE.type = MyCompletionType.Function;
 MINUTE.marketType = MyCompletionMarketType.BasicFunction;
 MINUTE.functionType = MyCompletionFunctionType.TimeFunction;
+MINUTE.returnType = MyCompletionReturnType.None;
+MINUTE.parameters = MyCompletion.createParametersFromStrings([]);
 MINUTE.detail = "分钟";
 MINUTE.documentation = `
 MINUTE,取某个周期的分钟数（0-59）
 MINUTE,返回某个周期的分钟数。
- 
+
 注：
 1：MINUTE的取值范围为0—59
 2：该函数返回当根K线开始的分钟数,日及日以上周期返回0。
@@ -5670,8 +6339,11 @@ const MOD = new MyCompletion();
 MOD.label = "MOD";
 MOD.insertText = "";
 MOD.body = "MOD( , )";
+MOD.type = MyCompletionType.Function;
 MOD.marketType = MyCompletionMarketType.BasicFunction;
 MOD.functionType = MyCompletionFunctionType.MathFunction;
+MOD.returnType = MyCompletionReturnType.None;
+MOD.parameters = MyCompletion.createParametersFromStrings([]);
 MOD.detail = "取模";
 MOD.documentation = `
 MOD(A,B),A对B求模
@@ -5693,8 +6365,11 @@ const MODE = new MyCompletion();
 MODE.label = "MODE";
 MODE.insertText = "";
 MODE.body = "MODE( , )";
+MODE.type = MyCompletionType.Function;
 MODE.marketType = MyCompletionMarketType.BasicFunction;
 MODE.functionType = MyCompletionFunctionType.MathFunction;
+MODE.returnType = MyCompletionReturnType.None;
+MODE.parameters = MyCompletion.createParametersFromStrings([]);
 MODE.detail = "求众数";
 MODE.documentation = `
 MODE(X,N)求X在N个周期内最常出现的值
@@ -5709,8 +6384,11 @@ const MONEY = new MyCompletion();
 MONEY.label = "MONEY";
 MONEY.insertText = "";
 MONEY.body = "MONEY";
+MONEY.type = MyCompletionType.Function;
 MONEY.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 MONEY.functionType = MyCompletionFunctionType.PositionManagementFunction;
+MONEY.returnType = MyCompletionReturnType.None;
+MONEY.parameters = MyCompletion.createParametersFromStrings([]);
 MONEY.detail = "理论可用资金";
 MONEY.documentation = `
 MONEY，理论可用资金
@@ -5727,11 +6405,11 @@ MONEY 理论可用资金
 
 注：
 1、信号执行方式为，‘K线走完确认下单’或‘XX下单，K线走完复核’：
-  a.开仓信号当根K线，MONEY返回值为上根K线的可用资金-开仓保证金-手续费。
-  b.平仓信号当根K线，MONEY返回值为上根K线的可用资金+平仓盈亏+持仓释放的保证金-手续费。
+ a.开仓信号当根K线，MONEY返回值为上根K线的可用资金-开仓保证金-手续费。
+ b.平仓信号当根K线，MONEY返回值为上根K线的可用资金+平仓盈亏+持仓释放的保证金-手续费。
 2、信号执行方式选择，‘出信号下单，不进行复核’：
-  a.开仓信号当根K线，MONEY返回值为当根k线开仓之前的可用资金-开仓保证金-手续费。
-  b.平仓信号当根K线，MONEY返回值为当根K线平仓之前的可用资金+平仓盈亏+平仓释放的保证金-手续费。
+ a.开仓信号当根K线，MONEY返回值为当根k线开仓之前的可用资金-开仓保证金-手续费。
+ b.平仓信号当根K线，MONEY返回值为当根K线平仓之前的可用资金+平仓盈亏+平仓释放的保证金-手续费。
 3、信号执行方式为‘K线走完确认信号下单’时，平仓盈亏=（平仓信号当根K线的收盘价-开仓价格）*手数*交易单位-手续费。
 4、信号执行方式为‘出信号立即下单，不复核’时，平仓盈亏=（平仓信号的指令价-开仓价格）*手数*交易单位-手续费。
 5、模组初始化后，MONEY返回值为初始化框中可用资金
@@ -5745,8 +6423,11 @@ const MONEYRATIO = new MyCompletion();
 MONEYRATIO.label = "MONEYRATIO";
 MONEYRATIO.insertText = "";
 MONEYRATIO.body = "MONEYRATIO";
+MONEYRATIO.type = MyCompletionType.Function;
 MONEYRATIO.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 MONEYRATIO.functionType = MyCompletionFunctionType.PositionManagementFunction;
+MONEYRATIO.returnType = MyCompletionReturnType.None;
+MONEYRATIO.parameters = MyCompletion.createParametersFromStrings([]);
 MONEYRATIO.detail = "理论资金使用率";
 MONEYRATIO.documentation = `
 MONEYRATIO返回理论资金使用率
@@ -5759,9 +6440,9 @@ MONEYRATIO 理论资金使用率
 注：
 1、该函数返回值为小数。
 2、开仓信号当根k线持仓保证金：
-  a.信号执行方式为‘XX下单，K线走完复核’：持仓保证金=当根K线的收盘价*交易单位*持仓手数*保证金比例。
-  b.信号执行方式为‘出信号立即下单，不复核’：持仓保证金=最新价*交易单位*持仓手数*保证金比例。
-  c.信号执行方式为‘K线走完确认信号下单’：持仓保证金=当根K线的收盘价*交易单位*持仓手数*保证金比例。在出开仓信号之后的K线返回相应的值
+ a.信号执行方式为‘XX下单，K线走完复核’：持仓保证金=当根K线的收盘价*交易单位*持仓手数*保证金比例。
+ b.信号执行方式为‘出信号立即下单，不复核’：持仓保证金=最新价*交易单位*持仓手数*保证金比例。
+ c.信号执行方式为‘K线走完确认信号下单’：持仓保证金=当根K线的收盘价*交易单位*持仓手数*保证金比例。在出开仓信号之后的K线返回相应的值
 3、开仓后平仓前K线持仓保证金=当根K线的收盘价*交易单位*持仓手数*保证金比例。开仓后未平仓的k线的保证金和开仓信号当根k线的保证金一样，保持不变，当日如果存在未被平掉的持仓并持仓过夜，第二日未平仓k线的保证金不会按照前一日结算价计算。
 4、平仓信号，当平仓后无持仓时，MONEYRATIO在出平仓信号之后的k线上返回0
 
@@ -5773,8 +6454,11 @@ const MONEYTOT = new MyCompletion();
 MONEYTOT.label = "MONEYTOT";
 MONEYTOT.insertText = "";
 MONEYTOT.body = "MONEYTOT";
+MONEYTOT.type = MyCompletionType.Function;
 MONEYTOT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 MONEYTOT.functionType = MyCompletionFunctionType.PositionManagementFunction;
+MONEYTOT.returnType = MyCompletionReturnType.None;
+MONEYTOT.parameters = MyCompletion.createParametersFromStrings([]);
 MONEYTOT.detail = "理论权益";
 MONEYTOT.documentation = `
 MONEYTOT理论权益
@@ -5788,8 +6472,8 @@ MONEYTOT 理论权益
 1、模组中MONEYTOT的初始值为单元参数中设置的起始资金。
 2、历史回测中MONEYTOT的初始值为回测参数中设置的初始资金。
 3、模组初始化时：
-  a.当前信号为开仓信号，MONEYTOT返回值为初始化框中模组理论可用资金；
-  b.当前信号为平仓信号，则MONEYTOT返回初始化框中模组理论可用资金+持仓保证金。
+ a.当前信号为开仓信号，MONEYTOT返回值为初始化框中模组理论可用资金；
+ b.当前信号为平仓信号，则MONEYTOT返回初始化框中模组理论可用资金+持仓保证金。
 4、开仓信号当根k线：MONEYTOT=模组理论可用资金+持仓保证金
 5、开仓后平仓前：MONEYTOT返回模组理论可用资金+持仓保证金
 6、平仓信号当根k线：持仓为0时，MONEYTOT=模组理论可用资金；持仓不为0时，MONEYTOT=模组理论可用资金+持仓占用的保证金。
@@ -5804,16 +6488,19 @@ const MONTH = new MyCompletion();
 MONTH.label = "MONTH";
 MONTH.insertText = "";
 MONTH.body = "MONTH";
+MONTH.type = MyCompletionType.Function;
 MONTH.marketType = MyCompletionMarketType.BasicFunction;
 MONTH.functionType = MyCompletionFunctionType.TimeFunction;
+MONTH.returnType = MyCompletionReturnType.None;
+MONTH.parameters = MyCompletion.createParametersFromStrings([]);
 MONTH.detail = "取月份";
 MONTH.documentation = `
 MONTH,取得某周期的月份（1-12）
 MONTH，返回某个周期的月份。
- 
+
 注：
 MONTH的取值范围为1—12.
- 
+
 例1：
 VALUEWHEN(MONTH=3&&DAY=1,C);//在K线日期为三月一日时取其收盘价。
 例2：
@@ -5824,8 +6511,11 @@ const MONTHTRADE = new MyCompletion();
 MONTHTRADE.label = "MONTHTRADE";
 MONTHTRADE.insertText = "";
 MONTHTRADE.body = "MONTHTRADE";
+MONTHTRADE.type = MyCompletionType.Function;
 MONTHTRADE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 MONTHTRADE.functionType = MyCompletionFunctionType.CalculationControlFunction;
+MONTHTRADE.returnType = MyCompletionReturnType.None;
+MONTHTRADE.parameters = MyCompletion.createParametersFromStrings([]);
 MONTHTRADE.detail = "月内交易函数";
 MONTHTRADE.documentation = `
 MONTHTRADE,月内交易函数
@@ -5839,7 +6529,7 @@ MONTHTRADE 模型中写入该函数，信号和资金每月重新初始化进行
 2、回测报告中的出金/入金，为每月出金/入金的和。
 3、模型中不能同时使用DAYTRADE1\\DAYTRADE\\WEEKTRADE\\WEEKTRADE1\\MONTHTRADE\\QUARTERTRADE\\YEARTRADE函数。
 4、（1）历史回测中，当月K线走完持仓大于0，会对持仓进行全清处理。
-   （2）模组运行中，当月K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
+  （2）模组运行中，当月K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
 
 例：
 MA5^^MA(C,5);
@@ -5857,8 +6547,11 @@ const MONTHTRADE1 = new MyCompletion();
 MONTHTRADE1.label = "MONTHTRADE1";
 MONTHTRADE1.insertText = "";
 MONTHTRADE1.body = "MONTHTRADE1";
+MONTHTRADE1.type = MyCompletionType.Function;
 MONTHTRADE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 MONTHTRADE1.functionType = MyCompletionFunctionType.CalculationControlFunction;
+MONTHTRADE1.returnType = MyCompletionReturnType.None;
+MONTHTRADE1.parameters = MyCompletion.createParametersFromStrings([]);
 MONTHTRADE1.detail = "月内交易函数";
 MONTHTRADE1.documentation = `
 MONTHTRADE1月内交易函数，且历史数据不参与计算。
@@ -5872,7 +6565,7 @@ MONTHTRADE1 模型中写入该函数，信号和资金每月重新初始化进�
 2、回测报告中的出金/入金，为每月出金/入金的和。
 3、模型中不能同时使用DAYTRADE1\\DAYTRADE\\WEEKTRADE\\WEEKTRADE1\\MONTHTRADE\\MONTHTRADE1\\QUARTERTRADE\\QUARTERTRADE1\\YEARTRADE\\YEARTRADE1函数。
 4、（1）历史回测中，当月K线走完持仓大于0，会对持仓进行全清处理。
-   （2）模组运行中，当月K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
+  （2）模组运行中，当月K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
 
 例：
 MA5^^MA(C,5);
@@ -5890,10 +6583,13 @@ const MULTSIG = new MyCompletion();
 MULTSIG.label = "MULTSIG";
 MULTSIG.insertText = "";
 MULTSIG.body = "MULTSIG( , , , )";
+MULTSIG.type = MyCompletionType.Function;
 MULTSIG.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 MULTSIG.functionType = MyCompletionFunctionType.PerformanceOptimizationFunction;
+MULTSIG.returnType = MyCompletionReturnType.None;
+MULTSIG.parameters = MyCompletion.createParametersFromStrings([]);
 MULTSIG.detail =
-    "设置一根k线多信号的指令价方式（TICK逐笔回测，可设置回测精度）";
+   "设置一根k线多信号的指令价方式（TICK逐笔回测，可设置回测精度）";
 MULTSIG.documentation = `
 MULTSIG(Sec1,Sec2,N,INTERVAL),设置一根k线多信号的指令价方式（TICK逐笔回测，可设置回测精度），开仓信号出信号Sec1秒下单，不复核；平仓信号出信号Sec2秒下单，不复核，一根K线最大的信号个数为N,INTERVAL代表数据时间间隔
 MULTSIG(Sec1,Sec2,N,INTERVAL) 设置一根k线多信号的指令价方式（TICK逐笔回测，可设置回测精度）
@@ -5912,11 +6608,11 @@ MULTSIG(Sec1,Sec2,N,INTERVAL)
 3、Sec1设置的信号为：BK/SK；Sec2设置的信号为：BP/SP/BPK/SPK
 4、含有该函数的模型，满足条件出信号下单后此信号固定，不随之后行情是否满足条件而变化
 5、INTERVAL代表数据时间间隔
-  1）支持0、3、5、10四个值，不支持变量。
-  2）参数为3、5、10分别代表用每隔3秒、5秒、10秒，计算一次模型
-  3）参数为3、5、10 ，回测速度可提升3-10倍，回测精度稍差
-  4）参数为0的时候 为每笔TICK计算一次模型
-  5）一个模型中只能写入一个INTERVAL值
+ 1）支持0、3、5、10四个值，不支持变量。
+ 2）参数为3、5、10分别代表用每隔3秒、5秒、10秒，计算一次模型
+ 3）参数为3、5、10 ，回测速度可提升3-10倍，回测精度稍差
+ 4）参数为0的时候 为每笔TICK计算一次模型
+ 5）一个模型中只能写入一个INTERVAL值
 6、出信号后如果未到Sec个数据时间间隔K线已经走完，则提前确认信号下单。
 7、该函数不支持加载到页面盒子中使用。
 8、该函数支持一根K线上多个信号，最大的信号个数为N。N取值范围为1-60，超过这个范围，N值按照60计算
@@ -5937,8 +6633,12 @@ const MULTSIG_MIN = new MyCompletion();
 MULTSIG_MIN.label = "MULTSIG_MIN";
 MULTSIG_MIN.insertText = "";
 MULTSIG_MIN.body = "MULTSIG_MIN( , , )";
+MULTSIG_MIN.type = MyCompletionType.Function;
 MULTSIG_MIN.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-MULTSIG_MIN.functionType = MyCompletionFunctionType.PerformanceOptimizationFunction;
+MULTSIG_MIN.functionType =
+   MyCompletionFunctionType.PerformanceOptimizationFunction;
+MULTSIG_MIN.returnType = MyCompletionReturnType.None;
+MULTSIG_MIN.parameters = MyCompletion.createParametersFromStrings([]);
 MULTSIG_MIN.detail = "设置一根k线多信号的指令价方式（逐分钟回测）";
 MULTSIG_MIN.documentation = `
 MULTSIG_MIN(min1,min2,N),设置一根k线多信号的指令价方式（逐分钟回测）开仓信号出信号min1分钟下单，不复核；平仓信号出信号min2分钟下单，不复核，一根K线最大的信号个数为N
@@ -5972,8 +6672,11 @@ const MV = new MyCompletion();
 MV.label = "MV";
 MV.insertText = "";
 MV.body = "MV(,)";
+MV.type = MyCompletionType.Function;
 MV.marketType = MyCompletionMarketType.BasicFunction;
 MV.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+MV.returnType = MyCompletionReturnType.None;
+MV.parameters = MyCompletion.createParametersFromStrings([]);
 MV.detail = "取均值";
 MV.documentation = `
 MV(A,...P),取A到P的均值
@@ -5992,8 +6695,11 @@ const MYVOL = new MyCompletion();
 MYVOL.label = "MYVOL";
 MYVOL.insertText = "";
 MYVOL.body = "MYVOL";
+MYVOL.type = MyCompletionType.Function;
 MYVOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 MYVOL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+MYVOL.returnType = MyCompletionReturnType.None;
+MYVOL.parameters = MyCompletion.createParametersFromStrings([]);
 MYVOL.detail = "取下单手数";
 MYVOL.documentation = `
 MYVOL,取下单手数
@@ -6017,8 +6723,11 @@ const NAMELIKE = new MyCompletion();
 NAMELIKE.label = "NAMELIKE";
 NAMELIKE.insertText = "";
 NAMELIKE.body = "NAMELIKE('')";
+NAMELIKE.type = MyCompletionType.Function;
 NAMELIKE.marketType = MyCompletionMarketType.BasicFunction;
 NAMELIKE.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+NAMELIKE.returnType = MyCompletionReturnType.None;
+NAMELIKE.parameters = MyCompletion.createParametersFromStrings([]);
 NAMELIKE.detail = "模糊合约名称函数";
 NAMELIKE.documentation = `
 NAMELIKE('')模糊股票名称函数。NAMELIKE('ST')判断股票名称是否含有ST。是返回1（YES）,不是返回0（NO）。
@@ -6042,8 +6751,11 @@ const NEWHBARS = new MyCompletion();
 NEWHBARS.label = "NEWHBARS";
 NEWHBARS.insertText = "";
 NEWHBARS.body = "NEWHBARS( , )";
+NEWHBARS.type = MyCompletionType.Function;
 NEWHBARS.marketType = MyCompletionMarketType.BasicFunction;
 NEWHBARS.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+NEWHBARS.returnType = MyCompletionReturnType.None;
+NEWHBARS.parameters = MyCompletion.createParametersFromStrings([]);
 NEWHBARS.detail = "创新高跨度";
 NEWHBARS.documentation = `
 NEWHBARS(X,N)求高于当前X的第N个X的距离
@@ -6064,8 +6776,11 @@ const NEWHBARS1 = new MyCompletion();
 NEWHBARS1.label = "NEWHBARS1";
 NEWHBARS1.insertText = "";
 NEWHBARS1.body = "NEWHBARS1( , , )";
+NEWHBARS1.type = MyCompletionType.Function;
 NEWHBARS1.marketType = MyCompletionMarketType.BasicFunction;
 NEWHBARS1.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+NEWHBARS1.returnType = MyCompletionReturnType.None;
+NEWHBARS1.parameters = MyCompletion.createParametersFromStrings([]);
 NEWHBARS1.detail = "创新高跨度";
 NEWHBARS1.documentation = `
 NEWHBARS1(X,Y,N)，计算高于当前X的第N个Y到现在K线的距离
@@ -6087,8 +6802,11 @@ const NEWLBARS = new MyCompletion();
 NEWLBARS.label = "NEWLBARS";
 NEWLBARS.insertText = "";
 NEWLBARS.body = "NEWLBARS( , )";
+NEWLBARS.type = MyCompletionType.Function;
 NEWLBARS.marketType = MyCompletionMarketType.BasicFunction;
 NEWLBARS.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+NEWLBARS.returnType = MyCompletionReturnType.None;
+NEWLBARS.parameters = MyCompletion.createParametersFromStrings([]);
 NEWLBARS.detail = "创新低跨度";
 NEWLBARS.documentation = `
 NEWLBARS(X,N)求低于当前X的第N个X的距离
@@ -6109,8 +6827,11 @@ const NEWLBARS1 = new MyCompletion();
 NEWLBARS1.label = "NEWLBARS1";
 NEWLBARS1.insertText = "";
 NEWLBARS1.body = "NEWLBARS1( , , )";
+NEWLBARS1.type = MyCompletionType.Function;
 NEWLBARS1.marketType = MyCompletionMarketType.BasicFunction;
 NEWLBARS1.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+NEWLBARS1.returnType = MyCompletionReturnType.None;
+NEWLBARS1.parameters = MyCompletion.createParametersFromStrings([]);
 NEWLBARS1.detail = "创新低跨度";
 NEWLBARS1.documentation = `
 NEWLBARS1(X,Y,N)，计算低于当前X的第N个Y到现在K线的距离
@@ -6132,8 +6853,11 @@ const NODRAW = new MyCompletion();
 NODRAW.label = "NODRAW";
 NODRAW.insertText = "";
 NODRAW.body = "NODRAW";
+NODRAW.type = MyCompletionType.Function;
 NODRAW.marketType = MyCompletionMarketType.BasicFunction;
 NODRAW.functionType = MyCompletionFunctionType.DrawingFunction;
+NODRAW.returnType = MyCompletionReturnType.None;
+NODRAW.parameters = MyCompletion.createParametersFromStrings([]);
 NODRAW.detail = "不画线";
 NODRAW.documentation = `
 NODRAW,不画线
@@ -6142,15 +6866,18 @@ NODRAW 只显示返回数值，不画线。
 不支持将该函数直接定义为变量，即不支持下面的写法：A:NODRAW;
 
 例：
- MA5:MA(C,5), NODRAW;显示5周期均线的返回值，K线图上不显示均线。
+MA5:MA(C,5), NODRAW;显示5周期均线的返回值，K线图上不显示均线。
 `;
 
 const NORMPDF = new MyCompletion();
 NORMPDF.label = "NORMPDF";
 NORMPDF.insertText = "";
 NORMPDF.body = "NORMPDF( , , )";
+NORMPDF.type = MyCompletionType.Function;
 NORMPDF.marketType = MyCompletionMarketType.BasicFunction;
 NORMPDF.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
+NORMPDF.returnType = MyCompletionReturnType.None;
+NORMPDF.parameters = MyCompletion.createParametersFromStrings([]);
 NORMPDF.detail = "正态分布概率密度";
 NORMPDF.documentation = `
 NORMPDF(X,MU,SIGMA),返回参数为MU和SIGMA的正态分布密度函数在X处的值
@@ -6181,14 +6908,17 @@ const NOT = new MyCompletion();
 NOT.label = "NOT";
 NOT.insertText = "";
 NOT.body = "NOT( )";
+NOT.type = MyCompletionType.Function;
 NOT.marketType = MyCompletionMarketType.BasicFunction;
 NOT.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+NOT.returnType = MyCompletionReturnType.None;
+NOT.parameters = MyCompletion.createParametersFromStrings([]);
 NOT.detail = "非";
 NOT.documentation = `
 NOT(X),不满足条件X，不满足条件X返回1，否则返回0
 NOT(X)：取非。当X＝0时返回1，否则返回0。
 例1：
- NOT(ISLASTBK);如果上一个信号不是BK信号，则NOT(ISLASTBK)返回值为1；上一个信号是BK信号，则NOT(ISLASTBK)返回值为0。
+NOT(ISLASTBK);如果上一个信号不是BK信号，则NOT(ISLASTBK)返回值为1；上一个信号是BK信号，则NOT(ISLASTBK)返回值为0。
 例2：
 NOT(BARSBK>=1)=1;//BK信号发出的当根K线上满足条件。
 //NOT(BARSBK>=1)=1 与 NOT(BARSBK>=1) 表达同等意义。
@@ -6198,8 +6928,11 @@ const NOTEXT = new MyCompletion();
 NOTEXT.label = "NOTEXT";
 NOTEXT.insertText = "";
 NOTEXT.body = "NOTEXT";
+NOTEXT.type = MyCompletionType.Function;
 NOTEXT.marketType = MyCompletionMarketType.BasicFunction;
 NOTEXT.functionType = MyCompletionFunctionType.DrawingFunction;
+NOTEXT.returnType = MyCompletionReturnType.None;
+NOTEXT.parameters = MyCompletion.createParametersFromStrings([]);
 NOTEXT.detail = "不显示数值";
 NOTEXT.documentation = `
 NOTEXT不显示数值
@@ -6209,15 +6942,18 @@ NOTEXT 只显示画线，不显示数值。
 不支持将该函数直接定义为变量，即不支持下面的写法：A:NOTEXT;
 
 例：
- MA5:MA(C,5), NOTEXT;K线图上显示5周期均线，不显示均线的数值。
+MA5:MA(C,5), NOTEXT;K线图上显示5周期均线，不显示均线的数值。
 `;
 
 const NULL = new MyCompletion();
 NULL.label = "NULL";
 NULL.insertText = "";
 NULL.body = "NULL";
+NULL.type = MyCompletionType.Function;
 NULL.marketType = MyCompletionMarketType.BasicFunction;
 NULL.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+NULL.returnType = MyCompletionReturnType.None;
+NULL.parameters = MyCompletion.createParametersFromStrings([]);
 NULL.detail = "返回空值";
 NULL.documentation = `
 NULL,返回空值
@@ -6232,8 +6968,11 @@ const NUMPOW = new MyCompletion();
 NUMPOW.label = "NUMPOW";
 NUMPOW.insertText = "";
 NUMPOW.body = "NUMPOW(,,)";
+NUMPOW.type = MyCompletionType.Function;
 NUMPOW.marketType = MyCompletionMarketType.BasicFunction;
 NUMPOW.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+NUMPOW.returnType = MyCompletionReturnType.None;
+NUMPOW.parameters = MyCompletion.createParametersFromStrings([]);
 NUMPOW.detail = "自然数幂方和";
 NUMPOW.documentation = `
 NUMPOW(X,N,M),自然数幂方和X为基础变量，N为自然数，M为实数
@@ -6252,8 +6991,11 @@ const OFFSETPROFIT = new MyCompletion();
 OFFSETPROFIT.label = "OFFSETPROFIT";
 OFFSETPROFIT.insertText = "";
 OFFSETPROFIT.body = "OFFSETPROFIT";
+OFFSETPROFIT.type = MyCompletionType.Function;
 OFFSETPROFIT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 OFFSETPROFIT.functionType = MyCompletionFunctionType.PositionManagementFunction;
+OFFSETPROFIT.returnType = MyCompletionReturnType.None;
+OFFSETPROFIT.parameters = MyCompletion.createParametersFromStrings([]);
 OFFSETPROFIT.detail = "理论平仓盈亏";
 OFFSETPROFIT.documentation = `
 OFFSETPROFIT,返回理论平仓盈亏
@@ -6279,8 +7021,12 @@ const OFFSETPROFIT1 = new MyCompletion();
 OFFSETPROFIT1.label = "OFFSETPROFIT1";
 OFFSETPROFIT1.insertText = "";
 OFFSETPROFIT1.body = "OFFSETPROFIT1";
+OFFSETPROFIT1.type = MyCompletionType.Function;
 OFFSETPROFIT1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-OFFSETPROFIT1.functionType = MyCompletionFunctionType.PositionManagementFunction;
+OFFSETPROFIT1.functionType =
+   MyCompletionFunctionType.PositionManagementFunction;
+OFFSETPROFIT1.returnType = MyCompletionReturnType.None;
+OFFSETPROFIT1.parameters = MyCompletion.createParametersFromStrings([]);
 OFFSETPROFIT1.detail = "累计平仓盈亏";
 OFFSETPROFIT1.documentation = `
 OFFSETPROFIT1累计平仓盈亏
@@ -6306,8 +7052,11 @@ const OPEN = new MyCompletion();
 OPEN.label = "OPEN";
 OPEN.insertText = "";
 OPEN.body = "OPEN";
+OPEN.type = MyCompletionType.Function;
 OPEN.marketType = MyCompletionMarketType.BasicFunction;
 OPEN.functionType = MyCompletionFunctionType.CandlestickDataReference;
+OPEN.returnType = MyCompletionReturnType.None;
+OPEN.parameters = MyCompletion.createParametersFromStrings([]);
 OPEN.detail = "取得K线图的开盘价";
 OPEN.documentation = `
 OPEN取得开盘价
@@ -6329,8 +7078,11 @@ const OPENMINUTE = new MyCompletion();
 OPENMINUTE.label = "OPENMINUTE";
 OPENMINUTE.insertText = "";
 OPENMINUTE.body = "OPENMINUTE";
+OPENMINUTE.type = MyCompletionType.Function;
 OPENMINUTE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 OPENMINUTE.functionType = MyCompletionFunctionType.TimeFunction;
+OPENMINUTE.returnType = MyCompletionReturnType.None;
+OPENMINUTE.parameters = MyCompletion.createParametersFromStrings([]);
 OPENMINUTE.detail = "开盘后经过的分钟数";
 OPENMINUTE.documentation = `
 OPENMINUTE,返回开盘后经过的分钟数
@@ -6354,8 +7106,11 @@ const OPENMINUTE1 = new MyCompletion();
 OPENMINUTE1.label = "OPENMINUTE1";
 OPENMINUTE1.insertText = "";
 OPENMINUTE1.body = "OPENMINUTE1";
+OPENMINUTE1.type = MyCompletionType.Function;
 OPENMINUTE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 OPENMINUTE1.functionType = MyCompletionFunctionType.TimeFunction;
+OPENMINUTE1.returnType = MyCompletionReturnType.None;
+OPENMINUTE1.parameters = MyCompletion.createParametersFromStrings([]);
 OPENMINUTE1.detail = "开盘后经过的分钟数";
 OPENMINUTE1.documentation = `
 OPENMINUTE1,返回开盘后经过的分钟数
@@ -6382,8 +7137,11 @@ const OPENSEC = new MyCompletion();
 OPENSEC.label = "OPENSEC";
 OPENSEC.insertText = "";
 OPENSEC.body = "OPENSEC";
+OPENSEC.type = MyCompletionType.Function;
 OPENSEC.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 OPENSEC.functionType = MyCompletionFunctionType.TimeFunction;
+OPENSEC.returnType = MyCompletionReturnType.None;
+OPENSEC.parameters = MyCompletion.createParametersFromStrings([]);
 OPENSEC.detail = "开盘后经过的秒数";
 OPENSEC.documentation = `
 OPENSEC,返回开盘后经过的秒数
@@ -6407,8 +7165,11 @@ const OPENSEC1 = new MyCompletion();
 OPENSEC1.label = "OPENSEC1";
 OPENSEC1.insertText = "";
 OPENSEC1.body = "OPENSEC1";
+OPENSEC1.type = MyCompletionType.Function;
 OPENSEC1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 OPENSEC1.functionType = MyCompletionFunctionType.TimeFunction;
+OPENSEC1.returnType = MyCompletionReturnType.None;
+OPENSEC1.parameters = MyCompletion.createParametersFromStrings([]);
 OPENSEC1.detail = "开盘后经过的秒数";
 OPENSEC1.documentation = `
 OPENSEC1,返回开盘后经过的秒数
@@ -6435,8 +7196,11 @@ const OPI = new MyCompletion();
 OPI.label = "OPI";
 OPI.insertText = "";
 OPI.body = "OPI";
+OPI.type = MyCompletionType.Function;
 OPI.marketType = MyCompletionMarketType.BasicFunction;
 OPI.functionType = MyCompletionFunctionType.CandlestickDataReference;
+OPI.returnType = MyCompletionReturnType.None;
+OPI.parameters = MyCompletion.createParametersFromStrings([]);
 OPI.detail = "取得K线图的持仓量";
 OPI.documentation = `
 OPI取得持仓量
@@ -6458,8 +7222,11 @@ const PANZHENG = new MyCompletion();
 PANZHENG.label = "PANZHENG";
 PANZHENG.insertText = "";
 PANZHENG.body = "PANZHENG";
+PANZHENG.type = MyCompletionType.Function;
 PANZHENG.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 PANZHENG.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+PANZHENG.returnType = MyCompletionReturnType.None;
+PANZHENG.parameters = MyCompletion.createParametersFromStrings([]);
 PANZHENG.detail = "判断是否为盘整";
 PANZHENG.documentation = `
 PANZHENG,判断行情是否盘整，返回1时表示盘整，返回0时表示非盘整
@@ -6483,8 +7250,11 @@ const PARTLINE = new MyCompletion();
 PARTLINE.label = "PARTLINE";
 PARTLINE.insertText = "";
 PARTLINE.body = "PARTLINE( , , )";
+PARTLINE.type = MyCompletionType.Function;
 PARTLINE.marketType = MyCompletionMarketType.BasicFunction;
 PARTLINE.functionType = MyCompletionFunctionType.DrawingFunction;
+PARTLINE.returnType = MyCompletionReturnType.None;
+PARTLINE.parameters = MyCompletion.createParametersFromStrings([]);
 PARTLINE.detail = "画线段";
 PARTLINE.documentation = `
 PARTLINE(COND,DATA,COLOR)条件COND满足时，以COLOR颜色的直线连接DATA各点
@@ -6511,8 +7281,11 @@ const PARTLINE1 = new MyCompletion();
 PARTLINE1.label = "PARTLINE1";
 PARTLINE1.insertText = "";
 PARTLINE1.body = "PARTLINE1( , )";
+PARTLINE1.type = MyCompletionType.Function;
 PARTLINE1.marketType = MyCompletionMarketType.BasicFunction;
 PARTLINE1.functionType = MyCompletionFunctionType.DrawingFunction;
+PARTLINE1.returnType = MyCompletionReturnType.None;
+PARTLINE1.parameters = MyCompletion.createParametersFromStrings([]);
 PARTLINE1.detail = "画线段";
 PARTLINE1.documentation = `
 PARTLINE1(COND,DATA)条件COND满足时，用直线段连接DATA各点
@@ -6538,8 +7311,11 @@ const PCRATE = new MyCompletion();
 PCRATE.label = "PCRATE";
 PCRATE.insertText = "";
 PCRATE.body = "PCRATE(,)";
+PCRATE.type = MyCompletionType.Function;
 PCRATE.marketType = MyCompletionMarketType.BasicFunction;
 PCRATE.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
+PCRATE.returnType = MyCompletionReturnType.None;
+PCRATE.parameters = MyCompletion.createParametersFromStrings([]);
 PCRATE.detail = "求N周期内Y值的趋势";
 PCRATE.documentation = `
 求N周期内Y值的趋势
@@ -6570,8 +7346,12 @@ const PCRATETREND = new MyCompletion();
 PCRATETREND.label = "PCRATETREND";
 PCRATETREND.insertText = "";
 PCRATETREND.body = "PCRATETREND(,)";
+PCRATETREND.type = MyCompletionType.Function;
 PCRATETREND.marketType = MyCompletionMarketType.BasicFunction;
-PCRATETREND.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
+PCRATETREND.functionType =
+   MyCompletionFunctionType.MathematicalStatisticsFunction;
+PCRATETREND.returnType = MyCompletionReturnType.None;
+PCRATETREND.parameters = MyCompletion.createParametersFromStrings([]);
 PCRATETREND.detail = "求N周期内Y值的趋势变化速度";
 PCRATETREND.documentation = `
 求N周期内Y值的趋势变化速度
@@ -6602,8 +7382,11 @@ const PERCENTILE = new MyCompletion();
 PERCENTILE.label = "PERCENTILE";
 PERCENTILE.insertText = "";
 PERCENTILE.body = "PERCENTILE";
+PERCENTILE.type = MyCompletionType.Function;
 PERCENTILE.marketType = MyCompletionMarketType.BasicFunction;
 PERCENTILE.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+PERCENTILE.returnType = MyCompletionReturnType.None;
+PERCENTILE.parameters = MyCompletion.createParametersFromStrings([]);
 PERCENTILE.detail = "百分位函数";
 PERCENTILE.documentation = `
 PERCENTILE(Data,N,Per)百分位函数取最近N个周期Data数据处于Per百分位的数值。Data为需要排序的数据，N为需要排序的周期数，Per是百分位数值。
@@ -6629,8 +7412,11 @@ const PERIOD = new MyCompletion();
 PERIOD.label = "PERIOD";
 PERIOD.insertText = "";
 PERIOD.body = "PERIOD";
+PERIOD.type = MyCompletionType.Function;
 PERIOD.marketType = MyCompletionMarketType.BasicFunction;
 PERIOD.functionType = MyCompletionFunctionType.TimeFunction;
+PERIOD.returnType = MyCompletionReturnType.None;
+PERIOD.parameters = MyCompletion.createParametersFromStrings([]);
 PERIOD.detail = "自动读取当前技术分析图表周期";
 PERIOD.documentation = `
 PERIOD,自动读取当前技术图表周期
@@ -6650,8 +7436,11 @@ const PLAYSOUND = new MyCompletion();
 PLAYSOUND.label = "PLAYSOUND";
 PLAYSOUND.insertText = "";
 PLAYSOUND.body = "PLAYSOUND( , )";
+PLAYSOUND.type = MyCompletionType.Function;
 PLAYSOUND.marketType = MyCompletionMarketType.BasicFunction;
 PLAYSOUND.functionType = MyCompletionFunctionType.DrawingFunction;
+PLAYSOUND.returnType = MyCompletionReturnType.None;
+PLAYSOUND.parameters = MyCompletion.createParametersFromStrings([]);
 PLAYSOUND.detail = "声音函数";
 PLAYSOUND.documentation = `
 PLAYSOUND(COND,N),条件COND满足时播放指定声音N为自定义声音代码(可在设置声音文件中设置)
@@ -6676,8 +7465,11 @@ const POINTDOT = new MyCompletion();
 POINTDOT.label = "POINTDOT";
 POINTDOT.insertText = "";
 POINTDOT.body = "POINTDOT";
+POINTDOT.type = MyCompletionType.Function;
 POINTDOT.marketType = MyCompletionMarketType.BasicFunction;
 POINTDOT.functionType = MyCompletionFunctionType.DrawingFunction;
+POINTDOT.returnType = MyCompletionReturnType.None;
+POINTDOT.parameters = MyCompletion.createParametersFromStrings([]);
 POINTDOT.detail = "画点线";
 POINTDOT.documentation = `
 
@@ -6693,8 +7485,11 @@ const POLYLINE = new MyCompletion();
 POLYLINE.label = "POLYLINE";
 POLYLINE.insertText = "";
 POLYLINE.body = "POLYLINE( , , )";
+POLYLINE.type = MyCompletionType.Function;
 POLYLINE.marketType = MyCompletionMarketType.BasicFunction;
 POLYLINE.functionType = MyCompletionFunctionType.DrawingFunction;
+POLYLINE.returnType = MyCompletionReturnType.None;
+POLYLINE.parameters = MyCompletion.createParametersFromStrings([]);
 POLYLINE.detail = "画折线";
 POLYLINE.documentation = `
 POLYLINE(COND,DATA,COLOR)，条件满足时，用颜色COLOR的直线连接DATA的值
@@ -6721,8 +7516,11 @@ const POLYLINE1 = new MyCompletion();
 POLYLINE1.label = "POLYLINE1";
 POLYLINE1.insertText = "";
 POLYLINE1.body = "POLYLINE1( , )";
+POLYLINE1.type = MyCompletionType.Function;
 POLYLINE1.marketType = MyCompletionMarketType.BasicFunction;
 POLYLINE1.functionType = MyCompletionFunctionType.DrawingFunction;
+POLYLINE1.returnType = MyCompletionReturnType.None;
+POLYLINE1.parameters = MyCompletion.createParametersFromStrings([]);
 POLYLINE1.detail = "画折线";
 POLYLINE1.documentation = `
 POLYLINE1(COND,DATA)，条件满足时，用折线连接DATA的值
@@ -6752,8 +7550,11 @@ const POW = new MyCompletion();
 POW.label = "POW";
 POW.insertText = "";
 POW.body = "POW( , )";
+POW.type = MyCompletionType.Function;
 POW.marketType = MyCompletionMarketType.BasicFunction;
 POW.functionType = MyCompletionFunctionType.MathFunction;
+POW.returnType = MyCompletionReturnType.None;
+POW.parameters = MyCompletion.createParametersFromStrings([]);
 POW.detail = "幂";
 POW.documentation = `
 POW(X,Y),求X的Y次幂
@@ -6777,8 +7578,11 @@ const PRECIS = new MyCompletion();
 PRECIS.label = "PRECIS";
 PRECIS.insertText = "";
 PRECIS.body = "PRECIS";
+PRECIS.type = MyCompletionType.Function;
 PRECIS.marketType = MyCompletionMarketType.BasicFunction;
 PRECIS.functionType = MyCompletionFunctionType.DrawingFunction;
+PRECIS.returnType = MyCompletionReturnType.None;
+PRECIS.parameters = MyCompletion.createParametersFromStrings([]);
 PRECIS.detail = "指定数值的输出精度（小数位数）";
 PRECIS.documentation = `
 
@@ -6796,8 +7600,11 @@ const PRECISION = new MyCompletion();
 PRECISION.label = "PRECISION";
 PRECISION.insertText = "";
 PRECISION.body = "PRECISION";
+PRECISION.type = MyCompletionType.Function;
 PRECISION.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 PRECISION.functionType = MyCompletionFunctionType.DrawingFunction;
+PRECISION.returnType = MyCompletionReturnType.None;
+PRECISION.parameters = MyCompletion.createParametersFromStrings([]);
 PRECISION.detail = "设置小数位数";
 PRECISION.documentation = `
 PRECISION()，设置小数位数(范围0-6)
@@ -6817,8 +7624,11 @@ const PRICEPRECISION = new MyCompletion();
 PRICEPRECISION.label = "PRICEPRECISION";
 PRICEPRECISION.insertText = "";
 PRICEPRECISION.body = "PRICEPRECISION";
+PRICEPRECISION.type = MyCompletionType.Function;
 PRICEPRECISION.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 PRICEPRECISION.functionType = MyCompletionFunctionType.DrawingFunction;
+PRICEPRECISION.returnType = MyCompletionReturnType.None;
+PRICEPRECISION.parameters = MyCompletion.createParametersFromStrings([]);
 PRICEPRECISION.detail = "取当前合约小数点位数";
 PRICEPRECISION.documentation = `
 PRICEPRECISION，取当前合约小数位数
@@ -6835,8 +7645,11 @@ const PRICEPRECISION1 = new MyCompletion();
 PRICEPRECISION1.label = "PRICEPRECISION1";
 PRICEPRECISION1.insertText = "";
 PRICEPRECISION1.body = "PRICEPRECISION1";
+PRICEPRECISION1.type = MyCompletionType.Function;
 PRICEPRECISION1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 PRICEPRECISION1.functionType = MyCompletionFunctionType.DrawingFunction;
+PRICEPRECISION1.returnType = MyCompletionReturnType.None;
+PRICEPRECISION1.parameters = MyCompletion.createParametersFromStrings([]);
 PRICEPRECISION1.detail = "取指定合约设置的小数点位数";
 PRICEPRECISION1.documentation = `
 PRICEPRECISION1()，取某合约小数位数
@@ -6855,8 +7668,11 @@ const PROFIT = new MyCompletion();
 PROFIT.label = "PROFIT";
 PROFIT.insertText = "";
 PROFIT.body = "PROFIT";
+PROFIT.type = MyCompletionType.Function;
 PROFIT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 PROFIT.functionType = MyCompletionFunctionType.PositionManagementFunction;
+PROFIT.returnType = MyCompletionReturnType.None;
+PROFIT.parameters = MyCompletion.createParametersFromStrings([]);
 PROFIT.detail = "理论逐笔浮盈";
 PROFIT.documentation = `
 PROFIT理论逐笔浮盈
@@ -6874,9 +7690,9 @@ PROFIT 理论逐笔浮盈
 3、开仓后平仓前多头持仓PROFIT返回值为（最新价-开仓价格）*手数*交易单位，空头持仓返回值为（开仓价格-最新价）*手数*交易单位。
 4、持仓为0，PROFIT返回值为0。
 5、模组开仓价格的算法：
-  a.信号执行方式为‘K线走完确认信号下单’开仓价格为开仓信号当根K线的收盘价
-  b.信号执行方式为‘XXX下单，K线走完复核’开仓价格为开仓信号指令价
-  c.信号执行方式为‘XXX下单，不进行信号复核’开仓价格为开仓信号指令价
+ a.信号执行方式为‘K线走完确认信号下单’开仓价格为开仓信号当根K线的收盘价
+ b.信号执行方式为‘XXX下单，K线走完复核’开仓价格为开仓信号指令价
+ c.信号执行方式为‘XXX下单，不进行信号复核’开仓价格为开仓信号指令价
 6、加减仓模型加仓后，开仓价格按照‘5’中不同信号执行方式取值后再进行平均。
 7、加减仓模型减仓按先开先平原则，平最先开的仓位，PROFIT计算公式中，用现有持仓的开仓价格计算，手数减少。
 
@@ -6888,8 +7704,11 @@ const QUARTER = new MyCompletion();
 QUARTER.label = "QUARTER";
 QUARTER.insertText = "";
 QUARTER.body = "QUARTER";
+QUARTER.type = MyCompletionType.Function;
 QUARTER.marketType = MyCompletionMarketType.BasicFunction;
 QUARTER.functionType = MyCompletionFunctionType.TimeFunction;
+QUARTER.returnType = MyCompletionReturnType.None;
+QUARTER.parameters = MyCompletion.createParametersFromStrings([]);
 QUARTER.detail = "取得某周期的季度数";
 QUARTER.documentation = `
 QUARTER取得某周期的季度数
@@ -6909,8 +7728,11 @@ const QUARTERTRADE = new MyCompletion();
 QUARTERTRADE.label = "QUARTERTRADE";
 QUARTERTRADE.insertText = "";
 QUARTERTRADE.body = "QUARTERTRADE";
+QUARTERTRADE.type = MyCompletionType.Function;
 QUARTERTRADE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 QUARTERTRADE.functionType = MyCompletionFunctionType.CalculationControlFunction;
+QUARTERTRADE.returnType = MyCompletionReturnType.None;
+QUARTERTRADE.parameters = MyCompletion.createParametersFromStrings([]);
 QUARTERTRADE.detail = "季内交易函数";
 QUARTERTRADE.documentation = `
 QUARTERTRADE,季内交易函数
@@ -6924,7 +7746,7 @@ QUARTERTRADE 模型中写入该函数，信号和资金每季度重新初始化�
 2、回测报告中的出金/入金，为每季度出金/入金的和。
 3、模型中不能同时使用DAYTRADE1\\DAYTRADE\\WEEKTRADE\\WEEKTRADE1\\MONTHTRADE\\QUARTERTRADE\\YEARTRADE函数。
 4、（1）历史回测中，当季K线走完持仓大于0，会对持仓进行全清处理。
-   （2）模组运行中，当季K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
+  （2）模组运行中，当季K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
 
 例：
 MA5^^MA(C,5);
@@ -6942,8 +7764,12 @@ const QUARTERTRADE1 = new MyCompletion();
 QUARTERTRADE1.label = "QUARTERTRADE1";
 QUARTERTRADE1.insertText = "";
 QUARTERTRADE1.body = "QUARTERTRADE1";
+QUARTERTRADE1.type = MyCompletionType.Function;
 QUARTERTRADE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-QUARTERTRADE1.functionType = MyCompletionFunctionType.CalculationControlFunction;
+QUARTERTRADE1.functionType =
+   MyCompletionFunctionType.CalculationControlFunction;
+QUARTERTRADE1.returnType = MyCompletionReturnType.None;
+QUARTERTRADE1.parameters = MyCompletion.createParametersFromStrings([]);
 QUARTERTRADE1.detail = "季内交易函数";
 QUARTERTRADE1.documentation = `
 QUARTERTRADE1季内交易函数，且历史数据不参与计算。
@@ -6957,7 +7783,7 @@ QUARTERTRADE1 模型中写入该函数，信号和资金每季重新初始化进
 2、回测报告中的出金/入金，为每季度出金/入金的和。
 3、模型中不能同时使用DAYTRADE1\\DAYTRADE\\WEEKTRADE\\WEEKTRADE1\\MONTHTRADE\\MONTHTRADE1\\QUARTERTRADE\\QUARTERTRADE1\\YEARTRADE\\YEARTRADE1函数。
 4、（1）历史回测中，当季K线走完持仓大于0，会对持仓进行全清处理。
-   （2）模组运行中，当季K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
+  （2）模组运行中，当季K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
 
 例：
 MA5^^MA(C,5);
@@ -6975,8 +7801,11 @@ const RAND = new MyCompletion();
 RAND.label = "RAND";
 RAND.insertText = "";
 RAND.body = "RAND";
+RAND.type = MyCompletionType.Function;
 RAND.marketType = MyCompletionMarketType.BasicFunction;
 RAND.functionType = MyCompletionFunctionType.MathFunction;
+RAND.returnType = MyCompletionReturnType.None;
+RAND.parameters = MyCompletion.createParametersFromStrings([]);
 RAND.detail = "产生随机数的随机函数";
 RAND.documentation = `
 RAND(X,Y)产生随机数的随机函数,返回范围在X到Y之间的随机数。
@@ -6998,8 +7827,11 @@ const RANGE = new MyCompletion();
 RANGE.label = "RANGE";
 RANGE.insertText = "";
 RANGE.body = "RANGE( , , )";
+RANGE.type = MyCompletionType.Function;
 RANGE.marketType = MyCompletionMarketType.BasicFunction;
 RANGE.functionType = MyCompletionFunctionType.MathFunction;
+RANGE.returnType = MyCompletionReturnType.None;
+RANGE.parameters = MyCompletion.createParametersFromStrings([]);
 RANGE.detail = "范围";
 RANGE.documentation = `
 RANGE(A,B,C),判断是否A大于B同时小于C，如果是则返回1，否则返回0
@@ -7021,8 +7853,11 @@ const RAWDATA = new MyCompletion();
 RAWDATA.label = "RAWDATA";
 RAWDATA.insertText = "";
 RAWDATA.body = "RAWDATA(  )";
+RAWDATA.type = MyCompletionType.Function;
 RAWDATA.marketType = MyCompletionMarketType.BasicFunction;
 RAWDATA.functionType = MyCompletionFunctionType.CandlestickDataReference;
+RAWDATA.returnType = MyCompletionReturnType.None;
+RAWDATA.parameters = MyCompletion.createParametersFromStrings([]);
 RAWDATA.detail = "取原始数据的值";
 RAWDATA.documentation = `
 RAWDATA()，取原始数据的高开低收
@@ -7046,8 +7881,11 @@ const REF = new MyCompletion();
 REF.label = "REF";
 REF.insertText = "";
 REF.body = "REF( , )";
+REF.type = MyCompletionType.Function;
 REF.marketType = MyCompletionMarketType.BasicFunction;
 REF.functionType = MyCompletionFunctionType.CandlestickDataReference;
+REF.returnType = MyCompletionReturnType.None;
+REF.parameters = MyCompletion.createParametersFromStrings([]);
 REF.detail = "向前引用";
 REF.documentation = `
 REF(X,N),取X在N个周期前的值
@@ -7060,7 +7898,7 @@ REF(X,N),取X在N个周期前的值
 4、N可以为变量
 
 例1:
- REF(CLOSE,5);表示引用当前周期前第5个周期的收盘价
+REF(CLOSE,5);表示引用当前周期前第5个周期的收盘价
 例2：
 AA:IFELSE(BARSBK>=1,REF(C,BARSBK),C);//取最近一次买开仓信号K线的收盘价
 //1）发出BK信号的当根k线BARSBK返回空值,则发出BK信号的当根k线REF(C,BARSBK)返回
@@ -7076,8 +7914,11 @@ const REFLINE = new MyCompletion();
 REFLINE.label = "REFLINE";
 REFLINE.insertText = "";
 REFLINE.body = "REFLINE";
+REFLINE.type = MyCompletionType.Function;
 REFLINE.marketType = MyCompletionMarketType.BasicFunction;
 REFLINE.functionType = MyCompletionFunctionType.DrawingFunction;
+REFLINE.returnType = MyCompletionReturnType.None;
+REFLINE.parameters = MyCompletion.createParametersFromStrings([]);
 REFLINE.detail = "设定指标参考线";
 REFLINE.documentation = `
 REFLINE设定指标参考线
@@ -7102,8 +7943,11 @@ const REFLINE1 = new MyCompletion();
 REFLINE1.label = "REFLINE1";
 REFLINE1.insertText = "";
 REFLINE1.body = "REFLINE1";
+REFLINE1.type = MyCompletionType.Function;
 REFLINE1.marketType = MyCompletionMarketType.BasicFunction;
 REFLINE1.functionType = MyCompletionFunctionType.DrawingFunction;
+REFLINE1.returnType = MyCompletionReturnType.None;
+REFLINE1.parameters = MyCompletion.createParametersFromStrings([]);
 REFLINE1.detail = "设定指标参考线";
 REFLINE1.documentation = `
 REFLINE1设定指标参考线
@@ -7128,8 +7972,11 @@ const REFSIG_PLACE = new MyCompletion();
 REFSIG_PLACE.label = "REFSIG_PLACE";
 REFSIG_PLACE.insertText = "";
 REFSIG_PLACE.body = "REFSIG_PLACE( , )";
+REFSIG_PLACE.type = MyCompletionType.Function;
 REFSIG_PLACE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 REFSIG_PLACE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+REFSIG_PLACE.returnType = MyCompletionReturnType.None;
+REFSIG_PLACE.parameters = MyCompletion.createParametersFromStrings([]);
 REFSIG_PLACE.detail = "判断指定信号的K线位置";
 REFSIG_PLACE.documentation = `
 REFSIG_PLACE(Sig,N)判断从当根K线开始倒数第N个固定的Sig信号所在K线的位置
@@ -7152,8 +7999,11 @@ const REFSIG_PRICE = new MyCompletion();
 REFSIG_PRICE.label = "REFSIG_PRICE";
 REFSIG_PRICE.insertText = "";
 REFSIG_PRICE.body = "REFSIG_PRICE( , )";
+REFSIG_PRICE.type = MyCompletionType.Function;
 REFSIG_PRICE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 REFSIG_PRICE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+REFSIG_PRICE.returnType = MyCompletionReturnType.None;
+REFSIG_PRICE.parameters = MyCompletion.createParametersFromStrings([]);
 REFSIG_PRICE.detail = "判断指定信号的信号价位";
 REFSIG_PRICE.documentation = `
 REFSIG_PRICE(Sig,N)返回从当根K线开始倒数第N个固定的Sig信号的信号价位
@@ -7175,8 +8025,11 @@ const REFSIG_PRICE1 = new MyCompletion();
 REFSIG_PRICE1.label = "REFSIG_PRICE1";
 REFSIG_PRICE1.insertText = "";
 REFSIG_PRICE1.body = "REFSIG_PRICE1( , )";
+REFSIG_PRICE1.type = MyCompletionType.Function;
 REFSIG_PRICE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 REFSIG_PRICE1.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+REFSIG_PRICE1.returnType = MyCompletionReturnType.None;
+REFSIG_PRICE1.parameters = MyCompletion.createParametersFromStrings([]);
 REFSIG_PRICE1.detail = "判断指定信号的委托价格";
 REFSIG_PRICE1.documentation = `
 REFSIG_PRICE1(Sig,N)返回从当根K线开始倒数第N个固定的Sig信号的委托价格
@@ -7205,8 +8058,11 @@ const REFSIG_PRICE2 = new MyCompletion();
 REFSIG_PRICE2.label = "REFSIG_PRICE2";
 REFSIG_PRICE2.insertText = "";
 REFSIG_PRICE2.body = "REFSIG_PRICE2( , )";
+REFSIG_PRICE2.type = MyCompletionType.Function;
 REFSIG_PRICE2.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 REFSIG_PRICE2.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+REFSIG_PRICE2.returnType = MyCompletionReturnType.None;
+REFSIG_PRICE2.parameters = MyCompletion.createParametersFromStrings([]);
 REFSIG_PRICE2.detail = "判断指定信号的成交价格";
 REFSIG_PRICE2.documentation = `
 REFSIG_PRICE2(Sig,N)返回从当根K线开始倒数第N个固定的Sig信号的成交价格
@@ -7238,8 +8094,11 @@ const REFSIG_VOL = new MyCompletion();
 REFSIG_VOL.label = "REFSIG_VOL";
 REFSIG_VOL.insertText = "";
 REFSIG_VOL.body = "REFSIG_VOL( , )";
+REFSIG_VOL.type = MyCompletionType.Function;
 REFSIG_VOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 REFSIG_VOL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+REFSIG_VOL.returnType = MyCompletionReturnType.None;
+REFSIG_VOL.parameters = MyCompletion.createParametersFromStrings([]);
 REFSIG_VOL.detail = "判断指定信号的手数";
 REFSIG_VOL.documentation = `
 REFSIG_VOL(Sig,N)返回从当根K线开始倒数第N个固定的Sig信号的信号手数(反手指令取开仓手数)
@@ -7261,8 +8120,11 @@ const REFWH = new MyCompletion();
 REFWH.label = "REFWH";
 REFWH.insertText = "";
 REFWH.body = "REFWH( , )";
+REFWH.type = MyCompletionType.Function;
 REFWH.marketType = MyCompletionMarketType.BasicFunction;
 REFWH.functionType = MyCompletionFunctionType.CandlestickDataReference;
+REFWH.returnType = MyCompletionReturnType.None;
+REFWH.parameters = MyCompletion.createParametersFromStrings([]);
 REFWH.detail = "向前引用";
 REFWH.documentation = `
 REFWH(X,N),取X在N个周期前的值
@@ -7282,8 +8144,11 @@ const REVERSE = new MyCompletion();
 REVERSE.label = "REVERSE";
 REVERSE.insertText = "";
 REVERSE.body = "REVERSE( )";
+REVERSE.type = MyCompletionType.Function;
 REVERSE.marketType = MyCompletionMarketType.BasicFunction;
 REVERSE.functionType = MyCompletionFunctionType.MathFunction;
+REVERSE.returnType = MyCompletionReturnType.None;
+REVERSE.parameters = MyCompletion.createParametersFromStrings([]);
 REVERSE.detail = "取相反值";
 REVERSE.documentation = `
 REVERSE(X)，取－X
@@ -7301,8 +8166,11 @@ const ROUND = new MyCompletion();
 ROUND.label = "ROUND";
 ROUND.insertText = "";
 ROUND.body = "ROUND( , )";
+ROUND.type = MyCompletionType.Function;
 ROUND.marketType = MyCompletionMarketType.BasicFunction;
 ROUND.functionType = MyCompletionFunctionType.MathFunction;
+ROUND.returnType = MyCompletionReturnType.None;
+ROUND.parameters = MyCompletion.createParametersFromStrings([]);
 ROUND.detail = "指定位数四舍五入";
 ROUND.documentation = `
 ROUND(N,M),对N指定M位小数进行四舍五入
@@ -7326,8 +8194,11 @@ const SAR = new MyCompletion();
 SAR.label = "SAR";
 SAR.insertText = "";
 SAR.body = "SAR( , , )";
+SAR.type = MyCompletionType.Function;
 SAR.marketType = MyCompletionMarketType.BasicFunction;
 SAR.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+SAR.returnType = MyCompletionReturnType.None;
+SAR.parameters = MyCompletion.createParametersFromStrings([]);
 SAR.detail = "抛物转向";
 SAR.documentation = `
 SAR(N,Step,Max)，取抛物转向值N为周期数，Step为步长，Max为极值
@@ -7358,8 +8229,11 @@ const SAR1 = new MyCompletion();
 SAR1.label = "SAR1";
 SAR1.insertText = "";
 SAR1.body = "SAR1( , , )";
+SAR1.type = MyCompletionType.Function;
 SAR1.marketType = MyCompletionMarketType.BasicFunction;
 SAR1.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+SAR1.returnType = MyCompletionReturnType.None;
+SAR1.parameters = MyCompletion.createParametersFromStrings([]);
 SAR1.detail = "抛物转向";
 SAR1.documentation = `
 SAR1(N,Step,Max)，取抛物转向值N为周期数，Step为步长，Max为极值
@@ -7394,8 +8268,11 @@ const SCALE = new MyCompletion();
 SCALE.label = "SCALE";
 SCALE.insertText = "";
 SCALE.body = "SCALE";
+SCALE.type = MyCompletionType.Function;
 SCALE.marketType = MyCompletionMarketType.BasicFunction;
 SCALE.functionType = MyCompletionFunctionType.CandlestickDataReference;
+SCALE.returnType = MyCompletionReturnType.None;
+SCALE.parameters = MyCompletion.createParametersFromStrings([]);
 SCALE.detail = "取得K线图主动买占总成交量的比例";
 SCALE.documentation = `
 SCALE返回主动买占总成交量的比例
@@ -7412,8 +8289,11 @@ const SEEK = new MyCompletion();
 SEEK.label = "SEEK";
 SEEK.insertText = "";
 SEEK.body = "Seek";
+SEEK.type = MyCompletionType.Function;
 SEEK.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 SEEK.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+SEEK.returnType = MyCompletionReturnType.None;
+SEEK.parameters = MyCompletion.createParametersFromStrings([]);
 SEEK.detail = "标签统计函数";
 SEEK.documentation = `
 SEEK(Cond)标签统计函数Cond为需要满足的条件
@@ -7437,8 +8317,11 @@ const SELECT = new MyCompletion();
 SELECT.label = "SELECT";
 SELECT.insertText = "";
 SELECT.body = "SELECT";
+SELECT.type = MyCompletionType.Function;
 SELECT.marketType = MyCompletionMarketType.StockSelectionFunction;
 SELECT.functionType = MyCompletionFunctionType.FormulaBasedSelection;
+SELECT.returnType = MyCompletionReturnType.None;
+SELECT.parameters = MyCompletion.createParametersFromStrings([]);
 SELECT.detail = "公式选股";
 SELECT.documentation = `
 SELECT公式选股
@@ -7466,8 +8349,12 @@ const SETDEALPERCENT = new MyCompletion();
 SETDEALPERCENT.label = "SETDEALPERCENT";
 SETDEALPERCENT.insertText = "";
 SETDEALPERCENT.body = "SETDEALPERCENT";
+SETDEALPERCENT.type = MyCompletionType.Function;
 SETDEALPERCENT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-SETDEALPERCENT.functionType = MyCompletionFunctionType.PositionManagementFunction;
+SETDEALPERCENT.functionType =
+   MyCompletionFunctionType.PositionManagementFunction;
+SETDEALPERCENT.returnType = MyCompletionReturnType.None;
+SETDEALPERCENT.parameters = MyCompletion.createParametersFromStrings([]);
 SETDEALPERCENT.detail = "按理论资金比例下单";
 SETDEALPERCENT.documentation = `
 SETDEALPERCENT(fPercent,N)，每次按当前理论资金的fPercent比例下单，且最大为N手。
@@ -7495,8 +8382,11 @@ const SETEXPIREDATE = new MyCompletion();
 SETEXPIREDATE.label = "SETEXPIREDATE";
 SETEXPIREDATE.insertText = "";
 SETEXPIREDATE.body = "SETEXPIREDATE()";
+SETEXPIREDATE.type = MyCompletionType.Function;
 SETEXPIREDATE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 SETEXPIREDATE.functionType = MyCompletionFunctionType.EncryptionOutputFunction;
+SETEXPIREDATE.returnType = MyCompletionReturnType.None;
+SETEXPIREDATE.parameters = MyCompletion.createParametersFromStrings([]);
 SETEXPIREDATE.detail = "设置加密模型的使用有效期的到期时间";
 SETEXPIREDATE.documentation = `
 SETEXPIREDATE('yyyymmdd')设置加密模型的使用有效期的到期时间
@@ -7522,8 +8412,11 @@ const SETMOVEOPIPRICE = new MyCompletion();
 SETMOVEOPIPRICE.label = "SETMOVEOPIPRICE";
 SETMOVEOPIPRICE.insertText = "";
 SETMOVEOPIPRICE.body = "SETMOVEOPIPRICE()";
+SETMOVEOPIPRICE.type = MyCompletionType.Function;
 SETMOVEOPIPRICE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 SETMOVEOPIPRICE.functionType = MyCompletionFunctionType.SignalExecutionFunction;
+SETMOVEOPIPRICE.returnType = MyCompletionReturnType.None;
+SETMOVEOPIPRICE.parameters = MyCompletion.createParametersFromStrings([]);
 SETMOVEOPIPRICE.detail = "设置模组换月移仓的委托方式";
 SETMOVEOPIPRICE.documentation = `
 SETMOVEOPIPRICE(PRICE),设置模组换月移仓的委托方式，PRICE为价格方式
@@ -7555,8 +8448,11 @@ const SETQUOTACCOUNT = new MyCompletion();
 SETQUOTACCOUNT.label = "SETQUOTACCOUNT";
 SETQUOTACCOUNT.insertText = "";
 SETQUOTACCOUNT.body = "SETQUOTACCOUNT()";
+SETQUOTACCOUNT.type = MyCompletionType.Function;
 SETQUOTACCOUNT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 SETQUOTACCOUNT.functionType = MyCompletionFunctionType.EncryptionOutputFunction;
+SETQUOTACCOUNT.returnType = MyCompletionReturnType.None;
+SETQUOTACCOUNT.parameters = MyCompletion.createParametersFromStrings([]);
 SETQUOTACCOUNT.detail = "设置模型加密输出使用者的文华行情账号";
 SETQUOTACCOUNT.documentation = `
 SETQUOTACCOUNT('ACCOUNT1')设置模型加密输出使用者的文华行情账号
@@ -7583,8 +8479,11 @@ const SETSIGPRICE = new MyCompletion();
 SETSIGPRICE.label = "SETSIGPRICE";
 SETSIGPRICE.insertText = "";
 SETSIGPRICE.body = "SETSIGPRICE( , )";
+SETSIGPRICE.type = MyCompletionType.Function;
 SETSIGPRICE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 SETSIGPRICE.functionType = MyCompletionFunctionType.SignalExecutionFunction;
+SETSIGPRICE.returnType = MyCompletionReturnType.None;
+SETSIGPRICE.parameters = MyCompletion.createParametersFromStrings([]);
 SETSIGPRICE.detail = "指定信号的下单价格";
 SETSIGPRICE.documentation = `
 SETSIGPRICE(SIG,PRICE),设置SIG指令的下单价格，PRICE为下单价格。
@@ -7625,8 +8524,11 @@ const SETSIGPRICETYPE = new MyCompletion();
 SETSIGPRICETYPE.label = "SETSIGPRICETYPE";
 SETSIGPRICETYPE.insertText = "";
 SETSIGPRICETYPE.body = "SETSIGPRICETYPE( , , )";
+SETSIGPRICETYPE.type = MyCompletionType.Function;
 SETSIGPRICETYPE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 SETSIGPRICETYPE.functionType = MyCompletionFunctionType.SignalExecutionFunction;
+SETSIGPRICETYPE.returnType = MyCompletionReturnType.None;
+SETSIGPRICETYPE.parameters = MyCompletion.createParametersFromStrings([]);
 SETSIGPRICETYPE.detail = "设置信号的委托价格方式";
 SETSIGPRICETYPE.documentation = `
 SETSIGPRICETYPE(SIG,PRICE,IsCancel),设置SIG指令的委托价格方式，PRICE为委托价格方式，IsCancel为是否启用终止下单。
@@ -7653,8 +8555,8 @@ SETSIGPRICETYPE(SIG,PRICE,IsCancel),设置信号的委托价格方式
 （2）终止下单不考虑小节休息。
 （3）BP、SP、BPK、SPK信号不支持CANCEL_ORDER设置。
 4、在进行历史回测时
- A：收盘价模型回测，信号价格为信号所在K线的收盘价。
- B：指令价模型回测，信号价格为出现信号时的最新价。
+A：收盘价模型回测，信号价格为信号所在K线的收盘价。
+B：指令价模型回测，信号价格为出现信号时的最新价。
 5、模型中未设置指令委托价格和委托方式时，按照下单主界面-参数设置-程序化参数中的设置进行委托。
 6、因信号消失产生的指令用市价委托。
 
@@ -7674,8 +8576,11 @@ const SETSTYLECOLOR = new MyCompletion();
 SETSTYLECOLOR.label = "SETSTYLECOLOR";
 SETSTYLECOLOR.insertText = "";
 SETSTYLECOLOR.body = "SETSTYLECOLOR( , )";
+SETSTYLECOLOR.type = MyCompletionType.Function;
 SETSTYLECOLOR.marketType = MyCompletionMarketType.BasicFunction;
 SETSTYLECOLOR.functionType = MyCompletionFunctionType.DrawingFunction;
+SETSTYLECOLOR.returnType = MyCompletionReturnType.None;
+SETSTYLECOLOR.parameters = MyCompletion.createParametersFromStrings([]);
 SETSTYLECOLOR.detail = "线型的粗细和颜色控制";
 SETSTYLECOLOR.documentation = `
 SETSTYLECOLOR(LINETHICK,COLOR);设置线型的粗细和颜色LINETHICK表示线形的粗细，可以使用LINETHICK1——LINETHICK7；COLOR为颜色
@@ -7692,15 +8597,18 @@ SETSTYLECOLOR(STYLE,COLOR);
 5、不支持将该函数直接定义为变量，即不支持下面的写法：A:SETSTYLECOLOR(LINETHICK5,COLORGREEN);
 
 例1：
- A:C,SETSTYLECOLOR(LINETHICK5,COLORGREEN);//以绿色LINETHICK5的粗细大小画收盘价连线。
+A:C,SETSTYLECOLOR(LINETHICK5,COLORGREEN);//以绿色LINETHICK5的粗细大小画收盘价连线。
 `;
 
 const SETTLE = new MyCompletion();
 SETTLE.label = "SETTLE";
 SETTLE.insertText = "";
 SETTLE.body = "SETTLE";
+SETTLE.type = MyCompletionType.Function;
 SETTLE.marketType = MyCompletionMarketType.BasicFunction;
 SETTLE.functionType = MyCompletionFunctionType.CandlestickDataReference;
+SETTLE.returnType = MyCompletionReturnType.None;
+SETTLE.parameters = MyCompletion.createParametersFromStrings([]);
 SETTLE.detail = "取得K线图的结算价或者取得当日成交均价";
 SETTLE.documentation = `
 SETTLE求到某根k线的结算价
@@ -7720,8 +8628,12 @@ const SETTRADEACCOUNT = new MyCompletion();
 SETTRADEACCOUNT.label = "SETTRADEACCOUNT";
 SETTRADEACCOUNT.insertText = "";
 SETTRADEACCOUNT.body = "SETTRADEACCOUNT()";
+SETTRADEACCOUNT.type = MyCompletionType.Function;
 SETTRADEACCOUNT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-SETTRADEACCOUNT.functionType = MyCompletionFunctionType.EncryptionOutputFunction;
+SETTRADEACCOUNT.functionType =
+   MyCompletionFunctionType.EncryptionOutputFunction;
+SETTRADEACCOUNT.returnType = MyCompletionReturnType.None;
+SETTRADEACCOUNT.parameters = MyCompletion.createParametersFromStrings([]);
 SETTRADEACCOUNT.detail = "设置模型加密输出使用者交易的资金账号";
 SETTRADEACCOUNT.documentation = `
 SETTRADEACCOUNT('ACCOUNT1')设置模型加密输出使用者交易的资金账号
@@ -7748,8 +8660,11 @@ const SGN = new MyCompletion();
 SGN.label = "SGN";
 SGN.insertText = "";
 SGN.body = "SGN( )";
+SGN.type = MyCompletionType.Function;
 SGN.marketType = MyCompletionMarketType.BasicFunction;
 SGN.functionType = MyCompletionFunctionType.MathFunction;
+SGN.returnType = MyCompletionReturnType.None;
+SGN.parameters = MyCompletion.createParametersFromStrings([]);
 SGN.detail = "取符号";
 SGN.documentation = `
 SGN(X)，判断X正负数（若X>0返回1,若X<0返回-1,否则返回0）
@@ -7767,8 +8682,11 @@ const SIGNUM = new MyCompletion();
 SIGNUM.label = "SIGNUM";
 SIGNUM.insertText = "";
 SIGNUM.body = "SIGNUM";
+SIGNUM.type = MyCompletionType.Function;
 SIGNUM.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 SIGNUM.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+SIGNUM.returnType = MyCompletionReturnType.None;
+SIGNUM.parameters = MyCompletion.createParametersFromStrings([]);
 SIGNUM.detail = "定位一次交易过程中的信号位置";
 SIGNUM.documentation = `
 SIGNUM，返回值为当前信号为一次交易过程中的第几个信号
@@ -7789,8 +8707,11 @@ const SIGVOL = new MyCompletion();
 SIGVOL.label = "SIGVOL";
 SIGVOL.insertText = "";
 SIGVOL.body = "SIGVOL()";
+SIGVOL.type = MyCompletionType.Function;
 SIGVOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 SIGVOL.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+SIGVOL.returnType = MyCompletionReturnType.None;
+SIGVOL.parameters = MyCompletion.createParametersFromStrings([]);
 SIGVOL.detail = "一次交易中指定信号的下单手数";
 SIGVOL.documentation = `
 SIGVOL(N),返回一次交易中第N个信号的下单手数
@@ -7818,8 +8739,11 @@ const SIN = new MyCompletion();
 SIN.label = "SIN";
 SIN.insertText = "";
 SIN.body = "SIN( )";
+SIN.type = MyCompletionType.Function;
 SIN.marketType = MyCompletionMarketType.BasicFunction;
 SIN.functionType = MyCompletionFunctionType.MathFunction;
+SIN.returnType = MyCompletionReturnType.None;
+SIN.parameters = MyCompletion.createParametersFromStrings([]);
 SIN.detail = "求正弦";
 SIN.documentation = `
 SIN(X)，求X的正弦值
@@ -7839,8 +8763,11 @@ const SKEWNESS = new MyCompletion();
 SKEWNESS.label = "SKEWNESS";
 SKEWNESS.insertText = "";
 SKEWNESS.body = "SKEWNESS( , )";
+SKEWNESS.type = MyCompletionType.Function;
 SKEWNESS.marketType = MyCompletionMarketType.BasicFunction;
 SKEWNESS.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
+SKEWNESS.returnType = MyCompletionReturnType.None;
+SKEWNESS.parameters = MyCompletion.createParametersFromStrings([]);
 SKEWNESS.detail = "偏度系数";
 SKEWNESS.documentation = `
 SKEWNESS(X,N)求X在N个周期内的偏度系数
@@ -7867,8 +8794,11 @@ const SKHIGH = new MyCompletion();
 SKHIGH.label = "SKHIGH";
 SKHIGH.insertText = "";
 SKHIGH.body = "SKHIGH";
+SKHIGH.type = MyCompletionType.Function;
 SKHIGH.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 SKHIGH.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+SKHIGH.returnType = MyCompletionReturnType.None;
+SKHIGH.parameters = MyCompletion.createParametersFromStrings([]);
 SKHIGH.detail = "返回数据合约卖开仓以来的最高价";
 SKHIGH.documentation = `
 SKHIGH,返回数据合约卖开仓以来的最高价
@@ -7877,8 +8807,8 @@ SKHIGH,返回数据合约卖开仓以来的最高价
 SKHIGH返回数据合约最近一次模型卖开位置到当前的最高价。
 1、不同信号执行方式，其返回值分别为：
 （1）K线走完确认信号下单
-   a.历史信号计算中，SK(SPK)信号之后的K线返回委托以来的数据合约行情的最高价
-   b.加载运行过程中，SK(SPK)信号当根K线返回上个SK(SPK)信号发出以来的数据合约行情最高价，SK之后的K线返回委托以来的数据合约行情最高价
+  a.历史信号计算中，SK(SPK)信号之后的K线返回委托以来的数据合约行情的最高价
+  b.加载运行过程中，SK(SPK)信号当根K线返回上个SK(SPK)信号发出以来的数据合约行情最高价，SK之后的K线返回委托以来的数据合约行情最高价
 （2）信号执行方式选择K线走完复核（例如：在模型中写入CHECKSIG(SK,'A',0,'D',0,0);）
 从SK(SPK)信号发出时开始统计数据合约行情的最高价；信号消失，返回上次卖开以来的数据合约行情的最高价，信号确认存在，返回当根K线记录的数据合约行情的最高价
 注：SK信号发出后，中间出了信号消失，从最后一次信号出现开始统计数据合约最高价
@@ -7897,8 +8827,11 @@ const SKLOW = new MyCompletion();
 SKLOW.label = "SKLOW";
 SKLOW.insertText = "";
 SKLOW.body = "SKLOW";
+SKLOW.type = MyCompletionType.Function;
 SKLOW.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 SKLOW.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+SKLOW.returnType = MyCompletionReturnType.None;
+SKLOW.parameters = MyCompletion.createParametersFromStrings([]);
 SKLOW.detail = "返回数据合约卖开仓以来的最低价";
 SKLOW.documentation = `
 SKLOW,返回数据合约卖开仓以来的最低价
@@ -7907,8 +8840,8 @@ SKLOW,返回数据合约卖开仓以来的最低价
 SKLOW返回数据合约最近一次模型卖开位置到当前的最低价。
 1、不同信号执行方式，其返回值分别为：
 （1）K线走完确认信号下单
-   a.历史信号计算中，SK(SPK)信号之后的K线返回委托以来的数据合约行情的最低价
-   b.加载运行过程中，SK(SPK)信号当根K线返回上个SK(SPK)信号发出以来的数据合约行情最低价，SK之后的K线返回委托以来的数据合约行情最低价
+  a.历史信号计算中，SK(SPK)信号之后的K线返回委托以来的数据合约行情的最低价
+  b.加载运行过程中，SK(SPK)信号当根K线返回上个SK(SPK)信号发出以来的数据合约行情最低价，SK之后的K线返回委托以来的数据合约行情最低价
 （2）信号执行方式选择K线走完复核（例如：在模型中写入CHECKSIG(SK,'A',0,'D',0,0);），从SK(SPK)信号发出时行情时开始统计数据合约行情的最低价；信号消失，返回上次卖开以来的数据合约行情的最低价，信号确认存在，返回当根K线记录的数据合约行情的最低价
 注：SK信号发出后，中间出了信号消失，从最后一次信号出现开始统计数据合约最低价
 （3）信号执行方式选择不进行信号复核（例如：在模型中写入MULTSIG或MULTSIG_MIN;）
@@ -7926,8 +8859,11 @@ const SKPRICE = new MyCompletion();
 SKPRICE.label = "SKPRICE";
 SKPRICE.insertText = "";
 SKPRICE.body = "SKPRICE";
+SKPRICE.type = MyCompletionType.Function;
 SKPRICE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 SKPRICE.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+SKPRICE.returnType = MyCompletionReturnType.None;
+SKPRICE.parameters = MyCompletion.createParametersFromStrings([]);
 SKPRICE.detail = "返回数据合约最近一次卖开信号价位";
 SKPRICE.documentation = `
 SKPRICE，返回数据合约最近一次卖开信号价位
@@ -7941,14 +8877,14 @@ SKPRICE 返回数据合约最近一次卖开信号发出时的行情的最新价
 2、当模型存在连续多个开仓信号(加仓)的情况下，该函数返回的是最近一次开仓信号的价格,而不是开仓均价。
 3、不同信号执行方式，其返回值分别为：
 （1）信号执行方式为不进行信号复核
-    a.历史回测：SKPRICE返回信号发出时的数据合约行情最新价
-    b.模组运行：SKPRICE返回信号发出时的数据合约行情最新价
+   a.历史回测：SKPRICE返回信号发出时的数据合约行情最新价
+   b.模组运行：SKPRICE返回信号发出时的数据合约行情最新价
 （2）信号执行方式选择K线走完确认信号下单
-    a.历史回测：SKPRICE返回信号发出时数据合约当根K线的收盘价
-    b.模组运行：SKPRICE返回信号发出时数据合约当根K线的收盘价
+   a.历史回测：SKPRICE返回信号发出时数据合约当根K线的收盘价
+   b.模组运行：SKPRICE返回信号发出时数据合约当根K线的收盘价
 （3）信号执行方式设置为K线走完进行信号复核
-    a.历史回测：SKPRICE返回信号发出时数据合约当根K线的收盘价
-    b.模组运行：复核前，返回上一次SK信号当根K线数据合约的行情最新价；复核后，返回本次SK信号当根K线数据合约的行情最新价
+   a.历史回测：SKPRICE返回信号发出时数据合约当根K线的收盘价
+   b.模组运行：复核前，返回上一次SK信号当根K线数据合约的行情最新价；复核后，返回本次SK信号当根K线数据合约的行情最新价
 4、当模组自动初始化时，SKPRICE返回的为上一次卖开信号时数据合约行情的最新价。
 5、模组重新初始化后，数据合约和交易合约相同，则SKPRICE返回为初始化弹出框中填入的持仓价格；数据合约与交易合约不同时，则SKPRICE返回初始化弹出框中填入的数据合约信号价。
 6、加载在主连合约上，使用了换月移仓函数，主力换月后SKPRCIE取值为新的主力合约的第一根K线的开盘价
@@ -7961,8 +8897,11 @@ const SKPRICE1 = new MyCompletion();
 SKPRICE1.label = "SKPRICE1";
 SKPRICE1.insertText = "";
 SKPRICE1.body = "SKPRICE1";
+SKPRICE1.type = MyCompletionType.Function;
 SKPRICE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 SKPRICE1.functionType = MyCompletionFunctionType.SignalLoggingFunction;
+SKPRICE1.returnType = MyCompletionReturnType.None;
+SKPRICE1.parameters = MyCompletion.createParametersFromStrings([]);
 SKPRICE1.detail = "返回交易合约最近一次卖开信号价位";
 SKPRICE1.documentation = `
 SKPRICE1，返回交易合约最近一次卖开信号价位
@@ -7975,14 +8914,14 @@ SKPRICE1：返回交易合约最近一次卖开信号发出时的行情的最新
 1、当数据合约和交易合约相同时SKPRICE值和SKPRICE1值相等。
 2、当数据合约和交易合约不同时，不同信号执行方式，其返回值分别为：
 （1）信号执行方式为不进行信号复核
-   a.历史回测：SKPRICE1返回信号发出时的交易合约行情最新价
-   b.模组运行：SKPRICE1返回信号发出时的交易合约行情最新价
+  a.历史回测：SKPRICE1返回信号发出时的交易合约行情最新价
+  b.模组运行：SKPRICE1返回信号发出时的交易合约行情最新价
 （2）信号执行方式选择K线走完确认信号下单
-    a.历史回测：SKPRICE1返回信号发出时交易合约当根K线的收盘价
-    b.模组运行：SKPRICE1返回信号发出时交易合约当根K线的收盘价
+   a.历史回测：SKPRICE1返回信号发出时交易合约当根K线的收盘价
+   b.模组运行：SKPRICE1返回信号发出时交易合约当根K线的收盘价
 （3）信号执行方式设置为K线走完进行信号复核
-    a.历史回测：SKPRICE1返回信号发出时交易合约当根K线的收盘价
-    b.模组运行：复核前，返回上一次SK信号当根K线交易合约的行情最新价；复核后，返回本次SK信号当根K线交易合约的行情最新价
+   a.历史回测：SKPRICE1返回信号发出时交易合约当根K线的收盘价
+   b.模组运行：复核前，返回上一次SK信号当根K线交易合约的行情最新价；复核后，返回本次SK信号当根K线交易合约的行情最新价
 3、当模组自动初始化时，SKPRICE1取最近的SK信号发出时的交易合约行情的最新价；手动初始化时，SKPRICE1取初始化弹出框中填入的持仓价格。
 4、加载在加权/主连合约上，使用了换月移仓函数，主力换月后SKPRCIE1取值为新的主力合约的第一根K线的开盘价
 `;
@@ -7991,8 +8930,11 @@ const SKPRICEAV = new MyCompletion();
 SKPRICEAV.label = "SKPRICEAV";
 SKPRICEAV.insertText = "";
 SKPRICEAV.body = "SKPRICEAV";
+SKPRICEAV.type = MyCompletionType.Function;
 SKPRICEAV.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 SKPRICEAV.functionType = MyCompletionFunctionType.PositionManagementFunction;
+SKPRICEAV.returnType = MyCompletionReturnType.None;
+SKPRICEAV.parameters = MyCompletion.createParametersFromStrings([]);
 SKPRICEAV.detail = "返回数据合约空头开仓均价";
 SKPRICEAV.documentation = `
 SKPRICEAV返回数据合约空头开仓均价
@@ -8022,8 +8964,11 @@ const SKPRICEAV1 = new MyCompletion();
 SKPRICEAV1.label = "SKPRICEAV1";
 SKPRICEAV1.insertText = "";
 SKPRICEAV1.body = "SKPRICEAV1";
+SKPRICEAV1.type = MyCompletionType.Function;
 SKPRICEAV1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 SKPRICEAV1.functionType = MyCompletionFunctionType.PositionManagementFunction;
+SKPRICEAV1.returnType = MyCompletionReturnType.None;
+SKPRICEAV1.parameters = MyCompletion.createParametersFromStrings([]);
 SKPRICEAV1.detail = "返回交易合约空头开仓均价";
 SKPRICEAV1.documentation = `
 SKPRICEAV1交易合约空头开仓均价
@@ -8053,8 +8998,11 @@ const SKVOL = new MyCompletion();
 SKVOL.label = "SKVOL";
 SKVOL.insertText = "";
 SKVOL.body = "SKVOL";
+SKVOL.type = MyCompletionType.Function;
 SKVOL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 SKVOL.functionType = MyCompletionFunctionType.PositionManagementFunction;
+SKVOL.returnType = MyCompletionReturnType.None;
+SKVOL.parameters = MyCompletion.createParametersFromStrings([]);
 SKVOL.detail = "卖开信号手数";
 SKVOL.documentation = `
 SKVOL返回模型当前的空头理论持仓
@@ -8079,8 +9027,11 @@ const SKVOL2 = new MyCompletion();
 SKVOL2.label = "SKVOL2";
 SKVOL2.insertText = "";
 SKVOL2.body = "SKVOL2";
+SKVOL2.type = MyCompletionType.Function;
 SKVOL2.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 SKVOL2.functionType = MyCompletionFunctionType.PositionManagementFunction;
+SKVOL2.returnType = MyCompletionReturnType.None;
+SKVOL2.parameters = MyCompletion.createParametersFromStrings([]);
 SKVOL2.detail = "卖开信号手数";
 SKVOL2.documentation = `
 SKVOL2模组空头持仓
@@ -8105,8 +9056,11 @@ const SLOPE = new MyCompletion();
 SLOPE.label = "SLOPE";
 SLOPE.insertText = "";
 SLOPE.body = "SLOPE( , )";
+SLOPE.type = MyCompletionType.Function;
 SLOPE.marketType = MyCompletionMarketType.BasicFunction;
 SLOPE.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
+SLOPE.returnType = MyCompletionReturnType.None;
+SLOPE.parameters = MyCompletion.createParametersFromStrings([]);
 SLOPE.detail = "线性回归的斜率";
 SLOPE.documentation = `
 SLOPE(X,N)，求X的N周期的线型回归的斜率
@@ -8143,8 +9097,11 @@ const SMA = new MyCompletion();
 SMA.label = "SMA";
 SMA.insertText = "";
 SMA.body = "SMA( , , )";
+SMA.type = MyCompletionType.Function;
 SMA.marketType = MyCompletionMarketType.BasicFunction;
 SMA.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+SMA.returnType = MyCompletionReturnType.None;
+SMA.parameters = MyCompletion.createParametersFromStrings([]);
 SMA.detail = "扩展指数加权移动平均";
 SMA.documentation = `
 SMA(X,N,M)，求X的N个周期内的扩展指数加权移动平均。M为权重，N为周期数
@@ -8163,8 +9120,11 @@ const SMMA = new MyCompletion();
 SMMA.label = "SMMA";
 SMMA.insertText = "";
 SMMA.body = "SMMA(,)";
+SMMA.type = MyCompletionType.Function;
 SMMA.marketType = MyCompletionMarketType.BasicFunction;
 SMMA.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+SMMA.returnType = MyCompletionReturnType.None;
+SMMA.parameters = MyCompletion.createParametersFromStrings([]);
 SMMA.detail = "通畅移动平均";
 SMMA.documentation = `
 SMMA(X,N),表示当前K线上X在N个周期的通畅移动平均线
@@ -8180,8 +9140,11 @@ const SOLID = new MyCompletion();
 SOLID.label = "SOLID";
 SOLID.insertText = "";
 SOLID.body = "SOLID";
+SOLID.type = MyCompletionType.Function;
 SOLID.marketType = MyCompletionMarketType.BasicFunction;
 SOLID.functionType = MyCompletionFunctionType.DrawingFunction;
+SOLID.returnType = MyCompletionReturnType.None;
+SOLID.parameters = MyCompletion.createParametersFromStrings([]);
 SOLID.detail = "实心显示";
 SOLID.documentation = `
 SOLID,画实心柱线
@@ -8201,8 +9164,11 @@ const SORT = new MyCompletion();
 SORT.label = "SORT";
 SORT.insertText = "";
 SORT.body = "SORT";
+SORT.type = MyCompletionType.Function;
 SORT.marketType = MyCompletionMarketType.BasicFunction;
 SORT.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+SORT.returnType = MyCompletionReturnType.None;
+SORT.parameters = MyCompletion.createParametersFromStrings([]);
 SORT.detail = "取排序在相应位置的值";
 SORT.documentation = `
 SORT(TYPE,POS,N1,N2,...,N30);按升(降)序排列，取第POS个参数对应的数值
@@ -8221,8 +9187,11 @@ const SORTPOS = new MyCompletion();
 SORTPOS.label = "SORTPOS";
 SORTPOS.insertText = "";
 SORTPOS.body = "SORTPOS";
+SORTPOS.type = MyCompletionType.Function;
 SORTPOS.marketType = MyCompletionMarketType.BasicFunction;
 SORTPOS.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+SORTPOS.returnType = MyCompletionReturnType.None;
+SORTPOS.parameters = MyCompletion.createParametersFromStrings([]);
 SORTPOS.detail = "取排序后数值的位置";
 SORTPOS.documentation = `
 SORTPOS(Type,POS,N1,N2,...,N30);按升(降)序排列，取第POS个参数的原始位置
@@ -8243,8 +9212,11 @@ const SOUND = new MyCompletion();
 SOUND.label = "SOUND";
 SOUND.insertText = "";
 SOUND.body = "SOUND( )";
+SOUND.type = MyCompletionType.Function;
 SOUND.marketType = MyCompletionMarketType.BasicFunction;
 SOUND.functionType = MyCompletionFunctionType.DrawingFunction;
+SOUND.returnType = MyCompletionReturnType.None;
+SOUND.parameters = MyCompletion.createParametersFromStrings([]);
 SOUND.detail = "播放声音";
 SOUND.documentation = `
 SOUND('N')，播放声音'N'
@@ -8267,8 +9239,11 @@ const SPLIT = new MyCompletion();
 SPLIT.label = "SPLIT";
 SPLIT.insertText = "";
 SPLIT.body = "SPLIT()";
+SPLIT.type = MyCompletionType.Function;
 SPLIT.marketType = MyCompletionMarketType.BasicFunction;
 SPLIT.functionType = MyCompletionFunctionType.StockDataFunction;
+SPLIT.returnType = MyCompletionReturnType.None;
+SPLIT.parameters = MyCompletion.createParametersFromStrings([]);
 SPLIT.detail = "返回之前第N次除权(送股或配股)的除权比例";
 SPLIT.documentation = `
 SPLIT(N)返回之前第N次除权(送股或配股)的除权比例
@@ -8298,8 +9273,11 @@ const SPLITBARS = new MyCompletion();
 SPLITBARS.label = "SPLITBARS";
 SPLITBARS.insertText = "";
 SPLITBARS.body = "SPLITBARS()";
+SPLITBARS.type = MyCompletionType.Function;
 SPLITBARS.marketType = MyCompletionMarketType.BasicFunction;
 SPLITBARS.functionType = MyCompletionFunctionType.StockDataFunction;
+SPLITBARS.returnType = MyCompletionReturnType.None;
+SPLITBARS.parameters = MyCompletion.createParametersFromStrings([]);
 SPLITBARS.detail = "返回从之前第N个除权日到当前的周期数";
 SPLITBARS.documentation = `
 SPLITBARS(N)返回从之前第N次除权到当前的周期数
@@ -8322,8 +9300,11 @@ const SQRT = new MyCompletion();
 SQRT.label = "SQRT";
 SQRT.insertText = "";
 SQRT.body = "SQRT( )";
+SQRT.type = MyCompletionType.Function;
 SQRT.marketType = MyCompletionMarketType.BasicFunction;
 SQRT.functionType = MyCompletionFunctionType.MathFunction;
+SQRT.returnType = MyCompletionReturnType.None;
+SQRT.parameters = MyCompletion.createParametersFromStrings([]);
 SQRT.detail = "平方根";
 SQRT.documentation = `
 SQRT(X)，求X的平方根
@@ -8340,8 +9321,11 @@ const SQUARE = new MyCompletion();
 SQUARE.label = "SQUARE";
 SQUARE.insertText = "";
 SQUARE.body = "SQUARE( )";
+SQUARE.type = MyCompletionType.Function;
 SQUARE.marketType = MyCompletionMarketType.BasicFunction;
 SQUARE.functionType = MyCompletionFunctionType.MathFunction;
+SQUARE.returnType = MyCompletionReturnType.None;
+SQUARE.parameters = MyCompletion.createParametersFromStrings([]);
 SQUARE.detail = "平方";
 SQUARE.documentation = `
 SQUARE(X)，求X的平方
@@ -8357,8 +9341,11 @@ const STD = new MyCompletion();
 STD.label = "STD";
 STD.insertText = "";
 STD.body = "STD( , )";
+STD.type = MyCompletionType.Function;
 STD.marketType = MyCompletionMarketType.BasicFunction;
 STD.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
+STD.returnType = MyCompletionReturnType.None;
+STD.parameters = MyCompletion.createParametersFromStrings([]);
 STD.detail = "样本标准差";
 STD.documentation = `
 STD(X,N)，求X在N个周期内的样本标准差
@@ -8385,8 +9372,11 @@ const STDP = new MyCompletion();
 STDP.label = "STDP";
 STDP.insertText = "";
 STDP.body = "STDP( , )";
+STDP.type = MyCompletionType.Function;
 STDP.marketType = MyCompletionMarketType.BasicFunction;
 STDP.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
+STDP.returnType = MyCompletionReturnType.None;
+STDP.parameters = MyCompletion.createParametersFromStrings([]);
 STDP.detail = "总体标准差";
 STDP.documentation = `
 STDP(X,N)，求X的N日总体标准差
@@ -8406,7 +9396,7 @@ SQRT((SQUARE(C-MA(C,3))+SQUARE(REF(C,1)-MA(C,3))+SQUARE(REF(C,2)-MA(C,3)))/3);
 
 例：
 STDP(C,10)为收盘价的10周期总体标准差。
- 
+
 //总体标准差是反映研究总体内个体之间差异程度的一种统计指标，总体方差是一组资料中各数值与其算术平均数离差平方和的平均数，总体标准差则是总体方差的平方根。
 `;
 
@@ -8414,8 +9404,11 @@ const STICK = new MyCompletion();
 STICK.label = "STICK";
 STICK.insertText = "";
 STICK.body = "STICK(,,,,,)";
+STICK.type = MyCompletionType.Function;
 STICK.marketType = MyCompletionMarketType.BasicFunction;
 STICK.functionType = MyCompletionFunctionType.DrawingFunction;
+STICK.returnType = MyCompletionReturnType.None;
+STICK.parameters = MyCompletion.createParametersFromStrings([]);
 STICK.detail = "画指定粗细的柱线";
 STICK.documentation = `
 STICK(COND,P1,P2,N,COLOR,Empty);画指定粗细的柱线当满足COND时，在P1与P2之间画一条粗细为N、颜色为COLOR的柱状图若Empty不为0，则为空心柱；Empty为0，则为实心柱；N取值0-9
@@ -8433,8 +9426,11 @@ const STICKLINE = new MyCompletion();
 STICKLINE.label = "STICKLINE";
 STICKLINE.insertText = "";
 STICKLINE.body = "STICKLINE( , , , , )";
+STICKLINE.type = MyCompletionType.Function;
 STICKLINE.marketType = MyCompletionMarketType.BasicFunction;
 STICKLINE.functionType = MyCompletionFunctionType.DrawingFunction;
+STICKLINE.returnType = MyCompletionReturnType.None;
+STICKLINE.parameters = MyCompletion.createParametersFromStrings([]);
 STICKLINE.detail = "画柱线";
 STICKLINE.documentation = `
 STICKLINE(C,P1,P2,Color,Empty)当C条件满足时，从P1画到P2柱线
@@ -8456,8 +9452,11 @@ const STICKLINE1 = new MyCompletion();
 STICKLINE1.label = "STICKLINE1";
 STICKLINE1.insertText = "";
 STICKLINE1.body = "STICKLINE1( , , , , )";
+STICKLINE1.type = MyCompletionType.Function;
 STICKLINE1.marketType = MyCompletionMarketType.BasicFunction;
 STICKLINE1.functionType = MyCompletionFunctionType.DrawingFunction;
+STICKLINE1.returnType = MyCompletionReturnType.None;
+STICKLINE1.parameters = MyCompletion.createParametersFromStrings([]);
 STICKLINE1.detail = "画柱线";
 STICKLINE1.documentation = `
 STICKLINE1(C,P1,P2,Width,Empty)当C条件满足时，从P1画到P2柱线，Width为宽度，若Empty不为0，则为空心柱
@@ -8481,8 +9480,11 @@ const STKTYPE = new MyCompletion();
 STKTYPE.label = "STKTYPE";
 STKTYPE.insertText = "";
 STKTYPE.body = "STKTYPE";
+STKTYPE.type = MyCompletionType.Function;
 STKTYPE.marketType = MyCompletionMarketType.BasicFunction;
 STKTYPE.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+STKTYPE.returnType = MyCompletionReturnType.None;
+STKTYPE.parameters = MyCompletion.createParametersFromStrings([]);
 STKTYPE.detail = "取市场类型";
 STKTYPE.documentation = `
 STKTYPE取市场类型，1为国内股票、2为美国股票、6为外汇、7为国内期货、8为国内期权、9为外盘、5为其它
@@ -8500,8 +9502,11 @@ const STOCKDIVD = new MyCompletion();
 STOCKDIVD.label = "STOCKDIVD";
 STOCKDIVD.insertText = "";
 STOCKDIVD.body = "STOCKDIVD";
+STOCKDIVD.type = MyCompletionType.Function;
 STOCKDIVD.marketType = MyCompletionMarketType.BasicFunction;
 STOCKDIVD.functionType = MyCompletionFunctionType.StockDataFunction;
+STOCKDIVD.returnType = MyCompletionReturnType.None;
+STOCKDIVD.parameters = MyCompletion.createParametersFromStrings([]);
 STOCKDIVD.detail = "设置股票复权";
 STOCKDIVD.documentation = `
 STOCKDIVD()设置股票除权复权
@@ -8529,8 +9534,11 @@ const SUM = new MyCompletion();
 SUM.label = "SUM";
 SUM.insertText = "";
 SUM.body = "SUM( , )";
+SUM.type = MyCompletionType.Function;
 SUM.marketType = MyCompletionMarketType.BasicFunction;
 SUM.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+SUM.returnType = MyCompletionReturnType.None;
+SUM.parameters = MyCompletion.createParametersFromStrings([]);
 SUM.detail = "求和";
 SUM.documentation = `
 SUM(X,N)，求X在N个周期内的总和
@@ -8554,8 +9562,11 @@ const SUMBARS = new MyCompletion();
 SUMBARS.label = "SUMBARS";
 SUMBARS.insertText = "";
 SUMBARS.body = "SUMBARS( , )";
+SUMBARS.type = MyCompletionType.Function;
 SUMBARS.marketType = MyCompletionMarketType.BasicFunction;
 SUMBARS.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+SUMBARS.returnType = MyCompletionReturnType.None;
+SUMBARS.parameters = MyCompletion.createParametersFromStrings([]);
 SUMBARS.detail = "累加到指定值的周期数";
 SUMBARS.documentation = `
 SUMBARS(X,A):求多少个周期的X向前累加能够大于等于A
@@ -8572,8 +9583,11 @@ const T_CLOSE = new MyCompletion();
 T_CLOSE.label = "T_CLOSE";
 T_CLOSE.insertText = "";
 T_CLOSE.body = "T_CLOSE";
+T_CLOSE.type = MyCompletionType.Function;
 T_CLOSE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 T_CLOSE.functionType = MyCompletionFunctionType.CandlestickDataReference;
+T_CLOSE.returnType = MyCompletionReturnType.None;
+T_CLOSE.parameters = MyCompletion.createParametersFromStrings([]);
 T_CLOSE.detail = "取交易合约收盘价";
 T_CLOSE.documentation = `
 T_CLOSE 取交易合约收盘价。
@@ -8590,8 +9604,11 @@ const T_MAX = new MyCompletion();
 T_MAX.label = "T_MAX";
 T_MAX.insertText = "";
 T_MAX.body = "T_MAX";
+T_MAX.type = MyCompletionType.Function;
 T_MAX.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 T_MAX.functionType = MyCompletionFunctionType.PositionManagementFunction;
+T_MAX.returnType = MyCompletionReturnType.None;
+T_MAX.parameters = MyCompletion.createParametersFromStrings([]);
 T_MAX.detail = "设置模组最大开仓手数";
 T_MAX.documentation = `
 T_MAX(TYPE,N),根据设置的资金占用百分比计算模组最大可开仓手数，用于模组资金风控
@@ -8630,8 +9647,11 @@ const T_PLUS = new MyCompletion();
 T_PLUS.label = "T_PLUS";
 T_PLUS.insertText = "";
 T_PLUS.body = "T_PLUS()";
+T_PLUS.type = MyCompletionType.Function;
 T_PLUS.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 T_PLUS.functionType = MyCompletionFunctionType.SignalExecutionFunction;
+T_PLUS.returnType = MyCompletionReturnType.None;
+T_PLUS.parameters = MyCompletion.createParametersFromStrings([]);
 T_PLUS.detail = "设置开仓手数为默认手数的N倍";
 T_PLUS.documentation = `
 T_PLUS(N)当条件满足时，过滤模型的开仓手数为默认手数
@@ -8657,8 +9677,11 @@ const T0TOTIME = new MyCompletion();
 T0TOTIME.label = "T0TOTIME";
 T0TOTIME.insertText = "";
 T0TOTIME.body = "T0TOTIME()";
+T0TOTIME.type = MyCompletionType.Function;
 T0TOTIME.marketType = MyCompletionMarketType.BasicFunction;
 T0TOTIME.functionType = MyCompletionFunctionType.TimeFunction;
+T0TOTIME.returnType = MyCompletionReturnType.None;
+T0TOTIME.parameters = MyCompletion.createParametersFromStrings([]);
 T0TOTIME.detail = "秒数转换为时间";
 T0TOTIME.documentation = `
 T0TOTIME(X)返回自该日0点以来的X秒处的时间。X可为变量或常数
@@ -8676,8 +9699,11 @@ const TAN = new MyCompletion();
 TAN.label = "TAN";
 TAN.insertText = "";
 TAN.body = "TAN( )";
+TAN.type = MyCompletionType.Function;
 TAN.marketType = MyCompletionMarketType.BasicFunction;
 TAN.functionType = MyCompletionFunctionType.MathFunction;
+TAN.returnType = MyCompletionReturnType.None;
+TAN.parameters = MyCompletion.createParametersFromStrings([]);
 TAN.detail = "正切";
 TAN.documentation = `
 TAN(X)，求X的正切值
@@ -8692,8 +9718,11 @@ const TAVLOSS = new MyCompletion();
 TAVLOSS.label = "TAVLOSS";
 TAVLOSS.insertText = "";
 TAVLOSS.body = "TAVLOSS";
+TAVLOSS.type = MyCompletionType.Function;
 TAVLOSS.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 TAVLOSS.functionType = MyCompletionFunctionType.PositionManagementFunction;
+TAVLOSS.returnType = MyCompletionReturnType.None;
+TAVLOSS.parameters = MyCompletion.createParametersFromStrings([]);
 TAVLOSS.detail = "返回平均亏损额";
 TAVLOSS.documentation = `
 TAVLOSS平均亏损额
@@ -8720,8 +9749,11 @@ const TAVWIN = new MyCompletion();
 TAVWIN.label = "TAVWIN";
 TAVWIN.insertText = "";
 TAVWIN.body = "TAVWIN";
+TAVWIN.type = MyCompletionType.Function;
 TAVWIN.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 TAVWIN.functionType = MyCompletionFunctionType.PositionManagementFunction;
+TAVWIN.returnType = MyCompletionReturnType.None;
+TAVWIN.parameters = MyCompletion.createParametersFromStrings([]);
 TAVWIN.detail = "返回平均盈利额";
 TAVWIN.documentation = `
 TAVWIN平均盈利额
@@ -8748,8 +9780,11 @@ const TAVWINLOSS = new MyCompletion();
 TAVWINLOSS.label = "TAVWINLOSS";
 TAVWINLOSS.insertText = "";
 TAVWINLOSS.body = "TAVWINLOSS";
+TAVWINLOSS.type = MyCompletionType.Function;
 TAVWINLOSS.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 TAVWINLOSS.functionType = MyCompletionFunctionType.PositionManagementFunction;
+TAVWINLOSS.returnType = MyCompletionReturnType.None;
+TAVWINLOSS.parameters = MyCompletion.createParametersFromStrings([]);
 TAVWINLOSS.detail = "返回平均盈亏额";
 TAVWINLOSS.documentation = `
 TAVWINLOSS平均盈亏额
@@ -8776,8 +9811,11 @@ const TIME = new MyCompletion();
 TIME.label = "TIME";
 TIME.insertText = "";
 TIME.body = "TIME";
+TIME.type = MyCompletionType.Function;
 TIME.marketType = MyCompletionMarketType.BasicFunction;
 TIME.functionType = MyCompletionFunctionType.TimeFunction;
+TIME.returnType = MyCompletionReturnType.None;
+TIME.parameters = MyCompletion.createParametersFromStrings([]);
 TIME.detail = "取K线的时间";
 TIME.documentation = `
 TIME取周期的时数，分钟周期表示为0900，秒周期表示为090000
@@ -8807,8 +9845,11 @@ const TIME0 = new MyCompletion();
 TIME0.label = "TIME0";
 TIME0.insertText = "";
 TIME0.body = "TIME0";
+TIME0.type = MyCompletionType.Function;
 TIME0.marketType = MyCompletionMarketType.BasicFunction;
 TIME0.functionType = MyCompletionFunctionType.TimeFunction;
+TIME0.returnType = MyCompletionReturnType.None;
+TIME0.parameters = MyCompletion.createParametersFromStrings([]);
 TIME0.detail = "求当前周期自该日0点以来的秒数";
 TIME0.documentation = `
 
@@ -8826,8 +9867,11 @@ const TIMETOT0 = new MyCompletion();
 TIMETOT0.label = "TIMETOT0";
 TIMETOT0.insertText = "";
 TIMETOT0.body = "TIMETOT0()";
+TIMETOT0.type = MyCompletionType.Function;
 TIMETOT0.marketType = MyCompletionMarketType.BasicFunction;
 TIMETOT0.functionType = MyCompletionFunctionType.TimeFunction;
+TIMETOT0.returnType = MyCompletionReturnType.None;
+TIMETOT0.parameters = MyCompletion.createParametersFromStrings([]);
 TIMETOT0.detail = "时间转换为秒数";
 TIMETOT0.documentation = `
 TIMETOT0(X)返回时间X自该日0点以来的秒数。X可为变量或常数
@@ -8845,8 +9889,11 @@ const TMAXLOSS = new MyCompletion();
 TMAXLOSS.label = "TMAXLOSS";
 TMAXLOSS.insertText = "";
 TMAXLOSS.body = "TMAXLOSS";
+TMAXLOSS.type = MyCompletionType.Function;
 TMAXLOSS.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 TMAXLOSS.functionType = MyCompletionFunctionType.PositionManagementFunction;
+TMAXLOSS.returnType = MyCompletionReturnType.None;
+TMAXLOSS.parameters = MyCompletion.createParametersFromStrings([]);
 TMAXLOSS.detail = "返回单次亏损最大额";
 TMAXLOSS.documentation = `
 TMAXLOSS单次亏损最大额
@@ -8873,8 +9920,11 @@ const TMAXSEQLOSS = new MyCompletion();
 TMAXSEQLOSS.label = "TMAXSEQLOSS";
 TMAXSEQLOSS.insertText = "";
 TMAXSEQLOSS.body = "TMAXSEQLOSS";
+TMAXSEQLOSS.type = MyCompletionType.Function;
 TMAXSEQLOSS.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 TMAXSEQLOSS.functionType = MyCompletionFunctionType.PositionManagementFunction;
+TMAXSEQLOSS.returnType = MyCompletionReturnType.None;
+TMAXSEQLOSS.parameters = MyCompletion.createParametersFromStrings([]);
 TMAXSEQLOSS.detail = "返回连续亏损交易的最大次数";
 TMAXSEQLOSS.documentation = `
 TMAXSEQLOSS当前位置之前，连续亏损交易的最大次数
@@ -8898,8 +9948,11 @@ const TMAXSEQWIN = new MyCompletion();
 TMAXSEQWIN.label = "TMAXSEQWIN";
 TMAXSEQWIN.insertText = "";
 TMAXSEQWIN.body = "TMAXSEQWIN";
+TMAXSEQWIN.type = MyCompletionType.Function;
 TMAXSEQWIN.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 TMAXSEQWIN.functionType = MyCompletionFunctionType.PositionManagementFunction;
+TMAXSEQWIN.returnType = MyCompletionReturnType.None;
+TMAXSEQWIN.parameters = MyCompletion.createParametersFromStrings([]);
 TMAXSEQWIN.detail = "返回连续赢利交易的最大次数";
 TMAXSEQWIN.documentation = `
 TMAXSEQWIN当前位置之前，连续盈利交易的最大次数
@@ -8923,8 +9976,11 @@ const TMAXWIN = new MyCompletion();
 TMAXWIN.label = "TMAXWIN";
 TMAXWIN.insertText = "";
 TMAXWIN.body = "TMAXWIN";
+TMAXWIN.type = MyCompletionType.Function;
 TMAXWIN.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 TMAXWIN.functionType = MyCompletionFunctionType.PositionManagementFunction;
+TMAXWIN.returnType = MyCompletionReturnType.None;
+TMAXWIN.parameters = MyCompletion.createParametersFromStrings([]);
 TMAXWIN.detail = "返回单次盈利最大额";
 TMAXWIN.documentation = `
 TMAXWIN单次盈利最大额
@@ -8951,8 +10007,11 @@ const TNUMSEQLOSS = new MyCompletion();
 TNUMSEQLOSS.label = "TNUMSEQLOSS";
 TNUMSEQLOSS.insertText = "";
 TNUMSEQLOSS.body = "TNUMSEQLOSS";
+TNUMSEQLOSS.type = MyCompletionType.Function;
 TNUMSEQLOSS.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 TNUMSEQLOSS.functionType = MyCompletionFunctionType.PositionManagementFunction;
+TNUMSEQLOSS.returnType = MyCompletionReturnType.None;
+TNUMSEQLOSS.parameters = MyCompletion.createParametersFromStrings([]);
 TNUMSEQLOSS.detail = "返回持续亏损的次数";
 TNUMSEQLOSS.documentation = `
 TNUMSEQLOSS返回持续亏损的次数
@@ -8976,8 +10035,11 @@ const TNUMSEQWIN = new MyCompletion();
 TNUMSEQWIN.label = "TNUMSEQWIN";
 TNUMSEQWIN.insertText = "";
 TNUMSEQWIN.body = "TNUMSEQWIN";
+TNUMSEQWIN.type = MyCompletionType.Function;
 TNUMSEQWIN.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 TNUMSEQWIN.functionType = MyCompletionFunctionType.PositionManagementFunction;
+TNUMSEQWIN.returnType = MyCompletionReturnType.None;
+TNUMSEQWIN.parameters = MyCompletion.createParametersFromStrings([]);
 TNUMSEQWIN.detail = "返回持续赢利的次数";
 TNUMSEQWIN.documentation = `
 TNUMSEQWIN返回持续赢利的次数
@@ -9001,8 +10063,12 @@ const TODAYDEUCETIMES = new MyCompletion();
 TODAYDEUCETIMES.label = "TODAYDEUCETIMES";
 TODAYDEUCETIMES.insertText = "";
 TODAYDEUCETIMES.body = "TODAYDEUCETIMES";
+TODAYDEUCETIMES.type = MyCompletionType.Function;
 TODAYDEUCETIMES.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TODAYDEUCETIMES.functionType = MyCompletionFunctionType.PositionManagementFunction;
+TODAYDEUCETIMES.functionType =
+   MyCompletionFunctionType.PositionManagementFunction;
+TODAYDEUCETIMES.returnType = MyCompletionReturnType.None;
+TODAYDEUCETIMES.parameters = MyCompletion.createParametersFromStrings([]);
 TODAYDEUCETIMES.detail = "返回当日平出次数";
 TODAYDEUCETIMES.documentation = `
 TODAYDEUCETIMES返回当日平出次数
@@ -9026,8 +10092,12 @@ const TODAYLOSSTIMES = new MyCompletion();
 TODAYLOSSTIMES.label = "TODAYLOSSTIMES";
 TODAYLOSSTIMES.insertText = "";
 TODAYLOSSTIMES.body = "TODAYLOSSTIMES";
+TODAYLOSSTIMES.type = MyCompletionType.Function;
 TODAYLOSSTIMES.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TODAYLOSSTIMES.functionType = MyCompletionFunctionType.PositionManagementFunction;
+TODAYLOSSTIMES.functionType =
+   MyCompletionFunctionType.PositionManagementFunction;
+TODAYLOSSTIMES.returnType = MyCompletionReturnType.None;
+TODAYLOSSTIMES.parameters = MyCompletion.createParametersFromStrings([]);
 TODAYLOSSTIMES.detail = "返回当日亏损次数";
 TODAYLOSSTIMES.documentation = `
 TODAYLOSSTIMES返回当日亏损次数
@@ -9051,8 +10121,12 @@ const TODAYWINTIMES = new MyCompletion();
 TODAYWINTIMES.label = "TODAYWINTIMES";
 TODAYWINTIMES.insertText = "";
 TODAYWINTIMES.body = "TODAYWINTIMES";
+TODAYWINTIMES.type = MyCompletionType.Function;
 TODAYWINTIMES.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TODAYWINTIMES.functionType = MyCompletionFunctionType.PositionManagementFunction;
+TODAYWINTIMES.functionType =
+   MyCompletionFunctionType.PositionManagementFunction;
+TODAYWINTIMES.returnType = MyCompletionReturnType.None;
+TODAYWINTIMES.parameters = MyCompletion.createParametersFromStrings([]);
 TODAYWINTIMES.detail = "返回当日赢利次数";
 TODAYWINTIMES.documentation = `
 TODAYWINTIMES返回当日赢利次数
@@ -9077,8 +10151,11 @@ const TPROFIT_REF = new MyCompletion();
 TPROFIT_REF.label = "TPROFIT_REF";
 TPROFIT_REF.insertText = "";
 TPROFIT_REF.body = "TPROFIT_REF( )";
+TPROFIT_REF.type = MyCompletionType.Function;
 TPROFIT_REF.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 TPROFIT_REF.functionType = MyCompletionFunctionType.PositionManagementFunction;
+TPROFIT_REF.returnType = MyCompletionReturnType.None;
+TPROFIT_REF.parameters = MyCompletion.createParametersFromStrings([]);
 TPROFIT_REF.detail = "取得前第N次交易的盈亏额";
 TPROFIT_REF.documentation = `
 TPROFIT_REF(N)取得前第N次交易的盈亏额
@@ -9103,8 +10180,11 @@ const TRACING_ORDER = new MyCompletion();
 TRACING_ORDER.label = "TRACING_ORDER";
 TRACING_ORDER.insertText = "";
 TRACING_ORDER.body = "TRACING_ORDER( , , )";
+TRACING_ORDER.type = MyCompletionType.Function;
 TRACING_ORDER.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 TRACING_ORDER.functionType = MyCompletionFunctionType.SignalExecutionFunction;
+TRACING_ORDER.returnType = MyCompletionReturnType.None;
+TRACING_ORDER.parameters = MyCompletion.createParametersFromStrings([]);
 TRACING_ORDER.detail = "设置信号进行追价下单";
 TRACING_ORDER.documentation = `
 TRACING_ORDER(Sig,PriceType,Time);设置SIG指令按照追价方式委托，PriceType为首次下单委托价格，Time 秒不成交市价追
@@ -9124,8 +10204,8 @@ PriceType为首次下单委托价格，Time 秒不成交市价追
 （5）SIGPRICE_ORDER 触发价
 3、time位置数字的有效范围为1-1000，超过这个时间即撤掉委托，改为市价追
 4、在进行历史回测时：
- A：收盘价模型回测，信号价格为信号所在K线的收盘价。
- B：指令价模型回测，信号价格为出现信号时的最新价。
+A：收盘价模型回测，信号价格为信号所在K线的收盘价。
+B：指令价模型回测，信号价格为出现信号时的最新价。
 5、该函数不支持加载在股票合约上
 
 例：
@@ -9144,8 +10224,11 @@ const TRADE_AGAIN = new MyCompletion();
 TRADE_AGAIN.label = "TRADE_AGAIN";
 TRADE_AGAIN.insertText = "";
 TRADE_AGAIN.body = "TRADE_AGAIN()";
+TRADE_AGAIN.type = MyCompletionType.Function;
 TRADE_AGAIN.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 TRADE_AGAIN.functionType = MyCompletionFunctionType.CalculationControlFunction;
+TRADE_AGAIN.returnType = MyCompletionReturnType.None;
+TRADE_AGAIN.parameters = MyCompletion.createParametersFromStrings([]);
 TRADE_AGAIN.detail = "限制信号函数";
 TRADE_AGAIN.documentation = `
 TRADE_AGAIN(N),含有该函数的加减仓模型中,同一指令行可以连续出N个信号
@@ -9170,8 +10253,11 @@ const TRADE_OTHER = new MyCompletion();
 TRADE_OTHER.label = "TRADE_OTHER";
 TRADE_OTHER.insertText = "";
 TRADE_OTHER.body = "TRADE_OTHER()";
+TRADE_OTHER.type = MyCompletionType.Function;
 TRADE_OTHER.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 TRADE_OTHER.functionType = MyCompletionFunctionType.SignalExecutionFunction;
+TRADE_OTHER.returnType = MyCompletionReturnType.None;
+TRADE_OTHER.parameters = MyCompletion.createParametersFromStrings([]);
 TRADE_OTHER.detail = "指定交易合约";
 TRADE_OTHER.documentation = `
 TRADE_OTHER('CODE')，指定CODE合约为交易合约
@@ -9215,8 +10301,11 @@ const TRADE_REF = new MyCompletion();
 TRADE_REF.label = "TRADE_REF";
 TRADE_REF.insertText = "";
 TRADE_REF.body = "TRADE_REF( )";
+TRADE_REF.type = MyCompletionType.Function;
 TRADE_REF.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 TRADE_REF.functionType = MyCompletionFunctionType.PositionManagementFunction;
+TRADE_REF.returnType = MyCompletionReturnType.None;
+TRADE_REF.parameters = MyCompletion.createParametersFromStrings([]);
 TRADE_REF.detail = "判断前N次交易是否赢利";
 TRADE_REF.documentation = `
 TRADE_REF(N)判断前N次交易是否赢利
@@ -9241,8 +10330,12 @@ const TRADE_SMOOTHING = new MyCompletion();
 TRADE_SMOOTHING.label = "TRADE_SMOOTHING";
 TRADE_SMOOTHING.insertText = "";
 TRADE_SMOOTHING.body = "TRADE_SMOOTHING";
+TRADE_SMOOTHING.type = MyCompletionType.Function;
 TRADE_SMOOTHING.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
-TRADE_SMOOTHING.functionType = MyCompletionFunctionType.CandlestickDataReference;
+TRADE_SMOOTHING.functionType =
+   MyCompletionFunctionType.CandlestickDataReference;
+TRADE_SMOOTHING.returnType = MyCompletionReturnType.None;
+TRADE_SMOOTHING.parameters = MyCompletion.createParametersFromStrings([]);
 TRADE_SMOOTHING.detail = "消除隔日跳空函数";
 TRADE_SMOOTHING.documentation = `
 TRADE_SMOOTHING;消除隔夜跳空函数
@@ -9276,8 +10369,11 @@ const TREND = new MyCompletion();
 TREND.label = "TREND";
 TREND.insertText = "";
 TREND.body = "TREND";
+TREND.type = MyCompletionType.Function;
 TREND.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 TREND.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+TREND.returnType = MyCompletionReturnType.None;
+TREND.parameters = MyCompletion.createParametersFromStrings([]);
 TREND.detail = "获取K线趋势";
 TREND.documentation = `
 TREND,获取K线趋势默认返回0，最高最低同时出现为1，最低先出现为2，最高先出现为3
@@ -9291,8 +10387,11 @@ const TRMA = new MyCompletion();
 TRMA.label = "TRMA";
 TRMA.insertText = "";
 TRMA.body = "TRMA( , )";
+TRMA.type = MyCompletionType.Function;
 TRMA.marketType = MyCompletionMarketType.BasicFunction;
 TRMA.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+TRMA.returnType = MyCompletionReturnType.None;
+TRMA.parameters = MyCompletion.createParametersFromStrings([]);
 TRMA.detail = "三角移动平均";
 TRMA.documentation = `
 TRMA(X,N)，求X在N周期内的三角移动平均
@@ -9321,8 +10420,11 @@ const TSEQLOSS = new MyCompletion();
 TSEQLOSS.label = "TSEQLOSS";
 TSEQLOSS.insertText = "";
 TSEQLOSS.body = "TSEQLOSS";
+TSEQLOSS.type = MyCompletionType.Function;
 TSEQLOSS.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 TSEQLOSS.functionType = MyCompletionFunctionType.PositionManagementFunction;
+TSEQLOSS.returnType = MyCompletionReturnType.None;
+TSEQLOSS.parameters = MyCompletion.createParametersFromStrings([]);
 TSEQLOSS.detail = "返回最大连续亏损额";
 TSEQLOSS.documentation = `
 TSEQLOSS返回最大连续亏损额
@@ -9346,8 +10448,11 @@ const TSEQWIN = new MyCompletion();
 TSEQWIN.label = "TSEQWIN";
 TSEQWIN.insertText = "";
 TSEQWIN.body = "TSEQWIN";
+TSEQWIN.type = MyCompletionType.Function;
 TSEQWIN.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 TSEQWIN.functionType = MyCompletionFunctionType.PositionManagementFunction;
+TSEQWIN.returnType = MyCompletionReturnType.None;
+TSEQWIN.parameters = MyCompletion.createParametersFromStrings([]);
 TSEQWIN.detail = "返回最大连续赢利额";
 TSEQWIN.documentation = `
 TSEQWIN返回最大连续赢利额
@@ -9371,8 +10476,11 @@ const TSMA = new MyCompletion();
 TSMA.label = "TSMA";
 TSMA.insertText = "";
 TSMA.body = "TSMA( , )";
+TSMA.type = MyCompletionType.Function;
 TSMA.marketType = MyCompletionMarketType.BasicFunction;
 TSMA.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+TSMA.returnType = MyCompletionReturnType.None;
+TSMA.parameters = MyCompletion.createParametersFromStrings([]);
 TSMA.detail = "时间序列移动平均";
 TSMA.documentation = `
 TSMA(X,N)，求X在N周期内的时间序列三角移动平均
@@ -9399,8 +10507,11 @@ const UNIT = new MyCompletion();
 UNIT.label = "UNIT";
 UNIT.insertText = "";
 UNIT.body = "UNIT";
+UNIT.type = MyCompletionType.Function;
 UNIT.marketType = MyCompletionMarketType.BasicFunction;
 UNIT.functionType = MyCompletionFunctionType.CandlestickDataReference;
+UNIT.returnType = MyCompletionReturnType.None;
+UNIT.parameters = MyCompletion.createParametersFromStrings([]);
 UNIT.detail = "取数据合约的交易单位";
 UNIT.documentation = `
 UNIT,取加载数据合约的交易单位
@@ -9413,8 +10524,11 @@ const UNIT1 = new MyCompletion();
 UNIT1.label = "UNIT1";
 UNIT1.insertText = "";
 UNIT1.body = "UNIT1";
+UNIT1.type = MyCompletionType.Function;
 UNIT1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 UNIT1.functionType = MyCompletionFunctionType.CandlestickDataReference;
+UNIT1.returnType = MyCompletionReturnType.None;
+UNIT1.parameters = MyCompletion.createParametersFromStrings([]);
 UNIT1.detail = "取交易合约的交易单位";
 UNIT1.documentation = `
 UNIT1,取交易合约的交易单位
@@ -9427,8 +10541,11 @@ const UNITLIMIT = new MyCompletion();
 UNITLIMIT.label = "UNITLIMIT";
 UNITLIMIT.insertText = "";
 UNITLIMIT.body = "UNITLIMIT";
+UNITLIMIT.type = MyCompletionType.Function;
 UNITLIMIT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 UNITLIMIT.functionType = MyCompletionFunctionType.CandlestickDataReference;
+UNITLIMIT.returnType = MyCompletionReturnType.None;
+UNITLIMIT.parameters = MyCompletion.createParametersFromStrings([]);
 UNITLIMIT.detail = "取交易合约的限制拥有持仓数";
 UNITLIMIT.documentation = `
 UNITLIMIT，取交易合约的限制拥有持仓数
@@ -9447,8 +10564,11 @@ const VALIGN = new MyCompletion();
 VALIGN.label = "VALIGN";
 VALIGN.insertText = "";
 VALIGN.body = "VALIGN";
+VALIGN.type = MyCompletionType.Function;
 VALIGN.marketType = MyCompletionMarketType.BasicFunction;
 VALIGN.functionType = MyCompletionFunctionType.DrawingFunction;
+VALIGN.returnType = MyCompletionReturnType.None;
+VALIGN.parameters = MyCompletion.createParametersFromStrings([]);
 VALIGN.detail = "设置文字对齐方式（上中下）";
 VALIGN.documentation = `
 VALIGN0,VALIGN1,VALIGN2,分别表示文字上对齐，居中对齐，下对齐
@@ -9466,8 +10586,11 @@ const VALUEWHEN = new MyCompletion();
 VALUEWHEN.label = "VALUEWHEN";
 VALUEWHEN.insertText = "";
 VALUEWHEN.body = "VALUEWHEN( , )";
+VALUEWHEN.type = MyCompletionType.Function;
 VALUEWHEN.marketType = MyCompletionMarketType.BasicFunction;
 VALUEWHEN.functionType = MyCompletionFunctionType.LogicalJudgmentFunction;
+VALUEWHEN.returnType = MyCompletionReturnType.None;
+VALUEWHEN.parameters = MyCompletion.createParametersFromStrings([]);
 VALUEWHEN.detail = "取值";
 VALUEWHEN.documentation = `
 VALUEWHEN(COND,X)，取满足条件COND时的X值
@@ -9488,8 +10611,11 @@ const VAR = new MyCompletion();
 VAR.label = "VAR";
 VAR.insertText = "";
 VAR.body = "VAR( , )";
+VAR.type = MyCompletionType.Function;
 VAR.marketType = MyCompletionMarketType.BasicFunction;
 VAR.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
+VAR.returnType = MyCompletionReturnType.None;
+VAR.parameters = MyCompletion.createParametersFromStrings([]);
 VAR.detail = "样本方差";
 VAR.documentation = `
 VAR(X,N)，求X在N周期内的样本方差
@@ -9516,8 +10642,11 @@ const VARP = new MyCompletion();
 VARP.label = "VARP";
 VARP.insertText = "";
 VARP.body = "VARP( , )";
+VARP.type = MyCompletionType.Function;
 VARP.marketType = MyCompletionMarketType.BasicFunction;
 VARP.functionType = MyCompletionFunctionType.MathematicalStatisticsFunction;
+VARP.returnType = MyCompletionReturnType.None;
+VARP.parameters = MyCompletion.createParametersFromStrings([]);
 VARP.detail = "总体方差";
 VARP.documentation = `
 VARP(X,N)，求X的N周期总体方差
@@ -9543,8 +10672,11 @@ const VERTLINE = new MyCompletion();
 VERTLINE.label = "VERTLINE";
 VERTLINE.insertText = "";
 VERTLINE.body = "VERTLINE( , )";
+VERTLINE.type = MyCompletionType.Function;
 VERTLINE.marketType = MyCompletionMarketType.BasicFunction;
 VERTLINE.functionType = MyCompletionFunctionType.DrawingFunction;
+VERTLINE.returnType = MyCompletionReturnType.None;
+VERTLINE.parameters = MyCompletion.createParametersFromStrings([]);
 VERTLINE.detail = "画垂直线";
 VERTLINE.documentation = `
 VERTLINE(COND,COLOR)，条件COND满足时，以颜色COLOR画垂直线
@@ -9571,8 +10703,11 @@ const VERTLINE1 = new MyCompletion();
 VERTLINE1.label = "VERTLINE1";
 VERTLINE1.insertText = "";
 VERTLINE1.body = "VERTLINE1( )";
+VERTLINE1.type = MyCompletionType.Function;
 VERTLINE1.marketType = MyCompletionMarketType.BasicFunction;
 VERTLINE1.functionType = MyCompletionFunctionType.DrawingFunction;
+VERTLINE1.returnType = MyCompletionReturnType.None;
+VERTLINE1.parameters = MyCompletion.createParametersFromStrings([]);
 VERTLINE1.detail = "画垂直线";
 VERTLINE1.documentation = `
 VERTLINE1(COND)条件COND满足时，画垂直线
@@ -9599,8 +10734,11 @@ const VOL = new MyCompletion();
 VOL.label = "VOL";
 VOL.insertText = "";
 VOL.body = "VOL";
+VOL.type = MyCompletionType.Function;
 VOL.marketType = MyCompletionMarketType.BasicFunction;
 VOL.functionType = MyCompletionFunctionType.CandlestickDataReference;
+VOL.returnType = MyCompletionReturnType.None;
+VOL.parameters = MyCompletion.createParametersFromStrings([]);
 VOL.detail = "取得K线图的成交量";
 VOL.documentation = `
 VOL取成交量
@@ -9622,8 +10760,11 @@ const VOLATILITY = new MyCompletion();
 VOLATILITY.label = "VOLATILITY";
 VOLATILITY.insertText = "";
 VOLATILITY.body = "VOLATILITY()";
+VOLATILITY.type = MyCompletionType.Function;
 VOLATILITY.marketType = MyCompletionMarketType.BasicFunction;
 VOLATILITY.functionType = MyCompletionFunctionType.CandlestickDataReference;
+VOLATILITY.returnType = MyCompletionReturnType.None;
+VOLATILITY.parameters = MyCompletion.createParametersFromStrings([]);
 VOLATILITY.detail = "取期权历史波动率";
 VOLATILITY.documentation = `
 VOLATILITY(N)，取期权历史波动率
@@ -9651,8 +10792,11 @@ const VOLMARGIN = new MyCompletion();
 VOLMARGIN.label = "VOLMARGIN";
 VOLMARGIN.insertText = "";
 VOLMARGIN.body = "VOLMARGIN";
+VOLMARGIN.type = MyCompletionType.Function;
 VOLMARGIN.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 VOLMARGIN.functionType = MyCompletionFunctionType.PositionManagementFunction;
+VOLMARGIN.returnType = MyCompletionReturnType.None;
+VOLMARGIN.parameters = MyCompletion.createParametersFromStrings([]);
 VOLMARGIN.detail = "理论持仓保证金";
 VOLMARGIN.documentation = `
 VOLMARGIN理论持仓保证金
@@ -9676,8 +10820,11 @@ const VOLSTICK = new MyCompletion();
 VOLSTICK.label = "VOLSTICK";
 VOLSTICK.insertText = "";
 VOLSTICK.body = "VOLSTICK";
+VOLSTICK.type = MyCompletionType.Function;
 VOLSTICK.marketType = MyCompletionMarketType.BasicFunction;
 VOLSTICK.functionType = MyCompletionFunctionType.DrawingFunction;
+VOLSTICK.returnType = MyCompletionReturnType.None;
+VOLSTICK.parameters = MyCompletion.createParametersFromStrings([]);
 VOLSTICK.detail = "画柱线";
 VOLSTICK.documentation = `
 VOLSTICK画柱线，K线为阳线为红色，K线为阴线为青色
@@ -9699,8 +10846,11 @@ const VOLTICK = new MyCompletion();
 VOLTICK.label = "VOLTICK";
 VOLTICK.insertText = "";
 VOLTICK.body = "VOLTICK";
+VOLTICK.type = MyCompletionType.Function;
 VOLTICK.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 VOLTICK.functionType = MyCompletionFunctionType.TimeFunction;
+VOLTICK.returnType = MyCompletionReturnType.None;
+VOLTICK.parameters = MyCompletion.createParametersFromStrings([]);
 VOLTICK.detail = "返回K线是由多少笔TICK生成";
 VOLTICK.documentation = `
 VOLTICK返回K线是由多少笔TICK生成
@@ -9713,8 +10863,11 @@ const VOLTIME = new MyCompletion();
 VOLTIME.label = "VOLTIME";
 VOLTIME.insertText = "";
 VOLTIME.body = "VOLTIME";
+VOLTIME.type = MyCompletionType.Function;
 VOLTIME.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 VOLTIME.functionType = MyCompletionFunctionType.TimeFunction;
+VOLTIME.returnType = MyCompletionReturnType.None;
+VOLTIME.parameters = MyCompletion.createParametersFromStrings([]);
 VOLTIME.detail = "取K线形成的时间（秒）";
 VOLTIME.documentation = `
 VOLTIME取K线形成的时间（秒）
@@ -9727,8 +10880,11 @@ const VOLUMESTICK = new MyCompletion();
 VOLUMESTICK.label = "VOLUMESTICK";
 VOLUMESTICK.insertText = "";
 VOLUMESTICK.body = "VOLUMESTICK";
+VOLUMESTICK.type = MyCompletionType.Function;
 VOLUMESTICK.marketType = MyCompletionMarketType.BasicFunction;
 VOLUMESTICK.functionType = MyCompletionFunctionType.DrawingFunction;
+VOLUMESTICK.returnType = MyCompletionReturnType.None;
+VOLUMESTICK.parameters = MyCompletion.createParametersFromStrings([]);
 VOLUMESTICK.detail = "画柱线";
 VOLUMESTICK.documentation = `
 VOLUMESTICK画柱线，K线为阳线为红色，K线为阴线为青色
@@ -9750,17 +10906,20 @@ const WEEKDAY = new MyCompletion();
 WEEKDAY.label = "WEEKDAY";
 WEEKDAY.insertText = "";
 WEEKDAY.body = "WEEKDAY";
+WEEKDAY.type = MyCompletionType.Function;
 WEEKDAY.marketType = MyCompletionMarketType.BasicFunction;
 WEEKDAY.functionType = MyCompletionFunctionType.TimeFunction;
+WEEKDAY.returnType = MyCompletionReturnType.None;
+WEEKDAY.parameters = MyCompletion.createParametersFromStrings([]);
 WEEKDAY.detail = "取得星期数";
 WEEKDAY.documentation = `
 WEEKDAY取得星期数（0-6）
 WEEKDAY,取得星期数。
- 
+
 注：
 1：WEEKDAY的取值范围是0—6。
 2：该函数在周周期上显示的值始终为5，在月周期上返回K线结束当天的星期数。
- 
+
 例1：
 N:=BARSLAST(MONTH<>REF(MONTH,1))+1;
 COUNT(WEEKDAY=5,N)=3&&TIME>=1450,BP;
@@ -9775,8 +10934,11 @@ const WEEKTRADE = new MyCompletion();
 WEEKTRADE.label = "WEEKTRADE";
 WEEKTRADE.insertText = "";
 WEEKTRADE.body = "WEEKTRADE";
+WEEKTRADE.type = MyCompletionType.Function;
 WEEKTRADE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 WEEKTRADE.functionType = MyCompletionFunctionType.CalculationControlFunction;
+WEEKTRADE.returnType = MyCompletionReturnType.None;
+WEEKTRADE.parameters = MyCompletion.createParametersFromStrings([]);
 WEEKTRADE.detail = "周内交易函数";
 WEEKTRADE.documentation = `
 WEEKTRADE,周内交易函数
@@ -9790,7 +10952,7 @@ WEEKTRADE 周内交易函数。
 2、回测报告中的出金/入金，为每周出金/入金的和。
 3、模型中不能同时使用DAYTRADE1\\DAYTRADE\\WEEKTRADE\\WEEKTRADE1\\MONTHTRADE\\QUARTERTRADE\\YEARTRADE函数。
 4、（1）历史回测中，当周K线走完持仓大于0，会对持仓进行全清处理。
-   （2）模组运行中，当周K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
+  （2）模组运行中，当周K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
 
 例：
 MA5^^MA(C,5);
@@ -9808,8 +10970,11 @@ const WEEKTRADE1 = new MyCompletion();
 WEEKTRADE1.label = "WEEKTRADE1";
 WEEKTRADE1.insertText = "";
 WEEKTRADE1.body = "WEEKTRADE1";
+WEEKTRADE1.type = MyCompletionType.Function;
 WEEKTRADE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 WEEKTRADE1.functionType = MyCompletionFunctionType.CalculationControlFunction;
+WEEKTRADE1.returnType = MyCompletionReturnType.None;
+WEEKTRADE1.parameters = MyCompletion.createParametersFromStrings([]);
 WEEKTRADE1.detail = "周内交易函数";
 WEEKTRADE1.documentation = `
 WEEKTRADE1周内交易函数，且历史数据不参与计算。
@@ -9826,7 +10991,7 @@ MA(X,N)函数N的取值：当周如果k线小于N根，则返回空值。如果k
 HHV(X,N)函数N的取值：当天如果k线小于N根，则返回实际根数，如果k线为大于等于N根，则取N。
 4、模型中不能同时使用DAYTRADE1\\DAYTRADE\\WEEKTRADE\\WEEKTRADE1\\MONTHTRADE\\QUARTERTRADE\\YEARTRADE函数。
 5、（1）历史回测中，当周K线走完持仓大于0，会对持仓进行全清处理。
-   （2）模组运行中，当周K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
+  （2）模组运行中，当周K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
 
 例：
 MA5^^MA(C,5);
@@ -9844,28 +11009,34 @@ const WINNER = new MyCompletion();
 WINNER.label = "WINNER";
 WINNER.insertText = "";
 WINNER.body = "WINNER( )";
+WINNER.type = MyCompletionType.Function;
 WINNER.marketType = MyCompletionMarketType.BasicFunction;
 WINNER.functionType = MyCompletionFunctionType.FinancialStatisticsFunction;
+WINNER.returnType = MyCompletionReturnType.None;
+WINNER.parameters = MyCompletion.createParametersFromStrings([]);
 WINNER.detail = "获利盘比例";
 WINNER.documentation = `
 WINNER()，获利盘比例
 WINNER 获利盘比例
 用法:
- WINNER(CLOSE),表示以当前收市价卖出的获利盘比例,例如返回0.1表示10%获利盘;WINNER(10.5)表示10.5元价格的获利盘比例
+WINNER(CLOSE),表示以当前收市价卖出的获利盘比例,例如返回0.1表示10%获利盘;WINNER(10.5)表示10.5元价格的获利盘比例
 
 注：
- 该函数仅对日线分析周期有效
+该函数仅对日线分析周期有效
 
 算法：
- 统计小于等于当前收盘价的K线成交量之和与所有K线成交量之和的比值；
+统计小于等于当前收盘价的K线成交量之和与所有K线成交量之和的比值；
 `;
 
 const WORD = new MyCompletion();
 WORD.label = "WORD";
 WORD.insertText = "";
 WORD.body = "WORD( , )";
+WORD.type = MyCompletionType.Function;
 WORD.marketType = MyCompletionMarketType.BasicFunction;
 WORD.functionType = MyCompletionFunctionType.DrawingFunction;
+WORD.returnType = MyCompletionReturnType.None;
+WORD.parameters = MyCompletion.createParametersFromStrings([]);
 WORD.detail = "显示文字";
 WORD.documentation = `
 WORD,显示文字
@@ -9886,8 +11057,11 @@ const YCLOSE = new MyCompletion();
 YCLOSE.label = "YCLOSE";
 YCLOSE.insertText = "";
 YCLOSE.body = "YCLOSE";
+YCLOSE.type = MyCompletionType.Function;
 YCLOSE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 YCLOSE.functionType = MyCompletionFunctionType.CandlestickDataReference;
+YCLOSE.returnType = MyCompletionReturnType.None;
+YCLOSE.parameters = MyCompletion.createParametersFromStrings([]);
 YCLOSE.detail = "取得K线图的昨收盘价";
 YCLOSE.documentation = `
 YCLOSE求某根K线的昨收盘价。
@@ -9904,16 +11078,19 @@ const YEAR = new MyCompletion();
 YEAR.label = "YEAR";
 YEAR.insertText = "";
 YEAR.body = "YEAR";
+YEAR.type = MyCompletionType.Function;
 YEAR.marketType = MyCompletionMarketType.BasicFunction;
 YEAR.functionType = MyCompletionFunctionType.TimeFunction;
+YEAR.returnType = MyCompletionReturnType.None;
+YEAR.parameters = MyCompletion.createParametersFromStrings([]);
 YEAR.detail = "年份";
 YEAR.documentation = `
 YEAR取得年份（1970-2033）
 YEAR，取得年份。
- 
+
 注：
 YEAR的取值范围为1970—2033。
- 
+
 例1：
 N:=BARSLAST(YEAR<>REF(YEAR,1))+1; 
 HH:=REF(HHV(H,N),N);
@@ -9928,8 +11105,11 @@ const YEARTRADE = new MyCompletion();
 YEARTRADE.label = "YEARTRADE";
 YEARTRADE.insertText = "";
 YEARTRADE.body = "YEARTRADE";
+YEARTRADE.type = MyCompletionType.Function;
 YEARTRADE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 YEARTRADE.functionType = MyCompletionFunctionType.CalculationControlFunction;
+YEARTRADE.returnType = MyCompletionReturnType.None;
+YEARTRADE.parameters = MyCompletion.createParametersFromStrings([]);
 YEARTRADE.detail = "年内交易函数";
 YEARTRADE.documentation = `
 YEARTRADE,年内交易函数
@@ -9943,7 +11123,7 @@ YEARTRADE 模型中写入该函数，信号和资金每年重新初始化进行�
 2、回测报告中的出金/入金，为每年出金/入金的和。
 3、模型中不能同时使用DAYTRADE1\\DAYTRADE\\WEEKTRADE\\WEEKTRADE1\\MONTHTRADE\\QUARTERTRADE\\YEARTRADE函数。
 4、（1）历史回测中，当年K线走完持仓大于0，会对持仓进行全清处理。
-   （2）模组运行中，当年K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
+  （2）模组运行中，当年K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
 
 例：
 MA5^^MA(C,5);
@@ -9961,8 +11141,11 @@ const YEARTRADE1 = new MyCompletion();
 YEARTRADE1.label = "YEARTRADE1";
 YEARTRADE1.insertText = "";
 YEARTRADE1.body = "YEARTRADE1";
+YEARTRADE1.type = MyCompletionType.Function;
 YEARTRADE1.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 YEARTRADE1.functionType = MyCompletionFunctionType.CalculationControlFunction;
+YEARTRADE1.returnType = MyCompletionReturnType.None;
+YEARTRADE1.parameters = MyCompletion.createParametersFromStrings([]);
 YEARTRADE1.detail = "年内交易函数";
 YEARTRADE1.documentation = `
 YEARTRADE1年内交易函数，且历史数据不参与计算。
@@ -9976,7 +11159,7 @@ YEARTRADE1 模型中写入该函数，信号和资金每年重新初始化进行
 2、回测报告中的出金/入金，为每年出金/入金的和。
 3、模型中不能同时使用DAYTRADE1\\DAYTRADE\\WEEKTRADE\\WEEKTRADE1\\MONTHTRADE\\MONTHTRADE1\\QUARTERTRADE\\QUARTERTRADE1\\YEARTRADE\\YEARTRADE1函数。
 4、（1）历史回测中，当年K线走完持仓大于0，会对持仓进行全清处理。
-   （2）模组运行中，当年K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
+  （2）模组运行中，当年K线走完持仓大于0，信号和资金会重新初始化进行计算，但不会自动对持仓进行全清处理，需要在模型中编写实现全清。
 
 例：
 MA5^^MA(C,5);
@@ -9994,8 +11177,11 @@ const YSETTLE = new MyCompletion();
 YSETTLE.label = "YSETTLE";
 YSETTLE.insertText = "";
 YSETTLE.body = "YSETTLE";
+YSETTLE.type = MyCompletionType.Function;
 YSETTLE.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 YSETTLE.functionType = MyCompletionFunctionType.CandlestickDataReference;
+YSETTLE.returnType = MyCompletionReturnType.None;
+YSETTLE.parameters = MyCompletion.createParametersFromStrings([]);
 YSETTLE.detail = "取得K线图的昨结算价";
 YSETTLE.documentation = `
 YSETTLE,求某根k线的昨结算价
@@ -10011,8 +11197,11 @@ const _CALL = new MyCompletion();
 _CALL.label = "#CALL";
 _CALL.insertText = "";
 _CALL.body = "#CALL [ , ] AS";
+_CALL.type = MyCompletionType.Function;
 _CALL.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 _CALL.functionType = MyCompletionFunctionType.CandlestickDataReference;
+_CALL.returnType = MyCompletionReturnType.None;
+_CALL.parameters = MyCompletion.createParametersFromStrings([]);
 _CALL.detail = "跨合约引用指标";
 _CALL.documentation = `
 #CALL[CODE,FORMULA]ASVAR引用CODE合约的指标FORMULA的数据
@@ -10049,8 +11238,11 @@ const _CALL_OTHER = new MyCompletion();
 _CALL_OTHER.label = "#CALL_OTHER";
 _CALL_OTHER.insertText = "";
 _CALL_OTHER.body = "#CALL_OTHER [ ] AS";
+_CALL_OTHER.type = MyCompletionType.Function;
 _CALL_OTHER.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 _CALL_OTHER.functionType = MyCompletionFunctionType.CandlestickDataReference;
+_CALL_OTHER.returnType = MyCompletionReturnType.None;
+_CALL_OTHER.parameters = MyCompletion.createParametersFromStrings([]);
 _CALL_OTHER.detail = "跨指标引用";
 _CALL_OTHER.documentation = `
 #CALL_OTHER[FORMULA]ASVAR跨指标引用
@@ -10077,8 +11269,11 @@ const _CALL_PLUS = new MyCompletion();
 _CALL_PLUS.label = "#CALL_PLUS";
 _CALL_PLUS.insertText = "";
 _CALL_PLUS.body = "#CALL_PLUS [ , , , ] AS";
+_CALL_PLUS.type = MyCompletionType.Function;
 _CALL_PLUS.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 _CALL_PLUS.functionType = MyCompletionFunctionType.CandlestickDataReference;
+_CALL_PLUS.returnType = MyCompletionReturnType.None;
+_CALL_PLUS.parameters = MyCompletion.createParametersFromStrings([]);
 _CALL_PLUS.detail = "跨合约跨周期引用指标";
 _CALL_PLUS.documentation = `
 #CALL_PLUS[CODE,PERIOD,N,FORMULA]ASVAR引用CODE合约PERIOD参数为N的周期下的指标FORMULA的数据
@@ -10121,8 +11316,11 @@ const _IMPORT = new MyCompletion();
 _IMPORT.label = "#IMPORT";
 _IMPORT.insertText = "";
 _IMPORT.body = "#IMPORT [ , , ] AS";
+_IMPORT.type = MyCompletionType.Function;
 _IMPORT.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 _IMPORT.functionType = MyCompletionFunctionType.CandlestickDataReference;
+_IMPORT.returnType = MyCompletionReturnType.None;
+_IMPORT.parameters = MyCompletion.createParametersFromStrings([]);
 _IMPORT.detail = "跨周期引用指标";
 _IMPORT.documentation = `
 #IMPORT[PERIOD,N,FORMULA]ASVAR引用PERIOD参数为N的周期下的指标FORMULA的数据
@@ -10173,8 +11371,11 @@ const _$_ = new MyCompletion();
 _$_.label = "$";
 _$_.insertText = "";
 _$_.body = " $ ";
+_$_.type = MyCompletionType.Function;
 _$_.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 _$_.functionType = MyCompletionFunctionType.CandlestickDataReference;
+_$_.returnType = MyCompletionReturnType.None;
+_$_.parameters = MyCompletion.createParametersFromStrings([]);
 _$_.detail = "引用其他合约的K线数据";
 _$_.documentation = `
 
@@ -10199,8 +11400,11 @@ const _$_$_ = new MyCompletion();
 _$_$_.label = "$ $";
 _$_$_.insertText = "";
 _$_$_.body = " $ $ ";
+_$_$_.type = MyCompletionType.Function;
 _$_$_.marketType = MyCompletionMarketType.TPlusZeroStrategyFunction;
 _$_$_.functionType = MyCompletionFunctionType.CandlestickDataReference;
+_$_$_.returnType = MyCompletionReturnType.None;
+_$_$_.parameters = MyCompletion.createParametersFromStrings([]);
 _$_$_.detail = "引用其他周期的K线数据";
 _$_$_.documentation = `
 
@@ -10224,398 +11428,398 @@ A:"HOUR$4$OPI";//返回上一根4小时周期K线的持仓量。
 `;
 
 export const functions = [
-    ABS,
-    ACOS,
-    ADMA,
-    ALIGN,
-    ASIN,
-    ATAN,
-    AUTOFILTER,
-    AUTOFINANCING,
-    AVAILABLE_OPI,
-    AVEDEV,
-    AVPRICE,
-    BACKGROUNDSTYLE,
-    BARINTERVAL,
-    BARPOS,
-    BARSBK,
-    BARSBP,
-    BARSBUY,
-    BARSCOUNT,
-    BARSLAST,
-    BARSLASTCOUNT,
-    BARSSELL,
-    BARSSINCE,
-    BARSSINCEN,
-    BARSSK,
-    BARSSP,
-    BARSTATUS,
-    BARTYPE,
-    BETWEEN,
-    BKHIGH,
-    BKLOW,
-    BKPRICE,
-    BKPRICE1,
-    BKPRICEAV,
-    BKPRICEAV1,
-    BKVOL,
-    BKVOL2,
-    BUYPRICE,
-    CEILING,
-    CHECKSIG,
-    CHECKSIG_MIN,
-    CIRCLEDOT,
-    CJLVOL,
-    CLOSE,
-    CLOSEKLINE,
-    CLOSEMINUTE,
-    CLOSEMINUTE1,
-    CLOSEMINUTEEVERY,
-    CLOSEMINUTEEVERY1,
-    CLOSESEC,
-    CLOSESEC1,
-    CLOSESECEVERY,
-    CLOSESECEVERY1,
-    CODELIKE,
-    COEFFICIENTR,
-    COLORSTICK,
-    CONDBARS,
-    COS,
-    COST,
-    COUNT,
-    COUNTGROUPSIG,
-    COUNTSIG,
-    COVAR,
-    CROSS,
-    CROSS2,
-    CROSSDOT,
-    CROSSDOWN,
-    CROSSUP,
-    CUBE,
-    CURRENTDATE,
-    CURRENTTIME,
-    DASH,
-    DASHDOT,
-    DASHDOTDOT,
-    DATE,
-    DATE1,
-    DAY,
-    DAYBARPOS,
-    DAYSTOEXPIRED,
-    DAYTRADE,
-    DAYTRADE1,
-    DEVSQ,
-    DIVERGENCE,
-    DIVIDEND,
-    DIVIDENDBARS,
-    DMA,
-    DOT,
-    DRAWBARLINE,
-    DRAWBKBMP,
-    DRAWBMP,
-    DRAWCOLORKLINE,
-    DRAWCOLORLINE,
-    DRAWCOLUMNCHART,
-    DRAWGBK,
-    DRAWGBK1,
-    DRAWICON,
-    DRAWKLINE,
-    DRAWKLINE1,
-    DRAWKLINE2,
-    DRAWLASTBARICON,
-    DRAWLASTBARLINE,
-    DRAWLASTBARNUMBER,
-    DRAWLASTBARTEXT,
-    DRAWLINE,
-    DRAWLINE1,
-    DRAWLINE2,
-    DRAWLINE3,
-    DRAWNUMBER,
-    DRAWNUMBER1,
-    DRAWSHIFTNUMBER,
-    DRAWSL,
-    DRAWSL1,
-    DRAWTEXT,
-    DRAWVALID,
-    DUALVOLUME,
-    EMA,
-    EMA2,
-    EMAWH,
-    ENTRYSIG_PLACE,
-    ENTRYSIG_PRICE,
-    ENTRYSIG_VOL,
-    EVERY,
-    EXIST,
-    EXITSIG_PLACE,
-    EXITSIG_PRICE,
-    EXITSIG_VOL,
-    EXP,
-    EXPIREDATE,
-    FEE,
-    FILLRGN,
-    FILLRGN1,
-    FILTER,
-    FINANCE_DATA,
-    FLOOR,
-    FONTSIZE,
-    FORCAST,
-    GROUP,
-    GROUPBKPRICE,
-    GROUPBKVOL,
-    GROUPSKPRICE,
-    GROUPSKVOL,
-    HARMEAN,
-    HASTRADEDATA,
-    HHV,
-    HHVBARS,
-    HIGH,
-    HISEXPDATE,
-    HISEXPDAYS,
-    HOLLOW,
-    HOUR,
-    HV,
-    ICON,
-    IDLE,
-    IF,
-    IFELSE,
-    IMPLIEDVOLATILITY,
-    INITMONEY,
-    INTPART,
-    ISCONTRACT,
-    ISDELIVERYDAY,
-    ISDOWN,
-    ISEQUAL,
-    ISLASTBAR,
-    ISLASTBK,
-    ISLASTBP,
-    ISLASTBPK,
-    ISLASTBUY,
-    ISLASTCLOSEOUT,
-    ISLASTKLINE,
-    ISLASTSELL,
-    ISLASTSK,
-    ISLASTSP,
-    ISLASTSPK,
-    ISLASTSTOP,
-    ISMAINCONTRACT,
-    ISMONTHEND,
-    ISNEARHOLIDAY,
-    ISNULL,
-    ISRECORDDAY,
-    ISTIMETOKLINEEND,
-    ISUP,
-    ISWEEKEND,
-    K_STATE,
-    K_STATE1,
-    K_STATE2,
-    K_STATE3,
-    K_STATE4,
-    KLINESIG,
-    KLINESTART,
-    KTEXT,
-    KURTOSIS,
-    LAST,
-    LASTOFFSETPROFIT,
-    LASTSIG,
-    LASTSIGGROUP,
-    LINETHICK,
-    LLV,
-    LLVBARS,
-    LN,
-    LOG,
-    LOG10,
-    LONGCROSS,
-    LOOP1,
-    LOOP2,
-    LOW,
-    LV,
-    MA,
-    MARGIN,
-    MAX,
-    MAX1,
-    MAXBKVOL,
-    MAXSKVOL,
-    MEDIAN,
-    MEDIAN1,
-    MIN,
-    MIN1,
-    MINPRICE,
-    MINPRICE1,
-    MINPRICED,
-    MINUTE,
-    MOD,
-    MODE,
-    MONEY,
-    MONEYRATIO,
-    MONEYTOT,
-    MONTH,
-    MONTHTRADE,
-    MONTHTRADE1,
-    MULTSIG,
-    MULTSIG_MIN,
-    MV,
-    MYVOL,
-    NAMELIKE,
-    NEWHBARS,
-    NEWHBARS1,
-    NEWLBARS,
-    NEWLBARS1,
-    NODRAW,
-    NORMPDF,
-    NOT,
-    NOTEXT,
-    NULL,
-    NUMPOW,
-    OFFSETPROFIT,
-    OFFSETPROFIT1,
-    OPEN,
-    OPENMINUTE,
-    OPENMINUTE1,
-    OPENSEC,
-    OPENSEC1,
-    OPI,
-    PANZHENG,
-    PARTLINE,
-    PARTLINE1,
-    PCRATE,
-    PCRATETREND,
-    PERCENTILE,
-    PERIOD,
-    PLAYSOUND,
-    POINTDOT,
-    POLYLINE,
-    POLYLINE1,
-    POW,
-    PRECIS,
-    PRECISION,
-    PRICEPRECISION,
-    PRICEPRECISION1,
-    PROFIT,
-    QUARTER,
-    QUARTERTRADE,
-    QUARTERTRADE1,
-    RAND,
-    RANGE,
-    RAWDATA,
-    REF,
-    REFLINE,
-    REFLINE1,
-    REFSIG_PLACE,
-    REFSIG_PRICE,
-    REFSIG_PRICE1,
-    REFSIG_PRICE2,
-    REFSIG_VOL,
-    REFWH,
-    REVERSE,
-    ROUND,
-    SAR,
-    SAR1,
-    SCALE,
-    SEEK,
-    SELECT,
-    SETDEALPERCENT,
-    SETEXPIREDATE,
-    SETMOVEOPIPRICE,
-    SETQUOTACCOUNT,
-    SETSIGPRICE,
-    SETSIGPRICETYPE,
-    SETSTYLECOLOR,
-    SETTLE,
-    SETTRADEACCOUNT,
-    SGN,
-    SIGNUM,
-    SIGVOL,
-    SIN,
-    SKEWNESS,
-    SKHIGH,
-    SKLOW,
-    SKPRICE,
-    SKPRICE1,
-    SKPRICEAV,
-    SKPRICEAV1,
-    SKVOL,
-    SKVOL2,
-    SLOPE,
-    SMA,
-    SMMA,
-    SOLID,
-    SORT,
-    SORTPOS,
-    SOUND,
-    SPLIT,
-    SPLITBARS,
-    SQRT,
-    SQUARE,
-    STD,
-    STDP,
-    STICK,
-    STICKLINE,
-    STICKLINE1,
-    STKTYPE,
-    STOCKDIVD,
-    SUM,
-    SUMBARS,
-    T_CLOSE,
-    T_MAX,
-    T_PLUS,
-    T0TOTIME,
-    TAN,
-    TAVLOSS,
-    TAVWIN,
-    TAVWINLOSS,
-    TIME,
-    TIME0,
-    TIMETOT0,
-    TMAXLOSS,
-    TMAXSEQLOSS,
-    TMAXSEQWIN,
-    TMAXWIN,
-    TNUMSEQLOSS,
-    TNUMSEQWIN,
-    TODAYDEUCETIMES,
-    TODAYLOSSTIMES,
-    TODAYWINTIMES,
-    TPROFIT_REF,
-    TRACING_ORDER,
-    TRADE_AGAIN,
-    TRADE_OTHER,
-    TRADE_REF,
-    TRADE_SMOOTHING,
-    TREND,
-    TRMA,
-    TSEQLOSS,
-    TSEQWIN,
-    TSMA,
-    UNIT,
-    UNIT1,
-    UNITLIMIT,
-    VALIGN,
-    VALUEWHEN,
-    VAR,
-    VARP,
-    VERTLINE,
-    VERTLINE1,
-    VOL,
-    VOLATILITY,
-    VOLMARGIN,
-    VOLSTICK,
-    VOLTICK,
-    VOLTIME,
-    VOLUMESTICK,
-    WEEKDAY,
-    WEEKTRADE,
-    WEEKTRADE1,
-    WINNER,
-    WORD,
-    YCLOSE,
-    YEAR,
-    YEARTRADE,
-    YEARTRADE1,
-    YSETTLE,
-    _CALL,
-    _CALL_OTHER,
-    _CALL_PLUS,
-    _IMPORT,
-    _$_,
-    _$_$_,
+   ABS,
+   ACOS,
+   ADMA,
+   ALIGN,
+   ASIN,
+   ATAN,
+   AUTOFILTER,
+   AUTOFINANCING,
+   AVAILABLE_OPI,
+   AVEDEV,
+   AVPRICE,
+   BACKGROUNDSTYLE,
+   BARINTERVAL,
+   BARPOS,
+   BARSBK,
+   BARSBP,
+   BARSBUY,
+   BARSCOUNT,
+   BARSLAST,
+   BARSLASTCOUNT,
+   BARSSELL,
+   BARSSINCE,
+   BARSSINCEN,
+   BARSSK,
+   BARSSP,
+   BARSTATUS,
+   BARTYPE,
+   BETWEEN,
+   BKHIGH,
+   BKLOW,
+   BKPRICE,
+   BKPRICE1,
+   BKPRICEAV,
+   BKPRICEAV1,
+   BKVOL,
+   BKVOL2,
+   BUYPRICE,
+   CEILING,
+   CHECKSIG,
+   CHECKSIG_MIN,
+   CIRCLEDOT,
+   CJLVOL,
+   CLOSE,
+   CLOSEKLINE,
+   CLOSEMINUTE,
+   CLOSEMINUTE1,
+   CLOSEMINUTEEVERY,
+   CLOSEMINUTEEVERY1,
+   CLOSESEC,
+   CLOSESEC1,
+   CLOSESECEVERY,
+   CLOSESECEVERY1,
+   CODELIKE,
+   COEFFICIENTR,
+   COLORSTICK,
+   CONDBARS,
+   COS,
+   COST,
+   COUNT,
+   COUNTGROUPSIG,
+   COUNTSIG,
+   COVAR,
+   CROSS,
+   CROSS2,
+   CROSSDOT,
+   CROSSDOWN,
+   CROSSUP,
+   CUBE,
+   CURRENTDATE,
+   CURRENTTIME,
+   DASH,
+   DASHDOT,
+   DASHDOTDOT,
+   DATE,
+   DATE1,
+   DAY,
+   DAYBARPOS,
+   DAYSTOEXPIRED,
+   DAYTRADE,
+   DAYTRADE1,
+   DEVSQ,
+   DIVERGENCE,
+   DIVIDEND,
+   DIVIDENDBARS,
+   DMA,
+   DOT,
+   DRAWBARLINE,
+   DRAWBKBMP,
+   DRAWBMP,
+   DRAWCOLORKLINE,
+   DRAWCOLORLINE,
+   DRAWCOLUMNCHART,
+   DRAWGBK,
+   DRAWGBK1,
+   DRAWICON,
+   DRAWKLINE,
+   DRAWKLINE1,
+   DRAWKLINE2,
+   DRAWLASTBARICON,
+   DRAWLASTBARLINE,
+   DRAWLASTBARNUMBER,
+   DRAWLASTBARTEXT,
+   DRAWLINE,
+   DRAWLINE1,
+   DRAWLINE2,
+   DRAWLINE3,
+   DRAWNUMBER,
+   DRAWNUMBER1,
+   DRAWSHIFTNUMBER,
+   DRAWSL,
+   DRAWSL1,
+   DRAWTEXT,
+   DRAWVALID,
+   DUALVOLUME,
+   EMA,
+   EMA2,
+   EMAWH,
+   ENTRYSIG_PLACE,
+   ENTRYSIG_PRICE,
+   ENTRYSIG_VOL,
+   EVERY,
+   EXIST,
+   EXITSIG_PLACE,
+   EXITSIG_PRICE,
+   EXITSIG_VOL,
+   EXP,
+   EXPIREDATE,
+   FEE,
+   FILLRGN,
+   FILLRGN1,
+   FILTER,
+   FINANCE_DATA,
+   FLOOR,
+   FONTSIZE,
+   FORCAST,
+   GROUP,
+   GROUPBKPRICE,
+   GROUPBKVOL,
+   GROUPSKPRICE,
+   GROUPSKVOL,
+   HARMEAN,
+   HASTRADEDATA,
+   HHV,
+   HHVBARS,
+   HIGH,
+   HISEXPDATE,
+   HISEXPDAYS,
+   HOLLOW,
+   HOUR,
+   HV,
+   ICON,
+   IDLE,
+   IF,
+   IFELSE,
+   IMPLIEDVOLATILITY,
+   INITMONEY,
+   INTPART,
+   ISCONTRACT,
+   ISDELIVERYDAY,
+   ISDOWN,
+   ISEQUAL,
+   ISLASTBAR,
+   ISLASTBK,
+   ISLASTBP,
+   ISLASTBPK,
+   ISLASTBUY,
+   ISLASTCLOSEOUT,
+   ISLASTKLINE,
+   ISLASTSELL,
+   ISLASTSK,
+   ISLASTSP,
+   ISLASTSPK,
+   ISLASTSTOP,
+   ISMAINCONTRACT,
+   ISMONTHEND,
+   ISNEARHOLIDAY,
+   ISNULL,
+   ISRECORDDAY,
+   ISTIMETOKLINEEND,
+   ISUP,
+   ISWEEKEND,
+   K_STATE,
+   K_STATE1,
+   K_STATE2,
+   K_STATE3,
+   K_STATE4,
+   KLINESIG,
+   KLINESTART,
+   KTEXT,
+   KURTOSIS,
+   LAST,
+   LASTOFFSETPROFIT,
+   LASTSIG,
+   LASTSIGGROUP,
+   LINETHICK,
+   LLV,
+   LLVBARS,
+   LN,
+   LOG,
+   LOG10,
+   LONGCROSS,
+   LOOP1,
+   LOOP2,
+   LOW,
+   LV,
+   MA,
+   MARGIN,
+   MAX,
+   MAX1,
+   MAXBKVOL,
+   MAXSKVOL,
+   MEDIAN,
+   MEDIAN1,
+   MIN,
+   MIN1,
+   MINPRICE,
+   MINPRICE1,
+   MINPRICED,
+   MINUTE,
+   MOD,
+   MODE,
+   MONEY,
+   MONEYRATIO,
+   MONEYTOT,
+   MONTH,
+   MONTHTRADE,
+   MONTHTRADE1,
+   MULTSIG,
+   MULTSIG_MIN,
+   MV,
+   MYVOL,
+   NAMELIKE,
+   NEWHBARS,
+   NEWHBARS1,
+   NEWLBARS,
+   NEWLBARS1,
+   NODRAW,
+   NORMPDF,
+   NOT,
+   NOTEXT,
+   NULL,
+   NUMPOW,
+   OFFSETPROFIT,
+   OFFSETPROFIT1,
+   OPEN,
+   OPENMINUTE,
+   OPENMINUTE1,
+   OPENSEC,
+   OPENSEC1,
+   OPI,
+   PANZHENG,
+   PARTLINE,
+   PARTLINE1,
+   PCRATE,
+   PCRATETREND,
+   PERCENTILE,
+   PERIOD,
+   PLAYSOUND,
+   POINTDOT,
+   POLYLINE,
+   POLYLINE1,
+   POW,
+   PRECIS,
+   PRECISION,
+   PRICEPRECISION,
+   PRICEPRECISION1,
+   PROFIT,
+   QUARTER,
+   QUARTERTRADE,
+   QUARTERTRADE1,
+   RAND,
+   RANGE,
+   RAWDATA,
+   REF,
+   REFLINE,
+   REFLINE1,
+   REFSIG_PLACE,
+   REFSIG_PRICE,
+   REFSIG_PRICE1,
+   REFSIG_PRICE2,
+   REFSIG_VOL,
+   REFWH,
+   REVERSE,
+   ROUND,
+   SAR,
+   SAR1,
+   SCALE,
+   SEEK,
+   SELECT,
+   SETDEALPERCENT,
+   SETEXPIREDATE,
+   SETMOVEOPIPRICE,
+   SETQUOTACCOUNT,
+   SETSIGPRICE,
+   SETSIGPRICETYPE,
+   SETSTYLECOLOR,
+   SETTLE,
+   SETTRADEACCOUNT,
+   SGN,
+   SIGNUM,
+   SIGVOL,
+   SIN,
+   SKEWNESS,
+   SKHIGH,
+   SKLOW,
+   SKPRICE,
+   SKPRICE1,
+   SKPRICEAV,
+   SKPRICEAV1,
+   SKVOL,
+   SKVOL2,
+   SLOPE,
+   SMA,
+   SMMA,
+   SOLID,
+   SORT,
+   SORTPOS,
+   SOUND,
+   SPLIT,
+   SPLITBARS,
+   SQRT,
+   SQUARE,
+   STD,
+   STDP,
+   STICK,
+   STICKLINE,
+   STICKLINE1,
+   STKTYPE,
+   STOCKDIVD,
+   SUM,
+   SUMBARS,
+   T_CLOSE,
+   T_MAX,
+   T_PLUS,
+   T0TOTIME,
+   TAN,
+   TAVLOSS,
+   TAVWIN,
+   TAVWINLOSS,
+   TIME,
+   TIME0,
+   TIMETOT0,
+   TMAXLOSS,
+   TMAXSEQLOSS,
+   TMAXSEQWIN,
+   TMAXWIN,
+   TNUMSEQLOSS,
+   TNUMSEQWIN,
+   TODAYDEUCETIMES,
+   TODAYLOSSTIMES,
+   TODAYWINTIMES,
+   TPROFIT_REF,
+   TRACING_ORDER,
+   TRADE_AGAIN,
+   TRADE_OTHER,
+   TRADE_REF,
+   TRADE_SMOOTHING,
+   TREND,
+   TRMA,
+   TSEQLOSS,
+   TSEQWIN,
+   TSMA,
+   UNIT,
+   UNIT1,
+   UNITLIMIT,
+   VALIGN,
+   VALUEWHEN,
+   VAR,
+   VARP,
+   VERTLINE,
+   VERTLINE1,
+   VOL,
+   VOLATILITY,
+   VOLMARGIN,
+   VOLSTICK,
+   VOLTICK,
+   VOLTIME,
+   VOLUMESTICK,
+   WEEKDAY,
+   WEEKTRADE,
+   WEEKTRADE1,
+   WINNER,
+   WORD,
+   YCLOSE,
+   YEAR,
+   YEARTRADE,
+   YEARTRADE1,
+   YSETTLE,
+   _CALL,
+   _CALL_OTHER,
+   _CALL_PLUS,
+   _IMPORT,
+   _$_,
+   _$_$_,
 ];

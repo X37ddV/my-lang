@@ -58,7 +58,14 @@ const FuncType = [
 ];
 
 let a: string = `
-import { MyCompletion, MyCompletionMarketType, MyCompletionFunctionType } from "../common";
+import {
+    MyCompletion,
+    MyCompletionType,
+    MyCompletionMarketType,
+    MyCompletionReturnType,
+    MyCompletionFunctionType,
+    MyCompletionParameterType,
+} from "../common";
 
 `;
 let s: string = "";
@@ -84,13 +91,10 @@ for (const fk of functionOrders) {
     a += `const ${key} = new MyCompletion()\n`;
     a += `${key}.label = "${label}"\n`;
     a += `${key}.insertText = ""\n`;
-    // if (func["tip"] !== undefined) {
-    //     const oo = func["tip"];
-    //     a += `${key}.tip = "${oo}"\n`;
-    // }
     if (func["body"] !== undefined) {
         a += `${key}.body = "${func["body"]}"\n`;
     }
+    a += `${key}.type = MyCompletionType.Function\n`;
     if (func["markettype"] !== undefined) {
         const oo = func["markettype"];
         const oos = MarketType[oo] || "";
@@ -101,6 +105,8 @@ for (const fk of functionOrders) {
         const oos = FuncType[oo] || "";
         a += `${key}.functionType = ${oos}\n`;
     }
+    a += `${key}.returnType = MyCompletionReturnType.None\n`;
+    a += `${key}.parameters = MyCompletion.createParametersFromStrings([])\n`;
     if (func["explanation"] !== undefined) {
         const oo = func["explanation"];
         a += `${key}.detail = "${oo}"\n`;

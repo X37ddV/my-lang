@@ -38,33 +38,49 @@ export enum MyCompletionReturnType {
     Boolean,
 }
 
-export enum MyCompletionArgumentType {
-    Any,
+export enum MyCompletionParameterType {
+    Number,
+    Boolean,
     // TODO: Add more types
 }
 
-export class MyCompletionArgument {
+export class MyCompletionParameter {
     public label: string = "";
-    public type: MyCompletionArgumentType = MyCompletionArgumentType.Any;
+    public type: MyCompletionParameterType = MyCompletionParameterType.Number;
+    public immutable: boolean = false;
     public description: string = "";
 }
 
 export class MyCompletion {
     public label: string = "";
     public insertText: string = "";
+    public body: string = "";
     public detail: string = "";
     public documentation: string = "";
-    public body: string = "";
     public type: MyCompletionType = MyCompletionType.Keyword;
     public marketType: MyCompletionMarketType = MyCompletionMarketType.BasicFunction;
     public functionType: MyCompletionFunctionType = MyCompletionFunctionType.CandlestickDataReference;
     public returnType: MyCompletionReturnType = MyCompletionReturnType.None;
-    public arguments: MyCompletionArgument[] = [];
+    public parameters: MyCompletionParameter[] = [];
+    public get parameter(): { [key: string]: MyCompletionParameter } {
+        const result: { [key: string]: MyCompletionParameter } = {};
+        this.parameters.forEach((p) => {
+            result[p.label] = p;
+        });
+        return result;
+    }
     static fromLabelAndDetail(label: string, detail: string): MyCompletion {
         const result = new MyCompletion();
         result.label = label;
         result.detail = detail;
         return result;
+    }
+    static createParametersFromStrings(parameters: string[]): MyCompletionParameter[] {
+        return parameters.map((p) => {
+            const result = new MyCompletionParameter();
+            result.label = p;
+            return result;
+        });
     }
 }
 
