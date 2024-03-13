@@ -1,5 +1,5 @@
-
-export enum MyCompletionFunctionType {
+export enum MyCompletionItemFunctionType {
+    None,
     CandlestickDataReference, // K线数据引用
     FinancialStatisticsFunction, // 金融统计函数
     MathematicalStatisticsFunction, // 数理统计函数
@@ -18,64 +18,81 @@ export enum MyCompletionFunctionType {
     FormulaBasedSelection, // 公式选股
 }
 
-export enum MyCompletionMarketType {
+export enum MyCompletionItemMarketType {
+    None,
     BasicFunction, // 基础函数
     TPlusZeroStrategyFunction, // T+0策略函数
     TPlusOneStrategyFunction, // T+1策略函数
     StockSelectionFunction, // 选股函数
 }
 
-export enum MyCompletionType {
+export enum MyCompletionItemKind {
     Keyword,
     Function,
+    Enum,
+    Reference,
+    Snippet,
+    Operator,
+    Text,
 }
 
-export enum MyCompletionReturnType {
+export enum MyCompletionItemReturnType {
     None,
     Number,
     Boolean,
 }
 
-export enum MyCompletionParameterType {
+export enum MyCompletionItemParameterType {
     Number,
     Boolean,
 }
 
-export class MyCompletionParameter {
+export class MyCompletionItemParameter {
     public label: string = "";
-    public type: MyCompletionParameterType = MyCompletionParameterType.Number;
+    public type: MyCompletionItemParameterType =
+        MyCompletionItemParameterType.Number;
     public immutable: boolean = false; // 参数是否只能是常量
     public documentation: string = "";
 }
 
-export class MyCompletion {
+export class MyCompletionItem {
     public label: string = "";
     public description: string = "";
     public insertText: string = "";
     public body: string = "";
     public detail: string = "";
     public documentation: string = "";
-    public type: MyCompletionType = MyCompletionType.Keyword;
-    public marketType: MyCompletionMarketType = MyCompletionMarketType.BasicFunction;
-    public functionType: MyCompletionFunctionType = MyCompletionFunctionType.CandlestickDataReference;
-    public returnType: MyCompletionReturnType = MyCompletionReturnType.None;
-    public parameters: MyCompletionParameter[] = [];
-    public get parameter(): { [key: string]: MyCompletionParameter } {
-        const result: { [key: string]: MyCompletionParameter } = {};
+    public kind: MyCompletionItemKind = MyCompletionItemKind.Keyword;
+    public marketType: MyCompletionItemMarketType =
+        MyCompletionItemMarketType.None;
+    public functionType: MyCompletionItemFunctionType =
+        MyCompletionItemFunctionType.None;
+    public returnType: MyCompletionItemReturnType =
+        MyCompletionItemReturnType.None;
+    public parameters: MyCompletionItemParameter[] = [];
+    public get parameter(): { [key: string]: MyCompletionItemParameter } {
+        const result: { [key: string]: MyCompletionItemParameter } = {};
         this.parameters.forEach((p) => {
             result[p.label] = p;
         });
         return result;
     }
-    static fromLabelAndDetail(label: string, detail: string): MyCompletion {
-        const result = new MyCompletion();
+    static fromLabelAndDetail(
+        label: string,
+        detail: string,
+        kind: MyCompletionItemKind
+    ): MyCompletionItem {
+        const result = new MyCompletionItem();
         result.label = label;
         result.detail = detail;
+        result.kind = kind;
         return result;
     }
-    static createParametersFromStrings(parameters: string[]): MyCompletionParameter[] {
+    static createParametersFromStrings(
+        parameters: string[]
+    ): MyCompletionItemParameter[] {
         return parameters.map((p) => {
-            const result = new MyCompletionParameter();
+            const result = new MyCompletionItemParameter();
             result.label = p;
             return result;
         });

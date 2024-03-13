@@ -23,6 +23,11 @@ import {
 	TextDocument
 } from 'vscode-languageserver-textdocument';
 
+import {
+	sharpCompletionItems,
+	completionResolve,
+} from './completionItems';
+
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
 const connection = createConnection(ProposedFeatures.all);
@@ -210,13 +215,10 @@ connection.onDidChangeWatchedFiles(_change => {
 	connection.console.log('We received a file change event');
 });
 
-// This handler provides the initial list of the completion items.
+// 代码补全的基本信息
 connection.onCompletion(
 	(textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
-		// The pass parameter contains the position of the text document in
-		// which code complete got requested. For the example we ignore this
-		// info and always provide the same completion items.
-		// 从文档位置信息中获取文档URI和位置
+		let isSharp = false;
 		const document = documents.get(textDocumentPosition.textDocument.uri);
 		if (document) {
 			const position = textDocumentPosition.position;
@@ -224,34 +226,31 @@ connection.onCompletion(
 				start: { line: position.line, character: Math.max(0, position.character - 1) },
 				end: position
 			});
+			isSharp = text === '#';
 		}
-		return [
-			{
-				label: 'TypeScript',
-				kind: CompletionItemKind.Text,
-				data: 1
-			},
-			{
-				label: 'JavaScript',
-				kind: CompletionItemKind.Text,
-				data: 2
-			}
-		];
+		if (isSharp) {
+			return sharpCompletionItems;
+		} else {
+			return [
+				{
+					label: 'TypeScript',
+					kind: CompletionItemKind.Text,
+					data: 1
+				},
+				{
+					label: 'JavaScript',
+					kind: CompletionItemKind.Text,
+					data: 2
+				}
+			];
+		}
 	}
 );
 
-// This handler resolves additional information for the item selected in
-// the completion list.
+// 代码补全的完整信息
 connection.onCompletionResolve(
 	(item: CompletionItem): CompletionItem => {
-		if (item.data === 1) {
-			item.detail = 'TypeScript details';
-			item.documentation = 'TypeScript documentation';
-		} else if (item.data === 2) {
-			item.detail = 'JavaScript details';
-			item.documentation = 'JavaScript documentation';
-		}
-		return item;
+		return completionResolve(item);
 	}
 );
 
