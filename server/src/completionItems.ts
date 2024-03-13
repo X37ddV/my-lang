@@ -1,7 +1,7 @@
 import { functions } from "./functions";
 import { keywords } from "./keywords";
 import { others } from "./others";
-import { CompletionItem, CompletionItemKind } from "vscode-languageserver/node";
+import { CompletionItem, CompletionItemKind, InsertTextFormat } from "vscode-languageserver/node";
 import { MyCompletionItemKind } from "./utils";
 
 const toKind = (kind: MyCompletionItemKind): CompletionItemKind => {
@@ -56,8 +56,9 @@ console.log(sharpCompletionItems);
 export const completionResolve = (item: CompletionItem): CompletionItem => {
     const completionItem = completionMap.get(item.label);
     if (completionItem) {
-        item.labelDetails = { detail: completionItem.description, description: completionItem.description };
+        item.labelDetails = { description: completionItem.description };
         item.insertText = completionItem.insertText;
+        item.insertTextFormat = InsertTextFormat.Snippet;
         item.detail = completionItem.detail;
         item.documentation = completionItem.documentation;
     }
