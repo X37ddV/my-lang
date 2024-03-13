@@ -56,7 +56,8 @@ connection.onInitialize((params: InitializeParams) => {
 			textDocumentSync: TextDocumentSyncKind.Incremental,
 			// Tell the client that this server supports code completion.
 			completionProvider: {
-				resolveProvider: true
+				resolveProvider: true,
+				triggerCharacters: ['#']
 			},
 			diagnosticProvider: {
 				interFileDependencies: false,
@@ -211,10 +212,19 @@ connection.onDidChangeWatchedFiles(_change => {
 
 // This handler provides the initial list of the completion items.
 connection.onCompletion(
-	(_textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
+	(textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
 		// The pass parameter contains the position of the text document in
 		// which code complete got requested. For the example we ignore this
 		// info and always provide the same completion items.
+		// 从文档位置信息中获取文档URI和位置
+		const document = documents.get(textDocumentPosition.textDocument.uri);
+		if (document) {
+			const position = textDocumentPosition.position;
+			const text = document.getText({
+				start: { line: position.line, character: Math.max(0, position.character - 1) },
+				end: position
+			});
+		}
 		return [
 			{
 				label: 'TypeScript',
