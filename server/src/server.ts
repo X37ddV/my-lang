@@ -16,7 +16,9 @@ import {
 	TextDocumentSyncKind,
 	InitializeResult,
 	DocumentDiagnosticReportKind,
-	type DocumentDiagnosticReport
+	type DocumentDiagnosticReport,
+	Hover,
+	MarkupKind
 } from 'vscode-languageserver/node';
 
 import {
@@ -24,6 +26,7 @@ import {
 } from 'vscode-languageserver-textdocument';
 
 import {
+	allCompletionItems,
 	sharpCompletionItems,
 	completionResolve,
 } from './completionItems';
@@ -59,15 +62,18 @@ connection.onInitialize((params: InitializeParams) => {
 	const result: InitializeResult = {
 		capabilities: {
 			textDocumentSync: TextDocumentSyncKind.Incremental,
-			// Tell the client that this server supports code completion.
+			// 声明代码补全能力
 			completionProvider: {
 				resolveProvider: true,
 				triggerCharacters: ['#']
 			},
+			// 声明签名帮助能力
 			diagnosticProvider: {
 				interFileDependencies: false,
 				workspaceDiagnostics: false
-			}
+			},
+			// 声明悬停提示能力
+			hoverProvider: true
 		}
 	};
 	if (hasWorkspaceFolderCapability) {
@@ -93,25 +99,25 @@ connection.onInitialized(() => {
 });
 
 // The example settings
-interface ExampleSettings {
+interface MyLangSettings {
 	maxNumberOfProblems: number;
 }
 
 // The global settings, used when the `workspace/configuration` request is not supported by the client.
 // Please note that this is not the case when using this server with the client provided in this example
 // but could happen with other clients.
-const defaultSettings: ExampleSettings = { maxNumberOfProblems: 1000 };
-let globalSettings: ExampleSettings = defaultSettings;
+const defaultSettings: MyLangSettings = { maxNumberOfProblems: 1000 };
+let globalSettings: MyLangSettings = defaultSettings;
 
 // Cache the settings of all open documents
-const documentSettings: Map<string, Thenable<ExampleSettings>> = new Map();
+const documentSettings: Map<string, Thenable<MyLangSettings>> = new Map();
 
 connection.onDidChangeConfiguration(change => {
 	if (hasConfigurationCapability) {
 		// Reset all cached document settings
 		documentSettings.clear();
 	} else {
-		globalSettings = <ExampleSettings>(
+		globalSettings = <MyLangSettings>(
 			(change.settings.myLang || defaultSettings)
 		);
 	}
@@ -121,7 +127,7 @@ connection.onDidChangeConfiguration(change => {
 	connection.languages.diagnostics.refresh();
 });
 
-function getDocumentSettings(resource: string): Thenable<ExampleSettings> {
+function getDocumentSettings(resource: string): Thenable<MyLangSettings> {
 	if (!hasConfigurationCapability) {
 		return Promise.resolve(globalSettings);
 	}
@@ -237,18 +243,7 @@ connection.onCompletion(
 		if (isSharp) {
 			return sharpCompletionItems;
 		} else {
-			return [
-				{
-					label: 'TypeScript',
-					kind: CompletionItemKind.Text,
-					data: 1
-				},
-				{
-					label: 'JavaScript',
-					kind: CompletionItemKind.Text,
-					data: 2
-				}
-			];
+			return allCompletionItems;
 		}
 	}
 );
@@ -259,6 +254,36 @@ connection.onCompletionResolve(
 		return completionResolve(item);
 	}
 );
+
+connection.onHover((params: TextDocumentPositionParams): Hover | null => {
+	// 获取文档和悬停位置
+	const document = documents.get(params.textDocument.uri);
+	if (!document) return null;
+  
+	const position = params.position;
+
+	// const symbol = getSymbolAtPosition(document, position);
+
+	// if (symbol) {
+	// 	const hoverContent = formatDocumentation(symbol.documentation);
+	// 	return {
+	// 		contents: {
+	// 			kind: MarkupKind.Markdown,
+	// 			value: hoverContent
+	// 		}
+	// 	};
+	// }
+  
+  
+	// 示例：提供简单的悬停文本
+	// 在实际应用中，你需要根据position来分析用户正悬停在哪个符号上，并提供相应的信息
+	return {
+		contents: {
+			kind: MarkupKind.Markdown,
+			value: '这是一个悬停提示的示例文本。'
+		}
+	};
+});
 
 // Make the text document manager listen on the connection
 // for open, change and close text document events

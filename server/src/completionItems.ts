@@ -45,6 +45,20 @@ const completionMap = new Map(
     completions.map((completion) => [completion.label, completion])
 );
 
+// 非#开头的智能提示
+export const allCompletionItems: CompletionItem[] = completions
+    .filter(
+        (item) =>
+            item.kind != MyCompletionItemKind.Reference &&
+            item.kind != MyCompletionItemKind.Snippet
+    )
+    .map((item) => ({
+        label: item.label,
+        kind: toKind(item.kind),
+        labelDetails: { detail: "", description: item.description }
+    }));
+
+// #开头的智能提示
 export const sharpCompletionItems: CompletionItem[] = completions
     .filter(
         (item) =>
