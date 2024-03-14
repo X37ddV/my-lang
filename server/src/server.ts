@@ -222,11 +222,17 @@ connection.onCompletion(
 		const document = documents.get(textDocumentPosition.textDocument.uri);
 		if (document) {
 			const position = textDocumentPosition.position;
-			const text = document.getText({
+			const range = {
 				start: { line: position.line, character: Math.max(0, position.character - 1) },
 				end: position
-			});
+			};
+			const text = document.getText(range);
 			isSharp = text === '#';
+			for (const item of sharpCompletionItems) {
+				if (item.textEdit && 'range' in item.textEdit) {
+					item.textEdit.range = range;
+				}
+			}
 		}
 		if (isSharp) {
 			return sharpCompletionItems;

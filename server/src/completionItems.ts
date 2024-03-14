@@ -1,7 +1,12 @@
 import { functions } from "./functions";
 import { keywords } from "./keywords";
 import { others } from "./others";
-import { CompletionItem, CompletionItemKind, InsertTextFormat } from "vscode-languageserver/node";
+import {
+    CompletionItem,
+    CompletionItemKind,
+    InsertTextFormat,
+    MarkupKind,
+} from "vscode-languageserver/node";
 import { MyCompletionItemKind } from "./utils";
 
 const toKind = (kind: MyCompletionItemKind): CompletionItemKind => {
@@ -49,18 +54,28 @@ export const sharpCompletionItems: CompletionItem[] = completions
     .map((item) => ({
         label: item.label,
         kind: toKind(item.kind),
+        labelDetails: { detail: "", description: item.description },
+        textEdit: {
+            range: {
+                start: { line: 0, character: 0 },
+                end: { line: 0, character: 0 },
+            },
+            newText: item.insertText,
+        },
     }));
-
-console.log(sharpCompletionItems);
 
 export const completionResolve = (item: CompletionItem): CompletionItem => {
     const completionItem = completionMap.get(item.label);
     if (completionItem) {
-        item.labelDetails = { description: completionItem.description };
-        item.insertText = completionItem.insertText;
+        if (!item.textEdit && completionItem.insertText) {
+            item.insertText = completionItem.insertText;
+        }
         item.insertTextFormat = InsertTextFormat.Snippet;
         item.detail = completionItem.detail;
-        item.documentation = completionItem.documentation;
+        item.documentation = {
+            kind: MarkupKind.Markdown,
+            value: completionItem.documentation,
+        };
     }
     return item;
 };
