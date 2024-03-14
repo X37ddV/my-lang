@@ -1,17 +1,17 @@
 import {
-    MyCompletionItem,
-    MyCompletionItemKind,
-    MyCompletionItemMarketType,
-    MyCompletionItemReturnType,
-    MyCompletionItemFunctionType,
-    MyCompletionItemParameterType,
-} from "./utils";
+    MySymbol,
+    MySymbolKind,
+    MyMarketType,
+    MyFunctionReturnType,
+    MyFunctionType,
+    MyFunctionParameterType,
+} from "./common";
 
-const _REGION = new MyCompletionItem();
+const _REGION = new MySymbol();
 _REGION.label = "#region";
 _REGION.description = "Region Start";
 _REGION.insertText = "//#region ${1:Region Name}\n$0\n//#endregion";
-_REGION.kind = MyCompletionItemKind.Snippet;
+_REGION.kind = MySymbolKind.Snippet;
 _REGION.detail = "Folding Region Start (麦语言基础功能)";
 _REGION.documentation = `
 \`\`\` javascript
@@ -19,11 +19,11 @@ _REGION.documentation = `
 \`\`\`
 `;
 
-const _ENDREGION = new MyCompletionItem();
+const _ENDREGION = new MySymbol();
 _ENDREGION.label = "#endregion";
 _ENDREGION.description = "Region End";
 _ENDREGION.insertText = "//#endregion";
-_ENDREGION.kind = MyCompletionItemKind.Snippet;
+_ENDREGION.kind = MySymbolKind.Snippet;
 _ENDREGION.detail = "Folding Region End (麦语言基础功能)";
 _ENDREGION.documentation = `
 \`\`\` javascript
@@ -31,15 +31,15 @@ _ENDREGION.documentation = `
 \`\`\`
 `;
 
-const _CALL = new MyCompletionItem();
+const _CALL = new MySymbol();
 _CALL.label = "#CALL";
 _CALL.description = "跨合约引用指标";
 _CALL.insertText = "#CALL [${1|VIXINDEX,MAININDEX,WEIGHTINDEX|}, ${2:FORMULA}] AS ${3:VAR}";
-_CALL.kind = MyCompletionItemKind.Reference;
-_CALL.marketType = MyCompletionItemMarketType.TPlusZeroStrategyFunction;
-_CALL.functionType = MyCompletionItemFunctionType.CandlestickDataReference;
-_CALL.returnType = MyCompletionItemReturnType.None;
-_CALL.parameters = MyCompletionItem.createParametersFromStrings([]);
+_CALL.kind = MySymbolKind.Reference;
+_CALL.marketType = MyMarketType.TPlusZeroStrategyFunction;
+_CALL.functionType = MyFunctionType.CandlestickDataReference;
+_CALL.returnType = MyFunctionReturnType.None;
+_CALL.parameters = MySymbol.createParametersFromStrings([]);
 _CALL.detail = "跨合约引用指标";
 _CALL.documentation = `
 #CALL[CODE,FORMULA]ASVAR引用CODE合约的指标FORMULA的数据
@@ -72,16 +72,16 @@ CC:REF(C,1);//定义一个周期前的收盘价
 CC:VAR.CC;//跨合约引用当前合约对应品种VIX指数一个周期前的收盘价
 `;
 
-const _CALL_OTHER = new MyCompletionItem();
+const _CALL_OTHER = new MySymbol();
 _CALL_OTHER.label = "#CALL_OTHER";
 _CALL_OTHER.description = "跨指标引用";
 _CALL_OTHER.insertText = "#CALL_OTHER [${1:FORMULA}] AS ${2:VAR}";
-_CALL_OTHER.kind = MyCompletionItemKind.Reference;
-_CALL_OTHER.marketType = MyCompletionItemMarketType.TPlusZeroStrategyFunction;
+_CALL_OTHER.kind = MySymbolKind.Reference;
+_CALL_OTHER.marketType = MyMarketType.TPlusZeroStrategyFunction;
 _CALL_OTHER.functionType =
-    MyCompletionItemFunctionType.CandlestickDataReference;
-_CALL_OTHER.returnType = MyCompletionItemReturnType.None;
-_CALL_OTHER.parameters = MyCompletionItem.createParametersFromStrings([]);
+    MyFunctionType.CandlestickDataReference;
+_CALL_OTHER.returnType = MyFunctionReturnType.None;
+_CALL_OTHER.parameters = MySymbol.createParametersFromStrings([]);
 _CALL_OTHER.detail = "跨指标引用";
 _CALL_OTHER.documentation = `
 #CALL_OTHER[FORMULA]ASVAR跨指标引用
@@ -104,15 +104,15 @@ CC:REF(C,1);//定义一个周期前的收盘价
 CC:VAR.CC;//跨指标引用当前合约的一个周期前的收盘价
 `;
 
-const _CALL_PLUS = new MyCompletionItem();
+const _CALL_PLUS = new MySymbol();
 _CALL_PLUS.label = "#CALL_PLUS";
 _CALL_PLUS.description = "跨合约跨周期引用指标";
 _CALL_PLUS.insertText = "#CALL_PLUS [${1|VIXINDEX,MAININDEX,WEIGHTINDEX|}, ${2|MIN,HOUR,CUSHOUR,DAY,WEEK,MONTH,QUARTER,YEAR|}, ${3:N}, ${4:FORMULA}] AS ${5:VAR}";
-_CALL_PLUS.kind = MyCompletionItemKind.Reference;
-_CALL_PLUS.marketType = MyCompletionItemMarketType.TPlusZeroStrategyFunction;
-_CALL_PLUS.functionType = MyCompletionItemFunctionType.CandlestickDataReference;
-_CALL_PLUS.returnType = MyCompletionItemReturnType.None;
-_CALL_PLUS.parameters = MyCompletionItem.createParametersFromStrings([]);
+_CALL_PLUS.kind = MySymbolKind.Reference;
+_CALL_PLUS.marketType = MyMarketType.TPlusZeroStrategyFunction;
+_CALL_PLUS.functionType = MyFunctionType.CandlestickDataReference;
+_CALL_PLUS.returnType = MyFunctionReturnType.None;
+_CALL_PLUS.parameters = MySymbol.createParametersFromStrings([]);
 _CALL_PLUS.detail = "跨合约跨周期引用指标";
 _CALL_PLUS.documentation = `
 #CALL_PLUS[CODE,PERIOD,N,FORMULA]ASVAR引用CODE合约PERIOD参数为N的周期下的指标FORMULA的数据
@@ -151,15 +151,15 @@ CC:REF(C,1);//定义一个周期前的收盘价
 CC:VAR.CC;//跨周期引用当前合约对应品种VIX指数昨天的收盘价
 `;
 
-const _IMPORT = new MyCompletionItem();
+const _IMPORT = new MySymbol();
 _IMPORT.label = "#IMPORT";
 _IMPORT.description = "跨周期引用指标";
 _IMPORT.insertText = "#IMPORT [${1|MIN,HOUR,CUSHOUR,DAY,WEEK,MONTH,QUARTER,YEAR|}, ${2:N}, ${3:FORMULA}] AS ${4:VAR}";
-_IMPORT.kind = MyCompletionItemKind.Reference;
-_IMPORT.marketType = MyCompletionItemMarketType.TPlusZeroStrategyFunction;
-_IMPORT.functionType = MyCompletionItemFunctionType.CandlestickDataReference;
-_IMPORT.returnType = MyCompletionItemReturnType.None;
-_IMPORT.parameters = MyCompletionItem.createParametersFromStrings([]);
+_IMPORT.kind = MySymbolKind.Reference;
+_IMPORT.marketType = MyMarketType.TPlusZeroStrategyFunction;
+_IMPORT.functionType = MyFunctionType.CandlestickDataReference;
+_IMPORT.returnType = MyFunctionReturnType.None;
+_IMPORT.parameters = MySymbol.createParametersFromStrings([]);
 _IMPORT.detail = "跨周期引用指标";
 _IMPORT.documentation = `
 #IMPORT[PERIOD,N,FORMULA]ASVAR引用PERIOD参数为N的周期下的指标FORMULA的数据
@@ -206,16 +206,16 @@ CC1:=S.CC;//跨周期引用自定义6小时周期的一个周期前的收盘价
 CC2:=R.CC;//跨周期引用自定义1分钟周期的一个周期前的收盘价
 `;
 
-const _$_ = new MyCompletionItem();
+const _$_ = new MySymbol();
 _$_.label = "$";
 _$_.description = "引用其他合约的K线数据";
 _$_.insertText = "";
 _$_.body = " $ ";
-_$_.kind = MyCompletionItemKind.Text;
-_$_.marketType = MyCompletionItemMarketType.TPlusZeroStrategyFunction;
-_$_.functionType = MyCompletionItemFunctionType.CandlestickDataReference;
-_$_.returnType = MyCompletionItemReturnType.None;
-_$_.parameters = MyCompletionItem.createParametersFromStrings([]);
+_$_.kind = MySymbolKind.Text;
+_$_.marketType = MyMarketType.TPlusZeroStrategyFunction;
+_$_.functionType = MyFunctionType.CandlestickDataReference;
+_$_.returnType = MyFunctionReturnType.None;
+_$_.parameters = MySymbol.createParametersFromStrings([]);
 _$_.detail = "引用其他合约的K线数据";
 _$_.documentation = `
 
@@ -236,16 +236,16 @@ A:"1209$CLOSE";//返回文华码为1209合约的收盘价。
 A:"8606$OPI";//返回文华码为8606合约的持仓量。
 `;
 
-const _$_$_ = new MyCompletionItem();
+const _$_$_ = new MySymbol();
 _$_$_.label = "$ $";
 _$_$_.description = "引用其他周期的K线数据";
 _$_$_.insertText = "";
 _$_$_.body = " $ $ ";
-_$_$_.kind = MyCompletionItemKind.Text;
-_$_$_.marketType = MyCompletionItemMarketType.TPlusZeroStrategyFunction;
-_$_$_.functionType = MyCompletionItemFunctionType.CandlestickDataReference;
-_$_$_.returnType = MyCompletionItemReturnType.None;
-_$_$_.parameters = MyCompletionItem.createParametersFromStrings([]);
+_$_$_.kind = MySymbolKind.Text;
+_$_$_.marketType = MyMarketType.TPlusZeroStrategyFunction;
+_$_$_.functionType = MyFunctionType.CandlestickDataReference;
+_$_$_.returnType = MyFunctionReturnType.None;
+_$_$_.parameters = MySymbol.createParametersFromStrings([]);
 _$_$_.detail = "引用其他周期的K线数据";
 _$_$_.documentation = `
 

@@ -7,30 +7,30 @@ import {
     InsertTextFormat,
     MarkupKind,
 } from "vscode-languageserver/node";
-import { MyCompletionItemKind } from "./utils";
+import { MySymbolKind } from "./common";
 
-const toKind = (kind: MyCompletionItemKind): CompletionItemKind => {
+const toKind = (kind: MySymbolKind): CompletionItemKind => {
     let result: CompletionItemKind;
     switch (kind) {
-        case MyCompletionItemKind.Keyword:
+        case MySymbolKind.Keyword:
             result = CompletionItemKind.Keyword;
             break;
-        case MyCompletionItemKind.Function:
+        case MySymbolKind.Function:
             result = CompletionItemKind.Function;
             break;
-        case MyCompletionItemKind.Enum:
+        case MySymbolKind.Enum:
             result = CompletionItemKind.Enum;
             break;
-        case MyCompletionItemKind.Reference:
+        case MySymbolKind.Reference:
             result = CompletionItemKind.Reference;
             break;
-        case MyCompletionItemKind.Snippet:
+        case MySymbolKind.Snippet:
             result = CompletionItemKind.Snippet;
             break;
-        case MyCompletionItemKind.Operator:
+        case MySymbolKind.Operator:
             result = CompletionItemKind.Operator;
             break;
-        case MyCompletionItemKind.Text:
+        case MySymbolKind.Text:
             result = CompletionItemKind.Text;
             break;
         default:
@@ -45,12 +45,16 @@ const completionMap = new Map(
     completions.map((completion) => [completion.label, completion])
 );
 
+export const getSymbolByName = (name: string) => {
+    return completionMap.get(name);
+};
+
 // 非#开头的智能提示
 export const allCompletionItems: CompletionItem[] = completions
     .filter(
         (item) =>
-            item.kind != MyCompletionItemKind.Reference &&
-            item.kind != MyCompletionItemKind.Snippet
+            item.kind != MySymbolKind.Reference &&
+            item.kind != MySymbolKind.Snippet
     )
     .map((item) => ({
         label: item.label,
@@ -62,8 +66,8 @@ export const allCompletionItems: CompletionItem[] = completions
 export const sharpCompletionItems: CompletionItem[] = completions
     .filter(
         (item) =>
-            item.kind == MyCompletionItemKind.Reference ||
-            item.kind == MyCompletionItemKind.Snippet
+            item.kind == MySymbolKind.Reference ||
+            item.kind == MySymbolKind.Snippet
     )
     .map((item) => ({
         label: item.label,

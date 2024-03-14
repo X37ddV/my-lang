@@ -18,7 +18,8 @@ import {
 	DocumentDiagnosticReportKind,
 	type DocumentDiagnosticReport,
 	Hover,
-	MarkupKind
+	MarkupKind,
+    Position
 } from 'vscode-languageserver/node';
 
 import {
@@ -29,7 +30,9 @@ import {
 	allCompletionItems,
 	sharpCompletionItems,
 	completionResolve,
-} from './completionItems';
+    getSymbolByName,
+} from './symbol/symbolTable';
+import { MySymbol } from './symbol/common';
 
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
@@ -255,6 +258,27 @@ connection.onCompletionResolve(
 	}
 );
 
+function getSymbolAtPosition(document: TextDocument, position: Position): MySymbol | undefined {
+    const text = document.getText();
+    const lines = text.split(/\r?\n/);
+    const lineText = lines[position.line];
+
+    // 简单的正则表达式，用于匹配单词。根据你的语言特性调整
+    const wordRegex = /\b\w+\b/g;
+    let match;
+    while ((match = wordRegex.exec(lineText)) !== null) {
+        const start = match.index;
+        const end = start + match[0].length;
+        // 检查光标位置是否在单词中
+        if (start <= position.character && position.character <= end) {
+            // 这里假设你有一个函数 getSymbolInfoByName 来从你的符号表中获取符号信息
+            return getSymbolByName(match[0]);
+        }
+    }
+
+    return undefined; // 没有找到符号
+}
+
 connection.onHover((params: TextDocumentPositionParams): Hover | null => {
 	// 获取文档和悬停位置
 	const document = documents.get(params.textDocument.uri);
@@ -262,27 +286,18 @@ connection.onHover((params: TextDocumentPositionParams): Hover | null => {
   
 	const position = params.position;
 
-	// const symbol = getSymbolAtPosition(document, position);
+	const symbol = getSymbolAtPosition(document, position);
 
-	// if (symbol) {
-	// 	const hoverContent = formatDocumentation(symbol.documentation);
-	// 	return {
-	// 		contents: {
-	// 			kind: MarkupKind.Markdown,
-	// 			value: hoverContent
-	// 		}
-	// 	};
-	// }
-  
-  
-	// 示例：提供简单的悬停文本
-	// 在实际应用中，你需要根据position来分析用户正悬停在哪个符号上，并提供相应的信息
-	return {
-		contents: {
-			kind: MarkupKind.Markdown,
-			value: '这是一个悬停提示的示例文本。'
-		}
-	};
+	if (symbol) {
+		const hoverContent = symbol.documentation;
+		return {
+			contents: {
+				kind: MarkupKind.Markdown,
+				value: hoverContent
+			}
+		};
+	}
+    return null;
 });
 
 // Make the text document manager listen on the connection

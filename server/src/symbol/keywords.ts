@@ -1,4 +1,4 @@
-import { MyCompletionItem, MyCompletionItemKind } from "./utils";
+import { MySymbol, MySymbolKind } from "./common";
 
 const keywordList = Object.entries({
     AS: "AS 与#IMPORT函数连用",
@@ -8,24 +8,24 @@ const keywordList = Object.entries({
     IF: "IF",
     THEN: "THEN",
     VARIABLE: "VARIABLE 定义全局变量并初始化",
-}).map(([label, detail]) => MyCompletionItem.fromLabelAndDetail(label, detail, MyCompletionItemKind.Keyword));
+}).map(([label, detail]) => MySymbol.fromLabelAndDetail(label, detail, MySymbolKind.Keyword));
 
 
 const operatorList = Object.entries({
     AND: "逻辑与",
     OR: "逻辑或",
-}).map(([label, detail]) => MyCompletionItem.fromLabelAndDetail(label, detail, MyCompletionItemKind.Operator));
+}).map(([label, detail]) => MySymbol.fromLabelAndDetail(label, detail, MySymbolKind.Operator));
 
 const periodList = Object.entries({
     SEC: "秒",
     WEEK: "周",
-}).map(([label, detail]) => MyCompletionItem.fromLabelAndDetail(label, detail, MyCompletionItemKind.Enum));
+}).map(([label, detail]) => MySymbol.fromLabelAndDetail(label, detail, MySymbolKind.Enum));
 
 const drawList = Object.entries({
     BOLD: "加粗",
     OPISTICK: "画竖线, K线为阳线为红色, K线为阴线为青色",
     STICK1: "画柱线",
-}).map(([label, detail]) => MyCompletionItem.fromLabelAndDetail(label, detail, MyCompletionItemKind.Enum));
+}).map(([label, detail]) => MySymbol.fromLabelAndDetail(label, detail, MySymbolKind.Enum));
 
 const orderOpList = Object.entries({
     BK: "买开仓",
@@ -38,19 +38,19 @@ const orderOpList = Object.entries({
     CLOSEOUT: "清仓指令",
     BUY: "买入",
     SELL: "卖出",
-}).map(([label, detail]) => MyCompletionItem.fromLabelAndDetail(label, detail, MyCompletionItemKind.Function));
+}).map(([label, detail]) => MySymbol.fromLabelAndDetail(label, detail, MySymbolKind.Function));
 
 const ratioList = Object.entries({
     RATIO_ACCOUNT: "账户资金使用率",
     RATIO_CODE: "单品种资金使用率",
-}).map(([label, detail]) => MyCompletionItem.fromLabelAndDetail(label, detail, MyCompletionItemKind.Enum));
+}).map(([label, detail]) => MySymbol.fromLabelAndDetail(label, detail, MySymbolKind.Enum));
 
 const periodCustomList = Object.entries({
     CUSTOM_DAY: "自定义日",
     CUSTOM_HOUR: "自定义小时",
     CUSTOM_MIN: "自定义分钟",
     CUSTOM_SEC: "自定义秒",
-}).map(([label, detail]) => MyCompletionItem.fromLabelAndDetail(label, detail, MyCompletionItemKind.Enum));
+}).map(([label, detail]) => MySymbol.fromLabelAndDetail(label, detail, MySymbolKind.Enum));
 
 const loopTypeList = Object.entries({
     ADD: "加和",
@@ -72,7 +72,7 @@ const loopTypeList = Object.entries({
     SECONDMIN_POS: "次小值位置",
     SECONDMIN_VALUE: "次小值",
     TIMES: "满足表达式的次数",
-}).map(([label, detail]) => MyCompletionItem.fromLabelAndDetail(label, detail, MyCompletionItemKind.Enum));
+}).map(([label, detail]) => MySymbol.fromLabelAndDetail(label, detail, MySymbolKind.Enum));
 
 const dataList = Object.entries({
     C: "收盘价",
@@ -80,19 +80,19 @@ const dataList = Object.entries({
     L: "最低价",
     O: "开盘价",
     V: "成交量",
-}).map(([label, detail]) => MyCompletionItem.fromLabelAndDetail(label, detail, MyCompletionItemKind.Function));
+}).map(([label, detail]) => MySymbol.fromLabelAndDetail(label, detail, MySymbolKind.Function));
 
 const alignList = Object.entries({
     ALIGN0: "左对齐",
     ALIGN1: "居中对齐",
     ALIGN2: "右对齐",
-}).map(([label, detail]) => MyCompletionItem.fromLabelAndDetail(label, detail, MyCompletionItemKind.Enum));
+}).map(([label, detail]) => MySymbol.fromLabelAndDetail(label, detail, MySymbolKind.Enum));
 
 const valignList = Object.entries({
     VALIGN0: "上对齐",
     VALIGN1: "居中对齐",
     VALIGN2: "下对齐",
-}).map(([label, detail]) => MyCompletionItem.fromLabelAndDetail(label, detail, MyCompletionItemKind.Enum));
+}).map(([label, detail]) => MySymbol.fromLabelAndDetail(label, detail, MySymbolKind.Enum));
 
 const colorList = Object.entries({
     COLORBLACK: "黑色",
@@ -108,7 +108,7 @@ const colorList = Object.entries({
     COLORRED: "红色",
     COLORWHITE: "白色",
     COLORYELLOW: "黄色",
-}).map(([label, detail]) => MyCompletionItem.fromLabelAndDetail(label, detail, MyCompletionItemKind.Enum));
+}).map(([label, detail]) => MySymbol.fromLabelAndDetail(label, detail, MySymbolKind.Enum));
 
 const orderList = Object.entries({
     ACTIVE_ORDER: "对价",
@@ -118,22 +118,22 @@ const orderList = Object.entries({
     NEW_ORDER: "最新价",
     PASSIVE_ORDER: "排队价",
     SIGPRICE_ORDER: "触发价",
-}).map(([label, detail]) => MyCompletionItem.fromLabelAndDetail(label, detail, MyCompletionItemKind.Enum));
+}).map(([label, detail]) => MySymbol.fromLabelAndDetail(label, detail, MySymbolKind.Enum));
 
 const precisList = Array.from({ length: 7 }, (_, i) => i).map((i) =>
-    MyCompletionItem.fromLabelAndDetail(
+    MySymbol.fromLabelAndDetail(
         `PRECIS${i}`,
         `数值精度为${i}(${i === 0 ? "不显示小数" : `显示${i}位小数`})`,
-        MyCompletionItemKind.Enum
+        MySymbolKind.Enum
     )
 );
 
 const lineThickList = Array.from({ length: 7 }, (_, i) => i + 1).map((i) =>
-    MyCompletionItem.fromLabelAndDetail(`LINETHICK${i}`, `实线 粗细度为${i}`, MyCompletionItemKind.Enum)
+    MySymbol.fromLabelAndDetail(`LINETHICK${i}`, `实线 粗细度为${i}`, MySymbolKind.Enum)
 );
 
 const fontSizeList = Array.from({ length: 65 }, (_, i) => i + 8).map((i) =>
-    MyCompletionItem.fromLabelAndDetail(`FONTSIZE${i}`, `字体大小为${i}`, MyCompletionItemKind.Enum)
+    MySymbol.fromLabelAndDetail(`FONTSIZE${i}`, `字体大小为${i}`, MySymbolKind.Enum)
 );
 
 export const keywords = [
