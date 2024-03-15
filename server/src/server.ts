@@ -171,8 +171,66 @@ connection.languages.diagnostics.on(async (params) => {
 // The content of a text document has changed. This event is emitted
 // when the text document first opened or when its content has changed.
 documents.onDidChangeContent(change => {
+    updateColorDecorations(change.document);
 	validateTextDocument(change.document);
 });
+
+function updateColorDecorations(textDocument: TextDocument) {
+	function rgbToHex(r: string, g: string, b: string) {
+		const toHex = (n: string) => {
+			const hex = parseInt(n, 10).toString(16);
+			return hex.length === 1 ? "0" + hex : hex;
+		};
+		return ("#" + toHex(r) + toHex(g) + toHex(b)).toUpperCase();
+	}
+	// 颜色映射
+	const colorMap: { [key: string]: string } = {
+		COLORRED: "#FF0000",
+		COLORGREEN: "#00FF00",
+		COLORBLUE: "#0000FF",
+		COLORMAGENTA: "#FF00FF",
+		COLORYELLOW: "#FFFF00",
+		COLORLIGHTGREY: "#D3D3D3",
+		COLORLIGHTRED: "#FFA07A",
+		COLORLIGHTGREEN: "#90EE90",
+		COLORLIGHTBLUE: "#ADD8E6",
+		COLORBLACK: "#000000",
+		COLORWHITE: "#FFFFFF",
+		COLORCYAN: "#00FFFF",
+		COLORGRAY: "#808080",
+	};
+	// 正则表达式匹配所有颜色标识符
+	const regex = RegExp(
+		`\\b(${Object.keys(colorMap).join("|")})\\b` +
+			"|\\bRGB\\s*\\(\\s*(25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\s*,\\s*(25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\s*,\\s*(25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\s*\\)",
+		"g"
+	);
+	const text = textDocument.getText();
+	const diagnostics: Diagnostic[] = [];
+	let match;
+    while ((match = regex.exec(text)) !== null) {
+        const startPos = textDocument.positionAt(match.index);
+        const endPos = textDocument.positionAt(
+            match.index + match[0].length
+        );
+        const matchString = match[0];
+        const key = matchString.startsWith("RGB")
+            ? rgbToHex(match[2], match[3], match[4])
+            : colorMap[matchString];
+		const range = {
+			start: startPos,
+			end: endPos
+		};
+		const diagnostic: Diagnostic = {
+			severity: DiagnosticSeverity.Information,
+			range: range,
+			message: key,
+			source: "colorDecorator"
+		};
+		diagnostics.push(diagnostic);
+    }
+	connection.sendDiagnostics({ uri: textDocument.uri, diagnostics });
+}
 
 async function validateTextDocument(textDocument: TextDocument): Promise<Diagnostic[]> {
 	// In this simple example we get the settings for every validate run.
