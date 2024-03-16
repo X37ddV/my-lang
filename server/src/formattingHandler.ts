@@ -36,7 +36,11 @@ function formatCode(code: string): string {
         .replace(/\s+\.\s+/g, ".")
         .replace(/#\s*/g, "#")
         .replace(/\s*\[\s*/g, " [")
-        .replace(/\s*\]\s*/g, "] ");
+        .replace(/\s*\]\s*/g, "] ")
+        .replace(/(?<![0-9A-Za-z]\s)-\s*(?=\d)/g, '-')
+        .replace(/^VARIABLE\s*:/, "VARIABLE:")
+        .replace(/^REFLINE\s*:/, "REFLINE:")
+        .replace("()", "");
     return text;
 }
 
@@ -82,6 +86,7 @@ export const formattingHandler = (
                 ? trimmedLineEnd.slice(singleLineCommentIdx)
                 : ""
         );
+        // 获取代码部分
         const singleLineCode = formatCode(
             singleLineCommentIdx !== -1
                 ? trimmedLineEnd.slice(0, singleLineCommentIdx)
