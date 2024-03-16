@@ -3,42 +3,38 @@
  * Licensed under the MIT License. See License.md in the project root for license information.
  * ------------------------------------------------------------------------------------------ */
 import {
-	createConnection,
-	TextDocuments,
-	Diagnostic,
-	DiagnosticSeverity,
-	ProposedFeatures,
-	InitializeParams,
-	DidChangeConfigurationNotification,
-	CompletionItem,
-	CompletionItemKind,
-	TextDocumentPositionParams,
-	TextDocumentSyncKind,
-	InitializeResult,
-	DocumentDiagnosticReportKind,
-	type DocumentDiagnosticReport,
-	Hover,
-	MarkupKind,
-    Position
-} from 'vscode-languageserver/node';
+    createConnection,
+    TextDocuments,
+    Diagnostic,
+    DiagnosticSeverity,
+    ProposedFeatures,
+    InitializeParams,
+    DidChangeConfigurationNotification,
+    CompletionItem,
+    TextDocumentPositionParams,
+    TextDocumentSyncKind,
+    InitializeResult,
+    DocumentDiagnosticReportKind,
+    type DocumentDiagnosticReport,
+    Hover,
+    MarkupKind,
+    Position,
+} from "vscode-languageserver/node";
+
+import { TextDocument } from "vscode-languageserver-textdocument";
 
 import {
-	TextDocument
-} from 'vscode-languageserver-textdocument';
-
-import {
-	allCompletionItems,
-	sharpCompletionItems,
-	completionResolve,
+    allCompletionItems,
+    sharpCompletionItems,
+    completionResolve,
     getSymbolByName,
-} from './symbol/symbolTable';
-import { MySymbol } from './symbol/common';
+} from "./symbol/symbolTable";
+import { MySymbol } from "./symbol/common";
 
-// Create a connection for the server, using Node's IPC as a transport.
-// Also include all preview / proposed LSP features.
+// 为服务创建一个连接, 用 Node 的 IPC 进行传输
 const connection = createConnection(ProposedFeatures.all);
 
-// Create a simple text document manager.
+// 创建一个简单的文档管理器，可以支持多个打开的文档
 const documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument);
 
 let hasConfigurationCapability = false;
@@ -46,277 +42,227 @@ let hasWorkspaceFolderCapability = false;
 let hasDiagnosticRelatedInformationCapability = false;
 
 connection.onInitialize((params: InitializeParams) => {
-	const capabilities = params.capabilities;
+    const capabilities = params.capabilities;
 
-	// Does the client support the `workspace/configuration` request?
-	// If not, we fall back using global settings.
-	hasConfigurationCapability = !!(
-		capabilities.workspace && !!capabilities.workspace.configuration
-	);
-	hasWorkspaceFolderCapability = !!(
-		capabilities.workspace && !!capabilities.workspace.workspaceFolders
-	);
-	hasDiagnosticRelatedInformationCapability = !!(
-		capabilities.textDocument &&
-		capabilities.textDocument.publishDiagnostics &&
-		capabilities.textDocument.publishDiagnostics.relatedInformation
-	);
+    hasConfigurationCapability = !!(
+        capabilities.workspace && !!capabilities.workspace.configuration
+    );
+    hasWorkspaceFolderCapability = !!(
+        capabilities.workspace && !!capabilities.workspace.workspaceFolders
+    );
+    hasDiagnosticRelatedInformationCapability = !!(
+        capabilities.textDocument &&
+        capabilities.textDocument.publishDiagnostics &&
+        capabilities.textDocument.publishDiagnostics.relatedInformation
+    );
 
-	const result: InitializeResult = {
-		capabilities: {
-			textDocumentSync: TextDocumentSyncKind.Incremental,
-			// 声明代码补全能力
-			completionProvider: {
-				resolveProvider: true,
-				triggerCharacters: ['#']
-			},
-			// 声明签名帮助能力
-			diagnosticProvider: {
-				interFileDependencies: false,
-				workspaceDiagnostics: false
-			},
-			// 声明悬停提示能力
-			hoverProvider: true
-		}
-	};
-	if (hasWorkspaceFolderCapability) {
-		result.capabilities.workspace = {
-			workspaceFolders: {
-				supported: true
-			}
-		};
-	}
-	return result;
+    const result: InitializeResult = {
+        capabilities: {
+            textDocumentSync: TextDocumentSyncKind.Incremental,
+            // 声明代码补全能力
+            completionProvider: {
+                resolveProvider: true,
+                triggerCharacters: ["#"],
+            },
+            // 声明签名帮助能力
+            diagnosticProvider: {
+                interFileDependencies: false,
+                workspaceDiagnostics: false,
+            },
+            // 声明悬停提示能力
+            hoverProvider: true,
+        },
+    };
+    if (hasWorkspaceFolderCapability) {
+        result.capabilities.workspace = {
+            workspaceFolders: {
+                supported: true,
+            },
+        };
+    }
+    return result;
 });
 
 connection.onInitialized(() => {
-	if (hasConfigurationCapability) {
-		// Register for all configuration changes.
-		connection.client.register(DidChangeConfigurationNotification.type, undefined);
-	}
-	if (hasWorkspaceFolderCapability) {
-		connection.workspace.onDidChangeWorkspaceFolders(_event => {
-			connection.console.log('Workspace folder change event received.');
-		});
-	}
+    if (hasConfigurationCapability) {
+        connection.client.register(
+            DidChangeConfigurationNotification.type,
+            undefined
+        );
+    }
+    if (hasWorkspaceFolderCapability) {
+        connection.workspace.onDidChangeWorkspaceFolders((_event) => {
+            connection.console.log("Workspace folder change event received.");
+        });
+    }
 });
 
-// The example settings
+// 麦语言的设置信息
 interface MyLangSettings {
-	maxNumberOfProblems: number;
+    maxNumberOfProblems: number;
 }
 
-// The global settings, used when the `workspace/configuration` request is not supported by the client.
-// Please note that this is not the case when using this server with the client provided in this example
-// but could happen with other clients.
+// 设置信息
 const defaultSettings: MyLangSettings = { maxNumberOfProblems: 1000 };
 let globalSettings: MyLangSettings = defaultSettings;
 
-// Cache the settings of all open documents
+// 缓存文档的设置信息
 const documentSettings: Map<string, Thenable<MyLangSettings>> = new Map();
 
-connection.onDidChangeConfiguration(change => {
-	if (hasConfigurationCapability) {
-		// Reset all cached document settings
-		documentSettings.clear();
-	} else {
-		globalSettings = <MyLangSettings>(
-			(change.settings.myLang || defaultSettings)
-		);
-	}
-	// Refresh the diagnostics since the `maxNumberOfProblems` could have changed.
-	// We could optimize things here and re-fetch the setting first can compare it
-	// to the existing setting, but this is out of scope for this example.
-	connection.languages.diagnostics.refresh();
+connection.onDidChangeConfiguration((change) => {
+    if (hasConfigurationCapability) {
+        // 清除所有文档的设置
+        documentSettings.clear();
+    } else {
+        globalSettings = <MyLangSettings>(
+            (change.settings.myLang || defaultSettings)
+        );
+    }
+    // 当配置发生变化时，重新验证所有打开的文档
+    connection.languages.diagnostics.refresh();
 });
 
 function getDocumentSettings(resource: string): Thenable<MyLangSettings> {
-	if (!hasConfigurationCapability) {
-		return Promise.resolve(globalSettings);
-	}
-	let result = documentSettings.get(resource);
-	if (!result) {
-		result = connection.workspace.getConfiguration({
-			scopeUri: resource,
-			section: 'myLang'
-		});
-		documentSettings.set(resource, result);
-	}
-	return result;
+    if (!hasConfigurationCapability) {
+        return Promise.resolve(globalSettings);
+    }
+    let result = documentSettings.get(resource);
+    if (!result) {
+        result = connection.workspace.getConfiguration({
+            scopeUri: resource,
+            section: "myLang",
+        });
+        documentSettings.set(resource, result);
+    }
+    return result;
 }
 
-// Only keep settings for open documents
-documents.onDidClose(e => {
-	documentSettings.delete(e.document.uri);
+// 仅保留打开文档的设置, 关闭的文档将被删除
+documents.onDidClose((e) => {
+    documentSettings.delete(e.document.uri);
 });
-
 
 connection.languages.diagnostics.on(async (params) => {
-	const document = documents.get(params.textDocument.uri);
-	if (document !== undefined) {
-		return {
-			kind: DocumentDiagnosticReportKind.Full,
-			items: await validateTextDocument(document)
-		} satisfies DocumentDiagnosticReport;
-	} else {
-		// We don't know the document. We can either try to read it from disk
-		// or we don't report problems for it.
-		return {
-			kind: DocumentDiagnosticReportKind.Full,
-			items: []
-		} satisfies DocumentDiagnosticReport;
-	}
-});
-
-// The content of a text document has changed. This event is emitted
-// when the text document first opened or when its content has changed.
-documents.onDidChangeContent(change => {
-    updateColorDecorations(change.document);
-	validateTextDocument(change.document);
-});
-
-function updateColorDecorations(textDocument: TextDocument) {
-	function rgbToHex(r: string, g: string, b: string) {
-		const toHex = (n: string) => {
-			const hex = parseInt(n, 10).toString(16);
-			return hex.length === 1 ? "0" + hex : hex;
-		};
-		return ("#" + toHex(r) + toHex(g) + toHex(b)).toUpperCase();
-	}
-	// 颜色映射
-	const colorMap: { [key: string]: string } = {
-		COLORRED: "#FF0000",
-		COLORGREEN: "#00FF00",
-		COLORBLUE: "#0000FF",
-		COLORMAGENTA: "#FF00FF",
-		COLORYELLOW: "#FFFF00",
-		COLORLIGHTGREY: "#D3D3D3",
-		COLORLIGHTRED: "#FFA07A",
-		COLORLIGHTGREEN: "#90EE90",
-		COLORLIGHTBLUE: "#ADD8E6",
-		COLORBLACK: "#000000",
-		COLORWHITE: "#FFFFFF",
-		COLORCYAN: "#00FFFF",
-		COLORGRAY: "#808080",
-	};
-	// 正则表达式匹配所有颜色标识符
-	const regex = RegExp(
-		`\\b(${Object.keys(colorMap).join("|")})\\b` +
-			"|\\bRGB\\s*\\(\\s*(25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\s*,\\s*(25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\s*,\\s*(25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\s*\\)",
-		"g"
-	);
-	const text = textDocument.getText();
-	const diagnostics: Diagnostic[] = [];
-	let match;
-    while ((match = regex.exec(text)) !== null) {
-        const startPos = textDocument.positionAt(match.index);
-        const endPos = textDocument.positionAt(
-            match.index + match[0].length
-        );
-        const matchString = match[0];
-        const key = matchString.startsWith("RGB")
-            ? rgbToHex(match[2], match[3], match[4])
-            : colorMap[matchString];
-		const range = {
-			start: startPos,
-			end: endPos
-		};
-		const diagnostic: Diagnostic = {
-			severity: DiagnosticSeverity.Information,
-			range: range,
-			message: key,
-			source: "colorDecorator"
-		};
-		diagnostics.push(diagnostic);
+    const document = documents.get(params.textDocument.uri);
+    if (document !== undefined) {
+        return {
+            kind: DocumentDiagnosticReportKind.Full,
+            items: await validateTextDocument(document),
+        } satisfies DocumentDiagnosticReport;
+    } else {
+        // 找不到文档，返回空的诊断报告
+        return {
+            kind: DocumentDiagnosticReportKind.Full,
+            items: [],
+        } satisfies DocumentDiagnosticReport;
     }
-	connection.sendDiagnostics({ uri: textDocument.uri, diagnostics });
+});
+
+// 当文档内容发生变化时触发
+documents.onDidChangeContent((change) => {
+    validateTextDocument(change.document);
+});
+
+async function validateTextDocument(
+    textDocument: TextDocument
+): Promise<Diagnostic[]> {
+    // 获取文档的设置
+    const settings = await getDocumentSettings(textDocument.uri);
+
+    // The validator creates diagnostics for all uppercase words length 2 and more
+    const text = textDocument.getText();
+    const pattern = /\/\/.*|\/\*[\s\S]*?\*\/|\b[a-z]+\b/g;
+    let m: RegExpExecArray | null;
+
+    let problems = 0;
+    const diagnostics: Diagnostic[] = [];
+    while (
+        (m = pattern.exec(text)) &&
+        problems < settings.maxNumberOfProblems
+    ) {
+        // 检查匹配项是否为小写单词
+        if (m[0].startsWith('//') || m[0].startsWith('/*')) {
+            // 是注释或字符串，跳过
+            continue;
+        }
+
+        problems++;
+        const diagnostic: Diagnostic = {
+            severity: DiagnosticSeverity.Warning,
+            range: {
+                start: textDocument.positionAt(m.index),
+                end: textDocument.positionAt(m.index + m[0].length),
+            },
+            message: `${m[0]} is all lowercase.`,
+            source: "my-lang"
+        };
+        if (hasDiagnosticRelatedInformationCapability) {
+            // diagnostic.relatedInformation = [
+            //     {
+            //         location: {
+            //             uri: textDocument.uri,
+            //             range: Object.assign({}, diagnostic.range),
+            //         },
+            //         message: "Spelling matters",
+            //     },
+            //     {
+            //         location: {
+            //             uri: textDocument.uri,
+            //             range: Object.assign({}, diagnostic.range),
+            //         },
+            //         message: "Particularly for names",
+            //     },
+            // ];
+        }
+        diagnostics.push(diagnostic);
+    }
+    return diagnostics;
 }
 
-async function validateTextDocument(textDocument: TextDocument): Promise<Diagnostic[]> {
-	// In this simple example we get the settings for every validate run.
-	const settings = await getDocumentSettings(textDocument.uri);
-
-	// The validator creates diagnostics for all uppercase words length 2 and more
-	const text = textDocument.getText();
-	const pattern = /\b[A-Z]{2,}\b/g;
-	let m: RegExpExecArray | null;
-
-	let problems = 0;
-	const diagnostics: Diagnostic[] = [];
-	while ((m = pattern.exec(text)) && problems < settings.maxNumberOfProblems) {
-		problems++;
-		const diagnostic: Diagnostic = {
-			severity: DiagnosticSeverity.Warning,
-			range: {
-				start: textDocument.positionAt(m.index),
-				end: textDocument.positionAt(m.index + m[0].length)
-			},
-			message: `${m[0]} is all uppercase.`,
-			source: 'ex'
-		};
-		if (hasDiagnosticRelatedInformationCapability) {
-			diagnostic.relatedInformation = [
-				{
-					location: {
-						uri: textDocument.uri,
-						range: Object.assign({}, diagnostic.range)
-					},
-					message: 'Spelling matters'
-				},
-				{
-					location: {
-						uri: textDocument.uri,
-						range: Object.assign({}, diagnostic.range)
-					},
-					message: 'Particularly for names'
-				}
-			];
-		}
-		diagnostics.push(diagnostic);
-	}
-	return diagnostics;
-}
-
-connection.onDidChangeWatchedFiles(_change => {
-	// Monitored files have change in VSCode
-	connection.console.log('We received a file change event');
+connection.onDidChangeWatchedFiles((_change) => {
+    // 监听文件变化
+    connection.console.log("We received a file change event");
 });
 
 // 代码补全的基本信息
 connection.onCompletion(
-	(textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
-		let isSharp = false;
-		const document = documents.get(textDocumentPosition.textDocument.uri);
-		if (document) {
-			const position = textDocumentPosition.position;
-			const range = {
-				start: { line: position.line, character: Math.max(0, position.character - 1) },
-				end: position
-			};
-			const text = document.getText(range);
-			isSharp = text === '#';
-			for (const item of sharpCompletionItems) {
-				if (item.textEdit && 'range' in item.textEdit) {
-					item.textEdit.range = range;
-				}
-			}
-		}
-		if (isSharp) {
-			return sharpCompletionItems;
-		} else {
-			return allCompletionItems;
-		}
-	}
+    (textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
+        let isSharp = false;
+        const document = documents.get(textDocumentPosition.textDocument.uri);
+        if (document) {
+            const position = textDocumentPosition.position;
+            const range = {
+                start: {
+                    line: position.line,
+                    character: Math.max(0, position.character - 1),
+                },
+                end: position,
+            };
+            const text = document.getText(range);
+            isSharp = text === "#";
+            for (const item of sharpCompletionItems) {
+                if (item.textEdit && "range" in item.textEdit) {
+                    item.textEdit.range = range;
+                }
+            }
+        }
+        if (isSharp) {
+            return sharpCompletionItems;
+        } else {
+            return allCompletionItems;
+        }
+    }
 );
 
 // 代码补全的完整信息
-connection.onCompletionResolve(
-	(item: CompletionItem): CompletionItem => {
-		return completionResolve(item);
-	}
-);
+connection.onCompletionResolve((item: CompletionItem): CompletionItem => {
+    return completionResolve(item);
+});
 
-function getSymbolAtPosition(document: TextDocument, position: Position): MySymbol | undefined {
+function getSymbolAtPosition(
+    document: TextDocument,
+    position: Position
+): MySymbol | undefined {
     const text = document.getText();
     const lines = text.split(/\r?\n/);
     const lineText = lines[position.line];
@@ -325,12 +271,12 @@ function getSymbolAtPosition(document: TextDocument, position: Position): MySymb
     const wordRegex = /\b\w+\b/g;
     let match;
     while ((match = wordRegex.exec(lineText)) !== null) {
+        const word = match[0];
         const start = match.index;
-        const end = start + match[0].length;
+        const end = start + word.length;
         // 检查光标位置是否在单词中
         if (start <= position.character && position.character <= end) {
-            // 这里假设你有一个函数 getSymbolInfoByName 来从你的符号表中获取符号信息
-            return getSymbolByName(match[0]);
+            return getSymbolByName(word);
         }
     }
 
@@ -338,29 +284,28 @@ function getSymbolAtPosition(document: TextDocument, position: Position): MySymb
 }
 
 connection.onHover((params: TextDocumentPositionParams): Hover | null => {
-	// 获取文档和悬停位置
-	const document = documents.get(params.textDocument.uri);
-	if (!document) return null;
-  
-	const position = params.position;
+    // 获取文档和悬停位置
+    const document = documents.get(params.textDocument.uri);
+    if (!document) return null;
 
-	const symbol = getSymbolAtPosition(document, position);
+    const position = params.position;
 
-	if (symbol) {
-		const hoverContent = symbol.documentation;
-		return {
-			contents: {
-				kind: MarkupKind.Markdown,
-				value: hoverContent
-			}
-		};
-	}
+    const symbol = getSymbolAtPosition(document, position);
+
+    if (symbol) {
+        const hoverContent = symbol.documentation;
+        return {
+            contents: {
+                kind: MarkupKind.Markdown,
+                value: hoverContent,
+            },
+        };
+    }
     return null;
 });
 
-// Make the text document manager listen on the connection
-// for open, change and close text document events
+// 添加文档监听
 documents.listen(connection);
 
-// Listen on the connection
+// 开始监听来自客户端的请求
 connection.listen();

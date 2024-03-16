@@ -8,6 +8,7 @@ import {
     MarkupKind,
 } from "vscode-languageserver/node";
 import { MySymbolKind } from "./common";
+import { iconMap } from './icons';
 
 const toKind = (kind: MySymbolKind): CompletionItemKind => {
     let result: CompletionItemKind;
@@ -46,7 +47,11 @@ const completionMap = new Map(
 );
 
 export const getSymbolByName = (name: string) => {
-    return completionMap.get(name);
+    let symbol = completionMap.get(name);
+    if (!symbol && name.startsWith("ICON")) {
+        symbol = iconMap[name];
+    }
+    return symbol;
 };
 
 // 非#开头的智能提示

@@ -81,6 +81,8 @@ export class MySymbol {
         const result = new MySymbol();
         result.label = label;
         result.detail = detail;
+        result.description = detail;
+        result.documentation = detail;
         result.kind = kind;
         return result;
     }
