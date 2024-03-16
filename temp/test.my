@@ -20,44 +20,44 @@
 
 
 // region 引用语法
-#IMPORT [YEAR,N,FORMULA] AS VAR
-#IMPORT [WEEK,N,FORMULA] AS VAR
+#IMPORT [YEAR, N, FORMULA] AS VAR
+#IMPORT [WEEK, N, FORMULA] AS VAR
 #CALL [CODE, FORMULA] AS VAR
 #CALL_OTHER [FORMULA] AS VAR
-#CALL_PLUS[CODE,DAY,N,FORMULA] AS VAR
+#CALL_PLUS [CODE, DAY, N, FORMULA] AS VAR
 // endregion
 
 // region 全局变量 和 参考线语法
-VARIABLE:VK1:=1;
-REFLINE:-100,0,100;
+VARIABLE : VK1 := 1;
+REFLINE : - 100, 0, 100;
 // endregion
 
 // region 变量定义语法
-AA:MA(C,5),ALIGN1,CIRCLEDOT,FONTSIZE72,WORD(12),COLORRED,RGB(12, 92, 125);
-BB:=MA(C,5);
-CC^^MA(C,5);
-DD..MA(C,5);
-EE:=1;
+AA : MA(C, 5), ALIGN1, CIRCLEDOT, FONTSIZE72, WORD(12), COLORRED, RGB(12, 92, 125);
+BB := MA(C, 5); // 定义变量BB，模型加载时BB在图表上不显示线。
+CC ^^ MA(C, 5);
+DD .. MA(C, 5);
+EE := 1;
 // endregion
 
 // region 条件语句
-C>=MA(C,5),ICON(1, 'ICON155');
+C >= MA(C, 5), ICON(1, 'ICON155');
 CROSS(AA, VAR.XX), BK;
 // endregion
 
 // region 条件语法
 IF AA OR BB AND CC || DD && EE THEN
-    CC:=1;
+CC := 1;
 ELSE
 BEGIN
-    DD:=2;
+DD := 2;
 END
 // endregion
 
-// region 函数
+//#region 函数
 ABS(C);
-DRAWTEXT(C>MA(C,5), LOW, 'C');
-// endregion
+DRAWTEXT(C > MA(C, 5), LOW, 'C');
+//#endregion
 
 // region 无参数函数
 AVPRICE;

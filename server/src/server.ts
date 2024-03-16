@@ -19,6 +19,8 @@ import {
     Hover,
     MarkupKind,
     Position,
+    TextEdit,
+    DocumentFormattingParams,
 } from "vscode-languageserver/node";
 
 import { TextDocument } from "vscode-languageserver-textdocument";
@@ -30,6 +32,7 @@ import {
     getSymbolByName,
 } from "./symbol/symbolTable";
 import { MySymbol } from "./symbol/common";
+import { formattingHandler } from "./formattingHandler";
 
 // 为服务创建一个连接, 用 Node 的 IPC 进行传输
 const connection = createConnection(ProposedFeatures.all);
@@ -71,6 +74,8 @@ connection.onInitialize((params: InitializeParams) => {
             },
             // 声明悬停提示能力
             hoverProvider: true,
+            // 声明格式化能力
+            documentFormattingProvider: true,
         },
     };
     if (hasWorkspaceFolderCapability) {
@@ -172,16 +177,16 @@ async function validateTextDocument(
     // The validator creates diagnostics for all uppercase words length 2 and more
     const text = textDocument.getText();
     const pattern = /\/\/.*|\/\*[\s\S]*?\*\/|\b[a-z]+\b/g;
-    let m: RegExpExecArray | null;
+    let match: RegExpExecArray | null;
 
     let problems = 0;
     const diagnostics: Diagnostic[] = [];
     while (
-        (m = pattern.exec(text)) &&
+        (match = pattern.exec(text)) &&
         problems < settings.maxNumberOfProblems
     ) {
         // 检查匹配项是否为小写单词
-        if (m[0].startsWith('//') || m[0].startsWith('/*')) {
+        if (match[0].startsWith("//") || match[0].startsWith("/*")) {
             // 是注释或字符串，跳过
             continue;
         }
@@ -190,11 +195,11 @@ async function validateTextDocument(
         const diagnostic: Diagnostic = {
             severity: DiagnosticSeverity.Warning,
             range: {
-                start: textDocument.positionAt(m.index),
-                end: textDocument.positionAt(m.index + m[0].length),
+                start: textDocument.positionAt(match.index),
+                end: textDocument.positionAt(match.index + match[0].length),
             },
-            message: `${m[0]} is all lowercase.`,
-            source: "my-lang"
+            message: `${match[0]} is all lowercase.`,
+            source: "my-lang",
         };
         if (hasDiagnosticRelatedInformationCapability) {
             // diagnostic.relatedInformation = [
@@ -303,6 +308,14 @@ connection.onHover((params: TextDocumentPositionParams): Hover | null => {
     }
     return null;
 });
+
+connection.onDocumentFormatting(
+    ({ textDocument, options }: DocumentFormattingParams): TextEdit[] => {
+        const document = documents.get(textDocument.uri);
+        const fullText = document?.getText();
+        return formattingHandler(fullText ?? "", options);
+    }
+);
 
 // 添加文档监听
 documents.listen(connection);
