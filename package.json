@@ -53,12 +53,12 @@
     ],
     "themes": [
       {
-        "label": "My Lang Theme",
+        "label": "My Lang Dark Theme",
         "uiTheme": "vs-dark",
         "path": "./themes/my-lang-dark-theme.json"
       },
       {
-        "label": "My Lang Theme",
+        "label": "My Lang Light Theme",
         "uiTheme": "vs",
         "path": "./themes/my-lang-light-theme.json"
       }
