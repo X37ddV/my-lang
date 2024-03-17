@@ -32,9 +32,6 @@ VARIABLE: VK1 := 1;
 REFLINE: -100, 0, 100;
 // endregion
 
-
-
-
 // region 变量定义语法
 AA : MA(C, 5), ALIGN1, CIRCLEDOT, FONTSIZE72, WORD(12), COLORRED, RGB(12, 92, 125);
 BB := MA(C, 5); // 定义变量BB，模型加载时BB在图表上不显示线。
@@ -49,11 +46,13 @@ CROSS(AA, VAR.XX), BK;
 // endregion
 
 // region 条件语法
-IF AA OR BB AND CC || DD && EE THEN BEGIN
-CC := 1;
-END ELSE
+IF AA OR BB AND CC || DD && EE THEN
 BEGIN
-DD := 2;
+    CC := 1;
+END
+ELSE
+BEGIN
+    DD := 2;
 END
 // endregion
 

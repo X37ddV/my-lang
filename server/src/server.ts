@@ -108,7 +108,7 @@ interface MyLangSettings {
 }
 
 // 设置信息
-const defaultSettings: MyLangSettings = { maxNumberOfProblems: 1000 };
+const defaultSettings: MyLangSettings = { maxNumberOfProblems: 100 };
 let globalSettings: MyLangSettings = defaultSettings;
 
 // 缓存文档的设置信息
@@ -176,7 +176,7 @@ async function validateTextDocument(
 
     // The validator creates diagnostics for all uppercase words length 2 and more
     const text = textDocument.getText();
-    const pattern = /\/\/.*|\/\*[\s\S]*?\*\/|\b[a-z]+\b/g;
+    const pattern = /\/\/.*|\/\*[\s\S]*?\*\/|[a-z]+/g;
     let match: RegExpExecArray | null;
 
     let problems = 0;
@@ -198,7 +198,7 @@ async function validateTextDocument(
                 start: textDocument.positionAt(match.index),
                 end: textDocument.positionAt(match.index + match[0].length),
             },
-            message: `${match[0]} is all lowercase.`,
+            message: `${match[0]} 应改为大写`,
             source: "my-lang",
         };
         if (hasDiagnosticRelatedInformationCapability) {

@@ -1,9 +1,14 @@
-# Change Log
-
-All notable changes to the "my-lang" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+# 更改日志
 
 ## [Unreleased]
 
-- Initial release
+- `Added` 颜色装饰器支持修改颜色
+
+## [0.0.2] - 2024-03-16
+
+- `Added` 增加代码格式化功能
+
+## [0.0.1] - 2024-03-09
+
+- `Added` 实现基本语法高亮
+- `Added` 实现基本代码提示
