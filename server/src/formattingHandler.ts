@@ -10,7 +10,7 @@ function formatComment(comment: string): string {
         .replace(/^\/\/\s*/, "// ")
         .replace(/^\/\/\s#/, "//#")
         .replace(/region\s*/i, "region ")
-        .replace(/endregion/i, "endregion");
+        .replace(/endregion.*/i, "endregion");
 }
 
 function formatCode(code: string): string {
