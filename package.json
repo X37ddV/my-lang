@@ -1,91 +1,83 @@
 {
-  "name": "my-lang",
-  "displayName": "MyLang",
-  "description": "My language support for VS Code",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/X37ddV/my-lang.git"
-  },
-  "publisher": "X37ddV",
-  "version": "0.0.3",
-  "engines": {
-    "vscode": "^1.87.0"
-  },
-  "categories": [
-    "Programming Languages"
-  ],
-  "icon": "images/icon.ico",
-  "activationEvents": [],
-  "main": "./client/out/extension.js",
-  "contributes": {
-		"configuration": {
-			"type": "object",
-			"title": "Example configuration",
-			"properties": {
-				"myLang.maxNumberOfProblems": {
-					"scope": "resource",
-					"type": "number",
-					"default": 100,
-					"description": "Controls the maximum number of problems produced by the server."
-				}
-			}
-		},
-    "languages": [
-      {
-        "id": "my-lang",
-        "aliases": [
-          "MyLang",
-          "my-lang"
+    "name": "my-lang",
+    "displayName": "MyLang",
+    "description": "My language support for VS Code",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/X37ddV/my-lang.git"
+    },
+    "publisher": "X37ddV",
+    "version": "0.0.3",
+    "engines": {
+        "vscode": "^1.87.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "icon": "images/icon.ico",
+    "activationEvents": [],
+    "main": "./client/out/extension.js",
+    "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "MyLang configuration",
+            "properties": {
+                "myLang.maxNumberOfProblems": {
+                    "scope": "resource",
+                    "type": "number",
+                    "default": 100,
+                    "description": "Controls the maximum number of problems produced by the server."
+                }
+            }
+        },
+        "languages": [
+            {
+                "id": "my-lang",
+                "aliases": [
+                    "MyLang",
+                    "my-lang"
+                ],
+                "extensions": [
+                    ".my"
+                ],
+                "configuration": "./language-configuration.json"
+            }
         ],
-        "extensions": [
-          ".my"
+        "grammars": [
+            {
+                "language": "my-lang",
+                "scopeName": "source.my",
+                "path": "./syntaxes/my-lang.tmLanguage.json"
+            }
         ],
-        "configuration": "./language-configuration.json"
-      }
-    ],
-    "grammars": [
-      {
-        "language": "my-lang",
-        "scopeName": "source.my",
-        "path": "./syntaxes/my-lang.tmLanguage.json"
-      }
-    ],
-    "themes": [
-      {
-        "label": "My Lang Dark Theme",
-        "uiTheme": "vs-dark",
-        "path": "./themes/my-lang-dark-theme.json"
-      },
-      {
-        "label": "My Lang Light Theme",
-        "uiTheme": "vs",
-        "path": "./themes/my-lang-light-theme.json"
-      }
-    ],
-    "commands": [
-      {
-        "command": "extension.saveString",
-        "title": "Save String to File"
-      }
-    ]
-  },
-  "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -b",
-    "watch": "tsc -b -w",
-    "lint": "eslint ./client/src ./server/src --ext .ts,.tsx",
-    "postinstall": "cd client && npm install && cd ../server && npm install && cd ..",
-    "package": "vsce package",
-    "publish": "vsce publish"
-  },
-  "devDependencies": {
-    "@types/node": "^20.11.28",
-    "@types/vscode": "^1.87.0",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
-    "eslint": "^8.57.0",
-    "typescript": "^5.4.2",
-    "vscode-test": "^1.6.1"
-  }
+        "themes": [
+            {
+                "label": "My Lang Dark Theme",
+                "uiTheme": "vs-dark",
+                "path": "./themes/my-lang-dark-theme.json"
+            },
+            {
+                "label": "My Lang Light Theme",
+                "uiTheme": "vs",
+                "path": "./themes/my-lang-light-theme.json"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -b",
+        "watch": "tsc -b -w",
+        "lint": "eslint ./client/src ./server/src --ext .ts,.tsx",
+        "postinstall": "cd client && npm install && cd ../server && npm install && cd ..",
+        "package": "vsce package",
+        "publish": "vsce publish"
+    },
+    "devDependencies": {
+        "@types/node": "^20.11.28",
+        "@typescript-eslint/eslint-plugin": "^7.2.0",
+        "@typescript-eslint/parser": "^7.2.0",
+        "eslint": "^8.57.0",
+        "typescript": "^5.4.2"
+    }
 }
