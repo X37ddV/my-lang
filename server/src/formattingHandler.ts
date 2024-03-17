@@ -6,11 +6,27 @@
 import { FormattingOptions, TextEdit } from "vscode-languageserver/node";
 
 function formatComment(comment: string): string {
-    return comment.replace(/^\/\/\s*/, "// ").replace(/^\/\/\s#/, "//#");
+    return comment
+        .replace(/^\/\/\s*/, "// ")
+        .replace(/^\/\/\s#/, "//#")
+        .replace(/region\s*/i, "region ")
+        .replace(/endregion/i, "endregion");
 }
 
 function formatCode(code: string): string {
     const text = code
+        // .trimEnd()
+        // .toUpperCase()
+        // .replace(/\s*(\s*)\s*/g, " ")
+        // .replace(/"/g, "'")
+        // .replace(/\s+/g, " ")
+        // .replace(/\s*([(),;=<>+\-*/|&^:[\]])\s*/g, " $1 ")
+        // .replace(/\s{2,}(\.)/g, " $1")
+        // .replace(/(\.|#|\[|\]|-)(\s)/g, "$1")
+        // .replace(/\s{2,}/g, " ")
+        // .replace(/(&|\||<|>|=|:|\^|\.){2}/g, "$1$1")
+        // .replace(/\s-\s(?=\d)/g, "-")
+        // .replace(/^(VARIABLE|REFLINE)\s*:/, "$1:");
         .toUpperCase()
         .replace(/"/g, "'")
         .replace(/\s+$/, "")
@@ -79,16 +95,15 @@ export const formattingHandler = (fullText: string, options: FormattingOptions):
         }
 
         // 去掉行首和行尾的空白字符
-        const trimmedLineStart = line.replace(/^\s+/, "");
-        const trimmedLineEnd = trimmedLineStart.replace(/\s+$/, "");
+        const trimmedLine = line.trim();
         // 获取单行注释
-        const singleLineCommentIdx = trimmedLineEnd.indexOf("//");
+        const singleLineCommentIdx = trimmedLine.indexOf("//");
         const singleLineComment = formatComment(
-            singleLineCommentIdx !== -1 ? trimmedLineEnd.slice(singleLineCommentIdx) : ""
+            singleLineCommentIdx !== -1 ? trimmedLine.slice(singleLineCommentIdx) : ""
         );
         // 获取代码部分
         const singleLineCode = formatCode(
-            singleLineCommentIdx !== -1 ? trimmedLineEnd.slice(0, singleLineCommentIdx) : trimmedLineEnd
+            singleLineCommentIdx !== -1 ? trimmedLine.slice(0, singleLineCommentIdx) : trimmedLine
         );
         const newLine = singleLineCode + (singleLineComment ? `${singleLineCode ? " " : ""}${singleLineComment}` : "");
 
