@@ -1,3 +1,8 @@
+/* --------------------------------------------------------------------------------------------
+ * Copyright (c) X37ddV. All rights reserved.
+ * Licensed under the MIT License. See License.md in the project root for license information.
+ * ------------------------------------------------------------------------------------------ */
+
 import {
     MySymbol,
     MySymbolKind,
@@ -214,8 +219,7 @@ AUTOFINANCING.insertText = "";
 AUTOFINANCING.body = "AUTOFINANCING";
 AUTOFINANCING.kind = MySymbolKind.Function;
 AUTOFINANCING.marketType = MyMarketType.TPlusZeroStrategyFunction;
-AUTOFINANCING.functionType =
-    MyFunctionType.CalculationControlFunction;
+AUTOFINANCING.functionType = MyFunctionType.CalculationControlFunction;
 AUTOFINANCING.returnType = MyFunctionReturnType.None;
 AUTOFINANCING.parameters = MySymbol.createParametersFromStrings([]);
 AUTOFINANCING.detail = "启用按需自动入金方式";
@@ -251,8 +255,7 @@ AVAILABLE_OPI.insertText = "";
 AVAILABLE_OPI.body = "AVAILABLE_OPI";
 AVAILABLE_OPI.kind = MySymbolKind.Function;
 AVAILABLE_OPI.marketType = MyMarketType.TPlusZeroStrategyFunction;
-AVAILABLE_OPI.functionType =
-    MyFunctionType.PositionManagementFunction;
+AVAILABLE_OPI.functionType = MyFunctionType.PositionManagementFunction;
 AVAILABLE_OPI.returnType = MyFunctionReturnType.None;
 AVAILABLE_OPI.parameters = MySymbol.createParametersFromStrings([]);
 AVAILABLE_OPI.detail = "可用股数";
@@ -597,8 +600,7 @@ BARSLASTCOUNT.insertText = "";
 BARSLASTCOUNT.body = "BARSLASTCOUNT()";
 BARSLASTCOUNT.kind = MySymbolKind.Function;
 BARSLASTCOUNT.marketType = MyMarketType.BasicFunction;
-BARSLASTCOUNT.functionType =
-    MyFunctionType.FinancialStatisticsFunction;
+BARSLASTCOUNT.functionType = MyFunctionType.FinancialStatisticsFunction;
 BARSLASTCOUNT.returnType = MyFunctionReturnType.None;
 BARSLASTCOUNT.parameters = MySymbol.createParametersFromStrings([]);
 BARSLASTCOUNT.detail = "从当前周期向前计算，统计连续满足条件的周期数";
@@ -1194,18 +1196,15 @@ CEILING(8,-2);//返回无效值。
 
 const CHECKSIG = new MySymbol();
 CHECKSIG.label = "CHECKSIG";
-CHECKSIG.description =
-    "设置信号确认与复核的指令价方式（TICK逐笔回测，可设置回测精度）";
+CHECKSIG.description = "设置信号确认与复核的指令价方式（TICK逐笔回测，可设置回测精度）";
 CHECKSIG.insertText = "";
 CHECKSIG.body = "CHECKSIG( , , , , ,)";
 CHECKSIG.kind = MySymbolKind.Function;
 CHECKSIG.marketType = MyMarketType.TPlusZeroStrategyFunction;
-CHECKSIG.functionType =
-    MyFunctionType.PerformanceOptimizationFunction;
+CHECKSIG.functionType = MyFunctionType.PerformanceOptimizationFunction;
 CHECKSIG.returnType = MyFunctionReturnType.None;
 CHECKSIG.parameters = MySymbol.createParametersFromStrings([]);
-CHECKSIG.detail =
-    "设置信号确认与复核的指令价方式（TICK逐笔回测，可设置回测精度）";
+CHECKSIG.detail = "设置信号确认与复核的指令价方式（TICK逐笔回测，可设置回测精度）";
 CHECKSIG.documentation = `
 CHECKSIG(SIG,MODE1,TIME1,MODE2,TIME2,INTERVAL);设置信号确认与复核的指令价方式（TICK逐笔回测，可设置回测精度）SIG为信号,MODE1为下单方式,TIME1下单确认时间,MODE2复核方式,TIME2复核确认时间,INTERVAL代表数据时间间隔
 CHECKSIG 设置信号确认与复核的指令价方式（TICK逐笔回测，可设置回测精度）
@@ -1278,8 +1277,7 @@ CHECKSIG_MIN.insertText = "";
 CHECKSIG_MIN.body = "CHECKSIG_MIN( , , , ,)";
 CHECKSIG_MIN.kind = MySymbolKind.Function;
 CHECKSIG_MIN.marketType = MyMarketType.TPlusZeroStrategyFunction;
-CHECKSIG_MIN.functionType =
-    MyFunctionType.PerformanceOptimizationFunction;
+CHECKSIG_MIN.functionType = MyFunctionType.PerformanceOptimizationFunction;
 CHECKSIG_MIN.returnType = MyFunctionReturnType.None;
 CHECKSIG_MIN.parameters = MySymbol.createParametersFromStrings([]);
 CHECKSIG_MIN.detail = "设置信号确认与复核的指令价方式（逐分钟回测）";
@@ -1764,8 +1762,7 @@ COEFFICIENTR.insertText = "";
 COEFFICIENTR.body = "COEFFICIENTR( , , )";
 COEFFICIENTR.kind = MySymbolKind.Function;
 COEFFICIENTR.marketType = MyMarketType.BasicFunction;
-COEFFICIENTR.functionType =
-    MyFunctionType.MathematicalStatisticsFunction;
+COEFFICIENTR.functionType = MyFunctionType.MathematicalStatisticsFunction;
 COEFFICIENTR.returnType = MyFunctionReturnType.None;
 COEFFICIENTR.parameters = MySymbol.createParametersFromStrings([]);
 COEFFICIENTR.detail = "皮尔森相关系数";
@@ -4762,8 +4759,7 @@ IMPLIEDVOLATILITY.insertText = "";
 IMPLIEDVOLATILITY.body = "IMPLIEDVOLATILITY";
 IMPLIEDVOLATILITY.kind = MySymbolKind.Function;
 IMPLIEDVOLATILITY.marketType = MyMarketType.BasicFunction;
-IMPLIEDVOLATILITY.functionType =
-    MyFunctionType.CandlestickDataReference;
+IMPLIEDVOLATILITY.functionType = MyFunctionType.CandlestickDataReference;
 IMPLIEDVOLATILITY.returnType = MyFunctionReturnType.None;
 IMPLIEDVOLATILITY.parameters = MySymbol.createParametersFromStrings([]);
 IMPLIEDVOLATILITY.detail = "取期权隐含波动率";
@@ -5379,8 +5375,7 @@ ISTIMETOKLINEEND.insertText = "";
 ISTIMETOKLINEEND.body = "ISTIMETOKLINEEND";
 ISTIMETOKLINEEND.kind = MySymbolKind.Function;
 ISTIMETOKLINEEND.marketType = MyMarketType.TPlusZeroStrategyFunction;
-ISTIMETOKLINEEND.functionType =
-    MyFunctionType.LogicalJudgmentFunction;
+ISTIMETOKLINEEND.functionType = MyFunctionType.LogicalJudgmentFunction;
 ISTIMETOKLINEEND.returnType = MyFunctionReturnType.None;
 ISTIMETOKLINEEND.parameters = MySymbol.createParametersFromStrings([]);
 ISTIMETOKLINEEND.detail = "判断当前K线时间是否满足K线走完前N秒";
@@ -5782,8 +5777,7 @@ LASTOFFSETPROFIT.insertText = "";
 LASTOFFSETPROFIT.body = "LASTOFFSETPROFIT";
 LASTOFFSETPROFIT.kind = MySymbolKind.Function;
 LASTOFFSETPROFIT.marketType = MyMarketType.TPlusZeroStrategyFunction;
-LASTOFFSETPROFIT.functionType =
-    MyFunctionType.PositionManagementFunction;
+LASTOFFSETPROFIT.functionType = MyFunctionType.PositionManagementFunction;
 LASTOFFSETPROFIT.returnType = MyFunctionReturnType.None;
 LASTOFFSETPROFIT.parameters = MySymbol.createParametersFromStrings([]);
 LASTOFFSETPROFIT.detail = "最近一次交易的平仓盈亏";
@@ -6809,8 +6803,7 @@ MONTHTRADE1;//使用每月数据计算
 
 const MULTSIG = new MySymbol();
 MULTSIG.label = "MULTSIG";
-MULTSIG.description =
-    "设置一根k线多信号的指令价方式（TICK逐笔回测，可设置回测精度）";
+MULTSIG.description = "设置一根k线多信号的指令价方式（TICK逐笔回测，可设置回测精度）";
 MULTSIG.insertText = "";
 MULTSIG.body = "MULTSIG( , , , )";
 MULTSIG.kind = MySymbolKind.Function;
@@ -6818,8 +6811,7 @@ MULTSIG.marketType = MyMarketType.TPlusZeroStrategyFunction;
 MULTSIG.functionType = MyFunctionType.PerformanceOptimizationFunction;
 MULTSIG.returnType = MyFunctionReturnType.None;
 MULTSIG.parameters = MySymbol.createParametersFromStrings([]);
-MULTSIG.detail =
-    "设置一根k线多信号的指令价方式（TICK逐笔回测，可设置回测精度）";
+MULTSIG.detail = "设置一根k线多信号的指令价方式（TICK逐笔回测，可设置回测精度）";
 MULTSIG.documentation = `
 MULTSIG(Sec1,Sec2,N,INTERVAL),设置一根k线多信号的指令价方式（TICK逐笔回测，可设置回测精度），开仓信号出信号Sec1秒下单，不复核；平仓信号出信号Sec2秒下单，不复核，一根K线最大的信号个数为N,INTERVAL代表数据时间间隔
 MULTSIG(Sec1,Sec2,N,INTERVAL) 设置一根k线多信号的指令价方式（TICK逐笔回测，可设置回测精度）
@@ -6866,8 +6858,7 @@ MULTSIG_MIN.insertText = "";
 MULTSIG_MIN.body = "MULTSIG_MIN( , , )";
 MULTSIG_MIN.kind = MySymbolKind.Function;
 MULTSIG_MIN.marketType = MyMarketType.TPlusZeroStrategyFunction;
-MULTSIG_MIN.functionType =
-    MyFunctionType.PerformanceOptimizationFunction;
+MULTSIG_MIN.functionType = MyFunctionType.PerformanceOptimizationFunction;
 MULTSIG_MIN.returnType = MyFunctionReturnType.None;
 MULTSIG_MIN.parameters = MySymbol.createParametersFromStrings([]);
 MULTSIG_MIN.detail = "设置一根k线多信号的指令价方式（逐分钟回测）";
@@ -7269,8 +7260,7 @@ OFFSETPROFIT1.insertText = "";
 OFFSETPROFIT1.body = "OFFSETPROFIT1";
 OFFSETPROFIT1.kind = MySymbolKind.Function;
 OFFSETPROFIT1.marketType = MyMarketType.TPlusZeroStrategyFunction;
-OFFSETPROFIT1.functionType =
-    MyFunctionType.PositionManagementFunction;
+OFFSETPROFIT1.functionType = MyFunctionType.PositionManagementFunction;
 OFFSETPROFIT1.returnType = MyFunctionReturnType.None;
 OFFSETPROFIT1.parameters = MySymbol.createParametersFromStrings([]);
 OFFSETPROFIT1.detail = "累计平仓盈亏";
@@ -7605,8 +7595,7 @@ PCRATETREND.insertText = "";
 PCRATETREND.body = "PCRATETREND(,)";
 PCRATETREND.kind = MySymbolKind.Function;
 PCRATETREND.marketType = MyMarketType.BasicFunction;
-PCRATETREND.functionType =
-    MyFunctionType.MathematicalStatisticsFunction;
+PCRATETREND.functionType = MyFunctionType.MathematicalStatisticsFunction;
 PCRATETREND.returnType = MyFunctionReturnType.None;
 PCRATETREND.parameters = MySymbol.createParametersFromStrings([]);
 PCRATETREND.detail = "求N周期内Y值的趋势变化速度";
@@ -8038,8 +8027,7 @@ QUARTERTRADE1.insertText = "";
 QUARTERTRADE1.body = "QUARTERTRADE1";
 QUARTERTRADE1.kind = MySymbolKind.Function;
 QUARTERTRADE1.marketType = MyMarketType.TPlusZeroStrategyFunction;
-QUARTERTRADE1.functionType =
-    MyFunctionType.CalculationControlFunction;
+QUARTERTRADE1.functionType = MyFunctionType.CalculationControlFunction;
 QUARTERTRADE1.returnType = MyFunctionReturnType.None;
 QUARTERTRADE1.parameters = MySymbol.createParametersFromStrings([]);
 QUARTERTRADE1.detail = "季内交易函数";
@@ -8643,8 +8631,7 @@ SETDEALPERCENT.insertText = "";
 SETDEALPERCENT.body = "SETDEALPERCENT";
 SETDEALPERCENT.kind = MySymbolKind.Function;
 SETDEALPERCENT.marketType = MyMarketType.TPlusZeroStrategyFunction;
-SETDEALPERCENT.functionType =
-    MyFunctionType.PositionManagementFunction;
+SETDEALPERCENT.functionType = MyFunctionType.PositionManagementFunction;
 SETDEALPERCENT.returnType = MyFunctionReturnType.None;
 SETDEALPERCENT.parameters = MySymbol.createParametersFromStrings([]);
 SETDEALPERCENT.detail = "按理论资金比例下单";
@@ -8930,8 +8917,7 @@ SETTRADEACCOUNT.insertText = "";
 SETTRADEACCOUNT.body = "SETTRADEACCOUNT()";
 SETTRADEACCOUNT.kind = MySymbolKind.Function;
 SETTRADEACCOUNT.marketType = MyMarketType.TPlusZeroStrategyFunction;
-SETTRADEACCOUNT.functionType =
-    MyFunctionType.EncryptionOutputFunction;
+SETTRADEACCOUNT.functionType = MyFunctionType.EncryptionOutputFunction;
 SETTRADEACCOUNT.returnType = MyFunctionReturnType.None;
 SETTRADEACCOUNT.parameters = MySymbol.createParametersFromStrings([]);
 SETTRADEACCOUNT.detail = "设置模型加密输出使用者交易的资金账号";
@@ -10416,8 +10402,7 @@ TODAYDEUCETIMES.insertText = "";
 TODAYDEUCETIMES.body = "TODAYDEUCETIMES";
 TODAYDEUCETIMES.kind = MySymbolKind.Function;
 TODAYDEUCETIMES.marketType = MyMarketType.TPlusZeroStrategyFunction;
-TODAYDEUCETIMES.functionType =
-    MyFunctionType.PositionManagementFunction;
+TODAYDEUCETIMES.functionType = MyFunctionType.PositionManagementFunction;
 TODAYDEUCETIMES.returnType = MyFunctionReturnType.None;
 TODAYDEUCETIMES.parameters = MySymbol.createParametersFromStrings([]);
 TODAYDEUCETIMES.detail = "返回当日平出次数";
@@ -10446,8 +10431,7 @@ TODAYLOSSTIMES.insertText = "";
 TODAYLOSSTIMES.body = "TODAYLOSSTIMES";
 TODAYLOSSTIMES.kind = MySymbolKind.Function;
 TODAYLOSSTIMES.marketType = MyMarketType.TPlusZeroStrategyFunction;
-TODAYLOSSTIMES.functionType =
-    MyFunctionType.PositionManagementFunction;
+TODAYLOSSTIMES.functionType = MyFunctionType.PositionManagementFunction;
 TODAYLOSSTIMES.returnType = MyFunctionReturnType.None;
 TODAYLOSSTIMES.parameters = MySymbol.createParametersFromStrings([]);
 TODAYLOSSTIMES.detail = "返回当日亏损次数";
@@ -10476,8 +10460,7 @@ TODAYWINTIMES.insertText = "";
 TODAYWINTIMES.body = "TODAYWINTIMES";
 TODAYWINTIMES.kind = MySymbolKind.Function;
 TODAYWINTIMES.marketType = MyMarketType.TPlusZeroStrategyFunction;
-TODAYWINTIMES.functionType =
-    MyFunctionType.PositionManagementFunction;
+TODAYWINTIMES.functionType = MyFunctionType.PositionManagementFunction;
 TODAYWINTIMES.returnType = MyFunctionReturnType.None;
 TODAYWINTIMES.parameters = MySymbol.createParametersFromStrings([]);
 TODAYWINTIMES.detail = "返回当日赢利次数";
@@ -10691,8 +10674,7 @@ TRADE_SMOOTHING.insertText = "";
 TRADE_SMOOTHING.body = "TRADE_SMOOTHING";
 TRADE_SMOOTHING.kind = MySymbolKind.Function;
 TRADE_SMOOTHING.marketType = MyMarketType.TPlusZeroStrategyFunction;
-TRADE_SMOOTHING.functionType =
-    MyFunctionType.CandlestickDataReference;
+TRADE_SMOOTHING.functionType = MyFunctionType.CandlestickDataReference;
 TRADE_SMOOTHING.returnType = MyFunctionReturnType.None;
 TRADE_SMOOTHING.parameters = MySymbol.createParametersFromStrings([]);
 TRADE_SMOOTHING.detail = "消除隔日跳空函数";

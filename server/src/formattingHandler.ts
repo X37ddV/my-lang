@@ -1,3 +1,8 @@
+/* --------------------------------------------------------------------------------------------
+ * Copyright (c) X37ddV. All rights reserved.
+ * Licensed under the MIT License. See License.md in the project root for license information.
+ * ------------------------------------------------------------------------------------------ */
+
 import { FormattingOptions, TextEdit } from "vscode-languageserver/node";
 
 function formatComment(comment: string): string {
@@ -37,17 +42,14 @@ function formatCode(code: string): string {
         .replace(/#\s*/g, "#")
         .replace(/\s*\[\s*/g, " [")
         .replace(/\s*\]\s*/g, "] ")
-        .replace(/(?<![0-9A-Za-z]\s)-\s*(?=\d)/g, '-')
+        .replace(/(?<![0-9A-Za-z]\s)-\s*(?=\d)/g, "-")
         .replace(/^VARIABLE\s*:/, "VARIABLE:")
         .replace(/^REFLINE\s*:/, "REFLINE:")
         .replace("()", "");
     return text;
 }
 
-export const formattingHandler = (
-    fullText: string,
-    options: FormattingOptions
-): TextEdit[] => {
+export const formattingHandler = (fullText: string, options: FormattingOptions): TextEdit[] => {
     const edits: TextEdit[] = [];
     const lines = fullText.split(/\r?\n/);
 
@@ -82,21 +84,13 @@ export const formattingHandler = (
         // 获取单行注释
         const singleLineCommentIdx = trimmedLineEnd.indexOf("//");
         const singleLineComment = formatComment(
-            singleLineCommentIdx !== -1
-                ? trimmedLineEnd.slice(singleLineCommentIdx)
-                : ""
+            singleLineCommentIdx !== -1 ? trimmedLineEnd.slice(singleLineCommentIdx) : ""
         );
         // 获取代码部分
         const singleLineCode = formatCode(
-            singleLineCommentIdx !== -1
-                ? trimmedLineEnd.slice(0, singleLineCommentIdx)
-                : trimmedLineEnd
+            singleLineCommentIdx !== -1 ? trimmedLineEnd.slice(0, singleLineCommentIdx) : trimmedLineEnd
         );
-        const newLine =
-            singleLineCode +
-            (singleLineComment
-                ? `${singleLineCode ? " " : ""}${singleLineComment}`
-                : "");
+        const newLine = singleLineCode + (singleLineComment ? `${singleLineCode ? " " : ""}${singleLineComment}` : "");
 
         if (line !== newLine) {
             const range = {

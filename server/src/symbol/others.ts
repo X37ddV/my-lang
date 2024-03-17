@@ -1,3 +1,8 @@
+/* --------------------------------------------------------------------------------------------
+ * Copyright (c) X37ddV. All rights reserved.
+ * Licensed under the MIT License. See License.md in the project root for license information.
+ * ------------------------------------------------------------------------------------------ */
+
 import {
     MySymbol,
     MySymbolKind,
@@ -78,8 +83,7 @@ _CALL_OTHER.description = "跨指标引用";
 _CALL_OTHER.insertText = "#CALL_OTHER [${1:FORMULA}] AS ${2:VAR}";
 _CALL_OTHER.kind = MySymbolKind.Reference;
 _CALL_OTHER.marketType = MyMarketType.TPlusZeroStrategyFunction;
-_CALL_OTHER.functionType =
-    MyFunctionType.CandlestickDataReference;
+_CALL_OTHER.functionType = MyFunctionType.CandlestickDataReference;
 _CALL_OTHER.returnType = MyFunctionReturnType.None;
 _CALL_OTHER.parameters = MySymbol.createParametersFromStrings([]);
 _CALL_OTHER.detail = "跨指标引用";
@@ -107,7 +111,8 @@ CC:VAR.CC;//跨指标引用当前合约的一个周期前的收盘价
 const _CALL_PLUS = new MySymbol();
 _CALL_PLUS.label = "#CALL_PLUS";
 _CALL_PLUS.description = "跨合约跨周期引用指标";
-_CALL_PLUS.insertText = "#CALL_PLUS [${1|VIXINDEX,MAININDEX,WEIGHTINDEX|}, ${2|MIN,HOUR,CUSHOUR,DAY,WEEK,MONTH,QUARTER,YEAR|}, ${3:N}, ${4:FORMULA}] AS ${5:VAR}";
+_CALL_PLUS.insertText =
+    "#CALL_PLUS [${1|VIXINDEX,MAININDEX,WEIGHTINDEX|}, ${2|MIN,HOUR,CUSHOUR,DAY,WEEK,MONTH,QUARTER,YEAR|}, ${3:N}, ${4:FORMULA}] AS ${5:VAR}";
 _CALL_PLUS.kind = MySymbolKind.Reference;
 _CALL_PLUS.marketType = MyMarketType.TPlusZeroStrategyFunction;
 _CALL_PLUS.functionType = MyFunctionType.CandlestickDataReference;
@@ -268,13 +273,4 @@ A:"MIN$5$CLOSE";//返回上一根5分钟周期K线的收盘价。
 A:"HOUR$4$OPI";//返回上一根4小时周期K线的持仓量。
 `;
 
-export const others = [
-    _REGION,
-    _ENDREGION,
-    _CALL,
-    _CALL_OTHER,
-    _CALL_PLUS,
-    _IMPORT,
-    _$_,
-    _$_$_,
-];
+export const others = [_REGION, _ENDREGION, _CALL, _CALL_OTHER, _CALL_PLUS, _IMPORT, _$_, _$_$_];

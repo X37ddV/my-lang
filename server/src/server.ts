@@ -2,6 +2,7 @@
  * Copyright (c) X37ddV. All rights reserved.
  * Licensed under the MIT License. See License.md in the project root for license information.
  * ------------------------------------------------------------------------------------------ */
+
 import {
     createConnection,
     TextDocuments,
@@ -22,15 +23,9 @@ import {
     TextEdit,
     DocumentFormattingParams,
 } from "vscode-languageserver/node";
-
 import { TextDocument } from "vscode-languageserver-textdocument";
 
-import {
-    allCompletionItems,
-    sharpCompletionItems,
-    completionResolve,
-    getSymbolByName,
-} from "./symbol/symbolTable";
+import { allCompletionItems, sharpCompletionItems, completionResolve, getSymbolByName } from "./symbol/symbolTable";
 import { MySymbol } from "./symbol/common";
 import { formattingHandler } from "./formattingHandler";
 
@@ -47,12 +42,8 @@ let hasDiagnosticRelatedInformationCapability = false;
 connection.onInitialize((params: InitializeParams) => {
     const capabilities = params.capabilities;
 
-    hasConfigurationCapability = !!(
-        capabilities.workspace && !!capabilities.workspace.configuration
-    );
-    hasWorkspaceFolderCapability = !!(
-        capabilities.workspace && !!capabilities.workspace.workspaceFolders
-    );
+    hasConfigurationCapability = !!(capabilities.workspace && !!capabilities.workspace.configuration);
+    hasWorkspaceFolderCapability = !!(capabilities.workspace && !!capabilities.workspace.workspaceFolders);
     hasDiagnosticRelatedInformationCapability = !!(
         capabilities.textDocument &&
         capabilities.textDocument.publishDiagnostics &&
@@ -90,10 +81,7 @@ connection.onInitialize((params: InitializeParams) => {
 
 connection.onInitialized(() => {
     if (hasConfigurationCapability) {
-        connection.client.register(
-            DidChangeConfigurationNotification.type,
-            undefined
-        );
+        connection.client.register(DidChangeConfigurationNotification.type, undefined);
     }
     if (hasWorkspaceFolderCapability) {
         connection.workspace.onDidChangeWorkspaceFolders((_event) => {
@@ -119,9 +107,7 @@ connection.onDidChangeConfiguration((change) => {
         // 清除所有文档的设置
         documentSettings.clear();
     } else {
-        globalSettings = <MyLangSettings>(
-            (change.settings.myLang || defaultSettings)
-        );
+        globalSettings = <MyLangSettings>(change.settings.myLang || defaultSettings);
     }
     // 当配置发生变化时，重新验证所有打开的文档
     connection.languages.diagnostics.refresh();
@@ -168,23 +154,17 @@ documents.onDidChangeContent((change) => {
     validateTextDocument(change.document);
 });
 
-async function validateTextDocument(
-    textDocument: TextDocument
-): Promise<Diagnostic[]> {
+async function validateTextDocument(textDocument: TextDocument): Promise<Diagnostic[]> {
     // 获取文档的设置
     const settings = await getDocumentSettings(textDocument.uri);
 
-    // The validator creates diagnostics for all uppercase words length 2 and more
     const text = textDocument.getText();
     const pattern = /\/\/.*|\/\*[\s\S]*?\*\/|[a-z]+/g;
     let match: RegExpExecArray | null;
 
     let problems = 0;
     const diagnostics: Diagnostic[] = [];
-    while (
-        (match = pattern.exec(text)) &&
-        problems < settings.maxNumberOfProblems
-    ) {
+    while ((match = pattern.exec(text)) && problems < settings.maxNumberOfProblems) {
         // 检查匹配项是否为小写单词
         if (match[0].startsWith("//") || match[0].startsWith("/*")) {
             // 是注释或字符串，跳过
@@ -230,44 +210,39 @@ connection.onDidChangeWatchedFiles((_change) => {
 });
 
 // 代码补全的基本信息
-connection.onCompletion(
-    (textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
-        let isSharp = false;
-        const document = documents.get(textDocumentPosition.textDocument.uri);
-        if (document) {
-            const position = textDocumentPosition.position;
-            const range = {
-                start: {
-                    line: position.line,
-                    character: Math.max(0, position.character - 1),
-                },
-                end: position,
-            };
-            const text = document.getText(range);
-            isSharp = text === "#";
-            for (const item of sharpCompletionItems) {
-                if (item.textEdit && "range" in item.textEdit) {
-                    item.textEdit.range = range;
-                }
+connection.onCompletion((textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
+    let isSharp = false;
+    const document = documents.get(textDocumentPosition.textDocument.uri);
+    if (document) {
+        const position = textDocumentPosition.position;
+        const range = {
+            start: {
+                line: position.line,
+                character: Math.max(0, position.character - 1),
+            },
+            end: position,
+        };
+        const text = document.getText(range);
+        isSharp = text === "#";
+        for (const item of sharpCompletionItems) {
+            if (item.textEdit && "range" in item.textEdit) {
+                item.textEdit.range = range;
             }
         }
-        if (isSharp) {
-            return sharpCompletionItems;
-        } else {
-            return allCompletionItems;
-        }
     }
-);
+    if (isSharp) {
+        return sharpCompletionItems;
+    } else {
+        return allCompletionItems;
+    }
+});
 
 // 代码补全的完整信息
 connection.onCompletionResolve((item: CompletionItem): CompletionItem => {
     return completionResolve(item);
 });
 
-function getSymbolAtPosition(
-    document: TextDocument,
-    position: Position
-): MySymbol | undefined {
+function getSymbolAtPosition(document: TextDocument, position: Position): MySymbol | undefined {
     const text = document.getText();
     const lines = text.split(/\r?\n/);
     const lineText = lines[position.line];
@@ -309,13 +284,11 @@ connection.onHover((params: TextDocumentPositionParams): Hover | null => {
     return null;
 });
 
-connection.onDocumentFormatting(
-    ({ textDocument, options }: DocumentFormattingParams): TextEdit[] => {
-        const document = documents.get(textDocument.uri);
-        const fullText = document?.getText();
-        return formattingHandler(fullText ?? "", options);
-    }
-);
+connection.onDocumentFormatting(({ textDocument, options }: DocumentFormattingParams): TextEdit[] => {
+    const document = documents.get(textDocument.uri);
+    const fullText = document?.getText();
+    return formattingHandler(fullText ?? "", options);
+});
 
 // 添加文档监听
 documents.listen(connection);

@@ -1,3 +1,8 @@
+/* --------------------------------------------------------------------------------------------
+ * Copyright (c) X37ddV. All rights reserved.
+ * Licensed under the MIT License. See License.md in the project root for license information.
+ * ------------------------------------------------------------------------------------------ */
+
 export enum MyFunctionType {
     None,
     CandlestickDataReference, // K线数据引用
@@ -73,11 +78,7 @@ export class MySymbol {
         });
         return result;
     }
-    static fromLabelAndDetail(
-        label: string,
-        detail: string,
-        kind: MySymbolKind
-    ): MySymbol {
+    static fromLabelAndDetail(label: string, detail: string, kind: MySymbolKind): MySymbol {
         const result = new MySymbol();
         result.label = label;
         result.detail = detail;
@@ -86,9 +87,7 @@ export class MySymbol {
         result.kind = kind;
         return result;
     }
-    static createParametersFromStrings(
-        parameters: string[]
-    ): MyFunctionParameter[] {
+    static createParametersFromStrings(parameters: string[]): MyFunctionParameter[] {
         return parameters.map((p) => {
             const result = new MyFunctionParameter();
             result.label = p;

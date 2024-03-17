@@ -1,3 +1,8 @@
+/* --------------------------------------------------------------------------------------------
+ * Copyright (c) X37ddV. All rights reserved.
+ * Licensed under the MIT License. See License.md in the project root for license information.
+ * ------------------------------------------------------------------------------------------ */
+
 import { MySymbol, MySymbolKind } from "./common";
 
 const keywordList = Object.entries({
@@ -9,7 +14,6 @@ const keywordList = Object.entries({
     THEN: "THEN",
     VARIABLE: "VARIABLE 定义全局变量并初始化",
 }).map(([label, detail]) => MySymbol.fromLabelAndDetail(label, detail, MySymbolKind.Keyword));
-
 
 const operatorList = Object.entries({
     AND: "逻辑与",

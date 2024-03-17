@@ -1,50 +1,31 @@
+/* --------------------------------------------------------------------------------------------
+ * Copyright (c) X37ddV. All rights reserved.
+ * Licensed under the MIT License. See License.md in the project root for license information.
+ * ------------------------------------------------------------------------------------------ */
+
 import { functions } from "./functions";
 import { keywords } from "./keywords";
 import { others } from "./others";
-import {
-    CompletionItem,
-    CompletionItemKind,
-    InsertTextFormat,
-    MarkupKind,
-} from "vscode-languageserver/node";
+import { CompletionItem, CompletionItemKind, InsertTextFormat, MarkupKind } from "vscode-languageserver/node";
 import { MySymbolKind } from "./common";
-import { iconMap } from './icons';
+import { iconMap } from "./icons";
+
+const kindMap: { [key in MySymbolKind]: CompletionItemKind } = {
+    [MySymbolKind.Keyword]: CompletionItemKind.Keyword,
+    [MySymbolKind.Function]: CompletionItemKind.Function,
+    [MySymbolKind.Enum]: CompletionItemKind.Enum,
+    [MySymbolKind.Reference]: CompletionItemKind.Reference,
+    [MySymbolKind.Snippet]: CompletionItemKind.Snippet,
+    [MySymbolKind.Operator]: CompletionItemKind.Operator,
+    [MySymbolKind.Text]: CompletionItemKind.Text,
+};
 
 const toKind = (kind: MySymbolKind): CompletionItemKind => {
-    let result: CompletionItemKind;
-    switch (kind) {
-        case MySymbolKind.Keyword:
-            result = CompletionItemKind.Keyword;
-            break;
-        case MySymbolKind.Function:
-            result = CompletionItemKind.Function;
-            break;
-        case MySymbolKind.Enum:
-            result = CompletionItemKind.Enum;
-            break;
-        case MySymbolKind.Reference:
-            result = CompletionItemKind.Reference;
-            break;
-        case MySymbolKind.Snippet:
-            result = CompletionItemKind.Snippet;
-            break;
-        case MySymbolKind.Operator:
-            result = CompletionItemKind.Operator;
-            break;
-        case MySymbolKind.Text:
-            result = CompletionItemKind.Text;
-            break;
-        default:
-            result = CompletionItemKind.Text;
-            break;
-    }
-    return result;
+    return kindMap[kind] ?? CompletionItemKind.Text;
 };
 
 const completions = [...functions, ...keywords, ...others];
-const completionMap = new Map(
-    completions.map((completion) => [completion.label, completion])
-);
+const completionMap = new Map(completions.map((completion) => [completion.label, completion]));
 
 export const getSymbolByName = (name: string) => {
     let symbol = completionMap.get(name);
@@ -56,24 +37,16 @@ export const getSymbolByName = (name: string) => {
 
 // 非#开头的智能提示
 export const allCompletionItems: CompletionItem[] = completions
-    .filter(
-        (item) =>
-            item.kind != MySymbolKind.Reference &&
-            item.kind != MySymbolKind.Snippet
-    )
+    .filter((item) => item.kind != MySymbolKind.Reference && item.kind != MySymbolKind.Snippet)
     .map((item) => ({
         label: item.label,
         kind: toKind(item.kind),
-        labelDetails: { detail: "", description: item.description }
+        labelDetails: { detail: "", description: item.description },
     }));
 
 // #开头的智能提示
 export const sharpCompletionItems: CompletionItem[] = completions
-    .filter(
-        (item) =>
-            item.kind == MySymbolKind.Reference ||
-            item.kind == MySymbolKind.Snippet
-    )
+    .filter((item) => item.kind == MySymbolKind.Reference || item.kind == MySymbolKind.Snippet)
     .map((item) => ({
         label: item.label,
         kind: toKind(item.kind),

@@ -1,3 +1,8 @@
+/* --------------------------------------------------------------------------------------------
+ * Copyright (c) X37ddV. All rights reserved.
+ * Licensed under the MIT License. See License.md in the project root for license information.
+ * ------------------------------------------------------------------------------------------ */
+
 import * as vscode from "vscode";
 
 const colorMap: { [key: string]: number[] } = {
@@ -22,10 +27,18 @@ const regex = RegExp(
     "g"
 );
 
+/**
+ * 将 VS Code 的颜色转换为麦语言的颜色
+ * @param vscodeColor VS Code 的颜色
+ */
+function vscodeColorToMyColor(vscodeColor: vscode.Color): string {
+    const [red, green, blue] = [vscodeColor.red, vscodeColor.green, vscodeColor.blue].map((c) => Math.floor(c * 255));
+    const colorEntry = Object.entries(colorMap).find(([_key, [r, g, b]]) => r === red && g === green && b === blue);
+    return colorEntry ? colorEntry[0] : `RGB(${red}, ${green}, ${blue})`;
+}
+
 export const colorProvider: vscode.DocumentColorProvider = {
-    provideDocumentColors(
-        document: vscode.TextDocument
-    ): vscode.ProviderResult<vscode.ColorInformation[]> {
+    provideDocumentColors(document: vscode.TextDocument): vscode.ProviderResult<vscode.ColorInformation[]> {
         const text = document.getText();
         const colorInformations: vscode.ColorInformation[] = [];
         let match;
@@ -47,27 +60,14 @@ export const colorProvider: vscode.DocumentColorProvider = {
             }
             colorInformations.push(
                 new vscode.ColorInformation(
-                    new vscode.Range(
-                        start.line,
-                        start.character,
-                        end.line,
-                        end.character
-                    ),
+                    new vscode.Range(start.line, start.character, end.line, end.character),
                     new vscode.Color(red / 255, green / 255, blue / 255, 1)
                 )
             );
         }
         return colorInformations;
     },
-    provideColorPresentations(
-        color: vscode.Color,
-        context: {
-            document: vscode.TextDocument;
-            range: vscode.Range;
-        },
-        token: vscode.CancellationToken
-    ): vscode.ProviderResult<vscode.ColorPresentation[]> {
-        // new vscode.ColorPresentation("#FF0000")
-        return [];
+    provideColorPresentations(color: vscode.Color): vscode.ProviderResult<vscode.ColorPresentation[]> {
+        return [new vscode.ColorPresentation(vscodeColorToMyColor(color))];
     },
 };
