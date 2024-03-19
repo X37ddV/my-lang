@@ -1,5 +1,7 @@
 {
-    "editor.insertSpaces": false,
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
     "typescript.tsc.autoDetect": "off",
     "typescript.preferences.quoteStyle": "single",
     "editor.codeActionsOnSave": {
@@ -7,4 +9,5 @@
     },
     "prettier.tabWidth": 4,
     "prettier.printWidth": 120,
+    "prettier.singleQuote": false,
 }

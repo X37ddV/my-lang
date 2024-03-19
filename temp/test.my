@@ -47,9 +47,10 @@ CROSS(AA, VAR.XX), BK;
 
 // region 条件语法
 IF AA OR BB AND CC || DD && EE THEN
-BEGIN
-    CC := 1;
-END
+    IF AA THEN
+    BEGIN
+        DD := 1;
+    END
 ELSE
 BEGIN
     DD := 2;
