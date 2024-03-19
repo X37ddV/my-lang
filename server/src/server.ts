@@ -23,6 +23,8 @@ import {
     TextEdit,
     DocumentFormattingParams,
     ExecuteCommandParams,
+    MessageType,
+    ShowMessageNotification,
 } from "vscode-languageserver/node";
 import { TextDocument } from "vscode-languageserver-textdocument";
 
@@ -302,7 +304,14 @@ connection.onExecuteCommand(async (params: ExecuteCommandParams) => {
         const settings = await getDocumentSettings("");
         const localTQuant8Path = settings.localTQuant8Path;
         const workspaceFolders = params.arguments as string[];
-        await importModelsFromTQuant8(localTQuant8Path, workspaceFolders);
+        try {
+            await importModelsFromTQuant8(localTQuant8Path, workspaceFolders);
+        } catch (error: any) {
+            connection.sendNotification(ShowMessageNotification.method, {
+                type: MessageType.Error,
+                message: "请检查配置项 myLang.localTQuant8Path 是否正确配置。" + error.message,
+            });
+        }
     }
 });
 
