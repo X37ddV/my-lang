@@ -53,19 +53,25 @@ async function convertXTRDToMy(
 }
 
 export const importModelsFromTQuant8 = async (root: string, workspaceFolders: string[]) => {
-    const formulaTypesPath = path.join(root, "Formula", "TYPES");
-    const files = await findXTRDFiles(formulaTypesPath);
-    for (const file of files) {
-        const destFilePaths = [];
-        for (const workspaceFolder of workspaceFolders) {
-            const relativePath = path.relative(formulaTypesPath, file);
-            const destFilePath = path.join(workspaceFolder, relativePath);
-            const parsedPath = path.parse(destFilePath);
-            parsedPath.ext = ".my";
-            parsedPath.base = `${parsedPath.name}${parsedPath.ext}`;
-            const myFilePath = path.format(parsedPath);
-            destFilePaths.push(myFilePath);
+    try {
+        await fs.access(root);
+        const formulaTypesPath = path.join(root, "Formula", "TYPES");
+        const files = await findXTRDFiles(formulaTypesPath);
+        for (const file of files) {
+            const destFilePaths = [];
+            for (const workspaceFolder of workspaceFolders) {
+                const relativePath = path.relative(formulaTypesPath, file);
+                const destFilePath = path.join(workspaceFolder, relativePath);
+                const parsedPath = path.parse(destFilePath);
+                parsedPath.ext = ".my";
+                parsedPath.base = `${parsedPath.name}${parsedPath.ext}`;
+                const myFilePath = path.format(parsedPath);
+                destFilePaths.push(myFilePath);
+            }
+            await convertXTRDToMy(file, destFilePaths);
         }
-        await convertXTRDToMy(file, destFilePaths);
+    } catch (error) {
+        console.error("Error accessing root directory:", error);
+        return;
     }
 };
