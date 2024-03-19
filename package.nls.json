@@ -1,0 +1,7 @@
+{
+	"configuration.title": "MyLang Configuration",
+	"localTQuant8Path.description": "Local TQuant8 installation directory",
+	"maxNumberOfProblems.description": "Maximum number of problems to report",
+	"importModels.title": "Import models from TQuant8",
+	"importModels.category": "MyLang"
+}

@@ -43,6 +43,18 @@ export function activate(context: vscode.ExtensionContext) {
         // 颜色装饰器
         vscode.languages.registerColorProvider("my-lang", colorProvider)
     );
+
+    vscode.commands.registerCommand("extension.importModelsFromTQuant8", () => {
+        // 发送命令到LSP服务端
+        const workspaceFolders: string[] = [];
+        if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 0) {
+            // 获取当前激活的工作区（工作目录）
+            for (let i = 0; i < vscode.workspace.workspaceFolders.length; i++) {
+                workspaceFolders.push(vscode.workspace.workspaceFolders[i].uri.fsPath); // 获取文件系统路径
+            }
+        }
+        vscode.commands.executeCommand("myLang.importModelsFromTQuant8", ...workspaceFolders);
+    });
 }
 
 export function deactivate(): Thenable<void> | undefined {

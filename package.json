@@ -30,13 +30,19 @@
     "contributes": {
         "configuration": {
             "type": "object",
-            "title": "MyLang 配置",
+            "title": "%configuration.title%",
             "properties": {
+                "myLang.localTQuant8Path": {
+                    "scope": "resource",
+                    "type": "string",
+                    "default": "",
+                    "description": "%localTQuant8Path.description%"
+                },
                 "myLang.maxNumberOfProblems": {
                     "scope": "resource",
                     "type": "number",
                     "default": 100,
-                    "description": "语法检查最大问题数"
+                    "description": "%maxNumberOfProblems.description%"
                 }
             }
         },
@@ -70,6 +76,13 @@
                 "label": "My Lang Light Theme",
                 "uiTheme": "vs",
                 "path": "./themes/my-lang-light-theme.json"
+            }
+        ],
+        "commands": [
+            {
+                "command": "extension.importModelsFromTQuant8",
+                "title": "%importModels.title%",
+                "category": "%importModels.category%"
             }
         ]
     },

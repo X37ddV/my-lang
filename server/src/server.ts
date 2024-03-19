@@ -22,12 +22,14 @@ import {
     Position,
     TextEdit,
     DocumentFormattingParams,
+    ExecuteCommandParams,
 } from "vscode-languageserver/node";
 import { TextDocument } from "vscode-languageserver-textdocument";
 
 import { allCompletionItems, sharpCompletionItems, completionResolve, getSymbolByName } from "./symbol/symbolTable";
 import { MySymbol } from "./symbol/common";
 import { formattingHandler } from "./formattingHandler";
+import { importModelsFromTQuant8 } from "./commands/importModels";
 
 // 为服务创建一个连接, 用 Node 的 IPC 进行传输
 const connection = createConnection(ProposedFeatures.all);
@@ -67,6 +69,9 @@ connection.onInitialize((params: InitializeParams) => {
             hoverProvider: true,
             // 声明格式化能力
             documentFormattingProvider: true,
+            executeCommandProvider: {
+                commands: ["myLang.importModelsFromTQuant8"],
+            },
         },
     };
     if (hasWorkspaceFolderCapability) {
@@ -92,11 +97,12 @@ connection.onInitialized(() => {
 
 // 麦语言的设置信息
 interface MyLangSettings {
+    localTQuant8Path: string;
     maxNumberOfProblems: number;
 }
 
 // 设置信息
-const defaultSettings: MyLangSettings = { maxNumberOfProblems: 100 };
+const defaultSettings: MyLangSettings = { localTQuant8Path: "", maxNumberOfProblems: 100 };
 let globalSettings: MyLangSettings = defaultSettings;
 
 // 缓存文档的设置信息
@@ -288,6 +294,16 @@ connection.onDocumentFormatting(({ textDocument, options }: DocumentFormattingPa
     const document = documents.get(textDocument.uri);
     const fullText = document?.getText();
     return formattingHandler(fullText ?? "", options);
+});
+
+// 注册命令执行的处理函数
+connection.onExecuteCommand(async (params: ExecuteCommandParams) => {
+    if (params.command === "myLang.importModelsFromTQuant8") {
+        const settings = await getDocumentSettings("");
+        const localTQuant8Path = settings.localTQuant8Path;
+        const workspaceFolders = params.arguments as string[];
+        await importModelsFromTQuant8(localTQuant8Path, workspaceFolders);
+    }
 });
 
 // 添加文档监听

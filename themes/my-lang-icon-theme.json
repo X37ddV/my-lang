@@ -1,0 +1,17 @@
+{
+    "iconDefinitions": {
+        "myFileIcon": {
+            "iconPath": "./images/icon.ico"
+        }
+    },
+    "fileExtensions": {
+        "my": "myFileIcon"
+    },
+    "iconThemes": [
+        {
+            "id": "myIcons",
+            "label": "My Custom Icons",
+            "path": "./themes/my-lang-icon-theme.json"
+        }
+    ],
+}
