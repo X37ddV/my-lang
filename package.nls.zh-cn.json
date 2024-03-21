@@ -2,6 +2,7 @@
     "configuration.title": "麦语言配置",
     "localTQuant8Path.description": "本机 TQuant8 安装目录",
     "maxNumberOfProblems.description": "要报告的最大问题数",
+    "command.category": "麦语言",
     "importModels.title": "导入 TQuant8 模型",
-    "importModels.category": "麦语言"
+    "runModel.title": "在 TQuant8 中运行"
 }

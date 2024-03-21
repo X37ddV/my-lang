@@ -3,6 +3,7 @@
  * Licensed under the MIT License. See License.md in the project root for license information.
  * ------------------------------------------------------------------------------------------ */
 
+import * as os from "os";
 import {
     createConnection,
     TextDocuments,
@@ -32,6 +33,7 @@ import { allCompletionItems, sharpCompletionItems, completionResolve, getSymbolB
 import { MySymbol } from "./symbol/common";
 import { formattingHandler } from "./formattingHandler";
 import { importModelsFromTQuant8 } from "./commands/importModels";
+import { runModelAtTQuant8 } from "./commands/runModelAtT8";
 
 // 为服务创建一个连接, 用 Node 的 IPC 进行传输
 const connection = createConnection(ProposedFeatures.all);
@@ -72,7 +74,7 @@ connection.onInitialize((params: InitializeParams) => {
             // 声明格式化能力
             documentFormattingProvider: true,
             executeCommandProvider: {
-                commands: ["myLang.importModelsFromTQuant8"],
+                commands: ["myLang.importModelsFromTQuant8", "myLang.runModelAtTQuant8"],
             },
         },
     };
@@ -300,18 +302,42 @@ connection.onDocumentFormatting(({ textDocument, options }: DocumentFormattingPa
 
 // 注册命令执行的处理函数
 connection.onExecuteCommand(async (params: ExecuteCommandParams) => {
-    if (params.command === "myLang.importModelsFromTQuant8") {
-        const settings = await getDocumentSettings("");
-        const localTQuant8Path = settings.localTQuant8Path;
-        const workspaceFolders = params.arguments as string[];
-        try {
+    const isWindows = os.platform() === "win32";
+    if (!isWindows) {
+        connection.sendNotification(ShowMessageNotification.method, {
+            type: MessageType.Info,
+            message: "仅支持 Windows 平台。",
+        });
+        return;
+    }
+    try {
+        if (params.command === "myLang.importModelsFromTQuant8") {
+            // 导入模型
+            const settings = await getDocumentSettings("");
+            const localTQuant8Path = settings.localTQuant8Path;
+            const workspaceFolders = (params.arguments as string[]) || [];
             await importModelsFromTQuant8(localTQuant8Path, workspaceFolders);
-        } catch (error: any) {
-            connection.sendNotification(ShowMessageNotification.method, {
-                type: MessageType.Error,
-                message: "请检查配置项 myLang.localTQuant8Path 是否正确配置。" + error.message,
-            });
+        } else if (params.command === "myLang.runModelAtTQuant8") {
+            // 运行模型
+            const modelUri = ((params.arguments as string[]) || [])[0];
+            const document = documents.get(modelUri);
+            const fullText = document?.getText();
+            if (!fullText) {
+                connection.sendNotification(ShowMessageNotification.method, {
+                    type: MessageType.Error,
+                    message: "文档内容为空。",
+                });
+                return;
+            }
+            const settings = await getDocumentSettings(modelUri);
+            const localTQuant8Path = settings.localTQuant8Path;
+            await runModelAtTQuant8(localTQuant8Path, fullText);
         }
+    } catch (error: any) {
+        connection.sendNotification(ShowMessageNotification.method, {
+            type: MessageType.Error,
+            message: error.message,
+        });
     }
 });
 

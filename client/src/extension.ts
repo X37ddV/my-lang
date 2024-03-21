@@ -44,8 +44,8 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.languages.registerColorProvider("my-lang", colorProvider)
     );
 
+    // 命令: 导入 TQuant8 模型
     vscode.commands.registerCommand("extension.importModelsFromTQuant8", () => {
-        // 发送命令到LSP服务端
         const workspaceFolders: string[] = [];
         if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 0) {
             // 获取当前激活的工作区（工作目录）
@@ -54,6 +54,22 @@ export function activate(context: vscode.ExtensionContext) {
             }
         }
         vscode.commands.executeCommand("myLang.importModelsFromTQuant8", ...workspaceFolders);
+    });
+
+    // 命令: 在 TQuant8 运行模型
+    vscode.commands.registerCommand("extension.runModelAtTQuant8", () => {
+        // 发送命令到LSP服务端
+        const editor = vscode.window.activeTextEditor;
+        if (!editor) {
+            vscode.window.showWarningMessage("未检测到活动编辑器，请打开一个文件（.my）以运行此命令。");
+            return; // 没有打开的编辑器
+        }
+        const fileUri = editor.document.uri.toString();
+        if (fileUri.endsWith(".my")) {
+            vscode.commands.executeCommand("myLang.runModelAtTQuant8", fileUri);
+        } else {
+            vscode.window.showWarningMessage("请打开一个文件（.my）以运行此命令。");
+        }
     });
 }
 

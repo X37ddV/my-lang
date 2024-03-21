@@ -1,3 +1,8 @@
+/* --------------------------------------------------------------------------------------------
+ * Copyright (c) X37ddV. All rights reserved.
+ * Licensed under the MIT License. See License.md in the project root for license information.
+ * ------------------------------------------------------------------------------------------ */
+
 import * as os from "os";
 import * as path from "path";
 import * as fs from "fs/promises";
@@ -44,29 +49,31 @@ async function convertXTRDToMy(
             const destDir = path.dirname(destFilePath);
             await fs.mkdir(destDir, { recursive: true });
             await fs.writeFile(destFilePath, myContent.join(os.EOL));
-
-            console.log(`File has been converted from ${srcEncoding} to ${destEncoding} and saved to ${destFilePath}`);
         }
-    } catch (error) {
-        console.error("Error converting file:", error);
+    } catch (error: any) {
+        throw new Error(`转换文件 ${srcFilePath} 失败: ${error.message}`);
     }
 }
 
 export const importModelsFromTQuant8 = async (root: string, workspaceFolders: string[]) => {
-    await fs.access(root);
-    const formulaTypesPath = path.join(root, "Formula", "TYPES");
-    const files = await findXTRDFiles(formulaTypesPath);
-    for (const file of files) {
-        const destFilePaths = [];
-        for (const workspaceFolder of workspaceFolders) {
-            const relativePath = path.relative(formulaTypesPath, file);
-            const destFilePath = path.join(workspaceFolder, relativePath);
-            const parsedPath = path.parse(destFilePath);
-            parsedPath.ext = ".my";
-            parsedPath.base = `${parsedPath.name}${parsedPath.ext}`;
-            const myFilePath = path.format(parsedPath);
-            destFilePaths.push(myFilePath);
+    try {
+        await fs.access(root);
+        const formulaTypesPath = path.join(root, "Formula", "TYPES");
+        const files = await findXTRDFiles(formulaTypesPath);
+        for (const file of files) {
+            const destFilePaths = [];
+            for (const workspaceFolder of workspaceFolders) {
+                const relativePath = path.relative(formulaTypesPath, file);
+                const destFilePath = path.join(workspaceFolder, relativePath);
+                const parsedPath = path.parse(destFilePath);
+                parsedPath.ext = ".my";
+                parsedPath.base = `${parsedPath.name}${parsedPath.ext}`;
+                const myFilePath = path.format(parsedPath);
+                destFilePaths.push(myFilePath);
+            }
+            await convertXTRDToMy(file, destFilePaths);
         }
-        await convertXTRDToMy(file, destFilePaths);
+    } catch (error: any) {
+        throw new Error(`导入 TQuant8 模型失败: ${error.message}`);
     }
 };

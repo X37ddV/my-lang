@@ -82,7 +82,12 @@
             {
                 "command": "extension.importModelsFromTQuant8",
                 "title": "%importModels.title%",
-                "category": "%importModels.category%"
+                "category": "%command.category%"
+            },
+            {
+                "command": "extension.runModelAtTQuant8",
+                "title": "%runModel.title%",
+                "category": "%command.category%"
             }
         ]
     },

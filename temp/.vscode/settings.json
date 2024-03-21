@@ -1,6 +1,4 @@
 {
-    "myLang": {
-        "localTQuant8Path": "D:\\TQuant8模拟版",
-        "maxNumberOfProblems": 200
-    }
+    "myLang.localTQuant8Path": "D:\\TQuant8模拟版",
+    "myLang.maxNumberOfProblems": 200,
 }
