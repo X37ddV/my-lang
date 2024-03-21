@@ -311,27 +311,31 @@ connection.onExecuteCommand(async (params: ExecuteCommandParams) => {
         return;
     }
     try {
+        let message = "";
         if (params.command === "myLang.importModelsFromTQuant8") {
             // 导入模型
             const settings = await getDocumentSettings("");
             const localTQuant8Path = settings.localTQuant8Path;
             const workspaceFolders = (params.arguments as string[]) || [];
-            await importModelsFromTQuant8(localTQuant8Path, workspaceFolders);
+            message = await importModelsFromTQuant8(localTQuant8Path, workspaceFolders);
         } else if (params.command === "myLang.runModelAtTQuant8") {
             // 运行模型
             const modelUri = ((params.arguments as string[]) || [])[0];
             const document = documents.get(modelUri);
             const fullText = document?.getText();
-            if (!fullText) {
-                connection.sendNotification(ShowMessageNotification.method, {
-                    type: MessageType.Error,
-                    message: "文档内容为空。",
-                });
-                return;
+            if (fullText) {
+                const settings = await getDocumentSettings(modelUri);
+                const localTQuant8Path = settings.localTQuant8Path;
+                message = await runModelAtTQuant8(localTQuant8Path, fullText);
+            } else {
+                message = "文档内容为空。";
             }
-            const settings = await getDocumentSettings(modelUri);
-            const localTQuant8Path = settings.localTQuant8Path;
-            await runModelAtTQuant8(localTQuant8Path, fullText);
+        }
+        if (message) {
+            connection.sendNotification(ShowMessageNotification.method, {
+                type: MessageType.Info,
+                message: message,
+            });
         }
     } catch (error: any) {
         connection.sendNotification(ShowMessageNotification.method, {

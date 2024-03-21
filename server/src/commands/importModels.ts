@@ -56,6 +56,7 @@ async function convertXTRDToMy(
 }
 
 export const importModelsFromTQuant8 = async (root: string, workspaceFolders: string[]) => {
+    let message = "";
     try {
         await fs.access(root);
         const formulaTypesPath = path.join(root, "Formula", "TYPES");
@@ -73,7 +74,9 @@ export const importModelsFromTQuant8 = async (root: string, workspaceFolders: st
             }
             await convertXTRDToMy(file, destFilePaths);
         }
+        message = `成功导入 ${files.length} 个 TQuant8 模型`;
     } catch (error: any) {
         throw new Error(`导入 TQuant8 模型失败: ${error.message}`);
     }
+    return message;
 };

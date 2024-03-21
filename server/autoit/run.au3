@@ -9,7 +9,7 @@ Local $mMessage[]
 $mMessage["-2"] = "Failed to find the `My Language` dialog of TQuant8."
 $mMessage["-1"] = "Failed to find the `TQuant8` window of TQuant8."
 $mMessage["0"] = "Success."
-$mMessage["1"] = "Please switch the main window to the K-line chart."
+$mMessage["1"] = "Please switch the `TQuant8` window to the K-line chart."
 $mMessage["2"] = "Unknown error."
 
 Local $sCode =  String(($nCode >= -2 And $nCode <= 1) ? $nCode : 2)
