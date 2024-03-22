@@ -311,7 +311,7 @@ connection.onExecuteCommand(async (params: ExecuteCommandParams) => {
         return;
     }
     try {
-        let message: { type: MessageType; message: string };
+        let message: { type: MessageType; message: string } | null = null;
         if (params.command === "myLang.importModelsFromTQuant8") {
             // 导入模型
             const settings = await getDocumentSettings("");
@@ -328,7 +328,10 @@ connection.onExecuteCommand(async (params: ExecuteCommandParams) => {
                 const localTQuant8Path = settings.localTQuant8Path;
                 message = await runModelAtTQuant8(localTQuant8Path, fullText);
             } else {
-                message = "文档内容为空。";
+                message = {
+                    type: MessageType.Info,
+                    message: "文档内容为空。",
+                };
             }
         }
         if (message) {

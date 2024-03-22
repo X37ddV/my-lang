@@ -70,21 +70,6 @@ MyLang
 </PROPERTY>
 \0`);
 
-const codeMessage = (code: number) => {
-    switch (code) {
-        case 0:
-            return "成功";
-        case 1:
-            return code;
-        case -1:
-            return "未找到`TQuant8`的主窗口";
-        case -2:
-            return "未找到`TQuant8`的`编写模型`窗口";
-        default:
-            return "未知错误";
-    }
-};
-
 const getNewOrderIni = (content: Buffer, insertAutoRun: boolean) => {
     const lineText = iconv.decode(content, "GBK");
     const itemRegex = /ITEM(\d{4})=(.*)/g;
