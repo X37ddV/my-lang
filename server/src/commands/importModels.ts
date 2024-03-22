@@ -58,10 +58,13 @@ async function convertXTRDToMy(
 }
 
 export const importModelsFromTQuant8 = async (root: string, workspaceFolders: string[]) => {
-    root = await searchTQuant8(root);
-    let message: { type: MessageType; message: string };
+    let message: { type: MessageType; message: string } | null = null;
     try {
+        root = await searchTQuant8(root);
         await fs.access(root);
+        // 自动生成配置
+        // TODO: 生成.vscode目录和setting.json
+        // 开始导入
         const formulaTypesPath = path.join(root, "Formula", "TYPES");
         const files = await findXTRDFiles(formulaTypesPath);
         for (const file of files) {
@@ -82,7 +85,10 @@ export const importModelsFromTQuant8 = async (root: string, workspaceFolders: st
             message: `成功导入 ${files.length} 个 TQuant8 模型`,
         };
     } catch (error: any) {
-        throw new Error(`导入 TQuant8 模型失败: ${error.message}`);
+        message = {
+            type: MessageType.Error,
+            message: `导入 TQuant8 模型失败: ${error.message}`,
+        };
     }
     return message;
 };

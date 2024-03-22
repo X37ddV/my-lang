@@ -104,11 +104,12 @@ const modifyOrderIniFile = async (orderIniFile: string) => {
 };
 
 export const runModelAtTQuant8 = async (root: string, documentText: string) => {
-    root = await searchTQuant8(root);
-    let message: { type: MessageType; message: string };
+    let message: { type: MessageType; message: string } | null = null;
     let autoRunPath = "";
     let orderIniFile = "";
     try {
+        // 如果 root 为空，则尝试搜索
+        root = await searchTQuant8(root);
         // 准备运行环境
         await fs.access(root);
         const formulaTypesPath = path.join(root, "Formula", "TYPES");
@@ -143,7 +144,10 @@ export const runModelAtTQuant8 = async (root: string, documentText: string) => {
             };
         }
     } catch (error: any) {
-        throw new Error(`在 TQuant8 中运行失败: ${error.message}`);
+        message = {
+            type: MessageType.Error,
+            message: `在 TQuant8 中运行失败: ${error.message}`,
+        };
     } finally {
         // 还原运行环境
         if (autoRunPath) {
