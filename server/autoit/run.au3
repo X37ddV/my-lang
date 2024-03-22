@@ -13,7 +13,7 @@ $mMessage["1"] = "Please switch the `TQuant8` window to the K-line chart."
 $mMessage["2"] = "Unknown error."
 
 Local $sCode =  String(($nCode >= -2 And $nCode <= 1) ? $nCode : 2)
-Local $sMessage = "{ code: " & $nCode & ", message: '" & $mMessage[$sCode] & "'}"
+Local $sMessage = '{ "code": ' & $nCode & ', "message": "' & $mMessage[$sCode] & '"}'
 If $nCode >= 0 Then
     ConsoleWrite($sMessage)
 Else
@@ -43,12 +43,15 @@ Func Main()
         WinActive($hWindow)
         WinWaitActive($hWindow)
         SendKeepActive($hWindow)
+
+        ; 关闭所有弹出窗口
+        CloseAllWindows("^My\sLanguage|编辑", "#32770", 1000)
         
         ; 编写模型（快捷键Ctrl+F）
         Send("^f")
 
         ; 等待弹出窗口出现
-        Local $hDialog = WaitWindowHandle("^My\sLanguage", "#32770", 2000)
+        Local $hDialog = WaitWindowHandle("^My\sLanguage|编辑", "#32770", 2000)
         If $hDialog <> "" Then
             ; 激活弹出窗口
             ControlFocus($hDialog, "", "[CLASS:SysTreeView32; INSTANCE:1]")
@@ -145,3 +148,24 @@ Func WaitWindowHandle($sTitlePattern, $sExpectedClassName, $nTimeout)
     WEnd
     Return $hWindow
 EndFunc ; => WaitWindowHandle
+
+Func CloseAllWindows($sTitlePattern, $sExpectedClassName, $nTimeout)
+    ; 关闭所有匹配的窗口，直到超时(毫秒)
+
+    Local $startTime = TimerInit() ; 开始计时
+    While True
+        ; 检查是否已达到超时时间
+        If TimerDiff($startTime) > $nTimeout Then
+            Return False
+        EndIf
+        ; 查找匹配的窗口
+        Local $hWnd = FindWindowHandle($sTitlePattern, $sExpectedClassName)
+        If $hWnd = "" Then
+            ; 如果没有找到匹配的窗口，退出循环
+            ExitLoop
+        EndIf
+        ; 关闭找到的窗口
+        WinClose($hWnd)
+    WEnd
+    Return True
+EndFunc ; => CloseAllWindows
