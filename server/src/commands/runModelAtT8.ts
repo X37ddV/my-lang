@@ -9,6 +9,7 @@ import * as path from "path";
 import * as iconv from "iconv-lite";
 import { exec as execOriginal } from "child_process";
 import { promisify } from "util";
+import { searchTQuant8 } from "./searchTQuant8";
 
 const exec = promisify(execOriginal);
 
@@ -131,6 +132,7 @@ const modifyOrderIniFile = async (orderIniFile: string) => {
 };
 
 export const runModelAtTQuant8 = async (root: string, documentText: string) => {
+    root = await searchTQuant8(root);
     let message = "";
     let autoRunPath = "";
     let orderIniFile = "";

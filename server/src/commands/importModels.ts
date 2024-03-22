@@ -7,6 +7,7 @@ import * as os from "os";
 import * as path from "path";
 import * as fs from "fs/promises";
 import * as iconv from "iconv-lite";
+import { searchTQuant8 } from "./searchTQuant8";
 
 const findXTRDFiles = async (dir: string, files: string[] = []) => {
     const items = await fs.readdir(dir, { withFileTypes: true });
@@ -56,6 +57,7 @@ async function convertXTRDToMy(
 }
 
 export const importModelsFromTQuant8 = async (root: string, workspaceFolders: string[]) => {
+    root = await searchTQuant8(root);
     let message = "";
     try {
         await fs.access(root);

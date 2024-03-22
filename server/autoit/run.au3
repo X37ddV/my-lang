@@ -74,11 +74,12 @@ Func Main()
             Sleep(100)
             If WinExists("提示") Then
                 $nCode = 1
+            Else
+                WinClose($hDialog)
             EndIf
             
             ; 关闭弹出窗口
             SendKeepActive("")
-            WinClose($hDialog)
         Else
             ; 没有找到弹出窗口
             SendKeepActive("")
