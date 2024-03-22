@@ -26,14 +26,15 @@ import {
     ExecuteCommandParams,
     MessageType,
     ShowMessageNotification,
+    ShowMessageParams,
 } from "vscode-languageserver/node";
 import { TextDocument } from "vscode-languageserver-textdocument";
 
-import { allCompletionItems, sharpCompletionItems, completionResolve, getSymbolByName } from "./symbol/symbolTable";
 import { MySymbol } from "./symbol/common";
-import { formattingHandler } from "./formattingHandler";
+import { allCompletionItems, sharpCompletionItems, completionResolve, getSymbolByName } from "./symbol/symbolTable";
 import { importModelsFromTQuant8 } from "./commands/importModels";
 import { runModelAtTQuant8 } from "./commands/runModelAtT8";
+import { formattingHandler } from "./formattingHandler";
 
 // 为服务创建一个连接, 用 Node 的 IPC 进行传输
 const connection = createConnection(ProposedFeatures.all);
@@ -303,7 +304,7 @@ connection.onDocumentFormatting(({ textDocument, options }: DocumentFormattingPa
 
 // 注册命令执行的处理函数
 connection.onExecuteCommand(async (params: ExecuteCommandParams) => {
-    let message: { type: MessageType; message: string } | null = null;
+    let message: ShowMessageParams | null = null;
     if (os.platform() !== "win32") {
         message = {
             type: MessageType.Warning,

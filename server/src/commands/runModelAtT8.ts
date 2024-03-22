@@ -7,10 +7,10 @@ import * as os from "os";
 import * as fs from "fs/promises";
 import * as path from "path";
 import * as iconv from "iconv-lite";
-import { exec as execCallback } from "child_process";
 import { promisify } from "util";
+import { exec as execCallback } from "child_process";
+import { MessageType, ShowMessageParams } from "vscode-languageserver/node";
 import { searchTQuant8 } from "./searchTQuant8";
-import { MessageType } from "vscode-languageserver/node";
 
 const exec = promisify(execCallback);
 
@@ -104,7 +104,7 @@ const modifyOrderIniFile = async (orderIniFile: string) => {
 };
 
 export const runModelAtTQuant8 = async (root: string, documentText: string) => {
-    let message: { type: MessageType; message: string } | null = null;
+    let message: ShowMessageParams | null = null;
     let autoRunPath = "";
     let orderIniFile = "";
     try {

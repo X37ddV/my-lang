@@ -7,8 +7,24 @@ import * as os from "os";
 import * as path from "path";
 import * as fs from "fs/promises";
 import * as iconv from "iconv-lite";
+import { MessageType, ShowMessageParams } from "vscode-languageserver/node";
 import { searchTQuant8 } from "./searchTQuant8";
-import { MessageType } from "vscode-languageserver/node";
+
+const defaultSettings = (root: string) => {
+    return `
+    {
+        "myLang.localTQuant8Path": "${root.replace("\\", "\\\\")}",
+        "myLang.maxNumberOfProblems": 100,
+        "vsicons.associations.files": [
+            {
+                "icon": "mlang",
+                "extensions": ["my"],
+                "format": "svg"
+            }
+        ]
+    }
+`;
+};
 
 const findXTRDFiles = async (dir: string, files: string[] = []) => {
     const items = await fs.readdir(dir, { withFileTypes: true });
@@ -58,12 +74,25 @@ async function convertXTRDToMy(
 }
 
 export const importModelsFromTQuant8 = async (root: string, workspaceFolders: string[]) => {
-    let message: { type: MessageType; message: string } | null = null;
+    let message: ShowMessageParams | null = null;
     try {
         root = await searchTQuant8(root);
         await fs.access(root);
         // 自动生成配置
-        // TODO: 生成.vscode目录和setting.json
+        for (const workspaceFolder of workspaceFolders) {
+            const vscodeFolder = path.join(workspaceFolder, ".vscode");
+            fs.access(vscodeFolder).then(async (err: any) => {
+                if (err) {
+                    await fs.mkdir(vscodeFolder, { recursive: true });
+                }
+                const settingsFile = path.join(vscodeFolder, "settings.json");
+                fs.access(settingsFile).then(async (err: any) => {
+                    if (err) {
+                        await fs.writeFile(settingsFile, defaultSettings(root));
+                    }
+                });
+            });
+        }
         // 开始导入
         const formulaTypesPath = path.join(root, "Formula", "TYPES");
         const files = await findXTRDFiles(formulaTypesPath);

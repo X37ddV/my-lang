@@ -22,7 +22,7 @@ function formatCode(code: string): string {
         .replace(/\s+([.#;])\s+/g, "$1")
         .replace(/([([])\s*/g, "$1")
         .replace(/\s*([)\],])/g, "$1")
-        .replace(/(?<![0-9A-Z]\s+)-\s+(?=\d)/g, "-")
+        .replace(/(?<![0-9A-Z)]\s+)-\s+(?=\d|[A-Z])/g, "-")
         .replace(/(?<=[0-9A-Z])\s+\(/g, "(")
         .replace(/^(VARIABLE|REFLINE)\s*:/, "$1:")
         .replace(/\s+/g, " ")

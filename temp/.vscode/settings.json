@@ -1,13 +1,11 @@
 {
     "myLang.localTQuant8Path": "D:\\TQuant8模拟版",
-    "myLang.maxNumberOfProblems": 200,
+    "myLang.maxNumberOfProblems": 100,
     "vsicons.associations.files": [
         {
             "icon": "mlang",
-            "extensions": [
-                "my"
-            ],
+            "extensions": ["my"],
             "format": "svg"
         }
-    ],
+    ]
 }

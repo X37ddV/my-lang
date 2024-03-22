@@ -149,10 +149,10 @@ EndFunc ; => WaitWindowHandle
 Func CloseAllWindows($sTitlePattern, $sExpectedClassName, $nTimeout)
     ; 关闭所有匹配的窗口，直到超时(毫秒)
 
-    Local $startTime = TimerInit() ; 开始计时
+    Local $nStartTime = TimerInit() ; 开始计时
     While True
         ; 检查是否已达到超时时间
-        If TimerDiff($startTime) > $nTimeout Then
+        If TimerDiff($nStartTime) > $nTimeout Then
             Return False
         EndIf
         ; 查找匹配的窗口

@@ -10,4 +10,11 @@
     "prettier.tabWidth": 4,
     "prettier.printWidth": 120,
     "prettier.singleQuote": false,
+    "vsicons.associations.files": [
+        {
+            "icon": "mlang",
+            "extensions": ["my"],
+            "format": "svg"
+        }
+    ]
 }
