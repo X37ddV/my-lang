@@ -10,6 +10,7 @@ import * as iconv from "iconv-lite";
 import { exec as execCallback } from "child_process";
 import { promisify } from "util";
 import { searchTQuant8 } from "./searchTQuant8";
+import { MessageType } from "vscode-languageserver/node";
 
 const exec = promisify(execCallback);
 
@@ -133,7 +134,7 @@ const modifyOrderIniFile = async (orderIniFile: string) => {
 
 export const runModelAtTQuant8 = async (root: string, documentText: string) => {
     root = await searchTQuant8(root);
-    let message = "";
+    let message: { type: MessageType; message: string };
     let autoRunPath = "";
     let orderIniFile = "";
     try {

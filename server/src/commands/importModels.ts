@@ -8,6 +8,7 @@ import * as path from "path";
 import * as fs from "fs/promises";
 import * as iconv from "iconv-lite";
 import { searchTQuant8 } from "./searchTQuant8";
+import { MessageType } from "vscode-languageserver/node";
 
 const findXTRDFiles = async (dir: string, files: string[] = []) => {
     const items = await fs.readdir(dir, { withFileTypes: true });
@@ -58,7 +59,7 @@ async function convertXTRDToMy(
 
 export const importModelsFromTQuant8 = async (root: string, workspaceFolders: string[]) => {
     root = await searchTQuant8(root);
-    let message = "";
+    let message: { type: MessageType; message: string };
     try {
         await fs.access(root);
         const formulaTypesPath = path.join(root, "Formula", "TYPES");
@@ -76,7 +77,10 @@ export const importModelsFromTQuant8 = async (root: string, workspaceFolders: st
             }
             await convertXTRDToMy(file, destFilePaths);
         }
-        message = `成功导入 ${files.length} 个 TQuant8 模型`;
+        message = {
+            type: MessageType.Info,
+            message: `成功导入 ${files.length} 个 TQuant8 模型`,
+        };
     } catch (error: any) {
         throw new Error(`导入 TQuant8 模型失败: ${error.message}`);
     }

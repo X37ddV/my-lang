@@ -3,20 +3,15 @@
 ; Licensed under the MIT License. See License.md in the project root for license information.
 ;
 
-Global $mMessage[]
-$mMessage["-2"] = "未找到`TQuant8`的`编写模型`窗口"
-$mMessage["-1"] = "未找到`TQuant8`的主窗口"
-$mMessage["0"] = "成功"
-$mMessage["1"] = ""
-$mMessage["2"] = "未知错误"
+Global $sStdErr = ""
+Global $sStdOut = ""
 
-Local $nCode = Main()
-Local $sCode =  String(($nCode >= -2 And $nCode <= 1) ? $nCode : 2)
-Local $sMessage = '{ "code": ' & $nCode & ', "message": "' & $mMessage[$sCode] & '"}'
-If $nCode >= 0 Then
-    ConsoleWriteError($sMessage)
-Else
-    ConsoleWriteError($sMessage)
+Main()
+
+If $sStdErr <> "" Then
+    ConsoleWriteError($sStdErr)
+ElseIf $sStdOut <> "" Then
+    ConsoleWrite($sStdOut)
 EndIf
 
 Exit
@@ -25,9 +20,6 @@ Exit
 
 Func Main()
     ; 主函数
-
-    ; 返回值
-    Local $nCode = 0
 
     ; 查找窗口句柄
     Local $hWindow = FindWindowHandle("^TQuant8", "Afx:")
@@ -73,12 +65,13 @@ Func Main()
             Sleep(100)
             If WinExists("提示") Then
                 $nCode = 1
+                ; 获取提示窗口的文本
                 Sleep(100)
                 Local $sText = WinGetText("提示")
                 $sText = StringReplace($sText, "确定", "")
                 $sText = StringRegExpReplace($sText, "\r?\n", " ")
-                $sText = StringStripWS($sText, 3)
-                $mMessage["" & $nCode] = $sText
+                $sText = StringStripWS($sText, 3) ; 移除前导和尾随空格
+                $sStdOut = $sText
             EndIf
             
             ; 关闭弹出窗口
@@ -87,13 +80,12 @@ Func Main()
         Else
             ; 没有找到弹出窗口
             SendKeepActive("")
-            $nCode = -2
+            $sStdErr = "未找到`TQuant8`的`编写模型`窗口"
         EndIf
     Else
         ; 没有找到主窗口
-        $nCode = -1
+        $sStdErr = "未找到`TQuant8`的主窗口"
     EndIf
-    Return $nCode
 EndFunc ; => Main
 
 Func IsVisible($hWnd)

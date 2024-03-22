@@ -311,7 +311,7 @@ connection.onExecuteCommand(async (params: ExecuteCommandParams) => {
         return;
     }
     try {
-        let message = "";
+        let message: { type: MessageType; message: string };
         if (params.command === "myLang.importModelsFromTQuant8") {
             // 导入模型
             const settings = await getDocumentSettings("");
