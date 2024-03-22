@@ -7,18 +7,18 @@ import * as os from "os";
 import * as fs from "fs/promises";
 import * as path from "path";
 import * as iconv from "iconv-lite";
-import { exec as execOriginal } from "child_process";
+import { exec as execCallback } from "child_process";
 import { promisify } from "util";
 import { searchTQuant8 } from "./searchTQuant8";
 
-const exec = promisify(execOriginal);
+const exec = promisify(execCallback);
 
 const autoItPath = path.join(__dirname, "..", "..", "autoit");
 const autoItExecutable = path.join(autoItPath, "AutoIt3.exe");
 const scriptPath = path.join(autoItPath, "run.au3");
 
 const parseOutput = (output: string) => {
-    const regex = /\{(.|\n)*?\}/;
+    const regex = /\{(.|\n|\r)*?\}/;
     const match = output.match(regex);
     let jsonObject: { code: number; message: string } | null = null;
     if (match) {
@@ -88,7 +88,7 @@ const codeMessage = (code: number) => {
         case 0:
             return "成功";
         case 1:
-            return "请将`TQuant8`的主视图切换到`K线`视图";
+            return code;
         case -1:
             return "未找到`TQuant8`的主窗口";
         case -2:
@@ -99,7 +99,7 @@ const codeMessage = (code: number) => {
 };
 
 const getNewOrderIni = (content: Buffer, insertAutoRun: boolean) => {
-    const lineText = iconv.decode(content, "GB2312");
+    const lineText = iconv.decode(content, "GBK");
     const itemRegex = /ITEM(\d{4})=(.*)/g;
     const items: string[] = [];
     let match;
@@ -151,22 +151,24 @@ export const runModelAtTQuant8 = async (root: string, documentText: string) => {
         await modifyOrderIniFile(orderIniFile);
         // 运行AutoIt脚本
         const command = `${autoItExecutable} ${scriptPath}`;
-        const { stdout, stderr } = await exec(command, { encoding: "utf-8" });
-        const objerr = parseOutput(stderr);
-        const objout = parseOutput(stdout);
+        const { stdout, stderr } = await exec(command, { encoding: "buffer" });
+        const stdoutDecoded = iconv.decode(stdout, "GBK");
+        const stderrDecoded = iconv.decode(stderr, "GBK");
+        const objerr = parseOutput(stdoutDecoded);
+        const objout = parseOutput(stderrDecoded);
         let code = 0;
         if (objerr && objerr.code) {
             code = objerr.code;
+            message = objerr.message;
         } else if (objout && objout.code) {
             code = objout.code;
+            message = objout.message;
         }
         if (code < 0) {
-            throw new Error(`${codeMessage(code)}`);
-        } else if (code > 0) {
-            message = `${codeMessage(code)}`;
+            throw new Error(`${message}`);
         }
     } catch (error: any) {
-        throw new Error(`在 TQuant8 中运行失败: ${error.message}`);
+        throw new Error(`在 TQuant8 中运行失败: ${message + error.message}`);
     } finally {
         // 还原运行环境
         if (autoRunPath) {

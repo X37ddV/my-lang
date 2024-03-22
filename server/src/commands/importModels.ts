@@ -29,7 +29,7 @@ const findXTRDFiles = async (dir: string, files: string[] = []) => {
 async function convertXTRDToMy(
     srcFilePath: string,
     destFilePaths: string[],
-    srcEncoding = "GB2312",
+    srcEncoding = "GBK",
     destEncoding = "UTF-8"
 ) {
     try {

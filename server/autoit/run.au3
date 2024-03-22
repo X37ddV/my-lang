@@ -3,19 +3,18 @@
 ; Licensed under the MIT License. See License.md in the project root for license information.
 ;
 
+Global $mMessage[]
+$mMessage["-2"] = "未找到`TQuant8`的`编写模型`窗口"
+$mMessage["-1"] = "未找到`TQuant8`的主窗口"
+$mMessage["0"] = "成功"
+$mMessage["1"] = ""
+$mMessage["2"] = "未知错误"
+
 Local $nCode = Main()
-
-Local $mMessage[]
-$mMessage["-2"] = "Failed to find the `My Language` dialog of TQuant8."
-$mMessage["-1"] = "Failed to find the `TQuant8` window of TQuant8."
-$mMessage["0"] = "Success."
-$mMessage["1"] = "Please switch the `TQuant8` window to the K-line chart."
-$mMessage["2"] = "Unknown error."
-
 Local $sCode =  String(($nCode >= -2 And $nCode <= 1) ? $nCode : 2)
 Local $sMessage = '{ "code": ' & $nCode & ', "message": "' & $mMessage[$sCode] & '"}'
 If $nCode >= 0 Then
-    ConsoleWrite($sMessage)
+    ConsoleWriteError($sMessage)
 Else
     ConsoleWriteError($sMessage)
 EndIf
@@ -74,12 +73,17 @@ Func Main()
             Sleep(100)
             If WinExists("提示") Then
                 $nCode = 1
-            Else
-                WinClose($hDialog)
+                Sleep(100)
+                Local $sText = WinGetText("提示")
+                $sText = StringReplace($sText, "确定", "")
+                $sText = StringRegExpReplace($sText, "\r?\n", " ")
+                $sText = StringStripWS($sText, 3)
+                $mMessage["" & $nCode] = $sText
             EndIf
             
             ; 关闭弹出窗口
             SendKeepActive("")
+            WinClose($hDialog)
         Else
             ; 没有找到弹出窗口
             SendKeepActive("")
