@@ -18,20 +18,6 @@ const autoItPath = path.join(__dirname, "..", "..", "autoit");
 const autoItExecutable = path.join(autoItPath, "AutoIt3.exe");
 const scriptPath = path.join(autoItPath, "run.au3");
 
-const parseOutput = (output: string) => {
-    const regex = /\{(.|\n|\r)*?\}/;
-    const match = output.match(regex);
-    let jsonObject: { code: number; message: string } | null = null;
-    if (match) {
-        try {
-            jsonObject = JSON.parse(match[0]);
-        } catch (error: any) {
-            // nothing to do
-        }
-    }
-    return jsonObject;
-};
-
 const convertText = (documentText: string) => {
     const text = documentText.replace(/\r?\n|\n\r?|\r/g, os.EOL);
     return iconv.encode(text, "GB2312");
@@ -155,21 +141,24 @@ export const runModelAtTQuant8 = async (root: string, documentText: string) => {
         const { stdout, stderr } = await exec(command, { encoding: "buffer" });
         const stdoutDecoded = iconv.decode(stdout, "GBK");
         const stderrDecoded = iconv.decode(stderr, "GBK");
-        const objerr = parseOutput(stdoutDecoded);
-        const objout = parseOutput(stderrDecoded);
-        let code = 0;
-        if (objerr && objerr.code) {
-            code = objerr.code;
-            message = objerr.message;
-        } else if (objout && objout.code) {
-            code = objout.code;
-            message = objout.message;
-        }
-        if (code < 0) {
-            throw new Error(`${message}`);
+        if (stderrDecoded) {
+            message = {
+                type: MessageType.Error,
+                message: stderrDecoded,
+            };
+        } else if (stdoutDecoded) {
+            message = {
+                type: MessageType.Warning,
+                message: stderrDecoded,
+            };
+        } else {
+            message = {
+                type: MessageType.Info,
+                message: stderrDecoded,
+            };
         }
     } catch (error: any) {
-        throw new Error(`在 TQuant8 中运行失败: ${message + error.message}`);
+        throw new Error(`在 TQuant8 中运行失败: ${error.message}`);
     } finally {
         // 还原运行环境
         if (autoRunPath) {
