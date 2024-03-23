@@ -31,6 +31,47 @@
 | `myLang.localTQuant8Path`    | 本机 TQuant8 安装目录 | `""`   |
 | `myLang.maxNumberOfProblems` | 要报告的最大问题数    | `100`  |
 
+## 参数注释
+
+在导入模型时，原模型中的参数会自动转换为 `参数注释`，注释内容包括描述、基本信息、作者信息、参数列表及其默认参数组等：
+
+```js
+/**
+ * 指数平滑异同移动平均线
+ *
+ * @version 130112
+ *
+ * @briefDescription 平滑移动平均线
+ * @property 0
+ * @editTime 2017年03月06日09:28:24
+ *
+ * @author data0000
+ * @signature 1234567890
+ * @telephone 1234567890
+ * @mail 1234567890@abc.com
+ * @infoVersion INFOVERSION
+ *
+ * @param SHORT 1, 40, 12 [0, 0, 0, 0]
+ * @param LONG 1, 100, 26 [0, 0, 0, 0]
+ * @param M 1, 60, 9 [0, 0, 0, 0]
+```
+
+| 参数                | 模型标签                           | 说明                     |
+| ------------------- | ---------------------------------- | ------------------------ |
+| `/** ... */`        | `<DESCRIPTION />`                  | 模型文件的描述           |
+| `@version`          | `<VERSION />`                      | 模型文件的版本           |
+| `@briefDescription` | `<BRIEFDESCRIPTION />`             | 基本信息中的描述         |
+| `@property`         | `<PROPERTY />`                     | 基本信息中的属性         |
+| `@editTime`         | `<EDITTIME />`                     | 基本信息中的最后更新时间 |
+| `@author`           | `<AUTHOR />`                       | 作者信息中的作者         |
+| `@signature`        | `<SIGNATURE />`                    | 作者信息中的数字签名     |
+| `@telephone`        | `<TELEPHONE />`                    | 作者信息中的电话         |
+| `@mail`             | `<MAIL />`                         | 作者信息中的Email        |
+| `@infoVersion`      | `<INFOVERSION />`                  | 作者信息中的版本号       |
+| `@param`            | `<PARAM />`  `<PARAMDEFAULTSET />` | 参数列表                 |
+
+> 注: `@param 名词 最小, 最大, 缺省 [备选参数组1, 备选参数组2, 备选参数组3, 备选参数组4]`
+
 ## 已知问题
 
 - 函数提示内容待完善

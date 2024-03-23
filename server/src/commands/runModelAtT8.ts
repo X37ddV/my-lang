@@ -20,7 +20,7 @@ const scriptPath = path.join(autoItPath, "run.au3");
 
 const convertText = (documentText: string) => {
     const text = documentText.replace(/\r?\n/g, os.EOL);
-    return iconv.encode(text, "GB2312");
+    return iconv.encode(text, "GBK");
 };
 
 const orderIniContent = (fileNames: string[]) =>
@@ -28,8 +28,8 @@ const orderIniContent = (fileNames: string[]) =>
         [
             "[FILES]",
             `Num=${fileNames.length}`,
-            fileNames.map((fileName, i) => `ITEM${i.toString().padStart(4, "0")}=${fileName}`).join("\n"),
-        ].join("\n")
+            fileNames.map((fileName, i) => `ITEM${i.toString().padStart(4, "0")}=${fileName}`).join(os.EOL),
+        ].join(os.EOL)
     );
 
 const formatDate = (date: Date) => {
@@ -42,33 +42,97 @@ const formatDate = (date: Date) => {
     return `${year}年${month}月${day}日${hours}:${minutes}:${seconds}`;
 };
 
-const autoRunContent = (codeText: string) =>
-    convertText(`<DESCRIPTION>
-此代码由于 VSCode 扩展 MyLang 生成，用于在 TQuant8 中自动运行模型。
-</DESCRIPTION>
-<PARAMDEFAULTSET>
-1
-</PARAMDEFAULTSET>
-<CODE>
-${codeText.trimEnd()}
+const autoRunContent = (documentText: string) => {
+    const commentContent = documentText.match(/\/\*\*[\s\S]*?\*\//)?.[0] ?? "";
 
-</CODE>
-<VERSION>
-130112
-</VERSION>
-<BRIEFDESCRIPTION>
-自动运行
-</BRIEFDESCRIPTION>
-<EDITTIME>
-${formatDate(new Date())}
-</EDITTIME>
-<AUTHOR>
-MyLang
-</AUTHOR>
-<PROPERTY>
-1
-</PROPERTY>
-\0`);
+    // 提取以@开头的属性
+    const attrs: { key: string; value: string }[] = [];
+    commentContent.match(/@(\w+)\s+(.+)/g)?.forEach((attr) => {
+        const match = attr.match(/@(\w+)\s+(.+)/);
+        const key = match?.[1].toUpperCase();
+        const value = match?.[2].trim();
+        if (key && value) {
+            attrs.push({ key, value });
+        }
+    });
+
+    // 提取PARAM属性
+    const attrParams = attrs
+        .filter((attr) => attr.key === "PARAM")
+        .map((attr) => {
+            const text = attr.value;
+            const identifierRegex = /^\s*([A-Za-z0-9]+)\s*/;
+            const bracketNumbersRegex = /\[(.*?)\]/;
+
+            // 第一步：获取第一个标识符
+            const identifierMatch = text.match(identifierRegex);
+            const identifier = identifierMatch ? identifierMatch[1] : null;
+
+            // 第二步：获取中括号中的内容，并转换为数字数组
+            const bracketContentMatch = text.match(bracketNumbersRegex);
+            const bracketNumbers = bracketContentMatch
+                ? bracketContentMatch[1].split(",").map((num) => parseFloat(num.trim()) || 0)
+                : [];
+
+            // 第三步：获取剩余部分，并转换为数字数组
+            // 移除第一个标识符和方括号内容
+            const remainingText = text.replace(identifierRegex, "").replace(bracketNumbersRegex, "");
+            const remainingNumbers = remainingText.split(",").map((num) => parseFloat(num.trim()) || 0);
+
+            // 返回结果
+            const param = `[${[identifier, ...remainingNumbers.map((num) => num.toFixed(6))].join(",")}]`;
+            const paramDefaultSet = `[${bracketNumbers.map((num) => num.toFixed(6)).join(",")}]`;
+            return { param, paramDefaultSet };
+        });
+
+    // 提取普通的注释内容
+    const normalComments = commentContent
+        .replace(/^\/\*\*|\*\/$/gm, "") // 移除注释的开始/**和结束*/标记
+        .split(/\r?\n/) // 按行分割
+        .map((line) => line.replace(/^\s*\*\s*/, "")) // 移除行首的*号和空格
+        .filter((line) => !line.startsWith("@")) // 排除以@开头的行
+        .join(os.EOL) // 重新组合为字符串
+        .trim(); // 移除字符串两端的空白字符
+
+    // 生成新的属性列表
+    const contentItems = attrs
+        .filter((attr) => attr.key !== "PARAM")
+        .reduce((acc, { key, value }) => {
+            acc[key] = value;
+            return acc;
+        }, {} as Record<string, string>);
+    contentItems["PARAM"] = attrParams.map((item) => item.param).join(os.EOL);
+    contentItems["PARAMDEFAULTSET"] = ["1", ...attrParams.map((item) => item.paramDefaultSet)].join(os.EOL);
+    contentItems["DESCRIPTION"] = normalComments;
+    contentItems["CODE"] = `${documentText.trimEnd()}${os.EOL}`.replace("/**", "/*");
+    contentItems["EDITTIME"] = `${formatDate(new Date())}`;
+    contentItems["PROPERTY"] = contentItems["PROPERTY"] || "1";
+    contentItems["VERSION"] = contentItems["VERSION"] || "130112";
+
+    // 按顺序生成模型文件内容
+    const contents = [
+        "DESCRIPTION",
+        "PARAM",
+        "PARAMDEFAULTSET",
+        "CODE",
+        "VERSION",
+        "SIGNATURE",
+        "TELEPHONE",
+        "MAIL",
+        "BRIEFDESCRIPTION",
+        "EDITTIME",
+        "INFOVERSION",
+        "AUTHOR",
+        "PROPERTY",
+    ]
+        .map((key) => {
+            const vaule = contentItems[key];
+            return vaule ? `<${key}>${os.EOL}${vaule}${os.EOL}</${key}>` : "";
+        })
+        .filter((content) => content);
+
+    return convertText(contents.join(os.EOL) + "\0");
+};
 
 const getNewOrderIni = (content: Buffer, insertAutoRun: boolean) => {
     const lineText = iconv.decode(content, "GBK");
@@ -135,12 +199,12 @@ export const runModelAtTQuant8 = async (root: string, documentText: string) => {
         } else if (stdoutDecoded) {
             message = {
                 type: MessageType.Warning,
-                message: stderrDecoded,
+                message: stdoutDecoded,
             };
         } else {
             message = {
                 type: MessageType.Info,
-                message: stderrDecoded,
+                message: "成功在 TQuant8 中运行模型",
             };
         }
     } catch (error: any) {

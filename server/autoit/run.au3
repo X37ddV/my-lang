@@ -22,7 +22,7 @@ Func Main()
     ; 主函数
 
     ; 查找窗口句柄
-    Local $hWindow = FindWindowHandle("^TQuant8", "Afx:")
+    Local $hWindow = FindWindowHandle("^TQuant8|WT8", "Afx:")
     If $hWindow <> "" Then
         ; 如果窗口最小化，则恢复窗口
         If IsMinimized($hWindow) Then
@@ -52,21 +52,24 @@ Func Main()
 
             ; 定位到第一个根节点的子节点
             Send("{HOME}")
+            Sleep(100)
             Send("{RIGHT}")
+            Sleep(100)
             Send("{RIGHT}")
+            Sleep(100)
 
             ; 激活主视图中的 K 线图
             ControlFocus($hWindow, "", "[CLASS:Afx:0000000140000000:8:0000000000010005:00000000001000A2:0000000000000000; INSTANCE:8]")
+            Sleep(100)
 
             ; 更新主图
             ControlClick($hDialog, "", "[CLASS:Button; INSTANCE:17]")
-
-            ; 等待 100 毫秒，如果没有提示窗口，则认为成功
             Sleep(100)
+
+            ; 如果没有提示窗口，则认为成功
             If WinExists("提示") Then
-                $nCode = 1
-                ; 获取提示窗口的文本
                 Sleep(100)
+                ; 获取提示窗口的文本
                 Local $sText = WinGetText("提示")
                 $sText = StringReplace($sText, "确定", "")
                 $sText = StringRegExpReplace($sText, "\r?\n", " ")
