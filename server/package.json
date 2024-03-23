@@ -13,7 +13,7 @@
 	},
 	"dependencies": {
 		"chevrotain": "11.0.3",
-		"iconv-lite": "^0.6.2",
+		"iconv-lite": "^0.6.3",
 		"vscode-languageserver": "^9.0.1",
 		"vscode-languageserver-textdocument": "^1.0.11"
 	},
