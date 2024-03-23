@@ -10,6 +10,10 @@ import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } f
 import { colorProvider } from "./colorProvider";
 
 let client: LanguageClient;
+let clientReadyPromiseResolve: (value: unknown) => void;
+const clientReadyPromise = new Promise((resolve) => {
+    clientReadyPromiseResolve = resolve;
+});
 
 export function activate(context: vscode.ExtensionContext) {
     // 服务器模块的绝对路径
@@ -36,7 +40,9 @@ export function activate(context: vscode.ExtensionContext) {
     client = new LanguageClient("myLang", "My Language Server", serverOptions, clientOptions);
 
     // 启动客户端
-    client.start().then(() => {});
+    client.start().then((value) => {
+        clientReadyPromiseResolve(value);
+    });
 
     // 添加不依赖于语言服务器的功能
     context.subscriptions.push(
@@ -45,7 +51,8 @@ export function activate(context: vscode.ExtensionContext) {
     );
 
     // 命令: 导入 TQuant8 模型
-    vscode.commands.registerCommand("extension.importModelsFromTQuant8", () => {
+    vscode.commands.registerCommand("extension.importModelsFromTQuant8", async () => {
+        await clientReadyPromise;
         const workspaceFolders: string[] = [];
         if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 0) {
             // 获取当前激活的工作区（工作目录）
@@ -57,18 +64,19 @@ export function activate(context: vscode.ExtensionContext) {
     });
 
     // 命令: 在 TQuant8 运行模型
-    vscode.commands.registerCommand("extension.runModelAtTQuant8", () => {
+    vscode.commands.registerCommand("extension.runModelAtTQuant8", async () => {
+        await clientReadyPromise;
         // 发送命令到LSP服务端
         const editor = vscode.window.activeTextEditor;
-        if (!editor) {
-            vscode.window.showWarningMessage("未检测到活动编辑器，请打开一个文件（.my）以运行此命令。");
-            return; // 没有打开的编辑器
-        }
-        const fileUri = editor.document.uri.toString();
-        if (fileUri.endsWith(".my")) {
-            vscode.commands.executeCommand("myLang.runModelAtTQuant8", fileUri);
+        if (editor) {
+            const fileUri = editor.document.uri.toString();
+            if (fileUri.endsWith(".my")) {
+                vscode.commands.executeCommand("myLang.runModelAtTQuant8", fileUri);
+            } else {
+                vscode.window.showWarningMessage("请打开一个文件（.my）以运行此命令。");
+            }
         } else {
-            vscode.window.showWarningMessage("请打开一个文件（.my）以运行此命令。");
+            vscode.window.showWarningMessage("未检测到活动编辑器，请打开一个文件（.my）以运行此命令。");
         }
     });
 }

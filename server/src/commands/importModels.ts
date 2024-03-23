@@ -10,20 +10,121 @@ import * as iconv from "iconv-lite";
 import { MessageType, ShowMessageParams } from "vscode-languageserver/node";
 import { searchTQuant8 } from "./searchTQuant8";
 
-const defaultSettings = (root: string) => {
-    return `
-    {
-        "myLang.localTQuant8Path": "${root.replace("\\", "\\\\")}",
-        "myLang.maxNumberOfProblems": 100,
-        "vsicons.associations.files": [
-            {
-                "icon": "mlang",
-                "extensions": ["my"],
-                "format": "svg"
-            }
-        ]
+/**
+ * DESCRIPTION
+ *
+ * @version VERSION
+ *
+ * @briefDescription BRIEFDESCRIPTION
+ * @property PROPERTY
+ * @editTime EDITTIME
+ *
+ * @author AUTHOR
+ * @signature SIGNATURE
+ * @telephone TELEPHONE
+ * @mail MAIL
+ * @infoVersion INFOVERSION
+ *
+ * @param PARAM [PARAMDEFAULTSET]
+ */
+const formatContent = (destContent: string) => {
+    const myDescription = extractTagContent(destContent, "DESCRIPTION");
+    const myParam = extractTagContent(destContent, "PARAM");
+    const myParamDefaultSet = extractTagContent(destContent, "PARAMDEFAULTSET");
+    const myVersion = extractTagContent(destContent, "VERSION");
+    const mySignature = extractTagContent(destContent, "SIGNATURE");
+    const myTelephone = extractTagContent(destContent, "TELEPHONE");
+    const myMail = extractTagContent(destContent, "MAIL");
+    const myBriefDescription = extractTagContent(destContent, "BRIEFDESCRIPTION");
+    const myEditTime = extractTagContent(destContent, "EDITTIME");
+    const myInfoVersion = extractTagContent(destContent, "INFOVERSION");
+    const myAuthor = extractTagContent(destContent, "AUTHOR");
+    const myProperty = extractTagContent(destContent, "PROPERTY");
+    const myCode = extractTagContent(destContent, "CODE");
+
+    function formatValue(value: string | null) {
+        return value?.replace(/[\r\n]+/g, "").trim() ?? "";
     }
-`;
+
+    function getFieldLines(fields: Record<string, string | null>) {
+        return Object.entries(fields)
+            .filter(([_key, value]) => value)
+            .map(([key, value]) => `${key} ${formatValue(value)}`);
+    }
+
+    const descriptionLines = (myDescription || "")
+        .trim()
+        .split(/\r?\n/)
+        .map((line) => `${line}`);
+    const versionLines = getFieldLines({
+        "@version": myVersion,
+    });
+    const baseInfoLines = getFieldLines({
+        "@briefDescription": myBriefDescription,
+        "@property": myProperty,
+        "@editTime": myEditTime,
+    });
+    const authorLines = getFieldLines({
+        "@author": myAuthor,
+        "@signature": mySignature,
+        "@telephone": myTelephone,
+        "@mail": myMail,
+        "@infoVersion": myInfoVersion,
+    });
+    const params = extractParamContent(myParam ?? "");
+    const defaultSet = extractParamContent(myParamDefaultSet ?? "");
+    const paramLines = params.map((param, i) => {
+        const [first, ...rest] = param;
+        const defaultValue = defaultSet[i] ?? [0, 0, 0, 0];
+        return `@param ${first} ${rest.join(", ")} [${defaultValue.join(", ")}]`;
+    });
+    const descriptions = [descriptionLines, versionLines, baseInfoLines, authorLines, paramLines]
+        .filter((lines) => lines.length > 0)
+        .reduce((acc, currentArray, index) => {
+            if (index > 0) {
+                acc = acc.concat("");
+            }
+            return acc.concat(currentArray);
+        }, []);
+
+    const lines: string[] = [];
+    if (descriptions.length > 0) {
+        lines.push("/**");
+        lines.push(...descriptions.map((line) => ` * ${line}`));
+        lines.push(" */");
+    }
+    lines.push("");
+    if (myCode) {
+        lines.push(...myCode.split(/\r?\n/));
+        lines.push("");
+    }
+    return lines.join(os.EOL);
+};
+
+const extractParamContent = (text: string) => {
+    // 使用正则表达式匹配文本中的所有方括号内容
+    const regex = /\[([^\]]+)\]/g;
+
+    // 使用 matchAll 方法获取所有匹配项
+    const matches = [...text.matchAll(regex)];
+
+    // 提取匹配组中的内容并转换为数值数组
+    const arrays = matches.map((match) => {
+        // 分割字符串得到字符串数组，然后使用 map 将每个元素转换为浮点数或字符串
+        return match[1].split(",").map((item) => {
+            const trimmedItem = item.trim();
+            const number = Number(trimmedItem);
+            return isNaN(number) ? trimmedItem : number;
+        });
+    });
+
+    return arrays;
+};
+
+const extractTagContent = (xml: string, tagName: string) => {
+    const regex = new RegExp(`<${tagName}>\\s*([\\s\\S]*?)\\s*</${tagName}>`, "i");
+    const matches = xml.match(regex);
+    return matches ? matches[1] : null;
 };
 
 const findXTRDFiles = async (dir: string, files: string[] = []) => {
@@ -55,18 +156,13 @@ async function convertXTRDToMy(
         const srcContent = iconv.decode(srcContentBuffer, srcEncoding);
 
         // 转换编码并写入新文件
-        const destContent = iconv.encode(srcContent, destEncoding);
-        const regex = /<CODE>([\s\S]*?)<\/CODE>/g;
-        const matches = destContent.toString().matchAll(regex);
-        const myContent = [];
-        for (const match of matches) {
-            myContent.push(match[1]);
-        }
+        const destContent = iconv.encode(srcContent, destEncoding).toString();
+        const destFileContent = formatContent(destContent);
         for (const destFilePath of destFilePaths) {
             // 确保目标目录存在，如果不存在则创建
             const destDir = path.dirname(destFilePath);
             await fs.mkdir(destDir, { recursive: true });
-            await fs.writeFile(destFilePath, myContent.join(os.EOL));
+            await fs.writeFile(destFilePath, destFileContent);
         }
     } catch (error: any) {
         throw new Error(`转换文件 ${srcFilePath} 失败: ${error.message}`);
@@ -78,21 +174,6 @@ export const importModelsFromTQuant8 = async (root: string, workspaceFolders: st
     try {
         root = await searchTQuant8(root);
         await fs.access(root);
-        // 自动生成配置
-        for (const workspaceFolder of workspaceFolders) {
-            const vscodeFolder = path.join(workspaceFolder, ".vscode");
-            fs.access(vscodeFolder).then(async (err: any) => {
-                if (err) {
-                    await fs.mkdir(vscodeFolder, { recursive: true });
-                }
-                const settingsFile = path.join(vscodeFolder, "settings.json");
-                fs.access(settingsFile).then(async (err: any) => {
-                    if (err) {
-                        await fs.writeFile(settingsFile, defaultSettings(root));
-                    }
-                });
-            });
-        }
         // 开始导入
         const formulaTypesPath = path.join(root, "Formula", "TYPES");
         const files = await findXTRDFiles(formulaTypesPath);

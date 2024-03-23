@@ -19,7 +19,7 @@ const autoItExecutable = path.join(autoItPath, "AutoIt3.exe");
 const scriptPath = path.join(autoItPath, "run.au3");
 
 const convertText = (documentText: string) => {
-    const text = documentText.replace(/\r?\n|\n\r?|\r/g, os.EOL);
+    const text = documentText.replace(/\r?\n/g, os.EOL);
     return iconv.encode(text, "GB2312");
 };
 
