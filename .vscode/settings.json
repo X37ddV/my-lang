@@ -1,4 +1,5 @@
 {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.insertSpaces": true,
     "editor.formatOnSave": true,
     "editor.tabSize": 4,
@@ -16,5 +17,8 @@
             "extensions": ["my"],
             "format": "svg"
         }
-    ]
+    ],
+    "[my-lang]": {
+        "editor.defaultFormatter": "X37ddV.my-lang"
+    }
 }

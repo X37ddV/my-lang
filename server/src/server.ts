@@ -300,6 +300,7 @@ connection.onDocumentFormatting(({ textDocument, options }: DocumentFormattingPa
     const document = documents.get(textDocument.uri);
     const fullText = document?.getText();
     return formattingHandler(fullText ?? "", options);
+    // return document ? formattingHandler(document, options) : [];
 });
 
 // 注册命令执行的处理函数
