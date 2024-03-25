@@ -5,6 +5,24 @@
 
 import * as os from "os";
 
+/**
+ * DESCRIPTION
+ *
+ * @version VERSION
+ *
+ * @briefDescription BRIEFDESCRIPTION
+ * @property PROPERTY
+ * @editTime EDITTIME
+ *
+ * @author AUTHOR
+ * @signature SIGNATURE
+ * @telephone TELEPHONE
+ * @mail MAIL
+ * @infoVersion INFOVERSION
+ *
+ * @param PARAM [PARAMDEFAULTSET]
+ */
+
 enum ModelTag {
     Description = "DESCRIPTION",
     Param = "PARAM",
@@ -115,31 +133,10 @@ export const modelComment = (contentItems: Record<string, string>) => {
             .map((tag) => `${tagName(tag)} ${formatValue(contentItems[tag])}`);
     };
 
-    // function getFieldLines(fields: Record<string, string | null>) {
-    //     return Object.entries(fields)
-    //         .filter(([_key, value]) => value)
-    //         .map(([key, value]) => `${key} ${formatValue(value)}`);
-    // }
-
     const descriptionLines = (contentItems[ModelTag.Description] || "")
         .trim()
         .split(/\r?\n/)
         .map((line) => `${line}`);
-    // const versionLines = getFieldLines({
-    //     "@version": contentItems[ModelTag.Version],
-    // });
-    // const baseInfoLines = getFieldLines({
-    //     "@briefDescription": contentItems[ModelTag.BriefDescription],
-    //     "@property": contentItems[ModelTag.Property],
-    //     "@editTime": contentItems[ModelTag.EditTime],
-    // });
-    // const authorLines = getFieldLines({
-    //     "@author": contentItems[ModelTag.Author],
-    //     "@signature": contentItems[ModelTag.Signature],
-    //     "@telephone": contentItems[ModelTag.Telephone],
-    //     "@mail": contentItems[ModelTag.Mail],
-    //     "@infoVersion": contentItems[ModelTag.InfoVersion],
-    // });
     const versionLines = getFieldLines([ModelTag.Version]);
     const baseInfoLines = getFieldLines([ModelTag.BriefDescription, ModelTag.Property, ModelTag.EditTime]);
     const authorLines = getFieldLines([

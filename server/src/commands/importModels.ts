@@ -10,23 +10,6 @@ import * as iconv from "iconv-lite";
 import { MessageType, ShowMessageParams } from "vscode-languageserver/node";
 import { searchTQuant8 } from "./searchTQuant8";
 
-/**
- * DESCRIPTION
- *
- * @version VERSION
- *
- * @briefDescription BRIEFDESCRIPTION
- * @property PROPERTY
- * @editTime EDITTIME
- *
- * @author AUTHOR
- * @signature SIGNATURE
- * @telephone TELEPHONE
- * @mail MAIL
- * @infoVersion INFOVERSION
- *
- * @param PARAM [PARAMDEFAULTSET]
- */
 const formatContent = (destContent: string) => {
     const myDescription = extractTagContent(destContent, "DESCRIPTION");
     const myParam = extractTagContent(destContent, "PARAM");
