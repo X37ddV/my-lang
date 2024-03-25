@@ -1,18 +1,18 @@
 /**
  * 指数平滑异同移动平均线
- *
+ * 
  * @version 130112
- *
+ * 
  * @briefDescription 平滑移动平均线
  * @property 0
  * @editTime 2017年03月06日09:28:24
- *
+ * 
  * @author data0000
  * @signature 1234567890
  * @telephone 1234567890
  * @mail 1234567890@abc.com
  * @infoVersion INFOVERSION
- *
+ * 
  * @param SHORT 1, 40, 12 [0, 0, 0, 0]
  * @param LONG 1, 100, 26 [0, 0, 0, 0]
  * @param M 1, 60, 9 [0, 0, 0, 0]
@@ -66,17 +66,17 @@ CROSS(AA, VAR.XX), BK;
 
 // region 条件语法
 IF AA OR BB AND CC || DD && EE THEN
-    IF AA THEN
-    BEGIN
-        DD1 := 1;
-        DD2 := 1;
-    END
-    ELSE
-    BEGIN
-        DD3 := 2;
-    END
+IF AA THEN
+BEGIN
+DD1 := 1;
+DD2 := 1;
+END
 ELSE
-    DD4 := 3;
+BEGIN
+DD3 := 2;
+END
+ELSE
+DD4 := 3;
 // endregion
 
 //#region 函数

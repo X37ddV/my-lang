@@ -43,11 +43,11 @@ const formatDate = (date: Date) => {
 };
 
 const autoRunContent = (documentText: string) => {
-    const commentContent = documentText.match(/\/\*\*[\s\S]*?\*\//)?.[0] ?? "";
+    const modelComment = documentText.match(/\/\*\*[\s\S]*?\*\//)?.[0] ?? "";
 
     // 提取以@开头的属性
     const attrs: { key: string; value: string }[] = [];
-    commentContent.match(/@(\w+)\s+(.+)/g)?.forEach((attr) => {
+    modelComment.match(/@(\w+)\s+(.+)/g)?.forEach((attr) => {
         const match = attr.match(/@(\w+)\s+(.+)/);
         const key = match?.[1].toUpperCase();
         const value = match?.[2].trim();
@@ -86,7 +86,7 @@ const autoRunContent = (documentText: string) => {
         });
 
     // 提取普通的注释内容
-    const normalComments = commentContent
+    const normalComments = modelComment
         .replace(/^\/\*\*|\*\/$/gm, "") // 移除注释的开始/**和结束*/标记
         .split(/\r?\n/) // 按行分割
         .map((line) => line.replace(/^\s*\*\s*/, "").trim()) // 移除行首的*号和空格

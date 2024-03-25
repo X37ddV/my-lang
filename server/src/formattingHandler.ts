@@ -6,6 +6,7 @@
 import * as os from "os";
 import { FormattingOptions, TextEdit, Range, Position } from "vscode-languageserver/node";
 import { TextDocument } from "vscode-languageserver-textdocument";
+import { modelComment, parserModelComment } from "./modelComment";
 
 // 代码块类型
 enum BlockType {
@@ -66,16 +67,11 @@ const getBlocks = (text: string) => {
 };
 
 const formatBlockComment = (text: string, indent: string, indentLevel: number = 0): string => {
-    const comment = text.trim();
-    // if (comment.startsWith("/**")) {
-    //     const normalComments = comment
-    //         .replace(/^\/\*\*|\*\/$/gm, "") // 移除注释的开始/**和结束*/标记
-    //         .split(/\r?\n/) // 按行分割
-    //         .map((line) => line.replace(/^\s*\*\s*/, "").trim()) // 移除行首的*号和空格
-    //         .filter((line) => !line.startsWith("@")) // 排除以@开头的行
-    //         .join(os.EOL) // 重新组合为字符串
-    //         .trim(); // 移除字符串两端的空白字符
-    // }
+    let comment = text.trim();
+    if (comment.startsWith("/**")) {
+        const contentItems = parserModelComment(comment);
+        comment = modelComment(contentItems);
+    }
     return indentCode(comment, indent, indentLevel);
 };
 
