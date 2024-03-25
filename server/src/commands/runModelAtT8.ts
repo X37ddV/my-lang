@@ -89,7 +89,7 @@ const autoRunContent = (documentText: string) => {
     const normalComments = commentContent
         .replace(/^\/\*\*|\*\/$/gm, "") // 移除注释的开始/**和结束*/标记
         .split(/\r?\n/) // 按行分割
-        .map((line) => line.replace(/^\s*\*\s*/, "")) // 移除行首的*号和空格
+        .map((line) => line.replace(/^\s*\*\s*/, "").trim()) // 移除行首的*号和空格
         .filter((line) => !line.startsWith("@")) // 排除以@开头的行
         .join(os.EOL) // 重新组合为字符串
         .trim(); // 移除字符串两端的空白字符

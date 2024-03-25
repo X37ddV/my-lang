@@ -20,5 +20,8 @@
     ],
     "[my-lang]": {
         "editor.defaultFormatter": "X37ddV.my-lang"
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     }
 }

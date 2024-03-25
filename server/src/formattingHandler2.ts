@@ -16,6 +16,7 @@ enum BlockType {
     Else, // 条件ELSE
     BeginEnd, // 代码块
     Code, // 代码行
+    Empty, // 空行
 }
 
 interface Block {
@@ -23,10 +24,16 @@ interface Block {
     text: string;
 }
 
-// 获取下一个代码块
+// 获取全部代码块
 const getBlocks = (text: string) => {
     const blocks: Block[] = [];
-    text = text.trim();
+
+    const trimStart = (code: string) => {
+        if (/^\s*(?:\r?\n)/.test(code)) {
+            blocks.push({ type: BlockType.Empty, text: "" });
+        }
+        return code.trimStart();
+    };
 
     const tryMatch = (regexStart: RegExp | null, regex: RegExp, type: BlockType) => {
         if (!text) return true;
@@ -34,7 +41,7 @@ const getBlocks = (text: string) => {
             const matchText = text.match(regex)?.[0] ?? "";
             if (matchText) {
                 blocks.push({ type, text: matchText });
-                text = text.substring(matchText.length).trim();
+                text = trimStart(text.substring(matchText.length));
             } else {
                 blocks.push({ type: BlockType.None, text });
                 text = "";
@@ -44,32 +51,53 @@ const getBlocks = (text: string) => {
         return false;
     };
 
+    text = trimStart(text);
     while (text) {
-        if (tryMatch(/^\/\*/, /^\/\*[\s\S]*?\*\//, BlockType.BlockComment)) continue;
-        if (tryMatch(/^\/\//, /^\/\/.*/, BlockType.LineComment)) continue;
-        if (tryMatch(/^IF\b(?!\s*\()/i, /^IF\b(?!\s*\()[\s\S]*?\bTHEN\b/i, BlockType.IfThen)) continue;
-        if (tryMatch(/^ELSE\b/i, /^ELSE\b/i, BlockType.Else)) continue;
-        if (tryMatch(/^BEGIN\b/i, /^BEGIN\b[\s\S]*?\bEND\b/i, BlockType.BeginEnd)) continue;
-        if (tryMatch(null, /^.*(?:\r\n|\n|$)/, BlockType.Code)) continue;
+        if (tryMatch(/^\/\*/, /^\/\*[\s\S]*?\*\/[ \t]*(?:\r?\n|$)?/, BlockType.BlockComment)) continue;
+        if (tryMatch(/^\/\//, /^\/\/.*(?:\r?\n|$)/, BlockType.LineComment)) continue;
+        if (tryMatch(/^IF\b(?!\s*\()/i, /^IF\b(?!\s*\()[\s\S]*?\bTHEN\b[ \t]*(?:\r?\n|$)?/i, BlockType.IfThen))
+            continue;
+        if (tryMatch(/^ELSE\b/i, /^ELSE\b[ \t]*(?:\r?\n|$)?/i, BlockType.Else)) continue;
+        if (tryMatch(/^BEGIN\b/i, /^BEGIN\b[\s\S]*?\bEND\b[ \t]*(?:\r?\n|$)?/i, BlockType.BeginEnd)) continue;
+        if (tryMatch(null, /^.*(?:\r?\n|$)/, BlockType.Code)) continue;
         break;
     }
     return blocks;
 };
 
-function formatBlockComment(comment: string): string {
-    return comment;
-}
+const formatBlockComment = (text: string, indent: string, indentLevel: number = 0): string => {
+    const comment = text.trim();
+    // if (comment.startsWith("/**")) {
+    //     const normalComments = comment
+    //         .replace(/^\/\*\*|\*\/$/gm, "") // 移除注释的开始/**和结束*/标记
+    //         .split(/\r?\n/) // 按行分割
+    //         .map((line) => line.replace(/^\s*\*\s*/, "").trim()) // 移除行首的*号和空格
+    //         .filter((line) => !line.startsWith("@")) // 排除以@开头的行
+    //         .join(os.EOL) // 重新组合为字符串
+    //         .trim(); // 移除字符串两端的空白字符
+    // }
+    return indentCode(comment, indent, indentLevel);
+};
 
-function formatLineComment(comment: string): string {
-    return comment
+const formatLineComment = (text: string, indent: string, indentLevel: number = 0): string => {
+    const comment = text
+        .trim()
         .replace(/^\/\/\s*/, "// ")
-        .replace(/^\/\/\s#/, "//#")
+        .replace(/^\/\/\s#\s*/, "//#")
         .replace(/region\s*/i, "region ")
         .replace(/endregion.*/i, "endregion");
-}
+    return indentCode(comment, indent, indentLevel);
+};
 
-function formatCode(code: string): string {
-    const text = code
+const formatCode = (text: string, indent: string, indentLevel: number = 0): string => {
+    const singleLineCommentIdx = text.indexOf("//");
+    let singleLineComment = formatLineComment(
+        singleLineCommentIdx !== -1 ? text.slice(singleLineCommentIdx) : "",
+        indent,
+        0
+    );
+    const code = singleLineCommentIdx !== -1 ? text.slice(0, singleLineCommentIdx) : text;
+    let singleLineCode = code
         .toUpperCase()
         .replace(/"/g, "'")
         .replace(/\s*([()[\],;#+\-*/&|<>=:^.])\s*/g, " $1 ")
@@ -82,80 +110,143 @@ function formatCode(code: string): string {
         .replace(/^(VARIABLE|REFLINE)\s*:/, "$1:")
         .replace(/\s+/g, " ")
         .trim();
-    return text;
-}
+    if (singleLineCode) {
+        if (singleLineCode.slice(-1) !== ";") {
+            if (
+                !/^IF\b(?!\s*\()/i.test(singleLineCode) &&
+                !/^#/i.test(singleLineCode) &&
+                !/^ELSE\b/i.test(singleLineCode) &&
+                !/^BEGIN\b/i.test(singleLineCode) &&
+                !/^END\b/i.test(singleLineCode)
+            ) {
+                singleLineCode += ";";
+            }
+        }
+        if (singleLineComment) {
+            singleLineComment = " " + singleLineComment;
+        }
+    }
+    const newLine = singleLineCode + singleLineComment;
+    return indentCode(newLine, indent, indentLevel);
+};
 
-function formatIfThen(code: string): string {
-    return code;
-}
+const formatIfThen = (text: string, indent: string, indentLevel: number = 0): string => {
+    return formatCode(text.trim().replace(/\r?\n/g, " "), indent, indentLevel);
+};
 
-function formatElse(code: string): string {
-    return code;
-}
-function formatBeginEnd(code: string): string {
-    return code;
-}
+const formatElse = (text: string, indent: string, indentLevel: number = 0): string => {
+    return indentCode(text.trim(), indent, indentLevel);
+};
 
-function indentCode(code: string, indent: string, indentLevel: number): string {
-    const lines = code.split("\r?\n");
+const formatBeginEnd = (text: string, indent: string, indentLevel: number = 0): string => {
+    let formattedCode = "BEGIN" + os.EOL;
+    const code = text.replace(/^BEGIN[ \t]*(?:\r?\n|$)?/i, " ").replace(/[ \t]*END[ \t]*(?:\r?\n|$)?$/i, " ");
+    formattedCode += formatText(code, indent, 1);
+    formattedCode += "END";
+    return indentCode(formattedCode, indent, indentLevel);
+};
+
+const indentCode = (code: string, indent: string, indentLevel: number): string => {
+    const lines = code.split(/\r?\n/);
     const fullIndent = indent.repeat(indentLevel);
     const indentedLines = lines.map((line) => fullIndent + line);
     return indentedLines.join(os.EOL);
-}
+};
 
-function parserIf(ifBlock: Block, blocks: Block[], indent: string, indentLevel: number = 0) {
+const parserIf = (ifBlock: Block, blocks: Block[], indent: string, indentLevel: number = 0) => {
     let formattedCode = "";
-    formattedCode += formatIfThen(ifBlock.text) + os.EOL;
-    const nextBlock = blocks.shift();
+    formattedCode += formatBlock(ifBlock, indent, indentLevel);
+    let nextBlock = blocks.shift();
+    while (
+        nextBlock &&
+        (nextBlock.type === BlockType.LineComment ||
+            nextBlock.type === BlockType.BlockComment ||
+            nextBlock.type === BlockType.Empty)
+    ) {
+        formattedCode += formatBlock(nextBlock, indent, indentLevel + 1);
+        nextBlock = blocks.shift();
+    }
     if (nextBlock) {
         if (nextBlock.type === BlockType.IfThen) {
-            formattedCode += parserIf(nextBlock, blocks, indent, indentLevel + 1) + os.EOL;
+            formattedCode += parserIf(nextBlock, blocks, indent, indentLevel + 1);
+            nextBlock = blocks.shift();
+            if (nextBlock && nextBlock.type !== BlockType.Else) {
+                blocks.unshift(nextBlock);
+                nextBlock = undefined;
+            }
+        } else if (nextBlock.type === BlockType.BeginEnd) {
+            formattedCode += formatBlock(nextBlock, indent, indentLevel);
+            nextBlock = blocks.shift();
+            if (nextBlock && nextBlock.type !== BlockType.Else) {
+                blocks.unshift(nextBlock);
+                nextBlock = undefined;
+            }
+        } else if (nextBlock.type === BlockType.Code) {
+            formattedCode += formatBlock(nextBlock, indent, indentLevel + 1);
+            nextBlock = blocks.shift();
+            if (nextBlock && nextBlock.type !== BlockType.Else) {
+                blocks.unshift(nextBlock);
+                nextBlock = undefined;
+            }
+        } else if (nextBlock.type === BlockType.Else) {
+            // nothing to do
+        } else {
+            blocks.unshift(nextBlock);
+            nextBlock = undefined;
+        }
+    }
+    if (nextBlock && nextBlock.type === BlockType.Else) {
+        formattedCode += formatBlock(nextBlock, indent, indentLevel);
+        nextBlock = blocks.shift();
+        if (nextBlock) {
+            if (nextBlock.type === BlockType.IfThen) {
+                formattedCode += parserIf(nextBlock, blocks, indent, indentLevel + 1);
+            } else if (nextBlock.type === BlockType.BeginEnd) {
+                formattedCode += formatBlock(nextBlock, indent, indentLevel);
+            } else if (nextBlock.type === BlockType.Code) {
+                formattedCode += formatBlock(nextBlock, indent, indentLevel + 1);
+            } else {
+                blocks.unshift(nextBlock);
+            }
         }
     }
     return formattedCode;
-}
+};
+
+const formatBlock = (block: Block, indent: string, indentLevel: number = 0): string => {
+    let formattedCode = "";
+    if (block) {
+        if (block.type === BlockType.Empty) {
+            formattedCode += os.EOL;
+        } else if (block.type === BlockType.BlockComment) {
+            formattedCode += formatBlockComment(block.text, indent, indentLevel) + os.EOL;
+        } else if (block.type === BlockType.LineComment) {
+            formattedCode += formatLineComment(block.text, indent, indentLevel) + os.EOL;
+        } else if (block.type === BlockType.IfThen) {
+            formattedCode += formatIfThen(block.text, indent, indentLevel) + os.EOL;
+        } else if (block.type === BlockType.Else) {
+            formattedCode += formatElse(block.text, indent, indentLevel) + os.EOL;
+        } else if (block.type === BlockType.BeginEnd) {
+            formattedCode += formatBeginEnd(block.text, indent, indentLevel) + os.EOL;
+        } else if (block.type === BlockType.Code) {
+            formattedCode += formatCode(block.text, indent, indentLevel) + os.EOL;
+        } else {
+            formattedCode += block.text + os.EOL;
+        }
+    }
+    return formattedCode;
+};
 
 const formatText = (text: string, indent: string, indentLevel: number = 0): string => {
     let formattedCode = "";
     const blocks = getBlocks(text);
     while (blocks.length > 0) {
         const block = blocks.shift();
-        if (block) {
-            if (block.type === BlockType.BlockComment) {
-                formattedCode += formatBlockComment(block.text) + os.EOL;
-            } else if (block.type === BlockType.LineComment) {
-                formattedCode += formatLineComment(block.text) + os.EOL;
-            } else if (block.type === BlockType.IfThen) {
-                formattedCode += parserIf(block, blocks, indent, indentLevel) + os.EOL;
-            } else if (block.type === BlockType.Else) {
-                formattedCode += formatElse(block.text) + os.EOL;
-            } else if (block.type === BlockType.BeginEnd) {
-                formattedCode += formatBeginEnd(block.text) + os.EOL;
-            } else if (block.type === BlockType.Code) {
-                formattedCode += formatCode(block.text) + os.EOL;
-            } else {
-                formattedCode += block.text;
-            }
-        }
-    }
-    for (let i = 0; i < blocks.length; i++) {
-        const block = blocks[i];
-        const preBlock = i - 1 >= 0 ? blocks[i - 1] : null;
-        const nextBlock = i + 1 < blocks.length ? blocks[i + 1] : null;
-        if (block.type === BlockType.BlockComment) {
-            formattedCode += formatBlockComment(block.text) + os.EOL;
-        } else if (block.type === BlockType.LineComment) {
-            formattedCode += formatLineComment(block.text) + os.EOL;
-        } else if (block.type === BlockType.IfThen) {
-            formattedCode += formatIfThen(block.text) + os.EOL;
-        } else if (block.type === BlockType.Else) {
-            formattedCode += formatElse(block.text) + os.EOL;
-        } else if (block.type === BlockType.BeginEnd) {
-            formattedCode += formatBeginEnd(block.text) + os.EOL;
-        } else if (block.type === BlockType.Code) {
-            formattedCode += formatCode(block.text) + os.EOL;
+        if (!block) continue;
+        if (block.type === BlockType.IfThen) {
+            formattedCode += parserIf(block, blocks, indent, indentLevel);
         } else {
-            formattedCode += block.text;
+            formattedCode += formatBlock(block, indent, indentLevel);
         }
     }
     return formattedCode;

@@ -34,7 +34,7 @@ import { MySymbol } from "./symbol/common";
 import { allCompletionItems, sharpCompletionItems, completionResolve, getSymbolByName } from "./symbol/symbolTable";
 import { importModelsFromTQuant8 } from "./commands/importModels";
 import { runModelAtTQuant8 } from "./commands/runModelAtT8";
-import { formattingHandler } from "./formattingHandler";
+import { formattingHandler } from "./formattingHandler2";
 
 // 为服务创建一个连接, 用 Node 的 IPC 进行传输
 const connection = createConnection(ProposedFeatures.all);
@@ -299,8 +299,8 @@ connection.onHover((params: TextDocumentPositionParams): Hover | null => {
 connection.onDocumentFormatting(({ textDocument, options }: DocumentFormattingParams): TextEdit[] => {
     const document = documents.get(textDocument.uri);
     const fullText = document?.getText();
-    return formattingHandler(fullText ?? "", options);
-    // return document ? formattingHandler(document, options) : [];
+    // return formattingHandler(fullText ?? "", options);
+    return document ? formattingHandler(document, options) : [];
 });
 
 // 注册命令执行的处理函数
