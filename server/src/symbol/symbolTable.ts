@@ -3,11 +3,13 @@
  * Licensed under the MIT License. See License.md in the project root for license information.
  * ------------------------------------------------------------------------------------------ */
 
-import { functions } from "./functions";
-import { keywords } from "./keywords";
-import { others } from "./others";
 import { CompletionItem, CompletionItemKind, InsertTextFormat, MarkupKind } from "vscode-languageserver/node";
 import { MySymbolKind } from "./common";
+import { keywords } from "./keywords";
+import { functions } from "./functions";
+import { sharpSign } from "./sharpSign";
+import { atSign } from "./atSign";
+import { others } from "./others";
 import { iconMap } from "./icons";
 
 const kindMap: { [key in MySymbolKind]: CompletionItemKind } = {
@@ -24,7 +26,7 @@ const toKind = (kind: MySymbolKind): CompletionItemKind => {
     return kindMap[kind] ?? CompletionItemKind.Text;
 };
 
-const completions = [...functions, ...keywords, ...others];
+const completions = [...functions, ...keywords, ...sharpSign, ...atSign, ...others];
 const completionMap = new Map(completions.map((completion) => [completion.label, completion]));
 
 export const getSymbolByName = (name: string) => {
@@ -35,9 +37,9 @@ export const getSymbolByName = (name: string) => {
     return symbol;
 };
 
-// 非#开头的智能提示
+// 非#和@开头的智能提示
 export const allCompletionItems: CompletionItem[] = completions
-    .filter((item) => item.kind != MySymbolKind.Reference && item.kind != MySymbolKind.Snippet)
+    .filter((item) => !item.label.startsWith("#") && !item.label.startsWith("@") && !item.label.startsWith("$"))
     .map((item) => ({
         label: item.label,
         kind: toKind(item.kind),
@@ -46,7 +48,23 @@ export const allCompletionItems: CompletionItem[] = completions
 
 // #开头的智能提示
 export const sharpCompletionItems: CompletionItem[] = completions
-    .filter((item) => item.kind == MySymbolKind.Reference || item.kind == MySymbolKind.Snippet)
+    .filter((item) => item.label.startsWith("#"))
+    .map((item) => ({
+        label: item.label,
+        kind: toKind(item.kind),
+        labelDetails: { detail: "", description: item.description },
+        textEdit: {
+            range: {
+                start: { line: 0, character: 0 },
+                end: { line: 0, character: 0 },
+            },
+            newText: item.insertText,
+        },
+    }));
+
+// @开头的智能提示
+export const atCompletionItems: CompletionItem[] = completions
+    .filter((item) => item.label.startsWith("@"))
     .map((item) => ({
         label: item.label,
         kind: toKind(item.kind),

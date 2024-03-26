@@ -31,7 +31,13 @@ import {
 import { TextDocument } from "vscode-languageserver-textdocument";
 
 import { MySymbol } from "./symbol/common";
-import { allCompletionItems, sharpCompletionItems, completionResolve, getSymbolByName } from "./symbol/symbolTable";
+import {
+    allCompletionItems,
+    atCompletionItems,
+    sharpCompletionItems,
+    completionResolve,
+    getSymbolByName,
+} from "./symbol/symbolTable";
 import { importModelsFromTQuant8 } from "./commands/importModels";
 import { runModelAtTQuant8 } from "./commands/runModelAtT8";
 import { formattingHandler } from "./formattingHandler";
@@ -63,7 +69,7 @@ connection.onInitialize((params: InitializeParams) => {
             // 声明代码补全能力
             completionProvider: {
                 resolveProvider: true,
-                triggerCharacters: ["#"],
+                triggerCharacters: ["#", "@"],
             },
             // 声明签名帮助能力
             diagnosticProvider: {
@@ -224,6 +230,7 @@ connection.onDidChangeWatchedFiles((_change) => {
 // 代码补全的基本信息
 connection.onCompletion((textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
     let isSharp = false;
+    let isAt = false;
     const document = documents.get(textDocumentPosition.textDocument.uri);
     if (document) {
         const position = textDocumentPosition.position;
@@ -236,13 +243,16 @@ connection.onCompletion((textDocumentPosition: TextDocumentPositionParams): Comp
         };
         const text = document.getText(range);
         isSharp = text === "#";
-        for (const item of sharpCompletionItems) {
+        isAt = text === "@";
+        for (const item of [...sharpCompletionItems, ...atCompletionItems]) {
             if (item.textEdit && "range" in item.textEdit) {
                 item.textEdit.range = range;
             }
         }
     }
-    if (isSharp) {
+    if (isAt) {
+        return atCompletionItems;
+    } else if (isSharp) {
         return sharpCompletionItems;
     } else {
         return allCompletionItems;
