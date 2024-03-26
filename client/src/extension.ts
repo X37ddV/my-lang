@@ -8,6 +8,9 @@ import * as vscode from "vscode";
 
 import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from "vscode-languageclient/node";
 import { colorProvider } from "./colorProvider";
+import { importModelsFromTQuant8 } from "./commands/importModelsFromTQuant8";
+import { runModelAtTQuant8 } from "./commands/runModelAtTQuant8";
+import { autoInsertStarInJSDoc } from "./commands/autoInsertStarInJSDoc";
 
 let client: LanguageClient;
 let clientReadyPromiseResolve: (value: unknown) => void;
@@ -44,39 +47,29 @@ export function activate(context: vscode.ExtensionContext) {
         clientReadyPromiseResolve(value);
     });
 
-    // 添加不依赖于语言服务器的功能
+    // 注册客户端插件
     context.subscriptions.push(
         // 颜色装饰器
-        vscode.languages.registerColorProvider("my-lang", colorProvider)
+        vscode.languages.registerColorProvider("my-lang", colorProvider),
+        // 服务端命令: 导入 TQuant8 模型
+        vscode.commands.registerCommand(
+            "extension.importModelsFromTQuant8",
+            importModelsFromTQuant8(clientReadyPromise)
+        ),
+        // 服务端命令: 在 TQuant8 运行模型
+        vscode.commands.registerCommand("extension.runModelAtTQuant8", runModelAtTQuant8(clientReadyPromise)),
+        // 客户端命令：在 JSDoc 中自动插入星号
+        vscode.commands.registerCommand("extension.autoInsertStarInJSDoc", autoInsertStarInJSDoc)
     );
 
-    // 命令: 导入 TQuant8 模型
-    vscode.commands.registerCommand("extension.importModelsFromTQuant8", async () => {
-        await clientReadyPromise;
-        const workspaceFolders: string[] = [];
-        if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 0) {
-            // 获取当前激活的工作区（工作目录）
-            for (let i = 0; i < vscode.workspace.workspaceFolders.length; i++) {
-                workspaceFolders.push(vscode.workspace.workspaceFolders[i].uri.fsPath); // 获取文件系统路径
+    // 监听回车键事件
+    vscode.workspace.onDidChangeTextDocument((event) => {
+        const activeEditor = vscode.window.activeTextEditor;
+        if (activeEditor && event.contentChanges.length > 0) {
+            const change = event.contentChanges[0];
+            if (/^\r?\n/.test(change.text)) {
+                vscode.commands.executeCommand("extension.autoInsertStarInJSDoc", change.text.replace(/^\r?\n/, ""));
             }
-        }
-        vscode.commands.executeCommand("myLang.importModelsFromTQuant8", ...workspaceFolders);
-    });
-
-    // 命令: 在 TQuant8 运行模型
-    vscode.commands.registerCommand("extension.runModelAtTQuant8", async () => {
-        await clientReadyPromise;
-        // 发送命令到LSP服务端
-        const editor = vscode.window.activeTextEditor;
-        if (editor) {
-            const fileUri = editor.document.uri.toString();
-            if (fileUri.endsWith(".my")) {
-                vscode.commands.executeCommand("myLang.runModelAtTQuant8", fileUri);
-            } else {
-                vscode.window.showWarningMessage("请打开一个文件（.my）以运行此命令。");
-            }
-        } else {
-            vscode.window.showWarningMessage("未检测到活动编辑器，请打开一个文件（.my）以运行此命令。");
         }
     });
 }
