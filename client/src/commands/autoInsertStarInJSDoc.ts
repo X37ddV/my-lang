@@ -3,6 +3,7 @@
  * Licensed under the MIT License. See License.md in the project root for license information.
  * ------------------------------------------------------------------------------------------ */
 
+import * as os from "os";
 import * as vscode from "vscode";
 
 export const autoInsertStarInJSDoc = (startStr: string) => {
@@ -14,9 +15,21 @@ export const autoInsertStarInJSDoc = (startStr: string) => {
     const position = editor.selection.active;
     const lineText = doc.lineAt(position.line).text;
     if ((/^\s*\*[^/]*$/.test(lineText) || lineText.trim().startsWith("/**")) && !lineText.trim().endsWith("*/")) {
-        const insertStr = startStr ? " *" : " * ";
-        editor.edit((editBuilder) => {
-            editBuilder.insert(new vscode.Position(position.line + 1, 0), insertStr);
-        });
+        let insertStr = startStr ? " *" : " * ";
+        const nextLineText = doc.lineAt(position.line + 1).text;
+        const isEnd = nextLineText.trim().startsWith("*/");
+        if (isEnd) {
+            insertStr += os.EOL;
+        }
+        editor
+            .edit((editBuilder) => {
+                editBuilder.insert(new vscode.Position(position.line + 1, 0), insertStr);
+            })
+            .then(() => {
+                if (isEnd) {
+                    const newPosition = new vscode.Position(position.line + 1, insertStr.length);
+                    editor.selection = new vscode.Selection(newPosition, newPosition);
+                }
+            });
     }
 };
