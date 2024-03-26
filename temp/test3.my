@@ -1,3 +1,6 @@
-COLORRED
+/**
+ * af
+ * @param N1
+ */
 
-RGB(120, 222, 233);
+A : 1;

@@ -9,105 +9,13 @@ import * as fs from "fs/promises";
 import * as iconv from "iconv-lite";
 import { MessageType, ShowMessageParams } from "vscode-languageserver/node";
 import { searchTQuant8 } from "./searchTQuant8";
+import { ModelTag, modelComment, parserModelXML } from "../modelComment";
 
 const formatContent = (destContent: string) => {
-    const myDescription = extractTagContent(destContent, "DESCRIPTION");
-    const myParam = extractTagContent(destContent, "PARAM");
-    const myParamDefaultSet = extractTagContent(destContent, "PARAMDEFAULTSET");
-    const myVersion = extractTagContent(destContent, "VERSION");
-    const mySignature = extractTagContent(destContent, "SIGNATURE");
-    const myTelephone = extractTagContent(destContent, "TELEPHONE");
-    const myMail = extractTagContent(destContent, "MAIL");
-    const myBriefDescription = extractTagContent(destContent, "BRIEFDESCRIPTION");
-    const myEditTime = extractTagContent(destContent, "EDITTIME");
-    const myInfoVersion = extractTagContent(destContent, "INFOVERSION");
-    const myAuthor = extractTagContent(destContent, "AUTHOR");
-    const myProperty = extractTagContent(destContent, "PROPERTY");
-    const myCode = extractTagContent(destContent, "CODE");
-
-    function formatValue(value: string | null) {
-        return value?.replace(/[\r\n]+/g, "").trim() ?? "";
-    }
-
-    function getFieldLines(fields: Record<string, string | null>) {
-        return Object.entries(fields)
-            .filter(([_key, value]) => value)
-            .map(([key, value]) => `${key} ${formatValue(value)}`);
-    }
-
-    const descriptionLines = (myDescription || "")
-        .trim()
-        .split(/\r?\n/)
-        .map((line) => `${line}`);
-    const versionLines = getFieldLines({
-        "@version": myVersion,
-    });
-    const baseInfoLines = getFieldLines({
-        "@briefDescription": myBriefDescription,
-        "@property": myProperty,
-        "@editTime": myEditTime,
-    });
-    const authorLines = getFieldLines({
-        "@author": myAuthor,
-        "@signature": mySignature,
-        "@telephone": myTelephone,
-        "@mail": myMail,
-        "@infoVersion": myInfoVersion,
-    });
-    const params = extractParamContent(myParam ?? "");
-    const defaultSet = extractParamContent(myParamDefaultSet ?? "");
-    const paramLines = params.map((param, i) => {
-        const [first, ...rest] = param;
-        const defaultValue = defaultSet[i] ?? [0, 0, 0, 0];
-        return `@param ${first} ${rest.join(", ")} [${defaultValue.join(", ")}]`;
-    });
-    const descriptions = [descriptionLines, versionLines, baseInfoLines, authorLines, paramLines]
-        .filter((lines) => lines.length > 0)
-        .reduce((acc, currentArray, index) => {
-            if (index > 0) {
-                acc = acc.concat("");
-            }
-            return acc.concat(currentArray);
-        }, []);
-
-    const lines: string[] = [];
-    if (descriptions.length > 0) {
-        lines.push("/**");
-        lines.push(...descriptions.map((line) => ` * ${line}`));
-        lines.push(" */");
-    }
-    lines.push("");
-    if (myCode) {
-        lines.push(...myCode.split(/\r?\n/));
-        lines.push("");
-    }
-    return lines.join(os.EOL);
-};
-
-const extractParamContent = (text: string) => {
-    // 使用正则表达式匹配文本中的所有方括号内容
-    const regex = /\[([^\]]+)\]/g;
-
-    // 使用 matchAll 方法获取所有匹配项
-    const matches = [...text.matchAll(regex)];
-
-    // 提取匹配组中的内容并转换为数值数组
-    const arrays = matches.map((match) => {
-        // 分割字符串得到字符串数组，然后使用 map 将每个元素转换为浮点数或字符串
-        return match[1].split(",").map((item) => {
-            const trimmedItem = item.trim();
-            const number = Number(trimmedItem);
-            return isNaN(number) ? trimmedItem : number;
-        });
-    });
-
-    return arrays;
-};
-
-const extractTagContent = (xml: string, tagName: string) => {
-    const regex = new RegExp(`<${tagName}>\\s*([\\s\\S]*?)\\s*</${tagName}>`, "i");
-    const matches = xml.match(regex);
-    return matches ? matches[1] : null;
+    const contentItems = parserModelXML(destContent);
+    const comment = modelComment(contentItems);
+    const code = (contentItems[ModelTag.Code] ?? "").replace(/\r?\n/g, os.EOL);
+    return [comment, "", code, ""].join(os.EOL);
 };
 
 const findXTRDFiles = async (dir: string, files: string[] = []) => {

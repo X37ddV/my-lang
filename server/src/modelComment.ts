@@ -23,10 +23,11 @@ import * as os from "os";
  * @param PARAM [PARAMDEFAULTSET]
  */
 
-enum ModelTag {
+export enum ModelTag {
     Description = "DESCRIPTION",
     Param = "PARAM",
     ParamDefaultSet = "PARAMDEFAULTSET",
+    Code = "CODE",
     Version = "VERSION",
     Signature = "SIGNATURE",
     Telephone = "TELEPHONE",
@@ -36,14 +37,13 @@ enum ModelTag {
     InfoVersion = "INFOVERSION",
     Author = "AUTHOR",
     Property = "PROPERTY",
-    Code = "CODE",
 }
 
 export const parserModelComment = (modelComment: string) => {
     // 提取以@开头的属性
     const attrs: { key: string; value: string }[] = [];
-    modelComment.match(/@(\w+)\s+(.+)/g)?.forEach((attr) => {
-        const match = attr.match(/@(\w+)\s+(.+)/);
+    modelComment.match(/@(\w+\b)[ \t]*(.*)/g)?.forEach((attr, index, at) => {
+        const match = attr.match(/@(\w+\b)[ \t]*(.*)/);
         const key = match?.[1].toUpperCase();
         const value = match?.[2].trim();
         if (key && value) {
@@ -71,12 +71,16 @@ export const parserModelComment = (modelComment: string) => {
 
             // 第三步：获取剩余部分，并转换为数字数组
             // 移除第一个标识符和方括号内容
-            const remainingText = text.replace(identifierRegex, "").replace(bracketNumbersRegex, "");
-            const remainingNumbers = remainingText.split(",").map((num) => parseFloat(num.trim()) || 0);
+            const remainingText = text.replace(identifierRegex, "").replace(bracketNumbersRegex, "").trim();
+            const remainingNumbers = remainingText
+                ? remainingText.split(",").map((num) => parseFloat(num.trim()) || 0)
+                : [];
 
             // 返回结果
-            const param = `[${[identifier, ...remainingNumbers.map((num) => num.toFixed(6))].join(",")}]`;
-            const paramDefaultSet = `[${bracketNumbers.map((num) => num.toFixed(6)).join(",")}]`;
+            const adjustRemaining = adjustArray(remainingNumbers, 3);
+            const adjustBracket = adjustArray(bracketNumbers, 4);
+            const param = `[${[identifier, ...adjustRemaining.map((num) => num.toFixed(6))].join(",")}]`;
+            const paramDefaultSet = `[${adjustBracket.map((num) => num.toFixed(6)).join(",")}]`;
             return { param, paramDefaultSet };
         });
 
@@ -99,10 +103,6 @@ export const parserModelComment = (modelComment: string) => {
     contentItems[ModelTag.Param] = attrParams.map((item) => item.param).join(os.EOL);
     contentItems[ModelTag.ParamDefaultSet] = ["1", ...attrParams.map((item) => item.paramDefaultSet)].join(os.EOL);
     contentItems[ModelTag.Description] = normalComments;
-    // contentItems[ModelTags.Code] = `${documentText.trimEnd()}${os.EOL}`.replace("/**", "/*");
-    // contentItems[ModelTags.EditTime] = `${formatDate(new Date())}`;
-    // contentItems[ModelTags.Property] = contentItems[ModelTags.Property] || "1";
-    // contentItems[ModelTags.Version] = contentItems[ModelTags.Version] || "130112";
 
     return contentItems;
 };
@@ -116,11 +116,13 @@ export const parserModelXML = (xmlContent: string) => {
 
     const contentItems: Record<string, string> = {};
     for (const value of Object.values(ModelTag)) {
-        const content = extractTagContent(xmlContent, ModelTag.Description);
+        const content = extractTagContent(xmlContent, value);
         if (content) {
             contentItems[value] = content;
         }
     }
+
+    return contentItems;
 };
 
 export const modelComment = (contentItems: Record<string, string>) => {
@@ -198,4 +200,17 @@ const tagName = (tag: ModelTag) => {
         }
     }
     throw new Error(`${tag}`);
+};
+
+const adjustArray = (arr: number[], targetLength: number) => {
+    // 如果数组长度超过目标长度，使用slice保留到目标长度的项
+    if (arr.length > targetLength) {
+        return arr.slice(0, targetLength);
+    }
+    // 如果数组长度不足目标长度，使用concat补足0到目标长度
+    else if (arr.length < targetLength) {
+        return arr.concat(new Array(targetLength - arr.length).fill(0));
+    }
+    // 如果数组长度恰好等于目标长度，直接返回
+    return arr;
 };

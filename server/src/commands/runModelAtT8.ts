@@ -11,6 +11,7 @@ import { promisify } from "util";
 import { exec as execCallback } from "child_process";
 import { MessageType, ShowMessageParams } from "vscode-languageserver/node";
 import { searchTQuant8 } from "./searchTQuant8";
+import { ModelTag, parserModelComment } from "../modelComment";
 
 const exec = promisify(execCallback);
 
@@ -45,86 +46,13 @@ const formatDate = (date: Date) => {
 const autoRunContent = (documentText: string) => {
     const modelComment = documentText.match(/\/\*\*[\s\S]*?\*\//)?.[0] ?? "";
 
-    // 提取以@开头的属性
-    const attrs: { key: string; value: string }[] = [];
-    modelComment.match(/@(\w+)\s+(.+)/g)?.forEach((attr) => {
-        const match = attr.match(/@(\w+)\s+(.+)/);
-        const key = match?.[1].toUpperCase();
-        const value = match?.[2].trim();
-        if (key && value) {
-            attrs.push({ key, value });
-        }
-    });
+    const contentItems = parserModelComment(modelComment);
+    contentItems[ModelTag.Code] = `${documentText.trimEnd()}${os.EOL}`.replace("/**", "/*");
+    contentItems[ModelTag.EditTime] = `${formatDate(new Date())}`;
+    contentItems[ModelTag.Property] = contentItems[ModelTag.Property] || "1";
+    contentItems[ModelTag.Version] = contentItems[ModelTag.Version] || "130112";
 
-    // 提取PARAM属性
-    const attrParams = attrs
-        .filter((attr) => attr.key === "PARAM")
-        .map((attr) => {
-            const text = attr.value;
-            const identifierRegex = /^\s*([A-Za-z0-9]+)\s*/;
-            const bracketNumbersRegex = /\[(.*?)\]/;
-
-            // 第一步：获取第一个标识符
-            const identifierMatch = text.match(identifierRegex);
-            const identifier = identifierMatch ? identifierMatch[1] : null;
-
-            // 第二步：获取中括号中的内容，并转换为数字数组
-            const bracketContentMatch = text.match(bracketNumbersRegex);
-            const bracketNumbers = bracketContentMatch
-                ? bracketContentMatch[1].split(",").map((num) => parseFloat(num.trim()) || 0)
-                : [];
-
-            // 第三步：获取剩余部分，并转换为数字数组
-            // 移除第一个标识符和方括号内容
-            const remainingText = text.replace(identifierRegex, "").replace(bracketNumbersRegex, "");
-            const remainingNumbers = remainingText.split(",").map((num) => parseFloat(num.trim()) || 0);
-
-            // 返回结果
-            const param = `[${[identifier, ...remainingNumbers.map((num) => num.toFixed(6))].join(",")}]`;
-            const paramDefaultSet = `[${bracketNumbers.map((num) => num.toFixed(6)).join(",")}]`;
-            return { param, paramDefaultSet };
-        });
-
-    // 提取普通的注释内容
-    const normalComments = modelComment
-        .replace(/^\/\*\*|\*\/$/gm, "") // 移除注释的开始/**和结束*/标记
-        .split(/\r?\n/) // 按行分割
-        .map((line) => line.replace(/^\s*\*\s*/, "").trim()) // 移除行首的*号和空格
-        .filter((line) => !line.startsWith("@")) // 排除以@开头的行
-        .join(os.EOL) // 重新组合为字符串
-        .trim(); // 移除字符串两端的空白字符
-
-    // 生成新的属性列表
-    const contentItems = attrs
-        .filter((attr) => attr.key !== "PARAM")
-        .reduce((acc, { key, value }) => {
-            acc[key] = value;
-            return acc;
-        }, {} as Record<string, string>);
-    contentItems["PARAM"] = attrParams.map((item) => item.param).join(os.EOL);
-    contentItems["PARAMDEFAULTSET"] = ["1", ...attrParams.map((item) => item.paramDefaultSet)].join(os.EOL);
-    contentItems["DESCRIPTION"] = normalComments;
-    contentItems["CODE"] = `${documentText.trimEnd()}${os.EOL}`.replace("/**", "/*");
-    contentItems["EDITTIME"] = `${formatDate(new Date())}`;
-    contentItems["PROPERTY"] = contentItems["PROPERTY"] || "1";
-    contentItems["VERSION"] = contentItems["VERSION"] || "130112";
-
-    // 按顺序生成模型文件内容
-    const contents = [
-        "DESCRIPTION",
-        "PARAM",
-        "PARAMDEFAULTSET",
-        "CODE",
-        "VERSION",
-        "SIGNATURE",
-        "TELEPHONE",
-        "MAIL",
-        "BRIEFDESCRIPTION",
-        "EDITTIME",
-        "INFOVERSION",
-        "AUTHOR",
-        "PROPERTY",
-    ]
+    const contents = Object.values(ModelTag)
         .map((key) => {
             const vaule = contentItems[key];
             return vaule ? `<${key}>${os.EOL}${vaule}${os.EOL}</${key}>` : "";
