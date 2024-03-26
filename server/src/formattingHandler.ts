@@ -36,10 +36,59 @@ const getBlocks = (text: string) => {
         return code.trimStart();
     };
 
-    const tryMatch = (regexStart: RegExp | null, regex: RegExp, type: BlockType) => {
+    function matchNestedBeginEnd(code: string) {
+        const beginPattern = /\bBEGIN\b/gi;
+        const endPattern = /\bEND\b/gi;
+        const segments = [];
+
+        // 先找出所有BEGIN和END的位置
+        let match;
+        while ((match = beginPattern.exec(code)) !== null) {
+            segments.push({ index: match.index, type: "BEGIN", length: match[0].length });
+        }
+        while ((match = endPattern.exec(code)) !== null) {
+            segments.push({ index: match.index, type: "END", length: match[0].length });
+        }
+
+        // 按位置排序所有找到的BEGIN和END
+        segments.sort((a, b) => a.index - b.index);
+
+        // 遍历所有BEGIN和END，使用栈来处理嵌套
+        const stack = [];
+        let lastEndIndex = 0;
+        for (const segment of segments) {
+            if (segment.type === "BEGIN") {
+                if (stack.length === 0) {
+                    // 栈为空时，记录当前BEGIN作为最外层BEGIN的起始位置
+                    lastEndIndex = segment.index;
+                }
+                stack.push(segment.index);
+            } else if (segment.type === "END") {
+                if (stack.length > 0) {
+                    stack.pop();
+                    if (stack.length === 0) {
+                        // 当栈为空时，记录当前END为最外层END的结束位置
+                        const output = code.substring(lastEndIndex, segment.index + segment.length);
+                        // END后面要带上空格和换行符号
+                        lastEndIndex = segment.index + segment.length;
+                        const eol = code.substring(lastEndIndex).match(/^[ \t]*(?:\r?\n|$)?/)?.[0] ?? "";
+                        return output + eol;
+                    }
+                } else {
+                    // 如果找到END但栈已经为空，表示没有匹配的BEGIN，返回空字符串
+                    return "";
+                }
+            }
+        }
+
+        // 如果遍历完成后，表示有未闭合的BEGIN，返回空字符串
+        return "";
+    }
+
+    const tryMatch = (regexStart: RegExp | null, regex: RegExp | ((str: string) => string), type: BlockType) => {
         if (!text) return true;
         if (!regexStart || regexStart.test(text)) {
-            const matchText = text.match(regex)?.[0] ?? "";
+            const matchText = typeof regex === "function" ? regex(text) : text.match(regex)?.[0] ?? "";
             if (matchText) {
                 blocks.push({ type, text: matchText });
                 text = trimStart(text.substring(matchText.length));
@@ -59,7 +108,7 @@ const getBlocks = (text: string) => {
         if (tryMatch(/^IF\b(?!\s*\()/i, /^IF\b(?!\s*\()[\s\S]*?\bTHEN\b[ \t]*(?:\r?\n|$)?/i, BlockType.IfThen))
             continue;
         if (tryMatch(/^ELSE\b/i, /^ELSE\b[ \t]*(?:\r?\n|$)?/i, BlockType.Else)) continue;
-        if (tryMatch(/^BEGIN\b/i, /^BEGIN\b[\s\S]*?\bEND\b[ \t]*(?:\r?\n|$)?/i, BlockType.BeginEnd)) continue;
+        if (tryMatch(/^BEGIN\b/i, matchNestedBeginEnd, BlockType.BeginEnd)) continue;
         if (tryMatch(null, /^.*(?:\r?\n|$)/, BlockType.Code)) continue;
         break;
     }

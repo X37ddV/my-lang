@@ -4,7 +4,7 @@
     "description": "My language support for VS Code",
     "author": "X37ddV <X37ddV@gmail.com>",
     "license": "MIT",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "repository": {
         "type": "git",
         "url": "https://github.com/X37ddV/my-lang.git"

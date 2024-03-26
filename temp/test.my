@@ -66,6 +66,7 @@ CROSS(AA, VAR.XX), BK;
 
 // region 条件语法
 IF AA OR BB AND CC || DD && EE THEN
+BEGIN
     IF AA THEN
     BEGIN
         DD1 := 1;
@@ -75,6 +76,7 @@ IF AA OR BB AND CC || DD && EE THEN
     BEGIN
         DD3 := 2;
     END
+END
 ELSE
     DD4 := 3;
 // endregion
