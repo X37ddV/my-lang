@@ -84,6 +84,8 @@ connection.onInitialize((params: InitializeParams) => {
             executeCommandProvider: {
                 commands: ["myLang.importModelsFromTQuant8", "myLang.runModelAtTQuant8"],
             },
+            // 向客户端声明服务器支持代码折叠
+            foldingRangeProvider: false,
         },
     };
     if (hasWorkspaceFolderCapability) {
@@ -346,7 +348,13 @@ connection.onExecuteCommand(async (params: ExecuteCommandParams) => {
     }
 });
 
-// 添加文档监听
+// 实现FoldingRange请求
+connection.onFoldingRanges((params) => {
+    // TODO: FoldingRange.create(10, 20, undefined, undefined, FoldingRangeKind.Region)
+    return [];
+});
+
+// 让文档管理器监听连接上的文档改变事件
 documents.listen(connection);
 
 // 开始监听来自客户端的请求
