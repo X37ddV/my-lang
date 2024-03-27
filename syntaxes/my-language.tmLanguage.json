@@ -94,19 +94,19 @@
         "keywords": {
             "patterns": [
                 {
-                    "name": "keyword.other.unit.my-lang",
+                    "name": "keyword.icon.my-lang",
                     "match": "'ICON(?:1(?:[0-5][0-9]?|6[0-5]?)|[1-9][0-9]?)'"
-                },
-                {
-                    "name": "keyword.operator.quantifier.regexp.my-lang",
-                    "match": "\\b(BK|SK|BP|SP|BPK|SPK|STOP|CLOSEOUT|BUY|SELL)\\b"
                 },
                 {
                     "name": "keyword.control.my-lang",
                     "match": "\\b(IF|THEN|BEGIN|END|ELSE|AS|VARIABLE|REFLINE|REFLINE1)\\b|#IMPORT\\b|#CALL\\b|#CALL_OTHER\\b|#CALL_PLUS\\b"
                 },
                 {
-                    "name": "keyword.operator.wordlike.my-lang",
+                    "name": "keyword.operator.action.my-lang",
+                    "match": "\\b(BK|SK|BP|SP|BPK|SPK|STOP|CLOSEOUT|BUY|SELL)\\b"
+                },
+                {
+                    "name": "keyword.operator.logical.my-lang",
                     "match": "\\b(AND|OR)\\b|(?<!&)&{2}(?!&)|(?<!\\|)\\|{2}(?!\\|)"
                 }
             ]

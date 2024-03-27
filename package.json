@@ -4,7 +4,7 @@
     "description": "My language support for VS Code",
     "author": "X37ddV <X37ddV@gmail.com>",
     "license": "MIT",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "repository": {
         "type": "git",
         "url": "https://github.com/X37ddV/my-lang.git"
@@ -62,18 +62,6 @@
                 }
             ]
         },
-        "themes": [
-            {
-                "label": "My Lang Dark Theme",
-                "uiTheme": "vs-dark",
-                "path": "./themes/my-lang-dark-theme.json"
-            },
-            {
-                "label": "My Lang Light Theme",
-                "uiTheme": "vs",
-                "path": "./themes/my-lang-light-theme.json"
-            }
-        ],
         "commands": [
             {
                 "command": "extension.runModelAtTQuant8",
@@ -153,6 +141,84 @@
                         "scope": "comment.property.param-default.my-lang",
                         "settings": {
                             "foreground": "#545454"
+                        }
+                    },
+                    {
+                        "scope": "keyword.control.my-lang",
+                        "settings": {
+                            "foreground": "#C586C0"
+                        }
+                    },
+                    {
+                        "scope": "entity.name.namespace.my-lang",
+                        "settings": {
+                            "foreground": "#4EC9B0"
+                        }
+                    },
+                    {
+                        "scope": "variable.normal.my-lang",
+                        "settings": {
+                            "foreground": "#9CDCFE"
+                        }
+                    },
+                    {
+                        "scope": "keyword.icon.my-lang",
+                        "settings": {
+                            "foreground": "#B5CEA8"
+                        }
+                    },
+                    {
+                        "scope": "keyword.operator.action.my-lang",
+                        "settings": {
+                            "foreground": "#D7BA7D"
+                        }
+                    },
+                    {
+                        "scope": "keyword.operator.logical.my-lang",
+                        "settings": {
+                            "foreground": "#569CD6"
+                        }
+                    },
+                    {
+                        "scope": "support.constant.property-value.my-lang",
+                        "settings": {
+                            "foreground": "#CE9178"
+                        }
+                    },
+                    {
+                        "scope": "support.function.non-params.my-lang",
+                        "settings": {
+                            "foreground": "#DCDCAA"
+                        }
+                    },
+                    {
+                        "scope": "support.constant.math.my-lang",
+                        "settings": {
+                            "foreground": "#4EC9B0"
+                        }
+                    },
+                    {
+                        "scope": "support.function.my-lang",
+                        "settings": {
+                            "foreground": "#DCDCAA"
+                        }
+                    },
+                    {
+                        "scope": "string.quoted.single.my-lang",
+                        "settings": {
+                            "foreground": "#CE9178"
+                        }
+                    },
+                    {
+                        "scope": "constant.character.escape.my-lang",
+                        "settings": {
+                            "foreground": "#D7BA7D"
+                        }
+                    },
+                    {
+                        "scope": "constant.numeric.my-lang",
+                        "settings": {
+                            "foreground": "#B5CEA8"
                         }
                     }
                 ]
