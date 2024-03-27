@@ -28,6 +28,76 @@
     "main": "./client/out/extension.js",
     "icon": "images/icon.ico",
     "contributes": {
+        "languages": [
+            {
+                "id": "my-lang",
+                "aliases": [
+                    "MyLang",
+                    "my-lang"
+                ],
+                "extensions": [
+                    ".my"
+                ],
+                "configuration": "./syntaxes/my-language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "my-lang",
+                "scopeName": "source.my",
+                "path": "./syntaxes/my-language.tmLanguage.json"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "when": "editorLangId == my-lang",
+                    "command": "extension.runModelAtTQuant8",
+                    "group": "navigation"
+                },
+                {
+                    "when": "editorLangId == my-lang",
+                    "command": "extension.importModelsFromTQuant8",
+                    "group": "z_commands"
+                }
+            ]
+        },
+        "themes": [
+            {
+                "label": "My Lang Dark Theme",
+                "uiTheme": "vs-dark",
+                "path": "./themes/my-lang-dark-theme.json"
+            },
+            {
+                "label": "My Lang Light Theme",
+                "uiTheme": "vs",
+                "path": "./themes/my-lang-light-theme.json"
+            }
+        ],
+        "commands": [
+            {
+                "command": "extension.runModelAtTQuant8",
+                "title": "%runModel.title%",
+                "category": "%command.category%"
+            },
+            {
+                "command": "extension.importModelsFromTQuant8",
+                "title": "%importModels.title%",
+                "category": "%command.category%"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "extension.runModelAtTQuant8",
+                "key": "f5",
+                "when": "editorTextFocus && editorLangId == my-lang"
+            },
+            {
+                "command": "extension.importModelsFromTQuant8",
+                "key": "ctrl+shift+i",
+                "when": "editorTextFocus && editorLangId == my-lang"
+            }
+        ],
         "configuration": {
             "type": "object",
             "title": "%configuration.title%",
@@ -46,50 +116,48 @@
                 }
             }
         },
-        "languages": [
-            {
-                "id": "my-lang",
-                "aliases": [
-                    "MyLang",
-                    "my-lang"
-                ],
-                "extensions": [
-                    ".my"
-                ],
-                "configuration": "./language-configuration.json"
+        "configurationDefaults": {
+            "editor.tokenColorCustomizations": {
+                "textMateRules": [
+                    {
+                        "scope": "comment.line.double-slash.my-lang",
+                        "settings": {
+                            "foreground": "#6A9955"
+                        }
+                    },
+                    {
+                        "scope": "comment.block.double-star.my-lang",
+                        "settings": {
+                            "foreground": "#6A9955"
+                        }
+                    },
+                    {
+                        "scope": "comment.block.single-star.my-lang",
+                        "settings": {
+                            "foreground": "#6A9955"
+                        }
+                    },
+                    {
+                        "scope": "comment.property.name.my-lang",
+                        "settings": {
+                            "foreground": "#569CD6"
+                        }
+                    },
+                    {
+                        "scope": "comment.property.param-name.my-lang",
+                        "settings": {
+                            "foreground": "#9CDCFE"
+                        }
+                    },
+                    {
+                        "scope": "comment.property.param-default.my-lang",
+                        "settings": {
+                            "foreground": "#545454"
+                        }
+                    }
+                ]
             }
-        ],
-        "grammars": [
-            {
-                "language": "my-lang",
-                "scopeName": "source.my",
-                "path": "./syntaxes/my-lang.tmLanguage.json"
-            }
-        ],
-        "themes": [
-            {
-                "label": "My Lang Dark Theme",
-                "uiTheme": "vs-dark",
-                "path": "./themes/my-lang-dark-theme.json"
-            },
-            {
-                "label": "My Lang Light Theme",
-                "uiTheme": "vs",
-                "path": "./themes/my-lang-light-theme.json"
-            }
-        ],
-        "commands": [
-            {
-                "command": "extension.importModelsFromTQuant8",
-                "title": "%importModels.title%",
-                "category": "%command.category%"
-            },
-            {
-                "command": "extension.runModelAtTQuant8",
-                "title": "%runModel.title%",
-                "category": "%command.category%"
-            }
-        ]
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",

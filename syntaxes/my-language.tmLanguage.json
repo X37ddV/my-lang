@@ -35,23 +35,28 @@
                     "match": "//.*$"
                 },
                 {
-                    "name": "comment.block.my-lang",
-                    "begin": "/\\*",
+                    "name": "comment.block.double-star.my-lang",
+                    "begin": "/\\*\\*",
                     "end": "\\*/",
                     "patterns": [
                         {
                             "match": "\\s(@\\w+)\\b",
-                            "name": "constant.character.my-lang"
+                            "name": "comment.property.name.my-lang"
                         },
                         {
                             "match": "(?<=\\s@param\\b)\\s+[A-Z0-9]+",
-                            "name": "variable.normal.my-lang"
+                            "name": "comment.property.param-name.my-lang"
                         },
                         {
                             "match": "(?<=\\s@param\\b.*)\\[.*\\]",
-                            "name": "constant.regexp.my-lang"
+                            "name": "comment.property.param-default.my-lang"
                         }
                     ]
+                },
+                {
+                    "name": "comment.block.single-star.my-lang",
+                    "begin": "/\\*",
+                    "end": "\\*/"
                 }
             ]
         },
