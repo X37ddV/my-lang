@@ -3,46 +3,46 @@
         // symbol used for single line comment. Remove this entry if your language does not support line comments
         "lineComment": "//",
         // symbols used for start and end a block comment. Remove this entry if your language does not support block comments
-        "blockComment": [ "/*", "*/" ]
+        "blockComment": ["/*", "*/"]
     },
     // symbols used as brackets
     "brackets": [
         ["{", "}"],
         ["[", "]"],
         ["(", ")"],
-		["BEGIN", "END"]
+        ["BEGIN", "END"]
     ],
     // symbols that are auto closed when typing
-	"autoClosingPairs": [
-		{ "open": "{", "close": "}" },
-		{ "open": "[", "close": "]" },
-		{ "open": "(", "close": ")" },
-		{ "open": "'", "close": "'", "notIn": ["string", "comment"] },
-		{ "open": "\"", "close": "\"", "notIn": ["string"] },
-		{ "open": "`", "close": "`", "notIn": ["string", "comment"] },
-		{ "open": "/**", "close": " */", "notIn": ["string"] },
-		{ "open": "BEGIN", "close": "END", "notIn": ["string", "comment"] },
-		{ "open": "IF ", "close": " THEN", "notIn": ["string", "comment"] }
-	],
-	"autoCloseBefore": ";:.,=}])>` \n\t",
+    "autoClosingPairs": [
+        { "open": "{", "close": "}" },
+        { "open": "[", "close": "]" },
+        { "open": "(", "close": ")" },
+        { "open": "'", "close": "'", "notIn": ["string", "comment"] },
+        { "open": "\"", "close": "\"", "notIn": ["string"] },
+        { "open": "`", "close": "`", "notIn": ["string", "comment"] },
+        { "open": "/**", "close": " */", "notIn": ["string"] },
+        { "open": "BEGIN", "close": "END", "notIn": ["string", "comment"] },
+        { "open": "IF", "close": " THEN", "notIn": ["string", "comment"] }
+    ],
+    "autoCloseBefore": ";:.,=}])>` \n\t",
     // symbols that can be used to surround a selection
-	"surroundingPairs": [
-		["{", "}"],
-		["[", "]"],
-		["(", ")"],
-		["'", "'"],
-		["\"", "\""],
-		["`", "`"]
-	],
-	"folding": {
-		"markers": {
-			"start": "^\\s*//\\s*#?region\\b",
-			"end": "^\\s*//\\s*#?endregion\\b"
-		}
-	},
-	"wordPattern": "(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\-\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)",
-	"indentationRules": {
-		"increaseIndentPattern": "^((?!.*?\\/\\*).*\\*\/)?\\s*[\\}\\]].*$",
-		"decreaseIndentPattern": "^((?!\\/\\/).)*(\\{[^}\"'`]*|\\([^)\"'`]*|\\[[^\\]\"'`]*)$"
-	}
+    "surroundingPairs": [
+        ["{", "}"],
+        ["[", "]"],
+        ["(", ")"],
+        ["'", "'"],
+        ["\"", "\""],
+        ["`", "`"]
+    ],
+    "folding": {
+        "markers": {
+            "start": "^\\s*//\\s*#?region\\b",
+            "end": "^\\s*//\\s*#?endregion\\b"
+        }
+    },
+    "wordPattern": "(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\-\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)",
+    "indentationRules": {
+        "increaseIndentPattern": "^((?!.*?\\/\\*).*\\*/)?\\s*[\\}\\]].*$",
+        "decreaseIndentPattern": "^((?!\\/\\/).)*(\\{[^}\"'`]*|\\([^)\"'`]*|\\[[^\\]\"'`]*)$"
+    }
 }

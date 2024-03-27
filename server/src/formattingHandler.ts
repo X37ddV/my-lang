@@ -105,7 +105,13 @@ const getBlocks = (text: string) => {
     while (text) {
         if (tryMatch(/^\/\*/, /^\/\*[\s\S]*?\*\/[ \t]*(?:\r?\n|$)?/, BlockType.BlockComment)) continue;
         if (tryMatch(/^\/\//, /^\/\/.*(?:\r?\n|$)/, BlockType.LineComment)) continue;
-        if (tryMatch(/^IF\b(?!\s*\()/i, /^IF\b(?!\s*\()[\s\S]*?\bTHEN\b[ \t]*(?:\r?\n|$)?/i, BlockType.IfThen))
+        if (
+            tryMatch(
+                /^IF\b((?!\bIF\b|;).)*\bTHEN\b/i,
+                /^IF\b((?!\bIF\b|;).)*\bTHEN\b[ \t]*(?:\r?\n|$)?/i,
+                BlockType.IfThen
+            )
+        )
             continue;
         if (tryMatch(/^ELSE\b/i, /^ELSE\b[ \t]*(?:\r?\n|$)?/i, BlockType.Else)) continue;
         if (tryMatch(/^BEGIN\b/i, matchNestedBeginEnd, BlockType.BeginEnd)) continue;
@@ -156,9 +162,13 @@ const formatCode = (text: string, indent: string, indentLevel: number = 0): stri
         .replace(/\s+/g, " ")
         .trim();
     if (singleLineCode) {
+        const isIfThen = /^IF\b((?!\bIF\b|;).)*\bTHEN\b/i.test(singleLineCode);
+        if (isIfThen) {
+            singleLineCode = singleLineCode.replace(/^IF\(/i, "IF (");
+        }
         if (singleLineCode.slice(-1) !== ";") {
             if (
-                !/^IF\b(?!\s*\()/i.test(singleLineCode) &&
+                !isIfThen &&
                 !/^#/i.test(singleLineCode) &&
                 !/^ELSE\b/i.test(singleLineCode) &&
                 !/^BEGIN\b/i.test(singleLineCode) &&
@@ -194,7 +204,7 @@ const formatBeginEnd = (text: string, indent: string, indentLevel: number = 0): 
 const indentCode = (code: string, indent: string, indentLevel: number): string => {
     const lines = code.split(/\r?\n/);
     const fullIndent = indent.repeat(indentLevel);
-    const indentedLines = lines.map((line) => fullIndent + line);
+    const indentedLines = lines.map((line) => (fullIndent + line).trimEnd());
     return indentedLines.join(os.EOL);
 };
 

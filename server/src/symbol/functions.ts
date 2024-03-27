@@ -6164,8 +6164,7 @@ REF(L,1);//取得前一根K线的最低价
 const LV = new MySymbol();
 LV.label = "LV";
 LV.description = "除当前K线外最低值";
-LV.insertText = "";
-LV.body = "LV( , )";
+LV.insertText = "LV(${1:X}, ${2:N})";
 LV.kind = MySymbolKind.Function;
 LV.marketType = MyMarketType.BasicFunction;
 LV.functionType = MyFunctionType.FinancialStatisticsFunction;
@@ -6195,8 +6194,7 @@ LV(L,5) 和 REF(LLV(L,5),1) 的结果是一样的，用LV编写更加方便。
 const MA = new MySymbol();
 MA.label = "MA";
 MA.description = "算数移动平均";
-MA.insertText = "";
-MA.body = "MA( , )";
+MA.insertText = "MA(${1:X}, ${2:N})";
 MA.kind = MySymbolKind.Function;
 MA.marketType = MyMarketType.BasicFunction;
 MA.functionType = MyFunctionType.FinancialStatisticsFunction;
