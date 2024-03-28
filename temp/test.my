@@ -57,6 +57,9 @@ BB := MA(C, 5); // 定义变量BB，模型加载时BB在图表上不显示线。
 CC ^^ MA(C, 5);
 DD .. MA(C, 5);
 EE := 1;
+FF : "1209$CLOSE";
+GG : "MIN$5$CLOSE";
+HH : "HOUR$4$OPI";
 // endregion
 
 // region 条件语句

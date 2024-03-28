@@ -6,13 +6,13 @@
             "include": "#comments"
         },
         {
+            "include": "#strings"
+        },
+        {
             "include": "#entities"
         },
         {
             "include": "#keywords"
-        },
-        {
-            "include": "#strings"
         },
         {
             "include": "#colors"
@@ -66,7 +66,7 @@
                     "match": "(AS)\\s+(\\b(?![0-9])[^a-z,:=+\\-*/|&^.\\s]+\\b)",
                     "captures": {
                         "1": {
-                            "name": "keyword.control.my-lang"
+                            "name": "entity.control.as.my-lang"
                         },
                         "2": {
                             "name": "entity.name.namespace.my-lang"
@@ -94,15 +94,11 @@
         "keywords": {
             "patterns": [
                 {
-                    "name": "keyword.icon.my-lang",
-                    "match": "'ICON(?:1(?:[0-5][0-9]?|6[0-5]?)|[1-9][0-9]?)'"
-                },
-                {
                     "name": "keyword.control.my-lang",
                     "match": "\\b(IF|THEN|BEGIN|END|ELSE|AS|VARIABLE|REFLINE|REFLINE1)\\b|#IMPORT\\b|#CALL\\b|#CALL_OTHER\\b|#CALL_PLUS\\b"
                 },
                 {
-                    "name": "keyword.operator.action.my-lang",
+                    "name": "keyword.operator.instruction.my-lang",
                     "match": "\\b(BK|SK|BP|SP|BPK|SPK|STOP|CLOSEOUT|BUY|SELL)\\b"
                 },
                 {
@@ -114,7 +110,7 @@
         "colors": {
             "patterns": [
                 {
-                    "name": "support.constant.property-value.my-lang",
+                    "name": "support.constant.my-lang",
                     "match": "\\b(COLORRED|COLORGREEN|COLORBLUE|COLORMAGENTA|COLORYELLOW|COLORLIGHTGREY|COLORLIGHTRED|COLORLIGHTGREEN|COLORLIGHTBLUE|COLORBLACK|COLORWHITE|COLORCYAN|COLORGRAY|RGB)\\b"
                 }
             ]
@@ -122,15 +118,15 @@
         "functions": {
             "patterns": [
                 {
-                    "name": "support.constant.property-value.my-lang",
+                    "name": "support.constant.my-lang",
                     "match": "\\b(ALIGN[0-2]|CIRCLEDOT|COLORSTICK|CROSSDOT|DASH|DASHDOT|DASHDOTDOT|DOT|FONTSIZE((8|9)|[1-6][0-9]|7[0-2])|HOLLOW|LINETHICK[1-7]|NODRAW|NOTEXT|POINTDOT|PRECIS[0-6]|SELECT|SOLID|VALIGN[0-2]|VOLSTICK|VOLUMESTICK|WORD)\\b"
                 },
                 {
-                    "name": "support.function.non-params.my-lang",
+                    "name": "support.function.control.my-lang",
                     "match": "\\b(AUTOFILTER|AUTOFINANCING|DAYTRADE|DAYTRADE1|MONTHTRADE|MONTHTRADE1|QUARTERTRADE|QUARTERTRADE1|TRADE_SMOOTHING|WEEKTRADE|WEEKTRADE1|YEARTRADE|YEARTRADE1)\\b"
                 },
                 {
-                    "name": "support.constant.math.my-lang",
+                    "name": "support.function.non-params.my-lang",
                     "match": "\\b(AVAILABLE_OPI|AVPRICE|BARINTERVAL|BARPOS|BARSBK|BARSBP|BARSBUY|BARSSELL|BARSSK|BARSSP|BARSTATUS|BARTYPE|BKHIGH|BKLOW|BKPRICE|BKPRICE1|BKPRICEAV|BKPRICEAV1|BKVOL|BKVOL2|BUYPRICE|CLOSE|CLOSEMINUTE|CLOSEMINUTE1|CLOSESEC|CLOSESEC1|CURRENTDATE|CURRENTTIME|DATE|DATE1|DAY|DAYBARPOS|FEE|HASTRADEDATA|HIGH|HISEXPDATE|HISEXPDAYS|HOUR|IMPLIEDVOLATILITY|INITMONEY|ISDELIVERYDAY|ISDOWN|ISEQUAL|ISLASTBAR|ISLASTBK|ISLASTBP|ISLASTBPK|ISLASTBUY|ISLASTCLOSEOUT|ISLASTKLINE|ISLASTSELL|ISLASTSK|ISLASTSP|ISLASTSPK|ISLASTSTOP|ISMAINCONTRACT|ISMONTHEND|ISNEARHOLIDAY|ISRECORDDAY|ISUP|ISWEEKEND|KLINESIG|KLINESTART|LASTOFFSETPROFIT|LASTSIG|LASTSIGGROUP|LOW|MARGIN|MAXBKVOL|MAXSKVOL|MINPRICE|MINPRICE1|MINUTE|MONEY|MONEYRATIO|MONEYTOT|MONTH|MYVOL|NULL|OFFSETPROFIT|OFFSETPROFIT1|OPEN|OPENMINUTE|OPENMINUTE1|OPENSEC|OPENSEC1|OPI|PANZHENG|PERIOD|PROFIT|QUARTER|SCALE|SETTLE|SIGNUM|SKHIGH|SKLOW|SKPRICE|SKPRICE1|SKPRICEAV|SKPRICEAV1|SKVOL|SKVOL2|STKTYPE|T_CLOSE|TAVLOSS|TAVWIN|TAVWINLOSS|TIME|TIME0|TMAXLOSS|TMAXSEQLOSS|TMAXSEQWIN|TMAXWIN|TNUMSEQLOSS|TNUMSEQWIN|TODAYDEUCETIMES|TODAYLOSSTIMES|TODAYWINTIMES|TREND|TSEQLOSS|TSEQWIN|UNIT|UNIT1|UNITLIMIT|VOL|VOLMARGIN|VOLTICK|VOLTIME|WEEKDAY|YCLOSE|YEAR|YSETTLE|C|H|L|O|V)\\b"
                 },
                 {
@@ -140,13 +136,28 @@
             ]
         },
         "strings": {
-            "name": "string.quoted.single.my-lang",
-            "begin": "'",
-            "end": "'",
             "patterns": [
                 {
-                    "name": "constant.character.escape.my-lang",
-                    "match": "\\\\."
+                    "name": "string.quoted.single.my-lang",
+                    "begin": "'",
+                    "end": "'",
+                    "patterns": [
+                        {
+                            "name": "string.quoted.single.icon.my-lang",
+                            "match": "ICON(?:1(?:[0-5][0-9]?|6[0-5]?)|[1-9][0-9]?)"
+                        }
+                    ]
+                },
+                {
+                    "name": "string.quoted.double.my-lang",
+                    "begin": "\"",
+                    "end": "\"",
+                    "patterns": [
+                        {
+                            "name": "string.quoted.double.dollar.my-lang",
+                            "match": "\\$"
+                        }
+                    ]
                 }
             ]
         },

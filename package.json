@@ -144,7 +144,7 @@
                         }
                     },
                     {
-                        "scope": "keyword.control.my-lang",
+                        "scope": "entity.control.as.my-lang",
                         "settings": {
                             "foreground": "#C586C0"
                         }
@@ -162,13 +162,13 @@
                         }
                     },
                     {
-                        "scope": "keyword.icon.my-lang",
+                        "scope": "keyword.control.my-lang",
                         "settings": {
-                            "foreground": "#B5CEA8"
+                            "foreground": "#C586C0"
                         }
                     },
                     {
-                        "scope": "keyword.operator.action.my-lang",
+                        "scope": "keyword.operator.instruction.my-lang",
                         "settings": {
                             "foreground": "#D7BA7D"
                         }
@@ -180,19 +180,19 @@
                         }
                     },
                     {
-                        "scope": "support.constant.property-value.my-lang",
+                        "scope": "support.constant.my-lang",
                         "settings": {
                             "foreground": "#CE9178"
                         }
                     },
                     {
-                        "scope": "support.function.non-params.my-lang",
+                        "scope": "support.function.control.my-lang",
                         "settings": {
-                            "foreground": "#DCDCAA"
+                            "foreground": "#DDDD93"
                         }
                     },
                     {
-                        "scope": "support.constant.math.my-lang",
+                        "scope": "support.function.non-params.my-lang",
                         "settings": {
                             "foreground": "#4EC9B0"
                         }
@@ -204,15 +204,27 @@
                         }
                     },
                     {
+                        "scope": "string.quoted.single.icon.my-lang",
+                        "settings": {
+                            "foreground": "#B5CEA8"
+                        }
+                    },
+                    {
                         "scope": "string.quoted.single.my-lang",
                         "settings": {
                             "foreground": "#CE9178"
                         }
                     },
                     {
-                        "scope": "constant.character.escape.my-lang",
+                        "scope": "string.quoted.double.my-lang",
                         "settings": {
-                            "foreground": "#D7BA7D"
+                            "foreground": "#CE7878"
+                        }
+                    },
+                    {
+                        "scope": "string.quoted.double.dollar.my-lang",
+                        "settings": {
+                            "foreground": "#569CD6"
                         }
                     },
                     {

@@ -121,26 +121,30 @@ const getBlocks = (text: string) => {
     return blocks;
 };
 
-const formatBlockComment = (text: string, indent: string, indentLevel: number = 0): string => {
+const formatBlockComment = (text: string, indent: string, indentLevel: number): string => {
     let comment = text.trim();
     if (comment.startsWith("/**")) {
         const contentItems = parserModelComment(comment);
         comment = modelComment(contentItems);
     }
-    return indentCode(comment, indent, indentLevel);
+    return indentLines(comment, indent, indentLevel, (line: string) => {
+        return line + (/^\s*\*$/.test(line) ? " " : "");
+    });
 };
 
-const formatLineComment = (text: string, indent: string, indentLevel: number = 0): string => {
+const formatLineComment = (text: string, indent: string, indentLevel: number): string => {
     const comment = text
         .trim()
         .replace(/^\/\/\s*/, "// ")
         .replace(/^\/\/\s#\s*/, "//#")
         .replace(/region\s*/i, "region ")
         .replace(/endregion.*/i, "endregion");
-    return indentCode(comment, indent, indentLevel);
+    return indentLines(comment, indent, indentLevel, (line: string) => {
+        return line + (/^\/\/#region$/.test(line) ? " " : "");
+    });
 };
 
-const formatCode = (text: string, indent: string, indentLevel: number = 0): string => {
+const formatCode = (text: string, indent: string, indentLevel: number): string => {
     const singleLineCommentIdx = text.indexOf("//");
     let singleLineComment = formatLineComment(
         singleLineCommentIdx !== -1 ? text.slice(singleLineCommentIdx) : "",
@@ -162,6 +166,7 @@ const formatCode = (text: string, indent: string, indentLevel: number = 0): stri
         .replace(/\s+/g, " ")
         .trim();
     if (singleLineCode) {
+        singleLineCode = singleLineCode.replace(/'([^']*\$[^']*)'/g, (_match, p1) => `"${p1}"`);
         const isIfThen = /^IF\b((?!\bIF\b|;).)*\bTHEN\b/i.test(singleLineCode);
         if (isIfThen) {
             singleLineCode = singleLineCode.replace(/^IF\(/i, "IF (");
@@ -182,33 +187,39 @@ const formatCode = (text: string, indent: string, indentLevel: number = 0): stri
         }
     }
     const newLine = singleLineCode + singleLineComment;
-    return indentCode(newLine, indent, indentLevel);
+    return indentLines(newLine, indent, indentLevel);
 };
 
-const formatIfThen = (text: string, indent: string, indentLevel: number = 0): string => {
+const formatIfThen = (text: string, indent: string, indentLevel: number): string => {
     return formatCode(text.trim().replace(/\r?\n/g, " "), indent, indentLevel);
 };
 
-const formatElse = (text: string, indent: string, indentLevel: number = 0): string => {
-    return indentCode(text.trim(), indent, indentLevel);
+const formatElse = (text: string, indent: string, indentLevel: number): string => {
+    return indentLines(text.trim(), indent, indentLevel);
 };
 
-const formatBeginEnd = (text: string, indent: string, indentLevel: number = 0): string => {
+const formatBeginEnd = (text: string, indent: string, indentLevel: number): string => {
     let formattedCode = "BEGIN" + os.EOL;
     const code = text.replace(/^BEGIN[ \t]*(?:\r?\n|$)?/i, " ").replace(/[ \t]*END[ \t]*(?:\r?\n|$)?$/i, " ");
     formattedCode += formatText(code, indent, 1);
     formattedCode += "END";
-    return indentCode(formattedCode, indent, indentLevel);
+    return indentLines(formattedCode, indent, indentLevel);
 };
 
-const indentCode = (code: string, indent: string, indentLevel: number): string => {
+const indentLines = (
+    code: string,
+    indent: string,
+    indentLevel: number,
+    afterCallback?: (line: string) => string
+): string => {
     const lines = code.split(/\r?\n/);
     const fullIndent = indent.repeat(indentLevel);
     const indentedLines = lines.map((line) => (fullIndent + line).trimEnd());
-    return indentedLines.join(os.EOL);
+    const afterLines = afterCallback ? indentedLines.map(afterCallback) : indentedLines;
+    return afterLines.join(os.EOL);
 };
 
-const parserIf = (ifBlock: Block, blocks: Block[], indent: string, indentLevel: number = 0) => {
+const parserIf = (ifBlock: Block, blocks: Block[], indent: string, indentLevel: number) => {
     let formattedCode = "";
     formattedCode += formatBlock(ifBlock, indent, indentLevel);
     let nextBlock = blocks.shift();
@@ -268,7 +279,7 @@ const parserIf = (ifBlock: Block, blocks: Block[], indent: string, indentLevel: 
     return formattedCode;
 };
 
-const formatBlock = (block: Block, indent: string, indentLevel: number = 0): string => {
+const formatBlock = (block: Block, indent: string, indentLevel: number): string => {
     let formattedCode = "";
     if (block) {
         if (block.type === BlockType.Empty) {
