@@ -272,7 +272,7 @@ function getSymbolAtPosition(document: TextDocument, position: Position): MySymb
     const lineText = lines[position.line];
 
     // 简单的正则表达式，用于匹配单词。根据你的语言特性调整
-    const wordRegex = /\b\w+\b/g;
+    const wordRegex = /[#@]?\b\w+\b/g;
     let match;
     while ((match = wordRegex.exec(lineText)) !== null) {
         const word = match[0];
